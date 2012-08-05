@@ -57,7 +57,7 @@ class JFormFieldVisionaryCollection extends JFormFieldList
 
 			foreach($items as $item) {
 
-				$options []= JHtml::('select.option', $item->id, $item->collection);
+				$options []= JHtml::_('select.option', $item->id, $item->collection);
 			}
 
 		}
