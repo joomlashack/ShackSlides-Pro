@@ -31,12 +31,14 @@
 			<option value="joomla">Joomla Content</option>
 			<option value="k2">K2 Content</option>
 			<option value="flexi">FlexiContent Content</option>
+			<option value="visionary">Visionary Collection</option>
 		</param>
 		<param name="limit" type="text" default="5" label="LIMIT" description="LIMIT_DESC" />
 		<param name="folder_folder" type="directory" default="images" directory="images" label="FOLDER" description="FOLDER_DESC" />
 		<param name="joomla_category" type="category" default="0" label="CATEGORY" description="CATEGORY_DESC" />
 		<param name="k2_category" type="k2category" default="0" label="K2_CATEGORY" description="K2_CATEGORY_DESC" />
 		<param name="flexi_category" type="flexicategory" default="" label="FLEXICONTENT_CATEGORY" description="FLEXICONTENT_CATEGORY_DESC" />
+		<param name="visionary_collection" type="visionarycollection" default="" label="VISIONARYCOLLECTION" description="VISIONARYCOLLECTION_DESC" />
 
 		<param name="ordering" type="list" default="1" label="ORDERING" description="ORDERING_DESC">
 			<option value="ordering">ORDER</option>
@@ -180,13 +182,15 @@
                     <option value="joomla">Joomla Content</option>
                     <option value="k2">K2 Content</option>
                     <option value="flexi">FlexiContent Content</option>
+                    <option value="visionary">Visionary Collection</option>
 				</field>
 				<field name="limit" type="text" default="5" label="LIMIT" description="LIMIT_DESC" />
 				<field name="folder_folder" type="directory" default="images" directory="images" label="FOLDER" description="FOLDER_DESC" />
 				<field name="joomla_category" type="category" extension="com_content" default="1" label="CATEGORY" description="CATEGORY_DESC" />
 				<field name="k2_category" type="k2category" default="0" label="K2_CATEGORY" description="K2_CATEGORY_DESC" />
 				<field name="flexi_category" type="flexicategory" default="" label="FLEXICONTENT_CATEGORY" description="FLEXICONTENT_CATEGORY_DESC" />
-                
+				<field name="visionary_collection" type="visionarycollection" default="" label="VISIONARYCOLLECTION" description="VISIONARYCOLLECTION_DESC" />
+
 				<field name="ordering" type="list" default="1" label="ORDERING" description="ORDERING_DESC">
 					<option value="ordering">ORDER</option>
 					<option value="title">TITLE</option>
