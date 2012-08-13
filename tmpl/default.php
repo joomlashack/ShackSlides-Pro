@@ -32,7 +32,11 @@ $defaults = array(
 	'navigation_label' => 'yes', // shows the numbers for navigation
 	'navigation_align' => 'center', // shows the numbers for navigation
 	'mousewheel' => 'no', // can use mousewheel for navigation
-	'container' => 'slider', // id for the slider container
+	'container' => 'slider', // id for the slider container,
+	'include_bootstrap' => 'no',
+	'main_container_class' => '',
+	'extra_container' => 'no',
+	'extra_container_class' => ''
 );
 
 // Adding the javascript and css files to the document
@@ -46,11 +50,31 @@ ob_end_clean();
 
 $doc->addStyleDeclaration($styles);
 
+
+// Check if we have to include Twitter Bootstrap styles
+$bootstrap = ($params->get('include_bootstrap', $defaults['include_bootstrap']) == "yes");
+if ($bootstrap) {
+
+	$doc->addStylesheet(JURI::base() . 'modules/mod_shackslides/assets/wrappedbootstrap.css');
+
+}
+
+
+$extra_container = ($params->get('extra_container', $defaults['extra_container']) == "yes");
+
+
 ?>
 
-<div class="shackSlider<?php echo $params->get('container', $defaults['container']) ?>">
+<?php if ($bootstrap) : ?><div class='jsbootstrap'><?php endif; ?>
+
+<?php if ($extra_container) : ?><div class='<?php echo $params->get('extra_container_class', $defaults['extra_container_class']); ?>'><?php endif; ?>
+
+
+<div class="shackSlider<?php echo $params->get('container', $defaults['container']) ?> <?php echo $params->get('main_container_class', $defaults['main_container_class']); ?>">
 
 	<div id="<?php echo $params->get('container', $defaults['container']) ?>">
+
+
 <?php for ($i = 0; $i < count($images); $i++) : ?>
 <?php if ($images[$i] === false) continue; ?>
 <?php if ($links[$i]) : ?><a href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>><?php endif; ?>
@@ -67,5 +91,9 @@ $doc->addStyleDeclaration($styles);
 	<div id="<?php echo $params->get('container', $defaults['container']) ?>Nav"></div>
 
 </div>
+
+<?php if ($extra_container) : ?></div><?php endif; ?>
+
+<?php if ($bootstrap) : ?></div><?php endif; ?>
 
 <?php include(JPATH_BASE.DS.'modules'.DS.'mod_shackslides'.DS.'assets'.DS.'script.js.php'); ?>

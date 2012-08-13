@@ -62,6 +62,7 @@
 		<param name="width" type="text" default="500" label="CONTAINERWIDTH" description="CONTAINERWIDTH_DESC" />
 		<param name="height" type="text" default="250" label="CONTAINERHEIGHT" description="CONTAINERHEIGHT_DESC" />
 		<param name="container" type="text" default="slider" label="CONTAINER" description="CONTAINER_DESC" />
+		<param name="main_container_class" type="text" default="" label="MAIN_CONTAINER_CLASS" description="MAIN_CONTAINER_CLASS_DESC" />
 		<param name="autoplay" type="list" default="5" label="AUTOPLAYENABLED" description="AUTOPLAYENABLED_DESC">
 			<option value="0">DISABLED</option>
 			<option value="1">1</option>
@@ -172,6 +173,16 @@
 			<option value="yes">YES</option>
 			<option value="no">NO</option>
 		</param>
+		<param name="include_bootstrap" type="radio" default="no" label="INCLUDE_BOOTSTRAP" description="INCLUDE_BOOTSTRAP_DESC">
+			<option value="yes">YES</option>
+			<option value="no">NO</option>
+		</param>
+		<param name="main_container_class" type="text" default="" label="MAIN_CONTAINER_CLASS" description="MAIN_CONTAINER_CLASS_DESC" />
+		<param name="extra_container" type="radio" default="no" label="EXTRA_CONTAINER" description="EXTRA_CONTAINER_DESC">
+			<option value="yes">YES</option>
+			<option value="no">NO</option>
+		</param>
+		<param name="extra_container_class" type="text" deafult="" label="EXTRA_CONTAINER_CLASS" description="EXTRA_CONTAINER_CLASS_DESC" />
 	</params>
 
 	<config>
@@ -213,6 +224,7 @@
 				<field name="width" type="text" default="500" label="CONTAINERWIDTH" description="CONTAINERWIDTH_DESC" />
 				<field name="height" type="text" default="250" label="CONTAINERHEIGHT" description="CONTAINERHEIGHT_DESC" />
 				<field name="container" type="text" default="slider" label="CONTAINER" description="CONTAINER_DESC" />
+				<field name="main_container_class" type="text" default="" label="MAIN_CONTAINER_CLASS" description="MAIN_CONTAINER_CLASS_DESC" />
 				<field name="autoplay" type="list" default="5" label="AUTOPLAYENABLED" description="AUTOPLAYENABLED_DESC">
 					<option value="0">JDISABLED</option>
 					<option value="1">1</option>
@@ -323,6 +335,15 @@
 					<option value="yes">YES</option>
 					<option value="no">NO</option>
 				</field>
+				<field name="include_bootstrap" type="radio" default="no" label="INCLUDE_BOOTSTRAP" description="INCLUDE_BOOTSTRAP_DESC">
+					<option value="yes">YES</option>
+					<option value="no">NO</option>
+				</field>
+				<field name="extra_container" type="radio" default="no" label="EXTRA_CONTAINER" description="EXTRA_CONTAINER_DESC">
+					<option value="yes">YES</option>
+					<option value="no">NO</option>
+				</field>
+				<field name="extra_container_class" type="text" deafult="" label="EXTRA_CONTAINER_CLASS" description="EXTRA_CONTAINER_CLASS_DESC" />
 			</fieldset>
 		</fields>
 	</config>
