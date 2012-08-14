@@ -32,6 +32,13 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 
 		$this->collection = $params->get('visionary_collection', 0);
 		$this->ordering = $params->get('ordering', 'ordering');
+		if ($this->ordering == 'created') {
+
+			//fix column name for Visionary
+			$this->ordering = 'creation_date';
+
+		}
+
 		$this->ordering_direction = $params->get('ordering_direction', 'ASC');
 		$this->limit = $params->get('limit', '5');
 		$this->featured = $params->get('featured', 'include');
@@ -49,22 +56,9 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 
 		$query = 'SELECT * FROM `#__jsvisionary_jsssslide` WHERE published = 1 AND slider =' . $this->collection;
 
-		if ($this->ordering != 'ordering') {
+		if ($this->ordering != 'hits') { //ignoring hits, because Visionary does not measure hits
 
-			$query .= ' ORDER BY ';
-			switch ($this->ordering) {
-				case 'title':
-					$query .= ' title ';
-					break;
-				case ' ordering ':
-					$query .= ' ordering ';
-					break;
-				case 'created':
-					$query .= ' creation_date ';
-					break;
-			}
-
-			$query .= ' ' . $this->ordering_direction;
+			$query .= ' ORDER BY ' . $this->ordering . ' ' . $this->ordering_direction;
 
 		}
 
