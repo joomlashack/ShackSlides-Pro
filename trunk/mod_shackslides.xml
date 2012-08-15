@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <install type="module" version="1.5" method="upgrade">
-	<name>mod_shackslides</name>
+	<name>JS Shackslides</name>
 	<creationDate>December 2010</creationDate>
 	<author>Jeremy Wilken - Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
