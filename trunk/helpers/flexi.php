@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die('Direct access to files is not permitted');
 
-require_once(JPATH_ROOT.DS.'modules'.DS.'mod_shackslides'.DS.'helper.php');
+require_once(JPATH_ROOT.DS.'modules'.DS.'mod_jsshackslides'.DS.'helper.php');
 
 class ModShackSlidesFlexiHelper extends ModShackSlidesHelper
 {

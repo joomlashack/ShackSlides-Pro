@@ -41,10 +41,10 @@ $defaults = array(
 
 // Adding the javascript and css files to the document
 $doc = JFactory::getDocument();
-$doc->addScript(JURI::base() . 'modules/mod_shackslides/assets/sliderman.js');
+$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/sliderman.js');
 
 ob_start();
-include(JPATH_ROOT.'/modules/mod_shackslides/tmpl/css/sliderman.css.php');
+include(JPATH_ROOT.'/modules/mod_jsshackslides/tmpl/css/sliderman.css.php');
 $styles = ob_get_contents();
 ob_end_clean();
 
@@ -55,7 +55,7 @@ $doc->addStyleDeclaration($styles);
 $bootstrap = ($params->get('include_bootstrap', $defaults['include_bootstrap']) == "yes");
 if ($bootstrap) {
 
-	$doc->addStylesheet(JURI::base() . 'modules/mod_shackslides/assets/wrappedbootstrap.css');
+	$doc->addStylesheet(JURI::base() . 'modules/mod_jsshackslides/assets/wrappedbootstrap.css');
 
 }
 
@@ -96,4 +96,4 @@ $extra_container = ($params->get('extra_container', $defaults['extra_container']
 
 <?php if ($bootstrap) : ?></div><?php endif; ?>
 
-<?php include(JPATH_BASE.DS.'modules'.DS.'mod_shackslides'.DS.'assets'.DS.'script.js.php'); ?>
+<?php include(JPATH_BASE.DS.'modules'.DS.'mod_jsshackslides'.DS.'assets'.DS.'script.js.php'); ?>

@@ -18,4 +18,4 @@ $links = $helper->getLinks();
 $titles = $helper->getTitles();
 $base = $helper->getBase();
 
-require(JModuleHelper::getLayoutPath('mod_shackslides'));
+require(JModuleHelper::getLayoutPath('mod_jsshackslides'));

@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 @define('JPATH_ADMIN_JSVISIONARY', JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jsvisionary');
 @define('JPATH_SITE_JSVISIONARY', JPATH_SITE . DS . 'components' . DS . 'com_jsvisionary');
 
-require_once(JPATH_ROOT.DS.'modules'.DS.'mod_shackslides'.DS.'helper.php');
+require_once(JPATH_ROOT.DS.'modules'.DS.'mod_jsshackslides'.DS.'helper.php');
 jimport( 'joomla.application.component.helper' );
 
 class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {

@@ -16,7 +16,7 @@ class JElementColorpicker extends JElement
 	function fetchElement($name, $value, &$node, $control_name)
 	{
 		$doc = JFactory::getDocument();
-		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'modules/mod_shackslides/elements/jscolor/jscolor.js');
+		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'modules/mod_jsshackslides/elements/jscolor/jscolor.js');
 
 		$size = ( $node->attributes('size') ? 'size="'.$node->attributes('size').'"' : '' );
         $value = htmlspecialchars_decode($value, ENT_QUOTES);

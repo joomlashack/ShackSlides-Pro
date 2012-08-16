@@ -35,7 +35,7 @@ $colors = array(
 }
 
 .shackSlider<?php echo $params->get('container', $defaults['container']) ?> #sliderContainer<?php echo $params->get('container', $defaults['container']) ?> {
-	background: #<?php echo $colors[$theme]['base'] ?> url(<?php echo JURI::base() ?>modules/mod_shackslides/tmpl/images/bg.png);
+	background: #<?php echo $colors[$theme]['base'] ?> url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/bg.png);
 	border: 2px solid #<?php echo $colors[$theme]['border'] ?>;
 }
 
@@ -57,7 +57,7 @@ $colors = array(
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a:link, #<?php echo $params->get('container', $defaults['container']) ?>Nav a:active, #<?php echo $params->get('container', $defaults['container']) ?>Nav a:visited, #<?php echo $params->get('container', $defaults['container']) ?>Nav a:hover{
-	background: url(<?php echo JURI::base() ?>modules/mod_shackslides/tmpl/images/<?php echo $theme ?>/item.png) no-repeat center center;
+	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/item.png) no-repeat center center;
 	line-height: 24px;
 	font-size: 16px;
 	height: 24px;
@@ -72,13 +72,13 @@ $colors = array(
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:link, #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:active, #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:visited, #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:hover{
-	background: url(<?php echo JURI::base() ?>modules/mod_shackslides/tmpl/images/<?php echo $theme ?>/item_active.png) no-repeat center center;
+	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/item_active.png) no-repeat center center;
 	color: #<?php echo $colors[$theme]['active'] ?>;
 	text-shadow: 1px 1px 1px #<?php echo $colors[$theme]['shadow'] ?>;
 }
 
 a.sliderPrev{
-	background: url(<?php echo JURI::base() ?>modules/mod_shackslides/tmpl/images/<?php echo $theme ?>/next.png) no-repeat center center;
+	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/next.png) no-repeat center center;
 	width: 49px;
 	height: 24px;
 	display: inline-block;
@@ -91,7 +91,7 @@ a.sliderPrev{
 }
 
 a.sliderNext{
-	background: url(<?php echo JURI::base() ?>modules/mod_shackslides/tmpl/images/<?php echo $theme ?>/prev.png) no-repeat center center;
+	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/prev.png) no-repeat center center;
 	width: 49px;
 	height: 24px;
 	display: inline-block;
@@ -105,13 +105,13 @@ a.sliderNext{
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a.sliderPrev{
-	background: url(<?php echo JURI::base() ?>modules/mod_shackslides/tmpl/images/<?php echo $theme ?>/prev.png) no-repeat center center;
+	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/prev.png) no-repeat center center;
 	position: static;
 	width: 49px;
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a.sliderNext{
-	background: url(<?php echo JURI::base() ?>modules/mod_shackslides/tmpl/images/<?php echo $theme ?>/next.png) no-repeat center center;
+	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/next.png) no-repeat center center;
 	position: static;
 	width: 49px;
 }
