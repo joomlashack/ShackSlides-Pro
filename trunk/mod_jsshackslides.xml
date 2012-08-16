@@ -25,7 +25,7 @@
 		<language tag="en-GB">en-GB.mod_jsshackslides.ini</language>
 	</languages>
 
-	<params addpath="/modules/mod_shackslides/elements">
+	<params addpath="/modules/mod_jsshackslides/elements">
 		<param name="source" type="list" default="folder" label="SHACKSLIDE_SOURCE" description="SHACKSLIDE_SOURCE_DESC">
 			<option value="folder">Folder</option>
 			<option value="joomla">Joomla Content</option>
@@ -186,7 +186,7 @@
 	</params>
 
 	<config>
-		<fields name="params" addfieldpath="/modules/mod_shackslides/fields">
+		<fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
 			<fieldset name="basic">
 				<field name="source" type="list" default="folder" label="SHACKSLIDE_SOURCE" description="SHACKSLIDE_SOURCE_DESC">
 					<option value="folder">Folder</option>
