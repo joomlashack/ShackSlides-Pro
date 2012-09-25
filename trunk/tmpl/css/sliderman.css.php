@@ -14,24 +14,29 @@ $colors = array(
 
 ?>
 .shackSlider<?php echo $params->get('container', $defaults['container']) ?> {
-	width: <?php echo $params->get('width', $defaults['width']) ?>px;
-	width: 100% !important;
-	<?php if ($params->get('description',$defaults['description']) == "yes" &&
-		  $params->get('description_position',$defaults['description_position']) == "left_image") : ?>
-	padding-left: <?php echo $params->get('description_width',$defaults['description_width']) ?>px;
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
+
+		width: <?php echo $params->get('width', $defaults['width']) ?>px;
+		width: 100% !important;
+		<?php if ($params->get('description',$defaults['description']) == "yes" &&
+			  $params->get('description_position',$defaults['description_position']) == "left_image") : ?>
+		padding-left: <?php echo $params->get('description_width',$defaults['description_width']) ?>px;
+		<?php endif; ?>
+		<?php if ($params->get('description',$defaults['description']) == "yes" &&
+			  $params->get('description_position',$defaults['description_position']) == "right_image") : ?>
+		padding-right: <?php echo $params->get('description_width',$defaults['description_width']) ?>px;
+		<?php endif; ?>
+		<?php if ($params->get('description',$defaults['description']) == "yes" &&
+			  $params->get('description_position',$defaults['description_position']) == "above_image") : ?>
+		padding-top: <?php echo $params->get('description_height',$defaults['description_height']) ?>px;
+		<?php endif; ?>
+		<?php if ($params->get('description',$defaults['description']) == "yes" &&
+			  $params->get('description_position',$defaults['description_position']) == "below_image") : ?>
+		padding-bottom: <?php echo $params->get('description_height',$defaults['description_height']) ?>px;
+		<?php endif; ?>
+
 	<?php endif; ?>
-	<?php if ($params->get('description',$defaults['description']) == "yes" &&
-		  $params->get('description_position',$defaults['description_position']) == "right_image") : ?>
-	padding-right: <?php echo $params->get('description_width',$defaults['description_width']) ?>px;
-	<?php endif; ?>
-	<?php if ($params->get('description',$defaults['description']) == "yes" &&
-		  $params->get('description_position',$defaults['description_position']) == "above_image") : ?>
-	padding-top: <?php echo $params->get('description_height',$defaults['description_height']) ?>px;
-	<?php endif; ?>
-	<?php if ($params->get('description',$defaults['description']) == "yes" &&
-		  $params->get('description_position',$defaults['description_position']) == "below_image") : ?>
-	padding-bottom: <?php echo $params->get('description_height',$defaults['description_height']) ?>px;
-	<?php endif; ?>
+
 	margin-bottom: 10px;
 }
 

@@ -615,25 +615,70 @@ var Sliderman = new function(){
 
 		//DESCRIPTION
 		var descriptionShow;
+		var desc;
 		if(description && !contentmode){
-			var descriptionCont = newElement('DIV'); descriptionCont.addClass('slidermanDescriptionCont'); partsCont.appendChild(descriptionCont);
-			if(description.hide) hide(descriptionCont.style);
 
-			var descriptionStl = {position: 'absolute',
-				overflow: (description.position == 'left_image' || description.position == 'right_image' || description.position == 'above_image' || description.position == 'below_image' ? 'visible' : description.overflow),
-			textAlign: 'left'};
-			if(!description) description = [];
-			description.position = validateOption(description.position, 'top,left,right,bottom,above_image,below_image,left_image,right_image')
-			descriptionStl.background = description.transparent_background ? 'transparent' : description.background || 'white';
-			descriptionStl.opacity = description.opacity || 0.5;
-			descriptionStl.width = description.position == 'top' || description.position == 'bottom' ? display.width : description.width || display.width*0.2;
-			descriptionStl.height = description.position == 'left' || description.position == 'right' ? display.height : description.height || display.height*0.2;
-			descriptionStl[description.position == 'bottom'?'bottom':'top'] = (description.position == 'above_image' ? '-' + descriptionStl.height + 'px' : (description.position == 'below_image' ? display.height + 'px' : 0));
-			descriptionStl[description.position == 'right' ?'right':'left'] = (description.position == 'left_image' ? '-' + descriptionStl.width + 'px' : (description.position == 'right_image' ? display.width + 'px' : 0));
+			var descriptionCont = newElement('DIV'); descriptionCont.addClass('slidermanDescriptionCont');
 
-			var descBg = newElement('DIV', descriptionStl); descBg.addClass('slidermanDescriptionBG'); descriptionCont.appendChild(descBg);
-			descriptionStl.opacity = 1; descriptionStl.background = '';
-			var desc = newElement('DIV', descriptionStl); desc.addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
+			if(display.bootstrap && !description.hide && ( description.position == 'above_image' || description.position == 'below_image' || description.position == 'left_image' || description.position == 'right_image') ) {
+
+				//below/above
+				if (description.position == 'above_image' || description.position == 'below_image') {
+
+					descriptionCont.addClass('span12');
+					var descriptionRow = newElement('DIV'); descriptionRow.addClass('row-fluid'); descriptionRow.appendChild(descriptionCont);
+					var pos;
+					if (description.position == 'above_image')
+						pos = 'top';
+					if (description.position == 'below_image')
+						pos = 'bottom';
+					var parent = document.getElement('#shackslides-row').getParent();
+					descriptionRow.inject(parent, pos);
+
+				}
+
+				//left/right
+				else {
+
+					descriptionCont.addClass('span4');
+					var pos;
+					if (description.position == 'left_image')
+						pos = 'top';
+					if (description.position == 'right_image')
+						pos = 'bottom';
+
+					var row = document.getElement('#shackslides-row');
+					descriptionCont.inject(row, pos);
+
+				}
+
+				desc = newElement('DIV'); desc.addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
+
+
+			}
+
+			else {
+
+				partsCont.appendChild(descriptionCont);
+				if(description.hide) hide(descriptionCont.style);
+
+				var descriptionStl = {position: 'absolute',
+					overflow: (description.position == 'left_image' || description.position == 'right_image' || description.position == 'above_image' || description.position == 'below_image' ? 'visible' : description.overflow),
+				textAlign: 'left'};
+				if(!description) description = [];
+				description.position = validateOption(description.position, 'top,left,right,bottom,above_image,below_image,left_image,right_image')
+				descriptionStl.background = description.transparent_background ? 'transparent' : description.background || 'white';
+				descriptionStl.opacity = description.opacity || 0.5;
+				descriptionStl.width = description.position == 'top' || description.position == 'bottom' ? display.width : description.width || display.width*0.2;
+				descriptionStl.height = description.position == 'left' || description.position == 'right' ? display.height : description.height || display.height*0.2;
+				descriptionStl[description.position == 'bottom'?'bottom':'top'] = (description.position == 'above_image' ? '-' + descriptionStl.height + 'px' : (description.position == 'below_image' ? display.height + 'px' : 0));
+				descriptionStl[description.position == 'right' ?'right':'left'] = (description.position == 'left_image' ? '-' + descriptionStl.width + 'px' : (description.position == 'right_image' ? display.width + 'px' : 0));
+
+				var descBg = newElement('DIV', descriptionStl); descBg.addClass('slidermanDescriptionBG'); descriptionCont.appendChild(descBg);
+				descriptionStl.opacity = 1; descriptionStl.background = '';
+				desc = newElement('DIV', descriptionStl); desc.addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
+
+			}
 
 			function descriptionShow(){
 				desc.innerHTML = '';
