@@ -33,6 +33,7 @@ $defaults = array(
 	'navigation_align' => 'center', // shows the numbers for navigation
 	'mousewheel' => 'no', // can use mousewheel for navigation
 	'container' => 'slider', // id for the slider container,
+	'enable_bootstrap_styles' => 'no',
 	'include_bootstrap' => 'no',
 	'main_container_class' => '',
 	'extra_container' => 'no',
@@ -69,6 +70,7 @@ $extra_container = ($params->get('extra_container', $defaults['extra_container']
 
 <?php if ($extra_container) : ?><div class='<?php echo $params->get('extra_container_class', $defaults['extra_container_class']); ?>'><?php endif; ?>
 
+<div class='row-fluid'>
 
 <div class="shackSlider<?php echo $params->get('container', $defaults['container']) ?> <?php echo $params->get('main_container_class', $defaults['main_container_class']); ?>">
 
@@ -89,6 +91,8 @@ $extra_container = ($params->get('extra_container', $defaults['extra_container']
 
 	</div>
 	<div id="<?php echo $params->get('container', $defaults['container']) ?>Nav"></div>
+
+</div>
 
 </div>
 

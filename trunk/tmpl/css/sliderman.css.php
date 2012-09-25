@@ -15,6 +15,7 @@ $colors = array(
 ?>
 .shackSlider<?php echo $params->get('container', $defaults['container']) ?> {
 	width: <?php echo $params->get('width', $defaults['width']) ?>px;
+	width: 100% !important;
 	<?php if ($params->get('description',$defaults['description']) == "yes" &&
 		  $params->get('description_position',$defaults['description_position']) == "left_image") : ?>
 	padding-left: <?php echo $params->get('description_width',$defaults['description_width']) ?>px;
@@ -41,6 +42,7 @@ $colors = array(
 
 #<?php echo $params->get('container', $defaults['container']) ?>{
 	width: <?php echo $params->get('width', $defaults['width']) ?>px;
+	width: 100% !important;
 	height: <?php echo $params->get('height', $defaults['height']) ?>px;
 	margin: auto;
 }
@@ -53,6 +55,10 @@ $colors = array(
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav {
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
+	margin: 10px 0;
+	display: block;
+	<?php endif; ?>
 	text-align: <?php echo $params->get('navigation_align', $defaults['navigation_align']) ?>;
 }
 
@@ -66,15 +72,19 @@ $colors = array(
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
 	color: #<?php echo $colors[$theme]['a'] ?>;
 	<?php if ($params->get('navigation_label', $defaults['navigation_label']) == 'no') echo 'text-indent: -9999px;'; ?>
 	text-shadow: 1px 1px 1px #<?php echo $colors[$theme]['shadow'] ?>;
+	<?php endif; ?>
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:link, #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:active, #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:visited, #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:hover{
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
 	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/item_active.png) no-repeat center center;
 	color: #<?php echo $colors[$theme]['active'] ?>;
 	text-shadow: 1px 1px 1px #<?php echo $colors[$theme]['shadow'] ?>;
+	<?php endif; ?>
 }
 
 a.sliderPrev{
@@ -86,8 +96,13 @@ a.sliderPrev{
 	text-align: center;
 	text-decoration: none;
 	position: absolute;
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
 	color: #<?php echo $colors[$theme]['a'] ?> !important;
 	top: <?php echo ($params->get('height', $defaults['height']) / 2) - 12; ?>px;
+	<?php else : ?>
+	top:
+	<?php endif; ?>
+
 }
 
 a.sliderNext{
@@ -99,7 +114,9 @@ a.sliderNext{
 	line-height: 24px;
 	text-align: center;
 	position: absolute;
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
 	color: #<?php echo $colors[$theme]['a'] ?> !important;
+	<?php endif; ?>
 	top: <?php echo ($params->get('height', $defaults['height']) / 2) - 12; ?>px;
 	left: <?php echo $params->get('width', $defaults['width']) - 49; ?>px;
 }
@@ -115,3 +132,82 @@ a.sliderNext{
 	position: static;
 	width: 49px;
 }
+
+<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
+#sliderContainer {
+	width: 100% !important;
+	height: auto !important;
+	overflow: hidden;
+}
+
+#sliderContainer div img {
+	width: 100% !important;
+	height: auto !important;
+}
+
+.slidermanImgCont {
+	width: 100% !important;
+	height: auto !important;
+	position: static !important;
+}
+
+.slidermanImgCont div {
+	width: 100% !important;
+	height: auto !important;
+	position: static !important;
+}
+
+.slidermanImgCont div img {
+	width: 100% !important;
+	height: auto !important;
+	position: static !important;
+}
+
+#<?php echo $params->get('container', $defaults['container']) ?>{
+	height: auto !important;
+}
+
+a.sliderPrev, a.sliderNext, #<?php echo $params->get('container', $defaults['container']) ?>Nav ul li a {
+	background: none !important;
+	width: auto !important;
+}
+
+.slidermanlinkContainer, .slidermanlinkContainer a {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.slidermanDescriptionBG, .slidermanDescriptionText, .slideTitle {
+	<?php if (in_array($params->get('description_position', $default['description_position']), array('top', 'bottom'))) : ?>
+	width: 100% !important;
+	<?php else : ?>
+	height: 100% !important;
+	<?php endif; ?>
+}
+
+.slidermanButtonsCont {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.slidermanButtonsCont .sliderPrev, .slidermanButtonsCont .sliderNext {
+	display: inline !important;
+	position: static !important;
+	font-size: 35px;
+	margin-top: 30%;
+}
+
+.slidermanButtonsCont .sliderPrev{
+	float: left;
+	margin-left: 5px;
+}
+
+.slidermanButtonsCont .sliderNext {
+	float: right;
+	margin-right: 5px;fnav
+}
+
+<?php endif; ?>

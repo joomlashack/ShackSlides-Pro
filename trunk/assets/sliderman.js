@@ -15,7 +15,7 @@ var Sliderman = new function(){
 	function is_function(a){return typeof(a) == 'function';}
 	function now(){return (new Date()).getTime();}
 	function this_blur(){this.blur();}
-	
+
 	function random(l){
 		if(l == 0) return;
 		else if(l == 1) return 0;
@@ -123,7 +123,7 @@ var Sliderman = new function(){
 		if(styles) setStyles(e.style, styles);
 		return e;
 	}//newElement
-	
+
 	var definedObjects = [];
 	function defineObject(t, o){
 		if(!is_array(definedObjects[t])) definedObjects[t] = [];
@@ -139,16 +139,16 @@ var Sliderman = new function(){
 	Sliderman.easing = function(e){defineObject('easing', e);}
 	Sliderman.order = function(e){defineObject('order', e);}
 	Sliderman.effect = function(e){defineObject('effect', EffectObject(e));}
-	
+
 	function getDefinedObjects(t){
 		return definedObjects[t];
 	}//getDefinedObjects
-	
+
 	function getDefinedObject(t, n){
 		var a = getDefinedObjects(t), i;
 		return is_array(a) && (i = array_search(a, 'name', n)) ? a[i] : false;
 	}//getDefinedObject
-	
+
 	var _EffectObject = 0;
 	function EffectObject(a){
 		if(typeof(a) != 'object') a = {};
@@ -167,7 +167,7 @@ var Sliderman = new function(){
 			}return a.P[wh];}
 		return a;
 	}//EffectObject
-	
+
 	function slideContainer(slidesContainer, display){
 		var container = newElement('div', {width: display.width, height: display.height, position: 'absolute', top: 0, left: 0, overflow: 'hidden'});
 		slidesContainer.appendChild(container);
@@ -353,7 +353,7 @@ var Sliderman = new function(){
 		}else a['0,0'] = 0;
 		return a;
 	}//getOrder
-	
+
 	function getEasing(effect){
 		var o = getDefinedObject('easing', effect.easing), i, c = effect.frames_count;
 		if(!is_array(o.cache)) o.cache = [];
@@ -363,7 +363,7 @@ var Sliderman = new function(){
 		}
 		return o.cache[c];
 	}//getEasing
-	
+
 	Sliderman.slider = function(parameters){
 		setOpacityInit();
 
@@ -421,7 +421,7 @@ var Sliderman = new function(){
 		var description = display.description || null;
 		var navigation = display.navigation || null;
 		var buttons = display.buttons || null;
-		
+
 		Slider.random = function(){
 			var r = random(images.length);
 			return images.length > 1 && r == current ? Slider.random() : Slider.go(r);
@@ -493,14 +493,14 @@ var Sliderman = new function(){
 			Slider.stop();
 			Slider.play();
 		}//start
-		
+
 		var removePrevImg = function(){
 			if(prevImg && status == 'free'){
 				prevImg.parentNode.removeChild(prevImg);
 				prevImg = null;
 			}
 		}//removePrevImg
-		
+
 		function displayFirstSlide(){
 			var c = slideContainer(imagesCont, display);
 			if(parameters.contentmode) c.appendChild(images[0]);
@@ -509,7 +509,7 @@ var Sliderman = new function(){
 			previous = null;
 			current = 0;
 		}//displayFirstSlide
-		
+
 		function update(){
 			descriptionShow(); linkUpd(); navigationUpd();
 		}//update
@@ -566,13 +566,13 @@ var Sliderman = new function(){
 		//CONTAINERS
 		var sliderCont = newElement('DIV', {width: display.width, height: display.height, position: 'relative'}); mainCont.appendChild(sliderCont);
 		sliderCont.setAttribute('id','sliderContainer');
-		var imagesCont = newElement('DIV', styleDef); sliderCont.appendChild(imagesCont);
+		var imagesCont = newElement('DIV', styleDef); imagesCont.setAttribute('class', 'slidermanImgCont'); sliderCont.appendChild(imagesCont);
 		partsCont = sliderCont;
 
 		//LINKS
 		if(contentmode) var linkUpd = ef;
 		else{
-			var lnk = newElement('DIV', styleDef); partsCont.appendChild(lnk);
+			var lnk = newElement('DIV', styleDef); lnk.addClass('slidermanlinkContainer'); partsCont.appendChild(lnk);
 			var linkUpd = function(){
 				lnk.innerHTML = ''; value = links[current];
 				if(value){
@@ -616,7 +616,7 @@ var Sliderman = new function(){
 		//DESCRIPTION
 		var descriptionShow;
 		if(description && !contentmode){
-			var descriptionCont = newElement('DIV'); partsCont.appendChild(descriptionCont);
+			var descriptionCont = newElement('DIV'); descriptionCont.addClass('slidermanDescriptionCont'); partsCont.appendChild(descriptionCont);
 			if(description.hide) hide(descriptionCont.style);
 
 			var descriptionStl = {position: 'absolute',
@@ -631,9 +631,9 @@ var Sliderman = new function(){
 			descriptionStl[description.position == 'bottom'?'bottom':'top'] = (description.position == 'above_image' ? '-' + descriptionStl.height + 'px' : (description.position == 'below_image' ? display.height + 'px' : 0));
 			descriptionStl[description.position == 'right' ?'right':'left'] = (description.position == 'left_image' ? '-' + descriptionStl.width + 'px' : (description.position == 'right_image' ? display.width + 'px' : 0));
 
-			var descBg = newElement('DIV', descriptionStl); descriptionCont.appendChild(descBg);
+			var descBg = newElement('DIV', descriptionStl); descBg.addClass('slidermanDescriptionBG'); descriptionCont.appendChild(descBg);
 			descriptionStl.opacity = 1; descriptionStl.background = '';
-			var desc = newElement('DIV', descriptionStl); descriptionCont.appendChild(desc);
+			var desc = newElement('DIV', descriptionStl); desc.addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
 
 			function descriptionShow(){
 				desc.innerHTML = '';
@@ -651,7 +651,8 @@ var Sliderman = new function(){
 
 		//BUTTONS
 		if(buttons){
-			var buttonsCont = newElement('DIV'); partsCont.appendChild(buttonsCont);
+			var buttonsCont = newElement('DIV'); buttonsCont.addClass('slidermanButtonsCont');
+			partsCont.appendChild(buttonsCont);
 			if(buttons.hide) hide(buttonsCont.style);
 			var btnPrev = newElement('A'); buttonsCont.appendChild(btnPrev);
 			btnPrev.href = 'javascript:void(0);';
@@ -673,6 +674,17 @@ var Sliderman = new function(){
 		if(navigation){
 			var navigationCont = document.getElementById(navigation.container);
 			var a;
+			var li;
+			var ul;
+			var itemsContainer = navigationCont;
+
+			if (display.bootstrap) {
+				navigationCont.addClass('pagination');
+				ul = newElement('ul');
+				itemsContainer = ul;
+				navigationCont.appendChild(itemsContainer);
+			}
+
 
 			if(navigation.prev){
 				a = newElement('A');
@@ -681,7 +693,16 @@ var Sliderman = new function(){
 				a.href = 'javascript:void(0);';
 				a.onfocus = this_blur;
 				a.onclick = Slider.prev;
-				navigationCont.appendChild(a);
+
+				if (display.bootstrap) {
+					li = newElement('li');
+					li.appendChild(a);
+					itemsContainer.appendChild(li);
+				}
+				else {
+					itemsContainer.appendChild(a);
+				}
+
 			}
 
 			var navigationLinks = [];
@@ -694,8 +715,18 @@ var Sliderman = new function(){
 				a.id = parameters.container+'_SliderNavigation'+i;
 				a.onfocus = this_blur;
 				a.onclick = a_onclick;
-				navigationLinks.push(a);
-				navigationCont.appendChild(a);
+
+				if (display.bootstrap) {
+					li = newElement('li');
+					li.appendChild(a);
+					navigationLinks.push(li);
+					itemsContainer.appendChild(li);
+				}
+				else {
+					navigationLinks.push(a);
+					itemsContainer.appendChild(a);
+				}
+
 			}
 
 			if(navigation.next){
@@ -705,7 +736,15 @@ var Sliderman = new function(){
 				a.href = 'javascript:void(0);';
 				a.onfocus = this_blur;
 				a.onclick = Slider.next;
-				navigationCont.appendChild(a);
+
+				if (display.bootstrap) {
+					li = newElement('li');
+					li.appendChild(a);
+					itemsContainer.appendChild(li);
+				}
+				else {
+					itemsContainer.appendChild(a);
+				}
 			}
 
 			function navigationUpd(){
@@ -767,13 +806,13 @@ var Sliderman = new function(){
 				mainCont.addEventListener("mousewheel",wheel,false);
 			}else addElementEvent(mainCont, 'onmousewheel', wheel);
 		}
-		
+
 		if(display.first_slide) displayFirstSlide();
 		update();
 		if(typeof(display.autostart) == 'undefined' || display.autostart) Slider.play();
 		return Slider;
 	}//Sliderman.slider
-	
+
 
 }//Sliderman
 

@@ -335,15 +335,21 @@
 					<option value="yes">YES</option>
 					<option value="no">NO</option>
 				</field>
-				<field name="include_bootstrap" type="radio" default="no" label="INCLUDE_BOOTSTRAP" description="INCLUDE_BOOTSTRAP_DESC">
-					<option value="yes">YES</option>
-					<option value="no">NO</option>
-				</field>
 				<field name="extra_container" type="radio" default="no" label="EXTRA_CONTAINER" description="EXTRA_CONTAINER_DESC">
 					<option value="yes">YES</option>
 					<option value="no">NO</option>
 				</field>
 				<field name="extra_container_class" type="text" deafult="" label="EXTRA_CONTAINER_CLASS" description="EXTRA_CONTAINER_CLASS_DESC" />
+			</fieldset>
+			<fieldset name='bootstrap' label="BOOTSTRAP_OPTIONS_LABEL">
+				<field name="enable_bootstrap_styles" type="radio" default="no" label="ENABLE_BOOTSTRAP_STYLES" description="ENABLE_BOOTSTRAP_STYLES_DESC">
+					<option value="yes">YES</option>
+					<option value="no">NO</option>
+				</field>
+				<field name="include_bootstrap" type="radio" default="no" label="INCLUDE_BOOTSTRAP" description="INCLUDE_BOOTSTRAP_DESC">
+					<option value="yes">YES</option>
+					<option value="no">NO</option>
+				</field>
 			</fieldset>
 		</fields>
 	</config>
