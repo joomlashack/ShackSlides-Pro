@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <install type="module" version="1.5" method="upgrade">
 	<name>JS Shackslides</name>
-	<creationDate>December 2010</creationDate>
+	<creationDate>September 2012</creationDate>
 	<author>Jeremy Wilken - Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>http://www.joomlashack.com</authorUrl>
 	<copyright>Joomlashack</copyright>
 	<license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
-	<version>2.0</version>
-	<description>ShackSlides by Joomlashack.</description>
+	<version>2.0.1</version>
+	<description>
+		<![CDATA[<h3>Shackslides by Joomlashack</h3>
+		<h2>IMPORTANT - Read this if you have a previous verison of Shackslides installed.</h2>
+		<p>The latest version of Shackslides includes new features such as integration with our Visionary component and support for
+			responsive templates. For this reason this version is not compatible with the previous version of Shackslides.</p>
+		<p>To avoid losing information we have not updated your previous Shackslides installation. You need to manually move your
+			previous configuration from the old version to the new version of the Module, and after that you can unintall the old version safely.</p>
+		<p>
+			Here's how to do it:
+		</p>
+		<ol>
+			<li>
+				All the basic options remain the same, so you just need to copy them from the older Shackslides.
+			</li>
+			<li>
+				The advanced configuration is the same, as well. Again, you just need to copy all the configurations from the older Shackslides.
+			</li>
+			<li>
+				There is a new set of options called "Bootstrap Options" where you can configure how Shackslides integrates with a responsive template that uses Twitter Bootstrap.
+			</li>
+			<li>
+				After you have configured and tested the new Shackslides, you can safely uninstall the previous version.
+			</li>
+		</ol>
+		<p>You can find more details about this process <a href='http://demoextensions.joomlashack.com/shackslides/27-update-from-previous-version'>here</a>.</p>
+		]]>
+	</description>
 	<files>
 		<filename module="mod_jsshackslides">mod_jsshackslides.php</filename>
 		<filename>helper.php</filename>
@@ -184,6 +210,12 @@
 		</param>
 		<param name="extra_container_class" type="text" deafult="" label="EXTRA_CONTAINER_CLASS" description="EXTRA_CONTAINER_CLASS_DESC" />
 	</params>
+	<params group='bootstrap' label="BOOTSTRAP_OPTIONS_LABEL">
+		<param name="enable_bootstrap_styles" type="radio" default="no" label="ENABLE_BOOTSTRAP_STYLES" description="ENABLE_BOOTSTRAP_STYLES_DESC">
+			<option value="yes">YES</option>
+			<option value="no">NO</option>
+		</param>
+	</params>
 
 	<config>
 		<fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
@@ -343,10 +375,6 @@
 			</fieldset>
 			<fieldset name='bootstrap' label="BOOTSTRAP_OPTIONS_LABEL">
 				<field name="enable_bootstrap_styles" type="radio" default="no" label="ENABLE_BOOTSTRAP_STYLES" description="ENABLE_BOOTSTRAP_STYLES_DESC">
-					<option value="yes">YES</option>
-					<option value="no">NO</option>
-				</field>
-				<field name="include_bootstrap" type="radio" default="no" label="INCLUDE_BOOTSTRAP" description="INCLUDE_BOOTSTRAP_DESC">
 					<option value="yes">YES</option>
 					<option value="no">NO</option>
 				</field>
