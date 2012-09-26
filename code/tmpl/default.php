@@ -54,7 +54,7 @@ $doc->addStyleDeclaration($styles);
 
 // Check if we have to include Twitter Bootstrap styles
 $include_bootstrap = ($params->get('include_bootstrap', $defaults['include_bootstrap']) == "yes");
-$enable_bootstrap_styles = ($params->get('enable_bootstrap_styles', $deafults['enable_bootstrap_styles']) == "yes");
+$enable_bootstrap_styles = ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == "yes");
 
 if ($include_bootstrap) {
 
@@ -64,7 +64,7 @@ if ($include_bootstrap) {
 
 //determine which span class we need to use
 $span_class = 'span12';
-if ($enable_bootstrap_styles && ($params->get('description', $deafults['description']) == 'yes')) {
+if ($enable_bootstrap_styles && ($params->get('description', $defaults['description']) == 'yes')) {
 
 	if ( in_array($params->get('description_position', $defaults['description_position']), array('left_image', 'right_image')) ) {
 			$span_class = 'span8';
