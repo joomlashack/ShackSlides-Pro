@@ -10,10 +10,10 @@
 
 defined('_JEXEC') or die('Direct access to files is not permitted');
 
-@define('JPATH_ADMIN_JSVISIONARY', JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jsvisionary');
-@define('JPATH_SITE_JSVISIONARY', JPATH_SITE . DS . 'components' . DS . 'com_jsvisionary');
+define('JPATH_ADMIN_JSVISIONARY', JPATH_ADMINISTRATOR . '/' . 'components' . '/' . 'com_jsvisionary');
+define('JPATH_SITE_JSVISIONARY', JPATH_SITE . '/' . 'components' . '/' . 'com_jsvisionary');
 
-require_once(JPATH_ROOT.DS.'modules'.DS.'mod_jsshackslides'.DS.'helper.php');
+require_once(JPATH_ROOT.'/'.'modules'.'/'.'mod_jsshackslides'.'/'.'helper.php');
 jimport( 'joomla.application.component.helper' );
 
 class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
@@ -88,7 +88,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 
 
 		// Protect against back dir
-		if (DS == "\\")
+		if ('/' == "\\")
 			$ds = "\\\\";
 		else
 			$ds = "\/";
@@ -112,7 +112,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 
 
 		$path = preg_replace("/\[.+\]/", "", $path);  // Clean tags if remains
-		
+
 		//convert absolute server path to URL
 		$url = JURI::root() . str_replace(JPATH_BASE . '/', '', $path);
 
@@ -129,14 +129,14 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 		$config = JComponentHelper::getParams('com_jsvisionary');
 
 		$markers = array(
-			'DIR_JSSSSLIDE_IMAGE' => $config->get("upload_dir_jsssslide_image", JPATH_SITE . DS . $config->get('image_path', 'images') . DS . "jsssslide_image") .DS,
-			'DIR__TRASH' => $config->get("trash_dir", JPATH_ADMIN_JSVISIONARY .DS. "images" . DS . "trash") .DS,
+			'DIR_JSSSSLIDE_IMAGE' => $config->get("upload_dir_jsssslide_image", JPATH_SITE . '/' . $config->get('image_path', 'images') . '/' . "jsssslide_image") .'/',
+			'DIR__TRASH' => $config->get("trash_dir", JPATH_ADMIN_JSVISIONARY .'/'. "images" . '/' . "trash") .'/',
 
 			'COM_ADMIN' => JPATH_ADMIN_JSVISIONARY,
 			'ADMIN' => JPATH_ADMINISTRATOR,
 			'COM_SITE' => JPATH_SITE_JSVISIONARY,
-			'IMAGES' => JPATH_SITE .DS. $config->get('image_path', 'images')  .DS,
-			'MEDIAS' => JPATH_SITE .DS. $configMedias->get('file_path', 'images') .DS,
+			'IMAGES' => JPATH_SITE .'/'. $config->get('image_path', 'images')  .'/',
+			'MEDIAS' => JPATH_SITE .'/'. $configMedias->get('file_path', 'images') .'/',
 			'ROOT' => JPATH_SITE
 		);
 

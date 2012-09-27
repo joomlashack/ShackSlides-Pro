@@ -120,4 +120,4 @@ $extra_container = ($params->get('extra_container', $defaults['extra_container']
 
 <?php if ($include_bootstrap) : ?></div><?php endif; ?>
 
-<?php include(JPATH_BASE.DS.'modules'.DS.'mod_jsshackslides'.DS.'assets'.DS.'script.js.php'); ?>
+<?php include(JPATH_BASE.'/'.'modules'.'/'.'mod_jsshackslides'.'/'.'assets'.'/'.'script.js.php'); ?>
