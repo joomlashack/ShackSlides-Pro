@@ -63,11 +63,14 @@ if ($include_bootstrap) {
 }
 
 //determine which span class we need to use
-$span_class = 'span12';
-if ($enable_bootstrap_styles && ($params->get('description', $defaults['description']) == 'yes')) {
+$span_class = '';
+if ($enable_bootstrap_styles) {
+	$span_class = 'span12';
+	if ($params->get('description', $defaults['description']) == 'yes') {
 
-	if ( in_array($params->get('description_position', $defaults['description_position']), array('left_image', 'right_image')) ) {
-			$span_class = 'span8';
+		if ( in_array($params->get('description_position', $defaults['description_position']), array('left_image', 'right_image')) ) {
+				$span_class = 'span8';
+		}
 	}
 }
 
