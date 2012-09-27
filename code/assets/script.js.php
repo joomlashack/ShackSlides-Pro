@@ -34,7 +34,7 @@ else {
 	$effect = $effects[$selected];
 }
 
-$code = "<script type=\"text/javascript\">	var shackeffects = new Array();
+$code = "<script type=\"text/javascript\">	var shackeffects = new Array(); var loaded = false;
 	";
 $code .= $effect;
 $code .="
@@ -45,6 +45,7 @@ $code .="
 	height: ".$params->get('height', $defaults['height']).",
 	effects: shackeffects,
 	display: {
+		bootstrap: " . (($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') ? '1' : '0') . ",
 		pause: ".(($params->get('pause', $defaults['pause']) == 'yes') ? '1' : '0').",
 		autoplay: ".(1000*$params->get('autoplay', $defaults['autoplay'])).",
 		always_show_loading: false,
@@ -90,7 +91,19 @@ $code .="
 			";
 		}
 		$code .= "mousewheel: ".(($params->get('mousewheel', $defaults['mousewheel']) == 'yes') ? "true" : "false")."
+	}";
+	if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') {
+		$code .= ",events : {
+			before: function(slider) {
+				var o = document.getElement('.slidermanImgCont img');
+				if (o == null) return;
+				var h = o.getSize().y;
+				document.getElement('.slidermanImgCont').setStyles({'max-height': h});
+			},
+			after: function(slider) {  document.getElement('.slidermanImgCont').setStyles({'max-height' : 'none'}); }
+		}";
 	}
+	$code .="
 });
 </script>";
 

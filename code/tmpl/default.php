@@ -33,6 +33,7 @@ $defaults = array(
 	'navigation_align' => 'center', // shows the numbers for navigation
 	'mousewheel' => 'no', // can use mousewheel for navigation
 	'container' => 'slider', // id for the slider container,
+	'enable_bootstrap_styles' => 'no',
 	'include_bootstrap' => 'no',
 	'main_container_class' => '',
 	'extra_container' => 'no',
@@ -52,48 +53,68 @@ $doc->addStyleDeclaration($styles);
 
 
 // Check if we have to include Twitter Bootstrap styles
-$bootstrap = ($params->get('include_bootstrap', $defaults['include_bootstrap']) == "yes");
-if ($bootstrap) {
+$include_bootstrap = ($params->get('include_bootstrap', $defaults['include_bootstrap']) == "yes");
+$enable_bootstrap_styles = ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == "yes");
+
+if ($include_bootstrap) {
 
 	$doc->addStylesheet(JURI::base() . 'modules/mod_jsshackslides/assets/wrappedbootstrap.css');
 
 }
 
+//determine which span class we need to use
+$span_class = 'span12';
+if ($enable_bootstrap_styles && ($params->get('description', $defaults['description']) == 'yes')) {
+
+	if ( in_array($params->get('description_position', $defaults['description_position']), array('left_image', 'right_image')) ) {
+			$span_class = 'span8';
+	}
+}
 
 $extra_container = ($params->get('extra_container', $defaults['extra_container']) == "yes");
 
 
 ?>
 
-<?php if ($bootstrap) : ?><div class='jsbootstrap'><?php endif; ?>
+<?php if ($include_bootstrap) : ?><div class='jsbootstrap'><?php endif; ?>
 
 <?php if ($extra_container) : ?><div class='<?php echo $params->get('extra_container_class', $defaults['extra_container_class']); ?>'><?php endif; ?>
 
+<?php if ($enable_bootstrap_styles) : ?><div id='shackslides-row' class='row-fluid'><?php endif ;?>
 
-<div class="shackSlider<?php echo $params->get('container', $defaults['container']) ?> <?php echo $params->get('main_container_class', $defaults['main_container_class']); ?>">
+	<div class="shackSlider<?php echo $params->get('container', $defaults['container']) ?> <?php echo $params->get('main_container_class', $defaults['main_container_class']); ?> <?php echo $span_class; ?>">
 
-	<div id="<?php echo $params->get('container', $defaults['container']) ?>">
+		<div id="<?php echo $params->get('container', $defaults['container']) ?>">
 
 
-<?php for ($i = 0; $i < count($images); $i++) : ?>
-<?php if ($images[$i] === false) continue; ?>
-<?php if ($links[$i]) : ?><a href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>><?php endif; ?>
-					<img src="<?php echo $base.$images[$i] ?>" title="<?php echo strip_tags($titles[$i]) ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
-		<?php if ($links[$i]) : ?></a><?php endif; ?>
-		<?php if ($titles[$i] && $params->get('description', $defaults['description']) == 'yes') : ?>
-				<div class="slideTitle">
-			<?php echo $titles[$i]; ?>
-			</div>
-<?php endif; ?>
+			<?php for ($i = 0; $i < count($images); $i++) : ?>
+				<?php if ($images[$i] === false) continue; ?>
+				<?php if ($links[$i]) : ?>
+					<a href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
+				<?php endif; ?>
+						<img src="<?php echo $base.$images[$i] ?>" title="<?php echo strip_tags($titles[$i]) ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
+				<?php if ($links[$i]) : ?>
+					</a>
+				<?php endif; ?>
+
+				<?php if ($titles[$i] && $params->get('description', $defaults['description']) == 'yes') : ?>
+					<div class="slideTitle">
+						<?php echo $titles[$i]; ?>
+					</div>
+				<?php endif; ?>
+
 			<?php endfor; ?>
 
-	</div>
-	<div id="<?php echo $params->get('container', $defaults['container']) ?>Nav"></div>
+		</div>
 
-</div>
+		<div id="<?php echo $params->get('container', $defaults['container']) ?>Nav"></div>
+
+	</div>
+
+<?php if ($enable_bootstrap_styles) : ?></div><?php endif; ?>
 
 <?php if ($extra_container) : ?></div><?php endif; ?>
 
-<?php if ($bootstrap) : ?></div><?php endif; ?>
+<?php if ($include_bootstrap) : ?></div><?php endif; ?>
 
 <?php include(JPATH_BASE.DS.'modules'.DS.'mod_jsshackslides'.DS.'assets'.DS.'script.js.php'); ?>
