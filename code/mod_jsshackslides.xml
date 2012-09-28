@@ -9,7 +9,7 @@
 	<license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
 	<version>2.1.0</version>
 	<description>
-		<![CDATA[<h3>Shackslides by Joomlashack</h3>
+		<![CDATA[<div style='text-align: left !important'><h3>Shackslides by Joomlashack</h3>
 		<h2>IMPORTANT - Read this if you have a previous version of Shackslides installed.</h2>
 		<p>The latest version of Shackslides includes new features such as integration with our Visionary component and support for
 			responsive templates. For this reason this version is not compatible with the previous version of Shackslides.</p>
@@ -33,6 +33,7 @@
 			</li>
 		</ol>
 		<p>You can find more details about this process <a href='http://demoextensions.joomlashack.com/shackslides/27-update-from-previous-version'>here</a>.</p>
+		</div>
 		]]>
 	</description>
 	<files>
