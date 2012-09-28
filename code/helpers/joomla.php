@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die('Direct access to files is not permitted');
 
-require_once(JPATH_ROOT.DS.'modules'.DS.'mod_jsshackslides'.DS.'helper.php');
+require_once(JPATH_ROOT.'/'.'modules'.'/'.'mod_jsshackslides'.'/'.'helper.php');
 
 class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 {
@@ -19,7 +19,7 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 	private $ordering_direction;
 	private $limit;
 	private $featured;
-	
+
 	public function  __construct($params) {
         parent::__construct($params);
 		$this->category_id = $params->get('joomla_category', 0);
@@ -38,7 +38,7 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 		$database = JFactory::getDBO();
 		$user = JFactory::getUser();
 		$featured_items		= '';
-		$contentConfig      = &JComponentHelper::getParams( 'com_content' );
+		$contentConfig      = JComponentHelper::getParams( 'com_content' );
 		$access		        = !$contentConfig->get('shownoauth');
 		$aid		        = $user->get('aid', 0);
 		$now                = date('Y-m-d H:i:s');
@@ -51,7 +51,7 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 		    $featured_items = $database->loadResultArray();
             if (!is_array($featured_items) || !count($featured_items)) {
                 $featured_items = '';
-            } else { 
+            } else {
                 $featured_items = ' AND id '.(($this->featured == 'exclude') ? 'NOT ' : '').'IN ('.implode(",", $featured_items).')';
             }
 		}
@@ -86,7 +86,7 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 
         if ($index != false) $link = $this->menu[$index]->link.'&Itemid='.$this->menu[$index]->id;
         else $link = 'index.php?option=com_content&view=article&id='.$id;
-        
+
 		return JRoute::_($link);
 	}
 }

@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die('Direct access to files is not permitted');
 
-require_once(JPATH_ROOT.DS.'modules'.DS.'mod_jsshackslides'.DS.'helper.php');
+require_once(JPATH_ROOT.'/'.'modules'.'/'.'mod_jsshackslides'.'/'.'helper.php');
 
 class ModShackSlidesK2Helper extends ModShackSlidesHelper
 {
@@ -38,7 +38,7 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
 		$database = JFactory::getDBO();
 		$user = JFactory::getUser();
 		$featured_items		= '';
-		$contentConfig      = &JComponentHelper::getParams( 'com_content' );
+		$contentConfig      = JComponentHelper::getParams( 'com_content' );
 		$aid		        = $user->get('aid', 0);
 		$now                = date('Y-m-d H:i:s');
 		$nullDate           = $database->getNullDate();

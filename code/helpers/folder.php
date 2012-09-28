@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die('Direct access to files is not permitted');
 
-require_once(JPATH_ROOT.DS.'modules'.DS.'mod_jsshackslides'.DS.'helper.php');
+require_once(JPATH_ROOT.'/'.'modules'.'/'.'mod_jsshackslides'.'/'.'helper.php');
 
 class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 {
@@ -20,11 +20,11 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 
 	public function  __construct($params) {
         parent::__construct($params);
-		$this->folder = $params->get('folder_folder', 'modules'.DS.'mod_jsshackslides'.DS.'tmpl'.DS.'demos');
-		$this->directory =  JPATH_ROOT.DS.$this->folder;
+		$this->folder = $params->get('folder_folder', 'modules'.'/'.'mod_jsshackslides'.'/'.'tmpl'.'/'.'demos');
+		$this->directory =  JPATH_ROOT.'/'.$this->folder;
 		$this->limit = $this->limit = $params->get('limit', '5');
 
-		if (is_file($this->directory.DS.'images.xml')) $this->xml = simplexml_load_file($this->directory.DS.'images.xml');
+		if (is_file($this->directory.'/'.'images.xml')) $this->xml = simplexml_load_file($this->directory.'/'.'images.xml');
 
 		if ($this->xml)
 		{

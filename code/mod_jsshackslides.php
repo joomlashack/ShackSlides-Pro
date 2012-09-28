@@ -8,7 +8,7 @@
 
 defined('_JEXEC') or die('Direct access to files is not permitted');
 
-require_once(dirname(__FILE__).DS.'helpers'.DS.$params->get('source','folder').'.php');
+require_once(dirname(__FILE__).'/'.'helpers'.'/'.$params->get('source','folder').'.php');
 
 $helperClass = 'ModShackSlides'.ucfirst($params->get('source','folder')).'Helper';
 $helper = new $helperClass($params);
