@@ -10,8 +10,8 @@
 
 defined('_JEXEC') or die('Direct access to files is not permitted');
 
-define('JPATH_ADMIN_JSVISIONARY', JPATH_ADMINISTRATOR . '/' . 'components' . '/' . 'com_jsvisionary');
-define('JPATH_SITE_JSVISIONARY', JPATH_SITE . '/' . 'components' . '/' . 'com_jsvisionary');
+if (!defined('JPATH_ADMIN_JSVISIONARY')) define('JPATH_ADMIN_JSVISIONARY', JPATH_ADMINISTRATOR . '/' . 'components' . '/' . 'com_jsvisionary');
+if (!defined('JPATH_SITE_JSVISIONARY')) define('JPATH_SITE_JSVISIONARY', JPATH_SITE . '/' . 'components' . '/' . 'com_jsvisionary');
 
 require_once(JPATH_ROOT.'/'.'modules'.'/'.'mod_jsshackslides'.'/'.'helper.php');
 jimport( 'joomla.application.component.helper' );
