@@ -572,7 +572,7 @@ var Sliderman = new function(){
 		//LINKS
 		if(contentmode) var linkUpd = ef;
 		else{
-			var lnk = newElement('DIV', styleDef); lnk.addClass('slidermanlinkContainer'); partsCont.appendChild(lnk);
+			var lnk = newElement('DIV', styleDef); $(lnk).addClass('slidermanlinkContainer'); partsCont.appendChild(lnk);
 			var linkUpd = function(){
 				lnk.innerHTML = ''; value = links[current];
 				if(value){
@@ -618,15 +618,15 @@ var Sliderman = new function(){
 		var desc;
 		if(description && !contentmode){
 
-			var descriptionCont = newElement('DIV'); descriptionCont.addClass('slidermanDescriptionCont');
+			var descriptionCont = newElement('DIV'); $(descriptionCont).addClass('slidermanDescriptionCont');
 
 			if(display.bootstrap && !description.hide && ( description.position == 'above_image' || description.position == 'below_image' || description.position == 'left_image' || description.position == 'right_image') ) {
 
 				//below/above
 				if (description.position == 'above_image' || description.position == 'below_image') {
 
-					descriptionCont.addClass('span12');
-					var descriptionRow = newElement('DIV'); descriptionRow.addClass('row-fluid'); descriptionRow.appendChild(descriptionCont);
+					$(descriptionCont).addClass('span12');
+					var descriptionRow = newElement('DIV'); $(descriptionRow).addClass('row-fluid'); descriptionRow.appendChild(descriptionCont);
 					var pos;
 					if (description.position == 'above_image')
 						pos = 'top';
@@ -640,7 +640,7 @@ var Sliderman = new function(){
 				//left/right
 				else {
 
-					descriptionCont.addClass('span4');
+					$(descriptionCont).addClass('span4');
 					var pos;
 					if (description.position == 'left_image')
 						pos = 'top';
@@ -652,7 +652,7 @@ var Sliderman = new function(){
 
 				}
 
-				desc = newElement('DIV'); desc.addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
+				desc = newElement('DIV'); $(desc).addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
 
 
 			}
@@ -674,9 +674,9 @@ var Sliderman = new function(){
 				descriptionStl[description.position == 'bottom'?'bottom':'top'] = (description.position == 'above_image' ? '-' + descriptionStl.height + 'px' : (description.position == 'below_image' ? display.height + 'px' : 0));
 				descriptionStl[description.position == 'right' ?'right':'left'] = (description.position == 'left_image' ? '-' + descriptionStl.width + 'px' : (description.position == 'right_image' ? display.width + 'px' : 0));
 
-				var descBg = newElement('DIV', descriptionStl); descBg.addClass('slidermanDescriptionBG'); descriptionCont.appendChild(descBg);
+				var descBg = newElement('DIV', descriptionStl); $(descBg).addClass('slidermanDescriptionBG'); descriptionCont.appendChild(descBg);
 				descriptionStl.opacity = 1; descriptionStl.background = '';
-				desc = newElement('DIV', descriptionStl); desc.addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
+				desc = newElement('DIV', descriptionStl); $(desc).addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
 
 			}
 
@@ -696,7 +696,7 @@ var Sliderman = new function(){
 
 		//BUTTONS
 		if(buttons){
-			var buttonsCont = newElement('DIV'); buttonsCont.addClass('slidermanButtonsCont');
+			var buttonsCont = newElement('DIV'); $(buttonsCont).addClass('slidermanButtonsCont');
 			partsCont.appendChild(buttonsCont);
 			if(buttons.hide) hide(buttonsCont.style);
 			var btnPrev = newElement('A'); buttonsCont.appendChild(btnPrev);
@@ -724,7 +724,7 @@ var Sliderman = new function(){
 			var itemsContainer = navigationCont;
 
 			if (display.bootstrap) {
-				navigationCont.addClass('pagination');
+				$(navigationCont).addClass('pagination');
 				ul = newElement('ul');
 				itemsContainer = ul;
 				navigationCont.appendChild(itemsContainer);
