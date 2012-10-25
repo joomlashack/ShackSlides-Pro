@@ -183,6 +183,11 @@ a.sliderPrev, a.sliderNext, #<?php echo $params->get('container', $defaults['con
 }
 
 .slidermanDescriptionBG, .slidermanDescriptionText, .slideTitle {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing: border-box;
 	<?php if (in_array($params->get('description_position', $default['description_position']), array('top', 'bottom'))) : ?>
 	width: 100% !important;
 	<?php else : ?>
