@@ -95,12 +95,15 @@ $code .="
 	if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') {
 		$code .= ",events : {
 			before: function(slider) {
-				var o = document.getElement('.slidermanImgCont img');
+				var o = $(document).getElement('.slidermanImgCont img');
 				if (o == null) return;
 				var h = o.getSize().y;
-				document.getElement('.slidermanImgCont').setStyles({'max-height': h});
+				$(document).getElement('.slidermanImgCont').setStyles({'max-height': h});
 			},
-			after: function(slider) {  document.getElement('.slidermanImgCont').setStyles({'max-height' : 'none'}); }
+			after: function(slider) {  
+				var o = $(document).getElement('.slidermanImgCont');
+				if (o == null) return;
+				$(document).getElement('.slidermanImgCont').setStyles({'max-height' : 'none'}); }
 		}";
 	}
 	$code .="
