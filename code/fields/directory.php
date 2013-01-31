@@ -22,6 +22,7 @@ class JFormFieldDirectory extends JFormFieldList
 
 	protected function getOptions()
 	{
+		
 		// path to images directory
 		$path		= JPATH_ROOT.'/'.$this->element['directory'];
 		$filter		= $this->element['filter'];
@@ -31,7 +32,12 @@ class JFormFieldDirectory extends JFormFieldList
 		$options = array ();
 		foreach ($folders as $folder)
 		{
-			$folder = str_replace(JPATH_ROOT.'/', '', $folder);
+			//remove the JPATH_ROOT from the string
+			$folder = str_replace(JPATH_ROOT, '', $folder);
+
+			//we need to make sure we remove the first Directory separator, which could be either / or \ for Windows installations.
+			$folder = ltrim($folder, "/\\");
+
 			$options[] = JHTML::_('select.option', $folder, $folder);
 		}
 
