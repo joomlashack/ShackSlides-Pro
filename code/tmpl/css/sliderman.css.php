@@ -156,6 +156,7 @@ a.sliderNext{
 .slidermanImgCont {
 	width: 100% !important;
 	height: auto !important;
+	max-height: <?php echo $params->get('height'); ?>px !important;
 	position: static !important;
 }
 

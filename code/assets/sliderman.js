@@ -564,7 +564,7 @@ var Sliderman = new function(){
 		if(!contentmode) for(var i = 0; i < images.length; i++) loadImage(images[i]);
 
 		//CONTAINERS
-		var sliderCont = newElement('DIV', {width: display.width, height: display.height + ' !important', position: 'relative'}); mainCont.appendChild(sliderCont);
+		var sliderCont = newElement('DIV', {width: display.width, height: display.height, position: 'relative'}); mainCont.appendChild(sliderCont);
 		sliderCont.setAttribute('id','sliderContainer');
 		var imagesCont = newElement('DIV', styleDef); imagesCont.setAttribute('class', 'slidermanImgCont'); sliderCont.appendChild(imagesCont);
 		partsCont = sliderCont;
