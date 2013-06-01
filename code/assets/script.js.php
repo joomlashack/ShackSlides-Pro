@@ -10,7 +10,7 @@
 defined('_JEXEC') or die('Direct access to files is not permitted');
 
 $effects = array(
-	'default' => "shackeffects.push('random'); // Random",
+	'none' => "shackeffects.push({name: 'shackeffect5', fade: true, duration: 400}); // Fade",
 	'stairs' => "shackeffects.push({name: 'shackeffect0', cols: 10, rows: 5, delay: 10, fade: true, order: 'straight_stairs'}); // default",
 	'slide_bottom' => "shackeffects.push({name: 'shackeffect1', move: true, bottom: true, duration: 400}); // Slide in from bottom",
 	'slide_left' => "shackeffects.push({name: 'shackeffect2', move: true, left: true, duration: 400}); // Slide in from left",
@@ -100,13 +100,47 @@ $code .="
 				var h = o.getSize().y;
 				$(document).getElement('.slidermanImgCont').setStyles({'max-height': h});
 			},
-			after: function(slider) {  
+			after: function(slider) {
 				var o = $(document).getElement('.slidermanImgCont');
 				if (o == null) return;
 				$(document).getElement('.slidermanImgCont').setStyles({'max-height' : 'none'}); }
 		}";
 	}
 	$code .="
+});
+var addCustomEvent = function(elem, type, eventHandle) {
+    if (elem == null || elem == undefined) return;
+    if ( elem.addEventListener ) {
+        elem.addEventListener( type, eventHandle, false );
+    } else if ( elem.attachEvent ) {
+        elem.attachEvent( 'on' + type, eventHandle );
+    } else {
+        elem['on'+type]=eventHandle;
+    }
+};
+
+addCustomEvent(window, 'load', function() {
+
+	var imgCont = document.getElementsByClassName('slidermanImgCont')[0],
+			img = imgCont.getElementsByTagName('img')[0],
+			aspectRatio = img.width / img.height;
+
+	function resizeImg() {
+		var w = imgCont.offsetWidth,
+				h = imgCont.offsetHeight;
+		if ( (w/h) < aspectRatio ) {
+			img.className = 'fillHeight';
+		}
+		else {
+			img.className = 'fillWidth';
+		}
+	}
+
+	addCustomEvent(window, 'resize', function() {
+		resizeImg();
+	});
+
+	resizeImg();
 });
 </script>";
 

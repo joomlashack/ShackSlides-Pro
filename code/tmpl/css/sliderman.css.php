@@ -155,7 +155,7 @@ a.sliderNext{
 
 .slidermanImgCont {
 	width: 100% !important;
-	height: auto !important;
+	height: <?php echo $params->get('height'); ?>px !important;
 	position: static !important;
 }
 
@@ -169,6 +169,16 @@ a.sliderNext{
 	width: 100% !important;
 	height: auto !important;
 	position: static !important;
+}
+
+#sliderContainer div img.fillHeight {
+	width: auto !important;
+	height: 100% !important;
+	max-width: none;
+}
+
+#sliderContainer div img.fillWidth {
+	width: 100% !important;
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>{
@@ -222,5 +232,7 @@ a.sliderPrev, a.sliderNext, #<?php echo $params->get('container', $defaults['con
 	float: right;
 	margin-right: 5px;fnav
 }
+
+
 
 <?php endif; ?>
