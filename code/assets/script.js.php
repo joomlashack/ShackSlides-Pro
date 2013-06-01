@@ -108,6 +108,40 @@ $code .="
 	}
 	$code .="
 });
+var addCustomEvent = function(elem, type, eventHandle) {
+    if (elem == null || elem == undefined) return;
+    if ( elem.addEventListener ) {
+        elem.addEventListener( type, eventHandle, false );
+    } else if ( elem.attachEvent ) {
+        elem.attachEvent( 'on' + type, eventHandle );
+    } else {
+        elem['on'+type]=eventHandle;
+    }
+};
+
+addCustomEvent(window, 'load', function() {
+
+	var imgCont = document.getElementsByClassName('slidermanImgCont')[0],
+			img = imgCont.getElementsByTagName('img')[0],
+			aspectRatio = img.width / img.height;
+
+	function resizeImg() {
+		var w = imgCont.offsetWidth,
+				h = imgCont.offsetHeight;
+		if ( (w/h) < aspectRatio ) {
+			img.className = 'fillHeight';
+		}
+		else {
+			img.className = 'fillWidth';
+		}
+	}
+
+	addCustomEvent(window, 'resize', function() {
+		resizeImg();
+	});
+
+	resizeImg();
+});
 </script>";
 
 echo $code;
