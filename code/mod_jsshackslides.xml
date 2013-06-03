@@ -253,6 +253,11 @@
 				<option value="no">NO</option>
 			</field>
 
+			<field name="fixed_height_mobile" type="radio" default="no" label="FIXED_HEIGHT_MOBILE" description="FIXED_HEIGHT_MOBILE_DESC">
+				<option value="yes">YES</option>
+				<option value="no">NO</option>
+			</field>
+
 		</fieldset>
 
 
