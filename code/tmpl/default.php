@@ -37,7 +37,8 @@ $defaults = array(
 	'include_bootstrap' => 'no',
 	'main_container_class' => '',
 	'extra_container' => 'no',
-	'extra_container_class' => ''
+	'extra_container_class' => '',
+	'fixed_height_mobile' => 'no'
 );
 
 // Adding the javascript and css files to the document
