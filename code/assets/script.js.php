@@ -103,7 +103,9 @@ $code .="
 			after: function(slider) {
 				var o = $(document).getElement('.slidermanImgCont');
 				if (o == null) return;
-				$(document).getElement('.slidermanImgCont').setStyles({'max-height' : 'none'}); }
+				$(document).getElement('.slidermanImgCont').setStyles({'max-height' : 'none'});
+				resizeImg();
+			}
 		}";
 	}
 	$code .="
@@ -122,22 +124,23 @@ if ($params->get('fixed_height_mobile', $defaults['fixed_height_mobile']) == 'ye
 		    }
 		};
 
-		addCustomEvent(window, 'load', function() {
-
+		function resizeImg() {
 			var imgCont = document.getElementsByClassName('slidermanImgCont')[0],
 					img = imgCont.getElementsByTagName('img')[0],
 					aspectRatio = img.width / img.height;
 
-			function resizeImg() {
-				var w = imgCont.offsetWidth,
-						h = imgCont.offsetHeight;
-				if ( (w/h) < aspectRatio ) {
-					img.className = 'fillHeight';
-				}
-				else {
-					img.className = 'fillWidth';
-				}
+			var w = imgCont.offsetWidth,
+					h = imgCont.offsetHeight;
+
+			if ( (w/h) < aspectRatio ) {
+				img.className = 'fillHeight';
 			}
+			else {
+				img.className = 'fillWidth';
+			}
+		}
+
+		addCustomEvent(window, 'load', function() {
 
 			addCustomEvent(window, 'resize', function() {
 				resizeImg();
