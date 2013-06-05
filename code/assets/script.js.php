@@ -103,9 +103,11 @@ $code .="
 			after: function(slider) {
 				var o = $(document).getElement('.slidermanImgCont');
 				if (o == null) return;
-				$(document).getElement('.slidermanImgCont').setStyles({'max-height' : 'none'});
-				resizeImg();
-			}
+				$(document).getElement('.slidermanImgCont').setStyles({'max-height' : 'none'});";
+				if ($params->get('fixed_height_mobile', $defaults['fixed_height_mobile']) == 'yes') {
+					$code .= " resizeImg(); ";
+				}
+			$code.= "}
 		}";
 	}
 	$code .="
