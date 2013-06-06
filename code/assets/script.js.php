@@ -10,7 +10,7 @@
 defined('_JEXEC') or die('Direct access to files is not permitted');
 
 $effects = array(
-	'none' => "shackeffects.push({name: 'shackeffect5', fade: true, duration: 400}); // Fade",
+	'none' => "shackeffects.push({name: 'none', fade: false, duration: 0, delay: 0}); // no effect",
 	'stairs' => "shackeffects.push({name: 'shackeffect0', cols: 10, rows: 5, delay: 10, fade: true, order: 'straight_stairs'}); // default",
 	'slide_bottom' => "shackeffects.push({name: 'shackeffect1', move: true, bottom: true, duration: 400}); // Slide in from bottom",
 	'slide_left' => "shackeffects.push({name: 'shackeffect2', move: true, left: true, duration: 400}); // Slide in from left",
