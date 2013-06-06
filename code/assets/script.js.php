@@ -127,7 +127,7 @@ if ($params->get('fixed_height_mobile', $defaults['fixed_height_mobile']) == 'ye
 		};
 
 		function resizeImg() {
-			var imgCont = document.getElementsByClassName('slidermanImgCont')[0],
+			var imgCont = document.querySelectorAll('.slidermanImgCont')[0],
 					img = imgCont.getElementsByTagName('img')[0],
 					aspectRatio = img.width / img.height;
 
