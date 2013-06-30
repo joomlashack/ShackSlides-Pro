@@ -65,11 +65,11 @@ $code .="
 				opacity: ".$params->get('buttons_opacity', $defaults['buttons_opacity']).",
 				prev: {
 					className: 'sliderPrev',
-					label: '".$params->get('buttons_prev_label', $defaults['buttons_prev_label'])."'
+					label: '<'
 				},
 				next: {
 					className: 'sliderNext',
-					label: '".$params->get('buttons_next_label', $defaults['buttons_next_label'])."'
+					label: '>'
 				}
 			},
 			";
@@ -81,11 +81,11 @@ $code .="
 					",
                     prev: {
 						className: 'sliderPrev',
-						label: '".$params->get('buttons_prev_label', $defaults['buttons_prev_label'])."'
+						label: '<'
 					},
 					next: {
 						className: 'sliderNext',
-						label: '".$params->get('buttons_next_label', $defaults['buttons_next_label'])."'
+						label: '>'
 					}" : "")."
 			},
 			";

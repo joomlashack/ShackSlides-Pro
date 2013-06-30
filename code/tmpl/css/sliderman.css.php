@@ -5,14 +5,15 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 $theme = $params->get('theme', 'gray');
 
 $colors = array(
-	'gray' => array('base' => '353535', 'border' => '333333', 'shadow' => '666', 'a' => 'ddd', 'active' => 'fff'),
-	'blue' => array('base' => '7A8498', 'border' => '7A8498', 'shadow' => '666', 'a' => 'ddd', 'active' => 'fff'),
-	'white' => array('base' => 'd5d5d5', 'border' => 'ccc', 'shadow' => 'bbb', 'a' => '666', 'active' => '333'),
-	'red' => array('base' => 'A74040', 'border' => '5F2F2F', 'shadow' => '666', 'a' => 'fff', 'active' => 'fff'),
-	'green' => array('base' => '81ac7b', 'border' => '3b4f38', 'shadow' => '666', 'a' => 'fff', 'active' => 'fff'),
-	'orange' => array('base' => 'd9a74d', 'border' => '925813', 'shadow' => '666', 'a' => 'fff', 'active' => 'fff'),
-	'brown' => array('base' => '816e56', 'border' => '3c3428', 'shadow' => '666', 'a' => 'fff', 'active' => 'fff'),
-	'black' => array('base' => '252525', 'border' => '101010', 'shadow' => '333', 'a' => 'fff', 'active' => 'fff')
+	'gray' => array('base' => '353535', 'border' => '333333', 'shadow' => '666', 'a' => '999', 'active' => 'fff'),
+	'blue' => array('base' => '7A8498', 'border' => '7A8498', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
+	'white' => array('base' => 'ffffff', 'border' => 'ccc', 'shadow' => 'bbb', 'a' => '000', 'active' => '999'),
+	'red' => array('base' => 'A74040', 'border' => '5F2F2F', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
+	'green' => array('base' => '81ac7b', 'border' => '3b4f38', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
+	'orange' => array('base' => 'd9a74d', 'border' => '925813', 'shadow' => '666', 'a' => '666', 'active' => 'fff'),
+	'brown' => array('base' => '816e56', 'border' => '3c3428', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
+	'black' => array('base' => '252525', 'border' => '101010', 'shadow' => '333', 'a' => 'ccc', 'active' => 'fff'),
+	'purple' => array('base' => '86339a', 'border' => '551581', 'shadow' => '333', 'a' => 'ccc', 'active' => 'fff')
 );
 
 ?>
@@ -43,6 +44,26 @@ $colors = array(
 	margin-bottom: 10px;
 }
 
+.shackSlider<?php echo $params->get('container', $defaults['container']) ?> .pagination ul {
+	box-shadow: none;
+}
+
+.shackSlider<?php echo $params->get('container', $defaults['container']) ?> .pagination ul > li:first-child > a,
+.shackSlider<?php echo $params->get('container', $defaults['container']) ?> .pagination ul > li:first-child > span,
+.shackSlider<?php echo $params->get('container', $defaults['container']) ?> .pagination ul > li:last-child > a,
+.shackSlider<?php echo $params->get('container', $defaults['container']) ?> .pagination ul > li:last-child > span {
+	border-radius: 0;
+	border: 0;
+	float: none;
+}
+
+.shackSlider<?php echo $params->get('container', $defaults['container']) ?> .pagination ul > li > a,
+.shackSlider<?php echo $params->get('container', $defaults['container']) ?> .pagination ul > li > span {
+	border-radius: 0;
+	border: 0;
+	float: none;
+}
+
 .shackSlider<?php echo $params->get('container', $defaults['container']) ?> #sliderContainer<?php echo $params->get('container', $defaults['container']) ?> {
 	background: #<?php echo $colors[$theme]['base'] ?> url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/bg.png);
 	border: 2px solid #<?php echo $colors[$theme]['border'] ?>;
@@ -70,75 +91,106 @@ $colors = array(
 	text-align: <?php echo $params->get('navigation_align', $defaults['navigation_align']) ?>;
 }
 
-#<?php echo $params->get('container', $defaults['container']) ?>Nav a:link, #<?php echo $params->get('container', $defaults['container']) ?>Nav a:active, #<?php echo $params->get('container', $defaults['container']) ?>Nav a:visited, #<?php echo $params->get('container', $defaults['container']) ?>Nav a:hover{
-	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/item.png) no-repeat center center;
-	line-height: 24px;
+#<?php echo $params->get('container', $defaults['container']) ?>Nav a {
+	height: 16px;
+    margin: 5px 2px;
+    width: 16px;
+	line-height: 16px;
 	font-size: 16px;
-	height: 24px;
-	width: 25px;
-	margin: 3px auto;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
+	padding-top: 0;
+	padding-bottom: 0;
 	color: #<?php echo $colors[$theme]['a'] ?>;
-	<?php if ($params->get('navigation_label', $defaults['navigation_label']) == 'no') echo 'text-indent: -9999px;'; ?>
-	text-shadow: 1px 1px 1px #<?php echo $colors[$theme]['shadow'] ?>;
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
+	padding-left: 2px;
+	padding-right: 2px;
+	<?php endif; ?>
+	<?php if ($params->get('navigation_label', $defaults['navigation_label']) == 'no') : ?>
+	text-indent: -9999px;
+	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/pagination.png") no-repeat scroll 50% 100% transparent;
+	<?php else: ?>
+	background-color: #<?php echo $colors[$theme]['base'] ?>;
+	border-radius: 5px;
 	<?php endif; ?>
 }
 
-#<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:link, #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:active, #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:visited, #<?php echo $params->get('container', $defaults['container']) ?>Nav a.active:hover{
-	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
-	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/item_active.png) no-repeat center center;
-	color: #<?php echo $colors[$theme]['active'] ?>;
-	text-shadow: 1px 1px 1px #<?php echo $colors[$theme]['shadow'] ?>;
-	<?php endif; ?>
+#<?php echo $params->get('container', $defaults['container']) ?>Nav li.active a, #<?php echo $params->get('container', $defaults['container']) ?>Nav a:active, #<?php echo $params->get('container', $defaults['container']) ?>Nav a:hover,
+#<?php echo $params->get('container', $defaults['container']) ?>Nav a.active {
+	background-position: 50% 0%;
+	color: #<?php echo $colors[$theme]['active']; ?>;
 }
 
 a.sliderPrev{
-	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/next.png) no-repeat center center;
-	width: 49px;
-	height: 24px;
 	display: inline-block;
 	line-height: 24px;
 	text-align: center;
 	text-decoration: none;
 	position: absolute;
-	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
-	color: #<?php echo $colors[$theme]['a'] ?> !important;
 	top: <?php echo ($params->get('height', $defaults['height']) / 2) - 12; ?>px;
-	<?php else : ?>
-	top:
+	left: 0;
+	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrows.png") no-repeat scroll 0 0 transparent;
+	color: transparent;
+	height: 30px;
+	width: 31px;
+	margin-left: 3px;
+	padding-left: 0;
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
+    padding-right: 9px;
+	<?php else: ?>
+	padding-right: 0;
 	<?php endif; ?>
-
 }
 
 a.sliderNext{
-	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/prev.png) no-repeat center center;
-	width: 49px;
-	height: 24px;
 	display: inline-block;
 	text-decoration: none;
 	line-height: 24px;
 	text-align: center;
 	position: absolute;
-	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
-	color: #<?php echo $colors[$theme]['a'] ?> !important;
-	<?php endif; ?>
 	top: <?php echo ($params->get('height', $defaults['height']) / 2) - 12; ?>px;
-	left: <?php echo $params->get('width', $defaults['width']) - 49; ?>px;
+	right: 0;
+	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrows.png") no-repeat scroll -30px 0 transparent;
+	color: transparent;
+	height: 30px;
+	width: 31px;
+	margin-right: 3px;
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
+    padding-left: 9px;
+	<?php else: ?>
+	padding-left: 0;
+	<?php endif; ?>
+    padding-right: 0;
+	padding-right: 0px;
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a.sliderPrev{
-	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/prev.png) no-repeat center center;
 	position: static;
-	width: 49px;
+	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrow-prev.png") no-repeat;
+    color: transparent;
+    height: 30px;
+	padding-left: 0;
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
+    padding-right: 14px;
+	<?php else: ?>
+	padding-right: 0;
+	<?php endif; ?>
+    padding-top: 3px;
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a.sliderNext{
-	background: url(<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/next.png) no-repeat center center;
 	position: static;
-	width: 49px;
+	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrow-next.png") no-repeat;
+    color: transparent;
+    height: 30px;
+	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
+    padding-left: 14px;
+	<?php else: ?>
+	padding-left: 0;
+	<?php endif; ?>
+    padding-right: 0;
+    padding-top: 3px;
 }
 
 <?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
@@ -198,7 +250,6 @@ a.sliderNext{
 }
 
 a.sliderPrev, a.sliderNext, #<?php echo $params->get('container', $defaults['container']) ?>Nav ul li a {
-	background: none !important;
 	width: auto !important;
 }
 
@@ -230,20 +281,9 @@ a.sliderPrev, a.sliderNext, #<?php echo $params->get('container', $defaults['con
 
 .slidermanButtonsCont .sliderPrev, .slidermanButtonsCont .sliderNext {
 	display: inline !important;
-	position: static !important;
 	font-size: 35px;
-	margin-top: 30%;
 }
 
-.slidermanButtonsCont .sliderPrev{
-	float: left;
-	margin-left: 5px;
-}
-
-.slidermanButtonsCont .sliderNext {
-	float: right;
-	margin-right: 5px;fnav
-}
 
 
 

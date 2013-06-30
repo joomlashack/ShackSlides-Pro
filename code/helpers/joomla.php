@@ -71,7 +71,16 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 	{
 		foreach ($this->content as $item)
 		{
-			$this->images[] = $this->getFirstImageFromContent($item->introtext);
+			//see if there is an intro image set
+			$item_images = json_decode($item->images);
+			if ($item_images->image_intro != '') {
+				//if there is, use that
+				$this->images[] = $item_images->image_intro;
+			}
+			//if not, extract the first image from the content
+			else {
+				$this->images[] = $this->getFirstImageFromContent($item->introtext);
+			}
 			$this->titles[] = $this->getTitleFromContent($item->introtext);
 			$this->links[] = $this->buildLink($item->id);
 		}
