@@ -12,7 +12,8 @@ $colors = array(
 	'green' => array('base' => '81ac7b', 'border' => '3b4f38', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
 	'orange' => array('base' => 'd9a74d', 'border' => '925813', 'shadow' => '666', 'a' => '666', 'active' => 'fff'),
 	'brown' => array('base' => '816e56', 'border' => '3c3428', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
-	'black' => array('base' => '252525', 'border' => '101010', 'shadow' => '333', 'a' => 'ccc', 'active' => 'fff')
+	'black' => array('base' => '252525', 'border' => '101010', 'shadow' => '333', 'a' => 'ccc', 'active' => 'fff'),
+	'purple' => array('base' => '86339a', 'border' => '551581', 'shadow' => '333', 'a' => 'ccc', 'active' => 'fff')
 );
 
 ?>
@@ -166,7 +167,7 @@ a.sliderNext{
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a.sliderPrev{
 	position: static;
-	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/arrow-prev.png") no-repeat;
+	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrow-prev.png") no-repeat;
     color: transparent;
     height: 30px;
 	padding-left: 0;
@@ -180,7 +181,7 @@ a.sliderNext{
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a.sliderNext{
 	position: static;
-	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/arrow-next.png") no-repeat;
+	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrow-next.png") no-repeat;
     color: transparent;
     height: 30px;
 	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>

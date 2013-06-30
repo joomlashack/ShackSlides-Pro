@@ -7,7 +7,7 @@
 	<authorUrl>http://www.joomlashack.com</authorUrl>
 	<copyright>Joomlashack</copyright>
 	<license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
-	<version>2.2.8_beta</version>
+	<version>2.2.8</version>
 	<description>
 		<![CDATA[<div style='text-align: left !important'><h3>Shackslides by Joomlashack</h3>
 		<p>ShackSlides is not just a slideshow module, but a way to feature your images in style. The most powerful feature of ShackSlides is the ability to utilize content items as the source for your slideshow.
@@ -66,6 +66,7 @@
 				<option value="orange">ORANGE</option>
 				<option value="red">RED</option>
 				<option value="brown">BROWN</option>
+				<option value="purple">PURPLE</option>
 			</field>
 
 			<field type="spacer" name="slider_options_spacer" label="SLIDER_OPTIONS_SPACER_LABEL" />
