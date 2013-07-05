@@ -19,8 +19,8 @@ class JFormFieldK2category extends JFormFieldList
 
 	protected function getInput()
 	{
-		$k2_element_path = JPATH_SITE.'/administrator/components/com_k2/elements/categories.php';		
-		
+		$k2_element_path = JPATH_SITE.'/administrator/components/com_k2/elements/categories.php';
+
 		if (file_exists($k2_element_path)) :
 			include_once($k2_element_path);
 
@@ -29,7 +29,9 @@ class JFormFieldK2category extends JFormFieldList
 				 resolves to this class (JFormFieldK2Category). See coment on fetchElement() for more deatils. */
 			return JFormFieldCategories::getInput();
 		else :
-			return JText::_('K2_NOT_INSTALLED');
+			$doc = JFactory::getDocument();
+			$doc->addStyleSheet(JURI::root() . 'modules/mod_jsshackslides/assets/admin.css');
+			return '<div class="shackslides-not-installed">' . JText::_('K2_NOT_INSTALLED') . '</div>';
 		endif;
 	}
 

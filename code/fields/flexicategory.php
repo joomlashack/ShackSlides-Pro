@@ -22,7 +22,9 @@ class JFormFieldFlexicategory extends JFormFieldList
 		$flexi_path = JPATH_SITE.'/components/com_flexicontent/classes/flexicontent.categories.php';
 
 		if (!file_exists($flexi_path)) :
-			return JText::_('FLEXI_NOT_INSTALLED');
+			$doc = JFactory::getDocument();
+			$doc->addStyleSheet(JURI::root() . 'modules/mod_jsshackslides/assets/admin.css');
+			return '<div class="shackslides-not-installed">' . JText::_('FLEXI_NOT_INSTALLED') . '</div>';
 		endif;
 
 		include_once($flexi_path);
