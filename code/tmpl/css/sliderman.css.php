@@ -133,7 +133,7 @@ a.sliderPrev{
 	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrows.png") no-repeat scroll 0 0 transparent;
 	color: transparent;
 	height: 30px;
-	width: 31px;
+	width: 30px;
 	margin-left: 3px;
 	padding-left: 0;
 	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
@@ -154,7 +154,7 @@ a.sliderNext{
 	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrows.png") no-repeat scroll -30px 0 transparent;
 	color: transparent;
 	height: 30px;
-	width: 31px;
+	width: 30px;
 	margin-right: 3px;
 	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
     padding-left: 9px;
