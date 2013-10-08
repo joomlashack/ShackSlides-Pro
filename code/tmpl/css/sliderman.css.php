@@ -122,47 +122,29 @@ $colors = array(
 	color: #<?php echo $colors[$theme]['active']; ?>;
 }
 
-a.sliderPrev{
+a.sliderPrev,
+a.sliderNext{
+	color: transparent;
 	display: inline-block;
+	height: 30px;
 	line-height: 24px;
+	padding-left: 0;
+	padding-right: 0;
+	position: absolute;
 	text-align: center;
 	text-decoration: none;
-	position: absolute;
 	top: <?php echo ($params->get('height', $defaults['height']) / 2) - 12; ?>px;
-	left: 0;
-	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrows.png") no-repeat scroll 0 0 transparent;
-	color: transparent;
-	height: 30px;
 	width: 30px;
-	margin-left: 3px;
-	padding-left: 0;
-	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
-    padding-right: 9px;
-	<?php else: ?>
-	padding-right: 0;
-	<?php endif; ?>
+	
+}
+a.sliderPrev{
+	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrows.png") no-repeat scroll 0 0 transparent;
+	left: 3px;
 }
 
 a.sliderNext{
-	display: inline-block;
-	text-decoration: none;
-	line-height: 24px;
-	text-align: center;
-	position: absolute;
-	top: <?php echo ($params->get('height', $defaults['height']) / 2) - 12; ?>px;
-	right: 0;
 	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrows.png") no-repeat scroll -30px 0 transparent;
-	color: transparent;
-	height: 30px;
-	width: 30px;
-	margin-right: 3px;
-	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
-    padding-left: 9px;
-	<?php else: ?>
-	padding-left: 0;
-	<?php endif; ?>
-    padding-right: 0;
-	padding-right: 0px;
+	right: 3px;
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a.sliderPrev{
@@ -249,7 +231,7 @@ a.sliderNext{
 	height: auto !important;
 }
 
-a.sliderPrev, a.sliderNext, #<?php echo $params->get('container', $defaults['container']) ?>Nav ul li a {
+#<?php echo $params->get('container', $defaults['container']) ?>Nav ul li a {
 	width: auto !important;
 }
 
