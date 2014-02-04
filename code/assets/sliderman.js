@@ -661,7 +661,6 @@ var Sliderman = new function(){
 				descriptionStl.background = description.transparent_background ? 'transparent' : description.background || 'white';
 				descriptionStl.opacity = description.opacity || 0.5;
 				descriptionStl.width = '100%';
-				descriptionStl.height = description.position == 'left' || description.position == 'right' ? display.height : description.height || display.height*0.2;
 				descriptionStl[description.position == 'bottom'?'bottom':'top'] = (description.position == 'above_image' ? '-' + descriptionStl.height + 'px' : (description.position == 'below_image' ? display.height + 'px' : 0));
 
 				var descBg = newElement('DIV', descriptionStl); $(descBg).addClass('slidermanDescriptionBG'); descriptionCont.appendChild(descBg);
@@ -669,6 +668,7 @@ var Sliderman = new function(){
 
 				desc = newElement('DIV', descriptionStl); $(desc).addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
 
+				desc.style.setProperty('height',(description.position == 'left' || description.position == 'right' ? display.height : description.height || display.height*0.2) + 'px','important');
 
 			}
 

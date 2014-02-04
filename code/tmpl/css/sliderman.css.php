@@ -246,7 +246,7 @@ a.sliderNext{
 	-ms-box-sizing:border-box;
 	-o-box-sizing:border-box;
 	box-sizing: border-box;
-	<?php if (in_array($params->get('description_position', $default['description_position']), array('top', 'bottom'))) : ?>
+	<?php if (in_array($params->get('description_position', $defaults['description_position']), array('top', 'bottom'))) : ?>
 	width: 100% !important;
 	<?php else : ?>
 	height: 100% !important;
