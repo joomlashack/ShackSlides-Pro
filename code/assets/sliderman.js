@@ -642,7 +642,7 @@ var Sliderman = new function(){
 				//left/right
 				else {
 
-					$(descriptionCont).addClass('span4');
+					$(descriptionCont).addClass('span' + description.bootstrap_span_size);
 					var pos;
 					if (description.position == 'left_image')
 						pos = 'top';
