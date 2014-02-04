@@ -298,7 +298,7 @@ var Sliderman = new function(){
 				image.src = parameters.src;
 			}
 			var style = image.style;
-			style.position = 'absolute';
+			style.position = 'relative';
 			container.appendChild(image);
 			AnimateItemsArr[cr] = style;
 			if(!needAnimate[cr]) hide(AnimateItemsArr[cr]);

@@ -98,7 +98,7 @@
 				<option value="yes">YES</option>
 				<option value="no">NO</option>
 			</field>
-			<field name="effect" type="list" default="none" label="EFFECT" description="EFFECT_DESC">
+			<field name="effect" type="list" default="slide_right" label="EFFECT" description="EFFECT_DESC">
 				<option value="none">EFFECT_NONE</option>
 				<option value="slide_bottom">EFFECT_SLIDE_BOTTOM</option>
 				<option value="slide_left">EFFECT_SLIDE_LEFT</option>

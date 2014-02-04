@@ -187,7 +187,7 @@ a.sliderNext{
 	height: auto !important;
 }
 
-<?php if ($params->get('fixed_height_mobile') == 'yes') : ?>
+<?php if ($params->get('fixed_height_mobile', $defaults['fixed_height_mobile']) == 'yes') : ?>
 .slidermanImgCont {
 	width: 100% !important;
 	height: <?php echo $params->get('height'); ?>px !important;
@@ -204,13 +204,11 @@ a.sliderNext{
 .slidermanImgCont div {
 	width: 100% !important;
 	height: auto !important;
-	position: static !important;
 }
 
 .slidermanImgCont div img {
 	width: 100% !important;
 	height: auto !important;
-	position: static !important;
 }
 
 <?php if ($params->get('fixed_height_mobile', $defaults['fixed_height_mobile']) == 'yes') : ?>
