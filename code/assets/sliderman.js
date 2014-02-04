@@ -620,7 +620,9 @@ var Sliderman = new function(){
 
 			var descriptionCont = newElement('DIV'); $(descriptionCont).addClass('slidermanDescriptionCont');
 
-			if(display.bootstrap && !description.hide && ( description.position == 'above_image' || description.position == 'below_image' || description.position == 'left_image' || description.position == 'right_image') ) {
+			if(display.bootstrap && !description.hide) {
+
+				descriptionCont.style.position = 'relative';
 
 				//below/above
 				if (description.position == 'above_image' || description.position == 'below_image') {
@@ -652,7 +654,20 @@ var Sliderman = new function(){
 
 				}
 
-				desc = newElement('DIV'); $(desc).addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
+				var descriptionStl = {position: 'absolute',
+					overflow: (description.position == 'left_image' || description.position == 'right_image' || description.position == 'above_image' || description.position == 'below_image' ? 'visible' : description.overflow),
+				textAlign: 'left'};
+				if(!description) description = [];
+				descriptionStl.background = description.transparent_background ? 'transparent' : description.background || 'white';
+				descriptionStl.opacity = description.opacity || 0.5;
+				descriptionStl.width = '100%';
+				descriptionStl.height = description.position == 'left' || description.position == 'right' ? display.height : description.height || display.height*0.2;
+				descriptionStl[description.position == 'bottom'?'bottom':'top'] = (description.position == 'above_image' ? '-' + descriptionStl.height + 'px' : (description.position == 'below_image' ? display.height + 'px' : 0));
+
+				var descBg = newElement('DIV', descriptionStl); $(descBg).addClass('slidermanDescriptionBG'); descriptionCont.appendChild(descBg);
+				descriptionStl.opacity = 1; descriptionStl.background = '';				
+
+				desc = newElement('DIV', descriptionStl); $(desc).addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
 
 
 			}

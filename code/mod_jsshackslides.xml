@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="module" method="upgrade">
 	<name>JS Shackslides</name>
-	<creationDate>June 2013</creationDate>
+	<creationDate>February 2014</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>http://www.joomlashack.com</authorUrl>
 	<copyright>Joomlashack</copyright>
 	<license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
-	<version>2.2.8</version>
+	<version>2.2.9</version>
 	<description>
 		<![CDATA[<div style='text-align: left !important'><h3>Shackslides by Joomlashack</h3>
 		<p>ShackSlides is not just a slideshow module, but a way to feature your images in style. The most powerful feature of ShackSlides is the ability to utilize content items as the source for your slideshow.
