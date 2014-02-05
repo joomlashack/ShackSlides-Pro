@@ -57,7 +57,8 @@ $code .="
 			height: ".$params->get('description_height', $defaults['description_height']).",
 			width: ".$params->get('description_width', $defaults['description_width']).",
 			position: '".$params->get('description_position', $defaults['description_position'])."',
-			overflow: '".$params->get('description_overflow', $defaults['description_overflow'])."'
+			overflow: '".$params->get('description_overflow', $defaults['description_overflow'])."',
+			bootstrap_span_size: '".$params->get('bootstrap_span_size_description', $defaults['bootstrap_span_size_description'])."',
 		},
 		";
 		if ($params->get('buttons', $defaults['buttons']) == 'yes') {
@@ -142,7 +143,7 @@ if ($params->get('fixed_height_mobile', $defaults['fixed_height_mobile']) == 'ye
 			}
 		}
 
-		addCustomEvent(window, 'load', function() {
+		addCustomEvent(document, 'load', function() {
 
 			addCustomEvent(window, 'resize', function() {
 				resizeImg();

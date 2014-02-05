@@ -11,6 +11,8 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 
 require_once(JPATH_ROOT.'/'.'modules'.'/'.'mod_jsshackslides'.'/'.'helper.php');
 
+jimport( 'joomla.html.parameter' );
+
 class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 {
 	private $content;
@@ -27,6 +29,7 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 		$this->ordering_direction = $params->get('ordering_direction', 'ASC');
 		$this->limit = $params->get('limit', '5');
 		$this->featured = $params->get('featured', 'include');
+		$this->joomla_image_source_type = $params->get('joomla_image_source_type', 'intro');
 
 		$this->getContentFromDatabase();
 
@@ -69,18 +72,37 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 
 	private function parseContentIntoProperties()
 	{
+
 		foreach ($this->content as $item)
 		{
-			//see if there is an intro image set
+
 			$item_images = json_decode($item->images);
-			if ($item_images->image_intro != '') {
-				//if there is, use that
-				$this->images[] = $item_images->image_intro;
+			$image = null;
+
+			//choose intro or full image
+			if ($this->joomla_image_source_type == 'intro') {
+				if ($item_images->image_intro != '') {
+					//if there is, use that
+					$this->images[] = $item_images->image_intro;
+				}
+				//if not, extract the first image from the content
+				else {
+					$this->images[] = $this->getFirstImageFromContent($item->introtext);
+				}
 			}
-			//if not, extract the first image from the content
-			else {
-				$this->images[] = $this->getFirstImageFromContent($item->introtext);
+
+			elseif ($this->joomla_image_source_type == 'full') {
+				if ($item_images->image_fulltext != '') {
+					//if there is, use that
+					$this->images[] = $item_images->image_fulltext;
+				}
+				//if not, extract the first image from the content
+				else {
+					$this->images[] = $this->getFirstImageFromContent($item->introtext);
+				}
 			}
+
+
 			$this->titles[] = $this->getTitleFromContent($item->introtext);
 			$this->links[] = $this->buildLink($item->id);
 		}

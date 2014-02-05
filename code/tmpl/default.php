@@ -38,7 +38,8 @@ $defaults = array(
 	'main_container_class' => '',
 	'extra_container' => 'no',
 	'extra_container_class' => '',
-	'fixed_height_mobile' => 'no'
+	'fixed_height_mobile' => 'no',
+	'bootstrap_span_size_description' => 4
 );
 
 // Adding the javascript and css files to the document
@@ -70,7 +71,11 @@ if ($enable_bootstrap_styles) {
 	if ($params->get('description', $defaults['description']) == 'yes') {
 
 		if ( in_array($params->get('description_position', $defaults['description_position']), array('left_image', 'right_image')) ) {
-				$span_class = 'span8';
+
+				$spanDescription = $params->get('bootstrap_span_size_description', $defaults['bootstrap_span_size_description']);
+				$spanImage = 12 - $spanDescription;
+
+				$span_class = 'span' . $spanImage;
 		}
 	}
 }

@@ -19,7 +19,7 @@ class JFormFieldVisionaryCollection extends JFormFieldList
 
 	protected function getInput() {
 		$visionary_component_path = JPATH_SITE.'/administrator/components/com_jsvisionary/jsvisionary.php';
-		
+
 		if (file_exists($visionary_component_path)) {
 
 			return parent::getInput();
@@ -27,7 +27,9 @@ class JFormFieldVisionaryCollection extends JFormFieldList
 		}
 
 		else {
-			return JText::_('VISIONARY_NOT_INSTALLED');	
+			$doc = JFactory::getDocument();
+			$doc->addStyleSheet(JURI::root() . 'modules/mod_jsshackslides/assets/admin.css');
+			return '<div class="shackslides-not-installed">' . JText::_('VISIONARY_NOT_INSTALLED') . '</div>';
 		}
 
 	}
