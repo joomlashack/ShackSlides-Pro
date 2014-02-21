@@ -9,7 +9,7 @@
 	<license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
 	<version>2.2.10</version>
 	<description>
-		<![CDATA[<div style='text-align: left !important'><h3>Shackslides by Joomlashack</h3>
+		<![CDATA[<div style='text-align: left !important'><h3>Shackslides by Joomlashack</h3></div>
 		]]>
 	</description>
 	<files>
@@ -101,12 +101,6 @@
 				<option value="slide_right">EFFECT_SLIDE_RIGHT</option>
 				<option value="slide_top">EFFECT_SLIDE_TOP</option>
 				<option value="fade">EFFECT_FADE</option>
-				<option value="swirl_tl">EFFECT_SWIRL_TL</option>
-				<option value="swirl_br">EFFECT_SWIRL_BR</option>
-				<option value="random">EFFECT_RANDOM</option>
-				<option value="chess">EFFECT_CHESS</option>
-				<option value="snake">EFFECT_SNAKE</option>
-				<option value="rain">EFFECT_RAIN</option>
 			</field>
 
 
@@ -226,11 +220,6 @@
 			</field>
 
 			<field name="enable_bootstrap_styles" type="radio" default="no" label="ENABLE_BOOTSTRAP_STYLES" description="ENABLE_BOOTSTRAP_STYLES_DESC">
-				<option value="yes">YES</option>
-				<option value="no">NO</option>
-			</field>
-
-			<field name="fixed_height_mobile" type="radio" default="no" label="FIXED_HEIGHT_MOBILE" description="FIXED_HEIGHT_MOBILE_DESC">
 				<option value="yes">YES</option>
 				<option value="no">NO</option>
 			</field>

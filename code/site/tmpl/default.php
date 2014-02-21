@@ -38,7 +38,6 @@ $defaults = array(
 	'main_container_class' => '',
 	'extra_container' => 'no',
 	'extra_container_class' => '',
-	'fixed_height_mobile' => 'no',
 	'bootstrap_span_size_description' => 4
 );
 

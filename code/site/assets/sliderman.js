@@ -6,6 +6,20 @@
 * (c) 2010-2011 Devtrix. All rights reserved. http://www.devtrix.net/sliderman/
 **/
 
+function jsResizeImg(imgCont, img) {
+	var aspectRatio = img.width / img.height;
+
+	var w = imgCont.offsetWidth,
+			h = imgCont.offsetHeight;
+
+	if ( (w/h) < aspectRatio ) {
+		img.className = 'fillHeight';
+	}
+	else {
+		img.className = 'fillWidth';
+	}
+}
+
 var Sliderman = new function(){
 	var Sliderman = this;
 
@@ -296,6 +310,9 @@ var Sliderman = new function(){
 			}else{
 				image = newElement('IMG', startStylesArr[cr]);
 				image.src = parameters.src;
+			}
+			if (display.bootstrap) {
+				jsResizeImg(parameters.container, image);
 			}
 			var style = image.style;
 			style.position = 'relative';
