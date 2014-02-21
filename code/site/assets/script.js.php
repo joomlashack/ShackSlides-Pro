@@ -109,6 +109,45 @@ $code .="
 	$code .="
 });";
 
+if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') {
+
+		$code .= "var addCustomEvent = function(elem, type, eventHandle) {
+		    if (elem == null || elem == undefined) return;
+		    if ( elem.addEventListener ) {
+		        elem.addEventListener( type, eventHandle, false );
+		    } else if ( elem.attachEvent ) {
+		        elem.attachEvent( 'on' + type, eventHandle );
+		    } else {
+		        elem['on'+type]=eventHandle;
+		    }
+		};
+
+		function resizeImg() {
+			var imgCont = document.querySelectorAll('.slidermanImgCont')[0],
+					img = imgCont.getElementsByTagName('img')[0],
+					aspectRatio = img.width / img.height;
+
+			var w = imgCont.offsetWidth,
+					h = imgCont.offsetHeight;
+
+			if ( (w/h) < aspectRatio ) {
+				img.className = 'fillHeight';
+			}
+			else {
+				img.className = 'fillWidth';
+			}
+		}
+
+		addCustomEvent(window, 'load', function() {
+
+			addCustomEvent(window, 'resize', function() {
+				resizeImg();
+			});
+
+			resizeImg();
+		});";
+}
+
 $code .= "
 </script>";
 
