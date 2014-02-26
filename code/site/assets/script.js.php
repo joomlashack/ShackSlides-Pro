@@ -38,6 +38,8 @@ $code = "<script type=\"text/javascript\">	var shackeffects = new Array(); var l
 	";
 $code .= $effect;
 $code .="
+	var shackslidesSlideChange = new CustomEvent('shackslidesSlideChange', {});
+
 	function loadShackslides() {
 
 		var ".$params->get('container', $defaults['container'])." = Sliderman.slider({

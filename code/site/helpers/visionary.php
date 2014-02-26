@@ -142,44 +142,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 		);
 
 
-
 		return $markers;
 
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

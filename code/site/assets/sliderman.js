@@ -457,6 +457,7 @@ var Sliderman = new function(){
 			return r;
 		}
 		Slider.go = function(index){
+			document.dispatchEvent(shackslidesSlideChange);
 			index = (images.length + index) % images.length;
 			autoplay(false);
 			if(status != 'free') nextIndex = index;
