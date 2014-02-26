@@ -105,9 +105,22 @@ $extra_container = ($params->get('extra_container', $defaults['extra_container']
 					</a>
 				<?php endif; ?>
 
-				<?php if ($titles[$i] && $params->get('description', $defaults['description']) == 'yes') : ?>
+				<?php if (($titles[$i] || $contents[$i]) && $params->get('description', $defaults['description']) == 'yes') : ?>
 					<div class="slideTitle">
-						<?php echo $titles[$i]; ?>
+						<?php if ($titles[$i]) : ?>
+						<div class="slideTitleIn">
+							<h3>
+								<?php echo $titles[$i]; ?>								
+							</h3>
+						</div>
+						<?php endif; ?>
+						<?php if ($contents[$i]) : ?>
+						<div class="slideTitleContent">
+							<div class="slideTitleContentIn">
+								<?php echo $contents[$i]; ?>							
+							</div>
+						</div>
+						<?php endif; ?>
 					</div>
 				<?php endif; ?>
 

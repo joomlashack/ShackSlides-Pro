@@ -16,6 +16,7 @@ abstract class ModShackSlidesHelper
     protected $links;
     protected $base;
     protected $menu;
+    protected $contents;
 
     public function __construct($params)
     {
@@ -81,6 +82,23 @@ abstract class ModShackSlidesHelper
         else
         {
             $this->titles[] = $titles;
+        }
+    }
+
+    public function getContents()
+    {
+        return $this->contents;
+    }
+
+    public function setContents($contents)
+    {
+        if (is_array($contents))
+        {
+            $this->contents = $contents;
+        }
+        else
+        {
+            $this->contents[] = $contents;
         }
     }
 

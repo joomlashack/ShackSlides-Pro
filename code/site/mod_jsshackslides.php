@@ -16,6 +16,7 @@ $helper = new $helperClass($params);
 $images = $helper->getImages();
 $links = $helper->getLinks();
 $titles = $helper->getTitles();
+$contents = $helper->getContents();
 $base = $helper->getBase();
 
 require(JModuleHelper::getLayoutPath('mod_jsshackslides'));
