@@ -457,7 +457,6 @@ var Sliderman = new function(){
 			return r;
 		}
 		Slider.go = function(index){
-			Event.trigger('shackslidesSlideChange');
 			index = (images.length + index) % images.length;
 			autoplay(false);
 			if(status != 'free') nextIndex = index;
@@ -844,6 +843,7 @@ var Sliderman = new function(){
 		}else var autoplay = ef
 
 		var doEffect = function(src){
+			Event.trigger('shackslidesSlideChangeStart');
 			if(autoplayStatus == 'stop') autoplayStatus = 'pause';
 			eventCall('before');
 			showLoading(false); status = 'busy'; update();
@@ -858,6 +858,7 @@ var Sliderman = new function(){
 					nextIndex = null;
 				}
 			}, contentmode: contentmode});
+			Event.trigger('shackslidesSlideChangeEnd');
 		};
 
 		if(display.mousewheel){
