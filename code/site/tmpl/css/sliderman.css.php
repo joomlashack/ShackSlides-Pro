@@ -233,7 +233,7 @@ a.sliderNext{
 	<?php if (in_array($params->get('description_position', $defaults['description_position']), array('top', 'bottom'))) : ?>
 	width: 100% !important;
 	<?php else : ?>
-	height: 100% !important;
+	height: 100%;
 	<?php endif; ?>
 }
 

@@ -457,7 +457,7 @@ var Sliderman = new function(){
 			return r;
 		}
 		Slider.go = function(index){
-			document.dispatchEvent(shackslidesSlideChange);
+			Event.trigger('shackslidesSlideChange');
 			index = (images.length + index) % images.length;
 			autoplay(false);
 			if(status != 'free') nextIndex = index;
@@ -682,12 +682,11 @@ var Sliderman = new function(){
 				descriptionStl[description.position == 'bottom'?'bottom':'top'] = (description.position == 'above_image' ? '-' + descriptionStl.height + 'px' : (description.position == 'below_image' ? display.height + 'px' : 0));
 
 				var descBg = newElement('DIV', descriptionStl); $(descBg).addClass('slidermanDescriptionBG'); descriptionCont.appendChild(descBg);
-				descriptionStl.opacity = 1; descriptionStl.background = '';				
+				descriptionStl.opacity = 1; descriptionStl.background = '';		
+
+				descriptionStl.height = (description.position == 'left' || description.position == 'right' ? display.height : description.height || display.height*0.2) + 'px';		
 
 				desc = newElement('DIV', descriptionStl); $(desc).addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
-
-				desc.style.setProperty('height',(description.position == 'left' || description.position == 'right' ? display.height : description.height || display.height*0.2) + 'px','important');
-
 			}
 
 			else {
