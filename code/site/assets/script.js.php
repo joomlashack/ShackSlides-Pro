@@ -112,8 +112,8 @@ $code .="
 	        event.options = options;
 	        document.dispatchEvent(event);
 	    } else {
-	        eval('document.documentElement.' + eventName + '++');
 	    	eval('document.documentElement.' + eventName + '_options = options');
+	        eval('document.documentElement.' + eventName + '++');
 	    }
 	}
 
