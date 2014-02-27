@@ -46,9 +46,9 @@ var Sliderman = new function(){
 	}//addElementEvent
 
 	var _loadImage = [];
-	function loadImage(s,f,always_show_loading){
-		var i_onload = function(){_loadImage[s]=true;if(f)f(s);}
-		var l = function(){if(_loadImage[s]){if(f)f(s);}else{var i=newElement('IMG');i.onload=i_onload;new function(){i.src=s;};}}
+	function loadImage(s,f,always_show_loading,index){
+		var i_onload = function(){_loadImage[s]=true;if(f)f(s,index);}
+		var l = function(){if(_loadImage[s]){if(f)f(s,index);}else{var i=newElement('IMG');i.onload=i_onload;new function(){i.src=s;};}}
 		if(always_show_loading) setTimeout(l, typeof(always_show_loading) == 'number' ? always_show_loading : 1000);
 		else l();
 	}//loadImage
@@ -465,8 +465,8 @@ var Sliderman = new function(){
 			current = index;
 			eventCall('loading');
 			showLoading(true);
-			if(contentmode) doEffect(images[current]);
-			else loadImage(images[current], doEffect, display.always_show_loading);
+			if(contentmode) doEffect(images[current], index);
+			else loadImage(images[current], doEffect, display.always_show_loading, index);
 			return true;
 		}//go
 		Slider.get = function(a){
@@ -842,8 +842,10 @@ var Sliderman = new function(){
 			}//autoplay
 		}else var autoplay = ef
 
-		var doEffect = function(src){
-			Event.trigger('shackslidesSlideChangeStart');
+		var doEffect = function(src, index){
+			ShackslidesEvent.trigger('shackslidesSlideChangeStart',{
+				slideNo: index
+			});
 			if(autoplayStatus == 'stop') autoplayStatus = 'pause';
 			eventCall('before');
 			showLoading(false); status = 'busy'; update();
@@ -858,7 +860,9 @@ var Sliderman = new function(){
 					nextIndex = null;
 				}
 			}, contentmode: contentmode});
-			Event.trigger('shackslidesSlideChangeEnd');
+			ShackslidesEvent.trigger('shackslidesSlideChangeEnd',{
+				slideNo : index
+			});
 		};
 
 		if(display.mousewheel){

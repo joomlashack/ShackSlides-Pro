@@ -89,28 +89,31 @@ $code .="
 	    readyList.push(handler) 
 	}
 
-	function Event () {
+	function ShackslidesEvent () {
 	}
 
-	Event.listen = function (eventName, callback) {
+	ShackslidesEvent.listen = function (eventName, callback) {
 	    if(document.addEventListener) {
 	        document.addEventListener(eventName, callback, false);
 	    } else {    
 	        document.documentElement.attachEvent('onpropertychange', function (e) {
 	            if(e.propertyName  == eventName) {
-	                callback();
+	            	eval('e.options = document.documentElement.' + eventName + '_options');
+	                callback(e);
 	            }            
 	        });
 	    }
 	}
 
-	Event.trigger = function (eventName) {
+	ShackslidesEvent.trigger = function (eventName, options) {
 	    if(document.createEvent) {
 	        var event = document.createEvent('Event');
 	        event.initEvent(eventName, true, true);
+	        event.options = options;
 	        document.dispatchEvent(event);
 	    } else {
 	        eval('document.documentElement.' + eventName + '++');
+	    	eval('document.documentElement.' + eventName + '_options = options');
 	    }
 	}
 
