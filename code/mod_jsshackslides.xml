@@ -7,18 +7,14 @@
 	<authorUrl>http://www.joomlashack.com</authorUrl>
 	<copyright>Joomlashack</copyright>
 	<license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
-	<version>2.2.9</version>
+	<version>2.2.10</version>
 	<description>
-		<![CDATA[<div style='text-align: left !important'><h3>Shackslides by Joomlashack</h3>
-		<p>ShackSlides is not just a slideshow module, but a way to feature your images in style. The most powerful feature of ShackSlides is the ability to utilize content items as the source for your slideshow.
-		</p>
-		<p>Important, if you are upgrading from version 2.x of Shackslides, please read these important <a href="http://demoextensions.joomlashack.com/shackslides/27-update-from-previous-version" target="_blank">information</a>
+		<![CDATA[<div style='text-align: left !important'><h3>Shackslides by Joomlashack</h3></div>
 		]]>
 	</description>
 	<files>
 		<filename module="mod_jsshackslides">mod_jsshackslides.php</filename>
 		<filename>helper.php</filename>
-		<filename>en-GB.mod_jsshackslides.ini</filename>
 		<filename>index.html</filename>
 		<folder>assets</folder>
 		<folder>fields</folder>
@@ -26,8 +22,8 @@
 		<folder>tmpl</folder>
 	</files>
 
-  <languages>
-		<language tag="en-GB">en-GB.mod_jsshackslides.ini</language>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_jsshackslides.ini</language>
 	</languages>
 
 	<config>
@@ -105,12 +101,6 @@
 				<option value="slide_right">EFFECT_SLIDE_RIGHT</option>
 				<option value="slide_top">EFFECT_SLIDE_TOP</option>
 				<option value="fade">EFFECT_FADE</option>
-				<option value="swirl_tl">EFFECT_SWIRL_TL</option>
-				<option value="swirl_br">EFFECT_SWIRL_BR</option>
-				<option value="random">EFFECT_RANDOM</option>
-				<option value="chess">EFFECT_CHESS</option>
-				<option value="snake">EFFECT_SNAKE</option>
-				<option value="rain">EFFECT_RAIN</option>
 			</field>
 
 
@@ -230,11 +220,6 @@
 			</field>
 
 			<field name="enable_bootstrap_styles" type="radio" default="no" label="ENABLE_BOOTSTRAP_STYLES" description="ENABLE_BOOTSTRAP_STYLES_DESC">
-				<option value="yes">YES</option>
-				<option value="no">NO</option>
-			</field>
-
-			<field name="fixed_height_mobile" type="radio" default="no" label="FIXED_HEIGHT_MOBILE" description="FIXED_HEIGHT_MOBILE_DESC">
 				<option value="yes">YES</option>
 				<option value="no">NO</option>
 			</field>

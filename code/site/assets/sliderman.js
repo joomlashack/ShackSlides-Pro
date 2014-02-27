@@ -6,6 +6,20 @@
 * (c) 2010-2011 Devtrix. All rights reserved. http://www.devtrix.net/sliderman/
 **/
 
+function jsResizeImg(imgCont, img) {
+	var aspectRatio = img.width / img.height;
+
+	var w = imgCont.offsetWidth,
+			h = imgCont.offsetHeight;
+
+	if ( (w/h) < aspectRatio ) {
+		img.className = 'fillHeight';
+	}
+	else {
+		img.className = 'fillWidth';
+	}
+}
+
 var Sliderman = new function(){
 	var Sliderman = this;
 
@@ -32,9 +46,9 @@ var Sliderman = new function(){
 	}//addElementEvent
 
 	var _loadImage = [];
-	function loadImage(s,f,always_show_loading){
-		var i_onload = function(){_loadImage[s]=true;if(f)f(s);}
-		var l = function(){if(_loadImage[s]){if(f)f(s);}else{var i=newElement('IMG');i.onload=i_onload;new function(){i.src=s;};}}
+	function loadImage(s,f,always_show_loading,index){
+		var i_onload = function(){_loadImage[s]=true;if(f)f(s,index);}
+		var l = function(){if(_loadImage[s]){if(f)f(s,index);}else{var i=newElement('IMG');i.onload=i_onload;new function(){i.src=s;};}}
 		if(always_show_loading) setTimeout(l, typeof(always_show_loading) == 'number' ? always_show_loading : 1000);
 		else l();
 	}//loadImage
@@ -297,6 +311,9 @@ var Sliderman = new function(){
 				image = newElement('IMG', startStylesArr[cr]);
 				image.src = parameters.src;
 			}
+			if (display.bootstrap) {
+				jsResizeImg(parameters.container, image);
+			}
 			var style = image.style;
 			style.position = 'relative';
 			container.appendChild(image);
@@ -448,8 +465,8 @@ var Sliderman = new function(){
 			current = index;
 			eventCall('loading');
 			showLoading(true);
-			if(contentmode) doEffect(images[current]);
-			else loadImage(images[current], doEffect, display.always_show_loading);
+			if(contentmode) doEffect(images[current], index);
+			else loadImage(images[current], doEffect, display.always_show_loading, index);
 			return true;
 		}//go
 		Slider.get = function(a){
@@ -664,12 +681,11 @@ var Sliderman = new function(){
 				descriptionStl[description.position == 'bottom'?'bottom':'top'] = (description.position == 'above_image' ? '-' + descriptionStl.height + 'px' : (description.position == 'below_image' ? display.height + 'px' : 0));
 
 				var descBg = newElement('DIV', descriptionStl); $(descBg).addClass('slidermanDescriptionBG'); descriptionCont.appendChild(descBg);
-				descriptionStl.opacity = 1; descriptionStl.background = '';				
+				descriptionStl.opacity = 1; descriptionStl.background = '';		
+
+				descriptionStl.height = (description.position == 'left' || description.position == 'right' ? display.height : description.height || display.height*0.2) + 'px';		
 
 				desc = newElement('DIV', descriptionStl); $(desc).addClass('slidermanDescriptionText'); descriptionCont.appendChild(desc);
-
-				desc.style.setProperty('height',(description.position == 'left' || description.position == 'right' ? display.height : description.height || display.height*0.2) + 'px','important');
-
 			}
 
 			else {
@@ -826,7 +842,10 @@ var Sliderman = new function(){
 			}//autoplay
 		}else var autoplay = ef
 
-		var doEffect = function(src){
+		var doEffect = function(src, index){
+			ShackslidesEvent.trigger('shackslidesSlideChangeStart',{
+				slideNo: index
+			});
 			if(autoplayStatus == 'stop') autoplayStatus = 'pause';
 			eventCall('before');
 			showLoading(false); status = 'busy'; update();
@@ -841,6 +860,9 @@ var Sliderman = new function(){
 					nextIndex = null;
 				}
 			}, contentmode: contentmode});
+			ShackslidesEvent.trigger('shackslidesSlideChangeEnd',{
+				slideNo : index
+			});
 		};
 
 		if(display.mousewheel){

@@ -178,7 +178,6 @@ a.sliderNext{
 <?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
 #sliderContainer {
 	width: 100% !important;
-	height: auto !important;
 	overflow: hidden;
 }
 
@@ -187,19 +186,11 @@ a.sliderNext{
 	height: auto !important;
 }
 
-<?php if ($params->get('fixed_height_mobile', $defaults['fixed_height_mobile']) == 'yes') : ?>
 .slidermanImgCont {
 	width: 100% !important;
 	height: <?php echo $params->get('height'); ?>px !important;
 	position: static !important;
 }
-<?php else : ?>
-.slidermanImgCont {
-	width: 100% !important;
-	height: auto !important;
-	position: static !important;
-}
-<?php endif; ?>
 
 .slidermanImgCont div {
 	width: 100% !important;
@@ -208,10 +199,7 @@ a.sliderNext{
 
 .slidermanImgCont div img {
 	width: 100% !important;
-	height: auto !important;
 }
-
-<?php if ($params->get('fixed_height_mobile', $defaults['fixed_height_mobile']) == 'yes') : ?>
 
 #sliderContainer div img.fillHeight {
 	width: auto !important;
@@ -222,8 +210,6 @@ a.sliderNext{
 #sliderContainer div img.fillWidth {
 	width: 100% !important;
 }
-
-<?php endif; ?>
 
 #<?php echo $params->get('container', $defaults['container']) ?>{
 	height: auto !important;
@@ -247,7 +233,7 @@ a.sliderNext{
 	<?php if (in_array($params->get('description_position', $defaults['description_position']), array('top', 'bottom'))) : ?>
 	width: 100% !important;
 	<?php else : ?>
-	height: 100% !important;
+	height: 100%;
 	<?php endif; ?>
 }
 
