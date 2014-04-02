@@ -15,6 +15,7 @@ $defaults = array(
 	'height' => '250', // height of container
 	//'autoplay' => '5', // number of seconds per slide on autoplay, 0 to disable
 	//'pause' => 'yes', // pauses the autoplay on hover over slider
+	'timerbar' => 'yes',
 	'description' => 'yes', // displays image discription box
 	//'description_background' => 'ffffff', // description background color hex code
 	//'description_transparent_background' => 'no', // description background is not transparent by default
@@ -25,10 +26,14 @@ $defaults = array(
 	'position_title_y' => '85',
 	'speed_title' => '300',
 	'start_title' => '900',
-	'size_title' => '18',
+	/*'size_title' => '18',
 	'color_title' => '#ffffff',
-	'font_title' => 'Verdana, Geneva, sans-serif',
+	'font_title' => 'Verdana, Geneva, sans-serif',*/
+	'style_def_text' => 'notextstyle',
+	'title_text_class' => '',
 	'effect_title' => 'easeInBack',
+	'descriptionposition' => 'top_in',
+	'descriptionposition2' => 'bottombardescription',
 	'position_text_x' => '85',
 	'position_text_y' => '150',
 	'speed_text' => '300',
@@ -41,6 +46,7 @@ $defaults = array(
 	'buttons_opacity' => '1', // buttons opacity
 	'buttons_prev_label' => '', // previous button label
 	'buttons_next_label' => '', // next button label
+	'navigationtype' => '-1',
 	'navigation' => 'bullet', // displays the navigation
 	//'navigation_buttons' => 'yes', // displays next/prev buttons in navigation bar
 	//'navigation_label' => 'yes', // shows the numbers for navigation
@@ -75,9 +81,9 @@ $doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider_revoluti
 $doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider_revolution/jquery.plugins.min.js');
 $doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider_revolution/jquery.slide.min.js');
 $doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider_revolution/css/style.css');
-$doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider_revolution/css/preview.css');
+//$doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider_revolution/css/preview.css');
 $doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider_revolution/css/settings.css');
-$doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider_revolution/css/captions.css');
+//$doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider_revolution/css/captions.css');
 
   
 // Check if we have to include Jquery and Jquery UI
@@ -94,13 +100,13 @@ if ($include_jqueryui) {
 	$doc->addStylesheet('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css');
 }*/
 
-//ob_start();
-//include(JPATH_ROOT.'/modules/mod_jsshackslides/tmpl/css/sliderman.css.php');
+ob_start();
+include(JPATH_ROOT.'/modules/mod_jsshackslides/assets/slider_revolution/css/style.php');
 
-/*$styles = ob_get_contents();
+$styles = ob_get_contents();
 ob_end_clean();
 
-$doc->addStyleDeclaration($styles);*/
+$doc->addStyleDeclaration($styles);
 
 
 // Check if we have to include Twitter Bootstrap styles
@@ -152,9 +158,7 @@ $span_class = '';
                 <div class="fullwidthbanner-container">
 					<div class="fullwidthabnner tp-simpleresponsive">
                 <?php endif; ?>
-						<ul>
-							<!-- THE 1 SLIDE -->
-                            
+						<ul>       
 			<?php for ($i = 0; $i < count($images); $i++) : ?>
 				<?php if ($images[$i] === false) continue; ?>
                 <li data-transition="<?php echo $params->get('effect_slide2', $defaults['effect_slide2']); ?>" data-slotamount="<?php echo $params->get('effect_slotamount', $defaults['effect_slotamount']); ?>" data-masterspeed="<?php echo $params->get('effect_masterspeed', $defaults['effect_masterspeed']); ?>" >
@@ -168,17 +172,19 @@ $span_class = '';
                                              
 				<?php if (($titles[$i] || $contents[$i]) && $params->get('description', $defaults['description']) == 'yes') : ?>
 					<div class="slideTitle">
-						<?php if ($titles[$i]) : ?>
-						<div class="slideTitleIn">
-                        	<div class="caption very_large_black_text randomrotate" data-x="<?php echo $params->get('position_title_x', $defaults['position_title_x']); ?>" data-y="<?php echo $params->get('position_title_y', $defaults['position_title_y']); ?>" data-speed="<?php echo $params->get('speed_title', $defaults['speed_title']); ?>" data-start="<?php echo $params->get('start_title', $defaults['start_title']); ?>" data-easing="<?php echo $params->get('effect_title', $defaults['effect_title']); ?>" style="font-family:<?php echo $params->get('font_title', $defaults['font_title']); ?>; font-size:<?php echo $params->get('size_title', $defaults['size_title']); ?>px; color:<?php echo $params->get('color_title', $defaults['color_title']); ?>">
-								<?php echo $titles[$i]; ?>				
-							</div>
-						</div>
+                    	<?php if ($params->get('descriptionposition', $defaults['descriptionposition']) == 'notshowdesc' or $params->get('descriptionposition', $defaults['descriptionposition']) == 'top_left_in' or $params->get('descriptionposition', $defaults['descriptionposition']) == 'bottom_left_in' or $params->get('descriptionposition', $defaults['descriptionposition']) == 'top_right_in' or $params->get('descriptionposition', $defaults['descriptionposition']) == 'bottom_right_in' or $params->get('descriptionposition', $defaults['descriptionposition']) == 'advancedpostitle') : ?>
+							<?php if ($titles[$i]) : ?>
+                            <div class="slideTitleIn">
+                                <div class="caption <?php echo $params->get('style_def_text', $defaults['style_def_text']); ?> randomrotate <?php echo $params->get('title_text_class', $defaults['title_text_class']); ?> <?php echo $params->get('descriptionposition', $defaults['descriptionposition']); ?>" <?php if ($params->get('descriptionposition', $defaults['descriptionposition']) == 'advancedpostitle') : ?>data-x="<?php echo $params->get('position_title_x', $defaults['position_title_x']); ?>" data-y="<?php echo $params->get('position_title_y', $defaults['position_title_y']); ?>"<?php endif; ?> data-speed="<?php echo $params->get('speed_title', $defaults['speed_title']); ?>" data-start="<?php echo $params->get('start_title', $defaults['start_title']); ?>" data-easing="<?php echo $params->get('effect_title', $defaults['effect_title']); ?>">
+                                    <?php echo $titles[$i]; ?>				
+                                </div>
+                            </div>
+                            <?php endif; ?>
 						<?php endif; ?>
 						<?php if ($contents[$i]) : ?>
 						<div class="slideTitleContent">
-							<div class="slideTitleContentIn">
-                            	<div class="caption very_large_black_text randomrotate" data-x="<?php echo $params->get('position_text_x', $defaults['position_text_x']); ?>" data-y="<?php echo $params->get('position_text_y', $defaults['position_text_y']); ?>" data-speed="<?php echo $params->get('speed_text', $defaults['speed_text']); ?>" data-start="<?php echo $params->get('start_text', $defaults['start_text']); ?>" data-easing="<?php echo $params->get('effect_text', $defaults['effect_text']); ?>">
+							<div class="slideTitleContentIn <?php echo $params->get('descriptionposition2', $defaults['descriptionposition2']); ?>">
+                            	<div class="caption randomrotate" <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') : ?>data-x="<?php echo $params->get('position_text_x', $defaults['position_text_x']); ?>" data-y="<?php echo $params->get('position_text_y', $defaults['position_text_y']); ?>"<?php endif; ?> data-speed="<?php echo $params->get('speed_text', $defaults['speed_text']); ?>" data-start="<?php echo $params->get('start_text', $defaults['start_text']); ?>" data-easing="<?php echo $params->get('effect_text', $defaults['effect_text']); ?>">
 									<?php echo $contents[$i]; ?>
                                 </div>					
 							</div>
@@ -187,16 +193,20 @@ $span_class = '';
 					</div>
 				<?php endif; ?>
 				</li>
-
 			<?php endfor; ?>
             </ul>
+                
             <!-- CORRED -->
-        	<div class="tp-bannertimer"></div>
+            <?php if ($params->get('timerbar', $defaults['timerbar']) == 'yes') : ?>
+        		<div class="tp-bannertimer"></div>
+            <?php endif; ?>
+            
 		</div>
 
 		<div id="<?php echo $params->get('container', $defaults['container']) ?>Nav"></div>
 
-	<!--/div-->
+
+	</div>
 
 <?php //if ($enable_bootstrap_styles) : ?><!--/div--><?php //endif; ?>
 
@@ -236,10 +246,10 @@ $span_class = '';
 				navOffsetHorizontal:0,
 				navOffsetVertical:20,
 
-				stopAtSlide:-1,
-				stopAfterLoops:-1,
+				stopAtSlide:1,
+				stopAfterLoops:<?php echo $params->get('navigationtype', $defaults['navigationtype']) ?>,
 
-				shadow:<?php echo $params->get('shadow_slider', $defaults['shadow_slider']) ?>,								//0 = no Shadow, 1,2,3 = 3 Different Art of Shadows  (No Shadow in Fullwidth Version !)
+				shadow:0<?php //echo $params->get('shadow_slider', $defaults['shadow_slider']) ?>,								//0 = no Shadow, 1,2,3 = 3 Different Art of Shadows  (No Shadow in Fullwidth Version !)
 				fullWidth:"on"							// Turns On or Off the Fullwidth Image Centering in FullWidth Modus
 			});
 	});

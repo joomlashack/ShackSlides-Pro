@@ -1,114 +1,3 @@
-/*-----------------------------------------------------------------------------
-
-KENBURNER RESPONSIVE BASIC STYLES OF HTML DOCUMENT
-
-Screen Stylesheet
-
-version:   	1.0
-date:      	07/27/11
-author:		themepunch
-email:     	support@themepunch.com
-website:   	http://www.themepunch.com
------------------------------------------------------------------------------*/
-
-
-
-
-
-  /*********************************************************************************************
-		-	SET THE SCREEN SIZES FOR THE BANNER IF YOU WISH TO MAKE THE BANNER RESOPONSIVE 	-
-  **********************************************************************************************/
-
-  /*	-	THE BANNER CONTAINER (Padding, Shadow, Border etc. )	-	*/
-
-  .bannercontainer {
-		background-color:#fff;
-		width:960px;
-		position:relative;
-		position:relative;
-		margin-left:auto;
-		margin-right:auto;
-
-	}
-
-  .banner{
-		width:960px;
-		height:500px;
-		position:relative;
-		overflow:hidden;
-   }
-
-
-    .bannercontainer-simple {
-		padding:0px;
-		background-color:#fff;
-		width:960px;
-		position:relative;
-		position:relative;
-		margin-left:auto;
-		margin-right:auto;
-
-	}
-
-  .banner-simple{
-		width:960px;
-		height:500px;
-		position:relative;
-		overflow:hidden;
-   }
-
- .fullwidthbanner-container{
-	width:100% !important;
-	position:relative;
-	padding:0;
-	min-height:500px !important;
-	overflow:hidden;
-}
-
-.fullwidthbanner-container .fullwidthabnner	{
-	width:100% !important;
-	max-height:500px !important;
-	position:relative;
-}
-
-
-#video_link img {
-	max-width: 100%;
-}
-
-   @media only screen and (min-width: 768px) and (max-width: 959px) {
-
- 		  .banner, .bannercontainer			{	width:760px; height:395px;}
-
- 		  #video_link  ,#video_frame			{	width:760px; height:395px;}
-
-
-   }
-
-   @media only screen and (min-width: 480px) and (max-width: 767px) {
-		   .banner, .bannercontainer		{	width:480px; height:250px;	}
-
-		   #video_link ,#video_frame			{	width:707px; height:396px;	}
-		   
-		 /*  #video_link ,#video_frame			{	width:504px; height:282px;	} */
-
-
-   }
-
-   @media only screen and (min-width: 0px) and (max-width: 479px) {
-			.banner, .bannercontainer		{	width:320px;height:166px;	}
-
-			#video_link  ,#video_frame		{	width:360px;height:201px;	}
-
-
-   }
-
-
-
-
-.fb_iframe_widget iframe{
-	z-index: 120;
-}
 
 pre {
     -moz-box-sizing: border-box;
@@ -139,5 +28,237 @@ pre {
 	font-size:12px !important;
 }
 
-/*CLASES PARA LOS TITULOS*/
+/*CLASES PARA LOS TEXTOS*/
 
+.notextstyle {}
+
+.bigwhite {
+	position: absolute; 
+	color: #fff; 
+	text-shadow: none; 
+	font-weight: 700; 
+	font-size: 36px; 
+	line-height: 36px; 
+	font-family: Arial; 
+	padding: 0px 4px; 
+	padding-top: 1px;
+	margin: 0px; 
+	border-width: 0px; 
+	border-style: none; 
+	background-color:#000;	
+	letter-spacing: -1.5px;
+}
+
+.mediumwhite {
+	position: absolute; 
+	color: #fff; 
+	text-shadow: none; 
+	font-weight: 700; 
+	font-size: 20px; 
+	line-height: 20px; 
+	font-family: Arial; 
+	margin: 0px; 
+	border-width: 0px; 
+	border-style: none; 
+	white-space:nowrap;	
+	text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.smallwhite {
+	position: absolute; 
+	color: #fff; 
+	text-shadow: none; 
+	font-weight: 700; 
+	font-size: 14px; 
+	line-height: 20px; 
+	font-family: Arial; 
+	margin: 0px; 
+	border-width: 0px; 
+	border-style: none; 
+	white-space:nowrap;	
+	text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.bigblack {
+	position: absolute; 
+	color: #000; 
+	text-shadow: none; 
+	font-weight: 700; 
+	font-size: 36px; 
+	line-height: 36px; 
+	font-family: Arial; 
+	padding: 0px 4px; 
+	padding-top: 1px;
+	margin: 0px; 
+	border-width: 0px; 
+	border-style: none; 
+	background-color:#fff;	
+	letter-spacing: -1.5px;
+}
+
+.mediumblack {
+	position: absolute; 
+	color: #000; 
+	text-shadow: none; 
+	font-weight: 700; 
+	font-size: 20px; 
+	line-height: 20px; 
+	font-family: Arial; 
+	margin: 0px; 
+	border-width: 0px; 
+	border-style: none; 
+	white-space:nowrap;	
+	text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.smallwhite {
+	position: absolute; 
+	color: #000; 
+	text-shadow: none; 
+	font-weight: 700; 
+	font-size: 14px; 
+	line-height: 20px; 
+	font-family: Arial; 
+	margin: 0px; 
+	border-width: 0px; 
+	border-style: none; 
+	white-space:nowrap;	
+	text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.bigorange {
+	position: absolute; 
+	color: #FF6600; 
+	text-shadow: none; 
+	font-weight: 700; 
+	font-size: 36px; 
+	line-height: 36px; 
+	font-family: Arial; 
+	padding: 0px 4px; 
+	padding-top: 1px;
+	margin: 0px; 
+	border-width: 0px; 
+	border-style: none; 
+	background-color:#000;	
+	letter-spacing: -1.5px;
+}
+
+.bigorange_whitebg {
+	position: absolute; 
+	color: #FF6600; 
+	text-shadow: none; 
+	font-weight: 700; 
+	font-size: 36px; 
+	line-height: 36px; 
+	font-family: Arial; 
+	padding: 0px 4px; 
+	padding-top: 1px;
+	margin: 0px; 
+	border-width: 0px; 
+	border-style: none; 
+	background-color:#fff;	
+	letter-spacing: -1.5px;
+}
+
+.mediumorange {
+	position: absolute; 
+	color: #FF6600; 
+	text-shadow: none; 
+	font-weight: 700; 
+	font-size: 20px; 
+	line-height: 20px; 
+	font-family: Arial; 
+	margin: 0px; 
+	border-width: 0px; 
+	border-style: none; 
+	white-space:nowrap;	
+	text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.smallorange {
+	position: absolute; 
+	color: #FF6600; 
+	text-shadow: none; 
+	font-weight: 700; 
+	font-size: 14px; 
+	line-height: 20px; 
+	font-family: Arial; 
+	margin: 0px; 
+	border-width: 0px; 
+	border-style: none; 
+	white-space:nowrap;	
+	text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.slidetitle {
+	text-align:center;
+}
+
+/*ESTILOS DEL POSICIONAMIENTO DE LOS TITULOS*/
+.tp-simpleresponsive > ul li {
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+
+.notshowdesc {
+	display:none
+}
+
+.slideTitle {
+	height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.slideTitleIn {
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+
+.top_left_in {
+	position:absolute;
+	top:25px!important;
+	left:25px!important;
+}
+
+.bottom_left_in {
+	bottom: 15px!important;
+    left: 15px!important;
+    position: absolute!important;
+}
+
+.top_right_in {
+	position:absolute;
+	top:25px!important;
+	right:25px!important;
+}
+
+.bottom_right_in {
+	bottom: 15px!important;
+    right: 15px!important;
+    position: absolute!important;
+}
+
+.notshowdescbottom {
+	display:none;
+}
+
+.bottombardescription {
+	position:absolute;
+	bottom:0;
+	width:98%;
+	height:15%;
+	padding-left:2%;
+	
+	background:rgba(0, 0, 0, 0.5);
+	-khtml-opacity:.50; 
+	-moz-opacity:.50; 
+	-ms-filter:”alpha(opacity=50)”;
+	filter:alpha(opacity=50);
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
+	opacity:.50; 
+	color:#fff;
+	
+}

@@ -24,6 +24,7 @@
 
 	<languages>
 		<language tag="en-GB">language/en-GB/en-GB.mod_jsshackslides.ini</language>
+		<language tag="es-ES">language/es-ES/es-ES.mod_jsshackslides.ini</language>
 	</languages>
 
 	<config>
@@ -48,7 +49,7 @@
 				<option value="ASC">ASCENDING</option>
 				<option value="DESC">DESCENDING</option>
 			</field>
-
+			
 			<field name="width" type="text" default="500" label="CONTAINERWIDTH" description="CONTAINERWIDTH_DESC" />
 
 			<field name="height" type="text" default="250" label="CONTAINERHEIGHT" description="CONTAINERHEIGHT_DESC" />
@@ -148,6 +149,11 @@
 				<option value="2">SHADOW2</option>
 				<option value="3">SHADOW3</option>
 			</field>
+			
+			<field name="timerbar" type="radio" default="yes" label="TIMERBAR" description="TIMERBAR_DESC">
+				<option value="yes">Yes</option>
+				<option value="no">No</option>
+			</field>
 
 
 		</fieldset>
@@ -188,11 +194,24 @@
 		<fieldset name="descriptions" label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL">
 
 			<field name="description" type="radio" default="yes" label="DESCRIPTIONS" description="DESCRIPTIONS_DESC">
-				<option value="yes">YES</option>
-				<option value="no">NO</option>
+				<option value="yes">Yes</option>
+				<option value="no">No</option>
 			</field>
 			
 			<field type="spacer" name="title_animation_options_spacer" label="TITLE_ANIMATION_OPTIONS_SPACER_LABEL" />
+			
+			<field name="descriptionposition" type="list" default="top_in" label="DESC_POSITION" description="DESC_POSITION_DESC">
+				<option value="notshowdesc">NOTSHOWDESC</option>
+				<option value="top_left_in">TOPLEFTIN</option>
+				<option value="bottom_left_in">BOTTOMLEFTIN</option>
+				<option value="top_right_in">TOPRIGHTIN</option>
+				<option value="bottom_right_in">BOTTOMRIGHTIN</option>
+				<!--option value="top_out">TOPOUT</option>
+				<option value="bottom_out">BOTTOMOUT</option>
+				<option value="left_out">LEFTOUT</option>
+				<option value="right_out">RIGHTOUT</option-->
+				<option value="advancedpostitle">ADVANCEDPOSTITLE</option>
+			</field>
 			
 			<field name="position_title_x" type="text" default="85" label="POSITION_TITLE_X" description="POSITION_TITLE_X_DESC" />
 			
@@ -202,7 +221,24 @@
 			
 			<field name="start_title" type="text" default="900" label="START_TITLE" description="START_TITLE_DESC" />
 			
-			<field name="size_title" type="text" default="18" label="SIZE_TITLE" description="SIZE_TITLE_DESC" />
+			<field name="style_def_text" type="list" default="notextstyle" label="STYLE_DEF_TEXT" description="STYLE_DEF_TEXT_DESC">
+				<option value="notextstyle">NO_STYLE_TEXT</option>
+				<option value="bigwhite">BIG_TEXT_WHITE</option>
+				<option value="mediumwhite">MEDIUM_TEXT_WHITE</option>
+				<option value="smallwhite">SMALL_TEXT_WHITE</option>
+				<option value="bigblack">BIG_TEXT_BLACK</option>
+				<option value="mediumblack">MEDIUM_TEXT_BLACK</option>
+				<option value="smallblack">SMALL_TEXT_BLACK</option>
+				<option value="bigorange">BIG_TEXT_ORANGE</option>
+				<option value="bigorange_whitebg">BIG_TEXT_ORANGE_WHITEBG</option>
+				<option value="mediumorange">MEDIUM_TEXT_ORANGE</option>
+				<option value="smallorange">SMALL_TEXT_ORANGE</option>
+			</field>
+			
+			<field name="title_text_class" type="text" default="" label="TITLE_TEXT_CLASS" description="TITLE_TEXT_CLASS_DESC" />
+			
+			
+			<!--field name="size_title" type="text" default="18" label="SIZE_TITLE" description="SIZE_TITLE_DESC" />
 			
 			<field name="color_title" type="list" default="white" label="COLOR_TITLE" description="COLOR_TITLE_DESC">
 				<option value="#ffffff">White</option>
@@ -220,7 +256,7 @@
 				<option value="Verdana, Geneva, sans-serif">Verdana</option>
 				<option value="Tahoma, Geneva, sans-serif">Tahoma</option>
 				<option value="Times New Roman', Times, serif">Times New Roman</option>
-			</field>
+			</field-->
 			
 			<field name="effect_title" type="list" default="easeInBack" label="EFFECT_TITLE" description="EFFECT_TITLE_DESC">
 				<option value="easeOutBack">easeOutBack</option>
@@ -257,7 +293,13 @@
 			
 			<field type="spacer" name="text_animation_options_spacer" label="TEXT_ANIMATION_OPTIONS_SPACER_LABEL" />
 			
-			<field name="position_text_x" type="text" default="85" label="POSITION_TITLE_X" description="POSITION_TEXT_X_DESC" />
+			<field name="descriptionposition2" type="list" default="bottombardescription" label="DESC_POSITION2" description="DESC_POSITION2_DESC">
+				<option value="notshowdescbottom">NOTSHOWDESC2</option>
+				<option value="bottombardescription">BOTTOMBARDESCRIPTION</option>
+				<option value="advancedpostextdesc">ADVANCEDPOSTEXTDESC</option>
+			</field>
+			
+			<field name="position_text_x" type="text" default="85" label="POSITION_TEXT_X" description="POSITION_TEXT_X_DESC" />
 			
 			<field name="position_text_y" type="text" default="150" label="POSITION_TEXT_Y" description="POSITION_TEXT_Y_DESC" />
 			
@@ -325,6 +367,11 @@
 		</fieldset>
 
 		<fieldset name="navigation" label="NAVIGATION_OPTIONS_LABEL">
+		
+			<field name="navigationtype" type="list" default="-1" label="NAVIGATIONTYPE" description="NAVIGATIONTYPE_DESC">
+				<option value="-1">AUTOMATICNAV</option>
+				<option value="0">MANUALNAV</option>
+			</field>
 
 			<field type="spacer" name="navigation_bar_spacer" label="NAVIGATION_BAR_OPTIONS_SPACER_LABEL" />
 
@@ -341,14 +388,14 @@
 				<option value="no">NO</option>
 			</field-->
 			<field name="navigation_align" type="list" default="verticalcentered" label="NAVIGATION_ALIGN" description="NAVIGATION_ALIGN_DESC">
-				<option value="nexttobullets">Next to Bullets</option>
-				<option value="verticalcentered">Vertical Centered</option>
-				<option value="none">none</option>
+				<option value="nexttobullets">NEXTTOBULLETS</option>
+				<option value="verticalcentered">VERTICALCENTERED</option>
+				<option value="none">NONAVIGATION</option>
 			</field>
 			<field name="navigation_style" type="list" default="round" label="NAVIGATION_STYLE" description="NAVIGATION_STYLE_DESC">
-				<option value="round">Round</option>
-				<option value="square">Square</option>
-				<option value="navbar">Navbar</option>
+				<option value="round">ROUNDNAV</option>
+				<option value="square">SQUARENAV</option>
+				<option value="navbar">NAVBARNAV</option>
 			</field>
 			
 			<!--field name="mousewheel" type="radio" default="no" label="MOUSEWHEEL" description="MOUSEWHEEL_DESC">
@@ -357,24 +404,24 @@
 			</field-->
 
 
-			<field type="spacer" name="prev_next_buttons_spacer" label="PREV_NEXT_BUTTONS_OPTIONS_SPACER_LABEL" />
+			<!--field type="spacer" name="prev_next_buttons_spacer" label="PREV_NEXT_BUTTONS_OPTIONS_SPACER_LABEL" />
 
 			<field name="buttons" type="radio" default="no" label="BUTTONS" description="BUTTONS_DESC">
-				<option value="yes">Yes</option>
-				<option value="no">No</option>
-			</field>
+				<option value="yes">BUTTONSYES</option>
+				<option value="no">BUTTONSNO</option>
+			</field-->
 			<!--field name="buttons_opacity" type="text" default="1.0" label="BUTTONS_OPACITY" description="BUTTONS_OPACITY_DESC" /-->
 			
 			<field type="spacer" name="other_options_spacer" label="OTHER_OPTIONS_SPACER_LABEL" />
 			
 			<field name="touch_enabled" type="radio" default="on" label="TOUCH_ENABLED" description="TOUCH_ENABLED_DESC">
-				<option value="on">On</option>
-				<option value="off">Off</option>
+				<option value="on">TOUCHON</option>
+				<option value="off">TOUCHOFF</option>
 			</field>
 			
 			<field name="onhover_stop" type="radio" default="on" label="ONHOVER_STOP" description="ONHOVER_STOP_DESC">
-				<option value="on">On</option>
-				<option value="off">Off</option>
+				<option value="on">ONHOVERSTOPON</option>
+				<option value="off">ONHOVERSTOPOFF</option>
 			</field>
 			
 		</fieldset>
