@@ -31,8 +31,12 @@
 	<fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
 
 		<fieldset name="basic">
-
-
+			
+			<field name="descriptiontemplate" type="list" default="animatedtemplate" label="DESC_TEMPLATE" description="DESC_TEMPLATE_DESC">
+				<option value="animatedtemplate">ANIMATEDTEMPLATE</option>
+				<option value="statictemplate">STATICTEMPLATE</option>
+			</field>
+			
 			<field type="spacer" name="basic_options_spacer" label="BASIC_OPTIONS_SPACER_LABEL" />
 
 			<field name="limit" type="text" default="5" label="LIMIT" description="LIMIT_DESC" />
@@ -59,55 +63,7 @@
 				<option value="fullwidth">FULL-WIDTH</option>
 			</field>
 
-			<!--field name="theme" type="list" default="gray" label="THEME" description="THEME_DESC">
-				<option value="gray">GRAY</option>
-				<option value="white">WHITE</option>
-				<option value="black">BLACK</option>
-				<option value="blue">BLUE</option>
-				<option value="green">GREEN</option>
-				<option value="orange">ORANGE</option>
-				<option value="red">RED</option>
-				<option value="brown">BROWN</option>
-				<option value="purple">PURPLE</option>
-			</field-->
-
 			<field type="spacer" name="slider_options_spacer" label="SLIDER_OPTIONS_SPACER_LABEL" />
-
-			<!--field name="autoplay" type="list" default="5" label="AUTOPLAYENABLED" description="AUTOPLAYENABLED_DESC">
-				<option value="0">JDISABLED</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-				<option value="10">10</option>
-				<option value="11">11</option>
-				<option value="12">12</option>
-				<option value="13">13</option>
-				<option value="14">14</option>
-				<option value="15">15</option>
-				<option value="16">16</option>
-				<option value="17">17</option>
-				<option value="18">18</option>
-				<option value="19">19</option>
-				<option value="20">20</option>
-			</field-->
-			<!--field name="pause" type="radio" default="yes" label="AUTOPLAY_PAUSE" description="AUTOPLAY_PAUSE_DESC">
-				<option value="yes">YES</option>
-				<option value="no">NO</option>
-			</field-->
-			<!--field name="effect" type="list" default="slide_right" label="EFFECT" description="EFFECT_DESC">
-				<option value="none">EFFECT_NONE</option>
-				<option value="slide_bottom">EFFECT_SLIDE_BOTTOM</option>
-				<option value="slide_left">EFFECT_SLIDE_LEFT</option>
-				<option value="slide_right">EFFECT_SLIDE_RIGHT</option>
-				<option value="slide_top">EFFECT_SLIDE_TOP</option>
-				<option value="fade">EFFECT_FADE</option>
-			</field-->
 			
 			<field name="slide_delay" type="text" default="5000" label="SLIDE_DELAY" description="SLIDE_DELAY_DESC" />
 			
@@ -143,21 +99,74 @@
 			<field name="effect_slotamount" type="text" default="1" label="EFFECT_SLOTAMOUNT" description="EFFECT_SLOTAMOUNT_DESC" />
 			<field name="effect_masterspeed" type="text" default="300" label="EFFECT_MASTERSPEED" description="EFFECT_MASTERSPEED_DESC" />
 			
-			<field name="shadow_slider" type="list" default="0" label="SHADOW_SLIDER" description="SHADOW_SLIDER_DESC">
+			<!--field name="shadow_slider" type="list" default="0" label="SHADOW_SLIDER" description="SHADOW_SLIDER_DESC">
 				<option value="0">NOSHADOW</option>
 				<option value="1">SHADOW1</option>
 				<option value="2">SHADOW2</option>
 				<option value="3">SHADOW3</option>
-			</field>
+			</field-->
 			
 			<field name="timerbar" type="radio" default="yes" label="TIMERBAR" description="TIMERBAR_DESC">
 				<option value="yes">Yes</option>
 				<option value="no">No</option>
 			</field>
-
-
 		</fieldset>
-
+		
+		<!--START BASIC OPTIONS OF STATIC TEMPLATE-->
+		<fieldset name="basic_static" label="BASIC_STATIC_OPTIONS_LABEL">
+		
+			<field name="theme" type="list" default="gray" label="THEME" description="THEME_DESC">
+				<option value="gray">GRAY</option>
+				<option value="white">WHITE</option>
+				<option value="black">BLACK</option>
+				<option value="blue">BLUE</option>
+				<option value="green">GREEN</option>
+				<option value="orange">ORANGE</option>
+				<option value="red">RED</option>
+				<option value="brown">BROWN</option>
+				<option value="purple">PURPLE</option>
+			</field>
+			
+			<field name="autoplay" type="list" default="5" label="AUTOPLAYENABLED" description="AUTOPLAYENABLED_DESC">
+				<option value="0">JDISABLED</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+			</field>
+			<field name="pause" type="radio" default="yes" label="AUTOPLAY_PAUSE" description="AUTOPLAY_PAUSE_DESC">
+				<option value="yes">YESANSWER</option>
+				<option value="no">NOANSWER</option>
+			</field>
+			<field name="effect" type="list" default="slide_right" label="EFFECT" description="EFFECT_DESC">
+				<option value="none">EFFECT_NONE</option>
+				<option value="slide_bottom">EFFECT_SLIDE_BOTTOM</option>
+				<option value="slide_left">EFFECT_SLIDE_LEFT</option>
+				<option value="slide_right">EFFECT_SLIDE_RIGHT</option>
+				<option value="slide_top">EFFECT_SLIDE_TOP</option>
+				<option value="fade">EFFECT_FADE</option>
+			</field>
+			
+		</fieldset>
+		<!--END BASIC OPTIONS OF STATIC TEMPLATE-->
+		
+		
 		<fieldset name="source" label="IMAGES_SOURCE_OPTIONS_LABEL">
 
 			<field name="source" type="list" default="folder" label="SHACKSLIDE_SOURCE" description="SHACKSLIDE_SOURCE_DESC">
@@ -192,11 +201,8 @@
 		</fieldset>
 
 		<fieldset name="descriptions" label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL">
-
-			<field name="description" type="radio" default="yes" label="DESCRIPTIONS" description="DESCRIPTIONS_DESC">
-				<option value="yes">Yes</option>
-				<option value="no">No</option>
-			</field>
+			
+			<field type="spacer" name="title_separated_template" label="TITLE_SEPARATED_TEMPLATE" />
 			
 			<field type="spacer" name="title_animation_options_spacer" label="TITLE_ANIMATION_OPTIONS_SPACER_LABEL" />
 			
@@ -206,10 +212,6 @@
 				<option value="bottom_left_in">BOTTOMLEFTIN</option>
 				<option value="top_right_in">TOPRIGHTIN</option>
 				<option value="bottom_right_in">BOTTOMRIGHTIN</option>
-				<!--option value="top_out">TOPOUT</option>
-				<option value="bottom_out">BOTTOMOUT</option>
-				<option value="left_out">LEFTOUT</option>
-				<option value="right_out">RIGHTOUT</option-->
 				<option value="advancedpostitle">ADVANCEDPOSTITLE</option>
 			</field>
 			
@@ -236,27 +238,6 @@
 			</field>
 			
 			<field name="title_text_class" type="text" default="" label="TITLE_TEXT_CLASS" description="TITLE_TEXT_CLASS_DESC" />
-			
-			
-			<!--field name="size_title" type="text" default="18" label="SIZE_TITLE" description="SIZE_TITLE_DESC" />
-			
-			<field name="color_title" type="list" default="white" label="COLOR_TITLE" description="COLOR_TITLE_DESC">
-				<option value="#ffffff">White</option>
-				<option value="#000000">Black</option>
-				<option value="#FFCC00">Yellow</option>
-				<option value="#CC0000">Red</option>
-				<option value="#FF9900">Orange</option>
-				<option value="#0066CC">Blue</option>
-				<option value="#339900">Green</option>
-				<option value="#999999">Gray</option>
-			</field>
-			
-			<field name="font_title" type="list" default="Verdana, Geneva, sans-serif" label="FONT_TITLE" description="FONT_TITLE_DESC">
-				<option value="Arial, Helvetica, sans-serif">Arial</option>
-				<option value="Verdana, Geneva, sans-serif">Verdana</option>
-				<option value="Tahoma, Geneva, sans-serif">Tahoma</option>
-				<option value="Times New Roman', Times, serif">Times New Roman</option>
-			</field-->
 			
 			<field name="effect_title" type="list" default="easeInBack" label="EFFECT_TITLE" description="EFFECT_TITLE_DESC">
 				<option value="easeOutBack">easeOutBack</option>
@@ -340,7 +321,17 @@
 				<option value="easeInOutBounce">easeInOutBounce</option>
 			</field>
 
-			<!--field name="description_opacity" type="text" default="0.5" label="DESCRIPTION_OPACITY" description="DESCRIPTION_OPACITY_DESC" />
+		</fieldset>
+		
+		<!--START DESCRIPTION OPTIONS IN STATIC TEMPLATE-->
+		<fieldset name="descriptions_static" label="SLIDES_DESCRIPTIONS_OPTIONS_STATIC_LABEL">
+
+			<field name="description" type="radio" default="yes" label="DESCRIPTIONS" description="DESCRIPTIONS_DESC">
+				<option value="yes">YESANSWER</option>
+				<option value="no">NOANSWER</option>
+			</field>
+
+			<field name="description_opacity" type="text" default="0.5" label="DESCRIPTION_OPACITY" description="DESCRIPTION_OPACITY_DESC" />
 
 			<field name="description_height" type="text" default="50" label="DESCRIPTION_HEIGHT" description="DESCRIPTION_HEIGHT_DESC" />
 
@@ -360,11 +351,13 @@
 			<field name="description_background" type="colorpicker" default="ffffff" label="DESCRIPTION_BACKGROUND" description="DESCRIPTION_BACKGROUND_DESC" />
 
 			<field name="description_transparent_background" type="radio" default="no" label="DESCRIPTION_TRANSPARENT_BACKGROUND" description="DESCRIPTION_TRANSPARENT_BACKGROUND_DESC">
-				<option value="no">NO</option>
-				<option value="yes">YES</option>
-			</field-->
+				<option value="no">NOANSWER</option>
+				<option value="yes">YESANSWER</option>
+			</field>
 
 		</fieldset>
+		<!--END DESCRIPTION OPTIONS IN STATIC TEMPLATE-->
+		
 
 		<fieldset name="navigation" label="NAVIGATION_OPTIONS_LABEL">
 		
@@ -375,42 +368,22 @@
 
 			<field type="spacer" name="navigation_bar_spacer" label="NAVIGATION_BAR_OPTIONS_SPACER_LABEL" />
 
-			<field name="navigation" type="radio" default="bullet" label="NAVIGATION" description="NAVIGATION_DESC">
+			<field name="navigation_animated" type="radio" default="bullet" label="NAVIGATION" description="NAVIGATION_DESC">
 				<option value="bullet">BULLET</option>
 				<option value="none">NOBULLET</option>
 			</field>
-			<!--field name="navigation_buttons" type="radio" default="yes" label="NAVIGATION_BUTTONS" description="NAVIGATION_BUTTONS_DESC">
-				<option value="yes">YES</option>
-				<option value="no">NO</option>
-			</field>
-			<field name="navigation_label" type="radio" default="no" label="NAVIGATION_LABEL" description="NAVIGATION_LABEL_DESC">
-				<option value="yes">YES</option>
-				<option value="no">NO</option>
-			</field-->
-			<field name="navigation_align" type="list" default="verticalcentered" label="NAVIGATION_ALIGN" description="NAVIGATION_ALIGN_DESC">
+			
+			<field name="navigation_align_animated" type="list" default="verticalcentered" label="NAVIGATION_ALIGN" description="NAVIGATION_ALIGN_DESC">
 				<option value="nexttobullets">NEXTTOBULLETS</option>
 				<option value="verticalcentered">VERTICALCENTERED</option>
 				<option value="none">NONAVIGATION</option>
 			</field>
+			
 			<field name="navigation_style" type="list" default="round" label="NAVIGATION_STYLE" description="NAVIGATION_STYLE_DESC">
 				<option value="round">ROUNDNAV</option>
 				<option value="square">SQUARENAV</option>
 				<option value="navbar">NAVBARNAV</option>
 			</field>
-			
-			<!--field name="mousewheel" type="radio" default="no" label="MOUSEWHEEL" description="MOUSEWHEEL_DESC">
-				<option value="yes">YES</option>
-				<option value="no">NO</option>
-			</field-->
-
-
-			<!--field type="spacer" name="prev_next_buttons_spacer" label="PREV_NEXT_BUTTONS_OPTIONS_SPACER_LABEL" />
-
-			<field name="buttons" type="radio" default="no" label="BUTTONS" description="BUTTONS_DESC">
-				<option value="yes">BUTTONSYES</option>
-				<option value="no">BUTTONSNO</option>
-			</field-->
-			<!--field name="buttons_opacity" type="text" default="1.0" label="BUTTONS_OPACITY" description="BUTTONS_OPACITY_DESC" /-->
 			
 			<field type="spacer" name="other_options_spacer" label="OTHER_OPTIONS_SPACER_LABEL" />
 			
@@ -425,32 +398,69 @@
 			</field>
 			
 		</fieldset>
+		
+		<!--START NAVIGATION OPTIONS IN STATIC TEMPLATE-->
+		<fieldset name="navigation_static" label="NAVIGATION_OPTIONS_STATIC_LABEL">
 
-		<fieldset name="advanced">
+			<field type="spacer" name="navigation_bar_spacer" label="NAVIGATION_BAR_OPTIONS_SPACER_LABEL" />
+
+			<field name="navigation" type="radio" default="yes" label="NAVIGATION" description="NAVIGATION_DESC">
+				<option value="yes">YESANSWER</option>
+				<option value="no">NOANSWER</option>
+			</field>
+			<field name="navigation_buttons" type="radio" default="yes" label="NAVIGATION_BUTTONS" description="NAVIGATION_BUTTONS_DESC">
+				<option value="yes">YESANSWER</option>
+				<option value="no">NOANSWER</option>
+			</field>
+			<field name="navigation_label" type="radio" default="no" label="NAVIGATION_LABEL" description="NAVIGATION_LABEL_DESC">
+				<option value="yes">YESANSWER</option>
+				<option value="no">NOANSWER</option>
+			</field>
+			<field name="navigation_align" type="list" default="center" label="NAVIGATION_ALIGN" description="NAVIGATION_ALIGN_DESC">
+				<option value="left">LEFT</option>
+				<option value="right">RIGHT</option>
+				<option value="center">CENTER</option>
+			</field>
+			<field name="mousewheel" type="radio" default="no" label="MOUSEWHEEL" description="MOUSEWHEEL_DESC">
+				<option value="yes">YESANSWER</option>
+				<option value="no">NOANSWER</option>
+			</field>
+
+
+			<field type="spacer" name="prev_next_buttons_spacer" label="PREV_NEXT_BUTTONS_OPTIONS_SPACER_LABEL" />
+
+			<field name="buttons" type="radio" default="no" label="BUTTONS" description="BUTTONS_DESC">
+				<option value="yes">YESANSWER</option>
+				<option value="no">NOANSWER</option>
+			</field>
+			<field name="buttons_opacity" type="text" default="1.0" label="BUTTONS_OPACITY" description="BUTTONS_OPACITY_DESC" />
+
+		</fieldset>
+		<!--END NAVIGATION OPTIONS IN STATIC TEMPLATE-->
+		
+		
+
+		<fieldset name="advanced" label="ADVANCED_BOTH">
 
 		    <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
 		    <field name="container" type="text" default="slider" label="CONTAINER" description="CONTAINER_DESC" />
 		    <field name="main_container_class" type="text" default="" label="MAIN_CONTAINER_CLASS" description="MAIN_CONTAINER_CLASS_DESC" />
 			
-			<!--field name="enable_jquery" type="radio" default="no" label="ENABLE_JQUERY_STYLES" description="ENABLE_JQUERY_STYLES_DESC">
-				<option value="yes">YES</option>
-				<option value="no">NO</option>
+
+			
+		</fieldset>
+
+		<!--START ADVANCED OPTIONS FOR STATIC TEMPLATE-->
+		<fieldset name="advanced_static" label="ADVANCED_OPTIONS_STATIC_LABEL">
+
+		    <field name="description_overflow" type="radio" default="hidden" label="DESCRIPTION_OVERFLOW" description="DESCRIPTION_OVERFLOW_DESC">
+					<option value="hidden">NOANSWER</option>
+					<option value="visible">YESANSWER</option>
 			</field>
-			
-			<field name="enable_jqueryui" type="radio" default="no" label="ENABLE_JQUERYUI_STYLES" description="ENABLE_JQUERYUI_STYLES_DESC">
-				<option value="yes">YES</option>
-				<option value="no">NO</option>
-			</field-->
-			
 
-		    <!--field name="description_overflow" type="radio" default="hidden" label="DESCRIPTION_OVERFLOW" description="DESCRIPTION_OVERFLOW_DESC">
-					<option value="hidden">NO</option>
-					<option value="visible">YES</option>
-			</field-->
-
-			<!--field name="enable_bootstrap_styles" type="radio" default="no" label="ENABLE_BOOTSTRAP_STYLES" description="ENABLE_BOOTSTRAP_STYLES_DESC">
-				<option value="yes">YES</option>
-				<option value="no">NO</option>
+			<field name="enable_bootstrap_styles" type="radio" default="no" label="ENABLE_BOOTSTRAP_STYLES" description="ENABLE_BOOTSTRAP_STYLES_DESC">
+				<option value="yes">YESANSWER</option>
+				<option value="no">NOANSWER</option>
 			</field>
 
 			<field name="bootstrap_span_size_description" type="list" default="4" label="BOOTSTRAP_SPAN_SIZE_DESCRIPTION" description="BOOTSTRAP_SPAN_SIZE_DESCRIPTION_DESC">
@@ -465,11 +475,29 @@
 				<option value="9">9</option>
 				<option value="10">10</option>
 				<option value="11">11</option>
-			</field-->
+			</field>
 
 		</fieldset>
-
-
+		
+		<fieldset name="jqueryoptions" label="JQUERYOPTIONS">
+			
+			<field name="includejquery" type="radio" default="off" label="INCLUDE_JQUERY" description="INCLUDE_JQUERY_DESC">
+				<option value="on">JQUERYON</option>
+				<option value="off">JQUERYOFF</option>
+			</field>
+			
+			<field name="includejqueryui" type="radio" default="off" label="INCLUDE_JQUERYUI" description="INCLUDE_JQUERYUI_DESC">
+				<option value="on">JQUERYUION</option>
+				<option value="off">JQUERYUIOFF</option>
+			</field>
+			
+			<field name="includenoconflictmode" type="radio" default="off" label="INCLUDE_NOCONFLICTMODE" description="INCLUDE_NOCONFLICTMODE_DESC">
+				<option value="on">NOCONFLICTON</option>
+				<option value="off">NOCONFLICTOFF</option>
+			</field>
+			
+		</fieldset>
+		
 	</fields>
 </config>
 

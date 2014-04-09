@@ -9,7 +9,6 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 		background-color:#fff;
 		width:<?php echo $params->get('width', $defaults['width']); ?>px;
 		position:relative;
-		position:relative;
 		margin-left:auto;
 		margin-right:auto;
 
@@ -27,7 +26,6 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 		padding:0px;
 		background-color:#fff;
 		width:<?php echo $params->get('width', $defaults['width']); ?>px;
-		position:relative;
 		position:relative;
 		margin-left:auto;
 		margin-right:auto;
