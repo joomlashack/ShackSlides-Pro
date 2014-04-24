@@ -29,3 +29,21 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 	<?php endif; ?>
     
 }
+
+#<?php echo $params->get('container', $defaults['container']) ?> {
+/*border: 5px solid #FFFFFF;
+    box-shadow: 0 0 8px #999999;
+    width: 100% !important;
+    position:fixed !important;*/
+   }
+   
+/*   #slideshowcontainer {
+   width:100%;
+   position:fixed
+   }
+   
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}*/

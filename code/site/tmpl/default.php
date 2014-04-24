@@ -11,7 +11,7 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 // This can be used in an override to change default settings. User can override
 // settings in the module settings page still.
 $defaults = array(
-	'container' => 'slider', // id for the slider container,
+	'container' => 'slideshow', // id for the slider container,
 	'main_container_class' => '',
 	'descriptiontemplate' => 'animatedtemplate',
 	'width' => '500', // width of container
@@ -424,15 +424,28 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 		<?php endif; ?>
 		
 		<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
-		var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
-		
-		function ScaleSlider() {
-                var bodyWidth = document.body.clientWidth;
-                if (bodyWidth)
-                    jssor_slider1.$SetScaleWidth(Math.min(bodyWidth, 1920));
-                else
-                    window.setTimeout(ScaleSlider, 30);
-            }
+
+			
+			
+			var jssor_slider1 = new $JssorSlider$(<?php echo $params->get('container', $defaults['container']) ?>, options);
+
+//responsive code begin
+//you can remove responsive code if you don't want the slider scales while window resizes
+function ScaleSlider() {
+    var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+    if (parentWidth)
+        jssor_slider1.$SetScaleWidth(parentWidth);
+    else
+        $JssorUtils$.$Delay(ScaleSlider, 30);
+}
+
+ScaleSlider();
+$JssorUtils$.$AddEvent(window, "load", ScaleSlider);
+
+if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+    $JssorUtils$.$OnWindowResize(window, ScaleSlider);
+}
+//responsive code end
 		<?php endif; ?>
 
 		ScaleSlider();
@@ -444,7 +457,8 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 	});
 
 </script>
-
+<div style="width:100%; height:1px; clear:both"></div>
+<div id="slideshowcontainer">
 <!--STARTS BODY CONTENT OF ANIMATED TEMPLATE-->
 <?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'animatedtemplate') :?>
 
@@ -873,3 +887,5 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
 <?php endif; ?>
 <!--FINISH BODY CONTENT OF INDEPENDENT TEMPLATE-->
+</div>
+<div style="width:100%; height:1px; clear:both"></div>
