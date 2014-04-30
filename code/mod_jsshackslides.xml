@@ -63,6 +63,11 @@
 				<option value="responsive">RESPONSIVE</option>
 				<option value="fullwidth">FULL-WIDTH</option>
 			</field-->
+			
+			<field name="center_container_automatic" type="radio" default="centerautoenable" label="CENTER_AUTO_CONT_LABEL" description="CENTER_AUTO_CONT_LABEL_DESC">
+				<option value="centerautoenable">CENTER_ENABLE</option>
+				<option value="centerautodisable">CENTER_DISABLE</option>
+			</field>
 
 			<field type="spacer" name="slider_options_spacer" label="SLIDER_OPTIONS_SPACER_LABEL" />
 			
@@ -151,13 +156,20 @@
 			
 			<field type="colorpicker" name="title_color" label="TITLE_COLOR_LABEL" default="#000000" />
 			
-			<field name="title_background_color" type="list" default="top_left_title" label="TITLE_BG_COLOR_LABEL" description="TITLE_BG_COLOR_LABEL_DESC">
+			<!--field name="title_background_color" type="list" default="top_left_title" label="TITLE_BG_COLOR_LABEL" description="TITLE_BG_COLOR_LABEL_DESC">
 				<option value="notbackgroundtitle">NOTBGTITLE</option>
 				<option value="blackbgtitle">BLACKBGTITLE</option>
 				<option value="whitebgtitle">WHITEBGTITLE</option>
 				<option value="bluegbtitle">BLUEBGTITLE</option>
 				<option value="orangebgtitle">ORANGEBGTITLE</option>
+			</field-->
+			
+			<field name="title_background_color" type="radio" default="enabletitlebg" label="TITLE_BG_COLOR_LABEL" description="TITLE_BG_COLOR_LABEL_DESC">
+				<option value="enabletitlebg">TITLEBGON</option>
+				<option value="disabletitlebg">TITLEBGOFF</option>
 			</field>
+			
+			<field type="colorpicker" name="title_bgpicker_color" label="TITLE_BGPICKER_COLOR_LABEL" default="#333333" />
 			
 			<field name="title_text_class" type="text" default="" label="TITLE_TEXT_CLASS" description="TITLE_TEXT_CLASS_DESC" />
 			

@@ -21,11 +21,13 @@ $defaults = array(
 	'effect_masterspeed' => '300',
 	'effect_slide' => 'rotateoverlap',
 	'onhover_stop' => '0', // on hover stop on/off,
+	'center_container_automatic' => 'centerautoenable',
 	//DESCRIPTION OPTIONS
 	'title_text_class' => '',
 	'effect_title' => 'zmf',
 	'title_color' => '',
-	'title_background_color' => '',
+	'title_background_color' => 'enabletitlebg',
+	'title_bgpicker_color' => '',
 	'titleposition' => 'top_left_title',
 	'position_title_x' => '85',
 	'position_title_y' => '85',
@@ -463,7 +465,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
 <?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'animatedtemplate') :?>
 
 <div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; width: <?php echo $params->get('width', $defaults['width']) ?>px;
-        height: <?php echo $params->get('height', $defaults['height']) ?>px;">
+        height: <?php echo $params->get('height', $defaults['height']) ?>px; <?php if ($params->get('center_container_automatic', $defaults['center_container_automatic']) == 'centerautoenable') :?>margin:0 auto<?php endif; ?>">
 
         <!-- Loading Screen -->
         <div u="loading" style="position: absolute; top: 0px; left: 0px;">
@@ -769,9 +771,14 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
     </script>
     <!-- Jssor Slider Begin -->
     <!-- You can move inline styles (except 'top', 'left', 'width' and 'height') to css file or css block. -->
+    <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'topdescind' or $params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>
     <div id="sliderb_container" style="position: relative; width: <?php echo $params->get('width', $defaults['width']) ?>px;
-        height: <?php echo $params->get('height', $defaults['height']) ?>px;">
-
+        height: <?php echo ($params->get('height', $defaults['height']) + $params->get('height_desc_outside', $defaults['height_desc_outside']) + 15) ?>px;  <?php if ($params->get('center_container_automatic', $defaults['center_container_automatic']) == 'centerautoenable') :?>margin:0 auto<?php endif; ?>">
+	<?php endif; ?>
+    <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind' or $params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>
+    <div id="sliderb_container" style="position: relative; width: <?php echo $params->get('width', $defaults['width']) ?>px;
+        height: <?php echo $params->get('height', $defaults['height']) ?>px;  <?php if ($params->get('center_container_automatic', $defaults['center_container_automatic']) == 'centerautoenable') :?>margin:0 auto<?php endif; ?>">
+	<?php endif; ?>
         <!-- Loading Screen -->
         <div u="loading" style="position: absolute; top: 0px; left: 0px;">
             <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
@@ -802,9 +809,8 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             </div>
     
             <!-- ThumbnailNavigator Skin Begin -->
-            <div u="thumbnavigator" class="sliderb-T" style="position: absolute; height:<?php echo $params->get('height_desc_outside', $defaults['height_desc_outside']) ?>px; width:<?php echo $params->get('width_desc_outside', $defaults['width_desc_outside']) ?>px; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>top:102%; left: 0px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>top:0px; right: 0px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>top:0px; left: 5px;<?php endif; ?>">
-                <div style="filter: alpha(opacity=40); opacity:0.4; position: absolute; display: block;
-                    background-color: #000000; top: 0px; left: 0px; width: 100%; height: 100%;">
+            <div u="thumbnavigator" class="sliderb-T" style="position: absolute; height:<?php echo $params->get('height_desc_outside', $defaults['height_desc_outside']) ?>px; width:<?php echo $params->get('width_desc_outside', $defaults['width_desc_outside']) ?>px; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>bottom:0px; left: 0px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>top:0px; right: 0px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>top:0px; left: 5px;<?php endif; ?>">
+                <div style="position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%; filter: alpha(opacity=40); opacity:0.4; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>">
                 </div>
                 <!-- Thumbnail Item Skin Begin -->
                 <div u="slides" class="testslidescla">
@@ -841,7 +847,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             .jssorn01 .dn, .jssorn01 .dn:hover { background-color: #555555; }
         </style>
         <!-- navigator container -->
-        <div u="navigator" class="jssorn01" style="position: absolute; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>right: <?php echo $params->get('width_desc_outside', $defaults['width_desc_outside'])+20 ?>px; bottom: 16px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>right: 10px; bottom: 16px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'topdescind') :?>right: 10px; bottom: -<?php echo $params->get('height_desc_outside', $defaults['height_desc_outside'])+5 ?>px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>right: 10px; bottom: 16px;<?php endif; ?>">
+        <div u="navigator" class="jssorn01" style="position: absolute; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>right: <?php echo $params->get('width_desc_outside', $defaults['width_desc_outside'])+20 ?>px; bottom: 16px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>right: 10px; bottom: 16px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'topdescind') :?>right: 10px; bottom: 0<?php //echo $params->get('height_desc_outside', $defaults['height_desc_outside'])+5 ?>px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>right: 10px; bottom: 16px;<?php endif; ?>">
             <!-- navigator item prototype -->
             <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
         </div>
