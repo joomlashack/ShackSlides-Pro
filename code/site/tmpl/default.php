@@ -486,14 +486,14 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
                 <?php if ($links[$i]) : ?>
                 <a u=image href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
 				<?php endif; ?>
-                <img src="<?php echo $base.$images[$i] ?>" title="<?php echo strip_tags($titles[$i]) ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
+                <img u="image" src="<?php echo $base.$images[$i] ?>" title="<?php echo strip_tags($titles[$i]) ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
                 <?php if ($links[$i]) : ?>
                 </a>
                 <?php endif; ?>
                 
                 <?php if (($titles[$i] || $contents[$i])) : ?>
 					<?php if ($titles[$i]) : ?>
-                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px;"> 
+                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>"> 
                         <?php echo $titles[$i]; ?>	
                         </div>
                     <?php endif; ?>
@@ -563,10 +563,10 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             .jssord05rdn { background-position: -310px -40px; }
         </style>
         <!-- Arrow Left -->
-        <span u="arrowleft" class="jssord05l" style="width: 40px; height: 40px; top: <?php echo $params->get('width', $defaults['width']) / 4 - 20 ?>px; left: 8px;">
+        <span u="arrowleft" class="jssord05l" style="width: 40px; height: 40px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;">
         </span>
         <!-- Arrow Right -->
-        <span u="arrowright" class="jssord05r" style="width: 40px; height: 40px; top: <?php echo $params->get('width', $defaults['width']) / 4 - 20 ?>px; right: 8px">
+        <span u="arrowright" class="jssord05r" style="width: 40px; height: 40px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px">
         </span>
     </div>
     <!-- Jssor Slider End -->
@@ -594,16 +594,24 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             <?php for ($i = 0; $i < count($images); $i++) : ?>
                 <?php if ($images[$i] === false) continue; ?>
             <div>
+            
+            	<?php if ($links[$i]) : ?>
+                <a u="image" href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
+				<?php endif; ?>
                 <img u="image" src="<?php echo $base.$images[$i] ?>" title="<?php echo strip_tags($titles[$i]) ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
+                <?php if ($links[$i]) : ?>
+                </a>
+                <?php endif; ?>
                 <?php if (($titles[$i] || $contents[$i])) : ?>
 					<?php if ($titles[$i]) : ?>
-                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px;"> 
+                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; filter: alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>"> 
                         <?php echo $titles[$i]; ?>	
                         </div>
                     <?php endif; ?>
                     
                     <?php if ($contents[$i]) : ?>
-                        <div u=caption t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class="captionOrange <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'notshowdescbottom') :?>left:40px; top: 30px; visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px">
+                        <div u=caption t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class="captionOrange <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'notshowdescbottom') :?>left:40px; top: 30px; visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px; ">
+                        
                             <?php echo $contents[$i]; ?>
                         </div>
                     <?php endif; ?>
@@ -667,10 +675,10 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             .jssord21rdn { background-position: -303px -33px; }
         </style>
         <!-- Arrow Left -->
-        <span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: <?php echo $params->get('width', $defaults['width']) / 4 - 22 ?>px; left: 8px;">
+        <span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;">
         </span>
         <!-- Arrow Right -->
-        <span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: <?php echo $params->get('width', $defaults['width']) / 4 - 22 ?>px; right: 8px">
+        <span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px">
         </span>
     </div>
     <!-- Trigger -->
@@ -795,7 +803,13 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
                 <?php for ($i = 0; $i < count($images); $i++) : ?>
         		<?php if ($images[$i] === false) continue; ?>
                 <div>
+                	<?php if ($links[$i]) : ?>
+                    <a href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
+                    <?php endif; ?>
                     <img u=image src="<?php echo $base.$images[$i] ?>" title="<?php echo strip_tags($titles[$i]) ?>" />
+                    <?php if ($links[$i]) : ?>
+                    </a>
+                    <?php endif; ?>
                     <?php if (($titles[$i] || $contents[$i])) : ?>
 						<?php if ($titles[$i] && $contents[$i]) : ?>
                         <div u="thumb">
