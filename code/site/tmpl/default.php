@@ -675,10 +675,14 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             .jssord21rdn { background-position: -303px -33px; }
         </style>
         <!-- Arrow Left -->
-        <span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;">
-        </span>
+        <!--span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: <?php //echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;">
+        </span-->
         <!-- Arrow Right -->
-        <span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px">
+        <!--span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: <?php //echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px">
+        </span-->
+        <span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: 220px; left: 8px;">
+        </span>
+        <span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: 220px; right: 8px">
         </span>
     </div>
     <!-- Trigger -->
@@ -827,7 +831,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
                 <!-- Thumbnail Item Skin Begin -->
                 <div u="slides" class="testslidescla">
                     <div u="prototype" style="POSITION: absolute; height:<?php echo $params->get('height_desc_outside', $defaults['height_desc_outside']) ?>px; width:<?php echo $params->get('width_desc_outside', $defaults['width_desc_outside']) ?>px; TOP: 0; LEFT: 0;">
-                        <thumbnailtemplate style="font-family: verdana; font-weight: normal; POSITION: absolute; WIDTH: 100%; HEIGHT: 100%; TOP: 0; LEFT: 0; color:#fff; line-height: 15px; font-size:20px; padding:0 10px;"></thumbnailtemplate>
+                        <thumbnailtemplate style="font-family: verdana; font-weight: normal; POSITION: absolute; WIDTH: 100%; HEIGHT: 100%; TOP: 0; LEFT: 0; color:#fff; line-height: 15px; font-size:20px; padding:0 10px;" class="thumbsshack"></thumbnailtemplate>
                     </div>
                 </div>
                 <!-- Thumbnail Item Skin End -->
@@ -857,6 +861,11 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             .jssorn01 div:hover, .jssorn01 .av:hover { background-color: #d3d3d3; }
             .jssorn01 .av { background-color: #fff; }
             .jssorn01 .dn, .jssorn01 .dn:hover { background-color: #555555; }
+			
+			a img {	height:100%!important;}
+			.thumbsshack img {display:none!important}
+			.av img {display:none!important}
+			img.thumbsshack {display:none!important}
         </style>
         <!-- navigator container -->
         <div u="navigator" class="jssorn01" style="position: absolute; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>right: <?php echo $params->get('width_desc_outside', $defaults['width_desc_outside'])+20 ?>px; bottom: 16px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>right: 10px; top: <?php echo $params->get('height', $defaults['height']) - 25 ?>px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'topdescind') :?>right: 10px; bottom: 0<?php //echo $params->get('height_desc_outside', $defaults['height_desc_outside'])+5 ?>px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>right: 10px; bottom: 16px;<?php endif; ?>">
@@ -901,6 +910,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
         <a style="display: none" href="http://www.jssor.com">jQuery Slider</a>
         <!-- Trigger -->
     </div>
+    
     <!-- Jssor Slider End -->
 
 <?php endif; ?>
