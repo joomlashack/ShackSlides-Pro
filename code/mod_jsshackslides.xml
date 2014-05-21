@@ -174,7 +174,7 @@
 			<field name="title_text_class" type="text" default="" label="TITLE_TEXT_CLASS" description="TITLE_TEXT_CLASS_DESC" />
 			
 			<field name="effect_title" type="list" default="easeInBack" label="EFFECT_TITLE" description="EFFECT_TITLE_DESC">
-				<option value="">NO_EFFECT_TEXT</option>
+				<option value="noeffecttitle">NO_EFFECT_TEXT</option>
 				<option value="clipleftright">CENTER_TO_SIDE</option>
 				<option value="cliptb">CENTER_TO_UP_AND_DOWN</option>
 				<option value="dancelb">BOUNCING_FROM_LEFT</option>
@@ -226,7 +226,7 @@
 			<field name="height_text" type="text" default="200" label="HEIGHT_TEXT" description="HEIGHT_TEXT_DESC" />
 			
 			<field name="effect_text" type="list" default="clipleftright" label="EFFECT_TEXT" description="EFFECT_TEXT_DESC">
-				<option value="">NO_EFFECT_TEXT</option>
+				<option value="noeffecttext">NO_EFFECT_TEXT</option>
 				<option value="clipleftright">CENTER_TO_SIDE</option>
 				<option value="cliptb">CENTER_TO_UP_AND_DOWN</option>
 				<option value="dancelb">BOUNCING_FROM_LEFT</option>

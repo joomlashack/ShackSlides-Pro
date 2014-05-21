@@ -486,7 +486,8 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
                 <?php if ($links[$i]) : ?>
                 <a u=image href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
 				<?php endif; ?>
-                <img u="image" src="<?php echo $base.$images[$i] ?>" title="<?php echo strip_tags($titles[$i]) ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
+                <!--img u="image" src="<?php //echo $base.$images[$i] ?>" title="<?php //echo strip_tags($titles[$i]) ?>" alt="<?php //echo strip_tags($titles[$i]) ?>" /-->
+                <img u="image" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
                 <?php if ($links[$i]) : ?>
                 </a>
                 <?php endif; ?>
@@ -598,7 +599,8 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             	<?php if ($links[$i]) : ?>
                 <a u="image" href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
 				<?php endif; ?>
-                <img u="image" src="<?php echo $base.$images[$i] ?>" title="<?php echo strip_tags($titles[$i]) ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
+                <!--img u="image" src="<?php //echo $base.$images[$i] ?>" title="<?php //echo strip_tags($titles[$i]) ?>" alt="<?php //echo strip_tags($titles[$i]) ?>" /-->
+                <img u="image" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
                 <?php if ($links[$i]) : ?>
                 </a>
                 <?php endif; ?>
@@ -808,7 +810,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
                 	<?php if ($links[$i]) : ?>
                     <a href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
                     <?php endif; ?>
-                    <img u=image src="<?php echo $base.$images[$i] ?>" title="<?php echo strip_tags($titles[$i]) ?>" />
+                    <img u=image src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
                     <?php if ($links[$i]) : ?>
                     </a>
                     <?php endif; ?>
