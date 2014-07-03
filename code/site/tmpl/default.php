@@ -241,6 +241,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 		//ZM*JDN|LB
 		{$Duration: 1200, $Zoom: 11, $FlyDirection: 9, $Easing: { $Left: $JssorEasing$.$EaseLinear, $Top: $JssorEasing$.$EaseOutCubic, $Zoom: $JssorEasing$.$EaseInCubic }, $ScaleHorizontal: 0.8, $ScaleVertical: 0.5, $Opacity: 2, $During: { $Top: [0, 0.5]} },
 		//ZM*JUP|LB
+
 		{$Duration: 1200, $Zoom: 11, $FlyDirection: 9, $Easing: { $Left: $JssorEasing$.$EaseLinear, $Top: $JssorEasing$.$EaseInCubic, $Zoom: $JssorEasing$.$EaseInCubic }, $ScaleHorizontal: 0.8, $ScaleVertical: 0.5, $Opacity: 2, $During: { $Top: [0, 0.5]} },
 		//ZM*JUP|RB
 		{$Duration: 1200, $Zoom: 11, $FlyDirection: 10, $Easing: { $Left: $JssorEasing$.$EaseLinear, $Top: $JssorEasing$.$EaseInCubic, $Zoom: $JssorEasing$.$EaseInCubic }, $ScaleHorizontal: 0.8, $ScaleVertical: 0.5, $Opacity: 2, $During: { $Top: [0, 0.5]} },
@@ -427,13 +428,30 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 		
 		<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
 
-			
-			
-			var jssor_slider1 = new $JssorSlider$(<?php echo $params->get('container', $defaults['container']) ?>, options);
+var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
 
 //responsive code begin
 //you can remove responsive code if you don't want the slider scales while window resizes
 function ScaleSlider() {
+	var bodyWidth = document.body.clientWidth;
+	if (bodyWidth)
+		jssor_slider1.$SetScaleWidth(Math.min(bodyWidth, 1920));
+	else
+		window.setTimeout(ScaleSlider, 30);
+}
+
+ScaleSlider();
+
+if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+	$(window).bind('resize', ScaleSlider);
+}
+//responsive code end
+			
+			//var jssor_slider1 = new $JssorSlider$(<?php echo $params->get('container', $defaults['container']) ?>, options);
+
+//responsive code begin
+//you can remove responsive code if you don't want the slider scales while window resizes
+/*function ScaleSlider() {
     var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
     if (parentWidth)
         jssor_slider1.$SetScaleWidth(parentWidth);
@@ -446,7 +464,7 @@ $JssorUtils$.$AddEvent(window, "load", ScaleSlider);
 
 if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
     $JssorUtils$.$OnWindowResize(window, ScaleSlider);
-}
+}*/
 //responsive code end
 		<?php endif; ?>
 
@@ -579,7 +597,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
 <!--START BODY CONTENT OF FULL WIDTH ANIMATED TEMPLATE-->
 <?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
     <div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; margin: 0 auto;
-        top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden;">    
+        top: 0px; left: 0px; width: 1250px; height: 500px; overflow: hidden;">    
         <!-- Loading Screen -->
         <div u="loading" style="position: absolute; top: 0px; left: 0px;">
             <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;
