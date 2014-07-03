@@ -910,7 +910,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             	position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url(modules/mod_jsshackslides/images/d17.png) no-repeat;
+                background: url(images/d17.png) no-repeat;
                 overflow:hidden;
             }
             .jssord05l { background-position: -10px -40px; }
