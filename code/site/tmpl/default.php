@@ -571,7 +571,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             	position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url(modules/mod_jsshackslides/images/d17.png) no-repeat;
+                background: url(modules/mod_jsshackslides/tmpl/images/d17.png) no-repeat;
                 overflow:hidden;
             }
             .jssord05l { background-position: -10px -40px; }
@@ -603,7 +603,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;
                 top: 0px; left: 0px; width: 100%; height: 100%;">
             </div>
-            <div style="position: absolute; display: block; background: url(modules/mod_jsshackslides/images/loading.gif) no-repeat center center;
+            <div style="position: absolute; display: block; background: url(modules/mod_jsshackslides/tmpl/images/loading.gif) no-repeat center center;
                 top: 0px; left: 0px; width: 100%; height: 100%;">
             </div>
         </div>
@@ -652,7 +652,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             */
             .jssorn21 div, .jssorn21 div:hover, .jssorn21 .av
             {
-                background: url(images/n21.png) no-repeat;
+                background: url(modules/mod_jsshackslides/tmpl/images/n21.png) no-repeat;
                 overflow:hidden;
                 cursor: pointer;
             }
@@ -684,7 +684,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             	position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url(modules/mod_jsshackslides/images/d21.png) center center no-repeat;
+                background: url(modules/mod_jsshackslides/tmpl/images/d21.png) center center no-repeat;
                 overflow: hidden;
             }
             .jssord21l { background-position: -3px -33px; }
@@ -910,7 +910,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             	position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url(images/d17.png) no-repeat;
+                background: url(modules/mod_jsshackslides/tmpl/images/d17.png) no-repeat;
                 overflow:hidden;
             }
             .jssord05l { background-position: -10px -40px; }
