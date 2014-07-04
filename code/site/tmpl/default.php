@@ -652,7 +652,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             */
             .jssorn21 div, .jssorn21 div:hover, .jssorn21 .av
             {
-                background: url(modules/mod_jsshackslides/images/n21.png) no-repeat;
+                background: url(images/n21.png) no-repeat;
                 overflow:hidden;
                 cursor: pointer;
             }
