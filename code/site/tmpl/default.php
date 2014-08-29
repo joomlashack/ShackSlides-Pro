@@ -490,7 +490,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
                 background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
             </div>
-            <div style="position: absolute; display: block; background: url(modules/mod_jsshackslides/images/loading.gif) no-repeat center center;
+            <div style="position: absolute; display: block; background: url(/modules/mod_jsshackslides/images/loading.gif) no-repeat center center;
                 top: 0px; left: 0px;width: 100%;height:100%;">
             </div>
         </div>
@@ -571,7 +571,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             	position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url(modules/mod_jsshackslides/tmpl/images/d17.png) no-repeat;
+                background: url(/modules/mod_jsshackslides/tmpl/images/d17.png) no-repeat;
                 overflow:hidden;
             }
             .jssord05l { background-position: -10px -40px; }
@@ -596,115 +596,117 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
 
 <!--START BODY CONTENT OF FULL WIDTH ANIMATED TEMPLATE-->
 <?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
-    <div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; margin: 0 auto;
-        top: 0px; left: 0px; width: 1250px; height: 500px; overflow: hidden;">    
-        <!-- Loading Screen -->
-        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
-            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;
-                top: 0px; left: 0px; width: 100%; height: 100%;">
-            </div>
-            <div style="position: absolute; display: block; background: url(modules/mod_jsshackslides/tmpl/images/loading.gif) no-repeat center center;
-                top: 0px; left: 0px; width: 100%; height: 100%;">
-            </div>
-        </div>
-        <!-- Slides Container -->
-        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px;
-            height: 500px; overflow: hidden;">
-            <?php for ($i = 0; $i < count($images); $i++) : ?>
-                <?php if ($images[$i] === false) continue; ?>
-            <div>
-            
-            	<?php if ($links[$i]) : ?>
-                <a u="image" href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
-				<?php endif; ?>
-                <!--img u="image" src="<?php //echo $base.$images[$i] ?>" title="<?php //echo strip_tags($titles[$i]) ?>" alt="<?php //echo strip_tags($titles[$i]) ?>" /-->
-                <img u="image" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
-                <?php if ($links[$i]) : ?>
-                </a>
-                <?php endif; ?>
-                <?php if (($titles[$i] || $contents[$i])) : ?>
-					<?php if ($titles[$i]) : ?>
-                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; filter: alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>"> 
-                        <?php echo $titles[$i]; ?>	
-                        </div>
-                    <?php endif; ?>
-                    
-                    <?php if ($contents[$i]) : ?>
-                        <div u=caption t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class="captionOrange <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'notshowdescbottom') :?>left:40px; top: 30px; visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px; ">
-                        
-                            <?php echo $contents[$i]; ?>
-                        </div>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </div>
-            <?php endfor; ?>
-        </div>
-                
-        <!-- Navigator Skin Begin -->
-        <style>
-            /* jssor slider navigator skin 21 css */
-            /*
-            .jssorn21 div           (normal)
-            .jssorn21 div:hover     (normal mouseover)
-            .jssorn21 .av           (active)
-            .jssorn21 .av:hover     (active mouseover)
-            .jssorn21 .dn           (mousedown)
-            */
-            .jssorn21 div, .jssorn21 div:hover, .jssorn21 .av
-            {
-                background: url(modules/mod_jsshackslides/tmpl/images/n21.png) no-repeat;
-                overflow:hidden;
-                cursor: pointer;
-            }
-            .jssorn21 div { background-position: -5px -5px; }
-            .jssorn21 div:hover, .jssorn21 .av:hover { background-position: -35px -5px; }
-            .jssorn21 .av { background-position: -65px -5px; }
-            .jssorn21 .dn, .jssorn21 .dn:hover { background-position: -95px -5px; }
-        </style>
-        <!-- navigator container -->
-        <div u="navigator" class="jssorn21" style="position: absolute; bottom: 26px; left: 6px;">
-            <!-- navigator item prototype -->
-            <div u="prototype" style="POSITION: absolute; WIDTH: 19px; HEIGHT: 19px; text-align:center; line-height:19px; color:White; font-size:12px;"></div>
-        </div>
-        <!-- Navigator Skin End -->
+	<div style="overflow: visible;float: left;margin-left: -74px;  margin-right: -100%;  width: 112%;">
+	    <div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; margin: 0 auto;
+	        top: 0px; left: 0px; width: 1250px; height: 500px; overflow: hidden;">    
+	        <!-- Loading Screen -->
+	        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+	            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;
+	                top: 0px; left: 0px; width: 100%; height: 100%;">
+	            </div>
+	            <div style="position: absolute; display: block; background: url(/modules/mod_jsshackslides/tmpl/images/loading.gif) no-repeat center center;
+	                top: 0px; left: 0px; width: 100%; height: 100%;">
+	            </div>
+	        </div>
+	        <!-- Slides Container -->
+	        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px;
+	            height: 500px; overflow: hidden;">
+	            <?php for ($i = 0; $i < count($images); $i++) : ?>
+	                <?php if ($images[$i] === false) continue; ?>
+	            <div>
+	            
+	            	<?php if ($links[$i]) : ?>
+	                <a u="image" href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
+					<?php endif; ?>
+	                <!--img u="image" src="<?php //echo $base.$images[$i] ?>" title="<?php //echo strip_tags($titles[$i]) ?>" alt="<?php //echo strip_tags($titles[$i]) ?>" /-->
+	                <img u="image" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
+	                <?php if ($links[$i]) : ?>
+	                </a>
+	                <?php endif; ?>
+	                <?php if (($titles[$i] || $contents[$i])) : ?>
+						<?php if ($titles[$i]) : ?>
+	                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; filter: alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>"> 
+	                        <?php echo $titles[$i]; ?>	
+	                        </div>
+	                    <?php endif; ?>
+	                    
+	                    <?php if ($contents[$i]) : ?>
+	                        <div u=caption t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class="captionOrange <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'notshowdescbottom') :?>left:40px; top: 30px; visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px; ">
+	                        
+	                            <?php echo $contents[$i]; ?>
+	                        </div>
+	                    <?php endif; ?>
+	                <?php endif; ?>
+	            </div>
+	            <?php endfor; ?>
+	        </div>
+	                
+	        <!-- Navigator Skin Begin -->
+	        <style>
+	            /* jssor slider navigator skin 21 css */
+	            /*
+	            .jssorn21 div           (normal)
+	            .jssorn21 div:hover     (normal mouseover)
+	            .jssorn21 .av           (active)
+	            .jssorn21 .av:hover     (active mouseover)
+	            .jssorn21 .dn           (mousedown)
+	            */
+	            .jssorn21 div, .jssorn21 div:hover, .jssorn21 .av
+	            {
+	                background: url(/modules/mod_jsshackslides/tmpl/images/n21.png) no-repeat;
+	                overflow:hidden;
+	                cursor: pointer;
+	            }
+	            .jssorn21 div { background-position: -5px -5px; }
+	            .jssorn21 div:hover, .jssorn21 .av:hover { background-position: -35px -5px; }
+	            .jssorn21 .av { background-position: -65px -5px; }
+	            .jssorn21 .dn, .jssorn21 .dn:hover { background-position: -95px -5px; }
+	        </style>
+	        <!-- navigator container -->
+	        <div u="navigator" class="jssorn21" style="position: absolute; bottom: 26px; left: 6px;">
+	            <!-- navigator item prototype -->
+	            <div u="prototype" style="POSITION: absolute; WIDTH: 19px; HEIGHT: 19px; text-align:center; line-height:19px; color:White; font-size:12px;"></div>
+	        </div>
+	        <!-- Navigator Skin End -->
 
-        <!-- Direction Navigator Skin Begin -->
-        <style>
-            /* jssor slider direction navigator skin 21 css */
-            /*
-            .jssord21l              (normal)
-            .jssord21r              (normal)
-            .jssord21l:hover        (normal mouseover)
-            .jssord21r:hover        (normal mouseover)
-            .jssord21ldn            (mousedown)
-            .jssord21rdn            (mousedown)
-            */
-            .jssord21l, .jssord21r, .jssord21ldn, .jssord21rdn
-            {
-            	position: absolute;
-            	cursor: pointer;
-            	display: block;
-                background: url(modules/mod_jsshackslides/tmpl/images/d21.png) center center no-repeat;
-                overflow: hidden;
-            }
-            .jssord21l { background-position: -3px -33px; }
-            .jssord21r { background-position: -63px -33px; }
-            .jssord21l:hover { background-position: -123px -33px; }
-            .jssord21r:hover { background-position: -183px -33px; }
-            .jssord21ldn { background-position: -243px -33px; }
-            .jssord21rdn { background-position: -303px -33px; }
-        </style>
-        <!-- Arrow Left -->
-        <!--span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: <?php //echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;">
-        </span-->
-        <!-- Arrow Right -->
-        <!--span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: <?php //echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px">
-        </span-->
-        <span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: 220px; left: 8px;">
-        </span>
-        <span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: 220px; right: 8px">
-        </span>
-    </div>
+	        <!-- Direction Navigator Skin Begin -->
+	        <style>
+	            /* jssor slider direction navigator skin 21 css */
+	            /*
+	            .jssord21l              (normal)
+	            .jssord21r              (normal)
+	            .jssord21l:hover        (normal mouseover)
+	            .jssord21r:hover        (normal mouseover)
+	            .jssord21ldn            (mousedown)
+	            .jssord21rdn            (mousedown)
+	            */
+	            .jssord21l, .jssord21r, .jssord21ldn, .jssord21rdn
+	            {
+	            	position: absolute;
+	            	cursor: pointer;
+	            	display: block;
+	                background: url(/modules/mod_jsshackslides/tmpl/images/d21.png) center center no-repeat;
+	                overflow: hidden;
+	            }
+	            .jssord21l { background-position: -3px -33px; }
+	            .jssord21r { background-position: -63px -33px; }
+	            .jssord21l:hover { background-position: -123px -33px; }
+	            .jssord21r:hover { background-position: -183px -33px; }
+	            .jssord21ldn { background-position: -243px -33px; }
+	            .jssord21rdn { background-position: -303px -33px; }
+	        </style>
+	        <!-- Arrow Left -->
+	        <!--span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: <?php //echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;">
+	        </span-->
+	        <!-- Arrow Right -->
+	        <!--span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: <?php //echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px">
+	        </span-->
+	        <span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: 220px; left: 10%;">
+	        </span>
+	        <span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: 220px; right: 10%">
+	        </span>
+	    </div>
+	</div>
     <!-- Trigger -->
 <?php endif; ?>
 <!--FINISH BODY CONTENT OF FULL WIDTH ANIMATED TEMPLATE-->
@@ -910,7 +912,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
             	position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url(modules/mod_jsshackslides/tmpl/images/d17.png) no-repeat;
+                background: url(/modules/mod_jsshackslides/tmpl/images/d17.png) no-repeat;
                 overflow:hidden;
             }
             .jssord05l { background-position: -10px -40px; }
