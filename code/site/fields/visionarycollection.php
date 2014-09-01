@@ -38,7 +38,7 @@ class JFormFieldVisionaryCollection extends JFormFieldList
 
 		// Initialize variables
 		$options = array();
-		$query = 'SELECT id, name AS collection FROM `#__jsvisionary_jsssslider` WHERE published = 1';
+		$query = 'SELECT jsvisionary_collection_id as id, title AS collection FROM `#__jsvisionary_collections` WHERE enabled = 1';
 
 		// Get the database object.
 		$db = JFactory::getDBO();
