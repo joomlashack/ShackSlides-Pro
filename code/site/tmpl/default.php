@@ -596,7 +596,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
 
 <!--START BODY CONTENT OF FULL WIDTH ANIMATED TEMPLATE-->
 <?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
-	<div style="overflow: visible;float: left;margin-left: -74px;  margin-right: -100%;  width: 112%;">
+	<div style="overflow: visible;float: left;margin-left: -4.5%;  margin-right: -100%;  width: 100%;">
 	    <div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; margin: 0 auto;
 	        top: 0px; left: 0px; width: 1250px; height: 500px; overflow: hidden;">    
 	        <!-- Loading Screen -->
