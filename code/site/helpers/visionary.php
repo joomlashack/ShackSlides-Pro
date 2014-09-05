@@ -35,7 +35,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 		if ($this->ordering == 'created') {
 
 			//fix column name for Visionary
-			$this->ordering = 'creation_date';
+			$this->ordering = 'created_on';
 
 		}
 
@@ -54,7 +54,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 		$db = JFactory::getDbo();
 		$user = JFactory::getUser();
 
-		$query = 'SELECT * FROM `#__jsvisionary_jsssslide` WHERE published = 1 AND slider =' . $this->collection;
+		$query = 'SELECT * FROM `#__jsvisionary_slides` WHERE enabled = 1 AND collection_id =' . $this->collection;
 
 		if ($this->ordering != 'hits') { //ignoring hits, because Visionary does not measure hits
 
@@ -130,7 +130,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 		$config = JComponentHelper::getParams('com_jsvisionary');
 
 		$markers = array(
-			'DIR_JSSSSLIDE_IMAGE' => $config->get("upload_dir_jsssslide_image", JPATH_SITE . '/' . $config->get('image_path', 'images') . '/' . "jsssslide_image") .'/',
+			'DIR_JSSSSLIDE_IMAGE' => $config->get("upload_dir_jsssslide_image", JPATH_SITE ) .'/',
 			'DIR__TRASH' => $config->get("trash_dir", JPATH_ADMIN_JSVISIONARY .'/'. "images" . '/' . "trash") .'/',
 
 			'COM_ADMIN' => JPATH_ADMIN_JSVISIONARY,
