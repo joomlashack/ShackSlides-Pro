@@ -49,15 +49,15 @@ $defaults = array(
 	'descriptionposition_outside' => 'bottomdescind',
 	'width_desc_outside' => '300',
 	'height_desc_outside' => '150',
-	
-	
+
+
 	'description_height' => '50', // description height if position is top/bottom
 	'description_width' => '50', // description width if position is right/left
 	'style_def_text' => 'notextstyle',
 	'descriptionposition' => 'top_in',
 	'position_text_x' => '85',
 	'position_text_y' => '150',
-	
+
 	'description_background' => 'ffffff', // description background color hex code
 );
 
@@ -65,8 +65,8 @@ $defaults = array(
 $doc = JFactory::getDocument();
 
 // load jQuery, if not loaded before
-//checking if installed joomla version is less  3.0   
-if (version_compare( JVERSION, '3.2', '<' ) == 1) {             
+//checking if installed joomla version is less  3.0
+if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 	 // do something for joomla version less than 3.0
 	if(!JFactory::getApplication()->get('jquery')){
 		JFactory::getApplication()->set('jquery',true);
@@ -92,16 +92,16 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 	$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jssor.core.js');
 	$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jssor.utils.js');
 	$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jssor.slider.js');
-	
+
 	/*$doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider/css/style.css');*/
 	$doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider/css/settings.css');
-	
+
 	ob_start();
 	include(JPATH_ROOT.'/modules/mod_jsshackslides/assets/slider/css/style.php');
-	
+
 	$styles = ob_get_contents();
 	ob_end_clean();
-	
+
 	$doc->addStyleDeclaration($styles);
 
 ?>
@@ -283,8 +283,8 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 		//B|IB
 		{$Duration: 900, $FlyDirection: 8, $Easing: { $Top: $JssorEasing$.$EaseInOutBack }, $ScaleVertical: 0.6, $Opacity: 2 },
 		];
-		
-		
+
+
 		//CLIP|LR
 		_CaptionTransitions["clipleftright"] = {$Duration: 900, $Clip: 3, $Easing: $JssorEasing$.$EaseInOutCubic };
 		//CLIP|TB
@@ -354,12 +354,12 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 		_CaptionTransitions["rib"] = {$Duration: 900, $FlyDirection: 2, $Easing: { $Left: $JssorEasing$.$EaseInOutBack }, $ScaleHorizontal: 0.6, $Opacity: 2 };
 		//B|IB
 		_CaptionTransitions["bib"] = {$Duration: 900, $FlyDirection: 8, $Easing: { $Top: $JssorEasing$.$EaseInOutBack }, $ScaleVertical: 0.6, $Opacity: 2 };
-			
+
 		var options = {
 			<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
 			$FillMode: 2,   //[Optional] The way to fill image in slide, 0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actuall size, default value is 0
 			<?php endif; ?>
-			
+
 			$AutoPlay: <?php echo $params->get('navigation', $defaults['navigation']) ?>,   //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
 			$AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
 			$AutoPlayInterval: <?php echo $params->get('slide_delay', $defaults['slide_delay']) ?>,   //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
@@ -406,17 +406,17 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 				$Class: $JssorDirectionNavigator$,              //[Requried] Class to create direction navigator instance
 				$ChanceToShow: <?php echo $params->get('navigationarrows', $defaults['navigationarrows']) ?>   //[Required] 0 Never, 1 Mouse Over, 2 Always
 			}
-			
+
 		};
 
-		
-		
-		
+
+
+
 		//responsive code begin
 		//you can remove responsive code if you don't want the slider scales while window resizes
 		<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'animatedtemplate') :?>
 		var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
-		
+
 		function ScaleSlider() {
 			var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
 			if (parentWidth)
@@ -425,7 +425,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 				window.setTimeout(ScaleSlider, 30);
 		}
 		<?php endif; ?>
-		
+
 		<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
 
 var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
@@ -446,7 +446,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
 	$(window).bind('resize', ScaleSlider);
 }
 //responsive code end
-			
+
 			//var jssor_slider1 = new $JssorSlider$(<?php echo $params->get('container', $defaults['container']) ?>, options);
 
 //responsive code begin
@@ -494,7 +494,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
                 top: 0px; left: 0px;width: 100%;height:100%;">
             </div>
         </div>
-        
+
         <!-- Slides Container -->
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: <?php echo $params->get('width', $defaults['width']) ?>px; height: <?php echo $params->get('height', $defaults['height']) ?>px;
             overflow: hidden;">
@@ -509,14 +509,14 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
                 <?php if ($links[$i]) : ?>
                 </a>
                 <?php endif; ?>
-                
+
                 <?php if (($titles[$i] || $contents[$i])) : ?>
 					<?php if ($titles[$i]) : ?>
-                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>"> 
-                        <?php echo $titles[$i]; ?>	
+                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>">
+                        <?php echo $titles[$i]; ?>
                         </div>
                     <?php endif; ?>
-                    
+
                     <?php if ($contents[$i]) : ?>
                         <div u=caption t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class="captionOrange <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'notshowdescbottom') :?>left:40px; top: 30px; visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px">
                             <?php echo $contents[$i]; ?>
@@ -597,14 +597,9 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
 <!--START BODY CONTENT OF FULL WIDTH ANIMATED TEMPLATE-->
 <?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
 	<div style="width: 100%">
-	<div style="
-	overflow-x: hidden;
-margin: 0 auto;
-width: auto;
-margin-left: -100%;
-margin-right: -100%;">
+	<div style="overflow-x: hidden; width: auto;">
 	    <div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; margin: 0 auto;
-	        top: 0px; left: 0px; width: 1250px; height: 500px; overflow: hidden;">    
+	        top: 0px; left: 0px; width: 1250px; height: 500px; overflow: hidden;">
 	        <!-- Loading Screen -->
 	        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
 	            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;
@@ -620,7 +615,7 @@ margin-right: -100%;">
 	            <?php for ($i = 0; $i < count($images); $i++) : ?>
 	                <?php if ($images[$i] === false) continue; ?>
 	            <div>
-	            
+
 	            	<?php if ($links[$i]) : ?>
 	                <a u="image" href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
 					<?php endif; ?>
@@ -631,14 +626,14 @@ margin-right: -100%;">
 	                <?php endif; ?>
 	                <?php if (($titles[$i] || $contents[$i])) : ?>
 						<?php if ($titles[$i]) : ?>
-	                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; filter: alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>"> 
-	                        <?php echo $titles[$i]; ?>	
+	                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; filter: alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>">
+	                        <?php echo $titles[$i]; ?>
 	                        </div>
 	                    <?php endif; ?>
-	                    
+
 	                    <?php if ($contents[$i]) : ?>
 	                        <div u=caption t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class="captionOrange <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'notshowdescbottom') :?>left:40px; top: 30px; visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px; ">
-	                        
+
 	                            <?php echo $contents[$i]; ?>
 	                        </div>
 	                    <?php endif; ?>
@@ -646,7 +641,7 @@ margin-right: -100%;">
 	            </div>
 	            <?php endfor; ?>
 	        </div>
-	                
+
 	        <!-- Navigator Skin Begin -->
 	        <style>
 	            /* jssor slider navigator skin 21 css */
@@ -852,7 +847,7 @@ margin-right: -100%;">
                 </div>
                 <?php endfor; ?>
             </div>
-    
+
             <!-- ThumbnailNavigator Skin Begin -->
             <div u="thumbnavigator" class="sliderb-T" style="position: absolute; height:<?php echo $params->get('height_desc_outside', $defaults['height_desc_outside']) ?>px; width:<?php echo $params->get('width_desc_outside', $defaults['width_desc_outside']) ?>px; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>bottom:0px; left: 0px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>top:0px; right: 0px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>top:0px; left: 5px;<?php endif; ?>">
                 <div style="position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%; filter: alpha(opacity=40); opacity:0.4; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>">
@@ -867,7 +862,7 @@ margin-right: -100%;">
             </div>
             <!-- ThumbnailNavigator Skin End -->
 
-        
+
         <!-- Navigator Skin Begin -->
         <!-- jssor slider navigator skin 01 -->
         <style>
@@ -890,7 +885,7 @@ margin-right: -100%;">
             .jssorn01 div:hover, .jssorn01 .av:hover { background-color: #d3d3d3; }
             .jssorn01 .av { background-color: #fff; }
             .jssorn01 .dn, .jssorn01 .dn:hover { background-color: #555555; }
-			
+
 			a img {	height:100%!important;}
 			.thumbsshack img {display:none!important}
 			.av img {display:none!important}
@@ -902,7 +897,7 @@ margin-right: -100%;">
             <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
         </div>
         <!-- Navigator Skin End -->
-        
+
         <!-- Direction Navigator Skin Begin -->
         <style>
             /* jssor slider direction navigator skin 05 css */
@@ -939,7 +934,7 @@ margin-right: -100%;">
         <a style="display: none" href="http://www.jssor.com">jQuery Slider</a>
         <!-- Trigger -->
     </div>
-    
+
     <!-- Jssor Slider End -->
 
 <?php endif; ?>
