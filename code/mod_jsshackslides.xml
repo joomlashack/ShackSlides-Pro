@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="module" method="upgrade">
 	<name>JS Shackslides</name>
-	<creationDate>April 2014</creationDate>
+	<creationDate>September 2014</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
-	<authorUrl>http://www.joomlashack.com</authorUrl>
+	<authorUrl>https://www.joomlashack.com</authorUrl>
 	<copyright>Joomlashack</copyright>
 	<license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
 	<version>3.0.0</version>
@@ -31,13 +31,13 @@
 	<fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
 
 		<fieldset name="basic">
-			
+
 			<field name="descriptiontemplate" type="list" default="animatedtemplate" label="DESC_TEMPLATE" description="DESC_TEMPLATE_DESC">
 				<option value="animatedtemplate">ANIMATEDTEMPLATE</option>
 				<option value="fullwithanimatedtemplate">FULLWIDTHANIMATEDTEMPLATE</option>
 				<option value="independenttemplate">INDEPENDENTTEMPLATE</option>
 			</field>
-			
+
 			<field type="spacer" name="basic_options_spacer" label="BASIC_OPTIONS_SPACER_LABEL" />
 
 			<field name="limit" type="text" default="5" label="LIMIT" description="LIMIT_DESC" />
@@ -54,25 +54,25 @@
 				<option value="ASC">ASCENDING</option>
 				<option value="DESC">DESCENDING</option>
 			</field>
-			
+
 			<field name="width" type="text" default="500" label="CONTAINERWIDTH" description="CONTAINERWIDTH_DESC" />
 
 			<field name="height" type="text" default="250" label="CONTAINERHEIGHT" description="CONTAINERHEIGHT_DESC" />
-			
+
 			<!--field name="template_slider" type="list" default="responsive" label="TEMPLATE_SLIDER" description="TEMPLATE_SLIDER_DESC">
 				<option value="responsive">RESPONSIVE</option>
 				<option value="fullwidth">FULL-WIDTH</option>
 			</field-->
-			
+
 			<field name="center_container_automatic" type="radio" default="centerautoenable" label="CENTER_AUTO_CONT_LABEL" description="CENTER_AUTO_CONT_LABEL_DESC">
 				<option value="centerautoenable">CENTER_ENABLE</option>
 				<option value="centerautodisable">CENTER_DISABLE</option>
 			</field>
 
 			<field type="spacer" name="slider_options_spacer" label="SLIDER_OPTIONS_SPACER_LABEL" />
-			
+
 			<field name="slide_delay" type="text" default="5000" label="SLIDE_DELAY" description="SLIDE_DELAY_DESC" />
-			
+
 			<field name="effect_slide" type="list" default="fade" label="EFFECT_SLIDE" description="EFFECT_SLIDE_DESC">
 				<option value="rotateoverlap">EFFECT_ROTATE_OVERLAP</option>
 				<option value="switch">EFFECT_SWITCH</option>
@@ -91,30 +91,30 @@
 				<option value="Rotate_Axis_down">EFFECT_ROTATE_AXIS_DOWN</option>
 				<option value="Extrude_Replace">EFFECT_EXTRUDE_REPLACE</option>
 			</field>
-			
+
 			<field name="effect_masterspeed" type="text" default="300" label="EFFECT_MASTERSPEED" description="EFFECT_MASTERSPEED_DESC" />
-			
+
 			<!--field type="spacer" name="independent_template_options" label="INDEPENDENT_TEMPLATE_OPTIONS_SPACER_LABEL" />
-			
+
 			<field name="width_slider" type="text" default="300" label="EFFECT_MASTERSPEED" description="EFFECT_MASTERSPEED_DESC" /-->
-			
+
 			<!--OPTIONS TO INDEPENDENT TEMPLATE-->
 			<field type="spacer" name="independent_template_options_spacer" label="INDEPENDENT_TEMP_OPTIONS_SPACER_LABEL" />
-			
+
 			<field name="descriptionposition_outside" type="list" default="bottomdescind" label="DESC_POSITION_OUTSIDE" description="DESC_POSITION_OUTSIDE_DESC">
 				<option value="topdescind">TOPDESCIND</option>
 				<option value="bottomdescind">BOTTOMDESCIND</option>
 				<option value="leftdescind">LEFTDESCIND</option>
 				<option value="rightdescind">RIGHTDESCIND</option>
 			</field>
-			
+
 			<field name="width_desc_outside" type="text" default="300" label="WIDTH_DESC_OUTSIDE" description="WIDTH_DESC_OUTSIDE_DESC" />
-	
+
 			<field name="height_desc_outside" type="text" default="150" label="HEIGHT_DESC_OUTSIDE" description="HEIGHT_DESC_OUTSIDE_DESC" />
-			
+
 		</fieldset>
-		
-		
+
+
 		<fieldset name="source" label="IMAGES_SOURCE_OPTIONS_LABEL">
 
 			<field name="source" type="list" default="folder" label="SHACKSLIDE_SOURCE" description="SHACKSLIDE_SOURCE_DESC">
@@ -149,13 +149,13 @@
 		</fieldset>
 
 		<fieldset name="descriptions" label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL">
-			
+
 			<field type="spacer" name="templatesin_options_spacer" label="TEMPLATESIN_OPTIONS_SPACER_LABEL" />
-			
+
 			<field type="spacer" name="title_animation_options_spacer" label="TITLE_ANIMATION_OPTIONS_SPACER_LABEL" />
-			
+
 			<field type="colorpicker" name="title_color" label="TITLE_COLOR_LABEL" default="#000000" />
-			
+
 			<!--field name="title_background_color" type="list" default="top_left_title" label="TITLE_BG_COLOR_LABEL" description="TITLE_BG_COLOR_LABEL_DESC">
 				<option value="notbackgroundtitle">NOTBGTITLE</option>
 				<option value="blackbgtitle">BLACKBGTITLE</option>
@@ -163,16 +163,16 @@
 				<option value="bluegbtitle">BLUEBGTITLE</option>
 				<option value="orangebgtitle">ORANGEBGTITLE</option>
 			</field-->
-			
+
 			<field name="title_background_color" type="radio" default="enabletitlebg" label="TITLE_BG_COLOR_LABEL" description="TITLE_BG_COLOR_LABEL_DESC">
 				<option value="enabletitlebg">TITLEBGON</option>
 				<option value="disabletitlebg">TITLEBGOFF</option>
 			</field>
-			
+
 			<field type="colorpicker" name="title_bgpicker_color" label="TITLE_BGPICKER_COLOR_LABEL" default="#333333" />
-			
+
 			<field name="title_text_class" type="text" default="" label="TITLE_TEXT_CLASS" description="TITLE_TEXT_CLASS_DESC" />
-			
+
 			<field name="effect_title" type="list" default="easeInBack" label="EFFECT_TITLE" description="EFFECT_TITLE_DESC">
 				<option value="noeffecttitle">NO_EFFECT_TEXT</option>
 				<option value="clipleftright">CENTER_TO_SIDE</option>
@@ -205,26 +205,26 @@
 				<option value="rib">SLIDING_RIGHT</option>
 				<option value="bib">SLIDING_BOTTOM</option>
 			</field>
-			
+
 			<field name="titleposition" type="list" default="top_left_title" label="TITLE_POSITION" description="TITLE_POSITION_DESC">
 				<option value="notshowtitle">NOTSHOWTITLE</option>
 				<option value="top_left_title">TOPLEFTTITLE</option>
 				<option value="bottom_left_title">BOTTOMLEFTTITLE</option>
 				<option value="advancedpostitle">ADVANCEDPOSTITLE</option>
 			</field>
-			
+
 			<field type="spacer" name="title_advanced_options_spacer" label="TITLE_ADVANCED_OPTIONS_SPACER_LABEL" />
-			
+
 			<field name="position_title_x" type="text" default="85" label="POSITION_TITLE_X" description="POSITION_TITLE_X_DESC" />
-			
+
 			<field name="position_title_y" type="text" default="85" label="POSITION_TITLE_Y" description="POSITION_TITLE_Y_DESC" />
-			
+
 			<field type="spacer" name="text_animation_options_spacer" label="TEXT_ANIMATION_OPTIONS_SPACER_LABEL" />
-			
+
 			<field name="width_text" type="text" default="200" label="WIDTH_TEXT" description="WIDTH_TEXT_DESC" />
-			
+
 			<field name="height_text" type="text" default="200" label="HEIGHT_TEXT" description="HEIGHT_TEXT_DESC" />
-			
+
 			<field name="effect_text" type="list" default="clipleftright" label="EFFECT_TEXT" description="EFFECT_TEXT_DESC">
 				<option value="noeffecttext">NO_EFFECT_TEXT</option>
 				<option value="clipleftright">CENTER_TO_SIDE</option>
@@ -257,74 +257,74 @@
 				<option value="rib">SLIDING_RIGHT</option>
 				<option value="bib">SLIDING_BOTTOM</option>
 			</field>
-			
+
 			<field name="descriptionposition2" type="list" default="notshowdescbottom" label="DESC_POSITION2" description="DESC_POSITION2_DESC">
 				<option value="notshowdescbottom">NOTSHOWDESC2</option>
 				<option value="topdescription">TOPDESCRIPTION</option>
 				<option value="topdescriptionright">TOPDESCRIPTIONRIGHT</option>
 				<option value="advancedpostextdesc">ADVANCEDPOSTEXTDESC</option>
 			</field>
-			
+
 			<field type="spacer" name="text_advanced_options_spacer" label="TEXT_ADVANCED_OPTIONS_SPACER_LABEL" />
-			
+
 			<field name="position_text_x" type="text" default="85" label="POSITION_TEXT_X" description="POSITION_TEXT_X_DESC" />
-			
+
 			<field name="position_text_y" type="text" default="150" label="POSITION_TEXT_Y" description="POSITION_TEXT_Y_DESC" />
-			
+
 		</fieldset>
-		
-		
+
+
 
 		<fieldset name="navigationoptions" label="NAVIGATION_OPTIONS_LABEL">
-		
+
 			<field name="navigation" type="list" default="true" label="NAVIGATION" description="NAVIGATION_DESC">
 				<option value="true">AUTOMATICNAV</option>
 				<option value="false">MANUALNAV</option>
 			</field>
-			
+
 			<field name="onhover_stop" type="list" default="0" label="ONHOVER_STOP" description="ONHOVER_STOP_DESC">
 				<option value="0">ONHOVERSTOPOFF</option>
 				<option value="1">ONHOVERSTOPCOMP</option>
 				<option value="2">ONHOVERSTOPTOUCH</option>
 				<option value="3">ONHOVERSTOPBOTH</option>
 			</field>
-			
+
 			<field name="navigationarrows" type="list" default="2" label="NAVIGATIONARROWS" description="NAVIGATIONARROWS_DESC">
 				<option value="0">NO_ARROWS</option>
 				<option value="1">ONHOVER_ARROWS</option>
 				<option value="2">ALWAYS_ARROWS</option>
 			</field>
-			
+
 			<field name="navigationdots" type="list" default="2" label="NAVIGATIONDOTS" description="NAVIGATIONDOTS_DESC">
 				<option value="0">NO_DOTS</option>
 				<option value="1">ONHOVER_DOTS</option>
 				<option value="2">ALWAYS_DOTS</option>
 			</field>
-			
+
 			<field name="alignmentdots" type="list" default="1" label="ALIGNMENTDOTS" description="ALIGNMENTDOTS_DESC">
 				<option value="0">NO_ALIGNMENT_DOTS</option>
 				<option value="1">HOR_ALIGNMENT_DOTS</option>
 				<option value="2">VERT_ALIGNMENT_DOTS</option>
 				<option value="3">BOTH_ALIGNMENT_DOTS</option>
 			</field>
-			
+
 			<field name="orientationdots" type="list" default="1" label="ORIENTATIONDOTS" description="ORIENTATIONDOTS_DESC">
 				<option value="1">HORIZONTAL_DOTS</option>
 				<option value="2">VERTICAL_DOTS</option>
 			</field>
-			
+
 			<!--field name="touch_enabled" type="radio" default="on" label="TOUCH_ENABLED" description="TOUCH_ENABLED_DESC">
 				<option value="on">TOUCHON</option>
 				<option value="off">TOUCHOFF</option>
 			</field-->
-			
-			
-			
+
+
+
 		</fieldset>
-		
-		
-		
-		
+
+
+
+
 
 		<fieldset name="advanced" label="ADVANCED_BOTH">
 		    <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
@@ -332,26 +332,26 @@
 		    <field name="main_container_class" type="text" default="" label="MAIN_CONTAINER_CLASS" description="MAIN_CONTAINER_CLASS_DESC" />
 		</fieldset>
 
-		
+
 		<fieldset name="jqueryoptions" label="JQUERYOPTIONS">
-			
+
 			<field name="includejquery" type="radio" default="off" label="INCLUDE_JQUERY" description="INCLUDE_JQUERY_DESC">
 				<option value="on">JQUERYON</option>
 				<option value="off">JQUERYOFF</option>
 			</field>
-			
+
 			<field name="includejqueryui" type="radio" default="off" label="INCLUDE_JQUERYUI" description="INCLUDE_JQUERYUI_DESC">
 				<option value="on">JQUERYUION</option>
 				<option value="off">JQUERYUIOFF</option>
 			</field>
-			
+
 			<field name="includenoconflictmode" type="radio" default="off" label="INCLUDE_NOCONFLICTMODE" description="INCLUDE_NOCONFLICTMODE_DESC">
 				<option value="on">NOCONFLICTON</option>
 				<option value="off">NOCONFLICTOFF</option>
 			</field>
-			
+
 		</fieldset>
-		
+
 	</fields>
 </config>
 
