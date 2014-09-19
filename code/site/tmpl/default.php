@@ -702,9 +702,9 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
 	        <!-- Arrow Right -->
 	        <!--span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: <?php //echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px">
 	        </span-->
-	        <span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: 220px; left: 20px">
+	        <span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: 220px; left: 5%">
 	        </span>
-	        <span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: 220px; right: 120px">
+	        <span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: 220px; right: 15%">
 	        </span>
 	    </div>
 	</div>
