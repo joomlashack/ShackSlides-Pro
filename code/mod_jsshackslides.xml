@@ -20,13 +20,8 @@
 		<folder>fields</folder>
 		<folder>helpers</folder>
 		<folder>tmpl</folder>
+		<folder>language</folder>
 	</files>
-
-	<languages>
-		<language tag="en-GB">language/en-GB/en-GB.mod_jsshackslides.ini</language>
-		<language tag="es-ES">language/es-ES/es-ES.mod_jsshackslides.ini</language>
-	</languages>
-
 	<config>
 	<fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
 
