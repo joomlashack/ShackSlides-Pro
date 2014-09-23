@@ -69,7 +69,7 @@
 			<field name="slide_delay" type="text" default="5000" label="SLIDE_DELAY" description="SLIDE_DELAY_DESC" />
 
 			<field name="effect_slide" type="list" default="fade" label="EFFECT_SLIDE" description="EFFECT_SLIDE_DESC">
-				<option value="rotateoverlap">EFFECT_ROTATE_OVERLAP</option>
+				<option value="rotateoverlap">EFFECT_ROTATE_OVERLAP</option>				
 				<option value="switch">EFFECT_SWITCH</option>
 				<option value="Rotate_Relay">EFFECT_ROTATE_RELAY</option>
 				<option value="doors">EFFECT_DOORS</option>
@@ -85,6 +85,7 @@
 				<option value="Return_LR">EFFECT_RETURN_LR</option>
 				<option value="Rotate_Axis_down">EFFECT_ROTATE_AXIS_DOWN</option>
 				<option value="Extrude_Replace">EFFECT_EXTRUDE_REPLACE</option>
+				<option value="Fade">EFFECT_FADE</option>
 			</field>
 
 			<field name="effect_masterspeed" type="text" default="300" label="EFFECT_MASTERSPEED" description="EFFECT_MASTERSPEED_DESC" />

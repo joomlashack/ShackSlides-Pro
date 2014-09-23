@@ -207,6 +207,12 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 			{ $Duration: 1600, $Delay: 40, $Cols: 12, $During: { $Left: [0.4, 0.6] }, $SlideOut: true, $FlyDirection: 2, $Formation: $JssorSlideshowFormations$.$FormationStraight, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInOutExpo, $Opacity: $JssorEasing$.$EaseInOutQuad }, $ScaleHorizontal: 0.2, $Opacity: 2, $Outside: true, $Round: { $Top: 0.5 }, $Brother: { $Duration: 1000, $Delay: 40, $Cols: 12, $FlyDirection: 1, $Formation: $JssorSlideshowFormations$.$FormationStraight, $Assembly: 1028, $Easing: { $Left: $JssorEasing$.$EaseInOutExpo, $Opacity: $JssorEasing$.$EaseInOutQuad }, $ScaleHorizontal: 0.2, $Opacity: 2, $Round: { $Top: 0.5}} }
 		];
 		<?php endif ?>
+		<?php if ($params->get('effect_slide', $defaults['effect_slide']) == 'Fade') :?>
+		var _SlideshowTransitions = [
+		//["fade"]
+			{ $Duration: 1600, $Zoom: 1.5, $FlyDirection: 0, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Zoom: $JssorEasing$.$EaseInSine }, $ScaleHorizontal: 0.25, $Opacity: 2, $ZIndex: -10, $Brother: { $Duration: 1600, $Zoom: 1.5, $FlyDirection: 0, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Zoom: $JssorEasing$.$EaseInSine }, $ScaleHorizontal: 0.25, $Opacity: 2, $ZIndex: -10} }
+		];
+		<?php endif ?>
 		//ENDS EFFECTS OF SLIDE WHEN ITS IN AUTOPLAY
 
 //**********************************************************************************************************************************************************
