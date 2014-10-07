@@ -29,7 +29,7 @@
 
 			<field name="descriptiontemplate" type="list" default="animatedtemplate" label="DESC_TEMPLATE" description="DESC_TEMPLATE_DESC">
 				<option value="animatedtemplate">ANIMATEDTEMPLATE</option>
-				<option value="fullwithanimatedtemplate">FULLWIDTHANIMATEDTEMPLATE</option>
+				
 				<option value="independenttemplate">INDEPENDENTTEMPLATE</option>
 			</field>
 
