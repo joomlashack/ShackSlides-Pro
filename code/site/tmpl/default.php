@@ -838,18 +838,15 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
                 	<?php if ($links[$i]) : ?>
                     <a href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
                     <?php endif; ?>
-                    <img u=image src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
+
+                    <img u=image style="width: 100%;" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
                     <?php if ($links[$i]) : ?>
                     </a>
                     <?php endif; ?>
-                    <?php if (($titles[$i] || $contents[$i])) : ?>
-						<?php if ($titles[$i] && $contents[$i]) : ?>
-                        <div u="thumb">
-							<?php echo $titles[$i]; ?>
-                            <?php echo $contents[$i]; ?>
-                        </div>
-                        <?php endif; ?>
-                    <?php endif; ?>
+                    <div u="thumb">
+                    	<?php echo $titles[$i]? $titles[$i]:''; ?>
+                    	<?php echo $contents[$i]? $contents[$i]:''; ?>
+                    </div>
                 </div>
                 <?php endfor; ?>
             </div>
@@ -861,7 +858,7 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
                 <!-- Thumbnail Item Skin Begin -->
                 <div u="slides" class="testslidescla">
                     <div u="prototype" style="POSITION: absolute; height:<?php echo $params->get('height_desc_outside', $defaults['height_desc_outside']) ?>px; width:<?php echo $params->get('width_desc_outside', $defaults['width_desc_outside']) ?>px; TOP: 0; LEFT: 0;">
-                        <thumbnailtemplate style="font-family: verdana; font-weight: normal; POSITION: absolute; WIDTH: 100%; HEIGHT: 100%; TOP: 0; LEFT: 0; color:#fff; line-height: 15px; font-size:20px; padding:0 10px;" class="thumbsshack"></thumbnailtemplate>
+                    	<thumbnailtemplate style="font-family: verdana; font-weight: normal; POSITION: absolute; WIDTH: 100%; HEIGHT: 100%; TOP: 0; LEFT: 0; color:#fff; line-height: 15px; font-size:20px; padding:0 10px;" class="thumbsshack"></thumbnailtemplate>
                     </div>
                 </div>
                 <!-- Thumbnail Item Skin End -->

@@ -46,4 +46,4 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
     display: block;
-}*/
+}
