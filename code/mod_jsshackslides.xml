@@ -202,8 +202,12 @@
 				<option value="bib">SLIDING_BOTTOM</option>
 			</field>
 
-			<field name="titleposition" type="list" default="top_left_title" label="TITLE_POSITION" description="TITLE_POSITION_DESC">
+			<field name="titleposition2" type="list" default="show_title" label="SHOW_TITLE" description="SHOW_TITLE">
 				<option value="notshowtitle">NOTSHOWTITLE</option>
+				<option value="showtitle">SHOWTITLE</option>	
+			</field>
+
+			<field name="titleposition" type="list" default="top_left_title" label="TITLE_POSITION" description="TITLE_POSITION_DESC">
 				<option value="top_left_title">TOPLEFTTITLE</option>
 				<option value="bottom_left_title">BOTTOMLEFTTITLE</option>
 				<option value="advancedpostitle">ADVANCEDPOSTITLE</option>
@@ -252,6 +256,12 @@
 				<option value="rttjupbr">APPEARS_BOTTOM_RIGHT_CORNER</option>
 				<option value="rib">SLIDING_RIGHT</option>
 				<option value="bib">SLIDING_BOTTOM</option>
+			</field>
+
+
+			<field name="descriptionposition3" type="list" default="showdescbottom" label="SHOW_ DESC" escription="SHOW_ DESC">
+				<option value="notshowdescbottom">NOTSHOWDESC2</option>
+				<option value="showdescbottom">SHOWDESC2</option>
 			</field>
 
 			<field name="descriptionposition2" type="list" default="notshowdescbottom" label="DESC_POSITION2" description="DESC_POSITION2_DESC">
