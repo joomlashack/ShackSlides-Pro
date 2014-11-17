@@ -107,22 +107,22 @@ var Sliderman = new function(){
 			setOpacity = function(style, v){
 				if(v > 1) v = 1;
 				else if(v < 0) v = 0;
-			  style[p] = "alpha(opacity=" + Math.round(v*100) + ")";
+			  style.p = "alpha(opacity=" + Math.round(v*100) + ")";
 			}
 		}else if(p){
 			setOpacity = function(style, v){
 				if(v > 1) v = 1;
 				else if(v < 0) v = 0;
-			  style[p] = v.toFixed(2);
+			  style.p = v.toFixed(2);
 			}
 		}else setOpacity = ef
 	}//setOpacityInit
 
 	function setStyle(style, property, value){
-		if(is_string(value)) style[property] = value;
-		else if(property == 'clip') style[property] = 'rect('+Math.round(value[0])+'px, '+Math.round(value[1])+'px, '+Math.round(value[2])+'px, '+Math.round(value[3])+'px)';
+		if(is_string(value)) style.property = value;
+		else if(property == 'clip') style.property = 'rect('+Math.round(value[0])+'px, '+Math.round(value[1])+'px, '+Math.round(value[2])+'px, '+Math.round(value[3])+'px)';
 		else if(property == 'opacity') setOpacity(style, value);
-		else style[property] = Math.round(value)+'px';
+		else style.property = Math.round(value)+'px';
 	}//setStyle
 	function setStyles(style, properties){
 		foreach(properties, function(property){
