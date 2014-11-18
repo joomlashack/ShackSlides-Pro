@@ -104,25 +104,38 @@ var Sliderman = new function(){
 	  else if(is_string(s.KhtmlOpacity)) p = 'KhtmlOpacity';
 	  else if(b.filters && navigator.appVersion.match(/MSIE ([\d.]+);/)[1]>=5.5) p = 'filter';
 	  if(p == 'filter'){
-			setOpacity = function(style, v){
-				if(v > 1) v = 1;
-				else if(v < 0) v = 0;
-			  style.p = "alpha(opacity=" + Math.round(v*100) + ")";
-			}
-		}else if(p){
-			setOpacity = function(style, v){
-				if(v > 1) v = 1;
-				else if(v < 0) v = 0;
-			  style.p = v.toFixed(2);
-			}
-		}else setOpacity = ef
-	}//setOpacityInit
+			 			setOpacity = function(style, v){
+ 				if(v > 1) v = 1;
+ 				else if(v < 0) v = 0;
+			  style[p] = "alpha(opacity=" + Math.round(v*100) + ")";
+ 			}
+ 		}else if(p){
+ 			setOpacity = function(style, v){
+ 				if(v > 1) v = 1;
+ 				else if(v < 0) v = 0;
+			  style[p] = v.toFixed(2);
 
-	function setStyle(style, property, value){
-		if(is_string(value)) style.property = value;
-		else if(property == 'clip') style.property = 'rect('+Math.round(value[0])+'px, '+Math.round(value[1])+'px, '+Math.round(value[2])+'px, '+Math.round(value[3])+'px)';
-		else if(property == 'opacity') setOpacity(style, value);
-		else style.property = Math.round(value)+'px';
+ 			}
+ 		}else setOpacity = ef
+ 	}//setOpacityInit
+ 
+ 	function setStyle(style, property, value){
+
+ 		if (is_string(value) && (value.indexOf('undefined') == -1)) {
+ 			style[property] = value;
+ 		} 
+
+ 		if (!isNaN(value)) {
+ 			style[property] = Math.round(value)+'px';
+ 		}
+
+		if(property == 'clip') style[property] = 'rect('+Math.round(value[0])+'px, '+Math.round(value[1])+'px, '+Math.round(value[2])+'px, '+Math.round(value[3])+'px)';
+ 		if(property == 'opacity') setOpacity(style, value);
+
+ 	}//setStyle
+
+ 	function setStyles(style, properties){
+
 	}//setStyle
 	function setStyles(style, properties){
 		foreach(properties, function(property){
