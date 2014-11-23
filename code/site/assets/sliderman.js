@@ -104,38 +104,25 @@ var Sliderman = new function(){
 	  else if(is_string(s.KhtmlOpacity)) p = 'KhtmlOpacity';
 	  else if(b.filters && navigator.appVersion.match(/MSIE ([\d.]+);/)[1]>=5.5) p = 'filter';
 	  if(p == 'filter'){
-			 			setOpacity = function(style, v){
- 				if(v > 1) v = 1;
- 				else if(v < 0) v = 0;
+			setOpacity = function(style, v){
+				if(v > 1) v = 1;
+				else if(v < 0) v = 0;
 			  style[p] = "alpha(opacity=" + Math.round(v*100) + ")";
- 			}
- 		}else if(p){
- 			setOpacity = function(style, v){
- 				if(v > 1) v = 1;
- 				else if(v < 0) v = 0;
+			}
+		}else if(p){
+			setOpacity = function(style, v){
+				if(v > 1) v = 1;
+				else if(v < 0) v = 0;
 			  style[p] = v.toFixed(2);
+			}
+		}else setOpacity = ef
+	}//setOpacityInit
 
- 			}
- 		}else setOpacity = ef
- 	}//setOpacityInit
- 
- 	function setStyle(style, property, value){
-
- 		if (is_string(value) && (value.indexOf('undefined') == -1)) {
- 			style[property] = value;
- 		} 
-
- 		if (!isNaN(value)) {
- 			style[property] = Math.round(value)+'px';
- 		}
-
-		if(property == 'clip') style[property] = 'rect('+Math.round(value[0])+'px, '+Math.round(value[1])+'px, '+Math.round(value[2])+'px, '+Math.round(value[3])+'px)';
- 		if(property == 'opacity') setOpacity(style, value);
-
- 	}//setStyle
-
- 	function setStyles(style, properties){
-
+	function setStyle(style, property, value){
+		if(is_string(value)) style[property] = value;
+		else if(property == 'clip') style[property] = 'rect('+Math.round(value[0])+'px, '+Math.round(value[1])+'px, '+Math.round(value[2])+'px, '+Math.round(value[3])+'px)';
+		else if(property == 'opacity') setOpacity(style, value);
+		else style[property] = Math.round(value)+'px';
 	}//setStyle
 	function setStyles(style, properties){
 		foreach(properties, function(property){
@@ -650,41 +637,21 @@ var Sliderman = new function(){
 
 			var descriptionCont = newElement('DIV'); $(descriptionCont).addClass('slidermanDescriptionCont');
 
-			if(display.bootstrap && !description.hide) {
+			if(display.bootstrap && !description.hide && (description.position == 'right_image' || description.position == 'left_image')) {
 
 				descriptionCont.style.position = 'relative';
 
-				//below/above
-				if (description.position == 'above_image' || description.position == 'below_image') {
+				$(descriptionCont).addClass('span' + description.bootstrap_span_size);
+				var pos;
+				if (description.position == 'left_image')
+					pos = 'top';
+				if (description.position == 'right_image')
+					pos = 'bottom';
 
-					$(descriptionCont).addClass('span12');
-					var descriptionRow = newElement('DIV'); $(descriptionRow).addClass('row-fluid'); descriptionRow.appendChild(descriptionCont);
-					var pos;
-					if (description.position == 'above_image')
-						pos = 'top';
-					if (description.position == 'below_image')
-						pos = 'bottom';
-					var parent = document.getElement('#shackslides-row').getParent();
-					descriptionRow.inject(parent, pos);
+				var row = document.getElement('#shackslides-row');
+				descriptionCont.inject(row, pos);
 
-				}
-
-				//left/right
-				else {
-
-					$(descriptionCont).addClass('span' + description.bootstrap_span_size);
-					var pos;
-					if (description.position == 'left_image')
-						pos = 'top';
-					if (description.position == 'right_image')
-						pos = 'bottom';
-
-					var row = document.getElement('#shackslides-row');
-					descriptionCont.inject(row, pos);
-
-				}
-
-				var descriptionStl = {position: 'absolute',
+				var descriptionStl = {
 					overflow: (description.position == 'left_image' || description.position == 'right_image' || description.position == 'above_image' || description.position == 'below_image' ? 'visible' : description.overflow),
 				textAlign: 'left'};
 				if(!description) description = [];
