@@ -34,6 +34,7 @@ $defaults = array(
 	'width_text' => '200',
 	'height_text' => '200',
 	'effect_text' => 'clipleftright',
+	'descriptionposition2' => 'notshowdescbottom',
 	'descriptionposition3' => 'notshowdescbottom',
 	//NAVIGATION OPTIONS
 	'navigation' => 'true',
@@ -111,6 +112,12 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 <script>
 	jQuery(document).ready(function ($) {
 		//START EFFECTS OF SLIDE WHEN ITS IN AUTOPLAY
+		<?php if ($params->get('effect_slide', $defaults['effect_slide']) == 'None') :?>
+		var _SlideshowTransitions = [
+		//["None"]
+			{$Duration: 0, $Zoom: 0, $Rotate: 0, $Easing: { $Zoom: $JssorEasing$.$EaseInQuad, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInQuad }, $Opacity: 2, $Round: { $Rotate: 0}, $Brother: { $Duration: 0, $Zoom: 0, $Rotate: 0, $Easing: $JssorEasing$.$EaseSwing, $Opacity: 0, $Round: { $Rotate: 0 }, $Shift: 0} }
+		];
+		<?php endif ?>
 		<?php if ($params->get('effect_slide', $defaults['effect_slide']) == 'rotateoverlap') :?>
 		var _SlideshowTransitions = [
 		//["Rotate Overlap"]
@@ -421,57 +428,60 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 		//responsive code begin
 		//you can remove responsive code if you don't want the slider scales while window resizes
 		<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'animatedtemplate') :?>
-		var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
 
-		function ScaleSlider() {
-			var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
-			if (parentWidth)
-				jssor_slider1.$SetScaleWidth(Math.min(parentWidth, <?php echo $params->get('width', $defaults['width']) ?>));
-			else
-				window.setTimeout(ScaleSlider, 30);
-		}
-		<?php endif; ?>
+			var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
 
-		<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
+			function ScaleSlider() {
+				var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+				if (parentWidth)
+					jssor_slider1.$SetScaleWidth(Math.min(parentWidth, <?php echo $params->get('width', $defaults['width']) ?>));
+				else
+					window.setTimeout(ScaleSlider, 30);
+			}
+			<?php endif; ?>
 
-var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
+			<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
 
-//responsive code begin
-//you can remove responsive code if you don't want the slider scales while window resizes
-function ScaleSlider() {
-	var bodyWidth = document.body.clientWidth;
-	if (bodyWidth)
-		jssor_slider1.$SetScaleWidth(Math.min(bodyWidth, 1920));
-	else
-		window.setTimeout(ScaleSlider, 30);
-}
+			var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
 
-ScaleSlider();
+			//responsive code begin
+			//you can remove responsive code if you don't want the slider scales while window resizes
+			function ScaleSlider() {
+				var bodyWidth = document.body.clientWidth;
+				if (bodyWidth)
+					jssor_slider1.$SetScaleWidth(Math.min(bodyWidth, 1920));
+				else
+					window.setTimeout(ScaleSlider, 30);
+			}
 
-if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
-	$(window).bind('resize', ScaleSlider);
-}
-//responsive code end
+			ScaleSlider();
 
-			//var jssor_slider1 = new $JssorSlider$(<?php echo $params->get('container', $defaults['container']) ?>, options);
+			if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+				$(window).bind('resize', ScaleSlider);
+			}
 
-//responsive code begin
-//you can remove responsive code if you don't want the slider scales while window resizes
-/*function ScaleSlider() {
-    var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
-    if (parentWidth)
-        jssor_slider1.$SetScaleWidth(parentWidth);
-    else
-        $JssorUtils$.$Delay(ScaleSlider, 30);
-}
+			//responsive code end
 
-ScaleSlider();
-$JssorUtils$.$AddEvent(window, "load", ScaleSlider);
+						//var jssor_slider1 = new $JssorSlider$(<?php echo $params->get('container', $defaults['container']) ?>, options);
 
-if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
-    $JssorUtils$.$OnWindowResize(window, ScaleSlider);
-}*/
-//responsive code end
+			//responsive code begin
+			//you can remove responsive code if you don't want the slider scales while window resizes
+			/*function ScaleSlider() {
+			    var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+			    if (parentWidth)
+			        jssor_slider1.$SetScaleWidth(parentWidth);
+			    else
+			        $JssorUtils$.$Delay(ScaleSlider, 30);
+			}
+
+			ScaleSlider();
+			$JssorUtils$.$AddEvent(window, "load", ScaleSlider);
+
+			if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+			    $JssorUtils$.$OnWindowResize(window, ScaleSlider);
+			}*/
+			//responsive code end
+
 		<?php endif; ?>
 
 		ScaleSlider();
@@ -481,8 +491,8 @@ if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
 		}
 		//responsive code end
 	});
-
 </script>
+
 <div style="width:100%; height:1px; clear:both"></div>
 <div id="slideshowcontainer">
 <!--STARTS BODY CONTENT OF ANIMATED TEMPLATE-->

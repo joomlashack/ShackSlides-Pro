@@ -25,29 +25,67 @@
 	<config>
 	<fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
 
-		<fieldset name="basic">
+		<fieldset 
+					name="basic"
+		>
 
-			<field name="descriptiontemplate" type="list" default="animatedtemplate" label="DESC_TEMPLATE" description="DESC_TEMPLATE_DESC">
-				<option value="animatedtemplate">ANIMATEDTEMPLATE</option>
-				
-				<option value="independenttemplate">INDEPENDENTTEMPLATE</option>
-			</field>
+			<field 
+					type="spacer" 
+					name="basic_options_spacer" 
+					label="BASIC_OPTIONS_SPACER_LABEL" 
+			/>
 
-			<field type="spacer" name="basic_options_spacer" label="BASIC_OPTIONS_SPACER_LABEL" />
+			<field 
+					name="limit" 
+					type="text" 
+					default="5" 
+					label="LIMIT" 
+					description="LIMIT_DESC" 
+			/>
 
-			<field name="limit" type="text" default="5" label="LIMIT" description="LIMIT_DESC" />
+			<field 
+					name="effect_slide" 
+					type="disablefields" 
+					default="None" 
+					label="EFFECT_SLIDE" 
+					description="EFFECT_SLIDE_DESC"
+			/>
+			
+			<field 
+					name="navigation" 
+					type="disablefields" 
+					default="true" 
+					label="SHACKSLIDES_BASIC_AUTOPLAY" 
+					description="SHACKSLIDES_BASIC_AUTOPLAY_DESC"
+			/>
 
-			<field name="ordering" type="list" default="1" label="ORDERING" description="ORDERING_DESC">
-				<option value="ordering">ORDER</option>
-				<option value="title">TITLE</option>
-				<option value="created">DATE</option>
-				<option value="hits">HITS</option>
-				<option value="RAND()">RANDOM</option>
-			</field>
+			<field 
+					name="slide_delay" 
+					type="text" 
+					default="5000" 
+					label="SLIDE_DELAY" 
+					description="SLIDE_DELAY_DESC" 
+			/>
 
-			<field name="ordering_dir" type="list" default="1" label="ORDERING_DIRECTION" description="ORDERING_DIRECTION_DESC">
-				<option value="ASC">ASCENDING</option>
-				<option value="DESC">DESCENDING</option>
+			<field 
+					name="effect_masterspeed" 
+					type="text" 
+					default="300" 
+					label="EFFECT_MASTERSPEED" 
+					description="EFFECT_MASTERSPEED_DESC" 
+			/>
+
+			<field 
+					name="onhover_stop" 
+					type="list" 
+					default="0" 
+					label="ONHOVER_STOP" 
+					description="ONHOVER_STOP_DESC"
+			>
+				<option value="0">ONHOVERSTOPOFF</option>
+				<option value="1">ONHOVERSTOPCOMP</option>
+				<option value="2">ONHOVERSTOPTOUCH</option>
+				<option value="3">ONHOVERSTOPBOTH</option>
 			</field>
 
 			<field name="width" type="text" default="500" label="CONTAINERWIDTH" description="CONTAINERWIDTH_DESC" />
@@ -65,30 +103,6 @@
 			</field>
 
 			<field type="spacer" name="slider_options_spacer" label="SLIDER_OPTIONS_SPACER_LABEL" />
-
-			<field name="slide_delay" type="text" default="5000" label="SLIDE_DELAY" description="SLIDE_DELAY_DESC" />
-
-			<field name="effect_slide" type="list" default="fade" label="EFFECT_SLIDE" description="EFFECT_SLIDE_DESC">
-				<option value="rotateoverlap">EFFECT_ROTATE_OVERLAP</option>				
-				<option value="switch">EFFECT_SWITCH</option>
-				<option value="Rotate_Relay">EFFECT_ROTATE_RELAY</option>
-				<option value="doors">EFFECT_DOORS</option>
-				<option value="Rotate-in+-out-">EFFECT_ROTATEIN+_ROTATEOUT-</option>
-				<option value="Fly-Twins">EFFECT_FLYTWINS</option>
-				<option value="Rotatein-out+">EFFECT_ROTATEINMIN_OUTPLUS</option>
-				<option value="Rotate_Axis_up_overlap">EFFECT_ROTATE_AXIS_UP_OVERLAP</option>
-				<option value="Chess_Replace_TB">EFFECT_CHESS_REPLACE_TB</option>
-				<option value="Chess_Replace_LR">EFFECT_CHESS_REPLACE_LR</option>
-				<option value="Shift_TB">EFFECT_SHIFT_TB</option>
-				<option value="Shift_LR">EFFECT_SHIFT_LR</option>
-				<option value="Return_TB">EFFECT_RETURN_TB</option>
-				<option value="Return_LR">EFFECT_RETURN_LR</option>
-				<option value="Rotate_Axis_down">EFFECT_ROTATE_AXIS_DOWN</option>
-				<option value="Extrude_Replace">EFFECT_EXTRUDE_REPLACE</option>
-				<option value="Fade">EFFECT_FADE</option>
-			</field>
-
-			<field name="effect_masterspeed" type="text" default="300" label="EFFECT_MASTERSPEED" description="EFFECT_MASTERSPEED_DESC" />
 
 			<!--field type="spacer" name="independent_template_options" label="INDEPENDENT_TEMPLATE_OPTIONS_SPACER_LABEL" />
 
@@ -111,37 +125,130 @@
 		</fieldset>
 
 
-		<fieldset name="source" label="IMAGES_SOURCE_OPTIONS_LABEL">
+		<fieldset 
+					name="source" 
+					label="IMAGES_SOURCE_OPTIONS_LABEL"
+		>
+				
+			<field 
+					name="source" 
+					type="disablefields" 
+					default="folder" 
+					label="SHACKSLIDE_SOURCE" 
+					description="SHACKSLIDE_SOURCE_DESC"
+			/>
 
-			<field name="source" type="list" default="folder" label="SHACKSLIDE_SOURCE" description="SHACKSLIDE_SOURCE_DESC">
-				<option value="folder">Folder</option>
-        <option value="joomla">Joomla Content</option>
-        <option value="k2">K2 Content</option>
-        <option value="flexi">FlexiContent Content</option>
-        <option value="visionary">Visionary Collection</option>
-			</field>
+			<field 
+					type="spacer" 
+					name="slidessources_sourceconfiguration_spacer" 
+					label="SLIDESSOURCES_SOURCESCONFIGURATION_LABEL" 
+			/>
 
-			<field name="folder_folder" type="directory" default="images" directory="images" label="FOLDER" description="FOLDER_DESC" />
-			<field name="joomla_category" type="category" extension="com_content" default="1" label="CATEGORY" description="CATEGORY_DESC" />
-			<field name="joomla_image_source_type" type="list" default="intro" label="JOOMLA_IMAGE_SOURCE_TYPE" description="JOOMLA_IMAGE_SOURCE_TYPE_DESC" >
-				<option value="intro">Intro Image</option>
-				<option value="full">Full Article Image</option>
-			</field>
-			<field name="k2_category" type="k2category" default="0" label="K2_CATEGORY" description="K2_CATEGORY_DESC" />
-			<field name="flexi_category" type="flexicategory" default="" label="FLEXICONTENT_CATEGORY" description="FLEXICONTENT_CATEGORY_DESC" />
-			<field name="visionary_collection" type="visionarycollection" default="" label="VISIONARYCOLLECTION" description="VISIONARYCOLLECTION_DESC" />
+				<field 
+						name="folder_folder" 
+						type="directory" 
+						default="images" 
+						directory="images" 
+						label="FOLDER" 
+						description="FOLDER_DESC" 
+				/>
 
-			<field name="featured" type="list" default="exclude" label="FEATURED" description="FEATURED_DESC">
-				<option value="exclude">Exclude</option>
-				<option value="include">Include</option>
-				<option value="only">Only Featured/Frontpage</option>
-			</field>
+				<field 
+						name="joomla_category" 
+						type="category" 
+						extension="com_content" 
+						default="1" 
+						label="CATEGORY" 
+						description="CATEGORY_DESC" 
+				/>
 
-			<field name="anchor_target" type="list" default="self" label="ANCHOR_TARGET" description="ANCHOR_TARGET_DESC">
-				<option value="self">SELF</option>
-				<option value="blank">BLANK</option>
-			</field>
+				<field 
+						name="k2_category" 
+						type="k2category" 
+						default="0" 
+						label="K2_CATEGORY" 
+						description="K2_CATEGORY_DESC" 
+				/>
 
+				<field 
+						name="flexi_category" 
+						type="flexicategory" 
+						default="" 
+						label="FLEXICONTENT_CATEGORY" 
+						description="FLEXICONTENT_CATEGORY_DESC" 
+				/>
+
+				<field 
+						name="visionary_collection" 
+						type="visionarycollection" 
+						default="" 
+						label="VISIONARYCOLLECTION" 
+						description="VISIONARYCOLLECTION_DESC" 
+				/>
+
+			<field 
+					type="spacer" 
+					name="slidessources_sourceoptions_spacer" 
+					label="SLIDESSOURCES_SOURCEOPTIONS_LABEL" 
+			/>
+
+				<field 
+						name="joomla_image_source_type" 
+						type="list" 
+						default="intro" 
+						label="JOOMLA_IMAGE_SOURCE_TYPE" 
+						description="JOOMLA_IMAGE_SOURCE_TYPE_DESC" 
+				>
+					<option value="intro">JOOMLA_IMAGE_SOURCE_INTROIMG</option>
+					<option value="full">JOOMLA_IMAGE_SOURCE_FULLARTI</option>
+				</field>
+
+				<field 
+						name="featured" 
+						type="list" 
+						default="exclude" 
+						label="FEATURED" 
+						description="FEATURED_DESC"
+				>
+					<option value="exclude">FEATURED_EXCLUDE</option>
+					<option value="include">FEATURED_INCLUDE</option>
+					<option value="only">FEATURED_ONLYFF</option>
+				</field>
+
+				<field 
+						name="anchor_target" 
+						type="list" 
+						default="self" 
+						label="ANCHOR_TARGET" 
+						description="ANCHOR_TARGET_DESC"
+				>
+					<option value="self">SELF</option>
+					<option value="blank">BLANK</option>
+				</field>
+
+				<field 
+						name="ordering" 
+						type="list" 
+						default="1" 
+						label="ORDERING" 
+						description="ORDERING_DESC"
+				>
+					<option value="ordering">ORDER</option>
+					<option value="title">TITLE</option>
+					<option value="created">DATE</option>
+					<option value="hits">HITS</option>
+					<option value="RAND()">RANDOM</option>
+				</field>
+
+				<field 
+						name="ordering_dir" 
+						type="list" 
+						default="1" 
+						label="ORDERING_DIRECTION" 
+				>
+					<option value="ASC">ASCENDING</option>
+					<option value="DESC">DESCENDING</option>
+				</field>
 		</fieldset>
 
 		<fieldset name="descriptions" label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL">
@@ -282,18 +389,6 @@
 
 
 		<fieldset name="navigationoptions" label="NAVIGATION_OPTIONS_LABEL">
-
-			<field name="navigation" type="list" default="true" label="NAVIGATION" description="NAVIGATION_DESC">
-				<option value="true">AUTOMATICNAV</option>
-				<option value="false">MANUALNAV</option>
-			</field>
-
-			<field name="onhover_stop" type="list" default="0" label="ONHOVER_STOP" description="ONHOVER_STOP_DESC">
-				<option value="0">ONHOVERSTOPOFF</option>
-				<option value="1">ONHOVERSTOPCOMP</option>
-				<option value="2">ONHOVERSTOPTOUCH</option>
-				<option value="3">ONHOVERSTOPBOTH</option>
-			</field>
 
 			<field name="navigationarrows" type="list" default="2" label="NAVIGATIONARROWS" description="NAVIGATIONARROWS_DESC">
 				<option value="0">NO_ARROWS</option>
