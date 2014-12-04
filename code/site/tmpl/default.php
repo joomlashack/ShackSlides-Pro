@@ -109,7 +109,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
 <!-----------------------------------------------------START CODE FOR FULL WIDTH TEMPLATE AND ANIMATED TEMPLATE-------------------------------------------->
 <?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate' or $params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'animatedtemplate') :?>
-<script>
+	<script>
 	jQuery(document).ready(function ($) {
 		//START EFFECTS OF SLIDE WHEN ITS IN AUTOPLAY
 		<?php if ($params->get('effect_slide', $defaults['effect_slide']) == 'None') :?>
