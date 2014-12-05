@@ -506,7 +506,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
                 background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
             </div>
-            <div style="position: absolute; display: block; background: url(/modules/mod_jsshackslides/images/loading.gif) no-repeat center center;
+            <div style="position: absolute; display: block; background: url(<?php echo JUri::root(true); ?>/modules/mod_jsshackslides/images/loading.gif) no-repeat center center;
                 top: 0px; left: 0px;width: 100%;height:100%;">
             </div>
         </div>
@@ -542,38 +542,31 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             </div>
             <?php endfor; ?>
         </div>
-        <!-- Navigator Skin Begin -->
-        <!-- jssor slider navigator skin 01 -->
-        <style>
-            /*
-            .jssorn01 div           (normal)
-            .jssorn01 div:hover     (normal mouseover)
-            .jssorn01 .av           (active)
-            .jssorn01 .av:hover     (active mouseover)
-            .jssorn01 .dn           (mousedown)
-            */
-            .jssorn01 div, .jssorn01 div:hover, .jssorn01 .av
-            {
-                filter: alpha(opacity=70);
-                opacity: .7;
-                overflow:hidden;
-                cursor: pointer;
-                border: #000 1px solid;
-            }
-            .jssorn01 div { background-color: gray; }
-            .jssorn01 div:hover, .jssorn01 .av:hover { background-color: #d3d3d3; }
-            .jssorn01 .av { background-color: #fff; }
-            .jssorn01 .dn, .jssorn01 .dn:hover { background-color: #555555; }
-        </style>
-        <!-- navigator container -->
-        <div u="navigator" class="jssorn01" style="position: absolute; bottom: 16px; right: 10px;">
-            <!-- navigator item prototype -->
-            <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
-        </div>
-        <!-- Navigator Skin End -->
-        <!-- Direction Navigator Skin Begin -->
-        <style>
-            /* jssor slider direction navigator skin 05 css */
+
+        <?php
+
+        $style = '
+        	/*
+        	.jssorn01 div           (normal)
+        	.jssorn01 div:hover     (normal mouseover)
+        	.jssorn01 .av           (active)
+        	.jssorn01 .av:hover     (active mouseover)
+        	.jssorn01 .dn           (mousedown)
+        	*/
+        	.jssorn01 div, .jssorn01 div:hover, .jssorn01 .av
+        	{
+        	    filter: alpha(opacity=70);
+        	    opacity: .7;
+        	    overflow:hidden;
+        	    cursor: pointer;
+        	    border: #000 1px solid;
+        	}
+        	.jssorn01 div { background-color: gray; }
+        	.jssorn01 div:hover, .jssorn01 .av:hover { background-color: #d3d3d3; }
+        	.jssorn01 .av { background-color: #fff; }
+        	.jssorn01 .dn, .jssorn01 .dn:hover { background-color: #555555; }
+
+        	/* jssor slider direction navigator skin 05 css */
             /*
             .jssord05l              (normal)
             .jssord05r              (normal)
@@ -587,7 +580,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             	position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url(/modules/mod_jsshackslides/tmpl/images/d17.png) no-repeat;
+                background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/d17.png) no-repeat;
                 overflow:hidden;
             }
             .jssord05l { background-position: -10px -40px; }
@@ -596,7 +589,19 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             .jssord05r:hover { background-position: -190px -40px; }
             .jssord05ldn { background-position: -250px -40px; }
             .jssord05rdn { background-position: -310px -40px; }
-        </style>
+
+        ';
+
+        $doc->addStyleDeclaration($style);
+
+        ?>
+        
+        <!-- navigator container -->
+        <div u="navigator" class="jssorn01" style="position: absolute; bottom: 16px; right: 10px;">
+            <!-- navigator item prototype -->
+            <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
+        </div>
+       
         <!-- Arrow Left -->
         <span u="arrowleft" class="jssord05l" style="width: 40px; height: 40px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;">
         </span>
