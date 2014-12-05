@@ -103,7 +103,8 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 			}
 
 
-			$this->titles[] = $this->getTitleFromContent($item->introtext);
+			$this->titles[] = $this->getTitleFromContent($item->title);
+			$this->contents[] = $item->introtext;
 			$this->links[] = $this->buildLink($item->id);
 		}
 	}
