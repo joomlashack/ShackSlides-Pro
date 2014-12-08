@@ -67,9 +67,18 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
 	private function parseContentIntoProperties()
 	{
 		foreach ($this->content as $item)
-		{
-			$this->images[] = $this->getFirstImageFromContent($item->introtext);
-			$this->titles[] = $this->getTitleFromContent($item->introtext);
+		{	
+			if(JFile::exists(JPATH_SITE.DS.'media'.DS.'k2'.DS.'items'.DS.'src'.DS.md5("Image".$item->id).'.jpg'))
+			{
+				$this->images[] = 'media/k2/items/src/'.md5("Image".$item->id).'.jpg';
+			}
+			else 
+			{
+				$this->images[] = $this->getFirstImageFromContent($item->introtext);
+			}
+
+			$this->titles[] = $this->getTitleFromContent($item->title);
+			$this->contents[] = $item->introtext;
 			$this->links[] = $this->buildLink($item->id);
 		}
 	}

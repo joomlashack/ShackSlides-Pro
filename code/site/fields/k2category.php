@@ -24,10 +24,8 @@ class JFormFieldK2category extends JFormFieldList
 		if (file_exists($k2_element_path)) :
 			include_once($k2_element_path);
 
-			/* On K2 version 2.6.x this call calls another class from an
-				 implied object context (using $this), since the class is not really static that call
-				 resolves to this class (JFormFieldK2Category). See coment on fetchElement() for more deatils. */
-			return JFormFieldCategories::getInput();
+			return parent::getInput();
+
 		else :
 			$doc = JFactory::getDocument();
 			$doc->addStyleSheet(JURI::root() . 'modules/mod_jsshackslides/assets/admin.css');
@@ -36,15 +34,39 @@ class JFormFieldK2category extends JFormFieldList
 	}
 
 
-	/*
-			This function is just a placeholder to avoid the above call to getInput() to fail. Since K2 internally
-			calls a K2ElementCategories object (not the class), we need to catch that call from an object context.
-			After getting it, we just call again the correct class, again from a static context.
-			In previous versions, this is not needed since JFormFieldCategores::getInput() calls everything statically.
-	 */
-	public function fetchElement($name, $value, &$element, $control) {
+	protected function getOptions() {
 
-		return K2ElementCategories::fetchElement($name, $value, $element, $control);
+		// Initialize variables
+		$options = array();
+		$query = 'SELECT id,name FROM `#__k2_categories` WHERE published = 1';
+
+		// Get the database object.
+		$db = JFactory::getDBO();
+
+		// Set the query and get the result list.
+		$db->setQuery($query);
+		$items = $db->loadObjectlist();
+
+		// Check for an error.
+		if ($db->getErrorNum())
+		{
+			JError::raiseWarning(500, $db->getErrorMsg());
+			return $options;
+		}
+
+
+		if (!empty($items)) {
+
+			foreach($items as $item) {
+
+				$options []= JHtml::_('select.option', $item->id, $item->name);
+			}
+
+		}
+
+		return $options;
+
+
 	}
 
 }

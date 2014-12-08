@@ -112,7 +112,7 @@ abstract class ModShackSlidesHelper
             return $image;
         }
         else
-            return false;
+            return 'modules/mod_jsshackslides/images/noimagefound.png';
     }
 
     protected function getTitleFromContent($content)
