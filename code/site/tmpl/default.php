@@ -516,15 +516,13 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             overflow: hidden;">
 			<?php for ($i = 0; $i < count($images); $i++) : ?>
                 <?php if ($images[$i] === false) continue; ?>
+                
             <div>
                 <?php if ($links[$i]) : ?>
                 <a u=image href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
 				<?php endif; ?>
                 <!--img u="image" src="<?php //echo $base.$images[$i] ?>" title="<?php //echo strip_tags($titles[$i]) ?>" alt="<?php //echo strip_tags($titles[$i]) ?>" /-->
                 <img u="image" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
-                <?php if ($links[$i]) : ?>
-                </a>
-                <?php endif; ?>
 
                 <?php if (($titles[$i] || $contents[$i])) : ?>
 					<?php if ($titles[$i]) : ?>
@@ -539,6 +537,11 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>
+
+                <?php if ($links[$i]) : ?>
+                	</a>
+                <?php endif; ?>
+
             </div>
             <?php endfor; ?>
         </div>
