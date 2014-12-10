@@ -76,35 +76,48 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 		foreach ($this->content as $item)
 		{
 
+			//#############################################
+			//############### Setting image ###############
+			//#############################################
+
 			$item_images = json_decode($item->images);
 			$image = null;
 
-			//choose intro or full image
-			if ($this->joomla_image_source_type == 'intro') {
-				if ($item_images->image_intro != '') {
-					//if there is, use that
+			if ($this->joomla_image_source_type == 'intro') 
+			{
+				if ($item_images->image_intro != '') 
+				{
 					$this->images[] = $item_images->image_intro;
 				}
-				//if not, extract the first image from the content
-				else {
-					$this->images[] = $this->getFirstImageFromContent($item->introtext);
+				else 
+				{
+					$this->images[] = 'modules/mod_jsshackslides/images/noimagefound.png';
 				}
 			}
 
-			elseif ($this->joomla_image_source_type == 'full') {
-				if ($item_images->image_fulltext != '') {
-					//if there is, use that
+			elseif ($this->joomla_image_source_type == 'full') 
+			{
+				if ($item_images->image_fulltext != '') 
+				{
 					$this->images[] = $item_images->image_fulltext;
 				}
-				//if not, extract the first image from the content
-				else {
-					$this->images[] = $this->getFirstImageFromContent($item->introtext);
+				else 
+				{
+					$this->images[] = 'modules/mod_jsshackslides/images/noimagefound.png';
 				}
 			}
 
+			elseif($this->joomla_image_source_type == 'firstimage')
+			{
+				$this->images[] = $this->getFirstImageFromContent($item->introtext);
+			}
+
+			//#################################################
+			//############### End setting image ###############
+			//#################################################
 
 			$this->titles[] = $this->getTitleFromContent($item->title);
-			$this->contents[] = $item->introtext;
+			$this->contents[] = $this->getTitleFromContent($item->introtext);
 			$this->links[] = $this->buildLink($item->id);
 		}
 	}

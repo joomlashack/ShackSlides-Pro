@@ -119,7 +119,7 @@ abstract class ModShackSlidesHelper
     {
         $title = strip_tags($content, '<p><h1><h2><h3><h4><h5><h6><span><b><i><u><strong><em><br>');
 
-		if (trim($title) == '') return false;
+		if (trim($title) == '') return '';
 
 		else return $title;
     }

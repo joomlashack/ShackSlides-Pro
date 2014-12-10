@@ -202,6 +202,7 @@
 				>
 					<option value="intro">JOOMLA_IMAGE_SOURCE_INTROIMG</option>
 					<option value="full">JOOMLA_IMAGE_SOURCE_FULLARTI</option>
+					<option value="firstimage">JOOMLA_IMAGE_SOURCE_FIRSTIMAGEARTICLE</option>
 				</field>
 
 				<field 
