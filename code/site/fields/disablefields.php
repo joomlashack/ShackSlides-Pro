@@ -69,7 +69,7 @@ class JFormFieldDisableFields extends JFormFieldList
 			}
 			if(file_exists($flexi_path))
 			{
-				$options [] = JHtml::_('select.option', "joomla", JText::_('SHACKSLIDE_SLIDESOURCE_FLEXI'));
+				$options [] = JHtml::_('select.option', "flexi", JText::_('SHACKSLIDE_SLIDESOURCE_FLEXI'));
 			}
 			if(file_exists($visionary_component_path))
 			{
