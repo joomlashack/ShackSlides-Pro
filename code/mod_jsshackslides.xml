@@ -231,7 +231,7 @@
 				<field 
 						name="ordering" 
 						type="list" 
-						default="1" 
+						default="ordering" 
 						label="ORDERING" 
 						description="ORDERING_DESC"
 				>
@@ -245,7 +245,7 @@
 				<field 
 						name="ordering_dir" 
 						type="list" 
-						default="1" 
+						default="ASC" 
 						label="ORDERING_DIRECTION" 
 				>
 					<option value="ASC">ASCENDING</option>

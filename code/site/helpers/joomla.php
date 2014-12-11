@@ -26,7 +26,7 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
         parent::__construct($params);
 		$this->category_id = $params->get('joomla_category', 0);
 		$this->ordering = $params->get('ordering', 'ordering');
-		$this->ordering_direction = $params->get('ordering_direction', 'ASC');
+		$this->ordering_direction = $params->get('ordering_dir', 'ASC');
 		$this->limit = $params->get('limit', '5');
 		$this->featured = $params->get('featured', 'include');
 		$this->joomla_image_source_type = $params->get('joomla_image_source_type', 'intro');

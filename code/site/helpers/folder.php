@@ -18,7 +18,8 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 	private $limit;
 	private $xml = false;
 
-	public function  __construct($params) {
+	public function  __construct($params) 
+	{
         parent::__construct($params);
 		$this->folder = $params->get('folder_folder', 'modules'.'/'.'mod_jsshackslides'.'/'.'tmpl'.'/'.'demos');
 		$this->directory =  JPATH_ROOT.'/'.$this->folder;
@@ -43,7 +44,8 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 		$i = 0;
 		foreach ($this->xml->xpath('//slide') as $slide)
 		{
-			if ($i < $this->limit) {
+			if ($i < $this->limit) 
+			{
 				$this->images[] = $slide->image;
 				$this->links[] = (isset($slide->link)) ? $slide->link : false;
 				$this->titles[] = (isset($slide->title)) ? $slide->title : false;

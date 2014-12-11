@@ -24,7 +24,7 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
         parent::__construct($params);
 		$this->category_id = $params->get('k2_category', 0);
 		$this->ordering = $params->get('ordering', 'ordering');
-		$this->ordering_direction = $params->get('ordering_direction', 'ASC');
+		$this->ordering_direction = $params->get('ordering_dir', 'ASC');
 		$this->limit = $params->get('limit', '5');
 		$this->featured = $params->get('featured', 'include');
 

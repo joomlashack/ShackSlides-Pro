@@ -39,7 +39,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 
 		}
 
-		$this->ordering_direction = $params->get('ordering_direction', 'ASC');
+		$this->ordering_direction = $params->get('ordering_dir', 'ASC');
 		$this->limit = $params->get('limit', '5');
 		$this->featured = $params->get('featured', 'include');
 
