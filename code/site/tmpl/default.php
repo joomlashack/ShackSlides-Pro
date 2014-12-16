@@ -42,6 +42,7 @@ $defaults = array(
 	'navigationdots' => '2',
 	'alignmentdots' => '1',
 	'orientationdots' => '1',
+	'navigationarrows_custom' => 'd17',
 	//JQUERY OPTIONS
 	'includejquery' => 'off',
 	'includejqueryui' => 'off',
@@ -90,8 +91,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 	 JHtml::_('jquery.ui');
  }
 
-	$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jssor.core.js');
-	$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jssor.utils.js');
+	$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jssor.js');
 	$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jssor.slider.js');
 
 	/*$doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider/css/style.css');*/
@@ -369,9 +369,10 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 		_CaptionTransitions["bib"] = {$Duration: 900, $FlyDirection: 8, $Easing: { $Top: $JssorEasing$.$EaseInOutBack }, $ScaleVertical: 0.6, $Opacity: 2 };
 
 		var options = {
-			<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
+
+		/*	<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
 			$FillMode: 2,   //[Optional] The way to fill image in slide, 0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actuall size, default value is 0
-			<?php endif; ?>
+			<?php endif; ?>*/
 
 			$AutoPlay: <?php echo $params->get('navigation', $defaults['navigation']) ?>,   //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
 			$AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
@@ -404,8 +405,8 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 				$PlayOutMode: 3                                 //[Optional] 0 None (no play), 1 Chain (goes before main slide), 3 Chain Flatten (goes before main slide and flatten all caption animations), default value is 1
 			},
 
-			$NavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
-				$Class: $JssorNavigator$,                       //[Required] Class to create navigator instance
+			$BulletNavigatorOptions: {                              //[Optional] Options to specify and enable navigator or not
+				$Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
 				$ChanceToShow: <?php echo $params->get('navigationdots', $defaults['navigationdots']) ?>, //[Required] 0 Never, 1 Mouse Over, 2 Always
 				$AutoCenter: <?php echo $params->get('alignmentdots', $defaults['alignmentdots']) ?>,     //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
 				$Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
@@ -415,19 +416,17 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 				$Orientation: <?php echo $params->get('orientationdots', $defaults['orientationdots']) ?>    //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
 			},
 
-			$DirectionNavigatorOptions: {
-				$Class: $JssorDirectionNavigator$,              //[Requried] Class to create direction navigator instance
+			 $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
 				$ChanceToShow: <?php echo $params->get('navigationarrows', $defaults['navigationarrows']) ?>   //[Required] 0 Never, 1 Mouse Over, 2 Always
 			}
 
 		};
 
-
-
-
 		//responsive code begin
 		//you can remove responsive code if you don't want the slider scales while window resizes
-		<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'animatedtemplate') :?>
+
+		//<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'animatedtemplate') :?>
 
 			var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
 
@@ -438,51 +437,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 				else
 					window.setTimeout(ScaleSlider, 30);
 			}
-			<?php endif; ?>
-
-			<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
-
-			var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
-
-			//responsive code begin
-			//you can remove responsive code if you don't want the slider scales while window resizes
-			function ScaleSlider() {
-				var bodyWidth = document.body.clientWidth;
-				if (bodyWidth)
-					jssor_slider1.$SetScaleWidth(Math.min(bodyWidth, 1920));
-				else
-					window.setTimeout(ScaleSlider, 30);
-			}
-
-			ScaleSlider();
-
-			if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
-				$(window).bind('resize', ScaleSlider);
-			}
-
-			//responsive code end
-
-						//var jssor_slider1 = new $JssorSlider$(<?php echo $params->get('container', $defaults['container']) ?>, options);
-
-			//responsive code begin
-			//you can remove responsive code if you don't want the slider scales while window resizes
-			/*function ScaleSlider() {
-			    var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
-			    if (parentWidth)
-			        jssor_slider1.$SetScaleWidth(parentWidth);
-			    else
-			        $JssorUtils$.$Delay(ScaleSlider, 30);
-			}
-
-			ScaleSlider();
-			$JssorUtils$.$AddEvent(window, "load", ScaleSlider);
-
-			if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
-			    $JssorUtils$.$OnWindowResize(window, ScaleSlider);
-			}*/
-			//responsive code end
-
-		<?php endif; ?>
+		//<?php endif; ?>
 
 		ScaleSlider();
 
@@ -495,8 +450,6 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
 <div style="width:100%; height:1px; clear:both"></div>
 <div id="slideshowcontainer">
-<!--STARTS BODY CONTENT OF ANIMATED TEMPLATE-->
-<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'animatedtemplate') :?>
 
 <div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; width: <?php echo $params->get('width', $defaults['width']) ?>px !important;
         height: <?php echo $params->get('height', $defaults['height']) ?>px !important; <?php if ($params->get('center_container_automatic', $defaults['center_container_automatic']) == 'centerautoenable') :?>margin:0 auto<?php endif; ?>">
@@ -583,7 +536,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             	position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/d17.png) no-repeat;
+                background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_custom', $defaults['navigationarrows_custom']).'.png) no-repeat;
                 overflow:hidden;
             }
             .jssord05l { background-position: -10px -40px; }
@@ -602,7 +555,9 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         <!-- navigator container -->
         <div u="navigator" class="jssorn01" style="position: absolute; bottom: 16px; right: 10px;">
             <!-- navigator item prototype -->
-            <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
+            <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;">
+            <div u="numbertemplate"></div>
+            </div>
         </div>
        
         <!-- Arrow Left -->
@@ -613,351 +568,11 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         </span>
     </div>
     <!-- Jssor Slider End -->
-<?php endif; ?>
-<!--FINISH BODY CONTENT OF ANIMATED TEMPLATE-->
-
-
-
-<!--START BODY CONTENT OF FULL WIDTH ANIMATED TEMPLATE-->
-<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
-	<div style="width: 100%">
-	<div style="overflow-x: hidden; width: auto;">
-	    <div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; margin: 0 auto;
-	        top: 0px; left: 0px; width: 1250px; height: 500px; overflow: hidden;">
-	        <!-- Loading Screen -->
-	        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
-	            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;
-	                top: 0px; left: 0px; width: 100%; height: 100%;">
-	            </div>
-	            <div style="position: absolute; display: block; background: url(/modules/mod_jsshackslides/tmpl/images/loading.gif) no-repeat center center;
-	                top: 0px; left: 0px; width: 100%; height: 100%;">
-	            </div>
-	        </div>
-	        <!-- Slides Container -->
-	        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px;
-	            height: 500px; overflow: hidden;">
-	            <?php for ($i = 0; $i < count($images); $i++) : ?>
-	                <?php if ($images[$i] === false) continue; ?>
-	            <div>
-
-	            	<?php if ($links[$i]) : ?>
-	                <a u="image" href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
-					<?php endif; ?>
-	                <!--img u="image" src="<?php //echo $base.$images[$i] ?>" title="<?php //echo strip_tags($titles[$i]) ?>" alt="<?php //echo strip_tags($titles[$i]) ?>" /-->
-	                <img u="image" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
-	                <?php if ($links[$i]) : ?>
-	                </a>
-	                <?php endif; ?>
-	                <?php if (($titles[$i] || $contents[$i])) : ?>
-						<?php if ($titles[$i]) : ?>
-	                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition2', $defaults['titleposition2']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; filter: alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>">
-	                        <?php echo $titles[$i]; ?>
-	                        </div>
-	                    <?php endif; ?>
-
-	                    <?php if ($contents[$i]) : ?>
-	                        <div u=caption t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class=" <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition3', $defaults['descriptionposition3']) == 'notshowdescbottom') :?>left:40px; top: 30px; visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px; ">
-								<?php echo $contents[$i]; ?>
-	                        </div>
-	                    <?php endif; ?>
-	                <?php endif; ?>
-	            </div>
-	            <?php endfor; ?>
-	        </div>
-
-	        <!-- Navigator Skin Begin -->
-	        <style>
-	            /* jssor slider navigator skin 21 css */
-	            /*
-	            .jssorn21 div           (normal)
-	            .jssorn21 div:hover     (normal mouseover)
-	            .jssorn21 .av           (active)
-	            .jssorn21 .av:hover     (active mouseover)
-	            .jssorn21 .dn           (mousedown)
-	            */
-	            .jssorn21 div, .jssorn21 div:hover, .jssorn21 .av
-	            {
-	                background: url(/modules/mod_jsshackslides/tmpl/images/n21.png) no-repeat;
-	                overflow:hidden;
-	                cursor: pointer;
-	            }
-	            .jssorn21 div { background-position: -5px -5px; }
-	            .jssorn21 div:hover, .jssorn21 .av:hover { background-position: -35px -5px; }
-	            .jssorn21 .av { background-position: -65px -5px; }
-	            .jssorn21 .dn, .jssorn21 .dn:hover { background-position: -95px -5px; }
-	        </style>
-	        <!-- navigator container -->
-	        <div u="navigator" class="jssorn21" style="position: absolute; bottom: 26px; left: 6px;">
-	            <!-- navigator item prototype -->
-	            <div u="prototype" style="POSITION: absolute; WIDTH: 19px; HEIGHT: 19px; text-align:center; line-height:19px; color:White; font-size:12px;"></div>
-	        </div>
-	        <!-- Navigator Skin End -->
-
-	        <!-- Direction Navigator Skin Begin -->
-	        <style>
-	            /* jssor slider direction navigator skin 21 css */
-	            /*
-	            .jssord21l              (normal)
-	            .jssord21r              (normal)
-	            .jssord21l:hover        (normal mouseover)
-	            .jssord21r:hover        (normal mouseover)
-	            .jssord21ldn            (mousedown)
-	            .jssord21rdn            (mousedown)
-	            */
-	            .jssord21l, .jssord21r, .jssord21ldn, .jssord21rdn
-	            {
-	            	position: absolute;
-	            	cursor: pointer;
-	            	display: block;
-	                background: url(/modules/mod_jsshackslides/tmpl/images/d21.png) center center no-repeat;
-	                overflow: hidden;
-	            }
-	            .jssord21l { background-position: -3px -33px; }
-	            .jssord21r { background-position: -63px -33px; }
-	            .jssord21l:hover { background-position: -123px -33px; }
-	            .jssord21r:hover { background-position: -183px -33px; }
-	            .jssord21ldn { background-position: -243px -33px; }
-	            .jssord21rdn { background-position: -303px -33px; }
-	        </style>
-	        <!-- Arrow Left -->
-	        <!--span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: <?php //echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;">
-	        </span-->
-	        <!-- Arrow Right -->
-	        <!--span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: <?php //echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px">
-	        </span-->
-	        <span u="arrowleft" class="jssord21l" style="width: 55px; height: 55px; top: 220px; left: 5%">
-	        </span>
-	        <span u="arrowright" class="jssord21r" style="width: 55px; height: 55px; top: 220px; right: 15%">
-	        </span>
-	    </div>
-	</div>
-	</div>
-    <!-- Trigger -->
-<?php endif; ?>
-<!--FINISH BODY CONTENT OF FULL WIDTH ANIMATED TEMPLATE-->
 
 
 <?php endif; ?>
 <!-----------------------------------------------------FINISH CODE FOR FULL WIDTH TEMPLATE AND ANIMATED TEMPLATE-------------------------------------------->
 
 
-
-
-
-
-
-<!----------------------------------------------------------START CODE FOR INDEPENDENT TEMPLATE---------------------------------------------------------------->
-<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'independenttemplate') :?>
-
-    <script>
-        jQuery(document).ready(function ($) {
-            //Reference http://www.jssor.com/development/slider-with-slideshow.html
-            //Reference http://www.jssor.com/development/tool-slideshow-transition-viewer.html
-
-            var _SlideshowTransitions = [
-            //Fade in R
-            {$Duration: 1200, $During: { $Left: [0.3, 0.7] }, $FlyDirection: 2, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $ScaleHorizontal: 0.3, $Opacity: 2 }
-            //Fade out L
-            , { $Duration: 1200, $SlideOut: true, $FlyDirection: 1, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $ScaleHorizontal: 0.3, $Opacity: 2 }
-            ];
-
-            var options = {
-                $AutoPlay: <?php echo $params->get('navigation', $defaults['navigation']) ?>,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
-                $AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
-                $AutoPlayInterval: <?php echo $params->get('slide_delay', $defaults['slide_delay']) ?>,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
-                $PauseOnHover: <?php echo $params->get('onhover_stop', $defaults['onhover_stop']) ?>,                               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, default value is 3
-
-                $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
-                $SlideDuration: <?php echo $params->get('effect_masterspeed', $defaults['effect_masterspeed']) ?>,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
-                $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
-                //$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
-                //$SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
-                $SlideSpacing: 0, 					                //[Optional] Space between each slide in pixels, default value is 0
-                $DisplayPieces: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
-                $ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
-                $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, direction navigator container, thumbnail navigator container etc).
-                $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, default value is 1
-                $DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
-
-                $SlideshowOptions: {                                //[Optional] Options to specify and enable slideshow or not
-                    $Class: $JssorSlideshowRunner$,                 //[Required] Class to create instance of slideshow
-                    $Transitions: _SlideshowTransitions,            //[Required] An array of slideshow transitions to play slideshow
-                    $TransitionsOrder: 1,                           //[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
-                    $ShowLink: true                                    //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
-                },
-
-                $NavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
-                    $Class: $JssorNavigator$,                       //[Required] Class to create navigator instance
-                    $ChanceToShow: <?php echo $params->get('navigationdots', $defaults['navigationdots']) ?>,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-                    $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
-                    $SpacingX: 10,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
-                    $SpacingY: 10                                    //[Optional] Vertical space between each item in pixel, default value is 0
-                },
-
-                $DirectionNavigatorOptions: {
-                    $Class: $JssorDirectionNavigator$,              //[Requried] Class to create direction navigator instance
-                    $ChanceToShow: <?php echo $params->get('navigationarrows', $defaults['navigationarrows']) ?>                                //[Required] 0 Never, 1 Mouse Over, 2 Always
-                },
-
-                $ThumbnailNavigatorOptions: {
-                    $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
-                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-                    $ActionMode: 0,                                 //[Optional] 0 None, 1 act by click, 2 act by mouse hover, 3 both, default value is 1
-                    $DisableDrag: true                              //[Optional] Disable drag or not, default value is false
-                }
-            };
-
-            var jssor_sliderb = new $JssorSlider$("sliderb_container", options);
-            //responsive code begin
-            //you can remove responsive code if you don't want the slider scales while window resizes
-            function ScaleSlider() {
-                var parentWidth = jssor_sliderb.$Elmt.parentNode.clientWidth;
-                if (parentWidth)
-                    jssor_sliderb.$SetScaleWidth(Math.min(parentWidth, <?php echo $params->get('width', $defaults['width']) ?>));
-                else
-                    window.setTimeout(ScaleSlider, 30);
-            }
-
-            ScaleSlider();
-
-            if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
-                $(window).bind('resize', ScaleSlider);
-            }
-            //responsive code end
-        });
-    </script>
-    <!-- Jssor Slider Begin -->
-    <!-- You can move inline styles (except 'top', 'left', 'width' and 'height') to css file or css block. -->
-    <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'topdescind' or $params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>
-    <div id="sliderb_container" style="position: relative; width: <?php echo $params->get('width', $defaults['width']) ?>px;
-        height: <?php echo ($params->get('height', $defaults['height']) + $params->get('height_desc_outside', $defaults['height_desc_outside']) + 15) ?>px;  <?php if ($params->get('center_container_automatic', $defaults['center_container_automatic']) == 'centerautoenable') :?>margin:0 auto<?php endif; ?>">
-	<?php endif; ?>
-    <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind' or $params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>
-    <div id="sliderb_container" style="position: relative; width: <?php echo $params->get('width', $defaults['width']) ?>px;
-        height: <?php echo $params->get('height', $defaults['height']) ?>px;  <?php if ($params->get('center_container_automatic', $defaults['center_container_automatic']) == 'centerautoenable') :?>margin:0 auto<?php endif; ?>">
-	<?php endif; ?>
-        <!-- Loading Screen -->
-        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
-            <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
-                background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
-            </div>
-            <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
-                top: 0px; left: 0px;width: 100%;height:100%;">
-            </div>
-        </div>
-
-        <!-- Slides Container -->
-            <div u="slides" style="cursor: move; position: absolute; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>width: <?php echo $params->get('width', $defaults['width']) - $params->get('width_desc_outside', $defaults['width_desc_outside']) ?>px;<?php endif; ?> <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>width: <?php echo $params->get('width', $defaults['width']) - $params->get('width_desc_outside', $defaults['width_desc_outside']) - 10 ?>px;<?php endif; ?> <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'topdescind') :?>width: <?php echo $params->get('width', $defaults['width']) ?>px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>width: <?php echo $params->get('width', $defaults['width']) ?>px;<?php endif; ?> height: <?php echo $params->get('height', $defaults['height']) ?>px; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>left:<?php echo $params->get('width_desc_outside', $defaults['width_desc_outside'])+15 ?>px; top:0;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>left:0px; top:0;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>left:0px; top:0;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'topdescind') :?>left:0px; top:<?php echo $params->get('height_desc_outside', $defaults['height_desc_outside'])+20 ?>px;<?php endif; ?>
-                overflow: hidden;">
-                <?php for ($i = 0; $i < count($images); $i++) : ?>
-        		<?php if ($images[$i] === false) continue; ?>
-                <div>
-                	<?php if ($links[$i]) : ?>
-                    <a href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
-                    <?php endif; ?>
-
-                    <img u=image style="width: 100%;" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
-                    <?php if ($links[$i]) : ?>
-                    </a>
-                    <?php endif; ?>
-                    <div u="thumb">
-                    	<?php echo $titles[$i]? $titles[$i]:''; ?>
-                    	<?php echo $contents[$i]? $contents[$i]:''; ?>
-                    </div>
-                </div>
-                <?php endfor; ?>
-            </div>
-
-            <!-- ThumbnailNavigator Skin Begin -->
-            <div u="thumbnavigator" class="sliderb-T" style="position: absolute; height:<?php echo $params->get('height_desc_outside', $defaults['height_desc_outside']) ?>px; width:<?php echo $params->get('width_desc_outside', $defaults['width_desc_outside']) ?>px; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>bottom:0px; left: 0px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>top:0px; right: 0px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>top:0px; left: 5px;<?php endif; ?>">
-                <div style="position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%; filter: alpha(opacity=40); opacity:0.4; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>">
-                </div>
-                <!-- Thumbnail Item Skin Begin -->
-                <div u="slides" class="testslidescla">
-                    <div u="prototype" style="POSITION: absolute; height:<?php echo $params->get('height_desc_outside', $defaults['height_desc_outside']) ?>px; width:<?php echo $params->get('width_desc_outside', $defaults['width_desc_outside']) ?>px; TOP: 0; LEFT: 0;">
-                    	<thumbnailtemplate style="font-family: verdana; font-weight: normal; POSITION: absolute; WIDTH: 100%; HEIGHT: 100%; TOP: 0; LEFT: 0; color:#fff; line-height: 15px; font-size:20px; padding:0 10px;" class="thumbsshack"></thumbnailtemplate>
-                    </div>
-                </div>
-                <!-- Thumbnail Item Skin End -->
-            </div>
-            <!-- ThumbnailNavigator Skin End -->
-
-
-        <!-- Navigator Skin Begin -->
-        <!-- jssor slider navigator skin 01 -->
-        <style>
-            /*
-            .jssorn01 div           (normal)
-            .jssorn01 div:hover     (normal mouseover)
-            .jssorn01 .av           (active)
-            .jssorn01 .av:hover     (active mouseover)
-            .jssorn01 .dn           (mousedown)
-            */
-            .jssorn01 div, .jssorn01 div:hover, .jssorn01 .av
-            {
-                filter: alpha(opacity=70);
-                opacity: .7;
-                overflow:hidden;
-                cursor: pointer;
-                border: #000 1px solid;
-            }
-            .jssorn01 div { background-color: gray; }
-            .jssorn01 div:hover, .jssorn01 .av:hover { background-color: #d3d3d3; }
-            .jssorn01 .av { background-color: #fff; }
-            .jssorn01 .dn, .jssorn01 .dn:hover { background-color: #555555; }
-
-			a img {	height:100%!important;}
-			.thumbsshack img {display:none!important}
-			.av img {display:none!important}
-			img.thumbsshack {display:none!important}
-        </style>
-        <!-- navigator container -->
-        <div u="navigator" class="jssorn01" style="position: absolute; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>right: <?php echo $params->get('width_desc_outside', $defaults['width_desc_outside'])+20 ?>px; bottom: 16px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>right: 10px; top: <?php echo $params->get('height', $defaults['height']) - 25 ?>px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'topdescind') :?>right: 10px; bottom: 0<?php //echo $params->get('height_desc_outside', $defaults['height_desc_outside'])+5 ?>px;<?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>right: 10px; bottom: 16px;<?php endif; ?>">
-            <!-- navigator item prototype -->
-            <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
-        </div>
-        <!-- Navigator Skin End -->
-
-        <!-- Direction Navigator Skin Begin -->
-        <style>
-            /* jssor slider direction navigator skin 05 css */
-            /*
-            .jssord05l              (normal)
-            .jssord05r              (normal)
-            .jssord05l:hover        (normal mouseover)
-            .jssord05r:hover        (normal mouseover)
-            .jssord05ldn            (mousedown)
-            .jssord05rdn            (mousedown)
-            */
-            .jssord05l, .jssord05r, .jssord05ldn, .jssord05rdn
-            {
-            	position: absolute;
-            	cursor: pointer;
-            	display: block;
-                background: url(/modules/mod_jsshackslides/tmpl/images/d17.png) no-repeat;
-                overflow:hidden;
-            }
-            .jssord05l { background-position: -10px -40px; }
-            .jssord05r { background-position: -70px -40px; }
-            .jssord05l:hover { background-position: -130px -40px; }
-            .jssord05r:hover { background-position: -190px -40px; }
-            .jssord05ldn { background-position: -250px -40px; }
-            .jssord05rdn { background-position: -310px -40px; }
-        </style>
-        <!-- Arrow Left -->
-        <span u="arrowleft" class="jssord05l" style="width: 40px; height: 40px; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind' or 'bottomdescind') :?>top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;<?php endif; ?> <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>left:<?php echo $params->get('width_desc_outside', $defaults['width_desc_outside'])+20 ?>px; top:<?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px;<?php endif; ?> <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'topdescind') :?>top: <?php echo $params->get('height', $defaults['height']) / 2 + $params->get('height_desc_outside', $defaults['height_desc_outside']) ?>px; left: 8px;<?php endif; ?>">
-        </span>
-        <!-- Arrow Right -->
-        <span u="arrowright" class="jssord05r" style="width: 40px; height: 40px; <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'rightdescind') :?>top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: <?php echo $params->get('width_desc_outside', $defaults['width_desc_outside']) + 18 ?>px <?php endif; ?> <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'bottomdescind') :?>top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px <?php endif; ?><?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'topdescind') :?>top: <?php echo $params->get('height', $defaults['height']) / 2 + $params->get('height_desc_outside', $defaults['height_desc_outside'])?>px; right: 8px <?php endif; ?> <?php if ($params->get('descriptionposition_outside', $defaults['descriptionposition_outside']) == 'leftdescind') :?>top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px <?php endif; ?>">
-        </span>
-        <!-- Direction Navigator Skin End -->
-        <a style="display: none" href="http://www.jssor.com">jQuery Slider</a>
-        <!-- Trigger -->
-    </div>
-
-    <!-- Jssor Slider End -->
-
-<?php endif; ?>
-<!--FINISH BODY CONTENT OF INDEPENDENT TEMPLATE-->
 </div>
 <div style="width:100%; height:1px; clear:both"></div>

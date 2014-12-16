@@ -1,9 +1,11 @@
-﻿/// <reference path="Jssor.Core.js" />
-/// <reference path="Jssor.Utils.js" />
+﻿/// <reference path="Jssor.js" />
 
 /*
-* Jssor.Slider 14.0
+* Jssor.Slider 18.0
 * http://www.jssor.com/
+*
+* Licensed under the MIT license:
+* http://www.opensource.org/licenses/MIT
 * 
 * TERMS OF USE - Jssor.Slider
 * 
@@ -593,7 +595,7 @@ new function () {
             $Clip: 0,   //Clip block or not
             $Move: false,   //Move block or not
             $SlideOut: false,   //Slide the previous slide out to display next slide instead
-            $FlyDirection: 0,   //Specify fly transform with direction
+            //$FlyDirection: 0,   //Specify fly transform with direction
             $Reverse: false,    //Reverse the assembly or not
             $Formation: $JssorSlideshowFormations$.$FormationRandom,    //Shape that assembly blocks as
             $Assembly: ASSEMBLY_RIGHT_BOTTOM,   //The way to assembly blocks
@@ -604,10 +606,10 @@ new function () {
             $During: {}
         };
 
-        $JssorUtils$.$Extend(_SlideshowTransition, options);
+        $Jssor$.$Extend(_SlideshowTransition, options);
 
         _SlideshowTransition.$Count = _SlideshowTransition.$Cols * _SlideshowTransition.$Rows;
-        if ($JssorUtils$.$IsFunction(_SlideshowTransition.$Easing))
+        if ($Jssor$.$IsFunction(_SlideshowTransition.$Easing))
             _SlideshowTransition.$Easing = { $Default: _SlideshowTransition.$Easing };
 
         _SlideshowTransition.$FramesCount = Math.ceil(_SlideshowTransition.$Duration / _SlideshowTransition.$Interval);
@@ -645,14 +647,14 @@ new function () {
 
         var cache = easing.$Cache;
         if (!cache) {
-            var enumerator = $JssorUtils$.$Extend({}, transition.$Easing, transition.$Round);
+            var enumerator = $Jssor$.$Extend({}, transition.$Easing, transition.$Round);
             cache = easing.$Cache = {};
 
-            $JssorUtils$.$Each(enumerator, function (v, easingName) {
+            $Jssor$.$Each(enumerator, function (v, easingName) {
                 var easingFunction = easing[easingName] || easing.$Default;
                 var round = transition.$Round[easingName] || 1;
 
-                if (!$JssorUtils$.$IsArray(easingFunction.$Cache))
+                if (!$Jssor$.$IsArray(easingFunction.$Cache))
                     easingFunction.$Cache = [];
 
                 var easingFunctionCache = easingFunction.$Cache[duration] = easingFunction.$Cache[duration] || [];
@@ -700,7 +702,7 @@ new function () {
         var _SlideOut = slideTransition.$SlideOut;
         var _IsIn;
 
-        _EndTime += $JssorUtils$.$IsBrowserChrome() ? 260 : 50;
+        _EndTime += $Jssor$.$IsBrowserChrome() ? 260 : 50;
 
         _Self.$EndTime = _EndTime;
 
@@ -717,50 +719,50 @@ new function () {
 
                 var frameIndex = Math.ceil(time / slideTransition.$Interval);
 
-                $JssorUtils$.$Each(_AnimationStylesArrs, function (value, index) {
+                $Jssor$.$Each(_AnimationStylesArrs, function (value, index) {
 
                     var itemFrameIndex = Math.max(frameIndex, value.$Min);
                     itemFrameIndex = Math.min(itemFrameIndex, value.length - 1);
 
                     if (value.$LastFrameIndex != itemFrameIndex) {
                         if (!value.$LastFrameIndex && !_SlideOut) {
-                            $JssorUtils$.$ShowElement(_AnimationBlockItems[index]);
+                            $Jssor$.$ShowElement(_AnimationBlockItems[index]);
                         }
                         else if (itemFrameIndex == value.$Max && _SlideOut) {
-                            $JssorUtils$.$HideElement(_AnimationBlockItems[index]);
+                            $Jssor$.$HideElement(_AnimationBlockItems[index]);
                         }
                         value.$LastFrameIndex = itemFrameIndex;
-                        $JssorUtils$.$SetStylesEx(_AnimationBlockItems[index], value[itemFrameIndex]);
+                        $Jssor$.$SetStylesEx(_AnimationBlockItems[index], value[itemFrameIndex]);
                     }
                 });
             }
         };
 
         function DisableHWA(elmt) {
-            $JssorUtils$.$DisableHWA(elmt);
+            $Jssor$.$DisableHWA(elmt);
 
-            var children = $JssorUtils$.$GetChildren(elmt);
+            var children = $Jssor$.$Children(elmt);
 
-            $JssorUtils$.$Each(children, function (child) {
+            $Jssor$.$Each(children, function (child) {
                 DisableHWA(child);
             });
         }
 
         //constructor
         {
-            slideElement = $JssorUtils$.$CloneNode(slideElement, true);
+            slideElement = $Jssor$.$CloneNode(slideElement);
             DisableHWA(slideElement);
-            if ($JssorUtils$.$IsBrowserIe9Earlier()) {
+            if ($Jssor$.$IsBrowserIe9Earlier()) {
                 var hasImage = !slideElement["no-image"];
-                var slideChildElements = $JssorUtils$.$FindChildrenByTag(slideElement, null, true);
-                $JssorUtils$.$Each(slideChildElements, function (slideChildElement) {
+                var slideChildElements = $Jssor$.$FindChildrenByTag(slideElement);
+                $Jssor$.$Each(slideChildElements, function (slideChildElement) {
                     if (hasImage || slideChildElement["jssor-slider"])
-                        $JssorUtils$.$SetStyleOpacity(slideChildElement, $JssorUtils$.$GetStyleOpacity(slideChildElement), true);
+                        $Jssor$.$CssOpacity(slideChildElement, $Jssor$.$CssOpacity(slideChildElement), true);
                 });
             }
 
-            $JssorUtils$.$Each(_FormationInstance, function (formationItems, order) {
-                $JssorUtils$.$Each(formationItems, function (formationItem) {
+            $Jssor$.$Each(_FormationInstance, function (formationItems, order) {
+                $Jssor$.$Each(formationItems, function (formationItem) {
                     var row = formationItem[0];
                     var col = formationItem[1];
                     {
@@ -811,8 +813,8 @@ new function () {
 
                         _StyleDif = {};
                         _StyleEnd = { $Top: 0, $Left: 0, $Opacity: 1, $Width: slideContainerWidth, $Height: slideContainerHeight };
-                        _StyleStart = $JssorUtils$.$Extend({}, _StyleEnd);
-                        _Block = $JssorUtils$.$Extend({}, _Blocks[columnRow]);
+                        _StyleStart = $Jssor$.$Extend({}, _StyleEnd);
+                        _Block = $Jssor$.$Extend({}, _Blocks[columnRow]);
 
                         if (slideTransition.$Opacity) {
                             _StyleEnd.$Opacity = 2 - slideTransition.$Opacity;
@@ -827,7 +829,7 @@ new function () {
 
                         if (slideTransition.$Zoom || slideTransition.$Rotate) {
                             var allowRotate = true;
-                            if ($JssorUtils$.$IsBrowserIE() && $JssorUtils$.$GetBrowserEngineVersion() < 9) {
+                            if ($Jssor$.$IsBrowserIE() && $Jssor$.$BrowserEngineVersion() < 9) {
                                 if (slideTransition.$Cols * slideTransition.$Rows > 1)
                                     allowRotate = false;
                                 else
@@ -838,12 +840,10 @@ new function () {
                                 _StyleEnd.$Zoom = slideTransition.$Zoom ? slideTransition.$Zoom - 1 : 1;
                                 _StyleStart.$Zoom = 1;
 
-                                if ($JssorUtils$.$IsBrowserIe9Earlier() || $JssorUtils$.$IsBrowserOpera())
+                                if ($Jssor$.$IsBrowserIe9Earlier() || $Jssor$.$IsBrowserOpera())
                                     _StyleEnd.$Zoom = Math.min(_StyleEnd.$Zoom, 2);
 
                                 var rotate = slideTransition.$Rotate;
-                                if (rotate == true)
-                                    rotate = 1;
 
                                 _StyleEnd.$Rotate = rotate * 360 * ((chessRotate) ? -1 : 1);
                                 _StyleStart.$Rotate = 0;
@@ -881,35 +881,20 @@ new function () {
                             _StyleStart.$Clip = _Blocks[columnRow];
                         }
 
-                        if (slideTransition.$FlyDirection) {
+                        //fly
+                        {
+                            var chessHor = chessHorizontal ? 1 : -1;
+                            var chessVer = chessVertical ? 1 : -1;
 
-                            var direction = slideTransition.$FlyDirection;
+                            if (slideTransition.x)
+                                _StyleEnd.$Left += slideContainerWidth * slideTransition.x * chessHor;
 
-                            if (!chessHorizontal)
-                                direction = $JssorDirection$.$ChessHorizontal(direction);
-
-                            if (!chessVertical)
-                                direction = $JssorDirection$.$ChessVertical(direction);
-
-                            var scaleHorizontal = slideTransition.$ScaleHorizontal || 1;
-                            var scaleVertical = slideTransition.$ScaleVertical || 1;
-
-                            if ($JssorDirection$.$IsToLeft(direction)) {
-                                _StyleEnd.$Left += slideContainerWidth * scaleHorizontal;
-                            }
-                            else if ($JssorDirection$.$IsToRight(direction)) {
-                                _StyleEnd.$Left -= slideContainerWidth * scaleHorizontal;
-                            }
-                            if ($JssorDirection$.$IsToTop(direction)) {
-                                _StyleEnd.$Top += slideContainerHeight * scaleVertical;
-                            }
-                            else if ($JssorDirection$.$IsToBottom(direction)) {
-                                _StyleEnd.$Top -= slideContainerHeight * scaleVertical;
-                            }
+                            if (slideTransition.y)
+                                _StyleEnd.$Top += slideContainerHeight * slideTransition.y * chessVer;
                         }
 
-                        $JssorUtils$.$Each(_StyleEnd, function (propertyEnd, property) {
-                            if ($JssorUtils$.$IsNumeric(propertyEnd)) {
+                        $Jssor$.$Each(_StyleEnd, function (propertyEnd, property) {
+                            if ($Jssor$.$IsNumeric(propertyEnd)) {
                                 if (propertyEnd != _StyleStart[property]) {
                                     _StyleDif[property] = propertyEnd - _StyleStart[property];
                                 }
@@ -927,7 +912,7 @@ new function () {
                         for (var frameN = 0; frameN <= framesCount; frameN++) {
                             var styleFrameN = {};
 
-                            $JssorUtils$.$Each(_StyleDif, function (propertyDiff, property) {
+                            $Jssor$.$Each(_StyleDif, function (propertyDiff, property) {
                                 var propertyEasings = slideTransition.$EasingInstance[property] || slideTransition.$EasingInstance.$Default;
                                 var propertyEasingArray = propertyEasings[slideTransition.$Round[property] || 1];
 
@@ -937,13 +922,13 @@ new function () {
 
                                 var propertyEasingValue = propertyEasingArray[propertyFrameN];
 
-                                if ($JssorUtils$.$IsNumeric(propertyDiff)) {
+                                if ($Jssor$.$IsNumeric(propertyDiff)) {
                                     styleFrameN[property] = _StyleStart[property] + propertyDiff * propertyEasingValue;
                                 }
                                 else {
-                                    var value = styleFrameN[property] = $JssorUtils$.$Extend({}, _StyleStart[property]);
+                                    var value = styleFrameN[property] = $Jssor$.$Extend({}, _StyleStart[property]);
                                     value.$Offset = [];
-                                    $JssorUtils$.$Each(propertyDiff.$Offset, function (rectX, n) {
+                                    $Jssor$.$Each(propertyDiff.$Offset, function (rectX, n) {
                                         var offsetValue = rectX * propertyEasingValue;
                                         value.$Offset[n] = offsetValue;
                                         value[n] += offsetValue;
@@ -977,8 +962,8 @@ new function () {
             });
 
             _FormationInstance.reverse();
-            $JssorUtils$.$Each(_FormationInstance, function (formationItems) {
-                $JssorUtils$.$Each(formationItems, function (formationItem) {
+            $Jssor$.$Each(_FormationInstance, function (formationItems) {
+                $Jssor$.$Each(formationItems, function (formationItem) {
                     var row = formationItem[0];
                     var col = formationItem[1];
 
@@ -986,15 +971,15 @@ new function () {
 
                     var image = slideElement;
                     if (col || row)
-                        image = $JssorUtils$.$CloneNode(slideElement, true);
+                        image = $Jssor$.$CloneNode(slideElement);
 
-                    $JssorUtils$.$SetStyles(image, _StartStylesArr[columnRow]);
-                    $JssorUtils$.$SetStyleOverflow(image, "hidden");
+                    $Jssor$.$SetStyles(image, _StartStylesArr[columnRow]);
+                    $Jssor$.$CssOverflow(image, "hidden");
 
-                    $JssorUtils$.$SetStylePosition(image, "absolute");
+                    $Jssor$.$CssPosition(image, "absolute");
                     slideContainer.$AddClipElement(image);
                     _AnimationBlockItems[columnRow] = image;
-                    $JssorUtils$.$ShowElement(image, _SlideOut);
+                    $Jssor$.$ShowElement(image, !_SlideOut);
                 });
             });
         }
@@ -1022,7 +1007,7 @@ new function () {
 
         var _SlideshowTransition;
 
-        var _SlideshowPerformance = 16;
+        var _SlideshowPerformance = 8;
 
         function SlideshowProcessor() {
             var _SelfSlideshowProcessor = this;
@@ -1051,9 +1036,9 @@ new function () {
             var transitionCount = transitions.length;
 
             if (_TransitionsOrder) { /*Sequence*/
-                if (transitionCount > slideCount && ($JssorUtils$.$IsBrowserChrome() || $JssorUtils$.$IsBrowserSafari() || $JssorUtils$.$IsBrowserFireFox())) {
-                    transitionCount -= transitionCount % slideCount;
-                }
+                //if (transitionCount > slideCount && ($Jssor$.$IsBrowserChrome() || $Jssor$.$IsBrowserSafari() || $Jssor$.$IsBrowserFireFox())) {
+                //    transitionCount -= transitionCount % slideCount;
+                //}
                 n = _TransitionIndex++ % transitionCount;
             }
             else { /*Random*/
@@ -1125,11 +1110,11 @@ new function () {
 
         //Constructor
         {
-            if ($JssorUtils$.$IsBrowserIe9Earlier() || $JssorUtils$.$IsBrowserOpera() || (handleTouchEventOnly && $JssorUtils$.$GetWebKitVersion < 537)) {
-                _SlideshowPerformance = 32;
+            if ($Jssor$.$IsBrowserIe9Earlier() || $Jssor$.$IsBrowserOpera() || (handleTouchEventOnly && $Jssor$.$WebKitVersion() < 537)) {
+                _SlideshowPerformance = 16;
             }
 
-            $JssorEventManager$.call(_SelfSlideshowRunner);
+            $JssorObject$.call(_SelfSlideshowRunner);
             $JssorAnimator$.call(_SelfSlideshowRunner, -10000000, 10000000);
 
             $JssorDebug$.$LiveStamp(_SelfSlideshowRunner, "slideshow_runner_" + _SlideshowRunnerCount++);
@@ -1156,6 +1141,7 @@ new function () {
             };
 
             _SelfConveyor.$OnPositionChange = function (oldPosition, newPosition) {
+
                 var index = Math.floor(newPosition);
                 if (index != newPosition && newPosition > oldPosition)
                     index++;
@@ -1174,8 +1160,8 @@ new function () {
 
             //Carousel Constructor
             {
-                $JssorUtils$.$Each(_SlideItems, function (slideItem) {
-                    _Options.$Loop && slideItem.$SetLoopLength(_SlideCount);
+                $Jssor$.$Each(_SlideItems, function (slideItem) {
+                    (_Loop & 1) && slideItem.$SetLoopLength(_SlideCount);
                     _SelfCarousel.$Chain(slideItem);
                     slideItem.$Shift(_ParkingPosition / _StepLength);
                 });
@@ -1195,7 +1181,7 @@ new function () {
             //Slideshow Constructor
             {
                 $JssorDebug$.$Execute(function () {
-                    $JssorUtils$.$SetAttribute(_SlideContainer.$Elmt, "debug-id", "slide_container");
+                    $Jssor$.$Attribute(_SlideContainer.$Elmt, "debug-id", "slide_container");
                 });
             }
         }
@@ -1210,7 +1196,7 @@ new function () {
             var _StandBy;
             var _StandByPosition;
 
-            $JssorAnimator$.call(_SelfCarouselPlayer, -100000000, 200000000);
+            $JssorAnimator$.call(_SelfCarouselPlayer, -100000000, 200000000, { $IntervalMax: 100 });
 
             _SelfCarouselPlayer.$OnStart = function () {
                 _IsSliding = true;
@@ -1236,6 +1222,7 @@ new function () {
             };
 
             _SelfCarouselPlayer.$OnPositionChange = function (oldPosition, newPosition) {
+
                 var toPosition;
 
                 if (_StandBy)
@@ -1243,8 +1230,16 @@ new function () {
                 else {
                     toPosition = _ToPosition;
 
-                    if (_Duration)
-                        toPosition = _Options.$SlideEasing(newPosition / _Duration) * (_ToPosition - _FromPosition) + _FromPosition;
+                    if (_Duration) {
+                        var interPosition = newPosition / _Duration;
+                        //if ($Jssor$.$IsBrowserChrome() || $Jssor$.$IsBrowserFireFox()) {
+                        //    Math.round(interPosition * 8 / _Duration) / 8 * _Duration;
+
+                        //    if ($Jssor$.$BrowserVersion() < 38)
+                        //        interPosition = parseFloat(interPosition.toFixed(4));
+                        //}
+                        toPosition = _Options.$SlideEasing(interPosition) * (_ToPosition - _FromPosition) + _FromPosition;
+                    }
                 }
 
                 _Conveyor.$GoToPosition(toPosition);
@@ -1295,18 +1290,19 @@ new function () {
             var _Self = this;
             var elmt = CreatePanel();
 
-            $JssorUtils$.$SetStyleZIndex(elmt, 0);
+            $Jssor$.$CssZIndex(elmt, 0);
+            $Jssor$.$Css(elmt, "pointerEvents", "none");
 
             _Self.$Elmt = elmt;
 
             _Self.$AddClipElement = function (clipElement) {
-                $JssorUtils$.$AppendChild(elmt, clipElement);
-                $JssorUtils$.$ShowElement(elmt);
+                $Jssor$.$AppendChild(elmt, clipElement);
+                $Jssor$.$ShowElement(elmt);
             };
 
             _Self.$Clear = function () {
-                $JssorUtils$.$HideElement(elmt);
-                $JssorUtils$.$ClearInnerHtml(elmt);
+                $Jssor$.$HideElement(elmt);
+                $Jssor$.$ClearInnerHtml(elmt);
             };
         }
         //SlideContainer
@@ -1349,6 +1345,7 @@ new function () {
                 _CaptionSliderIn && _CaptionSliderIn.$Revert();
 
                 RefreshContent(slideElmt, fresh);
+                _ContentRefreshed = true;
 
                 _CaptionSliderIn = new _CaptionSliderOptions.$Class(slideElmt, _CaptionSliderOptions, 1);
                 $JssorDebug$.$LiveStamp(_CaptionSliderIn, "caption_slider_" + _CaptionSliderCount + "_in");
@@ -1381,11 +1378,9 @@ new function () {
                         var fillHeight = imageHeight;
 
                         if (imageWidth && imageHeight && _Options.$FillMode) {
-                            //var aspectRatioSlide = _SlideWidth / _SlideHeight;
-                            //var aspectRatioImage = imageWidth / imageHeight;
 
-                            //0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actual size, default value is 0
-                            if (_Options.$FillMode & 3) {
+                            //0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actual size, 5 contain for large image, actual size for small image, default value is 0
+                            if (_Options.$FillMode & 3 && (!(_Options.$FillMode & 4) || imageWidth > _SlideWidth || imageHeight > _SlideHeight)) {
                                 var fitHeight = false;
                                 var ratio = _SlideWidth / _SlideHeight * imageHeight / imageWidth;
 
@@ -1399,19 +1394,19 @@ new function () {
                                 fillHeight = fitHeight ? _SlideHeight : imageHeight * _SlideWidth / imageWidth;
                             }
 
-                            $JssorUtils$.$SetStyleWidth(_ImageItem, fillWidth);
-                            $JssorUtils$.$SetStyleHeight(_ImageItem, fillHeight);
-                            $JssorUtils$.$SetStyleTop(_ImageItem, (_SlideHeight - fillHeight) / 2);
-                            $JssorUtils$.$SetStyleLeft(_ImageItem, (_SlideWidth - fillWidth) / 2);
+                            $Jssor$.$CssWidth(_ImageItem, fillWidth);
+                            $Jssor$.$CssHeight(_ImageItem, fillHeight);
+                            $Jssor$.$CssTop(_ImageItem, (_SlideHeight - fillHeight) / 2);
+                            $Jssor$.$CssLeft(_ImageItem, (_SlideWidth - fillWidth) / 2);
                         }
 
-                        $JssorUtils$.$SetStylePosition(_ImageItem, "absolute");
+                        $Jssor$.$CssPosition(_ImageItem, "absolute");
 
                         _SelfSlider.$TriggerEvent(JssorSlider.$EVT_LOAD_END, slideItem);
                     }
                 }
 
-                $JssorUtils$.$HideElement(loadingScreen);
+                $Jssor$.$HideElement(loadingScreen);
                 completeCallback && completeCallback(_SelfSlideItem);
             }
 
@@ -1442,7 +1437,7 @@ new function () {
 
                         EnsureCaptionSliderVersion();
 
-                        _Processor = new Processor(slideIndex, slideshowProcessor, _SelfSlideItem.$GetCaptionSliderIn(), _SelfSlideItem.$GetCaptionSliderOut());
+                        _Processor = new Processor(slideElmt, slideIndex, slideshowProcessor, _SelfSlideItem.$GetCaptionSliderIn(), _SelfSlideItem.$GetCaptionSliderOut());
                         _Processor.$SetPlayer(_PlayerInstance);
                     }
 
@@ -1450,21 +1445,24 @@ new function () {
                 }
             }
 
-            function ParkEventHandler(currentIndex, previousIndex) {
+            function ParkEventHandler(currentIndex, previousIndex, manualActivate) {
                 if (currentIndex == slideIndex) {
 
                     if (currentIndex != previousIndex)
                         _SlideItems[previousIndex] && _SlideItems[previousIndex].$ParkOut();
+                    else
+                        !manualActivate && _Processor && _Processor.$AdjustIdleOnPark();
 
                     _PlayerInstance && _PlayerInstance.$Enable();
 
                     //park in
-                    var loadingTicket = _LoadingTicket = $JssorUtils$.$GetNow();
-                    _SelfSlideItem.$LoadImage($JssorUtils$.$CreateCallback(null, SlideReadyEventHandler, loadingTicket));
+                    var loadingTicket = _LoadingTicket = $Jssor$.$GetNow();
+                    _SelfSlideItem.$LoadImage($Jssor$.$CreateCallback(null, SlideReadyEventHandler, loadingTicket));
                 }
                 else {
                     var distance = Math.abs(slideIndex - currentIndex);
-                    if (!_ImageLazyLoading || distance <= _Options.$LazyLoading || _SlideCount - distance <= _Options.$LazyLoading) {
+                    var loadRange = _DisplayPieces + _Options.$LazyLoading;
+                    if (!_ImageLazyLoading || distance <= loadRange || _SlideCount - distance <= loadRange) {
                         _SelfSlideItem.$LoadImage();
                     }
                 }
@@ -1479,7 +1477,7 @@ new function () {
                 }
             }
 
-            function DragStartEventHandler() {
+            function FreezeEventHandler() {
                 if (_CurrentSlideIndex == slideIndex && _Processor) {
                     _Processor.$Stop();
                 }
@@ -1487,7 +1485,7 @@ new function () {
 
             function LinkClickEventHandler(event) {
                 if (_LastDragSucceded) {
-                    $JssorUtils$.$CancelEvent(event);
+                    $Jssor$.$CancelEvent(event);
                 }
                 else {
                     _SelfSlider.$TriggerEvent(JssorSlider.$EVT_CLICK, slideIndex, event);
@@ -1504,21 +1502,21 @@ new function () {
 
                 if (_ImageElmts.length && !_ImageLoaded) {
 
-                    $JssorUtils$.$ShowElement(loadingScreen);
+                    $Jssor$.$ShowElement(loadingScreen);
 
                     if (!_ImageLoading) {
                         _ImageLoading = true;
                         _SelfSlider.$TriggerEvent(JssorSlider.$EVT_LOAD_START);
 
-                        $JssorUtils$.$Each(_ImageElmts, function (imageElmt) {
+                        $Jssor$.$Each(_ImageElmts, function (imageElmt) {
 
                             if (!imageElmt.src) {
-                                imageElmt.src = $JssorUtils$.$GetAttribute(imageElmt, "src2");
-                                $JssorUtils$.$SetStyleDisplay(imageElmt, imageElmt["display-origin"]);
+                                imageElmt.src = $Jssor$.$AttributeEx(imageElmt, "src2");
+                                $Jssor$.$CssDisplay(imageElmt, imageElmt["display-origin"]);
                             }
                         });
                     }
-                    $JssorUtils$.$LoadImages(_ImageElmts, _ImageItem, $JssorUtils$.$CreateCallback(null, LoadImageCompleteEventHandler, completeCallback, loadingScreen));
+                    $Jssor$.$LoadImages(_ImageElmts, _ImageItem, $Jssor$.$CreateCallback(null, LoadImageCompleteEventHandler, completeCallback, loadingScreen));
                 }
                 else {
                     LoadImageCompleteEventHandler(completeCallback, loadingScreen);
@@ -1530,19 +1528,19 @@ new function () {
                     var slideshowTransition = _SlideshowRunner.$GetTransition(_SlideCount);
 
                     if (slideshowTransition) {
-                        var loadingTicket = _LoadingTicket = $JssorUtils$.$GetNow();
+                        var loadingTicket = _LoadingTicket = $Jssor$.$GetNow();
 
-                        var nextIndex = slideIndex + 1;
+                        var nextIndex = slideIndex + _PlayReverse;
                         var nextItem = _SlideItems[GetRealIndex(nextIndex)];
-                        return nextItem.$LoadImage($JssorUtils$.$CreateCallback(null, LoadSlideshowImageCompleteEventHandler, nextIndex, nextItem, slideshowTransition, loadingTicket), _LoadingScreen);
+                        return nextItem.$LoadImage($Jssor$.$CreateCallback(null, LoadSlideshowImageCompleteEventHandler, nextIndex, nextItem, slideshowTransition, loadingTicket), _LoadingScreen);
                     }
                 }
 
-                PlayTo(_CurrentSlideIndex + _Options.$AutoPlaySteps);
+                PlayTo(_CurrentSlideIndex + _Options.$AutoPlaySteps * _PlayReverse);
             };
 
             _SelfSlideItem.$TryActivate = function () {
-                ParkEventHandler(slideIndex, slideIndex);
+                ParkEventHandler(slideIndex, slideIndex, true);
             };
 
             _SelfSlideItem.$ParkOut = function () {
@@ -1561,26 +1559,26 @@ new function () {
 
                 $JssorDebug$.$Execute(function () {
                     if (_ImageItem)
-                        $JssorUtils$.$SetAttribute(_ImageItem, "debug-id", stamp + "_slide_item_image_id");
+                        $Jssor$.$Attribute(_ImageItem, "debug-id", stamp + "_slide_item_image_id");
 
-                    $JssorUtils$.$SetAttribute(slideElmt, "debug-id", stamp + "_slide_item_item_id");
+                    $Jssor$.$Attribute(slideElmt, "debug-id", stamp + "_slide_item_item_id");
                 });
 
                 $JssorDebug$.$Execute(function () {
-                    $JssorUtils$.$SetAttribute(_Wrapper, "debug-id", stamp + "_slide_item_wrapper_id");
+                    $Jssor$.$Attribute(_Wrapper, "debug-id", stamp + "_slide_item_wrapper_id");
                 });
 
                 $JssorDebug$.$Execute(function () {
-                    $JssorUtils$.$SetAttribute(_LoadingScreen, "debug-id", stamp + "_loading_container_id");
+                    $Jssor$.$Attribute(_LoadingScreen, "debug-id", stamp + "_loading_container_id");
                 });
             };
 
             _SelfSlideItem.$HideContentForSlideshow = function () {
-                $JssorUtils$.$HideElement(slideElmt);
+                $Jssor$.$HideElement(slideElmt);
             };
 
             _SelfSlideItem.$UnhideContentForSlideshow = function () {
-                $JssorUtils$.$ShowElement(slideElmt);
+                $Jssor$.$ShowElement(slideElmt);
             };
 
             _SelfSlideItem.$EnablePlayer = function () {
@@ -1588,6 +1586,9 @@ new function () {
             };
 
             function RefreshContent(elmt, fresh, level) {
+                if (elmt["jssor-slider"])
+                    return;
+
                 level = level || 0;
 
                 if (!_ContentRefreshed) {
@@ -1596,66 +1597,63 @@ new function () {
 
                         if (!elmt.src) {
                             _ImageLazyLoading = true;
-                            elmt["display-origin"] = $JssorUtils$.$GetStyleDisplay(elmt);
-                            $JssorUtils$.$HideElement(elmt);
+                            elmt["display-origin"] = $Jssor$.$CssDisplay(elmt);
+                            $Jssor$.$HideElement(elmt);
                         }
                     }
-                    if ($JssorUtils$.$IsBrowserIe9Earlier()) {
-                        $JssorUtils$.$SetStyleZIndex(elmt, $JssorUtils$.$GetStyleZIndex(elmt) + 1);
+                    if ($Jssor$.$IsBrowserIe9Earlier()) {
+                        $Jssor$.$CssZIndex(elmt, ($Jssor$.$CssZIndex(elmt) || 0) + 1);
                     }
-                    if ($JssorUtils$.$GetWebKitVersion() > 0) {
-                        //if ((_HandleTouchEventOnly && ($JssorUtils$.$GetWebKitVersion() < 534 || !_SlideshowEnabled)) || (!_HandleTouchEventOnly && $JssorUtils$.$GetWebKitVersion() < 535)) {
-                        //    $JssorUtils$.$EnableHWA(elmt);
-                        //}
-                        if (!_HandleTouchEventOnly || ($JssorUtils$.$GetWebKitVersion() < 534 || !_SlideshowEnabled)) {
-                            $JssorUtils$.$EnableHWA(elmt);
+                    if (_Options.$HWA && $Jssor$.$WebKitVersion()) {
+                        if (!_IsTouchDevice || $Jssor$.$WebKitVersion() < 534 || (!_SlideshowEnabled && !$Jssor$.$IsBrowserChrome())) {
+                            $Jssor$.$EnableHWA(elmt);
                         }
                     }
                 }
 
-                var childElements = $JssorUtils$.$GetChildren(elmt);
+                var childElements = $Jssor$.$Children(elmt);
 
-                $JssorUtils$.$Each(childElements, function (childElement, i) {
+                $Jssor$.$Each(childElements, function (childElement, i) {
 
-                    var uAttribute = $JssorUtils$.$GetAttribute(childElement, "u");
+                    var uAttribute = $Jssor$.$AttributeEx(childElement, "u");
                     if (uAttribute == "player" && !_PlayerInstanceElement) {
                         _PlayerInstanceElement = childElement;
                         if (_PlayerInstanceElement.pInstance) {
                             PlayerAvailableEventHandler();
                         }
                         else {
-                            $JssorUtils$.$AddEvent(_PlayerInstanceElement, "dataavailable", PlayerAvailableEventHandler);
+                            $Jssor$.$AddEvent(_PlayerInstanceElement, "dataavailable", PlayerAvailableEventHandler);
                         }
                     }
 
                     if (uAttribute == "caption") {
-                        if (!$JssorUtils$.$IsBrowserIE() && !fresh) {
-                            var captionElement = $JssorUtils$.$CloneNode(childElement, true);
-                            $JssorUtils$.$InsertBefore(elmt, captionElement, childElement);
-                            $JssorUtils$.$RemoveChild(elmt, childElement);
+                        if (!$Jssor$.$IsBrowserIE() && !fresh) {
+                            var captionElement = $Jssor$.$CloneNode(childElement);
+                            $Jssor$.$InsertBefore(elmt, captionElement, childElement);
+                            $Jssor$.$RemoveChild(elmt, childElement);
                             childElement = captionElement;
 
                             fresh = true;
                         }
                     }
-                    else if (!_ContentRefreshed && !level && !_ImageItem && $JssorUtils$.$GetAttribute(childElement, "u") == "image") {
+                    else if (!_ContentRefreshed && !level && !_ImageItem && $Jssor$.$AttributeEx(childElement, "u") == "image") {
                         _ImageItem = childElement;
 
                         if (_ImageItem) {
                             if (_ImageItem.tagName == "A") {
                                 _LinkItemOrigin = _ImageItem;
-                                $JssorUtils$.$SetStyles(_LinkItemOrigin, _StyleDef);
+                                $Jssor$.$SetStyles(_LinkItemOrigin, _StyleDef);
 
-                                _LinkItem = $JssorUtils$.$CloneNode(_ImageItem, false);
+                                _LinkItem = $Jssor$.$CloneNode(_ImageItem, true);
                                 //cancel click event on <A> element when a drag of slide succeeded
-                                $JssorUtils$.$AddEvent(_LinkItem, "click", LinkClickEventHandler);
+                                $Jssor$.$AddEvent(_LinkItem, "click", LinkClickEventHandler);
 
-                                $JssorUtils$.$SetStyles(_LinkItem, _StyleDef);
-                                $JssorUtils$.$SetStyleDisplay(_LinkItem, "block");
-                                $JssorUtils$.$SetStyleOpacity(_LinkItem, 0);
-                                $JssorUtils$.$SetStyleBackgroundColor(_LinkItem, "#000");
+                                $Jssor$.$SetStyles(_LinkItem, _StyleDef);
+                                $Jssor$.$CssDisplay(_LinkItem, "block");
+                                $Jssor$.$CssOpacity(_LinkItem, 0);
+                                $Jssor$.$Css(_LinkItem, "backgroundColor", "#000");
 
-                                _ImageItem = $JssorUtils$.$FindFirstChildByTag(_ImageItem, "IMG");
+                                _ImageItem = $Jssor$.$FindChildByTag(_ImageItem, "IMG");
 
                                 $JssorDebug$.$Execute(function () {
                                     if (!_ImageItem) {
@@ -1665,7 +1663,7 @@ new function () {
                             }
                             _ImageItem.border = 0;
 
-                            $JssorUtils$.$SetStyles(_ImageItem, _StyleDef);
+                            $Jssor$.$SetStyles(_ImageItem, _StyleDef);
                         }
                     }
 
@@ -1716,26 +1714,26 @@ new function () {
 
             _SelfSlideItem.$Index = slideIndex;
 
-            $JssorEventManager$.call(_SelfSlideItem);
+            $JssorObject$.call(_SelfSlideItem);
 
             //SlideItem Constructor
             {
 
-                var thumb = $JssorUtils$.$FindFirstChildByAttribute(slideElmt, "thumb");
+                var thumb = $Jssor$.$FindChild(slideElmt, "thumb", true);
                 if (thumb) {
-                    _SelfSlideItem.$Thumb = $JssorUtils$.$CloneNode(thumb, true);
-                    $JssorUtils$.$HideElement(thumb);
+                    _SelfSlideItem.$Thumb = $Jssor$.$CloneNode(thumb);
+                    $Jssor$.$RemoveAttribute(thumb, "id");
+                    $Jssor$.$HideElement(thumb);
                 }
-                $JssorUtils$.$ShowElement(slideElmt);
+                $Jssor$.$ShowElement(slideElmt);
 
-                _LoadingScreen = $JssorUtils$.$CloneNode(_LoadingContainer, true);
-                $JssorUtils$.$SetStyleZIndex(_LoadingScreen, 1000);
+                _LoadingScreen = $Jssor$.$CloneNode(_LoadingContainer);
+                $Jssor$.$CssZIndex(_LoadingScreen, 1000);
 
                 //cancel click event on <A> element when a drag of slide succeeded
-                $JssorUtils$.$AddEvent(slideElmt, "click", LinkClickEventHandler);
+                $Jssor$.$AddEvent(slideElmt, "click", LinkClickEventHandler);
 
                 ResetCaptionSlider(true);
-                _ContentRefreshed = true;
 
                 _SelfSlideItem.$Image = _ImageItem;
                 _SelfSlideItem.$Link = _LinkItem;
@@ -1743,10 +1741,10 @@ new function () {
                 _SelfSlideItem.$Item = slideElmt;
 
                 _SelfSlideItem.$Wrapper = _Wrapper = slideElmt;
-                $JssorUtils$.$AppendChild(_Wrapper, _LoadingScreen);
+                $Jssor$.$AppendChild(_Wrapper, _LoadingScreen);
 
                 _SelfSlider.$On(203, ParkEventHandler);
-                _SelfSlider.$On(22, DragStartEventHandler);
+                _SelfSlider.$On(28, FreezeEventHandler);
                 _SelfSlider.$On(24, SwipeStartEventHandler);
 
                 $JssorDebug$.$Execute(function () {
@@ -1754,14 +1752,14 @@ new function () {
                 });
 
                 $JssorDebug$.$Execute(function () {
-                    $JssorUtils$.$SetAttribute(_Wrapper, "debug-id", "slide-" + slideIndex);
+                    $Jssor$.$Attribute(_Wrapper, "debug-id", "slide-" + slideIndex);
                 });
             }
         }
         //SlideItem
 
         //Processor
-        function Processor(slideIndex, slideshowProcessor, captionSliderIn, captionSliderOut) {
+        function Processor(slideElmt, slideIndex, slideshowProcessor, captionSliderIn, captionSliderOut) {
 
             var _SelfProcessor = this;
 
@@ -1785,13 +1783,13 @@ new function () {
 
             function UpdateLink() {
 
-                $JssorUtils$.$ClearChildren(_LinkContainer);
+                $Jssor$.$ClearChildren(_LinkContainer);
 
                 if (_ShowLink && _IsSlideshowRunning && slideItem.$Link) {
-                    $JssorUtils$.$AppendChild(_LinkContainer, slideItem.$Link);
+                    $Jssor$.$AppendChild(_LinkContainer, slideItem.$Link);
                 }
 
-                $JssorUtils$.$ShowElement(_LinkContainer, _IsSlideshowRunning || !slideItem.$Image);
+                $Jssor$.$ShowElement(_LinkContainer, !_IsSlideshowRunning && slideItem.$Image);
             }
 
             function ProcessCompleteEventHandler() {
@@ -1816,7 +1814,7 @@ new function () {
 
                 var currentPosition = _SelfProcessor.$GetPosition_Display();
 
-                if (!_IsDragging && !_IsSliding && !_IsPlayerOnService && (currentPosition != _IdleEnd || (_AutoPlay && (!_HoverToPause || _HoverStatus))) && _CurrentSlideIndex == slideIndex) {
+                if (!_IsDragging && !_IsSliding && !_IsPlayerOnService && _CurrentSlideIndex == slideIndex) {
 
                     if (!currentPosition) {
                         if (_SlideshowEnd && !_IsSlideshowRunning) {
@@ -1833,35 +1831,49 @@ new function () {
                     var toPosition;
                     var stateEvent = JssorSlider.$EVT_STATE_CHANGE;
 
-                    if (currentPosition == _ProgressEnd) {
+                    if (currentPosition != _ProgressEnd) {
+                        if (currentPosition == _IdleEnd) {
+                            toPosition = _ProgressEnd;
+                        }
+                        else if (currentPosition == _IdleBegin) {
+                            toPosition = _IdleEnd;
+                        }
+                        else if (!currentPosition) {
+                            toPosition = _IdleBegin;
+                        }
+                        else if (currentPosition > _IdleEnd) {
+                            _IsRollingBack = true;
+                            toPosition = _IdleEnd;
+                            stateEvent = JssorSlider.$EVT_ROLLBACK_START;
+                        }
+                        else {
+                            //continue from break (by drag or lock)
+                            toPosition = _SelfProcessor.$GetPlayToPosition();
+                        }
+                    }
 
-                        if (_IdleEnd == _ProgressEnd)
-                            _SelfProcessor.$GoToPosition(_IdleBegin);
-
-                        return slideItem.$GoForNextSlide();
-                    }
-                    else if (currentPosition == _IdleEnd) {
-                        toPosition = _ProgressEnd;
-                    }
-                    else if (currentPosition == _IdleBegin) {
-                        toPosition = _IdleEnd;
-                    }
-                    else if (!currentPosition) {
-                        toPosition = _IdleBegin;
-                    }
-                    else if (currentPosition > _IdleEnd) {
-                        _IsRollingBack = true;
-                        toPosition = _IdleEnd;
-                        stateEvent = JssorSlider.$EVT_ROLLBACK_START;
-                    }
-                    else {
-                        //continue from break (by drag or lock)
-                        toPosition = _SelfProcessor.$GetPlayToPosition();
-                    }
+                    //$JssorDebug$.$Execute(function () {
+                    //    if (currentPosition == _ProgressEnd) {
+                    //        debugger;
+                    //    }
+                    //});
 
                     _SelfSlider.$TriggerEvent(stateEvent, slideIndex, currentPosition, _ProgressBegin, _IdleBegin, _IdleEnd, _ProgressEnd);
-                    _SelfProcessor.$PlayToPosition(toPosition, ProcessCompleteEventHandler);
+
+                    var allowAutoPlay = _AutoPlay && (!_HoverToPause || _NotOnHover);
+
+                    if (currentPosition == _ProgressEnd) {
+                        (_IdleEnd != _ProgressEnd && !(_HoverToPause & 12) || allowAutoPlay) && slideItem.$GoForNextSlide();
+                    }
+                    else if (allowAutoPlay || currentPosition != _IdleEnd) {
+                        _SelfProcessor.$PlayToPosition(toPosition, ProcessCompleteEventHandler);
+                    }
                 }
+            };
+
+            _SelfProcessor.$AdjustIdleOnPark = function () {
+                if (_IdleEnd == _ProgressEnd && _IdleEnd == _SelfProcessor.$GetPosition_Display())
+                    _SelfProcessor.$GoToPosition(_IdleBegin);
             };
 
             _SelfProcessor.$Abort = function () {
@@ -1869,13 +1881,13 @@ new function () {
 
                 var currentPosition = _SelfProcessor.$GetPosition_Display();
                 if (currentPosition < _ProgressEnd) {
-                    _SelfSlider.$TriggerEvent(JssorSlider.$EVT_STATE_CHANGE, slideIndex, -currentPosition - 1, _ProgressBegin, _IdleBegin, _IdleEnd, _ProgressEnd);
+                    _SelfSlider.$TriggerEvent(JssorSlider.$EVT_STATE_CHANGE, slideIndex, -currentPosition -1, _ProgressBegin, _IdleBegin, _IdleEnd, _ProgressEnd);
                 }
             };
 
             _SelfProcessor.$OpenSlideshowPanel = function (open) {
                 if (slideshowProcessor) {
-                    $JssorUtils$.$SetStyleOverflow(_SlideshowPanel, open && slideshowProcessor.$Transition.$Outside ? "" : "hidden");
+                    $Jssor$.$CssOverflow(_SlideshowPanel, open && slideshowProcessor.$Transition.$Outside ? "" : "hidden");
                 }
             };
 
@@ -1911,7 +1923,7 @@ new function () {
                 _CaptionInBegin = _SelfProcessor.$GetPosition_OuterEnd();
                 _SelfProcessor.$Chain(captionSliderIn);
                 _IdleBegin = captionSliderIn.$GetPosition_OuterEnd();
-                _IdleEnd = _IdleBegin + _Options.$AutoPlayInterval;
+                _IdleEnd = _IdleBegin + ($Jssor$.$ParseFloat($Jssor$.$AttributeEx(slideElmt, "idle")) || _Options.$AutoPlayInterval);
 
                 captionSliderOut.$Shift(_IdleEnd);
                 _SelfProcessor.$Combine(captionSliderOut);
@@ -1922,47 +1934,110 @@ new function () {
         //private classes
 
         function SetPosition(elmt, position) {
-            var orientation = _DragOrientation > 0 ? _DragOrientation : _Options.$PlayOrientation;
-            var x = Math.round(_StepLengthX * position * (orientation & 1));
-            var y = Math.round(_StepLengthY * position * ((orientation >> 1) & 1));
+            var orientation = _DragOrientation > 0 ? _DragOrientation : _PlayOrientation;
+            var x = _StepLengthX * position * (orientation & 1);
+            var y = _StepLengthY * position * ((orientation >> 1) & 1);
 
-            if ($JssorUtils$.$IsBrowserIE() && $JssorUtils$.$GetBrowserVersion() >= 10 && $JssorUtils$.$GetBrowserVersion() < 11) {
+            if ($Jssor$.$IsBrowserChrome() && $Jssor$.$BrowserVersion() < 38) {
+                x = x.toFixed(3);
+                y = y.toFixed(3);
+            }
+            else {
+                x = Math.round(x);
+                y = Math.round(y);
+            }
+
+            if ($Jssor$.$IsBrowserIE() && $Jssor$.$BrowserVersion() >= 10 && $Jssor$.$BrowserVersion() < 11) {
                 elmt.style.msTransform = "translate(" + x + "px, " + y + "px)";
             }
-            else if ($JssorUtils$.$IsBrowserChrome() && $JssorUtils$.$GetBrowserVersion() >= 30) {
+            else if ($Jssor$.$IsBrowserChrome() && $Jssor$.$BrowserVersion() >= 30 && $Jssor$.$BrowserVersion() < 34) {
                 elmt.style.WebkitTransition = "transform 0s";
                 elmt.style.WebkitTransform = "translate3d(" + x + "px, " + y + "px, 0px) perspective(2000px)";
             }
             else {
-                $JssorUtils$.$SetStyleLeft(elmt, x);
-                $JssorUtils$.$SetStyleTop(elmt, y);
+                $Jssor$.$CssLeft(elmt, x);
+                $Jssor$.$CssTop(elmt, y);
             }
         }
 
         //Event handling begin
 
         function OnMouseDown(event) {
-            _LastDragSucceded = 0;
-
-            if (!_DragOrientationRegistered && RegisterDrag()) {
+            var tagName = $Jssor$.$EventSrc(event).tagName;
+            if (!_DragOrientationRegistered && tagName != "INPUT" && tagName != "TEXTAREA" && tagName != "SELECT" && RegisterDrag()) {
                 OnDragStart(event);
             }
         }
 
+        function RecordFreezePoint() {
+
+            _CarouselPlaying_OnFreeze = _IsSliding;
+            _PlayToPosition_OnFreeze = _CarouselPlayer.$GetPlayToPosition();
+            _Position_OnFreeze = _Conveyor.$GetPosition();
+
+        }
+
+        function Freeze() {
+
+            RecordFreezePoint();
+
+            if (_IsDragging || !_NotOnHover && (_HoverToPause & 12)) {
+                _CarouselPlayer.$Stop();
+
+                _SelfSlider.$TriggerEvent(JssorSlider.$EVT_FREEZE);
+            }
+
+        }
+
+        function Unfreeze(byDrag) {
+
+            byDrag && RecordFreezePoint();
+
+            if (!_IsDragging && (_NotOnHover || !(_HoverToPause & 12)) && !_CarouselPlayer.$IsPlaying()) {
+
+                var currentPosition = _Conveyor.$GetPosition();
+                var toPosition = Math.ceil(_Position_OnFreeze);
+
+                if (byDrag && Math.abs(_DragOffsetTotal) >= _Options.$MinDragOffsetToSlide) {
+                    toPosition = Math.ceil(currentPosition);
+                    toPosition += _DragIndexAdjust;
+                }
+
+                if (!(_Loop & 1)) {
+                    toPosition = Math.min(_SlideCount - _DisplayPieces, Math.max(toPosition, 0));
+                }
+
+                var t = Math.abs(toPosition - currentPosition);
+                t = 1 - Math.pow(1 - t, 5);
+
+                if (!_LastDragSucceded && _CarouselPlaying_OnFreeze) {
+                    _CarouselPlayer.$Continue(_PlayToPosition_OnFreeze);
+                }
+                else if (currentPosition == toPosition) {
+                    _CurrentSlideItem.$EnablePlayer();
+                    _CurrentSlideItem.$TryActivate();
+                }
+                else {
+
+                    _CarouselPlayer.$PlayCarousel(currentPosition, toPosition, t * _SlideDuration);
+                }
+            }
+        }
+
         function OnDragStart(event) {
-            _DragStart_CarouselPlaying = _IsSliding;
 
             _IsDragging = true;
             _DragInvalid = false;
             _LoadingTicket = null;
 
-            $JssorUtils$.$AddEvent(document, _MoveEvent, OnDragMove);
+            $Jssor$.$AddEvent(document, _MoveEvent, OnDragMove);
 
-            _LastTimeMoveByDrag = $JssorUtils$.$GetNow() - 50;
-            _DragStartPlayToPosition = _CarouselPlayer.$GetPlayToPosition();
-            _CarouselPlayer.$Stop();
+            _LastTimeMoveByDrag = $Jssor$.$GetNow() - 50;
 
-            if (!_DragStart_CarouselPlaying)
+            _LastDragSucceded = 0;
+            Freeze();
+
+            if (!_CarouselPlaying_OnFreeze)
                 _DragOrientation = 0;
 
             if (_HandleTouchEventOnly) {
@@ -1971,35 +2046,34 @@ new function () {
                 _DragStartMouseY = touchPoint.clientY;
             }
             else {
-                var mousePoint = $JssorUtils$.$GetMousePosition(event);
+                var mousePoint = $Jssor$.$MousePosition(event);
 
                 _DragStartMouseX = mousePoint.x;
                 _DragStartMouseY = mousePoint.y;
 
-                $JssorUtils$.$CancelEvent(event);
+                $Jssor$.$CancelEvent(event);
             }
 
             _DragOffsetTotal = 0;
             _DragOffsetLastTime = 0;
             _DragIndexAdjust = 0;
-            _DragStartPosition = _Conveyor.$GetPosition();
 
             //Trigger EVT_DRAGSTART
-            _SelfSlider.$TriggerEvent(JssorSlider.$EVT_DRAG_START, GetRealIndex(_DragStartPosition), _DragStartPosition, event);
+            _SelfSlider.$TriggerEvent(JssorSlider.$EVT_DRAG_START, GetRealIndex(_Position_OnFreeze), _Position_OnFreeze, event);
         }
 
         function OnDragMove(event) {
-            if (_IsDragging && (!$JssorUtils$.$IsBrowserIe9Earlier() || event.button)) {
+            if (_IsDragging && (!$Jssor$.$IsBrowserIe9Earlier() || event.button)) {
                 var actionPoint;
 
                 if (_HandleTouchEventOnly) {
                     var touches = event.touches;
                     if (touches && touches.length > 0) {
-                        actionPoint = new $JssorPoint$(touches[0].clientX, touches[0].clientY);
+                        actionPoint = { x: touches[0].clientX, y: touches[0].clientY };
                     }
                 }
                 else {
-                    actionPoint = $JssorUtils$.$GetMousePosition(event);
+                    actionPoint = $Jssor$.$MousePosition(event);
                 }
 
                 if (actionPoint) {
@@ -2007,8 +2081,8 @@ new function () {
                     var distanceY = actionPoint.y - _DragStartMouseY;
 
 
-                    if (Math.floor(_DragStartPosition) != _DragStartPosition)
-                        _DragOrientation = _Options.$PlayOrientation & _DragOrientationRegistered;
+                    if (Math.floor(_Position_OnFreeze) != _Position_OnFreeze)
+                        _DragOrientation = _DragOrientation || (_PlayOrientation & _DragOrientationRegistered);
 
                     if ((distanceX || distanceY) && !_DragOrientation) {
                         if (_DragOrientationRegistered == 3) {
@@ -2022,7 +2096,7 @@ new function () {
                             _DragOrientation = _DragOrientationRegistered;
                         }
 
-                        if (_HandleTouchEventOnly && _DragOrientation == 1 && Math.abs(distanceY) - Math.abs(distanceX) > 3) {
+                        if (_IsTouchDevice && _DragOrientation == 1 && Math.abs(distanceY) - Math.abs(distanceX) > 3) {
                             _DragInvalid = true;
                         }
                     }
@@ -2036,7 +2110,7 @@ new function () {
                             stepLength = _StepLengthX;
                         }
 
-                        if (!_Options.$Loop) {
+                        if (!(_Loop & 1)) {
                             if (distance > 0) {
                                 var normalDistance = stepLength * _CurrentSlideIndex;
                                 var sqrtDistance = distance - normalDistance;
@@ -2046,9 +2120,9 @@ new function () {
                             }
 
                             if (distance < 0) {
-                                var normalDistance = stepLength * ( _SlideCount - _DisplayPieces - _CurrentSlideIndex);
+                                var normalDistance = stepLength * (_SlideCount - _DisplayPieces - _CurrentSlideIndex);
                                 var sqrtDistance = -distance - normalDistance;
-                                
+
                                 if (sqrtDistance > 0) {
                                     distance = -normalDistance - Math.sqrt(sqrtDistance) * 5;
                                 }
@@ -2056,26 +2130,26 @@ new function () {
                         }
 
                         if (_DragOffsetTotal - _DragOffsetLastTime < -2) {
-                            _DragIndexAdjust = 1;
+                            _DragIndexAdjust = 0;
                         }
                         else if (_DragOffsetTotal - _DragOffsetLastTime > 2) {
-                            _DragIndexAdjust = 0;
+                            _DragIndexAdjust = -1;
                         }
 
                         _DragOffsetLastTime = _DragOffsetTotal;
                         _DragOffsetTotal = distance;
-                        _PositionToGoByDrag = _DragStartPosition - _DragOffsetTotal / stepLength / (_ScaleRatio || 1);
+                        _PositionToGoByDrag = _Position_OnFreeze - _DragOffsetTotal / stepLength / (_ScaleRatio || 1);
 
                         if (_DragOffsetTotal && _DragOrientation && !_DragInvalid) {
-                            $JssorUtils$.$CancelEvent(event);
+                            $Jssor$.$CancelEvent(event);
                             if (!_IsSliding) {
                                 _CarouselPlayer.$StandBy(_PositionToGoByDrag);
                             }
                             else
                                 _CarouselPlayer.$SetStandByPosition(_PositionToGoByDrag);
                         }
-                        else if ($JssorUtils$.$IsBrowserIe9Earlier()) {
-                            $JssorUtils$.$CancelEvent(event);
+                        else if ($Jssor$.$IsBrowserIe9Earlier()) {
+                            $Jssor$.$CancelEvent(event);
                         }
                     }
                 }
@@ -2092,44 +2166,22 @@ new function () {
 
                 _IsDragging = false;
 
-                _LastTimeMoveByDrag = $JssorUtils$.$GetNow();
+                _LastTimeMoveByDrag = $Jssor$.$GetNow();
 
-                $JssorUtils$.$RemoveEvent(document, _MoveEvent, OnDragMove);
+                $Jssor$.$RemoveEvent(document, _MoveEvent, OnDragMove);
 
                 _LastDragSucceded = _DragOffsetTotal;
 
-                _LastDragSucceded && $JssorUtils$.$CancelEvent(event);
+                _LastDragSucceded && $Jssor$.$CancelEvent(event);
 
                 _CarouselPlayer.$Stop();
 
                 var currentPosition = _Conveyor.$GetPosition();
 
-                _SelfSlider.$TriggerEvent(JssorSlider.$EVT_DRAG_END, GetRealIndex(currentPosition), currentPosition, GetRealIndex(_DragStartPosition), _DragStartPosition, event);
+                //Trigger EVT_DRAG_END
+                _SelfSlider.$TriggerEvent(JssorSlider.$EVT_DRAG_END, GetRealIndex(currentPosition), currentPosition, GetRealIndex(_Position_OnFreeze), _Position_OnFreeze, event);
 
-                var toPosition = Math.floor(_DragStartPosition);
-
-                if (Math.abs(_DragOffsetTotal) >= _Options.$MinDragOffsetToSlide) {
-                    toPosition = Math.floor(currentPosition);
-                    toPosition += _DragIndexAdjust;
-                }
-
-                if (!_Options.$Loop) {
-                    toPosition = Math.min(_SlideCount - _DisplayPieces, Math.max(toPosition, 0));
-                }
-
-                var t = Math.abs(toPosition - currentPosition);
-                t = 1 - Math.pow(1 - t, 5);
-
-                if (!_LastDragSucceded && _DragStart_CarouselPlaying) {
-                    _CarouselPlayer.$Continue(_DragStartPlayToPosition);
-                }
-                else if (currentPosition == toPosition) {
-                    _CurrentSlideItem.$EnablePlayer();
-                    _CurrentSlideItem.$TryActivate();
-                }
-                else {
-                    _CarouselPlayer.$PlayCarousel(currentPosition, toPosition, t * _SlideDuration);
-                }
+                Unfreeze(true);
             }
         }
         //Event handling end
@@ -2153,30 +2205,34 @@ new function () {
         }
 
         function ResetNavigator(index, temp) {
-            $JssorUtils$.$Each(_Navigators, function (navigator) {
+            _TempSlideIndex = index;
+            $Jssor$.$Each(_Navigators, function (navigator) {
                 navigator.$SetCurrentIndex(GetRealIndex(index), index, temp);
             });
         }
 
         function RegisterDrag() {
             var dragRegistry = JssorSlider.$DragRegistry || 0;
-            JssorSlider.$DragRegistry |= _Options.$DragOrientation;
+            var dragOrientation = _DragEnabled;
+            if (_IsTouchDevice)
+                (dragOrientation & 1) && (dragOrientation &= 1);
+            JssorSlider.$DragRegistry |= dragOrientation;
 
-            return (_DragOrientationRegistered = _Options.$DragOrientation & ~dragRegistry);
+            return (_DragOrientationRegistered = dragOrientation & ~dragRegistry);
         }
 
         function UnregisterDrag() {
             if (_DragOrientationRegistered) {
-                JssorSlider.$DragRegistry &= ~_Options.$DragOrientation;
+                JssorSlider.$DragRegistry &= ~_DragEnabled;
                 _DragOrientationRegistered = 0;
             }
         }
 
         function CreatePanel() {
-            var div = $JssorUtils$.$CreateDivElement();
+            var div = $Jssor$.$CreateDiv();
 
-            $JssorUtils$.$SetStyles(div, _StyleDef);
-            $JssorUtils$.$SetStylePosition(div, "absolute");
+            $Jssor$.$SetStyles(div, _StyleDef);
+            $Jssor$.$CssPosition(div, "absolute");
 
             return div;
         }
@@ -2195,57 +2251,70 @@ new function () {
 
         //Navigation Request Handler
         function NavigationClickHandler(index, relative) {
+            if (relative) {
+                if (!_Loop) {
+                    //Stop at threshold
+                    index = Math.min(Math.max(index + _TempSlideIndex, 0), _SlideCount - _DisplayPieces);
+                    relative = false;
+                }
+                else if (_Loop & 2) {
+                    //Rewind
+                    index = GetRealIndex(index + _TempSlideIndex);
+                    relative = false;
+                }
+            }
             PlayTo(index, _Options.$SlideDuration, relative);
         }
 
         function ShowNavigators() {
-            $JssorUtils$.$Each(_Navigators, function (navigator) {
-                navigator.$Show(navigator.$Options.$ChanceToShow > _HoverStatus);
+            $Jssor$.$Each(_Navigators, function (navigator) {
+                navigator.$Show(navigator.$Options.$ChanceToShow <= _NotOnHover);
             });
         }
 
-        function MainContainerMouseOutEventHandler(event) {
-            event = $JssorUtils$.$GetEvent(event);
-            // we have to watch out for a tricky case: a mouseout occurs on a
-            // child element, but the mouse is still inside the parent element.
-            // the mouseout event will bubble up to us. this happens in all
-            // browsers, so we need to correct for this. technique from:
-            // http://www.quirksmode.org/js/events_mouse.html
-            var from = event.target ? event.target : event.srcElement;
-            var to = event.relatedTarget ? event.relatedTarget : event.toElement;
+        function MainContainerMouseLeaveEventHandler() {
+            if (!_NotOnHover) {
 
-            if (!$JssorUtils$.$IsChild(elmt, from) || $JssorUtils$.$IsChild(elmt, to)) {
-                // the mouseout needs to start from this or a child node, and it
-                // needs to end on this or an outer node.
-                return;
+                //$JssorDebug$.$Log("mouseleave");
+
+                _NotOnHover = 1;
+
+                ShowNavigators();
+
+                if (!_IsDragging) {
+                    (_HoverToPause & 12) && Unfreeze();
+                    (_HoverToPause & 3) && _SlideItems[_CurrentSlideIndex].$TryActivate();
+                }
             }
-
-            _HoverStatus = 1;
-
-            ShowNavigators();
-
-            _SlideItems[_CurrentSlideIndex].$TryActivate();
         }
 
-        function MainContainerMouseOverEventHandler() {
-            _HoverStatus = 0;
+        function MainContainerMouseEnterEventHandler() {
 
-            ShowNavigators();
+            if (_NotOnHover) {
+
+                //$JssorDebug$.$Log("mouseenter");
+
+                _NotOnHover = 0;
+
+                ShowNavigators();
+
+                _IsDragging || !(_HoverToPause & 12) || Freeze();
+            }
         }
 
         function AdjustSlidesContainerSize() {
             _StyleDef = { $Width: _SlideWidth, $Height: _SlideHeight, $Top: 0, $Left: 0 };
 
-            $JssorUtils$.$Each(_SlideElmts, function (slideElmt, i) {
+            $Jssor$.$Each(_SlideElmts, function (slideElmt, i) {
 
-                $JssorUtils$.$SetStyles(slideElmt, _StyleDef);
-                $JssorUtils$.$SetStylePosition(slideElmt, "absolute");
-                $JssorUtils$.$SetStyleOverflow(slideElmt, "hidden");
+                $Jssor$.$SetStyles(slideElmt, _StyleDef);
+                $Jssor$.$CssPosition(slideElmt, "absolute");
+                $Jssor$.$CssOverflow(slideElmt, "hidden");
 
-                $JssorUtils$.$HideElement(slideElmt);
+                $Jssor$.$HideElement(slideElmt);
             });
 
-            $JssorUtils$.$SetStyles(_LoadingContainer, _StyleDef);
+            $Jssor$.$SetStyles(_LoadingContainer, _StyleDef);
         }
 
         function PlayToOffset(offset, slideDuration) {
@@ -2272,7 +2341,7 @@ new function () {
 
                 {
                     //Slide Duration
-                    if ($JssorUtils$.$IsUndefined(slideDuration))
+                    if (slideDuration == undefined)
                         slideDuration = _SlideDuration;
 
                     var positionDisplay = _Carousel.$GetPosition_Display();
@@ -2285,7 +2354,9 @@ new function () {
                             positionTo = Math.floor(positionTo);
                     }
 
-                    if (!_Options.$Loop) {
+
+                    if (!(_Loop & 1)) {
+                        positionTo = GetRealIndex(positionTo);
                         positionTo = Math.max(0, Math.min(positionTo, _SlideCount - _DisplayPieces));
                     }
 
@@ -2295,7 +2366,7 @@ new function () {
                     var duration = positionDisplay == positionTo ? 0 : slideDuration * Math.abs(positionOffset);
                     duration = Math.min(duration, slideDuration * _DisplayPieces * 1.5);
 
-                    _CarouselPlayer.$PlayCarousel(positionDisplay, positionTo, duration);
+                    _CarouselPlayer.$PlayCarousel(positionDisplay, positionTo, duration || 1);
                 }
             }
         }
@@ -2310,7 +2381,7 @@ new function () {
             ///	<summary>
             ///		instance.$GoTo( slideIndex );   //Go to the specifed slide immediately with no play.
             ///	</summary>
-            PlayTo(slideIndex, 0);
+            PlayTo(slideIndex, 1);
         };
 
         _SelfSlider.$Next = function () {
@@ -2354,6 +2425,7 @@ new function () {
                 }
             });
 
+            $Jssor$.$TranslateTransitions(transitions);    //for old transition compatibility
             _Options.$SlideshowOptions.$Transitions = transitions;
         };
 
@@ -2367,8 +2439,9 @@ new function () {
                 }
             });
 
+            $Jssor$.$TranslateTransitions(transitions);    //for old transition compatibility
             _CaptionSliderOptions.$CaptionTransitions = transitions;
-            _CaptionSliderOptions.$Version = $JssorUtils$.$GetNow();
+            _CaptionSliderOptions.$Version = $Jssor$.$GetNow();
         };
 
         _SelfSlider.$SlidesCount = function () {
@@ -2410,7 +2483,7 @@ new function () {
             ///	<summary>
             ///		instance.$IsMouseOver();   //Retrieve mouse over status of the slider.
             ///	</summary>
-            return !_HoverStatus;
+            return !_NotOnHover;
         };
 
         _SelfSlider.$LastDragSucceded = function () {
@@ -2420,101 +2493,110 @@ new function () {
             return _LastDragSucceded;
         };
 
-        _SelfSlider.$GetOriginalWidth = function () {
+        function OriginalWidth() {
             ///	<summary>
-            ///		instance.$GetOriginalWidth();   //Retrieve original width of the slider.
+            ///		instance.$OriginalWidth();   //Retrieve original width of the slider.
             ///	</summary>
-            return $JssorUtils$.$GetStyleWidth(_ScaleWrapper || elmt);
-        };
+            return $Jssor$.$CssWidth(_ScaleWrapper || elmt);
+        }
 
-        _SelfSlider.$GetOriginalHeight = function () {
+        function OriginalHeight() {
             ///	<summary>
-            ///		instance.$GetOriginalWidth();   //Retrieve original height of the slider.
+            ///		instance.$OriginalHeight();   //Retrieve original height of the slider.
             ///	</summary>
-            return $JssorUtils$.$GetStyleHeight(_ScaleWrapper || elmt);
-        };
+            return $Jssor$.$CssHeight(_ScaleWrapper || elmt);
+        }
 
-        _SelfSlider.$GetScaleWidth = function () {
-            ///	<summary>
-            ///		instance.$GetScaleWidth();   //Retrieve scaled width the slider currently displays.
-            ///	</summary>
-            return $JssorUtils$.$GetStyleWidth(elmt);
-        };
+        _SelfSlider.$OriginalWidth = _SelfSlider.$GetOriginalWidth = OriginalWidth;
 
-        _SelfSlider.$GetScaleHeight = function () {
-            ///	<summary>
-            ///		instance.$GetScaleHeight();   //Retrieve scaled height the slider currently displays.
-            ///	</summary>
-            return $JssorUtils$.$GetStyleHeight(elmt);
-        };
+        _SelfSlider.$OriginalHeight = _SelfSlider.$GetOriginalHeight = OriginalHeight;
 
-        _SelfSlider.$SetScaleWidth = function (width) {
+        function Scale(dimension, isHeight) {
             ///	<summary>
-            ///		instance.$SetScaleWidth( width );   //Scale the slider to new width and keep aspect ratio.
+            ///		instance.$ScaleWidth();   //Retrieve scaled dimension the slider currently displays.
+            ///		instance.$ScaleWidth( dimension );   //Scale the slider to new width and keep aspect ratio.
             ///	</summary>
+
+            if (dimension == undefined)
+                return $Jssor$.$CssWidth(elmt);
+
             $JssorDebug$.$Execute(function () {
-                if (!width || width < 0) {
-                    $JssorDebug$.$Fail("'$SetScaleWidth' error, 'width' should be positive value.");
+                if (!dimension || dimension < 0) {
+                    $JssorDebug$.$Fail("'$ScaleWidth' error, 'dimension' should be positive value.");
                 }
             });
 
             if (!_ScaleWrapper) {
                 $JssorDebug$.$Execute(function () {
-                    var originalWidthStr = elmt.style.width;
-                    var originalHeightStr = elmt.style.height;
-                    var originalWidth = $JssorUtils$.$GetStyleWidth(elmt);
-                    var originalHeight = $JssorUtils$.$GetStyleHeight(elmt);
+                    var originalWidthStr = $Jssor$.$Css(elmt, "width");
+                    var originalHeightStr = $Jssor$.$Css(elmt, "height");
+                    var originalWidth = $Jssor$.$CssP(elmt, "width");
+                    var originalHeight = $Jssor$.$CssP(elmt, "height");
 
                     if (!originalWidthStr) {
-                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'width' of 'outer container' not specified. Please specify 'width' in pixel.");
+                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'dimension' of 'outer container' not specified. Please specify 'dimension' in pixel. e.g. 'dimension: 600px;'");
                     }
 
                     if (!originalHeightStr) {
-                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'height' of 'outer container' not specified. Please specify 'height' in pixel.");
+                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'height' of 'outer container' not specified. Please specify 'height' in pixel. e.g. 'height: 300px;'");
                     }
 
                     if (originalWidthStr.indexOf('%') != -1) {
-                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'width' of 'outer container' not valid. Please specify 'width' in pixel.");
+                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'dimension' of 'outer container' not valid. Please specify 'dimension' in pixel. e.g. 'dimension: 600px;'");
                     }
 
                     if (originalHeightStr.indexOf('%') != -1) {
-                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'height' of 'outer container' not valid. Please specify 'height' in pixel.");
+                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'height' of 'outer container' not valid. Please specify 'height' in pixel. e.g. 'height: 300px;'");
                     }
 
                     if (!originalWidth) {
-                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'width' of 'outer container' not valid. 'width' of 'outer container' should be positive.");
+                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'dimension' of 'outer container' not valid. 'dimension' of 'outer container' should be positive number. e.g. 'dimension: 600px;'");
                     }
 
                     if (!originalHeight) {
-                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'height' of 'outer container' not valid. 'height' of 'outer container' should be positive.");
+                        $JssorDebug$.$Fail("Cannot scale jssor slider, 'height' of 'outer container' not valid. 'height' of 'outer container' should be positive number. e.g. 'height: 300px;'");
                     }
                 });
 
-                var innerWrapper = $JssorUtils$.$CloneNode(elmt, false);
-                $JssorUtils$.$RemoveAttribute(innerWrapper, "id");
-                $JssorUtils$.$SetStylePosition(innerWrapper, "relative");
-                $JssorUtils$.$SetStyleTop(innerWrapper, 0);
-                $JssorUtils$.$SetStyleLeft(innerWrapper, 0);
-                $JssorUtils$.$SetStyleOverflow(innerWrapper, "visible");
+                var innerWrapper = $Jssor$.$CreateDiv(document);
+                $Jssor$.$CssCssText(innerWrapper, $Jssor$.$CssCssText(elmt));
+                $Jssor$.$ClassName(innerWrapper, $Jssor$.$ClassName(elmt));
 
-                _ScaleWrapper = $JssorUtils$.$CloneNode(elmt, false);
-                $JssorUtils$.$RemoveAttribute(_ScaleWrapper, "id");
-                $JssorUtils$.$SetStyleCssText(_ScaleWrapper, "");
-                $JssorUtils$.$SetStylePosition(_ScaleWrapper, "absolute");
-                $JssorUtils$.$SetStyleTop(_ScaleWrapper, 0);
-                $JssorUtils$.$SetStyleLeft(_ScaleWrapper, 0);
-                $JssorUtils$.$SetStyleWidth(_ScaleWrapper, $JssorUtils$.$GetStyleWidth(elmt));
-                $JssorUtils$.$SetStyleHeight(_ScaleWrapper, $JssorUtils$.$GetStyleHeight(elmt));
-                $JssorUtils$.$SetStyleTransformOrigin(_ScaleWrapper, "0 0");
+                $Jssor$.$CssPosition(innerWrapper, "relative");
+                $Jssor$.$CssTop(innerWrapper, 0);
+                $Jssor$.$CssLeft(innerWrapper, 0);
+                $Jssor$.$CssOverflow(innerWrapper, "visible");
 
-                $JssorUtils$.$AppendChild(_ScaleWrapper, innerWrapper);
+                _ScaleWrapper = $Jssor$.$CreateDiv(document);
 
-                var children = $JssorUtils$.$GetChildren(elmt);
-                $JssorUtils$.$AppendChild(elmt, _ScaleWrapper);
-                $JssorUtils$.$AppendChildren(innerWrapper, children);
+                $Jssor$.$CssPosition(_ScaleWrapper, "absolute");
+                $Jssor$.$CssTop(_ScaleWrapper, 0);
+                $Jssor$.$CssLeft(_ScaleWrapper, 0);
+                $Jssor$.$CssWidth(_ScaleWrapper, $Jssor$.$CssWidth(elmt));
+                $Jssor$.$CssHeight(_ScaleWrapper, $Jssor$.$CssHeight(elmt));
+                $Jssor$.$SetStyleTransformOrigin(_ScaleWrapper, "0 0");
 
-                $JssorUtils$.$ShowElement(innerWrapper);
-                $JssorUtils$.$ShowElement(_ScaleWrapper);
+                $Jssor$.$AppendChild(_ScaleWrapper, innerWrapper);
+
+                var children = $Jssor$.$Children(elmt);
+                $Jssor$.$AppendChild(elmt, _ScaleWrapper);
+
+                $Jssor$.$Css(elmt, "backgroundImage", "");
+
+                var noMoveElmts = {
+                    "navigator": _BulletNavigatorOptions && _BulletNavigatorOptions.$Scale == false,
+                    "arrowleft": _ArrowNavigatorOptions && _ArrowNavigatorOptions.$Scale == false,
+                    "arrowright": _ArrowNavigatorOptions && _ArrowNavigatorOptions.$Scale == false,
+                    "thumbnavigator": _ThumbnailNavigatorOptions && _ThumbnailNavigatorOptions.$Scale == false,
+                    "thumbwrapper": _ThumbnailNavigatorOptions && _ThumbnailNavigatorOptions.$Scale == false
+                };
+
+                $Jssor$.$Each(children, function (child) {
+                    $Jssor$.$AppendChild(noMoveElmts[$Jssor$.$AttributeEx(child, "u")] ? elmt : innerWrapper, child);
+                });
+
+                $Jssor$.$ShowElement(innerWrapper);
+                $Jssor$.$ShowElement(_ScaleWrapper);
             }
 
             $JssorDebug$.$Execute(function () {
@@ -2523,12 +2605,33 @@ new function () {
                 }
             });
 
-            _ScaleRatio = width / $JssorUtils$.$GetStyleWidth(_ScaleWrapper);
-            $JssorUtils$.$SetStyleScale(_ScaleWrapper, _ScaleRatio);
+            _ScaleRatio = dimension /  (isHeight? $Jssor$.$CssHeight : $Jssor$.$CssWidth)(_ScaleWrapper);
+            $Jssor$.$CssScale(_ScaleWrapper, _ScaleRatio);
 
-            $JssorUtils$.$SetStyleWidth(elmt, width);
-            $JssorUtils$.$SetStyleHeight(elmt, _ScaleRatio * $JssorUtils$.$GetStyleHeight(_ScaleWrapper));
+            var scaleWidth = isHeight ? (_ScaleRatio * OriginalWidth()) : dimension;
+            var scaleHeight = isHeight ? dimension : (_ScaleRatio * OriginalHeight());
+
+            $Jssor$.$CssWidth(elmt, scaleWidth);
+            $Jssor$.$CssHeight(elmt, scaleHeight);
+
+            $Jssor$.$Each(_Navigators, function (navigator) {
+                navigator.$Relocate(scaleWidth, scaleHeight);
+            });
+        }
+
+        _SelfSlider.$ScaleHeight = _SelfSlider.$GetScaleHeight = function (height) {
+            ///	<summary>
+            ///		instance.$ScaleHeight();   //Retrieve scaled height the slider currently displays.
+            ///		instance.$ScaleHeight( dimension );   //Scale the slider to new height and keep aspect ratio.
+            ///	</summary>
+
+            if (height == undefined)
+                return $Jssor$.$CssHeight(elmt);
+
+            Scale(height, true);
         };
+
+        _SelfSlider.$ScaleWidth = _SelfSlider.$SetScaleWidth = _SelfSlider.$GetScaleWidth = Scale;
 
         _SelfSlider.$GetVirtualIndex = function (index) {
             var parkingIndex = Math.ceil(GetRealIndex(_ParkingPosition / _StepLength));
@@ -2549,34 +2652,33 @@ new function () {
 
         //member functions
 
-        //Inherit $JssorEventManager$
-        $JssorEventManager$.call(this);
+        $JssorObject$.call(_SelfSlider);
+
+        $JssorDebug$.$Execute(function () {
+            var outerContainerElmt = $Jssor$.$GetElement(elmt);
+            if (!outerContainerElmt)
+                $JssorDebug$.$Fail("Outer container '" + elmt + "' not found.");
+        });
 
         //initialize member variables
-        _SelfSlider.$Elmt = elmt = $JssorUtils$.$GetElement(elmt);
+        _SelfSlider.$Elmt = elmt = $Jssor$.$GetElement(elmt);
         //initialize member variables
 
         var _InitialScrollWidth;    //for debug only
         var _CaptionSliderCount = 1;    //for debug only
 
-        $JssorDebug$.$Execute(function () {
-            var outerContainerElmt = $JssorUtils$.$GetElement(elmt);
-            if (!outerContainerElmt)
-                $JssorDebug$.$Fail("Outer container '" + elmt + "' not found.");
-        });
-
-        var _Options = $JssorUtils$.$Extend({
-            $FillMode: 0,                   //[Optional] The way to fill image in slide, 0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actuall size, default value is 0
+        var _Options = $Jssor$.$Extend({
+            $FillMode: 0,                   //[Optional] The way to fill image in slide, 0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actual size, 5 contain for large image, actual size for small image, default value is 0
             $LazyLoading: 1,                //[Optional] For image with  lazy loading format (<IMG src2="url" .../>), by default it will be loaded only when the slide comes.
-            //But an integer value (maybe 1, 2 or 3) indicates that how far of nearby slides should be loaded immediately as well, default value is 1.
+            //But an integer value (maybe 0, 1, 2 or 3) indicates that how far of nearby slides should be loaded immediately as well, default value is 1.
             $StartIndex: 0,                 //[Optional] Index of slide to display when initialize, default value is 0
             $AutoPlay: false,               //[Optional] Whether to auto play, default value is false
-            $Loop: true,                    //[Optional] Enable loop(circular) of carousel or not, default value is true
+            $Loop: 1,                       //[Optional] Enable loop(circular) of carousel or not, 0: stop, 1: loop, 2 rewind, default value is 1
+            $HWA: true,                     //[Optional] Enable hardware acceleration or not, default value is true
             $NaviQuitDrag: true,
             $AutoPlaySteps: 1,              //[Optional] Steps to go of every play (this options applys only when slideshow disabled), default value is 1
             $AutoPlayInterval: 3000,        //[Optional] Interval to play next slide since the previous stopped if a slideshow is auto playing, default value is 3000
-            $PauseOnHover: 3,               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, default value is 0
-            $HwaMode: 1,                    //[Optional] Hardware acceleration mode, 0 disabled, 1 enabled, default value is 1
+            $PauseOnHover: 1,               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
 
             $SlideDuration: 500,            //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 400
             $SlideEasing: $JssorEasing$.$EaseOutQuad,   //[Optional] Specifies easing for right to left animation, default value is $JssorEasing$.$EaseOutQuad
@@ -2584,31 +2686,35 @@ new function () {
             $SlideSpacing: 0, 				//[Optional] Space between each slide in pixels, default value is 0
             $DisplayPieces: 1,              //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), default value is 1
             $ParkingPosition: 0,            //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
-            $UISearchMode: 1,               //[Optional] The way (0 parellel, 1 recursive, default value is recursive) to search UI components (slides container, loading screen, navigator container, direction navigator container, thumbnail navigator container etc.
-            $PlayOrientation: 1,            //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, default value is 1
+            $UISearchMode: 1,               //[Optional] The way (0 parellel, 1 recursive, default value is recursive) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc.
+            $PlayOrientation: 1,            //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
             $DragOrientation: 1             //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 both, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
 
         }, options);
 
         //Sodo statement for development time intellisence only
         $JssorDebug$.$Execute(function () {
-            _Options = $JssorUtils$.$Extend({
+            _Options = $Jssor$.$Extend({
                 $ArrowKeyNavigation: undefined,
                 $SlideWidth: undefined,
                 $SlideHeight: undefined,
                 $SlideshowOptions: undefined,
                 $CaptionSliderOptions: undefined,
-                $NavigatorOptions: undefined,
-                $DirectionNavigatorOptions: undefined,
+                $BulletNavigatorOptions: undefined,
+                $ArrowNavigatorOptions: undefined,
                 $ThumbnailNavigatorOptions: undefined
             },
             _Options);
         });
 
+        var _PlayOrientation = _Options.$PlayOrientation & 3;
+        var _PlayReverse = (_Options.$PlayOrientation & 4) / -4 || 1;
+
         var _SlideshowOptions = _Options.$SlideshowOptions;
-        var _CaptionSliderOptions = $JssorUtils$.$Extend({ $Class: $JssorCaptionSliderBase$, $PlayInMode: 1, $PlayOutMode: 1 }, _Options.$CaptionSliderOptions);
-        var _NavigatorOptions = _Options.$NavigatorOptions;
-        var _DirectionNavigatorOptions = _Options.$DirectionNavigatorOptions;
+        var _CaptionSliderOptions = $Jssor$.$Extend({ $Class: $JssorCaptionSliderBase$, $PlayInMode: 1, $PlayOutMode: 1 }, _Options.$CaptionSliderOptions);
+        $Jssor$.$TranslateTransitions(_CaptionSliderOptions.$CaptionTransitions); //for old transition compatibility
+        var _BulletNavigatorOptions = _Options.$BulletNavigatorOptions;
+        var _ArrowNavigatorOptions = _Options.$ArrowNavigatorOptions;
         var _ThumbnailNavigatorOptions = _Options.$ThumbnailNavigatorOptions;
 
         $JssorDebug$.$Execute(function () {
@@ -2624,94 +2730,133 @@ new function () {
         });
 
         $JssorDebug$.$Execute(function () {
-            if (_NavigatorOptions && !_NavigatorOptions.$Class) {
-                $JssorDebug$.$Fail("Option $NavigatorOptions error, class not specified.");
+            if (_BulletNavigatorOptions && !_BulletNavigatorOptions.$Class) {
+                $JssorDebug$.$Fail("Option $BulletNavigatorOptions error, class not specified.");
             }
         });
 
         $JssorDebug$.$Execute(function () {
-            if (_DirectionNavigatorOptions && !_DirectionNavigatorOptions.$Class) {
-                $JssorDebug$.$Fail("Option $DirectionNavigatorOptions error, class not specified.");
+            if (_ArrowNavigatorOptions && !_ArrowNavigatorOptions.$Class) {
+                $JssorDebug$.$Fail("Option $ArrowNavigatorOptions error, class not specified.");
             }
         });
 
         $JssorDebug$.$Execute(function () {
             if (_ThumbnailNavigatorOptions && !_ThumbnailNavigatorOptions.$Class) {
-                $JssorDebug$.$Fail("Option $DirectionNavigatorOptions error, class not specified.");
+                $JssorDebug$.$Fail("Option $ThumbnailNavigatorOptions error, class not specified.");
             }
         });
 
-        var _UISearchMode = _Options.$UISearchMode;
+        var _UISearchNoDeep = !_Options.$UISearchMode;
         var _ScaleWrapper;
-        var _SlidesContainer = $JssorUtils$.$FindFirstChildByAttribute(elmt, "slides", null, _UISearchMode);
-        var _LoadingContainer = $JssorUtils$.$FindFirstChildByAttribute(elmt, "loading", null, _UISearchMode) || $JssorUtils$.$CreateDivElement(document);
-        var _NavigatorContainer = $JssorUtils$.$FindFirstChildByAttribute(elmt, "navigator", null, _UISearchMode);
-        var _ThumbnailNavigatorContainer = $JssorUtils$.$FindFirstChildByAttribute(elmt, "thumbnavigator", null, _UISearchMode);
+        var _SlidesContainer = $Jssor$.$FindChild(elmt, "slides", _UISearchNoDeep);
+        var _LoadingContainer = $Jssor$.$FindChild(elmt, "loading", _UISearchNoDeep) || $Jssor$.$CreateDiv(document);
 
-        var _SlidesContainerWidth = $JssorUtils$.$GetStyleWidth(_SlidesContainer);
-        var _SlidesContainerHeight = $JssorUtils$.$GetStyleHeight(_SlidesContainer);
+        var _BulletNavigatorContainer = $Jssor$.$FindChild(elmt, "navigator", _UISearchNoDeep);
+
+        var _ArrowLeft = $Jssor$.$FindChild(elmt, "arrowleft", _UISearchNoDeep);
+        var _ArrowRight = $Jssor$.$FindChild(elmt, "arrowright", _UISearchNoDeep);
+
+        var _ThumbnailNavigatorContainer = $Jssor$.$FindChild(elmt, "thumbnavigator", _UISearchNoDeep);
+
+        $JssorDebug$.$Execute(function () {
+            //if (_BulletNavigatorOptions && !_BulletNavigatorContainer) {
+            //    throw new Error("$BulletNavigatorOptions specified but bullet navigator container (<div u=\"navigator\" ...) not defined.");
+            //}
+            if (_BulletNavigatorContainer && !_BulletNavigatorOptions) {
+                throw new Error("Bullet navigator container defined but $BulletNavigatorOptions not specified.");
+            }
+
+            //if (_ArrowNavigatorOptions) {
+            //    if (!_ArrowLeft) {
+            //        throw new Error("$ArrowNavigatorOptions specified, but arrowleft (<span u=\"arrowleft\" ...) not defined.");
+            //    }
+
+            //    if (!_ArrowRight) {
+            //        throw new Error("$ArrowNavigatorOptions specified, but arrowright (<span u=\"arrowright\" ...) not defined.");
+            //    }
+            //}
+
+            if ((_ArrowLeft || _ArrowRight) && !_ArrowNavigatorOptions) {
+                throw new Error("arrowleft or arrowright defined, but $ArrowNavigatorOptions not specified.");
+            }
+
+            //if (_ThumbnailNavigatorOptions && !_ThumbnailNavigatorContainer) {
+            //    throw new Error("$ThumbnailNavigatorOptions specified, but thumbnail navigator container (<div u=\"thumbnavigator\" ...) not defined.");
+            //}
+
+            if (_ThumbnailNavigatorContainer && !_ThumbnailNavigatorOptions) {
+                throw new Error("Thumbnail navigator container defined, but $ThumbnailNavigatorOptions not specified.");
+            }
+        });
+
+        var _SlidesContainerWidth = $Jssor$.$CssWidth(_SlidesContainer);
+        var _SlidesContainerHeight = $Jssor$.$CssHeight(_SlidesContainer);
 
         $JssorDebug$.$Execute(function () {
             if (isNaN(_SlidesContainerWidth))
-                $JssorDebug$.$Fail("Width of slides container wrong specification, it should be specified by inline style in pixels (like style='width: 600px;').");
+                $JssorDebug$.$Fail("Width of slides container wrong specification, it should be specified in pixel (like style='width: 600px;').");
 
-            if ($JssorUtils$.$IsUndefined(_SlidesContainerWidth))
-                $JssorDebug$.$Fail("Width of slides container not specified, it should be specified by inline style in pixels (like style='width: 600px;').");
+            if (_SlidesContainerWidth == undefined)
+                $JssorDebug$.$Fail("Width of slides container not specified, it should be specified in pixel (like style='width: 600px;').");
 
             if (isNaN(_SlidesContainerHeight))
-                $JssorDebug$.$Fail("Height of slides container wrong specification, it should be specified by inline style in pixels (like style='height: 300px;').");
+                $JssorDebug$.$Fail("Height of slides container wrong specification, it should be specified in pixel (like style='height: 300px;').");
 
-            if ($JssorUtils$.$IsUndefined(_SlidesContainerHeight))
-                $JssorDebug$.$Fail("Height of slides container not specified, it should be specified by inline style in pixels (like style='height: 300px;').");
+            if (_SlidesContainerHeight == undefined)
+                $JssorDebug$.$Fail("Height of slides container not specified, it should be specified in pixel (like style='height: 300px;').");
 
-            var slidesContainerOverflow = $JssorUtils$.$GetStyleOverflow(_SlidesContainer);
-            var slidesContainerOverflowX = $JssorUtils$.$GetStyleOverflowX(_SlidesContainer);
-            var slidesContainerOverflowY = $JssorUtils$.$GetStyleOverflowY(_SlidesContainer);
+            var slidesContainerOverflow = $Jssor$.$CssOverflow(_SlidesContainer);
+            var slidesContainerOverflowX = $Jssor$.$Css(_SlidesContainer, "overflowX");
+            var slidesContainerOverflowY = $Jssor$.$Css(_SlidesContainer, "overflowY");
             if (slidesContainerOverflow != "hidden" && (slidesContainerOverflowX != "hidden" || slidesContainerOverflowY != "hidden"))
                 $JssorDebug$.$Fail("Overflow of slides container wrong specification, it should be specified as 'hidden' (style='overflow:hidden;').");
 
-            //var slidesContainerTop = $JssorUtils$.$GetStyleTop(_SlidesContainer);
-            //var slidesContainerLeft = $JssorUtils$.$GetStyleLeft(_SlidesContainer);
+            //var slidesContainerTop = $Jssor$.$CssTop(_SlidesContainer);
+            //var slidesContainerLeft = $Jssor$.$CssLeft(_SlidesContainer);
 
             //if (isNaN(slidesContainerTop))
-            //    $JssorDebug$.$Fail("Top of slides container wrong specification, it should be specified by inline style in pixels (like style='top: 0px;').");
+            //    $JssorDebug$.$Fail("Top of slides container wrong specification, it should be specified in pixel (like style='top: 0px;').");
 
-            //if ($JssorUtils$.$IsUndefined(slidesContainerTop))
-            //    $JssorDebug$.$Fail("Top of slides container not specified, it should be specified by inline style in pixels (like style='top: 0px;').");
+            //if (slidesContainerTop == undefined)
+            //    $JssorDebug$.$Fail("Top of slides container not specified, it should be specified in pixel (like style='top: 0px;').");
 
             //if (isNaN(slidesContainerLeft))
-            //    $JssorDebug$.$Fail("Left of slides container wrong specification, it should be specified by inline style in pixels (like style='left: 0px;').");
+            //    $JssorDebug$.$Fail("Left of slides container wrong specification, it should be specified in pixel (like style='left: 0px;').");
 
-            //if ($JssorUtils$.$IsUndefined(slidesContainerLeft))
-            //    $JssorDebug$.$Fail("Left of slides container not specified, it should be specified by inline style in pixels (like style='left: 0px;').");
+            //if (slidesContainerLeft == undefined)
+            //    $JssorDebug$.$Fail("Left of slides container not specified, it should be specified in pixel (like style='left: 0px;').");
         });
 
         $JssorDebug$.$Execute(function () {
-            if (!$JssorUtils$.$IsNumeric(_Options.$DisplayPieces))
+            if (!$Jssor$.$IsNumeric(_Options.$DisplayPieces))
                 $JssorDebug$.$Fail("Option $DisplayPieces error, it should be a numeric value and greater than or equal to 1.");
 
             if (_Options.$DisplayPieces < 1)
                 $JssorDebug$.$Fail("Option $DisplayPieces error, it should be greater than or equal to 1.");
 
-            if (_Options.$DisplayPieces > 1 && _Options.$DragOrientation && _Options.$DragOrientation != _Options.$PlayOrientation)
+            if (_Options.$DisplayPieces > 1 && _Options.$DragOrientation && _Options.$DragOrientation != _PlayOrientation)
                 $JssorDebug$.$Fail("Option $DragOrientation error, it should be 0 or the same of $PlayOrientation when $DisplayPieces is greater than 1.");
 
-            if (!$JssorUtils$.$IsNumeric(_Options.$ParkingPosition))
+            if (!$Jssor$.$IsNumeric(_Options.$ParkingPosition))
                 $JssorDebug$.$Fail("Option $ParkingPosition error, it should be a numeric value.");
 
-            if (_Options.$ParkingPosition && _Options.$DragOrientation && _Options.$DragOrientation != _Options.$PlayOrientation)
+            if (_Options.$ParkingPosition && _Options.$DragOrientation && _Options.$DragOrientation != _PlayOrientation)
                 $JssorDebug$.$Fail("Option $DragOrientation error, it should be 0 or the same of $PlayOrientation when $ParkingPosition is not equal to 0.");
         });
 
-        if (!_Options.$Loop)
-            _Options.$ParkingPosition = 0;
-
-        if (_Options.$DisplayPieces > 1 || _Options.$ParkingPosition)
-            _Options.$DragOrientation &= _Options.$PlayOrientation;
-
         var _StyleDef;
 
-        var _SlideElmts = $JssorUtils$.$GetChildren(_SlidesContainer);
+        var _SlideElmts = [];
+
+        {
+            var slideElmts = $Jssor$.$Children(_SlidesContainer);
+            $Jssor$.$Each(slideElmts, function (slideElmt) {
+                if (slideElmt.tagName == "DIV" && !$Jssor$.$AttributeEx(slideElmt, "u")) {
+                    _SlideElmts.push(slideElmt);
+                }
+            });
+        }
 
         $JssorDebug$.$Execute(function () {
             if (_SlideElmts.length < 1) {
@@ -2724,6 +2869,7 @@ new function () {
 
         var _PreviousSlideIndex;
         var _CurrentSlideIndex = -1;
+        var _TempSlideIndex;
         var _PrevSlideItem;
         var _CurrentSlideItem;
         var _SlideCount = _SlideElmts.length;
@@ -2734,7 +2880,7 @@ new function () {
         var _SlideSpacing = _Options.$SlideSpacing;
         var _StepLengthX = _SlideWidth + _SlideSpacing;
         var _StepLengthY = _SlideHeight + _SlideSpacing;
-        var _StepLength = (_Options.$PlayOrientation == 1) ? _StepLengthX : _StepLengthY;
+        var _StepLength = (_PlayOrientation & 1) ? _StepLengthX : _StepLengthY;
         var _DisplayPieces = Math.min(_Options.$DisplayPieces, _SlideCount);
 
         var _SlideshowPanel;
@@ -2744,10 +2890,11 @@ new function () {
         var _DragInvalid;
 
         var _HandleTouchEventOnly;
+        var _IsTouchDevice;
 
         var _Navigators = [];
-        var _Navigator;
-        var _DirectionNavigator;
+        var _BulletNavigator;
+        var _ArrowNavigator;
         var _ThumbnailNavigator;
 
         var _ShowLink;
@@ -2765,10 +2912,12 @@ new function () {
         var _SlideshowEnabled;
         var _ParkingPosition;
         var _CarouselEnabled = _DisplayPieces < _SlideCount;
-        var _DragEnabled = _CarouselEnabled && _Options.$DragOrientation;
+        var _Loop = _CarouselEnabled ? _Options.$Loop : 0;
+
+        var _DragEnabled;
         var _LastDragSucceded;
 
-        var _HoverStatus = 1;   //0 Hovering, 1 Not hovering
+        var _NotOnHover = 1;   //0 Hovering, 1 Not hovering
 
         //Variable Definition
         var _IsSliding;
@@ -2800,14 +2949,14 @@ new function () {
             elmt["jssor-slider"] = true;
 
             //_SlideshowPanel = CreatePanel();
-            //$JssorUtils$.$SetStyleZIndex(elmt, $JssorUtils$.$GetStyleZIndex(elmt));
-            //$JssorUtils$.$SetStyleLeft(_SlideshowPanel, $JssorUtils$.$GetStyleLeft(_SlidesContainer));
-            //$JssorUtils$.$SetStyleZIndex(_SlidesContainer, $JssorUtils$.$GetStyleZIndex(_SlidesContainer));
-            //$JssorUtils$.$SetStyleTop(_SlideshowPanel, $JssorUtils$.$GetStyleTop(_SlidesContainer));
-            $JssorUtils$.$SetStyleZIndex(_SlidesContainer, $JssorUtils$.$GetStyleZIndex(_SlidesContainer));
-            $JssorUtils$.$SetStylePosition(_SlidesContainer, "absolute");
-            _SlideshowPanel = $JssorUtils$.$CloneNode(_SlidesContainer);
-            $JssorUtils$.$InsertBefore($JssorUtils$.$GetParentNode(_SlidesContainer), _SlideshowPanel, _SlidesContainer);
+            //$Jssor$.$CssZIndex(elmt, $Jssor$.$CssZIndex(elmt));
+            //$Jssor$.$CssLeft(_SlideshowPanel, $Jssor$.$CssLeft(_SlidesContainer));
+            //$Jssor$.$CssZIndex(_SlidesContainer, $Jssor$.$CssZIndex(_SlidesContainer));
+            //$Jssor$.$CssTop(_SlideshowPanel, $Jssor$.$CssTop(_SlidesContainer));
+            $Jssor$.$CssZIndex(_SlidesContainer, $Jssor$.$CssZIndex(_SlidesContainer) || 0);
+            $Jssor$.$CssPosition(_SlidesContainer, "absolute");
+            _SlideshowPanel = $Jssor$.$CloneNode(_SlidesContainer);
+            $Jssor$.$InsertBefore($Jssor$.$ParentNode(_SlidesContainer), _SlideshowPanel, _SlidesContainer);
 
             if (_SlideshowOptions) {
                 _ShowLink = _SlideshowOptions.$ShowLink;
@@ -2819,10 +2968,14 @@ new function () {
                     }
                 });
 
-                _SlideshowEnabled = _DisplayPieces == 1 && _SlideCount > 1 && _SlideshowRunnerClass && (!$JssorUtils$.$IsBrowserIE() || $JssorUtils$.$GetBrowserVersion() >= 8);
+                $Jssor$.$TranslateTransitions(_SlideshowOptions.$Transitions); //for old transition compatibility
+
+                _SlideshowEnabled = _DisplayPieces == 1 && _SlideCount > 1 && _SlideshowRunnerClass && (!$Jssor$.$IsBrowserIE() || $Jssor$.$BrowserVersion() >= 8);
             }
 
-            _ParkingPosition = (_SlideshowEnabled || _DisplayPieces >= _SlideCount) ? 0 : _Options.$ParkingPosition;
+            _ParkingPosition = (_SlideshowEnabled || _DisplayPieces >= _SlideCount || !(_Loop & 1)) ? 0 : _Options.$ParkingPosition;
+
+            _DragEnabled = ((_DisplayPieces > 1 || _ParkingPosition) ? _PlayOrientation : -1) & _Options.$DragOrientation;
 
             //SlideBoard
             var _SlideboardElmt = _SlidesContainer;
@@ -2837,35 +2990,37 @@ new function () {
             var _CancelEvent;
 
             var _LastTimeMoveByDrag;
-            var _DragStartPosition;
-            var _DragStart_CarouselPlaying;
-            var _DragStartPlayToPosition;
+            var _Position_OnFreeze;
+            var _CarouselPlaying_OnFreeze;
+            var _PlayToPosition_OnFreeze;
             var _PositionToGoByDrag;
 
             //SlideBoard Constructor
             {
+                var msPrefix;
+                if (window.navigator.pointerEnabled || (msPrefix = window.navigator.msPointerEnabled)) {
+                    _IsTouchDevice = true;
 
-                if (window.navigator.msPointerEnabled) {
+                    _DownEvent = msPrefix ? "MSPointerDown" : "pointerdown";
+                    _MoveEvent = msPrefix ? "MSPointerMove" : "pointermove";
+                    _UpEvent = msPrefix ? "MSPointerUp" : "pointerup";
+                    _CancelEvent = msPrefix ? "MSPointerCancel" : "pointercancel";
 
-                    _DownEvent = "MSPointerDown";
-                    _MoveEvent = "MSPointerMove";
-                    _UpEvent = "MSPointerUp";
-                    _CancelEvent = "MSPointerCancel";
-
-                    if (_Options.$DragOrientation) {
-                        var touchAction = "none";
-                        if (_Options.$DragOrientation == 1) {
-                            touchAction = "pan-y";
-                        }
-                        else if (_Options.$DragOrientation == 2) {
+                    if (_DragEnabled) {
+                        var touchAction = "auto";
+                        if (_DragEnabled == 2) {
                             touchAction = "pan-x";
                         }
+                        else if (_DragEnabled) {
+                            touchAction = "pan-y";
+                        }
 
-                        $JssorUtils$.$SetAttribute(_SlideboardElmt.style, "-ms-touch-action", touchAction);
+                        $Jssor$.$Css(_SlideboardElmt, msPrefix ? "msTouchAction" : "touchAction", touchAction);
                     }
                 }
                 else if ("ontouchstart" in window || "createTouch" in document) {
                     _HandleTouchEventOnly = true;
+                    _IsTouchDevice = true;
 
                     _DownEvent = "touchstart";
                     _MoveEvent = "touchmove";
@@ -2878,15 +3033,15 @@ new function () {
                 if (_SlideshowEnabled)
                     _SlideshowRunner = new _SlideshowRunnerClass(_SlideContainer, _SlideWidth, _SlideHeight, _SlideshowOptions, _HandleTouchEventOnly);
 
-                $JssorUtils$.$AppendChild(_SlideshowPanel, _Slideshow.$Wrapper);
-                $JssorUtils$.$SetStyleOverflow(_SlidesContainer, "hidden");
+                $Jssor$.$AppendChild(_SlideshowPanel, _Slideshow.$Wrapper);
+                $Jssor$.$CssOverflow(_SlidesContainer, "hidden");
 
                 //link container
                 {
                     _LinkContainer = CreatePanel();
-                    $JssorUtils$.$SetStyleBackgroundColor(_LinkContainer, "#000");
-                    $JssorUtils$.$SetStyleOpacity(_LinkContainer, 0);
-                    $JssorUtils$.$InsertBefore(_SlideboardElmt, _LinkContainer, _SlideboardElmt.firstChild);
+                    $Jssor$.$Css(_LinkContainer, "backgroundColor", "#000");
+                    $Jssor$.$CssOpacity(_LinkContainer, 0);
+                    $Jssor$.$InsertBefore(_SlideboardElmt, _LinkContainer, _SlideboardElmt.firstChild);
                 }
 
                 for (var i = 0; i < _SlideElmts.length; i++) {
@@ -2895,39 +3050,39 @@ new function () {
                     _SlideItems.push(slideItem);
                 }
 
-                $JssorUtils$.$HideElement(_LoadingContainer);
+                $Jssor$.$HideElement(_LoadingContainer);
 
                 $JssorDebug$.$Execute(function () {
-                    $JssorUtils$.$SetAttribute(_LoadingContainer, "debug-id", "loading-container");
+                    $Jssor$.$Attribute(_LoadingContainer, "debug-id", "loading-container");
                 });
 
                 _Carousel = new Carousel()
                 _CarouselPlayer = new CarouselPlayer(_Carousel, _Slideshow);
 
                 $JssorDebug$.$Execute(function () {
-                    $JssorUtils$.$SetAttribute(_SlideboardElmt, "debug-id", "slide-board");
+                    $Jssor$.$Attribute(_SlideboardElmt, "debug-id", "slide-board");
                 });
 
                 if (_DragEnabled) {
-                    $JssorUtils$.$AddEvent(_SlidesContainer, _DownEvent, OnMouseDown);
-                    $JssorUtils$.$AddEvent(document, _UpEvent, OnDragEnd);
-                    _CancelEvent && $JssorUtils$.$AddEvent(document, _CancelEvent, OnDragEnd);
+                    $Jssor$.$AddEvent(_SlidesContainer, _DownEvent, OnMouseDown);
+                    $Jssor$.$AddEvent(document, _UpEvent, OnDragEnd);
+                    _CancelEvent && $Jssor$.$AddEvent(document, _CancelEvent, OnDragEnd);
                 }
             }
             //SlideBoard
 
-            _HoverToPause &= _HandleTouchEventOnly ? 2 : 1;
+            _HoverToPause &= (_IsTouchDevice ? 10 : 5);
 
-            //Navigator
-            if (_NavigatorContainer && _NavigatorOptions) {
-                _Navigator = new _NavigatorOptions.$Class(_NavigatorContainer, _NavigatorOptions);
-                _Navigators.push(_Navigator);
+            //Bullet Navigator
+            if (_BulletNavigatorContainer && _BulletNavigatorOptions) {
+                _BulletNavigator = new _BulletNavigatorOptions.$Class(_BulletNavigatorContainer, _BulletNavigatorOptions, OriginalWidth(), OriginalHeight());
+                _Navigators.push(_BulletNavigator);
             }
 
-            //Direction Arrows
-            if (_DirectionNavigatorOptions) {
-                _DirectionNavigator = new _DirectionNavigatorOptions.$Class(elmt, _DirectionNavigatorOptions, _Options.$UISearchMode);
-                _Navigators.push(_DirectionNavigator);
+            //Arrow Navigator
+            if (_ArrowNavigatorOptions && _ArrowLeft && _ArrowRight) {
+                _ArrowNavigator = new _ArrowNavigatorOptions.$Class(_ArrowLeft, _ArrowRight, _ArrowNavigatorOptions, OriginalWidth(), OriginalHeight());
+                _Navigators.push(_ArrowNavigator);
             }
 
             //Thumbnail Navigator
@@ -2937,19 +3092,21 @@ new function () {
                 _Navigators.push(_ThumbnailNavigator);
             }
 
-            $JssorUtils$.$Each(_Navigators, function (navigator) {
+            $Jssor$.$Each(_Navigators, function (navigator) {
                 navigator.$Reset(_SlideCount, _SlideItems, _LoadingContainer);
                 navigator.$On($JssorNavigatorEvents$.$NAVIGATIONREQUEST, NavigationClickHandler);
             });
 
-            $JssorUtils$.$AddEvent(elmt, "mouseout", MainContainerMouseOutEventHandler);
-            $JssorUtils$.$AddEvent(elmt, "mouseover", MainContainerMouseOverEventHandler);
+            Scale(OriginalWidth());
+
+            $Jssor$.$AddEvent(elmt, "mouseout", $Jssor$.$MouseOverOutFilter(MainContainerMouseLeaveEventHandler, elmt));
+            $Jssor$.$AddEvent(elmt, "mouseover", $Jssor$.$MouseOverOutFilter(MainContainerMouseEnterEventHandler, elmt));
 
             ShowNavigators();
 
             //Keyboard Navigation
             if (_Options.$ArrowKeyNavigation) {
-                $JssorUtils$.$AddEvent(document, "keydown", function (e) {
+                $Jssor$.$AddEvent(document, "keydown", function (e) {
                     if (e.keyCode == $JssorKeyCode$.$LEFT) {
                         //Arrow Left
                         PlayToOffset(-1);
@@ -2961,8 +3118,11 @@ new function () {
                 });
             }
 
-            _SelfSlider.$SetScaleWidth(_SelfSlider.$GetOriginalWidth());
-            _CarouselPlayer.$PlayCarousel(_Options.$StartIndex, _Options.$StartIndex, 0);
+            var startPosition = _Options.$StartIndex;
+            if (!(_Loop & 1)) {
+                startPosition = Math.max(0, Math.min(startPosition, _SlideCount - _DisplayPieces));
+            }
+            _CarouselPlayer.$PlayCarousel(startPosition, startPosition, 0);
         }
     }
     //Jssor Slider
@@ -2984,6 +3144,7 @@ new function () {
 
     JssorSlider.$EVT_LOAD_START = 26;
     JssorSlider.$EVT_LOAD_END = 27;
+    JssorSlider.$EVT_FREEZE = 28;
 
     JssorSlider.$EVT_POSITION_CHANGE = 202;
     JssorSlider.$EVT_PARK = 203;
@@ -3013,18 +3174,18 @@ new function () {
     //});
 };
 
-//$JssorNavigator$
+//$JssorBulletNavigator$
 var $JssorNavigatorEvents$ = {
     $NAVIGATIONREQUEST: 1,
     $INDEXCHANGE: 2,
     $RESET: 3
 };
 
-var $JssorNavigator$ = window.$JssorNavigator$ = function (elmt, options) {
+var $JssorBulletNavigator$ = window.$JssorBulletNavigator$ = function (elmt, options, containerWidth, containerHeight) {
     var self = this;
-    $JssorEventManager$.call(self);
+    $JssorObject$.call(self);
 
-    elmt = $JssorUtils$.$GetElement(elmt);
+    elmt = $Jssor$.$GetElement(elmt);
 
     var _Count;
     var _Length;
@@ -3073,8 +3234,22 @@ var $JssorNavigator$ = window.$JssorNavigator$ = function (elmt, options) {
         }
     };
 
-    self.$Show = function (show) {
-        $JssorUtils$.$ShowElement(elmt, show);
+    self.$Show = function (hide) {
+        $Jssor$.$ShowElement(elmt, hide);
+    };
+
+    var _Located;
+    self.$Relocate = function (containerWidth, containerHeight) {
+        if (!_Located || _Options.$Scale == false) {
+            if (_Options.$AutoCenter & 1) {
+                $Jssor$.$CssLeft(elmt, (containerWidth - _Width) / 2);
+            }
+            if (_Options.$AutoCenter & 2) {
+                $Jssor$.$CssTop(elmt, (containerHeight - _Height) / 2);
+            }
+
+            _Located = true;
+        }
     };
 
     var _Initialized;
@@ -3092,38 +3267,31 @@ var $JssorNavigator$ = window.$JssorNavigator$ = function (elmt, options) {
             _Width = _PrototypeWidth + itemOffsetX * (!_Orientation ? maxIndex : _Lanes - 1);
             _Height = _PrototypeHeight + itemOffsetY * (_Orientation ? maxIndex : _Lanes - 1);
 
-            $JssorUtils$.$SetStyleWidth(elmt, _Width);
-            $JssorUtils$.$SetStyleHeight(elmt, _Height);
-
-            if (_Options.$AutoCenter & 1) {
-                $JssorUtils$.$SetStyleLeft(elmt, ($JssorUtils$.$GetStyleWidth($JssorUtils$.$GetParentNode(elmt)) - _Width) / 2);
-            }
-            if (_Options.$AutoCenter & 2) {
-                $JssorUtils$.$SetStyleTop(elmt, ($JssorUtils$.$GetStyleHeight($JssorUtils$.$GetParentNode(elmt)) - _Height) / 2);
-            }
+            $Jssor$.$CssWidth(elmt, _Width);
+            $Jssor$.$CssHeight(elmt, _Height);
 
             for (var buttonIndex = 0; buttonIndex < _Count; buttonIndex++) {
 
-                var numberDiv = $JssorUtils$.$CreateSpanElement();
-                $JssorUtils$.$SetInnerText(numberDiv, buttonIndex + 1);
+                var numberDiv = $Jssor$.$CreateSpan();
+                $Jssor$.$InnerText(numberDiv, buttonIndex + 1);
 
-                var div = $JssorUtils$.$BuildElement(_ItemPrototype, "NumberTemplate", numberDiv, true);
-                $JssorUtils$.$SetStylePosition(div, "absolute");
+                var div = $Jssor$.$BuildElement(_ItemPrototype, "numbertemplate", numberDiv, true);
+                $Jssor$.$CssPosition(div, "absolute");
 
                 var columnIndex = buttonIndex % (maxIndex + 1);
-                $JssorUtils$.$SetStyleLeft(div, !_Orientation ? itemOffsetX * columnIndex : buttonIndex % _Lanes * itemOffsetX);
-                $JssorUtils$.$SetStyleTop(div, _Orientation ? itemOffsetY * columnIndex : Math.floor(buttonIndex / (maxIndex + 1)) * itemOffsetY);
+                $Jssor$.$CssLeft(div, !_Orientation ? itemOffsetX * columnIndex : buttonIndex % _Lanes * itemOffsetX);
+                $Jssor$.$CssTop(div, _Orientation ? itemOffsetY * columnIndex : Math.floor(buttonIndex / (maxIndex + 1)) * itemOffsetY);
 
-                $JssorUtils$.$AppendChild(elmt, div);
+                $Jssor$.$AppendChild(elmt, div);
                 _ButtonElements[buttonIndex] = div;
 
                 if (_Options.$ActionMode & 1)
-                    $JssorUtils$.$AddEvent(div, "click", $JssorUtils$.$CreateCallback(null, OnNavigationRequest, buttonIndex));
+                    $Jssor$.$AddEvent(div, "click", $Jssor$.$CreateCallback(null, OnNavigationRequest, buttonIndex));
 
                 if (_Options.$ActionMode & 2)
-                    $JssorUtils$.$AddEvent(div, "mouseover", $JssorUtils$.$CreateCallback(null, OnNavigationRequest, buttonIndex));
+                    $Jssor$.$AddEvent(div, "mouseover", $Jssor$.$MouseOverOutFilter($Jssor$.$CreateCallback(null, OnNavigationRequest, buttonIndex), div));
 
-                _Buttons[buttonIndex] = $JssorUtils$.$Buttonize(div);
+                _Buttons[buttonIndex] = $Jssor$.$Buttonize(div);
             }
 
             //self.$TriggerEvent($JssorNavigatorEvents$.$RESET);
@@ -3131,9 +3299,9 @@ var $JssorNavigator$ = window.$JssorNavigator$ = function (elmt, options) {
         }
     };
 
-    //JssorNavigator Constructor
+    //JssorBulletNavigator Constructor
     {
-        self.$Options = _Options = $JssorUtils$.$Extend({
+        self.$Options = _Options = $Jssor$.$Extend({
             $SpacingX: 0,
             $SpacingY: 0,
             $Orientation: 1,
@@ -3142,31 +3310,31 @@ var $JssorNavigator$ = window.$JssorNavigator$ = function (elmt, options) {
 
         //Sodo statement for development time intellisence only
         $JssorDebug$.$Execute(function () {
-            _Options = $JssorUtils$.$Extend({
+            _Options = $Jssor$.$Extend({
                 $Steps: undefined,
                 $Lanes: undefined
             }, _Options);
         });
 
-        _ItemPrototype = $JssorUtils$.$FindFirstChildByAttribute(elmt, "prototype");
+        _ItemPrototype = $Jssor$.$FindChild(elmt, "prototype");
 
         $JssorDebug$.$Execute(function () {
             if (!_ItemPrototype)
                 $JssorDebug$.$Fail("Navigator item prototype not defined.");
 
-            if (isNaN($JssorUtils$.$GetStyleWidth(_ItemPrototype))) {
+            if (isNaN($Jssor$.$CssWidth(_ItemPrototype))) {
                 $JssorDebug$.$Fail("Width of 'navigator item prototype' not specified.");
             }
 
-            if (isNaN($JssorUtils$.$GetStyleHeight(_ItemPrototype))) {
+            if (isNaN($Jssor$.$CssHeight(_ItemPrototype))) {
                 $JssorDebug$.$Fail("Height of 'navigator item prototype' not specified.");
             }
         });
 
-        _PrototypeWidth = $JssorUtils$.$GetStyleWidth(_ItemPrototype);
-        _PrototypeHeight = $JssorUtils$.$GetStyleHeight(_ItemPrototype);
+        _PrototypeWidth = $Jssor$.$CssWidth(_ItemPrototype);
+        _PrototypeHeight = $Jssor$.$CssHeight(_ItemPrototype);
 
-        $JssorUtils$.$RemoveChild(elmt, _ItemPrototype);
+        $Jssor$.$RemoveChild(elmt, _ItemPrototype);
 
         _Steps = _Options.$Steps || 1;
         _Lanes = _Options.$Lanes || 1;
@@ -3176,47 +3344,41 @@ var $JssorNavigator$ = window.$JssorNavigator$ = function (elmt, options) {
     }
 };
 
-var $JssorDirectionNavigator$ = window.$JssorDirectionNavigator$ = function (elmt, options, uiSearchMode) {
+var $JssorArrowNavigator$ = window.$JssorArrowNavigator$ = function (arrowLeft, arrowRight, options, containerWidth, containerHeight) {
     var self = this;
-    $JssorEventManager$.call(self);
+    $JssorObject$.call(self);
 
     $JssorDebug$.$Execute(function () {
-        var arrowLeft = $JssorUtils$.$FindFirstChildByAttribute(elmt, "arrowleft", null, uiSearchMode);
-        var arrowRight = $JssorUtils$.$FindFirstChildByAttribute(elmt, "arrowright", null, uiSearchMode);
 
         if (!arrowLeft)
-            $JssorDebug$.$Fail("Option '$DirectionNavigatorOptions' spepcified, but UI 'arrowleft' not defined. Define 'arrowleft' to enable direct navigation, or remove option '$DirectionNavigatorOptions' to disable direct navigation.");
+            $JssorDebug$.$Fail("Option '$ArrowNavigatorOptions' spepcified, but UI 'arrowleft' not defined. Define 'arrowleft' to enable direct navigation, or remove option '$ArrowNavigatorOptions' to disable direct navigation.");
 
         if (!arrowRight)
-            $JssorDebug$.$Fail("Option '$DirectionNavigatorOptions' spepcified, but UI 'arrowright' not defined. Define 'arrowright' to enable direct navigation, or remove option '$DirectionNavigatorOptions' to disable direct navigation.");
+            $JssorDebug$.$Fail("Option '$ArrowNavigatorOptions' spepcified, but UI 'arrowright' not defined. Define 'arrowright' to enable direct navigation, or remove option '$ArrowNavigatorOptions' to disable direct navigation.");
 
-        if (isNaN($JssorUtils$.$GetStyleWidth(arrowLeft))) {
+        if (isNaN($Jssor$.$CssWidth(arrowLeft))) {
             $JssorDebug$.$Fail("Width of 'arrow left' not specified.");
         }
 
-        if (isNaN($JssorUtils$.$GetStyleWidth(arrowRight))) {
+        if (isNaN($Jssor$.$CssWidth(arrowRight))) {
             $JssorDebug$.$Fail("Width of 'arrow right' not specified.");
         }
 
-        if (isNaN($JssorUtils$.$GetStyleHeight(arrowLeft))) {
+        if (isNaN($Jssor$.$CssHeight(arrowLeft))) {
             $JssorDebug$.$Fail("Height of 'arrow left' not specified.");
         }
 
-        if (isNaN($JssorUtils$.$GetStyleHeight(arrowRight))) {
+        if (isNaN($Jssor$.$CssHeight(arrowRight))) {
             $JssorDebug$.$Fail("Height of 'arrow right' not specified.");
         }
     });
 
-    var arrowLeft = $JssorUtils$.$FindFirstChildByAttribute(elmt, "arrowleft", null, uiSearchMode);
-    var arrowRight = $JssorUtils$.$FindFirstChildByAttribute(elmt, "arrowright", null, uiSearchMode);
     var _Length;
     var _CurrentIndex;
     var _Options;
     var _Steps;
-    var _ContainerWidth = $JssorUtils$.$GetStyleWidth(elmt);
-    var _ContainerHeight = $JssorUtils$.$GetStyleHeight(elmt);
-    var _ArrowWidth = $JssorUtils$.$GetStyleWidth(arrowLeft);
-    var _ArrowHeight = $JssorUtils$.$GetStyleHeight(arrowLeft);
+    var _ArrowWidth = $Jssor$.$CssWidth(arrowLeft);
+    var _ArrowHeight = $Jssor$.$CssHeight(arrowLeft);
 
     function OnNavigationRequest(steps) {
         self.$TriggerEvent($JssorNavigatorEvents$.$NAVIGATIONREQUEST, steps, true);
@@ -3236,9 +3398,27 @@ var $JssorDirectionNavigator$ = window.$JssorDirectionNavigator$ = function (elm
         //self.$TriggerEvent($JssorNavigatorEvents$.$INDEXCHANGE, index);
     };
 
-    self.$Show = function (show) {
-        $JssorUtils$.$ShowElement(arrowLeft, show);
-        $JssorUtils$.$ShowElement(arrowRight, show);
+    self.$Show = function (hide) {
+        $Jssor$.$ShowElement(arrowLeft, hide);
+        $Jssor$.$ShowElement(arrowRight, hide);
+    };
+
+    var _Located;
+    self.$Relocate = function (conainerWidth, containerHeight) {
+        if (!_Located || _Options.$Scale == false) {
+
+            if (_Options.$AutoCenter & 1) {
+                $Jssor$.$CssLeft(arrowLeft, (containerWidth - _ArrowWidth) / 2);
+                $Jssor$.$CssLeft(arrowRight, (containerWidth - _ArrowWidth) / 2);
+            }
+
+            if (_Options.$AutoCenter & 2) {
+                $Jssor$.$CssTop(arrowLeft, (containerHeight - _ArrowHeight) / 2);
+                $Jssor$.$CssTop(arrowRight, (containerHeight - _ArrowHeight) / 2);
+            }
+
+            _Located = true;
+        }
     };
 
     var _Initialized;
@@ -3248,29 +3428,21 @@ var $JssorDirectionNavigator$ = window.$JssorDirectionNavigator$ = function (elm
 
         if (!_Initialized) {
 
-            if (_Options.$AutoCenter & 1) {
-                $JssorUtils$.$SetStyleLeft(arrowLeft, (_ContainerWidth - _ArrowWidth) / 2);
-                $JssorUtils$.$SetStyleLeft(arrowRight, (_ContainerWidth - _ArrowWidth) / 2);
-            }
+            $Jssor$.$AddEvent(arrowLeft, "click", $Jssor$.$CreateCallback(null, OnNavigationRequest, -_Steps));
+            $Jssor$.$AddEvent(arrowRight, "click", $Jssor$.$CreateCallback(null, OnNavigationRequest, _Steps));
 
-            if (_Options.$AutoCenter & 2) {
-                $JssorUtils$.$SetStyleTop(arrowLeft, (_ContainerHeight - _ArrowHeight) / 2);
-                $JssorUtils$.$SetStyleTop(arrowRight, (_ContainerHeight - _ArrowHeight) / 2);
-            }
+            $Jssor$.$Buttonize(arrowLeft);
+            $Jssor$.$Buttonize(arrowRight);
 
-            $JssorUtils$.$AddEvent(arrowLeft, "click", $JssorUtils$.$CreateCallback(null, OnNavigationRequest, -_Steps));
-            $JssorUtils$.$AddEvent(arrowRight, "click", $JssorUtils$.$CreateCallback(null, OnNavigationRequest, _Steps));
-
-            $JssorUtils$.$Buttonize(arrowLeft);
-            $JssorUtils$.$Buttonize(arrowRight);
+            _Initialized = true;
         }
 
         //self.$TriggerEvent($JssorNavigatorEvents$.$RESET);
     };
 
-    //JssorDirectionNavigator Constructor
+    //JssorArrowNavigator Constructor
     {
-        self.$Options = _Options = $JssorUtils$.$Extend({
+        self.$Options = _Options = $Jssor$.$Extend({
             $Steps: 1
         }, options);
 
@@ -3287,7 +3459,6 @@ var $JssorThumbnailNavigator$ = window.$JssorThumbnailNavigator$ = function (elm
     var _Options;
     var _NavigationItems = [];
 
-    var _IsIeQuirks;
     var _Width;
     var _Height;
     var _Lanes;
@@ -3303,8 +3474,8 @@ var $JssorThumbnailNavigator$ = window.$JssorThumbnailNavigator$ = function (elm
     var _SlidesContainer;
     var _ThumbnailPrototype;
 
-    $JssorEventManager$.call(_Self);
-    elmt = $JssorUtils$.$GetElement(elmt);
+    $JssorObject$.call(_Self);
+    elmt = $Jssor$.$GetElement(elmt);
 
     function NavigationItem(item, index) {
         var self = this;
@@ -3318,11 +3489,13 @@ var $JssorThumbnailNavigator$ = window.$JssorThumbnailNavigator$ = function (elm
 
         function OnNavigationRequest(event) {
             if (!_Slider.$LastDragSucceded()) {
-                var tail = (_Lanes - index % _Lanes) % _Lanes;
-                var slideVirtualIndex = _Slider.$GetVirtualIndex((index + tail) / _Lanes);
-                var itemVirtualIndex = slideVirtualIndex * _Lanes - tail;
+                var tail = _Lanes - index % _Lanes;
+                var slideVirtualIndex = _Slider.$GetVirtualIndex((index + tail) / _Lanes - 1);
+                var itemVirtualIndex = slideVirtualIndex * _Lanes + _Lanes - tail;
                 _Self.$TriggerEvent($JssorNavigatorEvents$.$NAVIGATIONREQUEST, itemVirtualIndex);
             }
+
+            //$JssorDebug$.$Log("navigation request");
         }
 
         $JssorDebug$.$Execute(function () {
@@ -3335,14 +3508,14 @@ var $JssorThumbnailNavigator$ = window.$JssorThumbnailNavigator$ = function (elm
 
         //NavigationItem Constructor
         {
-            _Thumbnail = item.$Thumb || item.$Image || $JssorUtils$.$CreateDivElement();
-            self.$Wrapper = _Wrapper = $JssorUtils$.$BuildElement(_ThumbnailPrototype, "ThumbnailTemplate", _Thumbnail, true);
+            _Thumbnail = item.$Thumb || item.$Image || $Jssor$.$CreateDiv();
+            self.$Wrapper = _Wrapper = $Jssor$.$BuildElement(_ThumbnailPrototype, "thumbnailtemplate", _Thumbnail, true);
 
-            _Button = $JssorUtils$.$Buttonize(_Wrapper);
+            _Button = $Jssor$.$Buttonize(_Wrapper);
             if (_Options.$ActionMode & 1)
-                $JssorUtils$.$AddEvent(_Wrapper, "click", OnNavigationRequest);
+                $Jssor$.$AddEvent(_Wrapper, "click", OnNavigationRequest);
             if (_Options.$ActionMode & 2)
-                $JssorUtils$.$AddEvent(_Wrapper, "mouseover", OnNavigationRequest);
+                $Jssor$.$AddEvent(_Wrapper, "mouseover", $Jssor$.$MouseOverOutFilter(OnNavigationRequest, _Wrapper));
         }
     }
 
@@ -3362,9 +3535,11 @@ var $JssorThumbnailNavigator$ = window.$JssorThumbnailNavigator$ = function (elm
         }
     };
 
-    _Self.$Show = function (show) {
-        $JssorUtils$.$ShowElement(elmt, show);
+    _Self.$Show = function (hide) {
+        $Jssor$.$ShowElement(elmt, hide);
     };
+
+    _Self.$Relocate = $Jssor$.$EmptyFunction;
 
     var _Initialized;
     _Self.$Reset = function (length, items, loadingContainer) {
@@ -3382,53 +3557,54 @@ var $JssorThumbnailNavigator$ = window.$JssorThumbnailNavigator$ = function (elm
             var slidesContainerWidth = slideWidth + (slideWidth + _SpacingX) * (_DisplayPieces - 1) * horizontal;
             var slidesContainerHeight = slideHeight + (slideHeight + _SpacingY) * (_DisplayPieces - 1) * (1 - horizontal);
 
-            $JssorUtils$.$SetStylePosition(_SlidesContainer, "absolute");
-            $JssorUtils$.$SetStyleOverflow(_SlidesContainer, "hidden");
+            $Jssor$.$CssPosition(_SlidesContainer, "absolute");
+            $Jssor$.$CssOverflow(_SlidesContainer, "hidden");
             if (_Options.$AutoCenter & 1) {
-                $JssorUtils$.$SetStyleLeft(_SlidesContainer, (_Width - slidesContainerWidth) / 2);
+                $Jssor$.$CssLeft(_SlidesContainer, (_Width - slidesContainerWidth) / 2);
             }
             if (_Options.$AutoCenter & 2) {
-                $JssorUtils$.$SetStyleTop(_SlidesContainer, (_Height - slidesContainerHeight) / 2);
+                $Jssor$.$CssTop(_SlidesContainer, (_Height - slidesContainerHeight) / 2);
             }
             //$JssorDebug$.$Execute(function () {
             //    if (!_Options.$AutoCenter) {
-            //        var slidesContainerTop = $JssorUtils$.$GetStyleTop(_SlidesContainer);
-            //        var slidesContainerLeft = $JssorUtils$.$GetStyleLeft(_SlidesContainer);
+            //        var slidesContainerTop = $Jssor$.$CssTop(_SlidesContainer);
+            //        var slidesContainerLeft = $Jssor$.$CssLeft(_SlidesContainer);
 
             //        if (isNaN(slidesContainerTop)) {
-            //            $JssorDebug$.$Fail("Position 'top' wrong specification of thumbnail navigator slides container (<div u=\"thumbnavigator\">...<div u=\"slides\">), \r\nwhen option $ThumbnailNavigatorOptions.$AutoCenter set to 0, it should be specified by inline style in pixels (like <div u=\"slides\" style=\"top: 0px;\">)");
+            //            $JssorDebug$.$Fail("Position 'top' wrong specification of thumbnail navigator slides container (<div u=\"thumbnavigator\">...<div u=\"slides\">), \r\nwhen option $ThumbnailNavigatorOptions.$AutoCenter set to 0, it should be specified in pixel (like <div u=\"slides\" style=\"top: 0px;\">)");
             //        }
 
             //        if (isNaN(slidesContainerLeft)) {
-            //            $JssorDebug$.$Fail("Position 'left' wrong specification of thumbnail navigator slides container (<div u=\"thumbnavigator\">...<div u=\"slides\">), \r\nwhen option $ThumbnailNavigatorOptions.$AutoCenter set to 0, it should be specified by inline style in pixels (like <div u=\"slides\" style=\"left: 0px;\">)");
+            //            $JssorDebug$.$Fail("Position 'left' wrong specification of thumbnail navigator slides container (<div u=\"thumbnavigator\">...<div u=\"slides\">), \r\nwhen option $ThumbnailNavigatorOptions.$AutoCenter set to 0, it should be specified in pixel (like <div u=\"slides\" style=\"left: 0px;\">)");
             //        }
             //    }
             //});
-            $JssorUtils$.$SetStyleWidth(_SlidesContainer, slidesContainerWidth);
-            $JssorUtils$.$SetStyleHeight(_SlidesContainer, slidesContainerHeight);
+            $Jssor$.$CssWidth(_SlidesContainer, slidesContainerWidth);
+            $Jssor$.$CssHeight(_SlidesContainer, slidesContainerHeight);
 
             var slideItemElmts = [];
-            $JssorUtils$.$Each(items, function (item, index) {
+            $Jssor$.$Each(items, function (item, index) {
                 var navigationItem = new NavigationItem(item, index);
                 var navigationItemWrapper = navigationItem.$Wrapper;
 
                 var columnIndex = Math.floor(index / _Lanes);
                 var laneIndex = index % _Lanes;
 
-                $JssorUtils$.$SetStyleLeft(navigationItemWrapper, (_PrototypeWidth + _SpacingX) * laneIndex * (1 - horizontal));
-                $JssorUtils$.$SetStyleTop(navigationItemWrapper, (_PrototypeHeight + _SpacingY) * laneIndex * horizontal);
+                $Jssor$.$CssLeft(navigationItemWrapper, (_PrototypeWidth + _SpacingX) * laneIndex * (1 - horizontal));
+                $Jssor$.$CssTop(navigationItemWrapper, (_PrototypeHeight + _SpacingY) * laneIndex * horizontal);
 
                 if (!slideItemElmts[columnIndex]) {
-                    slideItemElmts[columnIndex] = $JssorUtils$.$CreateDivElement();
-                    $JssorUtils$.$AppendChild(_SlidesContainer, slideItemElmts[columnIndex]);
+                    slideItemElmts[columnIndex] = $Jssor$.$CreateDiv();
+                    $Jssor$.$AppendChild(_SlidesContainer, slideItemElmts[columnIndex]);
                 }
 
-                $JssorUtils$.$AppendChild(slideItemElmts[columnIndex], navigationItemWrapper);
+                $Jssor$.$AppendChild(slideItemElmts[columnIndex], navigationItemWrapper);
 
                 _NavigationItems.push(navigationItem);
             });
 
-            var slideshowOptions = $JssorUtils$.$Extend({
+            var thumbnailSliderOptions = $Jssor$.$Extend({
+                $HWA: false,
                 $AutoPlay: false,
                 $NaviQuitDrag: false,
                 $SlideWidth: slideWidth,
@@ -3436,12 +3612,12 @@ var $JssorThumbnailNavigator$ = window.$JssorThumbnailNavigator$ = function (elm
                 $SlideSpacing: _SpacingX * horizontal + _SpacingY * (1 - horizontal),
                 $MinDragOffsetToSlide: 12,
                 $SlideDuration: 200,
-                $PauseOnHover: 3,
+                $PauseOnHover: 1,
                 $PlayOrientation: _Options.$Orientation,
                 $DragOrientation: _Options.$DisableDrag ? 0 : _Options.$Orientation
             }, _Options);
 
-            _Slider = new $JssorSlider$(elmt, slideshowOptions);
+            _Slider = new $JssorSlider$(elmt, thumbnailSliderOptions);
 
             _Initialized = true;
         }
@@ -3451,7 +3627,7 @@ var $JssorThumbnailNavigator$ = window.$JssorThumbnailNavigator$ = function (elm
 
     //JssorThumbnailNavigator Constructor
     {
-        _Self.$Options = _Options = $JssorUtils$.$Extend({
+        _Self.$Options = _Options = $Jssor$.$Extend({
             $SpacingX: 3,
             $SpacingY: 3,
             $DisplayPieces: 1,
@@ -3462,15 +3638,15 @@ var $JssorThumbnailNavigator$ = window.$JssorThumbnailNavigator$ = function (elm
 
         //Sodo statement for development time intellisence only
         $JssorDebug$.$Execute(function () {
-            _Options = $JssorUtils$.$Extend({
+            _Options = $Jssor$.$Extend({
                 $Lanes: undefined,
                 $Width: undefined,
                 $Height: undefined
             }, _Options);
         });
 
-        _Width = $JssorUtils$.$GetStyleWidth(elmt);
-        _Height = $JssorUtils$.$GetStyleHeight(elmt);
+        _Width = $Jssor$.$CssWidth(elmt);
+        _Height = $Jssor$.$CssHeight(elmt);
 
         $JssorDebug$.$Execute(function () {
             if (!_Width)
@@ -3479,29 +3655,30 @@ var $JssorThumbnailNavigator$ = window.$JssorThumbnailNavigator$ = function (elm
                 $JssorDebug$.$Fail("height of 'thumbnavigator' container not specified.");
         });
 
-        _SlidesContainer = $JssorUtils$.$FindFirstChildByAttribute(elmt, "slides");
-        _ThumbnailPrototype = $JssorUtils$.$FindFirstChildByAttribute(_SlidesContainer, "prototype");
+        _SlidesContainer = $Jssor$.$FindChild(elmt, "slides", true);
+        _ThumbnailPrototype = $Jssor$.$FindChild(_SlidesContainer, "prototype");
 
         $JssorDebug$.$Execute(function () {
             if (!_ThumbnailPrototype)
                 $JssorDebug$.$Fail("prototype of 'thumbnavigator' not defined.");
         });
 
-        $JssorUtils$.$RemoveChild(_SlidesContainer, _ThumbnailPrototype);
+        _PrototypeWidth = $Jssor$.$CssWidth(_ThumbnailPrototype);
+        _PrototypeHeight = $Jssor$.$CssHeight(_ThumbnailPrototype);
+
+        $Jssor$.$RemoveChild(_SlidesContainer, _ThumbnailPrototype);
 
         _Lanes = _Options.$Lanes || 1;
         _SpacingX = _Options.$SpacingX;
         _SpacingY = _Options.$SpacingY;
-        _PrototypeWidth = $JssorUtils$.$GetStyleWidth(_ThumbnailPrototype);
-        _PrototypeHeight = $JssorUtils$.$GetStyleHeight(_ThumbnailPrototype);
         _DisplayPieces = _Options.$DisplayPieces;
     }
 };
 
-//$JssorCaptionSlider$
+//$JssorCaptionSliderBase$
 function $JssorCaptionSliderBase$() {
     $JssorAnimator$.call(this, 0, 0);
-    this.$Revert = $JssorUtils$.$EmptyFunction;
+    this.$Revert = $Jssor$.$EmptyFunction;
 }
 
 var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, captionSlideOptions, playIn) {
@@ -3509,16 +3686,17 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
         if (!captionSlideOptions.$CaptionTransitions) {
             $JssorDebug$.$Error("'$CaptionSliderOptions' option error, '$CaptionSliderOptions.$CaptionTransitions' not specified.");
         }
-        //else if (!$JssorUtils$.$IsArray(captionSlideOptions.$CaptionTransitions)) {
+        //else if (!$Jssor$.$IsArray(captionSlideOptions.$CaptionTransitions)) {
         //    $JssorDebug$.$Error("'$CaptionSliderOptions' option error, '$CaptionSliderOptions.$CaptionTransitions' is not an array.");
         //}
     });
 
     var _Self = this;
     var _ImmediateOutCaptionHanger;
+    var _PlayMode = playIn ? captionSlideOptions.$PlayInMode : captionSlideOptions.$PlayOutMode;
 
     var _CaptionTransitions = captionSlideOptions.$CaptionTransitions;
-    var _CaptionTuningFetcher = { $Transition: "t", $Delay: "d", $Duration: "du", $ScaleHorizontal: "x", $ScaleVertical: "y", $Rotate: "r", $Zoom: "z", $Opacity: "f", $BeginTime: "b" };
+    var _CaptionTuningFetcher = { $Transition: "t", $Delay: "d", $Duration: "du", x: "x", y: "y", $Rotate: "r", $Zoom: "z", $Opacity: "f", $BeginTime: "b" };
     var _CaptionTuningTransfer = {
         $Default: function (value, tuningValue) {
             if (!isNaN(tuningValue.$Value))
@@ -3545,36 +3723,36 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
 
         //$JssorDebug$.$Execute(function () {
 
-        //    var debugInfoElement = $JssorUtils$.$GetElement("debugInfo");
+        //    var debugInfoElement = $Jssor$.$GetElement("debugInfo");
 
         //    if (debugInfoElement && playIn) {
 
-        //        var text = $JssorUtils$.$GetInnerHtml(debugInfoElement) + "<br>";
+        //        var text = $Jssor.$InnerHtml(debugInfoElement) + "<br>";
 
-        //        $JssorUtils$.$SetInnerHtml(debugInfoElement, text);
+        //        $Jssor$.$InnerHtml(debugInfoElement, text);
         //    }
         //});
 
         function FetchRawTransition(captionElmt, index) {
             var rawTransition = {};
 
-            $JssorUtils$.$Each(_CaptionTuningFetcher, function (fetchAttribute, fetchProperty) {
-                var attributeValue = $JssorUtils$.$GetAttribute(captionElmt, fetchAttribute + (index || ""));
+            $Jssor$.$Each(_CaptionTuningFetcher, function (fetchAttribute, fetchProperty) {
+                var attributeValue = $Jssor$.$AttributeEx(captionElmt, fetchAttribute + (index || ""));
                 if (attributeValue) {
                     var propertyValue = {};
 
                     if (fetchAttribute == "t") {
-                        //if (($JssorUtils$.$IsBrowserChrome() || $JssorUtils$.$IsBrowserSafari() || $JssorUtils$.$IsBrowserFireFox()) && attributeValue == "*") {
+                        //if (($Jssor$.$IsBrowserChrome() || $Jssor$.$IsBrowserSafari() || $Jssor$.$IsBrowserFireFox()) && attributeValue == "*") {
                         //    attributeValue = Math.floor(Math.random() * captionSlideOptions.$CaptionTransitions.length);
-                        //    $JssorUtils$.$SetAttribute(captionElmt, fetchAttribute + (index || ""), attributeValue);
+                        //    $Jssor$.$Attribute(captionElmt, fetchAttribute + (index || ""), attributeValue);
                         //}
 
                         propertyValue.$Value = attributeValue;
                     }
                     else if (attributeValue.indexOf("%") + 1)
-                        propertyValue.$Percent = $JssorUtils$.$ParseFloat(attributeValue) / 100;
+                        propertyValue.$Percent = $Jssor$.$ParseFloat(attributeValue) / 100;
                     else
-                        propertyValue.$Value = $JssorUtils$.$ParseFloat(attributeValue);
+                        propertyValue.$Value = $Jssor$.$ParseFloat(attributeValue);
 
                     rawTransition[fetchProperty] = propertyValue;
                 }
@@ -3584,7 +3762,6 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
         }
 
         function GetRandomTransition() {
-            //return _CaptionTransitions.length && _CaptionTransitions[Math.floor(Math.random() * 42737 / (i + 1)) % _CaptionTransitions.length];
             return _CaptionTransitions[Math.floor(Math.random() * _CaptionTransitions.length)];
         }
 
@@ -3598,9 +3775,9 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
             else if (transitionName) {
 
                 //indexed transition allowed, just the same as named transition
-                var tempTransition = _CaptionTransitions[$JssorUtils$.$ParseInt(transitionName)] || _CaptionTransitions[transitionName];
+                var tempTransition = _CaptionTransitions[$Jssor$.$ParseInt(transitionName)] || _CaptionTransitions[transitionName];
 
-                if ($JssorUtils$.$IsArray(tempTransition)) {
+                if ($Jssor$.$IsArray(tempTransition)) {
                     if (transitionName != lastTransitionName) {
                         lastTransitionName = transitionName;
                         namedTransitionOrders[transitionName] = 0;
@@ -3613,10 +3790,10 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
 
                     tempTransition = namedTransitions[transitionName];
 
-                    if ($JssorUtils$.$IsArray(tempTransition)) {
+                    if ($Jssor$.$IsArray(tempTransition)) {
                         tempTransition = tempTransition.length && tempTransition[namedTransitionOrders[transitionName] % tempTransition.length];
 
-                        if ($JssorUtils$.$IsArray(tempTransition)) {
+                        if ($Jssor$.$IsArray(tempTransition)) {
                             //got transition from array level 3, random for all captions
                             tempTransition = tempTransition[Math.floor(Math.random() * tempTransition.length)];
                         }
@@ -3637,32 +3814,32 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
 
                 transition = tempTransition;
 
-                if ($JssorUtils$.$IsString(transition))
+                if ($Jssor$.$IsString(transition))
                     transition = EvaluateCaptionTransition(transition);
             }
 
             return transition;
         }
 
-        var captionElmts = $JssorUtils$.$GetChildren(element);
-        $JssorUtils$.$Each(captionElmts, function (captionElmt, i) {
+        var captionElmts = $Jssor$.$Children(element);
+        $Jssor$.$Each(captionElmts, function (captionElmt, i) {
 
             var transitionsWithTuning = [];
             transitionsWithTuning.$Elmt = captionElmt;
-            var isCaption = $JssorUtils$.$GetAttribute(captionElmt, "u") == "caption";
+            var isCaption = $Jssor$.$AttributeEx(captionElmt, "u") == "caption";
 
-            $JssorUtils$.$Each(playIn ? [0, 3] : [2], function (j, k) {
+            $Jssor$.$Each(playIn ? [0, 3] : [2], function (j, k) {
 
                 if (isCaption) {
                     var transition;
                     var rawTransition;
 
-                    if (j != 2 || !$JssorUtils$.$GetAttribute(captionElmt, "t3")) {
+                    if (j != 2 || !$Jssor$.$AttributeEx(captionElmt, "t3")) {
                         rawTransition = FetchRawTransition(captionElmt, j);
 
                         if (j == 2 && !rawTransition.$Transition) {
                             rawTransition.$Delay = rawTransition.$Delay || { $Value: 0 };
-                            rawTransition = $JssorUtils$.$Extend(FetchRawTransition(captionElmt, 0), rawTransition);
+                            rawTransition = $Jssor$.$Extend(FetchRawTransition(captionElmt, 0), rawTransition);
                         }
                     }
 
@@ -3672,9 +3849,10 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
 
                         if (transition) {
 
-                            var transitionWithTuning = $JssorUtils$.$Extend({ $Delay: 0, $ScaleHorizontal: 1, $ScaleVertical: 1 }, transition);
+                            //var transitionWithTuning = $Jssor$.$Extend({ $Delay: 0, $ScaleHorizontal: 1, $ScaleVertical: 1 }, transition);
+                            var transitionWithTuning = $Jssor$.$Extend({ $Delay: 0 }, transition);
 
-                            $JssorUtils$.$Each(rawTransition, function (rawPropertyValue, propertyName) {
+                            $Jssor$.$Each(rawTransition, function (rawPropertyValue, propertyName) {
                                 var tuningPropertyValue = (_CaptionTuningTransfer[propertyName] || _CaptionTuningTransfer.$Default).apply(_CaptionTuningTransfer, [transitionWithTuning[propertyName], rawTransition[propertyName]]);
                                 if (!isNaN(tuningPropertyValue))
                                     transitionWithTuning[propertyName] = tuningPropertyValue;
@@ -3683,7 +3861,7 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
                             if (!k) {
                                 if (rawTransition.$BeginTime)
                                     transitionWithTuning.$BeginTime = rawTransition.$BeginTime.$Value || 0;
-                                else if ((playIn ? captionSlideOptions.$PlayInMode : captionSlideOptions.$PlayOutMode) & 2)
+                                else if ((_PlayMode) & 2)
                                     transitionWithTuning.$BeginTime = 0;
                             }
                         }
@@ -3719,12 +3897,12 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
         });
 
         var captionItem = item;
-        var captionParent = $JssorUtils$.$GetParentNode(item);
+        var captionParent = $Jssor$.$ParentNode(item);
 
-        var captionItemWidth = $JssorUtils$.$GetStyleWidth(captionItem);
-        var captionItemHeight = $JssorUtils$.$GetStyleHeight(captionItem);
-        var captionParentWidth = $JssorUtils$.$GetStyleWidth(captionParent);
-        var captionParentHeight = $JssorUtils$.$GetStyleHeight(captionParent);
+        var captionItemWidth = $Jssor$.$CssWidth(captionItem);
+        var captionItemHeight = $Jssor$.$CssHeight(captionItem);
+        var captionParentWidth = $Jssor$.$CssWidth(captionParent);
+        var captionParentHeight = $Jssor$.$CssHeight(captionParent);
 
         var toStyles = {};
         var fromStyles = {};
@@ -3742,22 +3920,20 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
         if (transition.$Zoom || transition.$Rotate) {
             toStyles.$Zoom = transition.$Zoom ? transition.$Zoom - 1 : 1;
 
-            if ($JssorUtils$.$IsBrowserIe9Earlier() || $JssorUtils$.$IsBrowserOpera())
+            if ($Jssor$.$IsBrowserIe9Earlier() || $Jssor$.$IsBrowserOpera())
                 toStyles.$Zoom = Math.min(toStyles.$Zoom, 2);
 
             fromStyles.$Zoom = 1;
 
             var rotate = transition.$Rotate || 0;
-            if (rotate == true)
-                rotate = 1;
 
             toStyles.$Rotate = rotate * 360;
             fromStyles.$Rotate = 0;
         }
-        //Clip
+            //Clip
         else if (transition.$Clip) {
             var fromStyleClip = { $Top: 0, $Right: captionItemWidth, $Bottom: captionItemHeight, $Left: 0 };
-            var toStyleClip = $JssorUtils$.$Extend({}, fromStyleClip);
+            var toStyleClip = $Jssor$.$Extend({}, fromStyleClip);
 
             var blockOffset = toStyleClip.$Offset = {};
 
@@ -3791,68 +3967,55 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
 
         //Fly
         {
-            var direction = transition.$FlyDirection;
-
             var toLeft = 0;
             var toTop = 0;
 
-            var scaleHorizontal = transition.$ScaleHorizontal;
-            var scaleVertical = transition.$ScaleVertical;
+            if (transition.x)
+                toLeft -= captionParentWidth * transition.x;
 
-            if ($JssorDirection$.$IsToLeft(direction)) {
-                toLeft -= captionParentWidth * scaleHorizontal;
-            }
-            else if ($JssorDirection$.$IsToRight(direction)) {
-                toLeft += captionParentWidth * scaleHorizontal;
-            }
-
-            if ($JssorDirection$.$IsToTop(direction)) {
-                toTop -= captionParentHeight * scaleVertical;
-            }
-            else if ($JssorDirection$.$IsToBottom(direction)) {
-                toTop += captionParentHeight * scaleVertical;
-            }
+            if (transition.y)
+                toTop -= captionParentHeight * transition.y;
 
             if (toLeft || toTop || animatorOptions.$Move) {
-                toStyles.$Left = toLeft + $JssorUtils$.$GetStyleLeft(captionItem);
-                toStyles.$Top = toTop + $JssorUtils$.$GetStyleTop(captionItem);
+                toStyles.$Left = toLeft + $Jssor$.$CssLeft(captionItem);
+                toStyles.$Top = toTop + $Jssor$.$CssTop(captionItem);
             }
         }
 
         //duration
         var duration = transition.$Duration;
 
-        fromStyles = $JssorUtils$.$Extend(fromStyles, $JssorUtils$.$GetStyles(captionItem, toStyles));
+        fromStyles = $Jssor$.$Extend(fromStyles, $Jssor$.$GetStyles(captionItem, toStyles));
 
-        animatorOptions.$Setter = $JssorUtils$.$GetStyleSetterEx();
+        animatorOptions.$Setter = $Jssor$.$StyleSetterEx();
 
         return new $JssorAnimator$(transition.$Delay, duration, animatorOptions, captionItem, fromStyles, toStyles);
     }
 
     function CreateAnimators(streamLineLength, captionItems) {
 
-        $JssorUtils$.$Each(captionItems, function (captionItem, i) {
+        $Jssor$.$Each(captionItems, function (captionItem, i) {
 
             $JssorDebug$.$Execute(function () {
                 if (captionItem.length) {
-                    var top = $JssorUtils$.$GetStyleTop(captionItem.$Elmt);
-                    var left = $JssorUtils$.$GetStyleLeft(captionItem.$Elmt);
-                    var width = $JssorUtils$.$GetStyleWidth(captionItem.$Elmt);
-                    var height = $JssorUtils$.$GetStyleHeight(captionItem.$Elmt);
+                    var top = $Jssor$.$CssTop(captionItem.$Elmt);
+                    var left = $Jssor$.$CssLeft(captionItem.$Elmt);
+                    var width = $Jssor$.$CssWidth(captionItem.$Elmt);
+                    var height = $Jssor$.$CssHeight(captionItem.$Elmt);
 
                     var error = null;
 
                     if (isNaN(top))
-                        error = "style 'top' not specified";
+                        error = "Style 'top' for caption not specified. Please always specify caption like 'position: absolute; top: ...px; left: ...px; width: ...px; height: ...px;'.";
                     else if (isNaN(left))
-                        error = "style 'left' not specified";
+                        error = "Style 'left' not specified. Please always specify caption like 'position: absolute; top: ...px; left: ...px; width: ...px; height: ...px;'.";
                     else if (isNaN(width))
-                        error = "style 'width' not specified";
+                        error = "Style 'width' not specified. Please always specify caption like 'position: absolute; top: ...px; left: ...px; width: ...px; height: ...px;'.";
                     else if (isNaN(height))
-                        error = "style 'height' not specified";
+                        error = "Style 'height' not specified. Please always specify caption like 'position: absolute; top: ...px; left: ...px; width: ...px; height: ...px;'.";
 
                     if (error)
-                        $JssorDebug$.$Error("Caption " + (i + 1) + " definition error, " + error + ".\r\n" + captionItem.$Elmt.outerHTML);
+                        $JssorDebug$.$Error("Caption " + (i + 1) + " definition error, \r\n" + error + "\r\n" + captionItem.$Elmt.outerHTML);
                 }
             });
 
@@ -3864,7 +4027,7 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
             if (transition) {
 
                 animator = CreateAnimator(captionElmt, transition);
-                streamLineLength = animator.$Locate($JssorUtils$.$IsUndefined(transition.$BeginTime) ? streamLineLength : transition.$BeginTime, 1);
+                streamLineLength = animator.$Locate(transition.$BeginTime == undefined ? streamLineLength : transition.$BeginTime, 1);
             }
 
             streamLineLength = CreateAnimators(streamLineLength, captionItem.$Children);
@@ -3895,7 +4058,7 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
         //var streamLineLength = 0;
         //var captionItems = GetCaptionItems(container, null, [], [], 1);
 
-        CreateAnimators(0, GetCaptionItems(container, 1));
+        CreateAnimators(0, _PlayMode ? GetCaptionItems(container, 1) : []);
     }
 };
 

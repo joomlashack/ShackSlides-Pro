@@ -390,30 +390,120 @@
 
 
 
-		<fieldset name="navigationoptions" label="NAVIGATION_OPTIONS_LABEL">
+		<fieldset 
+					name="navigationoptions" 
+					label="NAVIGATION_OPTIONS_LABEL"
+		>
 
-			<field name="navigationarrows" type="list" default="2" label="NAVIGATIONARROWS" description="NAVIGATIONARROWS_DESC">
+			<field 
+					type="spacer" 
+					name="navigation_bar_spacer" 
+					label="NAVIGATIONBAR_SPACER_LABEL" 
+			/>
+
+				<field 
+						name="navigationdots" 
+						type="list" 
+						default="2" 
+						label="NAVIGATIONDOTS" 
+						description="NAVIGATIONDOTS_DESC"
+				>
+					<option value="2">ALWAYS_DOTS</option>
+					<option value="0">NO_DOTS</option>
+					<option value="1">ONHOVER_DOTS</option>
+				</field>
+
+				<field 
+						name="navigationnumbers" 
+						type="checkbox" 
+						label="NAVIGATIONNUMBERS" 
+						description="NAVIGATIONNUMBERS_DESC" 
+						value="1" 
+						default="0" 
+				/>
+
+				<field 
+						name="orientationdots" 
+						type="list" 
+						default="1" 
+						label="ORIENTATIONDOTS" 
+						description="ORIENTATIONDOTS_DESC"
+				>
+					<option value="1">HORIZONTAL_DOTS</option>
+					<option value="2">VERTICAL_DOTS</option>
+				</field>
+
+				<field 
+						name="horizontalaligndots" 
+						type="list" 
+						default="left" 
+						label="HORIZONTALALIGNDOTS" 
+						description="HORIZONTALALIGNDOTS_DESC"
+				>
+					<option value="left">HORIZONTALALIGNDOTS_LEFT</option>
+					<option value="right">HORIZONTALALIGNDOTS_RIGHT</option>
+					<option value="center">HORIZONTALALIGNDOTS_CENTER</option>
+				</field>
+
+				<field 
+						name="verticalaligndots" 
+						type="list" 
+						default="bottom" 
+						label="VERTICALALIGNDOTS" 
+						description="VERTICALALIGNDOTS_DESC"
+				>
+					<option value="top">VERTICALALIGNDOTS_TOP</option>
+					<option value="bottom">VERTICALALIGNDOTS_BOTTOM</option>
+					<option value="center">VERTICALALIGNDOTS_CENTER</option>
+				</field>
+
+				<field 
+						name="horizontalpaddingdots" 
+						type="text" 
+						default="0" 
+						label="HORIZONTALPADDING_DOTS" 
+						description="HORIZONTALPADDING_DOTS_DESC" 
+				/>
+
+				<field 
+						name="verticalpaddingdots" 
+						type="text" 
+						default="0" 
+						label="VERTICALPADDING_DOTS" 
+						description="VERTICALPADDING_DOTS_DESC" 
+				/>
+
+			<field 
+					type="spacer" 
+					name="prenextbutton_bar_spacer" 
+					label="PRENEXTBUTTON_SPACER_LABEL" 
+			/>
+
+			<field 
+					name="navigationarrows" 
+					type="list" 
+					default="2" 
+					label="NAVIGATIONARROWS" 
+					description="NAVIGATIONARROWS_DESC"
+			>
+				<option value="2">ALWAYS_ARROWS</option>
 				<option value="0">NO_ARROWS</option>
 				<option value="1">ONHOVER_ARROWS</option>
-				<option value="2">ALWAYS_ARROWS</option>
 			</field>
 
-			<field name="navigationdots" type="list" default="2" label="NAVIGATIONDOTS" description="NAVIGATIONDOTS_DESC">
-				<option value="0">NO_DOTS</option>
-				<option value="1">ONHOVER_DOTS</option>
-				<option value="2">ALWAYS_DOTS</option>
-			</field>
+			<field 
+					name="navigationarrows_custom" 
+					type="customrows" 
+					default="d17" 
+					label="NAVIGATIONARROWS_CUSTOM" 
+					description="NAVIGATIONARROWS_CUSTOM_DESC"
+			/>
 
 			<field name="alignmentdots" type="list" default="1" label="ALIGNMENTDOTS" description="ALIGNMENTDOTS_DESC">
 				<option value="0">NO_ALIGNMENT_DOTS</option>
 				<option value="1">HOR_ALIGNMENT_DOTS</option>
 				<option value="2">VERT_ALIGNMENT_DOTS</option>
 				<option value="3">BOTH_ALIGNMENT_DOTS</option>
-			</field>
-
-			<field name="orientationdots" type="list" default="1" label="ORIENTATIONDOTS" description="ORIENTATIONDOTS_DESC">
-				<option value="1">HORIZONTAL_DOTS</option>
-				<option value="2">VERTICAL_DOTS</option>
 			</field>
 
 			<!--field name="touch_enabled" type="radio" default="on" label="TOUCH_ENABLED" description="TOUCH_ENABLED_DESC">
