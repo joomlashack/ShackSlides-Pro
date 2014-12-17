@@ -40,7 +40,6 @@ $defaults = array(
 	'navigation' => 'true',
 	'navigationarrows' => '2',
 	'showdots' => '2',
-	'alignmentdots' => '1',
 	'orientationdots' => '1',
 	'navigationarrows_custom' => 'd17',
 	//JQUERY OPTIONS
@@ -105,6 +104,44 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
 	$doc->addStyleDeclaration($styles);
 
+	$css_add_jssorn01 = '';
+    $css_jssorn01 = 0;
+    if($params->get('showdots', $defaults["showdots"]) != 0)
+    {
+        $css_add_jssorn01 .= '.jssorn01{';
+
+		if($params->get('horizontalaligndots', "center") == "right")
+        {
+        	$css_add_jssorn01 .= 'right:3%;';
+        }
+        elseif($params->get('horizontalaligndots', "center") == "left")
+        {
+        	$css_add_jssorn01 .= 'left:3%;';
+        }
+        elseif($params->get('horizontalaligndots', "center") == "center")
+        {
+        	 $css_jssorn01 = 1;
+        }
+
+        if($params->get('verticalaligndots', "bottom") == "bottom")
+        {
+        	$css_add_jssorn01 .= 'bottom:3%;';
+        }
+        elseif($params->get('verticalaligndots', "bottom") == "top")
+        {
+        	$css_add_jssorn01 .= 'top:3%;';
+        }
+        elseif($params->get('verticalaligndots', "center") == "center")
+        {
+        	 $css_jssorn01 = 2;
+        }
+
+        if($params->get('verticalaligndots', "bottom") == "center" && $params->get('horizontalaligndots', "center") == "center")
+        {
+        	$css_jssorn01 = 3;
+        }
+        $css_add_jssorn01 .= '}';
+   	}
 ?>
 
 <!-----------------------------------------------------START CODE FOR FULL WIDTH TEMPLATE AND ANIMATED TEMPLATE-------------------------------------------->
@@ -408,7 +445,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 			$BulletNavigatorOptions: {                              //[Optional] Options to specify and enable navigator or not
 				$Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
 				$ChanceToShow: <?php echo $params->get('showdots', $defaults['showdots']) ?>, //[Required] 0 Never, 1 Mouse Over, 2 Always
-				$AutoCenter: <?php echo $params->get('alignmentdots', $defaults['alignmentdots']) ?>,     //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+				$AutoCenter: <?php echo $css_jssorn01 ?>,
 				$Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
 				$Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
 				$SpacingX: 10,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
@@ -501,13 +538,6 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
         <?php
 
-        $css_add = '';
-
-        if($params->get('navigationnumbers', 0) == 0)
-        {
-           $css_add = $css_add .'.jssor_bullets_numbers {display:none;}';
-        }
-
         $style = '
         	/*
         	.jssorn01 div           (normal)
@@ -528,6 +558,8 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         	.jssorn01 div:hover, .jssorn01 .av:hover { background-color: #d3d3d3; }
         	.jssorn01 .av { background-color: #fff; }
         	.jssorn01 .dn, .jssorn01 .dn:hover { background-color: #555555; }
+
+        	'.$css_add_jssorn01.'
 
         	/* jssor slider direction navigator skin 05 css */
             /*
@@ -553,8 +585,6 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             .jssord05ldn { background-position: -250px -40px; }
             .jssord05rdn { background-position: -310px -40px; }
 
-            '.$css_add.'
-
         ';
 
         $doc->addStyleDeclaration($style);
@@ -562,10 +592,12 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         ?>
         
         <!-- navigator container -->
-        <div u="navigator" class="jssorn01" style="position: absolute; bottom: 16px; right: 10px;">
+        <div u="navigator" class="jssorn01" style="position: absolute">
             <!-- navigator item prototype -->
             <div u="prototype" class="jssor_bullets" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;">
+            <?php if($params->get('navigationnumbers', 0) == 1): ?>
             	<div u="numbertemplate" class="jssor_bullets_numbers"></div>
+            <?php endif; ?>
             </div>
         </div>
        

@@ -432,7 +432,7 @@
 				<field 
 						name="horizontalaligndots" 
 						type="list" 
-						default="left" 
+						default="center" 
 						label="HORIZONTALALIGNDOTS" 
 						description="HORIZONTALALIGNDOTS_DESC"
 				>
@@ -494,13 +494,6 @@
 					label="NAVIGATIONARROWS_CUSTOM" 
 					description="NAVIGATIONARROWS_CUSTOM_DESC"
 			/>
-
-			<field name="alignmentdots" type="list" default="1" label="ALIGNMENTDOTS" description="ALIGNMENTDOTS_DESC">
-				<option value="0">NO_ALIGNMENT_DOTS</option>
-				<option value="1">HOR_ALIGNMENT_DOTS</option>
-				<option value="2">VERT_ALIGNMENT_DOTS</option>
-				<option value="3">BOTH_ALIGNMENT_DOTS</option>
-			</field>
 
 			<!--field name="touch_enabled" type="radio" default="on" label="TOUCH_ENABLED" description="TOUCH_ENABLED_DESC">
 				<option value="on">TOUCHON</option>
