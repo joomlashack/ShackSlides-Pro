@@ -1,7 +1,9 @@
 function autoplayDisable(){
+
 	var autoplay_select = document.getElementById('jform_params_navigation');
 	var effectslide_select = document.getElementById('jform_params_effect_slide');
 	var source_select = document.getElementById('jform_params_source');
+	var showdots_select = document.getElementById('jform_params_showdots');
 
 	/*
 	########################################################################
@@ -26,6 +28,15 @@ function autoplayDisable(){
 		document.getElementById("jform_params_ordering").options[2].setAttribute("disabled" , "disabled");
 		document.getElementById("jform_params_ordering").options[3].setAttribute("disabled" , "disabled");
 	}
+
+	  if(showdots_select.value == "0"){
+			document.getElementById("jform_params_navigationnumbers").setAttribute("disabled" , "disabled");
+			document.getElementById("jform_params_orientationdots").setAttribute("disabled" , "disabled");
+			document.getElementById("jform_params_horizontalaligndots").setAttribute("disabled" , "disabled");
+			document.getElementById("jform_params_verticalaligndots").setAttribute("disabled" , "disabled");
+			document.getElementById("jform_params_horizontalpaddingdots").setAttribute("disabled" , "disabled");
+			document.getElementById("jform_params_verticalpaddingdots").setAttribute("disabled" , "disabled");
+	  }
 	/*
 	########################################################################
 	################# Disable when saving changes ##########################
@@ -66,6 +77,37 @@ function autoplayDisable(){
 		 	document.getElementById("jform_params_ordering").options[3].removeAttribute("disabled");
 		 }
 	};
+	showdots_select.onchange = function(){
+		  if(showdots_select.value == "0"){
+	  		document.getElementById("jform_params_navigationnumbers").setAttribute("disabled" , "disabled");
+	  		document.getElementById("jform_params_orientationdots").setAttribute("disabled" , "disabled");
+	  		document.getElementById("jform_params_horizontalaligndots").setAttribute("disabled" , "disabled");
+	  		document.getElementById("jform_params_verticalaligndots").setAttribute("disabled" , "disabled");
+	  		document.getElementById("jform_params_horizontalpaddingdots").setAttribute("disabled" , "disabled");
+	  		document.getElementById("jform_params_verticalpaddingdots").setAttribute("disabled" , "disabled");
+		  } else {
+		  	document.getElementById("jform_params_navigationnumbers").removeAttribute("disabled");
+	  		document.getElementById("jform_params_orientationdots").removeAttribute("disabled");
+	  		document.getElementById("jform_params_horizontalaligndots").removeAttribute("disabled");
+	  		document.getElementById("jform_params_verticalaligndots").removeAttribute("disabled");
+	  		document.getElementById("jform_params_horizontalpaddingdots").removeAttribute("disabled");
+	  		document.getElementById("jform_params_verticalpaddingdots").removeAttribute("disabled");
+		  }
+	};
 }
 
-window.onload = autoplayDisable;	
+function addLoadEvent(func) { 
+	  var oldonload = window.onload; 
+	  if (typeof window.onload != 'function') { 
+	    window.onload = func; 
+	  } else { 
+	    window.onload = function() { 
+	      if (oldonload) { 
+	        oldonload(); 
+	      } 
+	      func(); 
+	    } 
+	  } 
+} 
+
+addLoadEvent(autoplayDisable); 

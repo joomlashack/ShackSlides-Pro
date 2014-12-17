@@ -39,7 +39,7 @@ $defaults = array(
 	//NAVIGATION OPTIONS
 	'navigation' => 'true',
 	'navigationarrows' => '2',
-	'navigationdots' => '2',
+	'showdots' => '2',
 	'alignmentdots' => '1',
 	'orientationdots' => '1',
 	'navigationarrows_custom' => 'd17',
@@ -407,7 +407,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
 			$BulletNavigatorOptions: {                              //[Optional] Options to specify and enable navigator or not
 				$Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
-				$ChanceToShow: <?php echo $params->get('navigationdots', $defaults['navigationdots']) ?>, //[Required] 0 Never, 1 Mouse Over, 2 Always
+				$ChanceToShow: <?php echo $params->get('showdots', $defaults['showdots']) ?>, //[Required] 0 Never, 1 Mouse Over, 2 Always
 				$AutoCenter: <?php echo $params->get('alignmentdots', $defaults['alignmentdots']) ?>,     //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
 				$Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
 				$Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1

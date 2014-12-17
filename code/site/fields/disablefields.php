@@ -75,6 +75,12 @@ class JFormFieldDisableFields extends JFormFieldList
 			{
 				$options [] = JHtml::_('select.option', "visionary", JText::_('SHACKSLIDE_SLIDESOURCE_VISIONARY'));
 			}
+		} 
+		elseif (strpos($this->name , "showdots") !== false)
+		{	
+			$options []= JHtml::_('select.option', "2", JText::_('ALWAYS_DOTS'));
+			$options []= JHtml::_('select.option', "0", JText::_('NO_DOTS'));
+			$options []= JHtml::_('select.option', "1", JText::_('ONHOVER_DOTS'));
 		}
 		
 		return $options;

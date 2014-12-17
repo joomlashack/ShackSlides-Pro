@@ -21,7 +21,7 @@ class JFormFieldCustomRows extends JFormFieldList
 
 		$doc = JFactory::getDocument();
 		$doc->addScript(JUri::root(true) . '/modules/mod_jsshackslides/assets/slider/change.customrows.js');
-		return parent::getInput().'<img id="customrows_img" src="'.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$this->element['default'].'.png'.'" style= "background-color: rgba(0, 0, 0, 0.5)" />';
+		return parent::getInput().'<img id="customrows_img" src="'.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$this->element['default'].'.png'.'" style= "filter: alpha(opacity=50); background-color: rgba(0, 0, 0, 0.5)" />';
 
 	}
 
