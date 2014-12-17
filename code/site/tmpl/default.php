@@ -501,6 +501,13 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
         <?php
 
+        $css_add = '';
+
+        if($params->get('navigationnumbers', 0) == 0)
+        {
+           $css_add = $css_add .'.jssor_bullets_numbers {display:none;}';
+        }
+
         $style = '
         	/*
         	.jssorn01 div           (normal)
@@ -546,6 +553,8 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             .jssord05ldn { background-position: -250px -40px; }
             .jssord05rdn { background-position: -310px -40px; }
 
+            '.$css_add.'
+
         ';
 
         $doc->addStyleDeclaration($style);
@@ -555,8 +564,8 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         <!-- navigator container -->
         <div u="navigator" class="jssorn01" style="position: absolute; bottom: 16px; right: 10px;">
             <!-- navigator item prototype -->
-            <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;">
-            <div u="numbertemplate"></div>
+            <div u="prototype" class="jssor_bullets" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;">
+            	<div u="numbertemplate" class="jssor_bullets_numbers"></div>
             </div>
         </div>
        
