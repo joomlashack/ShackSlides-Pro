@@ -42,6 +42,8 @@ $defaults = array(
 	'showdots' => '2',
 	'orientationdots' => '1',
 	'navigationarrows_custom' => 'd17',
+	'horizontalpaddingdots' => '0',
+	'verticalpaddingdots' => '0',
 	//JQUERY OPTIONS
 	'includejquery' => 'off',
 	'includejqueryui' => 'off',
@@ -112,28 +114,36 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
 		if($params->get('horizontalaligndots', "center") == "right")
         {
-        	$css_add_jssorn01 .= 'right:3%;';
+        	$css_add_jssorn01 .= 'right:3%;
+        						  padding-right:'.$params->get('horizontalpaddingdots', $defaults["horizontalpaddingdots"]).'px;';
         }
         elseif($params->get('horizontalaligndots', "center") == "left")
         {
-        	$css_add_jssorn01 .= 'left:3%;';
+        	$css_add_jssorn01 .= 'left:3%;
+        						  padding-left:'.$params->get('horizontalpaddingdots', $defaults["horizontalpaddingdots"]).'px;';
         }
         elseif($params->get('horizontalaligndots', "center") == "center")
         {
         	 $css_jssorn01 = 1;
+        	 $css_add_jssorn01 .= 'padding-left:'.$params->get('horizontalpaddingdots', $defaults["horizontalpaddingdots"]).'px;
+								   padding-right:'.$params->get('horizontalpaddingdots', $defaults["horizontalpaddingdots"]).'px;';        	 					
         }
 
         if($params->get('verticalaligndots', "bottom") == "bottom")
         {
-        	$css_add_jssorn01 .= 'bottom:3%;';
+        	$css_add_jssorn01 .= 'bottom:3%;
+        						  padding-bottom:'.$params->get('verticalpaddingdots', $defaults["verticalpaddingdots"]).'px;';
         }
         elseif($params->get('verticalaligndots', "bottom") == "top")
         {
-        	$css_add_jssorn01 .= 'top:3%;';
+        	$css_add_jssorn01 .= 'top:3%;
+        						  padding-top:'.$params->get('verticalpaddingdots', $defaults["verticalpaddingdots"]).'px;';
         }
         elseif($params->get('verticalaligndots', "center") == "center")
         {
         	 $css_jssorn01 = 2;
+         	 $css_add_jssorn01 .= 'padding-bottom:'.$params->get('verticalpaddingdots', $defaults["verticalpaddingdots"]).'px;
+ 								   padding-top:'.$params->get('verticalpaddingdots', $defaults["verticalpaddingdots"]).'px;';    
         }
 
         if($params->get('verticalaligndots', "bottom") == "center" && $params->get('horizontalaligndots', "center") == "center")
