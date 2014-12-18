@@ -41,7 +41,8 @@ $defaults = array(
 	'navigationarrows' => '2',
 	'showdots' => '2',
 	'orientationdots' => '1',
-	'navigationarrows_custom' => 'd17',
+	'navigationarrows_customrows' => 'd17',
+	'navigationarrows_customdots' => 'n03',
 	'horizontalpaddingdots' => '0',
 	'verticalpaddingdots' => '0',
 	//JQUERY OPTIONS
@@ -549,25 +550,25 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         <?php
 
         $style = '
+
         	/*
         	.jssorn01 div           (normal)
         	.jssorn01 div:hover     (normal mouseover)
-        	.jssorn01 .av           (active)
-        	.jssorn01 .av:hover     (active mouseover)
-        	.jssorn01 .dn           (mousedown)
+        	.jssorn01 .jssor_bulletsav           (active)
+        	.jssorn01 .jssor_bulletsav:hover     (active mouseover)
+        	.jssorn01 .jssor_bulletsdn           (mousedown)
         	*/
-        	.jssorn01 div, .jssorn01 div:hover, .jssorn01 .av
-        	{
-        	    filter: alpha(opacity=70);
-        	    opacity: .7;
-        	    overflow:hidden;
-        	    cursor: pointer;
-        	    border: #000 1px solid;
-        	}
-        	.jssorn01 div { background-color: gray; }
-        	.jssorn01 div:hover, .jssorn01 .av:hover { background-color: #d3d3d3; }
-        	.jssorn01 .av { background-color: #fff; }
-        	.jssorn01 .dn, .jssorn01 .dn:hover { background-color: #555555; }
+
+	        .jssorn01 div, .jssorn01 div:hover, .jssorn01 .jssor_bulletsav , .jssorn01 .jssor_bulletsdn
+	        {
+	            background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customdots', $defaults['navigationarrows_customdots']).'.png) no-repeat;
+	            overflow:hidden;
+	            cursor: pointer;
+	        }
+	        .jssorn01 div { background-position: -5px -4px; }
+	        .jssorn01 div:hover, .jssorn01 .jssor_bulletsav:hover { background-position: -35px -4px; }
+	        .jssorn01 .jssor_bulletsav { background-position: -65px -4px; }
+	        .jssorn01 .jssor_bulletsdn, .jssorn01 .jssor_bulletsdn:hover { background-position: -95px -4px; }
 
         	'.$css_add_jssorn01.'
 
@@ -585,7 +586,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             	position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_custom', $defaults['navigationarrows_custom']).'.png) no-repeat;
+                background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customrows', $defaults['navigationarrows_customrows']).'.png) no-repeat;
                 overflow:hidden;
             }
             .jssord05l { background-position: -10px -40px; }
@@ -604,7 +605,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         <!-- navigator container -->
         <div u="navigator" class="jssorn01" style="position: absolute">
             <!-- navigator item prototype -->
-            <div u="prototype" class="jssor_bullets" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;">
+            <div u="prototype" class="jssor_bullets" style="position: absolute; width: 21px; height: 21px; text-align:center;">
             <?php if($params->get('navigationnumbers', 0) == 1): ?>
             	<div u="numbertemplate" class="jssor_bullets_numbers"></div>
             <?php endif; ?>

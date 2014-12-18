@@ -77,16 +77,12 @@
 
 			<field 
 					name="onhover_stop" 
-					type="list" 
-					default="0" 
+					type="checkbox" 
 					label="ONHOVER_STOP" 
-					description="ONHOVER_STOP_DESC"
-			>
-				<option value="0">ONHOVERSTOPOFF</option>
-				<option value="1">ONHOVERSTOPCOMP</option>
-				<option value="2">ONHOVERSTOPTOUCH</option>
-				<option value="3">ONHOVERSTOPBOTH</option>
-			</field>
+					description="ONHOVER_STOP_DESC" 
+					value="12" 
+					default="0" 
+			/>
 
 			<field name="width" type="text" default="500" label="CONTAINERWIDTH" description="CONTAINERWIDTH_DESC" />
 
@@ -469,6 +465,14 @@
 						description="VERTICALPADDING_DOTS_DESC" 
 				/>
 
+				<field 
+						name="navigationarrows_customdots" 
+						type="customnavigation" 
+						default="n03" 
+						label="NAVIGATIONARROWS_CUSTOMDOTS" 
+						description="NAVIGATIONARROWS_CUSTOMDOTS_DESC"
+				/>
+
 			<field 
 					type="spacer" 
 					name="prenextbutton_bar_spacer" 
@@ -488,11 +492,11 @@
 			</field>
 
 			<field 
-					name="navigationarrows_custom" 
-					type="customrows" 
+					name="navigationarrows_customrows" 
+					type="customnavigation" 
 					default="d17" 
-					label="NAVIGATIONARROWS_CUSTOM" 
-					description="NAVIGATIONARROWS_CUSTOM_DESC"
+					label="NAVIGATIONARROWS_CUSTOMROWS" 
+					description="NAVIGATIONARROWS_CUSTOMROWS_DESC"
 			/>
 
 			<!--field name="touch_enabled" type="radio" default="on" label="TOUCH_ENABLED" description="TOUCH_ENABLED_DESC">
