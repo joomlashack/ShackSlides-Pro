@@ -561,7 +561,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         	.jssorn01 .jssor_bulletsdn           (mousedown)
         	*/
 
-	        .jssorn01 div, .jssorn01 div:hover, .jssorn01 .jssor_bulletsav , .jssorn01 .jssor_bulletsdn
+	        #'.$params->get('container', $defaults['container']).'.jssorn01 div, #'.$params->get('container', $defaults['container']).' .jssorn01 div:hover, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav , #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn
 	        {
 	            background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customdots', $defaults['navigationarrows_customdots']).'.png) no-repeat;
 	            overflow:hidden;
@@ -569,10 +569,10 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 	            opacity:'.($params->get('rangesliderdots', $defaults['rangesliderdots'])/100).';
 	            filter: alpha(opacity='.$params->get('rangesliderdots', $defaults['rangesliderdots']).');
 	        }
-	        .jssorn01 div { background-position: -5px -4px; }
-	        .jssorn01 div:hover, .jssorn01 .jssor_bulletsav:hover { background-position: -35px -4px; }
-	        .jssorn01 .jssor_bulletsav { background-position: -65px -4px; }
-	        .jssorn01 .jssor_bulletsdn, .jssorn01 .jssor_bulletsdn:hover { background-position: -95px -4px; }
+	        #'.$params->get('container', $defaults['container']).' .jssorn01 div { background-position: -5px -4px; }
+	        #'.$params->get('container', $defaults['container']).' .jssorn01 div:hover, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav:hover { background-position: -35px -4px; }
+	        #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav { background-position: -65px -4px; }
+	        #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn:hover { background-position: -95px -4px; }
 
         	'.$css_add_jssorn01.'
 
@@ -585,7 +585,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             .jssord05ldn            (mousedown)
             .jssord05rdn            (mousedown)
             */
-            .jssord05l, .jssord05r, .jssord05ldn, .jssord05rdn
+            #'.$params->get('container', $defaults['container']).' .jssord05l, #'.$params->get('container', $defaults['container']).' .jssord05r, #'.$params->get('container', $defaults['container']).' .jssord05ldn, #'.$params->get('container', $defaults['container']).' .jssord05rdn
             {
             	position: absolute;
             	cursor: pointer;
@@ -595,12 +595,12 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
                 opacity:'.($params->get('rangesliderrows', $defaults['rangesliderrows'])/100).';
                 filter: alpha(opacity='.$params->get('rangesliderrows', $defaults['rangesliderrows']).');
             }
-            .jssord05l { background-position: -10px -40px; }
-            .jssord05r { background-position: -70px -40px; }
-            .jssord05l:hover { background-position: -130px -40px; }
-            .jssord05r:hover { background-position: -190px -40px; }
-            .jssord05ldn { background-position: -250px -40px; }
-            .jssord05rdn { background-position: -310px -40px; }
+            #'.$params->get('container', $defaults['container']).' .jssord05l { background-position: -10px -40px; }
+            #'.$params->get('container', $defaults['container']).' .jssord05r { background-position: -70px -40px; }
+            #'.$params->get('container', $defaults['container']).' .jssord05l:hover { background-position: -130px -40px; }
+            #'.$params->get('container', $defaults['container']).' .jssord05r:hover { background-position: -190px -40px; }
+            #'.$params->get('container', $defaults['container']).' .jssord05ldn { background-position: -250px -40px; }
+            #'.$params->get('container', $defaults['container']).' .jssord05rdn { background-position: -310px -40px; }
 
         ';
 
