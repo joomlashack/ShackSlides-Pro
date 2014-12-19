@@ -524,33 +524,68 @@
 
 		</fieldset>
 
+		<fieldset 
+					name="advanced" 
+					label="ADVANCED_BOTH"
+		>
+			<field 
+					type="spacer" 
+					name="module_advanced_spacer" 
+					label="MODULEADVANCED_SPACER_LABEL" 
+			/>
 
+			    <field 
+			    		name="moduleclass_sfx" 
+			    		type="text" 
+			    		label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" 
+			    />
 
+			    <field 
+			    		name="container" 
+			    		type="text" 
+			    		default="slider" 
+			    		label="CONTAINER" 
+			    />
 
+			    <field 
+			    		name="main_container_class" 
+			    		type="text" 
+			    		default="" 
+			    		label="MAIN_CONTAINER_CLASS" 
+			    />
 
-		<fieldset name="advanced" label="ADVANCED_BOTH">
-		    <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-		    <field name="container" type="text" default="slider" label="CONTAINER" description="CONTAINER_DESC" />
-		    <field name="main_container_class" type="text" default="" label="MAIN_CONTAINER_CLASS" description="MAIN_CONTAINER_CLASS_DESC" />
-		</fieldset>
+		    <field 
+				type="spacer" 
+				name="javascript_advanced_spacer" 
+				label="JAVASCRIPTADVANCED_SPACER_LABEL" 
+			/>
 
+				<field 
+						name="includejquery" 
+						type="radio" 
+						default="off" 
+						label="INCLUDE_JQUERY" 
+						description="INCLUDE_JQUERY_DESC"
+				>
+					<option value="on">JQUERYON</option>
+					<option value="off">JQUERYOFF</option>
+				</field>
 
-		<fieldset name="jqueryoptions" label="JQUERYOPTIONS">
+				<field 
+						name="includejqueryui" 
+						type="radio" 
+						default="off" 
+						label="INCLUDE_JQUERYUI" 
+						description="INCLUDE_JQUERYUI_DESC"
+				>
+					<option value="on">JQUERYUION</option>
+					<option value="off">JQUERYUIOFF</option>
+				</field>
 
-			<field name="includejquery" type="radio" default="off" label="INCLUDE_JQUERY" description="INCLUDE_JQUERY_DESC">
-				<option value="on">JQUERYON</option>
-				<option value="off">JQUERYOFF</option>
-			</field>
-
-			<field name="includejqueryui" type="radio" default="off" label="INCLUDE_JQUERYUI" description="INCLUDE_JQUERYUI_DESC">
-				<option value="on">JQUERYUION</option>
-				<option value="off">JQUERYUIOFF</option>
-			</field>
-
-			<field name="includenoconflictmode" type="radio" default="off" label="INCLUDE_NOCONFLICTMODE" description="INCLUDE_NOCONFLICTMODE_DESC">
-				<option value="on">NOCONFLICTON</option>
-				<option value="off">NOCONFLICTOFF</option>
-			</field>
+				<field name="includenoconflictmode" type="radio" default="off" label="INCLUDE_NOCONFLICTMODE" description="INCLUDE_NOCONFLICTMODE_DESC">
+					<option value="on">NOCONFLICTON</option>
+					<option value="off">NOCONFLICTOFF</option>
+				</field>
 
 		</fieldset>
 
