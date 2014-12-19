@@ -45,6 +45,8 @@ $defaults = array(
 	'navigationarrows_customdots' => 'n03',
 	'horizontalpaddingdots' => '0',
 	'verticalpaddingdots' => '0',
+	'rangesliderdots' => '100',
+	'rangesliderrows' => '100',
 	//JQUERY OPTIONS
 	'includejquery' => 'off',
 	'includejqueryui' => 'off',
@@ -564,6 +566,8 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 	            background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customdots', $defaults['navigationarrows_customdots']).'.png) no-repeat;
 	            overflow:hidden;
 	            cursor: pointer;
+	            opacity:'.($params->get('rangesliderdots', $defaults['rangesliderdots'])/100).';
+	            filter: alpha(opacity='.$params->get('rangesliderdots', $defaults['rangesliderdots'].');
 	        }
 	        .jssorn01 div { background-position: -5px -4px; }
 	        .jssorn01 div:hover, .jssorn01 .jssor_bulletsav:hover { background-position: -35px -4px; }
@@ -588,6 +592,8 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             	display: block;
                 background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customrows', $defaults['navigationarrows_customrows']).'.png) no-repeat;
                 overflow:hidden;
+                opacity:'.($params->get('rangesliderrows', $defaults['rangesliderrows'])/100).';
+                filter: alpha(opacity='.$params->get('rangesliderrows', $defaults['rangesliderrows'].');
             }
             .jssord05l { background-position: -10px -40px; }
             .jssord05r { background-position: -70px -40px; }

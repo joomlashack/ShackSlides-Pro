@@ -466,6 +466,14 @@
 				/>
 
 				<field 
+						name="rangesliderdots" 
+						type="rangeslider" 
+						default="100" 
+						label="RANGESLIDER_DOTS" 
+						description="RANGESLIDER_DOTS_DESC" 
+				/>
+
+				<field 
 						name="navigationarrows_customdots" 
 						type="customnavigation" 
 						default="n03" 
@@ -490,6 +498,14 @@
 				<option value="0">NO_ARROWS</option>
 				<option value="1">ONHOVER_ARROWS</option>
 			</field>
+
+			<field 
+					name="rangesliderrows" 
+					type="rangeslider" 
+					default="100" 
+					label="RANGESLIDER_ROWS" 
+					description="RANGESLIDER_ROWS_DESC" 
+			/>
 
 			<field 
 					name="navigationarrows_customrows" 

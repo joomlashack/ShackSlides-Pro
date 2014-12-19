@@ -31,8 +31,10 @@ class JFormFieldCustomNavigation extends JFormFieldList
 		{
 			$id = 'customdots_img';
 		}
-
-		return parent::getInput().'<img id="'.$id.'" src="'.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$this->element['default'].'.png'.'" style= "background-color: rgb(139, 139, 139);" />';
+		
+		return parent::getInput().'<div style="float:left;background-color: rgb(139, 139, 139);">'.
+								   '<img id="'.$id.'" src="'.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$this->element['default'].'.png'.'" />'.
+								   '</div>';
 	}
 
 	protected function getOptions() {
