@@ -581,12 +581,7 @@
 					<option value="on">JQUERYUION</option>
 					<option value="off">JQUERYUIOFF</option>
 				</field>
-
-				<field name="includenoconflictmode" type="radio" default="off" label="INCLUDE_NOCONFLICTMODE" description="INCLUDE_NOCONFLICTMODE_DESC">
-					<option value="on">NOCONFLICTON</option>
-					<option value="off">NOCONFLICTOFF</option>
-				</field>
-
+				
 		</fieldset>
 
 	</fields>

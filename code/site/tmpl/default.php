@@ -49,7 +49,7 @@ $defaults = array(
 	'rangesliderrows' => '100',
 	//JQUERY OPTIONS
 	'includejquery' => 'off',
-	'includejqueryui' => 'off',
+	'includejqueryui' => 'on',
 	'includenoconflictmode' => 'off',
 	//DESCRIPTION OPTIONS FOR INDEPENDENT TEMPLATE
 	'descriptionposition_outside' => 'bottomdescind',
@@ -79,8 +79,6 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 		$doc = JFactory::getDocument();
 		if ($params->get('includejquery', $defaults['includejquery']) == 'on') :
 			$doc->addScript("modules/mod_jsshackslides/assets/slider/jquery-1.9.1.min.js");
-		endif;
-		if ($params->get('includenoconflictmode', $defaults['includenoconflictmode']) == 'on') :
 			$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jquerynoconflict.js');
 		endif;
 		if ($params->get('includejqueryui', $defaults['includejqueryui']) == 'on') :
@@ -91,8 +89,12 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
  }
  else{
 	 //do something for j3.2 or more
-	 JHTML::_('jquery.framework');
-	 JHtml::_('jquery.ui');
+ 	if ($params->get('includejquery', $defaults['includejquery']) == 'on') :
+		JHTML::_('jquery.framework');
+	endif;
+	if ($params->get('includejqueryui', $defaults['includejqueryui']) == 'on') :
+		JHtml::_('jquery.ui');
+	endif;
  }
 
 	$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jssor.js');
