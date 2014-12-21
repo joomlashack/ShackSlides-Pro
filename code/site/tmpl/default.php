@@ -78,12 +78,12 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 		JFactory::getApplication()->set('jquery',true);
 		$doc = JFactory::getDocument();
 		if ($params->get('includejquery', $defaults['includejquery']) == 'on') :
-			$doc->addScript("modules/mod_jsshackslides/assets/slider/jquery-1.9.1.min.js");
+			$doc->addScript("modules/mod_jsshackslides/assets/slider/jquery-1.11.2.min.js");
 			$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jquerynoconflict.js');
 		endif;
 		if ($params->get('includejqueryui', $defaults['includejqueryui']) == 'on') :
-			$doc->addScript("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js");
-			$doc->addStyleSheet('https://ajax.googleapis.com/ajax/libs/jqueryui/1.9/themes/base/jquery-ui.css');
+			$doc->addScript("https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js");
+			$doc->addStyleSheet('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css');
 		endif;
 	}
  }
