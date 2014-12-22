@@ -11,9 +11,8 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 // This can be used in an override to change default settings. User can override
 // settings in the module settings page still.
 $defaults = array(
-	'container' => 'slider', // id for the slider container,
-	'main_container_class' => '',
-	'descriptiontemplate' => 'animatedtemplate',
+
+	//BASIC CONFIGURATION OPTIONS
 	'width' => '500', // width of container
 	'height' => '250', // height of container
 	'slide_delay' => '5000', // dalay of the transitions
@@ -22,6 +21,7 @@ $defaults = array(
 	'effect_slide' => 'rotateoverlap',
 	'onhover_stop' => '0', // on hover stop on/off,
 	'center_container_automatic' => 'centerautoenable',
+
 	//DESCRIPTION OPTIONS
 	'title_text_class' => '',
 	'effect_title' => 'zmf',
@@ -36,24 +36,29 @@ $defaults = array(
 	'effect_text' => 'clipleftright',
 	'descriptionposition2' => 'notshowdescbottom',
 	'descriptionposition3' => 'notshowdescbottom',
+
 	//NAVIGATION OPTIONS
 	'navigation' => 'true',
-	'navigationarrows' => '2',
 	'showdots' => '2',
 	'orientationdots' => '1',
-	'navigationarrows_customrows' => 'd17',
-	'navigationarrows_media' => '',
-	'navigationarrows_customdots' => 'n03',
-	'navigationdots_media' => '',
+	'horizontalaligndots' => 'center',
+	'verticalaligndots' => 'bottom',
 	'horizontalpaddingdots' => '0',
 	'verticalpaddingdots' => '0',
 	'rangesliderdots' => '100',
+	'navigationarrows_customdots' => 'n03',
+	'navigationdots_media' => '',
+	'navigationarrows' => '2',
 	'rangesliderrows' => '100',
+	'navigationarrows_customrows' => 'd17',
+	'navigationarrows_media' => '',
 
-	//JQUERY OPTIONS
+	//ADVANCED OPTIONS
+	'container' => 'slider', // id for the slider container,
+	'main_container_class' => '',
 	'includejquery' => 'off',
 	'includejqueryui' => 'on',
-	'includenoconflictmode' => 'off',
+
 	//DESCRIPTION OPTIONS FOR INDEPENDENT TEMPLATE
 	'descriptionposition_outside' => 'bottomdescind',
 	'width_desc_outside' => '300',
@@ -102,8 +107,6 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
 	$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jssor.js');
 	$doc->addScript(JURI::base() . 'modules/mod_jsshackslides/assets/slider/jssor.slider.js');
-
-	/*$doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider/css/style.css');*/
 	$doc->addStyleSheet(JURI::base() .'modules/mod_jsshackslides/assets/slider/css/settings.css');
 
 	ob_start();
@@ -120,51 +123,48 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
     {
         $css_add_jssorn01 .= '.jssorn01{';
 
-		if($params->get('horizontalaligndots', "center") == "right")
+		if($params->get('horizontalaligndots', $defaults["horizontalaligndots"]) == "right")
         {
         	$css_add_jssorn01 .= 'right:3%;
         						  padding-right:'.$params->get('horizontalpaddingdots', $defaults["horizontalpaddingdots"]).'px;';
         }
-        elseif($params->get('horizontalaligndots', "center") == "left")
+        elseif($params->get('horizontalaligndots', $defaults["horizontalaligndots"]) == "left")
         {
         	$css_add_jssorn01 .= 'left:3%;
         						  padding-left:'.$params->get('horizontalpaddingdots', $defaults["horizontalpaddingdots"]).'px;';
         }
-        elseif($params->get('horizontalaligndots', "center") == "center")
+        elseif($params->get('horizontalaligndots', $defaults["horizontalaligndots"]) == "center")
         {
         	 $css_jssorn01 = 1;
         	 $css_add_jssorn01 .= 'padding-left:'.$params->get('horizontalpaddingdots', $defaults["horizontalpaddingdots"]).'px;
 								   padding-right:'.$params->get('horizontalpaddingdots', $defaults["horizontalpaddingdots"]).'px;';        	 					
         }
 
-        if($params->get('verticalaligndots', "bottom") == "bottom")
+        if($params->get('verticalaligndots', $defaults["verticalaligndots"]) == "bottom")
         {
         	$css_add_jssorn01 .= 'bottom:3%;
         						  padding-bottom:'.$params->get('verticalpaddingdots', $defaults["verticalpaddingdots"]).'px;';
         }
-        elseif($params->get('verticalaligndots', "bottom") == "top")
+        elseif($params->get('verticalaligndots', $defaults["verticalaligndots"]) == "top")
         {
         	$css_add_jssorn01 .= 'top:3%;
         						  padding-top:'.$params->get('verticalpaddingdots', $defaults["verticalpaddingdots"]).'px;';
         }
-        elseif($params->get('verticalaligndots', "center") == "center")
+        elseif($params->get('verticalaligndots', $defaults["verticalaligndots"]) == "center")
         {
         	 $css_jssorn01 = 2;
          	 $css_add_jssorn01 .= 'padding-bottom:'.$params->get('verticalpaddingdots', $defaults["verticalpaddingdots"]).'px;
  								   padding-top:'.$params->get('verticalpaddingdots', $defaults["verticalpaddingdots"]).'px;';    
         }
 
-        if($params->get('verticalaligndots', "bottom") == "center" && $params->get('horizontalaligndots', "center") == "center")
+        if($params->get('verticalaligndots', $defaults["verticalaligndots"]) == "center" && $params->get('horizontalaligndots', $defaults["horizontalaligndots"]) == "center")
         {
         	$css_jssorn01 = 3;
         }
         $css_add_jssorn01 .= '}';
    	}
 ?>
-
-<!-----------------------------------------------------START CODE FOR FULL WIDTH TEMPLATE AND ANIMATED TEMPLATE-------------------------------------------->
-<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate' or $params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'animatedtemplate') :?>
-	<script>
+<script>
 	jQuery(document).ready(function ($) {
 		//START EFFECTS OF SLIDE WHEN ITS IN AUTOPLAY
 		<?php if ($params->get('effect_slide', $defaults['effect_slide']) == 'None') :?>
@@ -425,10 +425,6 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
 		var options = {
 
-		/*	<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'fullwithanimatedtemplate') :?>
-			$FillMode: 2,   //[Optional] The way to fill image in slide, 0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actuall size, default value is 0
-			<?php endif; ?>*/
-
 			$AutoPlay: <?php echo $params->get('navigation', $defaults['navigation']) ?>,   //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
 			$AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
 			$AutoPlayInterval: <?php echo $params->get('slide_delay', $defaults['slide_delay']) ?>,   //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
@@ -481,8 +477,6 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 		//responsive code begin
 		//you can remove responsive code if you don't want the slider scales while window resizes
 
-		//<?php if ($params->get('descriptiontemplate', $defaults['descriptiontemplate']) == 'animatedtemplate') :?>
-
 			var jssor_slider1 = new $JssorSlider$("<?php echo $params->get('container', $defaults['container']) ?>", options);
 
 			function ScaleSlider() {
@@ -492,7 +486,6 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 				else
 					window.setTimeout(ScaleSlider, 30);
 			}
-		//<?php endif; ?>
 
 		ScaleSlider();
 
@@ -504,8 +497,8 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 </script>
 
 <div style="width:100%; height:1px; clear:both"></div>
-<div id="slideshowcontainer">
 
+<div id="slideshowcontainer">
 <div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; width: <?php echo $params->get('width', $defaults['width']) ?>px !important;
         height: <?php echo $params->get('height', $defaults['height']) ?>px !important; <?php if ($params->get('center_container_automatic', $defaults['center_container_automatic']) == 'centerautoenable') :?>margin:0 auto<?php endif; ?>">
 
@@ -518,41 +511,37 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
                 top: 0px; left: 0px;width: 100%;height:100%;">
             </div>
         </div>
+        <!-- Closing Loading Screen -->
 
         <!-- Slides Container -->
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: <?php echo $params->get('width', $defaults['width']) ?>px; height: <?php echo $params->get('height', $defaults['height']) ?>px;
             overflow: hidden;">
 			<?php for ($i = 0; $i < count($images); $i++) : ?>
-                <?php if ($images[$i] === false) continue; ?>
-                
-            <div>
-                <?php if ($links[$i]) : ?>
-                <a u=image href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
-				<?php endif; ?>
-                <!--img u="image" src="<?php //echo $base.$images[$i] ?>" title="<?php //echo strip_tags($titles[$i]) ?>" alt="<?php //echo strip_tags($titles[$i]) ?>" /-->
-                <img u="image" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
-
-                <?php if (($titles[$i] || $contents[$i])) : ?>
-					<?php if ($titles[$i]) : ?>
-                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="shackslideTitle colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition2', $defaults['titleposition2']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>">
-							<?php echo $titles[$i]; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if ($contents[$i]) : ?>
-                        <div u=caption t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class="shackslideDescription  <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition3', $defaults['descriptionposition3']) == 'notshowdescbottom') :?>left:50%; top: 30px;visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px">
-							<?php echo $contents[$i]; ?>
-                        </div>
-                    <?php endif; ?>
-                <?php endif; ?>
-
-                <?php if ($links[$i]) : ?>
-                	</a>
-                <?php endif; ?>
-
-            </div>
+	            <div>
+	                <?php if ($links[$i]) : ?>
+	               		<a u="image" href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
+					<?php endif; ?>
+	                <!--img u="image" src="<?php //echo $base.$images[$i] ?>" title="<?php //echo strip_tags($titles[$i]) ?>" alt="<?php //echo strip_tags($titles[$i]) ?>" /-->
+	                <img u="image" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
+	                <?php if (($titles[$i] || $contents[$i])) : ?>
+						<?php if ($titles[$i]) : ?>
+	                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="shackslideTitle colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition2', $defaults['titleposition2']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>">
+								<?php echo $titles[$i]; ?>
+	                        </div>
+	                    <?php endif; ?>
+	                    <?php if ($contents[$i]) : ?>
+	                        <div u=caption t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class="shackslideDescription  <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition3', $defaults['descriptionposition3']) == 'notshowdescbottom') :?>left:50%; top: 30px;visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px">
+								<?php echo $contents[$i]; ?>
+	                        </div>
+	                    <?php endif; ?>
+	                <?php endif; ?>
+	                <?php if ($links[$i]) : ?>
+	                	</a>
+	                <?php endif; ?>
+	            </div>
             <?php endfor; ?>
         </div>
+        <!-- Closing Slides Container -->
 
         <?php
 
@@ -616,15 +605,15 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
         ?>
         
-        <!-- navigator container -->
+        <!-- Navigator Container -->
         <div u="navigator" class="jssorn01" style="position: absolute">
-            <!-- navigator item prototype -->
             <div u="prototype" class="jssor_bullets" style="position: absolute; width: 21px; height: 21px; text-align:center;">
             <?php if($params->get('navigationnumbers', 0) == 1): ?>
             	<div u="numbertemplate" class="jssor_bullets_numbers"></div>
             <?php endif; ?>
             </div>
         </div>
+        <!-- Closing Navigator Container -->
        
         <!-- Arrow Left -->
         <span u="arrowleft" class="jssord05l" style="width: 40px; height: 40px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;">
@@ -633,12 +622,6 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         <span u="arrowright" class="jssord05r" style="width: 40px; height: 40px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px">
         </span>
     </div>
-    <!-- Jssor Slider End -->
-
-
-<?php endif; ?>
-<!-----------------------------------------------------FINISH CODE FOR FULL WIDTH TEMPLATE AND ANIMATED TEMPLATE-------------------------------------------->
-
-
 </div>
+
 <div style="width:100%; height:1px; clear:both"></div>
