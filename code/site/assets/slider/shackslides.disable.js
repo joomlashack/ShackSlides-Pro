@@ -4,7 +4,7 @@ function autoplayDisable(){
 	var effectslide_select = document.getElementById('jform_params_effect_slide');
 	var source_select = document.getElementById('jform_params_source');
 	var showdots_select = document.getElementById('jform_params_showdots');
-
+	var showarrows_select = document.getElementById('jform_params_navigationarrows');
 	/*
 	########################################################################
 	################# Disable when saving changes ##########################
@@ -29,14 +29,22 @@ function autoplayDisable(){
 		document.getElementById("jform_params_ordering").options[3].setAttribute("disabled" , "disabled");
 	}
 
-	  if(showdots_select.value == "0"){
-			document.getElementById("jform_params_navigationnumbers").setAttribute("disabled" , "disabled");
-			document.getElementById("jform_params_orientationdots").setAttribute("disabled" , "disabled");
-			document.getElementById("jform_params_horizontalaligndots").setAttribute("disabled" , "disabled");
-			document.getElementById("jform_params_verticalaligndots").setAttribute("disabled" , "disabled");
-			document.getElementById("jform_params_horizontalpaddingdots").setAttribute("disabled" , "disabled");
-			document.getElementById("jform_params_verticalpaddingdots").setAttribute("disabled" , "disabled");
-	  }
+	if(showdots_select.value == "0"){
+		document.getElementById("jform_params_navigationnumbers").setAttribute("disabled" , "disabled");
+		document.getElementById("jform_params_orientationdots").setAttribute("disabled" , "disabled");
+		document.getElementById("jform_params_horizontalaligndots").setAttribute("disabled" , "disabled");
+		document.getElementById("jform_params_verticalaligndots").setAttribute("disabled" , "disabled");
+		document.getElementById("jform_params_horizontalpaddingdots").setAttribute("disabled" , "disabled");
+		document.getElementById("jform_params_verticalpaddingdots").setAttribute("disabled" , "disabled");
+		document.getElementById("slide_opacity_dots").setAttribute("disabled" , "disabled");
+		document.getElementById("jform_params_navigationarrows_customdots").setAttribute("disabled" , "disabled");
+	}
+
+	if(showarrows_select.value == "0"){
+		document.getElementById("slide_opacity_rows").setAttribute("disabled" , "disabled");
+		document.getElementById("jform_params_navigationarrows_customrows").setAttribute("disabled" , "disabled");
+	}
+
 	/*
 	########################################################################
 	################# Disable when saving changes ##########################
@@ -85,6 +93,8 @@ function autoplayDisable(){
 	  		document.getElementById("jform_params_verticalaligndots").setAttribute("disabled" , "disabled");
 	  		document.getElementById("jform_params_horizontalpaddingdots").setAttribute("disabled" , "disabled");
 	  		document.getElementById("jform_params_verticalpaddingdots").setAttribute("disabled" , "disabled");
+	  		document.getElementById("slide_opacity_dots").setAttribute("disabled" , "disabled");
+	  		document.getElementById("jform_params_navigationarrows_customdots").setAttribute("disabled" , "disabled");
 		  } else {
 		  	document.getElementById("jform_params_navigationnumbers").removeAttribute("disabled");
 	  		document.getElementById("jform_params_orientationdots").removeAttribute("disabled");
@@ -92,7 +102,18 @@ function autoplayDisable(){
 	  		document.getElementById("jform_params_verticalaligndots").removeAttribute("disabled");
 	  		document.getElementById("jform_params_horizontalpaddingdots").removeAttribute("disabled");
 	  		document.getElementById("jform_params_verticalpaddingdots").removeAttribute("disabled");
+	  		document.getElementById("slide_opacity_dots").removeAttribute("disabled");
+	  		document.getElementById("jform_params_navigationarrows_customdots").removeAttribute("disabled");
 		  }
+	};
+	showarrows_select.onchange = function(){
+		if(showarrows_select.value == "0"){
+			document.getElementById("slide_opacity_rows").setAttribute("disabled" , "disabled");
+			document.getElementById("jform_params_navigationarrows_customrows").setAttribute("disabled" , "disabled");
+		} else {
+			document.getElementById("slide_opacity_rows").removeAttribute("disabled");
+			document.getElementById("jform_params_navigationarrows_customrows").removeAttribute("disabled");
+		}
 	};
 }
 

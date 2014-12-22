@@ -42,11 +42,14 @@ $defaults = array(
 	'showdots' => '2',
 	'orientationdots' => '1',
 	'navigationarrows_customrows' => 'd17',
+	'navigationarrows_media' => '',
 	'navigationarrows_customdots' => 'n03',
+	'navigationdots_media' => '',
 	'horizontalpaddingdots' => '0',
 	'verticalpaddingdots' => '0',
 	'rangesliderdots' => '100',
 	'rangesliderrows' => '100',
+
 	//JQUERY OPTIONS
 	'includejquery' => 'off',
 	'includejqueryui' => 'on',
@@ -553,6 +556,9 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
         <?php
 
+        $image_dots = ($params->get('navigationdots_media', $defaults['navigationdots_media']) == '')?JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customdots', $defaults['navigationarrows_customdots']).'.png':JUri::root(true).'/'.$params->get('navigationdots_media', $defaults['navigationdots_media']);
+        $image_arrow = ($params->get('navigationarrows_media', $defaults['navigationarrows_media']) == '')?JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customrows', $defaults['navigationarrows_customrows']).'.png':JUri::root(true).'/'.$params->get('navigationarrows_media', $defaults['navigationarrows_media']);
+
         $style = '
 
         	/*
@@ -565,7 +571,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 
 	        .jssorn01 div, .jssorn01 div:hover, .jssorn01 .jssor_bulletsav , .jssorn01 .jssor_bulletsdn
 	        {
-	            background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customdots', $defaults['navigationarrows_customdots']).'.png) no-repeat;
+	            background: url('.$image_dots.') no-repeat;
 	            overflow:hidden;
 	            cursor: pointer;
 	            opacity:'.($params->get('rangesliderdots', $defaults['rangesliderdots'])/100).';
@@ -592,7 +598,7 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             	position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url('.JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customrows', $defaults['navigationarrows_customrows']).'.png) no-repeat;
+                background: url('.$image_arrow.') no-repeat;
                 overflow:hidden;
                 opacity:'.($params->get('rangesliderrows', $defaults['rangesliderrows'])/100).';
                 filter: alpha(opacity='.$params->get('rangesliderrows', $defaults['rangesliderrows']).');
