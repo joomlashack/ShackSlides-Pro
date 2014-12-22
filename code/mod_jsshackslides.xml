@@ -481,46 +481,57 @@
 						description="NAVIGATIONARROWS_CUSTOMDOTS_DESC"
 				/>
 
+				<field 
+						name="navigationdots_media" 
+						type="media" 
+						directory=""
+						preview="true" 
+						label="NAVIGATIONDOTS_MEDIA" 
+						description="NAVIGATIONDOTS_MEDIA_DESC"
+				/>
+				
 			<field 
 					type="spacer" 
 					name="prenextbutton_bar_spacer" 
 					label="PRENEXTBUTTON_SPACER_LABEL" 
 			/>
 
-			<field 
-					name="navigationarrows" 
-					type="list" 
-					default="2" 
-					label="NAVIGATIONARROWS" 
-					description="NAVIGATIONARROWS_DESC"
-			>
-				<option value="2">ALWAYS_ARROWS</option>
-				<option value="0">NO_ARROWS</option>
-				<option value="1">ONHOVER_ARROWS</option>
-			</field>
+				<field 
+						name="navigationarrows" 
+						type="list" 
+						default="2" 
+						label="NAVIGATIONARROWS" 
+						description="NAVIGATIONARROWS_DESC"
+				>
+					<option value="2">ALWAYS_ARROWS</option>
+					<option value="0">NO_ARROWS</option>
+					<option value="1">ONHOVER_ARROWS</option>
+				</field>
 
-			<field 
-					name="rangesliderrows" 
-					type="rangeslider" 
-					default="100" 
-					label="RANGESLIDER_ROWS" 
-					description="RANGESLIDER_ROWS_DESC" 
-			/>
+				<field 
+						name="rangesliderrows" 
+						type="rangeslider" 
+						default="100" 
+						label="RANGESLIDER_ROWS" 
+						description="RANGESLIDER_ROWS_DESC" 
+				/>
 
-			<field 
-					name="navigationarrows_customrows" 
-					type="customnavigation" 
-					default="d17" 
-					label="NAVIGATIONARROWS_CUSTOMROWS" 
-					description="NAVIGATIONARROWS_CUSTOMROWS_DESC"
-			/>
+				<field 
+						name="navigationarrows_customrows" 
+						type="customnavigation" 
+						default="d17" 
+						label="NAVIGATIONARROWS_CUSTOMROWS" 
+						description="NAVIGATIONARROWS_CUSTOMROWS_DESC"
+				/>
 
-			<!--field name="touch_enabled" type="radio" default="on" label="TOUCH_ENABLED" description="TOUCH_ENABLED_DESC">
-				<option value="on">TOUCHON</option>
-				<option value="off">TOUCHOFF</option>
-			</field-->
-
-
+				<field 
+						name="navigationarrows_media" 
+						type="media" 
+						directory=""
+						preview="true" 
+						label="NAVIGATIONARROWS_MEDIA" 
+						description="NAVIGATIONARROWS_MEDIA_DESC"
+				/>
 
 		</fieldset>
 
@@ -574,7 +585,7 @@
 				<field 
 						name="includejqueryui" 
 						type="radio" 
-						default="off" 
+						default="on" 
 						label="INCLUDE_JQUERYUI" 
 						description="INCLUDE_JQUERYUI_DESC"
 				>
@@ -585,6 +596,7 @@
 		</fieldset>
 
 	</fields>
+
 </config>
 
 </extension>
