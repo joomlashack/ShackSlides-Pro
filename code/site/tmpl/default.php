@@ -163,7 +163,113 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         }
         $css_add_jssorn01 .= '}';
    	}
+
+   	$image_dots = ($params->get('navigationdots_media', $defaults['navigationdots_media']) == '')?JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customdots', $defaults['navigationarrows_customdots']).'.png':JUri::root(true).'/'.$params->get('navigationdots_media', $defaults['navigationdots_media']);
+    $image_arrow = ($params->get('navigationarrows_media', $defaults['navigationarrows_media']) == '')?JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customrows', $defaults['navigationarrows_customrows']).'.png':JUri::root(true).'/'.$params->get('navigationarrows_media', $defaults['navigationarrows_media']);
+
+    $style = '
+
+    	#'.$params->get('container', $defaults['container']).' .loading{
+    		position: absolute; 
+    		top: 0px; 
+    		left: 0px;
+		}
+
+		#'.$params->get('container', $defaults['container']).' .loading .filter{
+    		filter: alpha(opacity=70); 
+    		opacity:0.7; 
+    		background-color: #000; 
+		}
+		
+		#'.$params->get('container', $defaults['container']).' .loading .loading_image{
+			background: url('.JUri::root(true).'/modules/mod_jsshackslides/images/loading.gif) no-repeat center center;
+    	}
+
+    	#'.$params->get('container', $defaults['container']).' .loading .loading_image , #'.$params->get('container', $defaults['container']).' .loading .filter{
+    		position: absolute; 
+    		display: block;
+            top: 0px; 
+            left: 0px;
+            width: 100%;
+            height:100%;
+    	}
+
+    	/*
+    	.jssorn01 div           (normal)
+    	.jssorn01 div:hover     (normal mouseover)
+    	.jssorn01 .jssor_bulletsav           (active)
+    	.jssorn01 .jssor_bulletsav:hover     (active mouseover)
+    	.jssorn01 .jssor_bulletsdn           (mousedown)
+    	*/
+
+    	#'.$params->get('container', $defaults['container']).' .jssorn01{
+    		position: absolute;
+    	}
+
+    	#'.$params->get('container', $defaults['container']).' .jssorn01 div{
+    		position: inherit; 
+    		width: 21px; 
+    		height: 21px; 
+    		text-align:center;
+    	}
+        #'.$params->get('container', $defaults['container']).' .jssorn01 div, #'.$params->get('container', $defaults['container']).' .jssorn01 div:hover, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav , #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn
+        {
+            background: url('.$image_dots.') no-repeat;
+            overflow:hidden;
+            cursor: pointer;
+            opacity:'.($params->get('rangesliderdots', $defaults['rangesliderdots'])/100).';
+            filter: alpha(opacity='.$params->get('rangesliderdots', $defaults['rangesliderdots']).');
+        }
+        #'.$params->get('container', $defaults['container']).' .jssorn01 div { background-position: -5px -4px; }
+        #'.$params->get('container', $defaults['container']).' .jssorn01 div:hover, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav:hover { background-position: -35px -4px; }
+        #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav { background-position: -65px -4px; }
+        #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn:hover { background-position: -95px -4px; }
+
+    	'.$css_add_jssorn01.'
+
+    	/* jssor slider direction navigator skin 05 css */
+        /*
+        .jssord05l              (normal)
+        .jssord05r              (normal)
+        .jssord05l:hover        (normal mouseover)
+        .jssord05r:hover        (normal mouseover)
+        .jssord05ldn            (mousedown)
+        .jssord05rdn            (mousedown)
+        */   
+
+        #'.$params->get('container', $defaults['container']).' span[class*=jssord05l]{
+        	left: 8px;
+    	}
+
+    	#'.$params->get('container', $defaults['container']).' span[class*=jssord05r]{
+        	right: 8px;
+    	}
+
+        #'.$params->get('container', $defaults['container']).' .jssord05l, #'.$params->get('container', $defaults['container']).' .jssord05r, #'.$params->get('container', $defaults['container']).' .jssord05ldn, #'.$params->get('container', $defaults['container']).' .jssord05rdn
+        {	
+        	width: 40px;
+        	height: 40px;
+        	top: '.($params->get('height', $defaults['height']) / 2 - 20).'px;
+        	position: absolute;
+        	cursor: pointer;
+        	display: block;
+            background: url('.$image_arrow.') no-repeat;
+            overflow:hidden;
+            opacity:'.($params->get('rangesliderrows', $defaults['rangesliderrows'])/100).';
+            filter: alpha(opacity='.$params->get('rangesliderrows', $defaults['rangesliderrows']).');
+        }
+        #'.$params->get('container', $defaults['container']).' .jssord05l { background-position: -10px -40px; }
+        #'.$params->get('container', $defaults['container']).' .jssord05r { background-position: -70px -40px; }
+        #'.$params->get('container', $defaults['container']).' .jssord05l:hover { background-position: -130px -40px; }
+        #'.$params->get('container', $defaults['container']).' .jssord05r:hover { background-position: -190px -40px; }
+        #'.$params->get('container', $defaults['container']).' .jssord05ldn { background-position: -250px -40px; }
+        #'.$params->get('container', $defaults['container']).' .jssord05rdn { background-position: -310px -40px; }
+
+    ';
+
+    $doc->addStyleDeclaration($style);
 ?>
+
 <script>
 	jQuery(document).ready(function ($) {
 		//START EFFECTS OF SLIDE WHEN ITS IN AUTOPLAY
@@ -503,12 +609,10 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         height: <?php echo $params->get('height', $defaults['height']) ?>px !important; <?php if ($params->get('center_container_automatic', $defaults['center_container_automatic']) == 'centerautoenable') :?>margin:0 auto<?php endif; ?>">
 
         <!-- Loading Screen -->
-        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
-            <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
-                background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
+        <div u="loading" class ="loading">
+            <div class="filter">
             </div>
-            <div style="position: absolute; display: block; background: url(<?php echo JUri::root(true); ?>/modules/mod_jsshackslides/images/loading.gif) no-repeat center center;
-                top: 0px; left: 0px;width: 100%;height:100%;">
+            <div class="loading_image">
             </div>
         </div>
         <!-- Closing Loading Screen -->
@@ -521,16 +625,15 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 	                <?php if ($links[$i]) : ?>
 	               		<a u="image" href="<?php echo $links[$i]; ?>"<?php if ($params->get('anchor_target', 'self') == 'blank') echo ' target="_blank" ' ?>>
 					<?php endif; ?>
-	                <!--img u="image" src="<?php //echo $base.$images[$i] ?>" title="<?php //echo strip_tags($titles[$i]) ?>" alt="<?php //echo strip_tags($titles[$i]) ?>" /-->
 	                <img u="image" src="<?php echo $base.$images[$i] ?>" alt="<?php echo strip_tags($titles[$i]) ?>" />
 	                <?php if (($titles[$i] || $contents[$i])) : ?>
 						<?php if ($titles[$i]) : ?>
-	                        <div u=caption t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="shackslideTitle colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition2', $defaults['titleposition2']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>">
+	                        <div u="caption" t="<?php echo $params->get('effect_title', $defaults['effect_title']) ?>" class="shackslideTitle colorstitle <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('titleposition', $defaults['titleposition']) == 'top_left_title') :?>left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'bottom_left_title') :?>left:40px; top:  <?php echo $params->get('height', $defaults['height']) / 1.2 ?>px;<?php endif; ?> <?php if ($params->get('titleposition2', $defaults['titleposition2']) == 'notshowtitle') :?>visibility: hidden; left:40px; top: 30px;<?php endif; ?> <?php if ($params->get('titleposition', $defaults['titleposition']) == 'advancedpostitle') :?>left:<?php echo $params->get('position_title_x', $defaults['position_title_x']) ?>px; top: <?php echo $params->get('position_title_y', $defaults['position_title_y']) ?>px;<?php endif; ?> width:300px; height:30px; alpha(opacity=80); opacity:0.8; background:<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?><?php endif; ?><?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>none<?php endif; ?>">
 								<?php echo $titles[$i]; ?>
 	                        </div>
 	                    <?php endif; ?>
 	                    <?php if ($contents[$i]) : ?>
-	                        <div u=caption t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class="shackslideDescription  <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition3', $defaults['descriptionposition3']) == 'notshowdescbottom') :?>left:50%; top: 30px;visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px">
+	                        <div u="caption" t="<?php echo $params->get('effect_text', $defaults['effect_text']) ?>" class="shackslideDescription  <?php echo $params->get('title_text_class', $defaults['title_text_class']) ?>" style="position:absolute; <?php if ($params->get('descriptionposition3', $defaults['descriptionposition3']) == 'notshowdescbottom') :?>left:50%; top: 30px;visibility: hidden; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescription') :?>left:45px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'topdescriptionright') :?>left:<?php echo $params->get('width', $defaults['width']) / 2 ?>px; top:30px; <?php endif; ?> <?php if ($params->get('descriptionposition2', $defaults['descriptionposition2']) == 'advancedpostextdesc') :?>left:<?php echo $params->get('position_text_x', $defaults['position_text_x']) ?>px; top:<?php echo $params->get('position_text_y', $defaults['position_text_y']) ?>px; <?php endif; ?> width:<?php echo $params->get('width_text', $defaults['width_text']) ?>px; height:<?php echo $params->get('height_text', $defaults['height_text']) ?>px">
 								<?php echo $contents[$i]; ?>
 	                        </div>
 	                    <?php endif; ?>
@@ -542,72 +645,10 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
             <?php endfor; ?>
         </div>
         <!-- Closing Slides Container -->
-
-        <?php
-
-        $image_dots = ($params->get('navigationdots_media', $defaults['navigationdots_media']) == '')?JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customdots', $defaults['navigationarrows_customdots']).'.png':JUri::root(true).'/'.$params->get('navigationdots_media', $defaults['navigationdots_media']);
-        $image_arrow = ($params->get('navigationarrows_media', $defaults['navigationarrows_media']) == '')?JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customrows', $defaults['navigationarrows_customrows']).'.png':JUri::root(true).'/'.$params->get('navigationarrows_media', $defaults['navigationarrows_media']);
-
-        $style = '
-
-        	/*
-        	.jssorn01 div           (normal)
-        	.jssorn01 div:hover     (normal mouseover)
-        	.jssorn01 .jssor_bulletsav           (active)
-        	.jssorn01 .jssor_bulletsav:hover     (active mouseover)
-        	.jssorn01 .jssor_bulletsdn           (mousedown)
-        	*/
-
-	        #'.$params->get('container', $defaults['container']).'.jssorn01 div, #'.$params->get('container', $defaults['container']).' .jssorn01 div:hover, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav , #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn
-	        {
-	            background: url('.$image_dots.') no-repeat;
-	            overflow:hidden;
-	            cursor: pointer;
-	            opacity:'.($params->get('rangesliderdots', $defaults['rangesliderdots'])/100).';
-	            filter: alpha(opacity='.$params->get('rangesliderdots', $defaults['rangesliderdots']).');
-	        }
-	        #'.$params->get('container', $defaults['container']).' .jssorn01 div { background-position: -5px -4px; }
-	        #'.$params->get('container', $defaults['container']).' .jssorn01 div:hover, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav:hover { background-position: -35px -4px; }
-	        #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav { background-position: -65px -4px; }
-	        #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn:hover { background-position: -95px -4px; }
-
-        	'.$css_add_jssorn01.'
-
-        	/* jssor slider direction navigator skin 05 css */
-            /*
-            .jssord05l              (normal)
-            .jssord05r              (normal)
-            .jssord05l:hover        (normal mouseover)
-            .jssord05r:hover        (normal mouseover)
-            .jssord05ldn            (mousedown)
-            .jssord05rdn            (mousedown)
-            */
-            #'.$params->get('container', $defaults['container']).' .jssord05l, #'.$params->get('container', $defaults['container']).' .jssord05r, #'.$params->get('container', $defaults['container']).' .jssord05ldn, #'.$params->get('container', $defaults['container']).' .jssord05rdn
-            {
-            	position: absolute;
-            	cursor: pointer;
-            	display: block;
-                background: url('.$image_arrow.') no-repeat;
-                overflow:hidden;
-                opacity:'.($params->get('rangesliderrows', $defaults['rangesliderrows'])/100).';
-                filter: alpha(opacity='.$params->get('rangesliderrows', $defaults['rangesliderrows']).');
-            }
-            #'.$params->get('container', $defaults['container']).' .jssord05l { background-position: -10px -40px; }
-            #'.$params->get('container', $defaults['container']).' .jssord05r { background-position: -70px -40px; }
-            #'.$params->get('container', $defaults['container']).' .jssord05l:hover { background-position: -130px -40px; }
-            #'.$params->get('container', $defaults['container']).' .jssord05r:hover { background-position: -190px -40px; }
-            #'.$params->get('container', $defaults['container']).' .jssord05ldn { background-position: -250px -40px; }
-            #'.$params->get('container', $defaults['container']).' .jssord05rdn { background-position: -310px -40px; }
-
-        ';
-
-        $doc->addStyleDeclaration($style);
-
-        ?>
         
         <!-- Navigator Container -->
-        <div u="navigator" class="jssorn01" style="position: absolute">
-            <div u="prototype" class="jssor_bullets" style="position: absolute; width: 21px; height: 21px; text-align:center;">
+        <div u="navigator" class="jssorn01">
+            <div u="prototype" class="jssor_bullets">
             <?php if($params->get('navigationnumbers', 0) == 1): ?>
             	<div u="numbertemplate" class="jssor_bullets_numbers"></div>
             <?php endif; ?>
@@ -616,10 +657,10 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
         <!-- Closing Navigator Container -->
        
         <!-- Arrow Left -->
-        <span u="arrowleft" class="jssord05l" style="width: 40px; height: 40px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; left: 8px;">
+        <span u="arrowleft" class="jssord05l">
         </span>
         <!-- Arrow Right -->
-        <span u="arrowright" class="jssord05r" style="width: 40px; height: 40px; top: <?php echo $params->get('height', $defaults['height']) / 2 - 20 ?>px; right: 8px">
+        <span u="arrowright" class="jssord05r">
         </span>
     </div>
 </div>
