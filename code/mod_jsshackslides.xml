@@ -88,35 +88,10 @@
 
 			<field name="height" type="text" default="250" label="CONTAINERHEIGHT" description="CONTAINERHEIGHT_DESC" />
 
-			<!--field name="template_slider" type="list" default="responsive" label="TEMPLATE_SLIDER" description="TEMPLATE_SLIDER_DESC">
-				<option value="responsive">RESPONSIVE</option>
-				<option value="fullwidth">FULL-WIDTH</option>
-			</field-->
-
 			<field name="center_container_automatic" type="radio" default="centerautoenable" label="CENTER_AUTO_CONT_LABEL" description="CENTER_AUTO_CONT_LABEL_DESC">
 				<option value="centerautoenable">CENTER_ENABLE</option>
 				<option value="centerautodisable">CENTER_DISABLE</option>
 			</field>
-
-			<field type="spacer" name="slider_options_spacer" label="SLIDER_OPTIONS_SPACER_LABEL" />
-
-			<!--field type="spacer" name="independent_template_options" label="INDEPENDENT_TEMPLATE_OPTIONS_SPACER_LABEL" />
-
-			<field name="width_slider" type="text" default="300" label="EFFECT_MASTERSPEED" description="EFFECT_MASTERSPEED_DESC" /-->
-
-			<!--OPTIONS TO INDEPENDENT TEMPLATE-->
-			<field type="spacer" name="independent_template_options_spacer" label="INDEPENDENT_TEMP_OPTIONS_SPACER_LABEL" />
-
-			<field name="descriptionposition_outside" type="list" default="bottomdescind" label="DESC_POSITION_OUTSIDE" description="DESC_POSITION_OUTSIDE_DESC">
-				<option value="topdescind">TOPDESCIND</option>
-				<option value="bottomdescind">BOTTOMDESCIND</option>
-				<option value="leftdescind">LEFTDESCIND</option>
-				<option value="rightdescind">RIGHTDESCIND</option>
-			</field>
-
-			<field name="width_desc_outside" type="text" default="300" label="WIDTH_DESC_OUTSIDE" description="WIDTH_DESC_OUTSIDE_DESC" />
-
-			<field name="height_desc_outside" type="text" default="150" label="HEIGHT_DESC_OUTSIDE" description="HEIGHT_DESC_OUTSIDE_DESC" />
 
 		</fieldset>
 
@@ -249,11 +224,45 @@
 				</field>
 		</fieldset>
 
-		<fieldset name="descriptions" label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL">
+		<fieldset 
+					name="descriptions" 
+					label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL"
+		>
 
-			<field type="spacer" name="templatesin_options_spacer" label="TEMPLATESIN_OPTIONS_SPACER_LABEL" />
+			<field 
+					type="spacer" 
+					name="templatesin_options_spacer" 
+					label="TEMPLATESIN_OPTIONS_SPACER_LABEL" 
+			/>
 
-			<field type="spacer" name="title_animation_options_spacer" label="TITLE_ANIMATION_OPTIONS_SPACER_LABEL" />
+				<field 
+						name="slidedescription_position" 
+						type="list" 
+						default="0" 
+						label="SLIDEDESC_POSITION"
+						description="SLIDEDESC_POSITION_DESC"
+				>
+					<option value="0">SLIDEDESC_POSITION_TOP</option>
+					<option value="1">SLIDEDESC_POSITION_BOTTOM</option>
+					<option value="2">SLIDEDESC_POSITION_RIGHT</option>
+					<option value="3">SLIDEDESC_POSITION_LEFT</option>
+					<option value="4">SLIDEDESC_POSITION_ABOVEOUTSIDE</option>
+					<option value="5">SLIDEDESC_POSITION_BELOWOUTSIDE</option>
+					<option value="6">SLIDEDESC_POSITION_RIGHTOUTSIDE</option>
+					<option value="7">SLIDEDESC_POSITION_LEFTOUTSIDE</option>
+				</field>
+
+				<field 
+						name="slidedescription_alignment" 
+						type="list" 
+						default="left" 
+						label="SLIDEDESC_ALIGNMENT"
+						description="SLIDEDESC_ALIGNMENT_DESC"
+				>
+					<option value="left">SLIDEDESC_ALIGNMENT_LEFT</option>
+					<option value="right">SLIDEDESC_ALIGNMENT_RIGHT</option>
+					<option value="center">SLIDEDESC_ALIGNMENT_CENTER</option>
+				</field>
 
 			<field type="colorpicker" name="title_color" label="TITLE_COLOR_LABEL" default="#000000" />
 
@@ -271,8 +280,6 @@
 			</field>
 
 			<field type="colorpicker" name="title_bgpicker_color" label="TITLE_BGPICKER_COLOR_LABEL" default="#333333" />
-
-			<field name="title_text_class" type="text" default="" label="TITLE_TEXT_CLASS" description="TITLE_TEXT_CLASS_DESC" />
 
 			<field name="effect_title" type="list" default="easeInBack" label="EFFECT_TITLE" description="EFFECT_TITLE_DESC">
 				<option value="noeffecttitle">NO_EFFECT_TEXT</option>
