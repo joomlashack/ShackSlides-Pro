@@ -1,10 +1,33 @@
 <?php
+defined('_JEXEC') or die('Direct access to files is not permitted');
+
+// ##################################################################
+// ####################### CSS rules for navigation #################
+// ##################################################################
+
+$bulletsCSS = '#'.$params->get('container', $defaults['container']).' .jssorn01';
+$bulletsActiveCSS = $bulletsCSS . ' .jssor_bulletsav';
+$bulletsMousedownCSS = $bulletsCSS . ' .jssor_bulletsdn';
+
+$arrowLeftCSS = '#'.$params->get('container', $defaults['container']).' .jssord05l';
+$arrowLeftMouseDownCSS = $arrowLeftCSS.'dn';
+$arrowRightCSS = '#'.$params->get('container', $defaults['container']).' .jssord05r';
+$arrowRightMouseDownCSS = $arrowRightCSS.'dn';
+
+$loadingCSS = '#'.$params->get('container', $defaults['container']).' .loading';
+$loadingFilterCSS = $loadingCSS . ' .filter';
+$loadingImageCSS = $loadingCSS . ' .loading_image';
+
+// ##################################################################
+// ####################### CSS rules for navigation #################
+// ##################################################################
 
 $css_add_jssorn01 = '';
 $css_jssorn01 = 0;
+
 if($params->get('showdots', $defaults["showdots"]) != 0)
 {
-    $css_add_jssorn01 .= '.jssorn01{';
+    $css_add_jssorn01 .= $bulletsCSS .' {';
 
 	if($params->get('horizontalaligndots', $defaults["horizontalaligndots"]) == "right")
     {
@@ -50,25 +73,24 @@ if($params->get('showdots', $defaults["showdots"]) != 0)
 $image_dots = ($params->get('navigationdots_media', $defaults['navigationdots_media']) == '')?JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customdots', $defaults['navigationarrows_customdots']).'.png':JUri::root(true).'/'.$params->get('navigationdots_media', $defaults['navigationdots_media']);
 $image_arrow = ($params->get('navigationarrows_media', $defaults['navigationarrows_media']) == '')?JUri::root(true).'/modules/mod_jsshackslides/tmpl/images/'.$params->get('navigationarrows_customrows', $defaults['navigationarrows_customrows']).'.png':JUri::root(true).'/'.$params->get('navigationarrows_media', $defaults['navigationarrows_media']);
 
-$style = '
-
-	#'.$params->get('container', $defaults['container']).' .loading{
+$style = 
+    $loadingCSS .' {
 		position: absolute; 
 		top: 0px; 
 		left: 0px;
 	}
 
-	#'.$params->get('container', $defaults['container']).' .loading .filter{
+	'.$loadingFilterCSS.' {
 		filter: alpha(opacity=70); 
 		opacity:0.7; 
 		background-color: #000; 
 	}
 	
-	#'.$params->get('container', $defaults['container']).' .loading .loading_image{
+	'.$loadingImageCSS.' {
 		background: url('.JUri::root(true).'/modules/mod_jsshackslides/images/loading.gif) no-repeat center center;
 	}
 
-	#'.$params->get('container', $defaults['container']).' .loading .loading_image , #'.$params->get('container', $defaults['container']).' .loading .filter{
+	'.$loadingImageCSS.' , '.$loadingFilterCSS.'{
 		position: absolute; 
 		display: block;
         top: 0px; 
@@ -86,17 +108,17 @@ $style = '
 	.jssorn01 .jssor_bulletsdn           (mousedown)
 	*/
 
-	#'.$params->get('container', $defaults['container']).' .jssorn01{
+	'.$bulletsCSS.'{
 		position: absolute;
 	}
 
-	#'.$params->get('container', $defaults['container']).' .jssorn01 div{
+	'.$bulletsCSS.' div{
 		position: inherit; 
 		width: 21px; 
 		height: 21px; 
 		text-align:center;
 	}
-    #'.$params->get('container', $defaults['container']).' .jssorn01 div, #'.$params->get('container', $defaults['container']).' .jssorn01 div:hover, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav , #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn
+    '.$bulletsCSS.' div , '.$bulletsCSS.' div:hover , ' . $bulletsActiveCSS . ' , '. $bulletsMousedownCSS .'
     {
         background: url('.$image_dots.') no-repeat;
         overflow:hidden;
@@ -104,10 +126,10 @@ $style = '
         opacity:'.($params->get('rangesliderdots', $defaults['rangesliderdots'])/100).';
         filter: alpha(opacity='.$params->get('rangesliderdots', $defaults['rangesliderdots']).');
     }
-    #'.$params->get('container', $defaults['container']).' .jssorn01 div { background-position: -5px -4px; }
-    #'.$params->get('container', $defaults['container']).' .jssorn01 div:hover, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav:hover { background-position: -35px -4px; }
-    #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsav { background-position: -65px -4px; }
-    #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn, #'.$params->get('container', $defaults['container']).' .jssorn01 .jssor_bulletsdn:hover { background-position: -95px -4px; }
+    '.$bulletsCSS.' div { background-position: -5px -4px; }
+    '.$bulletsCSS.' div:hover , '.$bulletsActiveCSS.':hover { background-position: -35px -4px; }
+    '.$bulletsActiveCSS.' { background-position: -65px -4px; }
+    '.$bulletsMousedownCSS.' , '.$bulletsMousedownCSS.':hover { background-position: -95px -4px; }
 
 	'.$css_add_jssorn01.'
 
@@ -129,7 +151,7 @@ $style = '
     	right: 8px;
 	}
 
-    #'.$params->get('container', $defaults['container']).' .jssord05l, #'.$params->get('container', $defaults['container']).' .jssord05r, #'.$params->get('container', $defaults['container']).' .jssord05ldn, #'.$params->get('container', $defaults['container']).' .jssord05rdn
+    '.$arrowLeftCSS.' , '.$arrowRightCSS.' , '.$arrowLeftMouseDownCSS.' , '.$arrowRightMouseDownCSS.'
     {	
     	width: 40px;
     	height: 40px;
@@ -142,11 +164,11 @@ $style = '
         opacity:'.($params->get('rangesliderrows', $defaults['rangesliderrows'])/100).';
         filter: alpha(opacity='.$params->get('rangesliderrows', $defaults['rangesliderrows']).');
     }
-    #'.$params->get('container', $defaults['container']).' .jssord05l { background-position: -10px -40px; }
-    #'.$params->get('container', $defaults['container']).' .jssord05r { background-position: -70px -40px; }
-    #'.$params->get('container', $defaults['container']).' .jssord05l:hover { background-position: -130px -40px; }
-    #'.$params->get('container', $defaults['container']).' .jssord05r:hover { background-position: -190px -40px; }
-    #'.$params->get('container', $defaults['container']).' .jssord05ldn { background-position: -250px -40px; }
-    #'.$params->get('container', $defaults['container']).' .jssord05rdn { background-position: -310px -40px; }
+    '.$arrowLeftCSS.' { background-position: -10px -40px; }
+    '.$arrowRightCSS.' { background-position: -70px -40px; }
+    '.$arrowLeftCSS.':hover { background-position: -130px -40px; }
+    '.$arrowRightCSS.':hover { background-position: -190px -40px; }
+    '.$arrowLeftMouseDownCSS. ' { background-position: -250px -40px; }
+    '.$arrowRightMouseDownCSS. ' { background-position: -310px -40px; }
 
 ';

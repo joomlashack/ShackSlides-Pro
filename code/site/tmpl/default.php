@@ -23,7 +23,7 @@ $defaults = array(
 	'center_container_automatic' => 'centerautoenable',
 
 	//DESCRIPTION OPTIONS
-	'slidedescription_position' => 'top',
+	'slidedescription_position' => '0',
 	'slidedescription_alignment' => 'left',
 	'effect_title' => 'zmf',
 	'title_color' => '',
@@ -87,6 +87,11 @@ $doc->addStyleDeclaration($styles);
 include(JPATH_ROOT.'/modules/mod_jsshackslides/assets/slider/css/navigationstyles.php');
 $doc->addStyleDeclaration($style);
 // ################### Styles for bullets, arrows and loading #####################
+
+// ################### Styles for description and title #####################
+include(JPATH_ROOT.'/modules/mod_jsshackslides/assets/slider/css/description_title_positions.php');
+$doc->addStyleDeclaration($style);
+// ################### Styles for description and title #####################
 
 // load jQuery, if not loaded before
 //checking if installed joomla version is less  3.0
@@ -455,7 +460,8 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 <div style="width:100%; height:1px; clear:both"></div>
 
 <div id="slideshowcontainer">
-<div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; width: <?php echo $params->get('width', $defaults['width']) ?>px !important;
+
+	<div id="<?php echo $params->get('container', $defaults['container']) ?>" style="position: relative; width: <?php echo $params->get('width', $defaults['width']) ?>px !important;
         height: <?php echo $params->get('height', $defaults['height']) ?>px !important; <?php if ($params->get('center_container_automatic', $defaults['center_container_automatic']) == 'centerautoenable') :?>margin:0 auto<?php endif; ?>">
 
         <!-- Loading Screen -->
