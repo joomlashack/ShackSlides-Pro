@@ -6,7 +6,6 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 	color: #<?php echo $params->get('title_color', $defaults['title_color']) ?>;
 	font-size: 20px;
 	line-height: 30px;
-	text-align: center;
     <?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'notbackgroundtitle') :?>
     background: none;
 	<?php endif; ?>
