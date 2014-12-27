@@ -29,14 +29,7 @@ $defaults = array(
 	'title_color' => '',
 	'title_background_color' => 'enabletitlebg',
 	'title_bgpicker_color' => '',
-	'titleposition' => 'top_left_title',
-	'position_title_x' => '85',
-	'position_title_y' => '85',
-	'width_text' => '200',
-	'height_text' => '200',
 	'effect_text' => 'clipleftright',
-	'descriptionposition2' => 'notshowdescbottom',
-	'descriptionposition3' => 'notshowdescbottom',
 
 	//NAVIGATION OPTIONS
 	'navigation' => 'true',
@@ -58,16 +51,7 @@ $defaults = array(
 	'container' => 'slider', // id for the slider container,
 	'main_container_class' => '',
 	'includejquery' => 'off',
-	'includejqueryui' => 'on',
-
-	'description_height' => '50', // description height if position is top/bottom
-	'description_width' => '50', // description width if position is right/left
-	'style_def_text' => 'notextstyle',
-	'descriptionposition' => 'top_in',
-	'position_text_x' => '85',
-	'position_text_y' => '150',
-
-	'description_background' => 'ffffff', // description background color hex code
+	'includejqueryui' => 'on'
 );
 
 // Adding the javascript and css files to the document
@@ -491,10 +475,10 @@ if (version_compare( JVERSION, '3.2', '<' ) == 1) {
 	                        		style="
                     				position:absolute; 
                     				background:
-                    				<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'enabletitlebg') :?>
+                    				<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 1) :?>
                     					#<?php echo $params->get('title_bgpicker_color', $defaults['title_bgpicker_color']) ?>
                     				<?php endif; ?>
-                    				<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 'disabletitlebg') :?>	none<?php endif; ?>"
+                    				<?php if ($params->get('title_background_color', $defaults['title_background_color']) == 0) :?>	none<?php endif; ?>"
             				>
 	                        			<?php echo $titles[$i]; ?>
 	                        </div>

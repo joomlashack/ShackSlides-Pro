@@ -264,134 +264,262 @@
 					<option value="center">SLIDEDESC_ALIGNMENT_CENTER</option>
 				</field>
 
-			<field type="colorpicker" name="title_color" label="TITLE_COLOR_LABEL" default="#000000" />
+				<field 
+						name="slidedescription_verticalpadding" 
+						type="text" 
+						default="0" 
+						label="SLIDEDESC_VERTICALPAD" 
+						description="SLIDEDESC_VERTICALPAD_DESC" 
+				/>
 
-			<!--field name="title_background_color" type="list" default="top_left_title" label="TITLE_BG_COLOR_LABEL" description="TITLE_BG_COLOR_LABEL_DESC">
-				<option value="notbackgroundtitle">NOTBGTITLE</option>
-				<option value="blackbgtitle">BLACKBGTITLE</option>
-				<option value="whitebgtitle">WHITEBGTITLE</option>
-				<option value="bluegbtitle">BLUEBGTITLE</option>
-				<option value="orangebgtitle">ORANGEBGTITLE</option>
-			</field-->
+				<field 
+						name="slidedescription_horizontal" 
+						type="text" 
+						default="0" 
+						label="SLIDEDESC_HORIZONTALPAD" 
+						description="SLIDEDESC_HORIZONTALPAD_DESC" 
+				/>
+				
+			<field 
+					type="spacer" 
+					name="slidesdescription_titleoptions_spacer" 
+					label="SLIDESDESCRIPTION_TITLEOPTIONS_LABEL" 
+			/>
 
-			<field name="title_background_color" type="radio" default="enabletitlebg" label="TITLE_BG_COLOR_LABEL" description="TITLE_BG_COLOR_LABEL_DESC">
-				<option value="enabletitlebg">TITLEBGON</option>
-				<option value="disabletitlebg">TITLEBGOFF</option>
-			</field>
+				<field 
+						name="show_title_check" 
+						type="checkbox" 
+						label="SHOW_TITLE" 
+						description="SHOW_TITLE_DESC" 
+						value="1" 
+						default="0"
+				/>
 
-			<field type="colorpicker" name="title_bgpicker_color" label="TITLE_BGPICKER_COLOR_LABEL" default="#333333" />
+				<field 
+						name="slidetitle_width" 
+						type="text" 
+						default="0" 
+						label="SLIDETITLE_WIDTH" 
+						description="SLIDETITLE_WIDTH_DESC" 
+				/>
 
-			<field name="effect_title" type="list" default="easeInBack" label="EFFECT_TITLE" description="EFFECT_TITLE_DESC">
-				<option value="noeffecttitle">NO_EFFECT_TEXT</option>
-				<option value="clipleftright">CENTER_TO_SIDE</option>
-				<option value="cliptb">CENTER_TO_UP_AND_DOWN</option>
-				<option value="dancelb">BOUNCING_FROM_LEFT</option>
-				<option value="dancerb">BOUNCING_FROM_RIGHT</option>
-				<option value="tortuoushl">SLIDING_CURVE_LEFT</option>
-				<option value="tortousvb">SLIDING_CURVE_TOP</option>
-				<option value="zmf">FOCUSING_FRONT</option>
-				<option value="zmlr">FOCUSING_FRONT_RIGHT</option>
-				<option value="zmlb">FOCUSING_FRONT_BOTTOM</option>
-				<option value="zmsb">APPEARS_BOTTOM_LEFT</option>
-				<option value="zmjdnlb">DANCING_FRONT_BOTTOM</option>
-				<option value="zmjuplb">DANCING_FRONT_LEFT</option>
-				<option value="zmjuprb">DANCING_FRONT_RIGHT</option>
-				<option value="zmwvrlt">DANCING_FRONT_TOP</option>
-				<option value="zmwvrrt">DANCING_FRONT_RIGHT2</option>
-				<option value="zmwvrtl">DANCING_FRONT_LEFT2</option>
-				<option value="zmwvrbl">APPEARS_FRONT_RIGHT</option>
-				<option value="rtt10">TWISTING_LEFT</option>
-				<option value="rttlr">TWISTING_RIGHT</option>
-				<option value="rttlb">TWISTING_BOTTOM_LEFT</option>
-				<option value="rttsr">TWISTING_TOP_RIGHT</option>
-				<option value="rttsb">TWISTING_BACKGROUND</option>
-				<option value="rttjdnrt">FLYING_TOP_RIGHT_CORNER</option>
-				<option value="rttjdnlb">FLYING_BOTTOM_LEFT_CORNER</option>
-				<option value="rttjuprb">FLYING_BOTTOM_RIGHT_CORNER</option>
-				<option value="rttjuprb2">FLYING_CENTER</option>
-				<option value="rttjupbr">APPEARS_BOTTOM_RIGHT_CORNER</option>
-				<option value="rib">SLIDING_RIGHT</option>
-				<option value="bib">SLIDING_BOTTOM</option>
-			</field>
+				<field 
+						name="slidetitle_height" 
+						type="text" 
+						default="0" 
+						label="SLIDETITLE_HEIGHT" 
+						description="SLIDETITLE_HEIGHT_DESC" 
+				/>
 
-			<field name="titleposition2" type="list" default="show_title" label="SHOW_TITLE" description="SHOW_TITLE">
-				<option value="notshowtitle">NOTSHOWTITLE</option>
-				<option value="showtitle">SHOWTITLE</option>	
-			</field>
+				<field 
+						name="title_background_color" 
+						type="checkbox" 
+						label="TITLE_BG_COLOR_LABEL" 
+						description="TITLE_BG_COLOR_LABEL_DESC"
+						value="1"
+						default="0"
+				/>
 
-			<field name="titleposition" type="list" default="top_left_title" label="TITLE_POSITION" description="TITLE_POSITION_DESC">
-				<option value="top_left_title">TOPLEFTTITLE</option>
-				<option value="bottom_left_title">BOTTOMLEFTTITLE</option>
-				<option value="advancedpostitle">ADVANCEDPOSTITLE</option>
-			</field>
+				<field  
+						name="title_bgpicker_color" 
+						type="colorpicker"
+						label="TITLE_BGPICKER_COLOR_LABEL" 
+						description="TITLE_BGPICKER_COLOR_LABEL_DESC" 
+						default="#FFF" 
+				/>
 
-			<field type="spacer" name="title_advanced_options_spacer" label="TITLE_ADVANCED_OPTIONS_SPACER_LABEL" />
+				<field 
+					name="title_color"
+					type="colorpicker"  
+					label="TITLE_COLOR_LABEL" 
+					description="TITLE_COLOR_LABEL_DESC"
+					default="#000000" 
+				/>
 
-			<field name="position_title_x" type="text" default="85" label="POSITION_TITLE_X" description="POSITION_TITLE_X_DESC" />
+				<!-- <field 
+						name="rangeslidertitle" 
+						type="rangeslider" 
+						default="100" 
+						label="RANGESLIDER_TITLE" 
+						description="RANGESLIDER_TITLE_DESC" 
+				/> -->
 
-			<field name="position_title_y" type="text" default="85" label="POSITION_TITLE_Y" description="POSITION_TITLE_Y_DESC" />
+				<field 
+						name="effect_title" 
+						type="list" 
+						default="easeInBack" 
+						label="EFFECT_TITLE" 
+						description="EFFECT_TITLE_DESC"
+				>
+					<option value="noeffecttitle">NO_EFFECT_TEXT</option>
+					<option value="clipleftright">CENTER_TO_SIDE</option>
+					<option value="cliptb">CENTER_TO_UP_AND_DOWN</option>
+					<option value="dancelb">BOUNCING_FROM_LEFT</option>
+					<option value="dancerb">BOUNCING_FROM_RIGHT</option>
+					<option value="tortuoushl">SLIDING_CURVE_LEFT</option>
+					<option value="tortousvb">SLIDING_CURVE_TOP</option>
+					<option value="zmf">FOCUSING_FRONT</option>
+					<option value="zmlr">FOCUSING_FRONT_RIGHT</option>
+					<option value="zmlb">FOCUSING_FRONT_BOTTOM</option>
+					<option value="zmsb">APPEARS_BOTTOM_LEFT</option>
+					<option value="zmjdnlb">DANCING_FRONT_BOTTOM</option>
+					<option value="zmjuplb">DANCING_FRONT_LEFT</option>
+					<option value="zmjuprb">DANCING_FRONT_RIGHT</option>
+					<option value="zmwvrlt">DANCING_FRONT_TOP</option>
+					<option value="zmwvrrt">DANCING_FRONT_RIGHT2</option>
+					<option value="zmwvrtl">DANCING_FRONT_LEFT2</option>
+					<option value="zmwvrbl">APPEARS_FRONT_RIGHT</option>
+					<option value="rtt10">TWISTING_LEFT</option>
+					<option value="rttlr">TWISTING_RIGHT</option>
+					<option value="rttlb">TWISTING_BOTTOM_LEFT</option>
+					<option value="rttsr">TWISTING_TOP_RIGHT</option>
+					<option value="rttsb">TWISTING_BACKGROUND</option>
+					<option value="rttjdnrt">FLYING_TOP_RIGHT_CORNER</option>
+					<option value="rttjdnlb">FLYING_BOTTOM_LEFT_CORNER</option>
+					<option value="rttjuprb">FLYING_BOTTOM_RIGHT_CORNER</option>
+					<option value="rttjuprb2">FLYING_CENTER</option>
+					<option value="rttjupbr">APPEARS_BOTTOM_RIGHT_CORNER</option>
+					<option value="rib">SLIDING_RIGHT</option>
+					<option value="bib">SLIDING_BOTTOM</option>
+				</field>
 
-			<field type="spacer" name="text_animation_options_spacer" label="TEXT_ANIMATION_OPTIONS_SPACER_LABEL" />
+				<field 
+						name="tag_for_title" 
+						type="list" 
+						default="h1" 
+						label="TAG_FOR_TITLE" 
+						description="TAG_FOR_TITLE_DESC"
+				>
+					<option value="h1">h1</option>
+					<option value="h2">h2</option>
+					<option value="h3">h3</option>
+					<option value="h4">h4</option>
+					<option value="h5">h5</option>
+					<option value="h6">h6</option>
+					<option value="p">p</option>
+					<option value="div">div</option>
+				</field>
 
-			<field name="width_text" type="text" default="200" label="WIDTH_TEXT" description="WIDTH_TEXT_DESC" />
+			<field 
+					type="spacer" 
+					name="text_animation_options_spacer" 
+					label="SLIDESDESCRIPTION_DESCRIPTIONOPTIONS_LABEL" 
+			/>
 
-			<field name="height_text" type="text" default="200" label="HEIGHT_TEXT" description="HEIGHT_TEXT_DESC" />
+				<field 
+						name="show_description_check" 
+						type="checkbox" 
+						label="SHOW_DESCRIPTION" 
+						description="SHOW_DESCRIPTION_DESC" 
+						value="1" 
+						default="0"
+				/>
 
-			<field name="effect_text" type="list" default="clipleftright" label="EFFECT_TEXT" description="EFFECT_TEXT_DESC">
-				<option value="noeffecttext">NO_EFFECT_TEXT</option>
-				<option value="clipleftright">CENTER_TO_SIDE</option>
-				<option value="cliptb">CENTER_TO_UP_AND_DOWN</option>
-				<option value="dancelb">BOUNCING_FROM_LEFT</option>
-				<option value="dancerb">BOUNCING_FROM_RIGHT</option>
-				<option value="tortuoushl">SLIDING_CURVE_LEFT</option>
-				<option value="tortousvb">SLIDING_CURVE_TOP</option>
-				<option value="zmf">FOCUSING_FRONT</option>
-				<option value="zmlr">FOCUSING_FRONT_RIGHT</option>
-				<option value="zmlb">FOCUSING_FRONT_BOTTOM</option>
-				<option value="zmsb">APPEARS_BOTTOM_LEFT</option>
-				<option value="zmjdnlb">DANCING_FRONT_BOTTOM</option>
-				<option value="zmjuplb">DANCING_FRONT_LEFT</option>
-				<option value="zmjuprb">DANCING_FRONT_RIGHT</option>
-				<option value="zmwvrlt">DANCING_FRONT_TOP</option>
-				<option value="zmwvrrt">DANCING_FRONT_RIGHT2</option>
-				<option value="zmwvrtl">DANCING_FRONT_LEFT2</option>
-				<option value="zmwvrbl">APPEARS_FRONT_RIGHT</option>
-				<option value="rtt10">TWISTING_LEFT</option>
-				<option value="rttlr">TWISTING_RIGHT</option>
-				<option value="rttlb">TWISTING_BOTTOM_LEFT</option>
-				<option value="rttsr">TWISTING_TOP_RIGHT</option>
-				<option value="rttsb">TWISTING_BACKGROUND</option>
-				<option value="rttjdnrt">FLYING_TOP_RIGHT_CORNER</option>
-				<option value="rttjdnlb">FLYING_BOTTOM_LEFT_CORNER</option>
-				<option value="rttjuprb">FLYING_BOTTOM_RIGHT_CORNER</option>
-				<option value="rttjuprb2">FLYING_CENTER</option>
-				<option value="rttjupbr">APPEARS_BOTTOM_RIGHT_CORNER</option>
-				<option value="rib">SLIDING_RIGHT</option>
-				<option value="bib">SLIDING_BOTTOM</option>
-			</field>
+				<field 
+						name="slidedescription_width" 
+						type="text" 
+						default="0" 
+						label="SLIDEDESCRIPTION_WIDTH" 
+						description="SLIDEDESCRIPTION_WIDTH_DESC" 
+				/>
 
+				<field 
+						name="slidedescription_height" 
+						type="text" 
+						default="0" 
+						label="SLIDEDESCRIPTION_HEIGHT" 
+						description="SLIDEDESCRIPTION_HEIGHT_DESC" 
+				/>
 
-			<field name="descriptionposition3" type="list" default="showdescbottom" label="SHOW_ DESC" escription="SHOW_ DESC">
-				<option value="notshowdescbottom">NOTSHOWDESC2</option>
-				<option value="showdescbottom">SHOWDESC2</option>
-			</field>
+				<field 
+						name="description_background_color" 
+						type="checkbox" 
+						label="DESCRIPTION_BG_COLOR_LABEL" 
+						description="DESCRIPTION_BG_COLOR_LABEL_DESC"
+						value="1"
+						default="0"
+				/>
 
-			<field name="descriptionposition2" type="list" default="notshowdescbottom" label="DESC_POSITION2" description="DESC_POSITION2_DESC">
-				<option value="notshowdescbottom">NOTSHOWDESC2</option>
-				<option value="topdescription">TOPDESCRIPTION</option>
-				<option value="topdescriptionright">TOPDESCRIPTIONRIGHT</option>
-				<option value="advancedpostextdesc">ADVANCEDPOSTEXTDESC</option>
-			</field>
+				<field  
+						name="description_bgpicker_color" 
+						type="colorpicker"
+						label="DESCRIPTION_BGPICKER_COLOR_LABEL" 
+						description="DESCRIPTION_BGPICKER_COLOR_LABEL_DESC" 
+						default="#FFF" 
+				/>
 
-			<field type="spacer" name="text_advanced_options_spacer" label="TEXT_ADVANCED_OPTIONS_SPACER_LABEL" />
+				<field 
+					name="description_color"
+					type="colorpicker"  
+					label="DESCRIPTION_COLOR_LABEL" 
+					description="DESCRIPTION_COLOR_LABEL_DESC"
+					default="#000000" 
+				/>
 
-			<field name="position_text_x" type="text" default="85" label="POSITION_TEXT_X" description="POSITION_TEXT_X_DESC" />
+				<!-- <field 
+						name="rangesliderdescription" 
+						type="rangeslider" 
+						default="100" 
+						label="RANGESLIDER_DESCRIPTION" 
+						description="RANGESLIDER_DESCRIPTION_DESC" 
+				/> -->
 
-			<field name="position_text_y" type="text" default="150" label="POSITION_TEXT_Y" description="POSITION_TEXT_Y_DESC" />
+				<field 
+						name="effect_text" 
+						type="list" 
+						default="clipleftright" 
+						label="EFFECT_TEXT" 
+						description="EFFECT_TEXT_DESC"
+				>
+					<option value="noeffecttext">NO_EFFECT_TEXT</option>
+					<option value="clipleftright">CENTER_TO_SIDE</option>
+					<option value="cliptb">CENTER_TO_UP_AND_DOWN</option>
+					<option value="dancelb">BOUNCING_FROM_LEFT</option>
+					<option value="dancerb">BOUNCING_FROM_RIGHT</option>
+					<option value="tortuoushl">SLIDING_CURVE_LEFT</option>
+					<option value="tortousvb">SLIDING_CURVE_TOP</option>
+					<option value="zmf">FOCUSING_FRONT</option>
+					<option value="zmlr">FOCUSING_FRONT_RIGHT</option>
+					<option value="zmlb">FOCUSING_FRONT_BOTTOM</option>
+					<option value="zmsb">APPEARS_BOTTOM_LEFT</option>
+					<option value="zmjdnlb">DANCING_FRONT_BOTTOM</option>
+					<option value="zmjuplb">DANCING_FRONT_LEFT</option>
+					<option value="zmjuprb">DANCING_FRONT_RIGHT</option>
+					<option value="zmwvrlt">DANCING_FRONT_TOP</option>
+					<option value="zmwvrrt">DANCING_FRONT_RIGHT2</option>
+					<option value="zmwvrtl">DANCING_FRONT_LEFT2</option>
+					<option value="zmwvrbl">APPEARS_FRONT_RIGHT</option>
+					<option value="rtt10">TWISTING_LEFT</option>
+					<option value="rttlr">TWISTING_RIGHT</option>
+					<option value="rttlb">TWISTING_BOTTOM_LEFT</option>
+					<option value="rttsr">TWISTING_TOP_RIGHT</option>
+					<option value="rttsb">TWISTING_BACKGROUND</option>
+					<option value="rttjdnrt">FLYING_TOP_RIGHT_CORNER</option>
+					<option value="rttjdnlb">FLYING_BOTTOM_LEFT_CORNER</option>
+					<option value="rttjuprb">FLYING_BOTTOM_RIGHT_CORNER</option>
+					<option value="rttjuprb2">FLYING_CENTER</option>
+					<option value="rttjupbr">APPEARS_BOTTOM_RIGHT_CORNER</option>
+					<option value="rib">SLIDING_RIGHT</option>
+					<option value="bib">SLIDING_BOTTOM</option>
+				</field>
 
+				<field 
+						name="tag_for_description" 
+						type="list" 
+						default="h1" 
+						label="TAG_FOR_DESCRIPTION" 
+						description="TAG_FOR_DESCRIPTION_DESC"
+				>
+					<option value="h1">h1</option>
+					<option value="h2">h2</option>
+					<option value="h3">h3</option>
+					<option value="h4">h4</option>
+					<option value="h5">h5</option>
+					<option value="h6">h6</option>
+					<option value="p">p</option>
+					<option value="div">div</option>
+				</field>
 		</fieldset>
-
-
 
 		<fieldset 
 					name="navigationoptions" 
@@ -583,7 +711,6 @@
 						type="radio" 
 						default="off" 
 						label="INCLUDE_JQUERY" 
-						description="INCLUDE_JQUERY_DESC"
 				>
 					<option value="on">JQUERYON</option>
 					<option value="off">JQUERYOFF</option>
@@ -594,7 +721,6 @@
 						type="radio" 
 						default="on" 
 						label="INCLUDE_JQUERYUI" 
-						description="INCLUDE_JQUERYUI_DESC"
 				>
 					<option value="on">JQUERYUION</option>
 					<option value="off">JQUERYUIOFF</option>
