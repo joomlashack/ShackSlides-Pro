@@ -147,11 +147,11 @@ $code .="
 					opacity: ".$params->get('buttons_opacity', $defaults['buttons_opacity']).",
 					prev: {
 						className: 'sliderPrev',
-						label: '<'
+						label: ' '
 					},
 					next: {
 						className: 'sliderNext',
-						label: '>'
+						label: ' '
 					}
 				},
 				";
@@ -163,11 +163,11 @@ $code .="
 						",
 	                    prev: {
 							className: 'sliderPrev',
-							label: '<'
+							label: ' '
 						},
 						next: {
 							className: 'sliderNext',
-							label: '>'
+							label: ' '
 						}" : "")."
 				},
 				";

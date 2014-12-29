@@ -18,7 +18,14 @@ $colors = array(
 
 ?>
 .shackSlider<?php echo $params->get('container', $defaults['container']) ?> {
-	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no') : ?>
+
+	<?php
+		if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no'
+			|| ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes'
+			&& (($params->get('description_position', $defaults['description_position']) == 'above_image' ||
+				$params->get('description_position', $defaults['description_position']) == 'below_image'))))
+				:
+		?>
 
 		width: <?php echo $params->get('width', $defaults['width']) ?>px;
 		width: 100% !important;
@@ -151,34 +158,31 @@ a.sliderNext{
 	position: static;
 	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrow-prev.png") no-repeat;
     color: transparent;
-    height: 30px;
 	padding-left: 0;
 	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
     padding-right: 14px;
 	<?php else: ?>
 	padding-right: 0;
 	<?php endif; ?>
-    padding-top: 3px;
+    padding-top: 0;
 }
 
 #<?php echo $params->get('container', $defaults['container']) ?>Nav a.sliderNext{
 	position: static;
 	background: url("<?php echo JURI::base() ?>modules/mod_jsshackslides/tmpl/images/<?php echo $theme ?>/arrow-next.png") no-repeat;
     color: transparent;
-    height: 30px;
 	<?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
     padding-left: 14px;
 	<?php else: ?>
 	padding-left: 0;
 	<?php endif; ?>
     padding-right: 0;
-    padding-top: 3px;
+    padding-top: 0;
 }
 
 <?php if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes') : ?>
 #sliderContainer {
 	width: 100% !important;
-	overflow: hidden;
 }
 
 #sliderContainer div img {
@@ -194,7 +198,7 @@ a.sliderNext{
 
 .slidermanImgCont div {
 	width: 100% !important;
-	height: auto !important;
+	height: <?php echo $params->get('height'); ?>px !important;
 }
 
 .slidermanImgCont div img {
@@ -230,7 +234,7 @@ a.sliderNext{
 	-ms-box-sizing:border-box;
 	-o-box-sizing:border-box;
 	box-sizing: border-box;
-	<?php if (in_array($params->get('description_position', $defaults['description_position']), array('top', 'bottom'))) : ?>
+	<?php if (in_array($params->get('description_position', $defaults['description_position']), array('top', 'bottom', 'above_image', 'below_image'))) : ?>
 	width: 100% !important;
 	<?php else : ?>
 	height: 100%;

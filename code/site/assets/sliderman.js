@@ -637,41 +637,21 @@ var Sliderman = new function(){
 
 			var descriptionCont = newElement('DIV'); $(descriptionCont).addClass('slidermanDescriptionCont');
 
-			if(display.bootstrap && !description.hide) {
+			if(display.bootstrap && !description.hide && (description.position == 'right_image' || description.position == 'left_image')) {
 
 				descriptionCont.style.position = 'relative';
 
-				//below/above
-				if (description.position == 'above_image' || description.position == 'below_image') {
+				$(descriptionCont).addClass('span' + description.bootstrap_span_size);
+				var pos;
+				if (description.position == 'left_image')
+					pos = 'top';
+				if (description.position == 'right_image')
+					pos = 'bottom';
 
-					$(descriptionCont).addClass('span12');
-					var descriptionRow = newElement('DIV'); $(descriptionRow).addClass('row-fluid'); descriptionRow.appendChild(descriptionCont);
-					var pos;
-					if (description.position == 'above_image')
-						pos = 'top';
-					if (description.position == 'below_image')
-						pos = 'bottom';
-					var parent = document.getElement('#shackslides-row').getParent();
-					descriptionRow.inject(parent, pos);
+				var row = document.getElement('#shackslides-row');
+				descriptionCont.inject(row, pos);
 
-				}
-
-				//left/right
-				else {
-
-					$(descriptionCont).addClass('span' + description.bootstrap_span_size);
-					var pos;
-					if (description.position == 'left_image')
-						pos = 'top';
-					if (description.position == 'right_image')
-						pos = 'bottom';
-
-					var row = document.getElement('#shackslides-row');
-					descriptionCont.inject(row, pos);
-
-				}
-
-				var descriptionStl = {position: 'absolute',
+				var descriptionStl = {
 					overflow: (description.position == 'left_image' || description.position == 'right_image' || description.position == 'above_image' || description.position == 'below_image' ? 'visible' : description.overflow),
 				textAlign: 'left'};
 				if(!description) description = [];
