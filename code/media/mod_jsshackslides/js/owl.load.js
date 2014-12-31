@@ -10,9 +10,7 @@ jQuery(document).ready(function(){
 		dots: false,
 		autoHeight: true,
 		lazyLoad: true,
-		navText: [ '&lt;', '&gt;' ],
-		animateOut: 'fadeOut',
-		animateIn: 'fadeIn'
+		navText: [ '&lt;', '&gt;' ]
 	};
 	var jss = jQuery(".owl-carousel").owlCarousel(options);
 });
