@@ -22,714 +22,720 @@
 		<folder>tmpl</folder>
 		<folder>language</folder>
 	</files>
+	<media folder="media/mod_jsshackslides" destination="mod_jsshackslides">
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>images</folder>
+		<filename>index.html</filename>
+	</media>
 	<config>
-	<fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
+		<fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
 
-		<fieldset 
-					name="basic"
-		>
-
-			<field 
-					type="spacer" 
-					name="basic_options_spacer" 
-					label="BASIC_OPTIONS_SPACER_LABEL" 
-			/>
-
-			<field 
-					name="limit" 
-					type="text" 
-					default="5" 
-					label="LIMIT" 
-					description="LIMIT_DESC" 
-			/>
-
-			<field 
-					name="slide_effect" 
-					type="disablefields" 
-					default="None" 
-					label="EFFECT_SLIDE" 
-					description="EFFECT_SLIDE_DESC"
-			/>
-			
-			<field 
-					name="slide_autoplay" 
-					type="disablefields" 
-					default="true" 
-					label="SHACKSLIDES_BASIC_AUTOPLAY" 
-					description="SHACKSLIDES_BASIC_AUTOPLAY_DESC"
-			/>
-
-			<field 
-					name="slide_delay" 
-					type="text" 
-					default="5000" 
-					label="SLIDE_DELAY" 
-					description="SLIDE_DELAY_DESC" 
-			/>
-
-			<field 
-					name="slide_effect_masterspeed" 
-					type="text" 
-					default="300" 
-					label="EFFECT_MASTERSPEED" 
-					description="EFFECT_MASTERSPEED_DESC" 
-			/>
-
-			<field 
-					name="slide_onhoverstop" 
-					type="checkbox" 
-					label="ONHOVER_STOP" 
-					description="ONHOVER_STOP_DESC" 
-					value="12" 
-					default="0" 
-			/>
-
-			<field name="width" type="text" default="500" label="CONTAINERWIDTH" description="CONTAINERWIDTH_DESC" />
-
-			<field name="height" type="text" default="250" label="CONTAINERHEIGHT" description="CONTAINERHEIGHT_DESC" />
-
-			<field name="center_container_automatic" type="radio" default="centerautoenable" label="CENTER_AUTO_CONT_LABEL" description="CENTER_AUTO_CONT_LABEL_DESC">
-				<option value="centerautoenable">CENTER_ENABLE</option>
-				<option value="centerautodisable">CENTER_DISABLE</option>
-			</field>
-
-		</fieldset>
-
-
-		<fieldset 
-					name="source" 
-					label="IMAGES_SOURCE_OPTIONS_LABEL"
-		>
-				
-			<field 
-					name="source" 
-					type="disablefields" 
-					default="folder" 
-					label="SHACKSLIDE_SOURCE" 
-					description="SHACKSLIDE_SOURCE_DESC"
-			/>
-
-			<field 
-					type="spacer" 
-					name="slidessources_sourceconfiguration_spacer" 
-					label="SLIDESSOURCES_SOURCESCONFIGURATION_LABEL" 
-			/>
+			<fieldset 
+						name="basic"
+			>
 
 				<field 
-						name="folder_folder" 
-						type="directory" 
-						default="images" 
-						directory="images" 
-						label="FOLDER" 
-						description="FOLDER_DESC" 
+						type="spacer" 
+						name="basic_options_spacer" 
+						label="BASIC_OPTIONS_SPACER_LABEL" 
 				/>
 
 				<field 
-						name="joomla_category" 
-						type="category" 
-						extension="com_content" 
-						default="1" 
-						label="CATEGORY" 
-						description="CATEGORY_DESC" 
-				/>
-
-				<field 
-						name="k2_category" 
-						type="k2category" 
-						default="0" 
-						label="K2_CATEGORY" 
-						description="K2_CATEGORY_DESC" 
-				/>
-
-				<field 
-						name="flexi_category" 
-						type="category" 
-						extension="com_content" 
-						default="1" 
-						label="FLEXICONTENT_CATEGORY" 
-						description="FLEXICONTENT_CATEGORY_DESC" 
-				/>
-
-				<field 
-						name="visionary_collection" 
-						type="visionarycollection" 
-						default="" 
-						label="VISIONARYCOLLECTION" 
-						description="VISIONARYCOLLECTION_DESC" 
-				/>
-
-			<field 
-					type="spacer" 
-					name="slidessources_sourceoptions_spacer" 
-					label="SLIDESSOURCES_SOURCEOPTIONS_LABEL" 
-			/>
-
-				<field 
-						name="joomla_image_source_type" 
-						type="list" 
-						default="intro" 
-						label="JOOMLA_IMAGE_SOURCE_TYPE" 
-						description="JOOMLA_IMAGE_SOURCE_TYPE_DESC" 
-				>
-					<option value="intro">JOOMLA_IMAGE_SOURCE_INTROIMG</option>
-					<option value="full">JOOMLA_IMAGE_SOURCE_FULLARTI</option>
-					<option value="firstimage">JOOMLA_IMAGE_SOURCE_FIRSTIMAGEARTICLE</option>
-				</field>
-
-				<field 
-						name="featured" 
-						type="list" 
-						default="exclude" 
-						label="FEATURED" 
-						description="FEATURED_DESC"
-				>
-					<option value="exclude">FEATURED_EXCLUDE</option>
-					<option value="include">FEATURED_INCLUDE</option>
-					<option value="only">FEATURED_ONLYFF</option>
-				</field>
-
-				<field 
-						name="anchor_target" 
-						type="list" 
-						default="self" 
-						label="ANCHOR_TARGET" 
-						description="ANCHOR_TARGET_DESC"
-				>
-					<option value="self">SELF</option>
-					<option value="blank">BLANK</option>
-				</field>
-
-				<field 
-						name="ordering" 
-						type="list" 
-						default="ordering" 
-						label="ORDERING" 
-						description="ORDERING_DESC"
-				>
-					<option value="ordering">ORDER</option>
-					<option value="title">TITLE</option>
-					<option value="created">DATE</option>
-					<option value="hits">HITS</option>
-					<option value="RAND()">RANDOM</option>
-				</field>
-
-				<field 
-						name="ordering_dir" 
-						type="list" 
-						default="ASC" 
-						label="ORDERING_DIRECTION" 
-				>
-					<option value="ASC">ASCENDING</option>
-					<option value="DESC">DESCENDING</option>
-				</field>
-		</fieldset>
-
-		<fieldset 
-					name="descriptions" 
-					label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL"
-		>
-
-			<field 
-					type="spacer" 
-					name="templatesin_options_spacer" 
-					label="TEMPLATESIN_OPTIONS_SPACER_LABEL" 
-			/>
-
-				<field 
-						name="slidedescription_position" 
-						type="list" 
-						default="0" 
-						label="SLIDEDESC_POSITION"
-						description="SLIDEDESC_POSITION_DESC"
-				>
-					<option value="0">SLIDEDESC_POSITION_TOP</option>
-					<option value="1">SLIDEDESC_POSITION_BOTTOM</option>
-					<option value="2">SLIDEDESC_POSITION_RIGHT</option>
-					<option value="3">SLIDEDESC_POSITION_LEFT</option>
-					<option value="4">SLIDEDESC_POSITION_ABOVEOUTSIDE</option>
-					<option value="5">SLIDEDESC_POSITION_BELOWOUTSIDE</option>
-					<option value="6">SLIDEDESC_POSITION_RIGHTOUTSIDE</option>
-					<option value="7">SLIDEDESC_POSITION_LEFTOUTSIDE</option>
-				</field>
-
-				<field 
-						name="slidedescription_alignment" 
-						type="list" 
-						default="left" 
-						label="SLIDEDESC_ALIGNMENT"
-						description="SLIDEDESC_ALIGNMENT_DESC"
-				>
-					<option value="left">SLIDEDESC_ALIGNMENT_LEFT</option>
-					<option value="right">SLIDEDESC_ALIGNMENT_RIGHT</option>
-					<option value="center">SLIDEDESC_ALIGNMENT_CENTER</option>
-				</field>
-
-				<field 
-						name="slidedescription_verticalpadding" 
+						name="limit" 
 						type="text" 
-						default="0" 
-						label="SLIDEDESC_VERTICALPAD" 
-						description="SLIDEDESC_VERTICALPAD_DESC" 
+						default="5" 
+						label="LIMIT" 
+						description="LIMIT_DESC" 
 				/>
 
 				<field 
-						name="slidedescription_horizontal" 
-						type="text" 
-						default="0" 
-						label="SLIDEDESC_HORIZONTALPAD" 
-						description="SLIDEDESC_HORIZONTALPAD_DESC" 
-				/>
-				
-			<field 
-					type="spacer" 
-					name="slidesdescription_titleoptions_spacer" 
-					label="SLIDESDESCRIPTION_TITLEOPTIONS_LABEL" 
-			/>
-
-				<field 
-						name="show_title_check" 
-						type="checkbox" 
-						label="SHOW_TITLE" 
-						description="SHOW_TITLE_DESC" 
-						value="1" 
-						default="0"
-				/>
-
-				<field 
-						name="slidetitle_width" 
-						type="text" 
-						default="0" 
-						label="SLIDETITLE_WIDTH" 
-						description="SLIDETITLE_WIDTH_DESC" 
-				/>
-
-				<field 
-						name="slidetitle_height" 
-						type="text" 
-						default="0" 
-						label="SLIDETITLE_HEIGHT" 
-						description="SLIDETITLE_HEIGHT_DESC" 
-				/>
-
-				<field 
-						name="title_background_color" 
-						type="checkbox" 
-						label="TITLE_BG_COLOR_LABEL" 
-						description="TITLE_BG_COLOR_LABEL_DESC"
-						value="1"
-						default="0"
-				/>
-
-				<field  
-						name="title_bgpicker_color" 
-						type="colorpicker"
-						label="TITLE_BGPICKER_COLOR_LABEL" 
-						description="TITLE_BGPICKER_COLOR_LABEL_DESC" 
-						default="#FFF" 
-				/>
-
-				<field 
-					name="title_color"
-					type="colorpicker"  
-					label="TITLE_COLOR_LABEL" 
-					description="TITLE_COLOR_LABEL_DESC"
-					default="#000000" 
-				/>
-
-				<!-- <field 
-						name="rangeslidertitle" 
-						type="rangeslider" 
-						default="100" 
-						label="RANGESLIDER_TITLE" 
-						description="RANGESLIDER_TITLE_DESC" 
-				/> -->
-
-				<field 
-						name="effect_title" 
-						type="list" 
-						default="easeInBack" 
-						label="EFFECT_TITLE" 
-						description="EFFECT_TITLE_DESC"
-				>
-					<option value="noeffecttitle">NO_EFFECT_TEXT</option>
-					<option value="clipleftright">CENTER_TO_SIDE</option>
-					<option value="cliptb">CENTER_TO_UP_AND_DOWN</option>
-					<option value="dancelb">BOUNCING_FROM_LEFT</option>
-					<option value="dancerb">BOUNCING_FROM_RIGHT</option>
-					<option value="tortuoushl">SLIDING_CURVE_LEFT</option>
-					<option value="tortousvb">SLIDING_CURVE_TOP</option>
-					<option value="zmf">FOCUSING_FRONT</option>
-					<option value="zmlr">FOCUSING_FRONT_RIGHT</option>
-					<option value="zmlb">FOCUSING_FRONT_BOTTOM</option>
-					<option value="zmsb">APPEARS_BOTTOM_LEFT</option>
-					<option value="zmjdnlb">DANCING_FRONT_BOTTOM</option>
-					<option value="zmjuplb">DANCING_FRONT_LEFT</option>
-					<option value="zmjuprb">DANCING_FRONT_RIGHT</option>
-					<option value="zmwvrlt">DANCING_FRONT_TOP</option>
-					<option value="zmwvrrt">DANCING_FRONT_RIGHT2</option>
-					<option value="zmwvrtl">DANCING_FRONT_LEFT2</option>
-					<option value="zmwvrbl">APPEARS_FRONT_RIGHT</option>
-					<option value="rtt10">TWISTING_LEFT</option>
-					<option value="rttlr">TWISTING_RIGHT</option>
-					<option value="rttlb">TWISTING_BOTTOM_LEFT</option>
-					<option value="rttsr">TWISTING_TOP_RIGHT</option>
-					<option value="rttsb">TWISTING_BACKGROUND</option>
-					<option value="rttjdnrt">FLYING_TOP_RIGHT_CORNER</option>
-					<option value="rttjdnlb">FLYING_BOTTOM_LEFT_CORNER</option>
-					<option value="rttjuprb">FLYING_BOTTOM_RIGHT_CORNER</option>
-					<option value="rttjuprb2">FLYING_CENTER</option>
-					<option value="rttjupbr">APPEARS_BOTTOM_RIGHT_CORNER</option>
-					<option value="rib">SLIDING_RIGHT</option>
-					<option value="bib">SLIDING_BOTTOM</option>
-				</field>
-
-				<field 
-						name="tag_for_title" 
-						type="list" 
-						default="h1" 
-						label="TAG_FOR_TITLE" 
-						description="TAG_FOR_TITLE_DESC"
-				>
-					<option value="h1">h1</option>
-					<option value="h2">h2</option>
-					<option value="h3">h3</option>
-					<option value="h4">h4</option>
-					<option value="h5">h5</option>
-					<option value="h6">h6</option>
-					<option value="p">p</option>
-					<option value="div">div</option>
-				</field>
-
-			<field 
-					type="spacer" 
-					name="text_animation_options_spacer" 
-					label="SLIDESDESCRIPTION_DESCRIPTIONOPTIONS_LABEL" 
-			/>
-
-				<field 
-						name="show_description_check" 
-						type="checkbox" 
-						label="SHOW_DESCRIPTION" 
-						description="SHOW_DESCRIPTION_DESC" 
-						value="1" 
-						default="0"
-				/>
-
-				<field 
-						name="slidedescription_width" 
-						type="text" 
-						default="0" 
-						label="SLIDEDESCRIPTION_WIDTH" 
-						description="SLIDEDESCRIPTION_WIDTH_DESC" 
-				/>
-
-				<field 
-						name="slidedescription_height" 
-						type="text" 
-						default="0" 
-						label="SLIDEDESCRIPTION_HEIGHT" 
-						description="SLIDEDESCRIPTION_HEIGHT_DESC" 
-				/>
-
-				<field 
-						name="description_background_color" 
-						type="checkbox" 
-						label="DESCRIPTION_BG_COLOR_LABEL" 
-						description="DESCRIPTION_BG_COLOR_LABEL_DESC"
-						value="1"
-						default="0"
-				/>
-
-				<field  
-						name="description_bgpicker_color" 
-						type="colorpicker"
-						label="DESCRIPTION_BGPICKER_COLOR_LABEL" 
-						description="DESCRIPTION_BGPICKER_COLOR_LABEL_DESC" 
-						default="#FFF" 
-				/>
-
-				<field 
-					name="description_color"
-					type="colorpicker"  
-					label="DESCRIPTION_COLOR_LABEL" 
-					description="DESCRIPTION_COLOR_LABEL_DESC"
-					default="#000000" 
-				/>
-
-				<!-- <field 
-						name="rangesliderdescription" 
-						type="rangeslider" 
-						default="100" 
-						label="RANGESLIDER_DESCRIPTION" 
-						description="RANGESLIDER_DESCRIPTION_DESC" 
-				/> -->
-
-				<field 
-						name="effect_text" 
-						type="list" 
-						default="clipleftright" 
-						label="EFFECT_TEXT" 
-						description="EFFECT_TEXT_DESC"
-				>
-					<option value="noeffecttext">NO_EFFECT_TEXT</option>
-					<option value="clipleftright">CENTER_TO_SIDE</option>
-					<option value="cliptb">CENTER_TO_UP_AND_DOWN</option>
-					<option value="dancelb">BOUNCING_FROM_LEFT</option>
-					<option value="dancerb">BOUNCING_FROM_RIGHT</option>
-					<option value="tortuoushl">SLIDING_CURVE_LEFT</option>
-					<option value="tortousvb">SLIDING_CURVE_TOP</option>
-					<option value="zmf">FOCUSING_FRONT</option>
-					<option value="zmlr">FOCUSING_FRONT_RIGHT</option>
-					<option value="zmlb">FOCUSING_FRONT_BOTTOM</option>
-					<option value="zmsb">APPEARS_BOTTOM_LEFT</option>
-					<option value="zmjdnlb">DANCING_FRONT_BOTTOM</option>
-					<option value="zmjuplb">DANCING_FRONT_LEFT</option>
-					<option value="zmjuprb">DANCING_FRONT_RIGHT</option>
-					<option value="zmwvrlt">DANCING_FRONT_TOP</option>
-					<option value="zmwvrrt">DANCING_FRONT_RIGHT2</option>
-					<option value="zmwvrtl">DANCING_FRONT_LEFT2</option>
-					<option value="zmwvrbl">APPEARS_FRONT_RIGHT</option>
-					<option value="rtt10">TWISTING_LEFT</option>
-					<option value="rttlr">TWISTING_RIGHT</option>
-					<option value="rttlb">TWISTING_BOTTOM_LEFT</option>
-					<option value="rttsr">TWISTING_TOP_RIGHT</option>
-					<option value="rttsb">TWISTING_BACKGROUND</option>
-					<option value="rttjdnrt">FLYING_TOP_RIGHT_CORNER</option>
-					<option value="rttjdnlb">FLYING_BOTTOM_LEFT_CORNER</option>
-					<option value="rttjuprb">FLYING_BOTTOM_RIGHT_CORNER</option>
-					<option value="rttjuprb2">FLYING_CENTER</option>
-					<option value="rttjupbr">APPEARS_BOTTOM_RIGHT_CORNER</option>
-					<option value="rib">SLIDING_RIGHT</option>
-					<option value="bib">SLIDING_BOTTOM</option>
-				</field>
-
-				<field 
-						name="tag_for_description" 
-						type="list" 
-						default="h1" 
-						label="TAG_FOR_DESCRIPTION" 
-						description="TAG_FOR_DESCRIPTION_DESC"
-				>
-					<option value="h1">h1</option>
-					<option value="h2">h2</option>
-					<option value="h3">h3</option>
-					<option value="h4">h4</option>
-					<option value="h5">h5</option>
-					<option value="h6">h6</option>
-					<option value="p">p</option>
-					<option value="div">div</option>
-				</field>
-		</fieldset>
-
-		<fieldset 
-					name="navigationoptions" 
-					label="NAVIGATION_OPTIONS_LABEL"
-		>
-
-			<field 
-					type="spacer" 
-					name="navigation_bar_spacer" 
-					label="NAVIGATIONBAR_SPACER_LABEL" 
-			/>
-
-				<field 
-						name="showdots" 
+						name="slide_effect" 
 						type="disablefields" 
-						default="2" 
-						label="NAVIGATIONDOTS" 
-						description="NAVIGATIONDOTS_DESC"
+						default="None" 
+						label="EFFECT_SLIDE" 
+						description="EFFECT_SLIDE_DESC"
+				/>
+				
+				<field 
+						name="slide_autoplay" 
+						type="disablefields" 
+						default="true" 
+						label="SHACKSLIDES_BASIC_AUTOPLAY" 
+						description="SHACKSLIDES_BASIC_AUTOPLAY_DESC"
 				/>
 
 				<field 
-						name="navigationnumbers" 
+						name="slide_delay" 
+						type="text" 
+						default="5000" 
+						label="SLIDE_DELAY" 
+						description="SLIDE_DELAY_DESC" 
+				/>
+
+				<field 
+						name="slide_effect_masterspeed" 
+						type="text" 
+						default="300" 
+						label="EFFECT_MASTERSPEED" 
+						description="EFFECT_MASTERSPEED_DESC" 
+				/>
+
+				<field 
+						name="slide_onhoverstop" 
 						type="checkbox" 
-						label="NAVIGATIONNUMBERS" 
-						description="NAVIGATIONNUMBERS_DESC" 
-						value="1" 
+						label="ONHOVER_STOP" 
+						description="ONHOVER_STOP_DESC" 
+						value="12" 
 						default="0" 
 				/>
 
-				<field 
-						name="orientationdots" 
-						type="list" 
-						default="1" 
-						label="ORIENTATIONDOTS" 
-						description="ORIENTATIONDOTS_DESC"
-				>
-					<option value="1">HORIZONTAL_DOTS</option>
-					<option value="2">VERTICAL_DOTS</option>
+				<field name="width" type="text" default="500" label="CONTAINERWIDTH" description="CONTAINERWIDTH_DESC" />
+
+				<field name="height" type="text" default="250" label="CONTAINERHEIGHT" description="CONTAINERHEIGHT_DESC" />
+
+				<field name="center_container_automatic" type="radio" default="centerautoenable" label="CENTER_AUTO_CONT_LABEL" description="CENTER_AUTO_CONT_LABEL_DESC">
+					<option value="centerautoenable">CENTER_ENABLE</option>
+					<option value="centerautodisable">CENTER_DISABLE</option>
 				</field>
 
-				<field 
-						name="horizontalaligndots" 
-						type="list" 
-						default="center" 
-						label="HORIZONTALALIGNDOTS" 
-						description="HORIZONTALALIGNDOTS_DESC"
-				>
-					<option value="left">HORIZONTALALIGNDOTS_LEFT</option>
-					<option value="right">HORIZONTALALIGNDOTS_RIGHT</option>
-					<option value="center">HORIZONTALALIGNDOTS_CENTER</option>
-				</field>
+			</fieldset>
 
-				<field 
-						name="verticalaligndots" 
-						type="list" 
-						default="bottom" 
-						label="VERTICALALIGNDOTS" 
-						description="VERTICALALIGNDOTS_DESC"
-				>
-					<option value="top">VERTICALALIGNDOTS_TOP</option>
-					<option value="bottom">VERTICALALIGNDOTS_BOTTOM</option>
-					<option value="center">VERTICALALIGNDOTS_CENTER</option>
-				</field>
 
+			<fieldset 
+						name="source" 
+						label="IMAGES_SOURCE_OPTIONS_LABEL"
+			>
+					
 				<field 
-						name="horizontalpaddingdots" 
-						type="text" 
-						default="0" 
-						label="HORIZONTALPADDING_DOTS" 
-						description="HORIZONTALPADDING_DOTS_DESC" 
+						name="source" 
+						type="disablefields" 
+						default="folder" 
+						label="SHACKSLIDE_SOURCE" 
+						description="SHACKSLIDE_SOURCE_DESC"
 				/>
 
 				<field 
-						name="verticalpaddingdots" 
-						type="text" 
-						default="0" 
-						label="VERTICALPADDING_DOTS" 
-						description="VERTICALPADDING_DOTS_DESC" 
+						type="spacer" 
+						name="slidessources_sourceconfiguration_spacer" 
+						label="SLIDESSOURCES_SOURCESCONFIGURATION_LABEL" 
 				/>
 
-				<field 
-						name="rangesliderdots" 
-						type="rangeslider" 
-						default="100" 
-						label="RANGESLIDER_DOTS" 
-						description="RANGESLIDER_DOTS_DESC" 
-				/>
+					<field 
+							name="folder_folder" 
+							type="directory" 
+							default="images" 
+							directory="images" 
+							label="FOLDER" 
+							description="FOLDER_DESC" 
+					/>
+
+					<field 
+							name="joomla_category" 
+							type="category" 
+							extension="com_content" 
+							default="1" 
+							label="CATEGORY" 
+							description="CATEGORY_DESC" 
+					/>
+
+					<field 
+							name="k2_category" 
+							type="k2category" 
+							default="0" 
+							label="K2_CATEGORY" 
+							description="K2_CATEGORY_DESC" 
+					/>
+
+					<field 
+							name="flexi_category" 
+							type="category" 
+							extension="com_content" 
+							default="1" 
+							label="FLEXICONTENT_CATEGORY" 
+							description="FLEXICONTENT_CATEGORY_DESC" 
+					/>
+
+					<field 
+							name="visionary_collection" 
+							type="visionarycollection" 
+							default="" 
+							label="VISIONARYCOLLECTION" 
+							description="VISIONARYCOLLECTION_DESC" 
+					/>
 
 				<field 
-						name="navigationarrows_customdots" 
-						type="customnavigation" 
-						default="n03" 
-						label="NAVIGATIONARROWS_CUSTOMDOTS" 
-						description="NAVIGATIONARROWS_CUSTOMDOTS_DESC"
+						type="spacer" 
+						name="slidessources_sourceoptions_spacer" 
+						label="SLIDESSOURCES_SOURCEOPTIONS_LABEL" 
 				/>
 
+					<field 
+							name="joomla_image_source_type" 
+							type="list" 
+							default="intro" 
+							label="JOOMLA_IMAGE_SOURCE_TYPE" 
+							description="JOOMLA_IMAGE_SOURCE_TYPE_DESC" 
+					>
+						<option value="intro">JOOMLA_IMAGE_SOURCE_INTROIMG</option>
+						<option value="full">JOOMLA_IMAGE_SOURCE_FULLARTI</option>
+						<option value="firstimage">JOOMLA_IMAGE_SOURCE_FIRSTIMAGEARTICLE</option>
+					</field>
+
+					<field 
+							name="featured" 
+							type="list" 
+							default="exclude" 
+							label="FEATURED" 
+							description="FEATURED_DESC"
+					>
+						<option value="exclude">FEATURED_EXCLUDE</option>
+						<option value="include">FEATURED_INCLUDE</option>
+						<option value="only">FEATURED_ONLYFF</option>
+					</field>
+
+					<field 
+							name="anchor_target" 
+							type="list" 
+							default="self" 
+							label="ANCHOR_TARGET" 
+							description="ANCHOR_TARGET_DESC"
+					>
+						<option value="self">SELF</option>
+						<option value="blank">BLANK</option>
+					</field>
+
+					<field 
+							name="ordering" 
+							type="list" 
+							default="ordering" 
+							label="ORDERING" 
+							description="ORDERING_DESC"
+					>
+						<option value="ordering">ORDER</option>
+						<option value="title">TITLE</option>
+						<option value="created">DATE</option>
+						<option value="hits">HITS</option>
+						<option value="RAND()">RANDOM</option>
+					</field>
+
+					<field 
+							name="ordering_dir" 
+							type="list" 
+							default="ASC" 
+							label="ORDERING_DIRECTION" 
+					>
+						<option value="ASC">ASCENDING</option>
+						<option value="DESC">DESCENDING</option>
+					</field>
+			</fieldset>
+
+			<fieldset 
+						name="descriptions" 
+						label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL"
+			>
+
 				<field 
-						name="navigationdots_media" 
-						type="media" 
-						directory=""
-						preview="true" 
-						label="NAVIGATIONDOTS_MEDIA" 
-						description="NAVIGATIONDOTS_MEDIA_DESC"
+						type="spacer" 
+						name="templatesin_options_spacer" 
+						label="TEMPLATESIN_OPTIONS_SPACER_LABEL" 
 				/>
-				
-			<field 
+
+					<field 
+							name="slidedescription_position" 
+							type="list" 
+							default="0" 
+							label="SLIDEDESC_POSITION"
+							description="SLIDEDESC_POSITION_DESC"
+					>
+						<option value="0">SLIDEDESC_POSITION_TOP</option>
+						<option value="1">SLIDEDESC_POSITION_BOTTOM</option>
+						<option value="2">SLIDEDESC_POSITION_RIGHT</option>
+						<option value="3">SLIDEDESC_POSITION_LEFT</option>
+						<option value="4">SLIDEDESC_POSITION_ABOVEOUTSIDE</option>
+						<option value="5">SLIDEDESC_POSITION_BELOWOUTSIDE</option>
+						<option value="6">SLIDEDESC_POSITION_RIGHTOUTSIDE</option>
+						<option value="7">SLIDEDESC_POSITION_LEFTOUTSIDE</option>
+					</field>
+
+					<field 
+							name="slidedescription_alignment" 
+							type="list" 
+							default="left" 
+							label="SLIDEDESC_ALIGNMENT"
+							description="SLIDEDESC_ALIGNMENT_DESC"
+					>
+						<option value="left">SLIDEDESC_ALIGNMENT_LEFT</option>
+						<option value="right">SLIDEDESC_ALIGNMENT_RIGHT</option>
+						<option value="center">SLIDEDESC_ALIGNMENT_CENTER</option>
+					</field>
+
+					<field 
+							name="slidedescription_verticalpadding" 
+							type="text" 
+							default="0" 
+							label="SLIDEDESC_VERTICALPAD" 
+							description="SLIDEDESC_VERTICALPAD_DESC" 
+					/>
+
+					<field 
+							name="slidedescription_horizontal" 
+							type="text" 
+							default="0" 
+							label="SLIDEDESC_HORIZONTALPAD" 
+							description="SLIDEDESC_HORIZONTALPAD_DESC" 
+					/>
+					
+				<field 
+						type="spacer" 
+						name="slidesdescription_titleoptions_spacer" 
+						label="SLIDESDESCRIPTION_TITLEOPTIONS_LABEL" 
+				/>
+
+					<field 
+							name="show_title_check" 
+							type="checkbox" 
+							label="SHOW_TITLE" 
+							description="SHOW_TITLE_DESC" 
+							value="1" 
+							default="0"
+					/>
+
+					<field 
+							name="slidetitle_width" 
+							type="text" 
+							default="0" 
+							label="SLIDETITLE_WIDTH" 
+							description="SLIDETITLE_WIDTH_DESC" 
+					/>
+
+					<field 
+							name="slidetitle_height" 
+							type="text" 
+							default="0" 
+							label="SLIDETITLE_HEIGHT" 
+							description="SLIDETITLE_HEIGHT_DESC" 
+					/>
+
+					<field 
+							name="title_background_color" 
+							type="checkbox" 
+							label="TITLE_BG_COLOR_LABEL" 
+							description="TITLE_BG_COLOR_LABEL_DESC"
+							value="1"
+							default="0"
+					/>
+
+					<field  
+							name="title_bgpicker_color" 
+							type="colorpicker"
+							label="TITLE_BGPICKER_COLOR_LABEL" 
+							description="TITLE_BGPICKER_COLOR_LABEL_DESC" 
+							default="#FFF" 
+					/>
+
+					<field 
+						name="title_color"
+						type="colorpicker"  
+						label="TITLE_COLOR_LABEL" 
+						description="TITLE_COLOR_LABEL_DESC"
+						default="#000000" 
+					/>
+
+					<!-- <field 
+							name="rangeslidertitle" 
+							type="rangeslider" 
+							default="100" 
+							label="RANGESLIDER_TITLE" 
+							description="RANGESLIDER_TITLE_DESC" 
+					/> -->
+
+					<field 
+							name="effect_title" 
+							type="list" 
+							default="easeInBack" 
+							label="EFFECT_TITLE" 
+							description="EFFECT_TITLE_DESC"
+					>
+						<option value="noeffecttitle">NO_EFFECT_TEXT</option>
+						<option value="clipleftright">CENTER_TO_SIDE</option>
+						<option value="cliptb">CENTER_TO_UP_AND_DOWN</option>
+						<option value="dancelb">BOUNCING_FROM_LEFT</option>
+						<option value="dancerb">BOUNCING_FROM_RIGHT</option>
+						<option value="tortuoushl">SLIDING_CURVE_LEFT</option>
+						<option value="tortousvb">SLIDING_CURVE_TOP</option>
+						<option value="zmf">FOCUSING_FRONT</option>
+						<option value="zmlr">FOCUSING_FRONT_RIGHT</option>
+						<option value="zmlb">FOCUSING_FRONT_BOTTOM</option>
+						<option value="zmsb">APPEARS_BOTTOM_LEFT</option>
+						<option value="zmjdnlb">DANCING_FRONT_BOTTOM</option>
+						<option value="zmjuplb">DANCING_FRONT_LEFT</option>
+						<option value="zmjuprb">DANCING_FRONT_RIGHT</option>
+						<option value="zmwvrlt">DANCING_FRONT_TOP</option>
+						<option value="zmwvrrt">DANCING_FRONT_RIGHT2</option>
+						<option value="zmwvrtl">DANCING_FRONT_LEFT2</option>
+						<option value="zmwvrbl">APPEARS_FRONT_RIGHT</option>
+						<option value="rtt10">TWISTING_LEFT</option>
+						<option value="rttlr">TWISTING_RIGHT</option>
+						<option value="rttlb">TWISTING_BOTTOM_LEFT</option>
+						<option value="rttsr">TWISTING_TOP_RIGHT</option>
+						<option value="rttsb">TWISTING_BACKGROUND</option>
+						<option value="rttjdnrt">FLYING_TOP_RIGHT_CORNER</option>
+						<option value="rttjdnlb">FLYING_BOTTOM_LEFT_CORNER</option>
+						<option value="rttjuprb">FLYING_BOTTOM_RIGHT_CORNER</option>
+						<option value="rttjuprb2">FLYING_CENTER</option>
+						<option value="rttjupbr">APPEARS_BOTTOM_RIGHT_CORNER</option>
+						<option value="rib">SLIDING_RIGHT</option>
+						<option value="bib">SLIDING_BOTTOM</option>
+					</field>
+
+					<field 
+							name="tag_for_title" 
+							type="list" 
+							default="h1" 
+							label="TAG_FOR_TITLE" 
+							description="TAG_FOR_TITLE_DESC"
+					>
+						<option value="h1">h1</option>
+						<option value="h2">h2</option>
+						<option value="h3">h3</option>
+						<option value="h4">h4</option>
+						<option value="h5">h5</option>
+						<option value="h6">h6</option>
+						<option value="p">p</option>
+						<option value="div">div</option>
+					</field>
+
+				<field 
+						type="spacer" 
+						name="text_animation_options_spacer" 
+						label="SLIDESDESCRIPTION_DESCRIPTIONOPTIONS_LABEL" 
+				/>
+
+					<field 
+							name="show_description_check" 
+							type="checkbox" 
+							label="SHOW_DESCRIPTION" 
+							description="SHOW_DESCRIPTION_DESC" 
+							value="1" 
+							default="0"
+					/>
+
+					<field 
+							name="slidedescription_width" 
+							type="text" 
+							default="0" 
+							label="SLIDEDESCRIPTION_WIDTH" 
+							description="SLIDEDESCRIPTION_WIDTH_DESC" 
+					/>
+
+					<field 
+							name="slidedescription_height" 
+							type="text" 
+							default="0" 
+							label="SLIDEDESCRIPTION_HEIGHT" 
+							description="SLIDEDESCRIPTION_HEIGHT_DESC" 
+					/>
+
+					<field 
+							name="description_background_color" 
+							type="checkbox" 
+							label="DESCRIPTION_BG_COLOR_LABEL" 
+							description="DESCRIPTION_BG_COLOR_LABEL_DESC"
+							value="1"
+							default="0"
+					/>
+
+					<field  
+							name="description_bgpicker_color" 
+							type="colorpicker"
+							label="DESCRIPTION_BGPICKER_COLOR_LABEL" 
+							description="DESCRIPTION_BGPICKER_COLOR_LABEL_DESC" 
+							default="#FFF" 
+					/>
+
+					<field 
+						name="description_color"
+						type="colorpicker"  
+						label="DESCRIPTION_COLOR_LABEL" 
+						description="DESCRIPTION_COLOR_LABEL_DESC"
+						default="#000000" 
+					/>
+
+					<!-- <field 
+							name="rangesliderdescription" 
+							type="rangeslider" 
+							default="100" 
+							label="RANGESLIDER_DESCRIPTION" 
+							description="RANGESLIDER_DESCRIPTION_DESC" 
+					/> -->
+
+					<field 
+							name="effect_text" 
+							type="list" 
+							default="clipleftright" 
+							label="EFFECT_TEXT" 
+							description="EFFECT_TEXT_DESC"
+					>
+						<option value="noeffecttext">NO_EFFECT_TEXT</option>
+						<option value="clipleftright">CENTER_TO_SIDE</option>
+						<option value="cliptb">CENTER_TO_UP_AND_DOWN</option>
+						<option value="dancelb">BOUNCING_FROM_LEFT</option>
+						<option value="dancerb">BOUNCING_FROM_RIGHT</option>
+						<option value="tortuoushl">SLIDING_CURVE_LEFT</option>
+						<option value="tortousvb">SLIDING_CURVE_TOP</option>
+						<option value="zmf">FOCUSING_FRONT</option>
+						<option value="zmlr">FOCUSING_FRONT_RIGHT</option>
+						<option value="zmlb">FOCUSING_FRONT_BOTTOM</option>
+						<option value="zmsb">APPEARS_BOTTOM_LEFT</option>
+						<option value="zmjdnlb">DANCING_FRONT_BOTTOM</option>
+						<option value="zmjuplb">DANCING_FRONT_LEFT</option>
+						<option value="zmjuprb">DANCING_FRONT_RIGHT</option>
+						<option value="zmwvrlt">DANCING_FRONT_TOP</option>
+						<option value="zmwvrrt">DANCING_FRONT_RIGHT2</option>
+						<option value="zmwvrtl">DANCING_FRONT_LEFT2</option>
+						<option value="zmwvrbl">APPEARS_FRONT_RIGHT</option>
+						<option value="rtt10">TWISTING_LEFT</option>
+						<option value="rttlr">TWISTING_RIGHT</option>
+						<option value="rttlb">TWISTING_BOTTOM_LEFT</option>
+						<option value="rttsr">TWISTING_TOP_RIGHT</option>
+						<option value="rttsb">TWISTING_BACKGROUND</option>
+						<option value="rttjdnrt">FLYING_TOP_RIGHT_CORNER</option>
+						<option value="rttjdnlb">FLYING_BOTTOM_LEFT_CORNER</option>
+						<option value="rttjuprb">FLYING_BOTTOM_RIGHT_CORNER</option>
+						<option value="rttjuprb2">FLYING_CENTER</option>
+						<option value="rttjupbr">APPEARS_BOTTOM_RIGHT_CORNER</option>
+						<option value="rib">SLIDING_RIGHT</option>
+						<option value="bib">SLIDING_BOTTOM</option>
+					</field>
+
+					<field 
+							name="tag_for_description" 
+							type="list" 
+							default="h1" 
+							label="TAG_FOR_DESCRIPTION" 
+							description="TAG_FOR_DESCRIPTION_DESC"
+					>
+						<option value="h1">h1</option>
+						<option value="h2">h2</option>
+						<option value="h3">h3</option>
+						<option value="h4">h4</option>
+						<option value="h5">h5</option>
+						<option value="h6">h6</option>
+						<option value="p">p</option>
+						<option value="div">div</option>
+					</field>
+			</fieldset>
+
+			<fieldset 
+						name="navigationoptions" 
+						label="NAVIGATION_OPTIONS_LABEL"
+			>
+
+				<field 
+						type="spacer" 
+						name="navigation_bar_spacer" 
+						label="NAVIGATIONBAR_SPACER_LABEL" 
+				/>
+
+					<field 
+							name="showdots" 
+							type="disablefields" 
+							default="2" 
+							label="NAVIGATIONDOTS" 
+							description="NAVIGATIONDOTS_DESC"
+					/>
+
+					<field 
+							name="navigationnumbers" 
+							type="checkbox" 
+							label="NAVIGATIONNUMBERS" 
+							description="NAVIGATIONNUMBERS_DESC" 
+							value="1" 
+							default="0" 
+					/>
+
+					<field 
+							name="orientationdots" 
+							type="list" 
+							default="1" 
+							label="ORIENTATIONDOTS" 
+							description="ORIENTATIONDOTS_DESC"
+					>
+						<option value="1">HORIZONTAL_DOTS</option>
+						<option value="2">VERTICAL_DOTS</option>
+					</field>
+
+					<field 
+							name="horizontalaligndots" 
+							type="list" 
+							default="center" 
+							label="HORIZONTALALIGNDOTS" 
+							description="HORIZONTALALIGNDOTS_DESC"
+					>
+						<option value="left">HORIZONTALALIGNDOTS_LEFT</option>
+						<option value="right">HORIZONTALALIGNDOTS_RIGHT</option>
+						<option value="center">HORIZONTALALIGNDOTS_CENTER</option>
+					</field>
+
+					<field 
+							name="verticalaligndots" 
+							type="list" 
+							default="bottom" 
+							label="VERTICALALIGNDOTS" 
+							description="VERTICALALIGNDOTS_DESC"
+					>
+						<option value="top">VERTICALALIGNDOTS_TOP</option>
+						<option value="bottom">VERTICALALIGNDOTS_BOTTOM</option>
+						<option value="center">VERTICALALIGNDOTS_CENTER</option>
+					</field>
+
+					<field 
+							name="horizontalpaddingdots" 
+							type="text" 
+							default="0" 
+							label="HORIZONTALPADDING_DOTS" 
+							description="HORIZONTALPADDING_DOTS_DESC" 
+					/>
+
+					<field 
+							name="verticalpaddingdots" 
+							type="text" 
+							default="0" 
+							label="VERTICALPADDING_DOTS" 
+							description="VERTICALPADDING_DOTS_DESC" 
+					/>
+
+					<field 
+							name="rangesliderdots" 
+							type="rangeslider" 
+							default="100" 
+							label="RANGESLIDER_DOTS" 
+							description="RANGESLIDER_DOTS_DESC" 
+					/>
+
+					<field 
+							name="navigationarrows_customdots" 
+							type="customnavigation" 
+							default="n03" 
+							label="NAVIGATIONARROWS_CUSTOMDOTS" 
+							description="NAVIGATIONARROWS_CUSTOMDOTS_DESC"
+					/>
+
+					<field 
+							name="navigationdots_media" 
+							type="media" 
+							directory=""
+							preview="true" 
+							label="NAVIGATIONDOTS_MEDIA" 
+							description="NAVIGATIONDOTS_MEDIA_DESC"
+					/>
+					
+				<field 
+						type="spacer" 
+						name="prenextbutton_bar_spacer" 
+						label="PRENEXTBUTTON_SPACER_LABEL" 
+				/>
+
+					<field 
+							name="navigationarrows" 
+							type="list" 
+							default="2" 
+							label="NAVIGATIONARROWS" 
+							description="NAVIGATIONARROWS_DESC"
+					>
+						<option value="2">ALWAYS_ARROWS</option>
+						<option value="0">NO_ARROWS</option>
+						<option value="1">ONHOVER_ARROWS</option>
+					</field>
+
+					<field 
+							name="rangesliderrows" 
+							type="rangeslider" 
+							default="100" 
+							label="RANGESLIDER_ROWS" 
+							description="RANGESLIDER_ROWS_DESC" 
+					/>
+
+					<field 
+							name="navigationarrows_customrows" 
+							type="customnavigation" 
+							default="d17" 
+							label="NAVIGATIONARROWS_CUSTOMROWS" 
+							description="NAVIGATIONARROWS_CUSTOMROWS_DESC"
+					/>
+
+					<field 
+							name="navigationarrows_media" 
+							type="media" 
+							directory=""
+							preview="true" 
+							label="NAVIGATIONARROWS_MEDIA" 
+							description="NAVIGATIONARROWS_MEDIA_DESC"
+					/>
+
+			</fieldset>
+
+			<fieldset 
+						name="advanced" 
+						label="ADVANCED_BOTH"
+			>
+				<field 
+						type="spacer" 
+						name="module_advanced_spacer" 
+						label="MODULEADVANCED_SPACER_LABEL" 
+				/>
+
+				    <field 
+				    		name="moduleclass_sfx" 
+				    		type="text" 
+				    		label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" 
+				    />
+
+				    <field 
+				    		name="container" 
+				    		type="text" 
+				    		default="slider" 
+				    		label="CONTAINER" 
+				    />
+
+				    <field 
+				    		name="main_container_class" 
+				    		type="text" 
+				    		default="" 
+				    		label="MAIN_CONTAINER_CLASS" 
+				    />
+
+			    <field 
 					type="spacer" 
-					name="prenextbutton_bar_spacer" 
-					label="PRENEXTBUTTON_SPACER_LABEL" 
-			/>
-
-				<field 
-						name="navigationarrows" 
-						type="list" 
-						default="2" 
-						label="NAVIGATIONARROWS" 
-						description="NAVIGATIONARROWS_DESC"
-				>
-					<option value="2">ALWAYS_ARROWS</option>
-					<option value="0">NO_ARROWS</option>
-					<option value="1">ONHOVER_ARROWS</option>
-				</field>
-
-				<field 
-						name="rangesliderrows" 
-						type="rangeslider" 
-						default="100" 
-						label="RANGESLIDER_ROWS" 
-						description="RANGESLIDER_ROWS_DESC" 
+					name="javascript_advanced_spacer" 
+					label="JAVASCRIPTADVANCED_SPACER_LABEL" 
 				/>
 
-				<field 
-						name="navigationarrows_customrows" 
-						type="customnavigation" 
-						default="d17" 
-						label="NAVIGATIONARROWS_CUSTOMROWS" 
-						description="NAVIGATIONARROWS_CUSTOMROWS_DESC"
-				/>
+					<field 
+							name="includejquery" 
+							type="radio" 
+							default="off" 
+							label="INCLUDE_JQUERY" 
+					>
+						<option value="on">JQUERYON</option>
+						<option value="off">JQUERYOFF</option>
+					</field>
 
-				<field 
-						name="navigationarrows_media" 
-						type="media" 
-						directory=""
-						preview="true" 
-						label="NAVIGATIONARROWS_MEDIA" 
-						description="NAVIGATIONARROWS_MEDIA_DESC"
-				/>
+					<field 
+							name="includejqueryui" 
+							type="radio" 
+							default="on" 
+							label="INCLUDE_JQUERYUI" 
+					>
+						<option value="on">JQUERYUION</option>
+						<option value="off">JQUERYUIOFF</option>
+					</field>
+					
+			</fieldset>
 
-		</fieldset>
+		</fields>
 
-		<fieldset 
-					name="advanced" 
-					label="ADVANCED_BOTH"
-		>
-			<field 
-					type="spacer" 
-					name="module_advanced_spacer" 
-					label="MODULEADVANCED_SPACER_LABEL" 
-			/>
-
-			    <field 
-			    		name="moduleclass_sfx" 
-			    		type="text" 
-			    		label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" 
-			    />
-
-			    <field 
-			    		name="container" 
-			    		type="text" 
-			    		default="slider" 
-			    		label="CONTAINER" 
-			    />
-
-			    <field 
-			    		name="main_container_class" 
-			    		type="text" 
-			    		default="" 
-			    		label="MAIN_CONTAINER_CLASS" 
-			    />
-
-		    <field 
-				type="spacer" 
-				name="javascript_advanced_spacer" 
-				label="JAVASCRIPTADVANCED_SPACER_LABEL" 
-			/>
-
-				<field 
-						name="includejquery" 
-						type="radio" 
-						default="off" 
-						label="INCLUDE_JQUERY" 
-				>
-					<option value="on">JQUERYON</option>
-					<option value="off">JQUERYOFF</option>
-				</field>
-
-				<field 
-						name="includejqueryui" 
-						type="radio" 
-						default="on" 
-						label="INCLUDE_JQUERYUI" 
-				>
-					<option value="on">JQUERYUION</option>
-					<option value="off">JQUERYUIOFF</option>
-				</field>
-				
-		</fieldset>
-
-	</fields>
-
-</config>
+	</config>
 
 </extension>
