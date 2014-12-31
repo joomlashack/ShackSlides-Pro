@@ -35,24 +35,8 @@ class JFormFieldDisableFields extends JFormFieldList
 		}
 		elseif (strpos($this->name , "slide_effect") !== false)
 		{
-			$options []= JHtml::_('select.option', "None", JText::_('EFFECT_NONE'));
-			$options []= JHtml::_('select.option', "switch", JText::_('EFFECT_SWITCH'));
-			$options []= JHtml::_('select.option', "rotateoverlap", JText::_('EFFECT_ROTATE_OVERLAP'));
-			$options []= JHtml::_('select.option', "Rotate_Relay", JText::_('EFFECT_ROTATE_RELAY'));
-			$options []= JHtml::_('select.option', "doors", JText::_('EFFECT_DOORS'));
-			$options []= JHtml::_('select.option', "Rotate-in+-out-", JText::_('EFFECT_ROTATEIN+_ROTATEOUT-'));
-			$options []= JHtml::_('select.option', "Fly-Twins", JText::_('EFFECT_FLYTWINS'));
-			$options []= JHtml::_('select.option', "Rotatein-out+", JText::_('EFFECT_ROTATEINMIN_OUTPLUS'));
-			$options []= JHtml::_('select.option', "Rotate_Axis_up_overlap", JText::_('EFFECT_ROTATE_AXIS_UP_OVERLAP'));
-			$options []= JHtml::_('select.option', "Chess_Replace_TB", JText::_('EFFECT_CHESS_REPLACE_TB'));
-			$options []= JHtml::_('select.option', "Chess_Replace_LR", JText::_('EFFECT_CHESS_REPLACE_LR'));
-			$options []= JHtml::_('select.option', "Shift_TB", JText::_('EFFECT_SHIFT_TB'));
-			$options []= JHtml::_('select.option', "Shift_LR", JText::_('EFFECT_SHIFT_LR'));
-			$options []= JHtml::_('select.option', "Return_TB", JText::_('EFFECT_RETURN_TB'));
-			$options []= JHtml::_('select.option', "Return_LR", JText::_('EFFECT_RETURN_LR'));
-			$options []= JHtml::_('select.option', "Rotate_Axis_down", JText::_('EFFECT_ROTATE_AXIS_DOWN'));
-			$options []= JHtml::_('select.option', "Extrude_Replace", JText::_('EFFECT_EXTRUDE_REPLACE'));
-			$options []= JHtml::_('select.option', "Fade", JText::_('EFFECT_FADE'));
+			$options []= JHtml::_('select.option', "none", JText::_('EFFECT_NONE'));
+			$options []= JHtml::_('select.option', "slide", JText::_('EFFECT_SLIDE_SLIDE'));
 		}
 		elseif(strpos($this->name , "source") !== false)
 		{

@@ -52,7 +52,7 @@
 				<field 
 						name="slide_effect" 
 						type="disablefields" 
-						default="None" 
+						default="slide" 
 						label="EFFECT_SLIDE" 
 						description="EFFECT_SLIDE_DESC"
 				/>
@@ -87,7 +87,7 @@
 						label="ONHOVER_STOP" 
 						description="ONHOVER_STOP_DESC" 
 						value="12" 
-						default="0" 
+						default="1" 
 				/>
 
 				<field name="width" type="text" default="500" label="CONTAINERWIDTH" description="CONTAINERWIDTH_DESC" />

@@ -30,9 +30,9 @@ $defaults = array(
 	// Transition speed
 	'slide_effect_masterspeed' => '300',
 	// Effect for slides
-	'slide_effect' => 'rotateoverlap',
+	'slide_effect' => 'slide',
 	// Stop on mouse hover
-	'slide_onhoverstop' => '0',
+	'slide_onhoverstop' => '1',
 	// Number of items per slide page
 	'slide_items' => '1',
 	// Autoplay on or off
@@ -113,6 +113,21 @@ foreach ($settings as $key => $value)
 }
 
 $doc->addScriptDeclaration($sliderLoader);
+
+$effectMasterSpeed = '1';
+
+// Sets the masterspeed for the selected effect
+if ($settings['slide_effect'] != 'none')
+{
+	$effectMasterSpeed = $settings['slide_effect_masterspeed'];
+}
+
+$doc->addStyleDeclaration(
+	'.owl-carousel owl-item, .owl-carousel .animated{-webkit-animation-duration:' .
+		$effectMasterSpeed . 'ms;animation-duration:' .
+		$effectMasterSpeed . 'ms;}'
+);
+
 ?>
 <div class="owl-carousel owl-theme">
 <?php
