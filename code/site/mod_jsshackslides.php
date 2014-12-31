@@ -1,16 +1,18 @@
 <?php
 /**
-* @version   1.x
-* @package   ShackSlides
-* @copyright (C) 2010 Joomlashack / Meritage Assets Corp
-* @license   GNU/GPL http://www.gnu.org/copyleft/gpl.html
-*/
+ * @package     Shackslides
+ * @subpackage  Functions
+ *
+ * @copyright   Copyright (C) 2010 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
 
-defined('_JEXEC') or die('Direct access to files is not permitted');
+// Restrict Access to within Joomla
+defined('_JEXEC') or die('Restricted access');
 
-require_once(dirname(__FILE__).'/'.'helpers'.'/'.$params->get('source','folder').'.php');
+require_once dirname(__FILE__) . '/helpers/' . $params->get('source', 'folder') . '.php';
 
-$helperClass = 'ModShackSlides'.ucfirst($params->get('source','folder')).'Helper';
+$helperClass = 'ModShackSlides' . ucfirst($params->get('source', 'folder')) . 'Helper';
 $helper = new $helperClass($params);
 
 $images = $helper->getImages();
@@ -19,4 +21,4 @@ $titles = $helper->getTitles();
 $contents = $helper->getContents();
 $base = $helper->getBase();
 
-require(JModuleHelper::getLayoutPath('mod_jsshackslides'));
+require JModuleHelper::getLayoutPath('mod_jsshackslides');
