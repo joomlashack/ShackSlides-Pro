@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="module" method="upgrade">
 	<name>JS Shackslides</name>
-	<creationDate>December 2014</creationDate>
+	<creationDate>January 2015</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>https://www.joomlashack.com</authorUrl>
@@ -44,7 +44,7 @@
 			/>
 
 			<field 
-					name="effect_slide" 
+					name="slide_effect" 
 					type="disablefields" 
 					default="None" 
 					label="EFFECT_SLIDE" 
@@ -52,7 +52,7 @@
 			/>
 			
 			<field 
-					name="navigation" 
+					name="slide_autoplay" 
 					type="disablefields" 
 					default="true" 
 					label="SHACKSLIDES_BASIC_AUTOPLAY" 
@@ -68,7 +68,7 @@
 			/>
 
 			<field 
-					name="effect_masterspeed" 
+					name="slide_effect_masterspeed" 
 					type="text" 
 					default="300" 
 					label="EFFECT_MASTERSPEED" 
@@ -76,7 +76,7 @@
 			/>
 
 			<field 
-					name="onhover_stop" 
+					name="slide_onhoverstop" 
 					type="checkbox" 
 					label="ONHOVER_STOP" 
 					description="ONHOVER_STOP_DESC" 
