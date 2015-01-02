@@ -91,12 +91,14 @@
 
 				<field 
 						name="slide_onhoverstop"
-						type="checkbox" 
-						label="ONHOVER_STOP" 
-						description="ONHOVER_STOP_DESC" 
-						value="1"
-						default="1" 
-				/>
+						type="list"
+						default="1"
+						label="ONHOVER_STOP"
+						description="ONHOVER_STOP_DESC"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 
 				<field 
 						type="spacer" 

@@ -30,8 +30,8 @@ class JFormFieldDisableFields extends JFormFieldList
 
 		if(strpos($this->name , "slide_autoplay") !== false)
 		{
-			$options []= JHtml::_('select.option', "true",  JText::_('AUTOMATICNAV'));
-			$options []= JHtml::_('select.option', "false", JText::_('MANUALNAV'));
+			$options []= JHtml::_('select.option', "true",  JText::_('JYES'));
+			$options []= JHtml::_('select.option', "false", JText::_('JNO'));
 		}
 		elseif (strpos($this->name , "slide_effect") !== false)
 		{
