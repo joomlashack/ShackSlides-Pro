@@ -581,8 +581,11 @@
 							type="disablefields" 
 							default="2" 
 							label="NAVIGATIONDOTS" 
-							description="NAVIGATIONDOTS_DESC"
-					/>
+							description="NAVIGATIONDOTS_DESC">
+						<option value="2">ALWAYS_DOTS</option>
+						<option value="0">NO_DOTS</option>
+						<option value="1">ONHOVER_DOTS</option>
+					</field>
 
 					<field 
 							name="navigationnumbers" 
