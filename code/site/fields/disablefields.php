@@ -35,8 +35,8 @@ class JFormFieldDisableFields extends JFormFieldList
 		}
 		elseif (strpos($this->name , "slide_effect") !== false)
 		{
-			$options []= JHtml::_('select.option', "none", JText::_('EFFECT_NONE'));
-			$options []= JHtml::_('select.option', "slide", JText::_('EFFECT_SLIDE_SLIDE'));
+			$options []= JHtml::_('select.option', "none", JText::_('EFFECT_EFFECT_NONE'));
+			$options []= JHtml::_('select.option', "slide", JText::_('EFFECT_EFFECT_SLIDE'));
 		}
 		elseif(strpos($this->name , "source") !== false)
 		{

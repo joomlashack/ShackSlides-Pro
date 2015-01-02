@@ -50,6 +50,14 @@
 				/>
 
 				<field 
+						name="slide_slidespage" 
+						type="text" 
+						default="1" 
+						label="SLIDESPAGE" 
+						description="SLIDESPAGE_DESC" 
+				/>
+
+				<field 
 						name="slide_effect" 
 						type="disablefields" 
 						default="slide" 
@@ -82,21 +90,45 @@
 				/>
 
 				<field 
-						name="slide_onhoverstop" 
+						name="slide_onhoverstop"
 						type="checkbox" 
 						label="ONHOVER_STOP" 
 						description="ONHOVER_STOP_DESC" 
-						value="12" 
+						value="1"
 						default="1" 
 				/>
 
-				<field name="width" type="text" default="500" label="CONTAINERWIDTH" description="CONTAINERWIDTH_DESC" />
+				<field 
+						type="spacer" 
+						name="basic_options_dimensions_spacer" 
+						label="SLIDER_OPTIONS_SPACER_LABEL" 
+				/>
 
-				<field name="height" type="text" default="250" label="CONTAINERHEIGHT" description="CONTAINERHEIGHT_DESC" />
+				<field
+						name="width"
+						type="text"
+						default="500"
+						label="CONTAINERWIDTH"
+						description="CONTAINERWIDTH_DESC"
+				/>
 
-				<field name="center_container_automatic" type="radio" default="centerautoenable" label="CENTER_AUTO_CONT_LABEL" description="CENTER_AUTO_CONT_LABEL_DESC">
-					<option value="centerautoenable">CENTER_ENABLE</option>
-					<option value="centerautodisable">CENTER_DISABLE</option>
+				<field
+						name="height"
+						type="text"
+						default="250"
+						label="CONTAINERHEIGHT"
+						description="CONTAINERHEIGHT_DESC"
+				/>
+
+				<field 
+						name="heightadjustment"
+						type="list"
+						default="adjust"
+						label="HEIGHTADJUSTMENT"
+						description="HEIGHTADJUSTMENT_DESC"
+				>
+					<option value="adjust">HEIGHTADJUSTMENT_ADJUST</option>
+					<option value="crop">HEIGHTADJUSTMENT_CROP</option>
 				</field>
 
 			</fieldset>
