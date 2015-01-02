@@ -9,7 +9,7 @@ jQuery(document).ready(function(){
 		nav: false,
 		dots: false,
 		autoHeight: true,
-		lazyLoad: true,
+		lazyLoad: false,
 		navText: [ '&lt;', '&gt;' ]
 	};
 	var jss = jQuery(".owl-carousel").owlCarousel(options);

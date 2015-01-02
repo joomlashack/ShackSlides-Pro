@@ -135,7 +135,7 @@ $doc->addStyleDeclaration(
 		:
 ?>
 	<div class="jss-image">
-		<img class="owl-lazy" data-src="<?php echo $base . $image ?>" alt="<?php echo $titles[$i] ?>" />
+		<img src="<?php echo $base . $image ?>" alt="<?php echo $titles[$i] ?>" />
 	</div>
 <?php
 	endforeach;
