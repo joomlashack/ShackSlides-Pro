@@ -62,16 +62,20 @@
 						type="disablefields" 
 						default="slide" 
 						label="EFFECT_SLIDE" 
-						description="EFFECT_SLIDE_DESC"
-				/>
+						description="EFFECT_SLIDE_DESC">
+					<option value="none">EFFECT_EFFECT_NONE</option>
+					<option value="slide">EFFECT_EFFECT_SLIDE</option>
+				</field>
 				
 				<field 
 						name="slide_autoplay" 
 						type="disablefields" 
 						default="true" 
 						label="SHACKSLIDES_BASIC_AUTOPLAY" 
-						description="SHACKSLIDES_BASIC_AUTOPLAY_DESC"
-				/>
+						description="SHACKSLIDES_BASIC_AUTOPLAY_DESC">
+					<option value="true">JYES</option>
+					<option value="false">JNO</option>
+				</field>
 
 				<field 
 						name="slide_delay" 
@@ -143,7 +147,7 @@
 					
 				<field 
 						name="source" 
-						type="disablefields" 
+						type="imagesource" 
 						default="folder" 
 						label="SHACKSLIDE_SOURCE" 
 						description="SHACKSLIDE_SOURCE_DESC"

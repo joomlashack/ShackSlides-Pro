@@ -1,7 +1,7 @@
 function autoplayDisable(){
 
-	var autoplay_select = document.getElementById('jform_params_navigation');
-	var effectslide_select = document.getElementById('jform_params_effect_slide');
+	var autoplay_select = document.getElementById('jform_params_slide_autoplay');
+	var effectslide_select = document.getElementById('jform_params_slide_effect');
 	var source_select = document.getElementById('jform_params_source');
 	var showdots_select = document.getElementById('jform_params_showdots');
 	var showarrows_select = document.getElementById('jform_params_navigationarrows');
@@ -15,8 +15,8 @@ function autoplayDisable(){
 		document.getElementById("jform_params_slide_delay").setAttribute("disabled" , "disabled");
 	}
 
-	if(effectslide_select.value == "None"){
-		document.getElementById("jform_params_effect_masterspeed").setAttribute("disabled" , "disabled");
+	if(effectslide_select.value == "none"){
+		document.getElementById("jform_params_slide_effect_masterspeed").setAttribute("disabled" , "disabled");
 	}
 
 	if(source_select.value == "visionary" || source_select.value == "k2" || source_select.value == "folder"){
@@ -59,10 +59,10 @@ function autoplayDisable(){
 		 }
 	};
 	effectslide_select.onchange = function(){
-		 if(effectslide_select.value == "None"){
-		 	document.getElementById("jform_params_effect_masterspeed").setAttribute("disabled" , "disabled");
+		 if(effectslide_select.value == "none"){
+		 	document.getElementById("jform_params_slide_effect_masterspeed").setAttribute("disabled" , "disabled");
 		 } else {
-		 	document.getElementById("jform_params_effect_masterspeed").removeAttribute("disabled");
+		 	document.getElementById("jform_params_slide_effect_masterspeed").removeAttribute("disabled");
 		 }
 	};
 	source_select.onchange = function(){

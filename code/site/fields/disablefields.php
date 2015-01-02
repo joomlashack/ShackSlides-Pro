@@ -1,30 +1,34 @@
 <?php
 /**
-* @version   1.x
-* @package   ShackSlides
-* @copyright (C) 2010 Joomlashack / Meritage Assets Corp
-* @license   GNU/GPL http://www.gnu.org/copyleft/gpl.html
-*/
+ * @package     Shackslides
+ * @subpackage  Fields
+ *
+ * @copyright   Copyright (C) 2010 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
 
+// Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.html.html');
 jimport('joomla.form.formfield');
 jimport('joomla.form.helper');
-JFormHelper::loadFieldClass('list');
 
+JFormHelper::loadFieldClass('list');
+JHtml::script('mod_jsshackslides/shackslides.disable.js', false, true);
+
+/**
+ * Item list, capable of disabling options (via Javascript) depending on some dependencies with other fields
+ *
+ * @package     Wright
+ * @subpackage  Parameters
+ * @since       3.0
+ */
 class JFormFieldDisableFields extends JFormFieldList
 {
 	public $type = 'DisableFields';
 
-	protected function getInput() {
-
-		$doc = JFactory::getDocument();
-		$doc->addScript(JUri::root(true) . '/modules/mod_jsshackslides/assets/slider/shackslides.disable.js');
-		return parent::getInput();
-	}
-
-	protected function getOptions() {
+	/*protected function getOptions() {
 
 		$options = array();
 
@@ -59,16 +63,14 @@ class JFormFieldDisableFields extends JFormFieldList
 			{
 				$options [] = JHtml::_('select.option', "visionary", JText::_('SHACKSLIDE_SLIDESOURCE_VISIONARY'));
 			}
-		} 
+		}
 		elseif (strpos($this->name , "showdots") !== false)
-		{	
+		{
 			$options []= JHtml::_('select.option', "2", JText::_('ALWAYS_DOTS'));
 			$options []= JHtml::_('select.option', "0", JText::_('NO_DOTS'));
 			$options []= JHtml::_('select.option', "1", JText::_('ONHOVER_DOTS'));
 		}
-		
+
 		return $options;
-	}
-
-
+	}*/
 }
