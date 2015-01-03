@@ -159,8 +159,7 @@
 
 				<field
 						name="width"
-						type="text"
-						default="500"
+						type="information"
 						label="CONTAINERWIDTH"
 						description="CONTAINERWIDTH_DESC"
 				/>
