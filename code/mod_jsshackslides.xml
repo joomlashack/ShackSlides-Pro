@@ -58,13 +58,39 @@
 				/>
 
 				<field 
+						name="slide_margin" 
+						type="text" 
+						default="0" 
+						label="SLIDESMARGIN" 
+						description="SLIDESMARGIN_DESC" 
+				/>
+
+				<field 
 						name="slide_effect" 
-						type="disablefields" 
+						type="groupedlist" 
 						default="slide" 
-						label="EFFECT_SLIDE" 
-						description="EFFECT_SLIDE_DESC">
-					<option value="none">EFFECT_EFFECT_NONE</option>
-					<option value="slide">EFFECT_EFFECT_SLIDE</option>
+						label="SLIDE_EFFECT" 
+						description="SLIDE_EFFECT_DESC">
+					<option value="none">SLIDE_EFFECT_NONE</option>
+					<option value="test">TEST</option>
+					<group label="SLIDE_EFFECT_GROUP_LTR">
+						<option value="slide">SLIDE_EFFECT_SLIDE</option>
+						<option value="bounced_slide">SLIDE_EFFECT_BOUNCED_SLIDE</option>
+						<option value="faded_slide">SLIDE_EFFECT_FADED_SLIDE</option>
+					</group>
+					<group label="SLIDE_EFFECT_GROUP_HORIZONTAL">
+						<option value="flip_horizontal">SLIDE_EFFECT_FLIP_HORIZONTAL</option>
+					</group>
+					<group label="SLIDE_EFFECT_GROUP_PLACE">
+						<option value="fade">SLIDE_EFFECT_FADE</option>
+						<option value="bounce">SLIDE_EFFECT_BOUNCE</option>
+						<option value="roll">SLIDE_EFFECT_ROLL</option>
+						<option value="zoom">SLIDE_EFFECT_ZOOM</option>
+					</group>
+					<group label="SLIDE_EFFECT_GROUP_ROTATE">
+						<option value="rotate">SLIDE_EFFECT_ROTATE</option>
+						<option value="rotate_downleft">SLIDE_EFFECT_ROTATE_DOWNLEFT</option>
+					</group>
 				</field>
 				
 				<field 

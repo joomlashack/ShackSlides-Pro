@@ -35,6 +35,8 @@ $defaults = array(
 	'slide_onhoverstop' => '1',
 	// Number of items per slide page
 	'slide_items' => '1',
+	// Margin between slides when using multiple per page
+	'slide_margin' => '0',
 	// Autoplay on or off
 	'slide_autoplay' => '1',
 
@@ -101,19 +103,10 @@ else
 }
 
 JHtml::stylesheet('mod_jsshackslides/owl.carousel.min.css', array(), true);
-JHtml::stylesheet('mod_jsshackslides/animate.css', array(), true);
+JHtml::stylesheet('mod_jsshackslides/animate.min.css', array(), true);
 JHtml::script('mod_jsshackslides/owl.carousel.min.js', false, true);
 
-$sliderLoader = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/owl.load.js');
-
-// Replaces all slider variables in loader
-foreach ($settings as $key => $value)
-{
-	$sliderLoader = str_replace('$$' . $key, $value, $sliderLoader);
-}
-
-$doc->addScriptDeclaration($sliderLoader);
-
+// Default effect masterspeed = 1ms (CSS3 won't work with 0 to avoid the effect)
 $effectMasterSpeed = '1';
 
 // Sets the masterspeed for the selected effect
@@ -122,11 +115,28 @@ if ($settings['slide_effect'] != 'none')
 	$effectMasterSpeed = $settings['slide_effect_masterspeed'];
 }
 
+$settings['slides_animation'] = $helper->convertAnimation($settings['slide_effect']);
+$settings['slide_center'] = ($settings['slide_items'] == 1 ? 'true' : 'false');
+$settings['slide_effect_masterspeed'] = $effectMasterSpeed;
+
 $doc->addStyleDeclaration(
-	'.owl-carousel owl-item, .owl-carousel .animated{-webkit-animation-duration:' .
+	'.owl-carousel .owl-item, .owl-carousel .animated{-webkit-animation-duration:' .
 		$effectMasterSpeed . 'ms;animation-duration:' .
 		$effectMasterSpeed . 'ms;}'
 );
+
+
+// Loads slider Javascript
+$sliderLoader = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/owl.load.js');
+
+// Replaces all slider variables in loader
+foreach ($settings as $key => $value)
+{
+	$sliderLoader = str_replace('$$' . $key, $value, $sliderLoader);
+}
+
+// Loads slider (Javascript)
+$doc->addScriptDeclaration($sliderLoader);
 
 ?>
 <div class="owl-carousel owl-theme">

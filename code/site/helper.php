@@ -245,4 +245,68 @@ abstract class ModShackSlidesHelper
 
 		return false;
 	}
+
+	/**
+	 * Convert animation output
+	 *
+	 * @param   string  $animation  Animation input to convert in options for Owl Carousel
+	 *
+	 * @return  boolean
+	 */
+	public function convertAnimation($animation)
+	{
+		$animationIn = '';
+		$animationOut = '';
+		$finalAnimation = '';
+
+		switch ($animation)
+		{
+			case 'bounce':
+				$animationIn = 'zoomIn';
+				$animationOut = 'bounceOut';
+				break;
+			case 'bounced_slide':
+				$animationIn = 'bounceInRight';
+				$animationOut = 'bounceOutLeft';
+				break;
+			case 'faded_slide':
+				$animationIn = 'fadeInRight';
+				$animationOut = 'fadeOutLeft';
+				break;
+			case 'flip_horizontal':
+				$animationIn = 'flipInYFaded';
+				$animationOut = 'flipOutY';
+				break;
+			case 'rotate':
+				$animationIn = 'rotateIn';
+				$animationOut = 'rotateOut';
+				break;
+			case 'rotate_downleft':
+				$animationIn = 'rotateInDownLeft';
+				$animationOut = 'rotateOutDownLeft';
+				break;
+			case 'roll':
+				$animationIn = 'rollIn';
+				$animationOut = 'rollOut';
+				break;
+			case 'zoom':
+				$animationIn = 'zoomIn';
+				$animationOut = 'zoomOut';
+				break;
+			default:
+				$animationIn = $animationOut = '';
+		}
+
+		if ($animationIn != '')
+		{
+			$finalAnimation .= ', animateIn: \'' . $animationIn . '\'';
+		}
+
+		if ($animationOut != '')
+		{
+			$finalAnimation .= ', animateOut: \'' . $animationOut . '\'';
+		}
+
+		return $finalAnimation;
+	}
 }
