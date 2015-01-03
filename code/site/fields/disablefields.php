@@ -14,17 +14,27 @@ jimport('joomla.html.html');
 jimport('joomla.form.formfield');
 jimport('joomla.form.helper');
 
-JFormHelper::loadFieldClass('list');
+JFormHelper::loadFieldClass('spacer');
 JHtml::script('mod_jsshackslides/shackslides.disable.js', false, true);
 
 /**
- * Item list, capable of disabling options (via Javascript) depending on some dependencies with other fields
+ * Field just for loading javascript helper to hide fields on other fields dependencies
  *
  * @package     Wright
  * @subpackage  Parameters
  * @since       3.0
  */
-class JFormFieldDisableFields extends JFormFieldList
+class JFormFieldDisableFields extends JFormFieldSpacer
 {
 	public $type = 'DisableFields';
+
+	/**
+	 * Method to get the field label markup for a spacer.
+	 *
+	 * @return  string  The field label markup.
+	 */
+	protected function getLabel()
+	{
+		return ' ';
+	}
 }

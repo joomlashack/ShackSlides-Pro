@@ -261,10 +261,7 @@ abstract class ModShackSlidesHelper
 
 		switch ($animation)
 		{
-			case 'bounce':
-				$animationIn = 'zoomIn';
-				$animationOut = 'bounceOut';
-				break;
+			// LTR effects
 			case 'bounced_slide':
 				$animationIn = 'bounceInRight';
 				$animationOut = 'bounceOutLeft';
@@ -273,17 +270,57 @@ abstract class ModShackSlidesHelper
 				$animationIn = 'fadeInRight';
 				$animationOut = 'fadeOutLeft';
 				break;
-			case 'flip_horizontal':
-				$animationIn = 'flipInYFaded';
-				$animationOut = 'flipOutY';
+
+			// RTL effects
+			case 'slide_rtl':
+				$animationIn = 'slideInLeft';
+				$animationOut = 'slideOutRight';
 				break;
-			case 'rotate':
-				$animationIn = 'rotateIn';
-				$animationOut = 'rotateOut';
+			case 'bounced_slide_rtl':
+				$animationIn = 'bounceInLeft';
+				$animationOut = 'bounceOutRight';
 				break;
-			case 'rotate_downleft':
-				$animationIn = 'rotateInDownLeft';
-				$animationOut = 'rotateOutDownLeft';
+			case 'faded_slide_rtl':
+				$animationIn = 'fadeInLeft';
+				$animationOut = 'fadeOutRight';
+				break;
+
+			// TTB effects
+			case 'slide_ttb':
+				$animationIn = 'slideInDown';
+				$animationOut = 'slideOutDown';
+				break;
+			case 'bounced_slide_ttb':
+				$animationIn = 'bounceInDown';
+				$animationOut = 'bounceOutDown';
+				break;
+			case 'faded_slide_ttb':
+				$animationIn = 'fadeInDown';
+				$animationOut = 'fadeOutDown';
+				break;
+
+			// BTT effects
+			case 'slide_btt':
+				$animationIn = 'slideInUp';
+				$animationOut = 'slideOutUp';
+				break;
+			case 'bounced_slide_btt':
+				$animationIn = 'bounceInUp';
+				$animationOut = 'bounceOutUp';
+				break;
+			case 'faded_slide_btt':
+				$animationIn = 'fadeInUp';
+				$animationOut = 'fadeOutUp';
+				break;
+
+			// In place effects
+			case 'fade':
+				$animationIn = 'fadeIn';
+				$animationOut = 'fadeOut';
+				break;
+			case 'bounce':
+				$animationIn = 'zoomIn';
+				$animationOut = 'bounceOut';
 				break;
 			case 'roll':
 				$animationIn = 'rollIn';
@@ -293,6 +330,42 @@ abstract class ModShackSlidesHelper
 				$animationIn = 'zoomIn';
 				$animationOut = 'zoomOut';
 				break;
+			case 'switch':
+				$animationIn = 'slideInUp';
+				$animationOut = 'fadeOutDown';
+				break;
+			case 'flip_horizontal':
+				$animationIn = 'flipInYFaded';
+				$animationOut = 'flipOutY';
+				break;
+			case 'flip_vertical':
+				$animationIn = 'flipInXFaded';
+				$animationOut = 'flipOutX';
+				break;
+
+			// Rotate effects
+			case 'rotate':
+				$animationIn = 'rotateIn';
+				$animationOut = 'rotateOut';
+				break;
+			case 'rotate_downleft':
+				$animationIn = 'rotateInDownLeft';
+				$animationOut = 'rotateOutDownLeft';
+				break;
+			case 'rotate_downright':
+				$animationIn = 'rotateInDownRight';
+				$animationOut = 'rotateOutDownRight';
+				break;
+			case 'rotate_upleft':
+				$animationIn = 'rotateInUpLeft';
+				$animationOut = 'rotateOutUpLeft';
+				break;
+			case 'rotate_upright':
+				$animationIn = 'rotateInUpRight';
+				$animationOut = 'rotateOutUpRight';
+				break;
+
+			// No special effects
 			default:
 				$animationIn = $animationOut = '';
 		}
