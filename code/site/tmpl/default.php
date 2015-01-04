@@ -59,8 +59,12 @@ $defaults = array(
 	'title_width' => '300',
 	// Title height
 	'title_height' => '50',
-	// Title background color flag
+	// Title color flag
 	'title_bgcolor_flag' => '1',
+	// Title color
+	'title_color' => '#FFFFFF',
+	// Title background color flag
+	'title_color_flag' => '1',
 	// Title background color
 	'title_bgcolor' => '#000000',
 	// Title background opacity
@@ -75,6 +79,10 @@ $defaults = array(
 	'description_width' => '300',
 	// Description height
 	'description_height' => '100',
+	// Description color flag
+	'description_color_flag' => '1',
+	// Description color
+	'description_color' => '#FFFFFF',
 	// Description background color flag
 	'description_bgcolor_flag' => '1',
 	// Description background color
@@ -198,6 +206,16 @@ elseif ($settings['height_adjustment'] == 'crop')
 // Description styles
 if ($settings['description_show'])
 {
+	// Description color
+	if ($settings['description_color_flag'])
+	{
+		$doc->addStyleDeclaration(
+			'#' . $settings['container'] . '.owl-carousel .owl-item .jss-description > * {
+				color: #' . $settings['description_color'] . ';
+			}'
+		);
+	}
+
 	// Description background
 	if ($settings['description_bgcolor_flag'])
 	{
@@ -256,6 +274,16 @@ if ($settings['description_show'])
 // Title styles
 if ($settings['title_show'])
 {
+	// Title color
+	if ($settings['title_color_flag'])
+	{
+		$doc->addStyleDeclaration(
+			'#' . $settings['container'] . '.owl-carousel .owl-item .jss-title > * {
+				color: #' . $settings['title_color'] . ';
+			}'
+		);
+	}
+
 	// Title background
 	if ($settings['title_bgcolor_flag'])
 	{

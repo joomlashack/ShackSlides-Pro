@@ -403,6 +403,24 @@
 					/>
 
 					<field 
+							name="title_color_flag" 
+							type="list" 
+							label="TITLE_COLOR_LABEL" 
+							description="TITLE_COLOR_LABEL_DESC"
+							default="1">
+						<option value="1">JYES</option>
+						<option value="0">JNO</option>
+					</field>
+
+					<field  
+							name="title_color" 
+							type="colorpicker"
+							label="TITLE_PICKER_COLOR_LABEL" 
+							description="TITLE_PICKER_COLOR_LABEL_DESC" 
+							default="#FFFFFF" 
+					/>
+
+					<field 
 							name="title_bgcolor_flag" 
 							type="list" 
 							label="TITLE_BG_COLOR_LABEL" 
@@ -485,6 +503,24 @@
 							default="100" 
 							label="SLIDEDESCRIPTION_HEIGHT" 
 							description="SLIDEDESCRIPTION_HEIGHT_DESC" 
+					/>
+
+					<field 
+							name="description_color_flag" 
+							type="list" 
+							label="DESCRIPTION_COLOR_LABEL" 
+							description="DESCRIPTION_COLOR_LABEL_DESC"
+							default="1">
+						<option value="1">JYES</option>
+						<option value="0">JNO</option>
+					</field>
+
+					<field  
+							name="description_color" 
+							type="colorpicker"
+							label="DESCRIPTION_PICKER_COLOR_LABEL" 
+							description="DESCRIPTION_PICKER_COLOR_LABEL_DESC" 
+							default="#FFFFFF" 
 					/>
 
 					<field 
