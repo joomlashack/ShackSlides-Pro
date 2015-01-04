@@ -18,9 +18,11 @@ if ($settings['title_show'] || $settings['description_show'])
 	if ($settings['title_show'])
 		:
 ?>
-		<<?php echo $settings['title_tag'] ?> class="jss-title">
-			<?php echo $titles[$i] ?>
-		</<?php echo $settings['title_tag'] ?>>
+		<div class="jss-title">
+			<<?php echo $settings['title_tag'] ?>>
+				<?php echo $titles[$i] ?>
+			</<?php echo $settings['title_tag'] ?>>
+		</div>
 <?php
 	endif;
 ?>
@@ -28,9 +30,11 @@ if ($settings['title_show'] || $settings['description_show'])
 	if ($settings['description_show'])
 		:
 ?>
-		<<?php echo $settings['description_tag'] ?> class="jss-description">
-			<?php echo $contents[$i] ?>
-		</<?php echo $settings['description_tag'] ?>>
+		<div class="jss-description">
+			<<?php echo $settings['description_tag'] ?>>
+				<?php echo $contents[$i] ?>
+			</<?php echo $settings['description_tag'] ?>>
+		</div>
 <?php
 	endif;
 ?>
