@@ -68,7 +68,7 @@ $defaults = array(
 	// Title effect
 	'title_effect' => 'none',
 	// Title tag
-	'title_tag' => 'p',
+	'title_tag' => 'h4',
 	// Show description flag
 	'description_show' => '1',
 	// Description width

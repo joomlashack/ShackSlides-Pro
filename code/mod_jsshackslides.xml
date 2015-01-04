@@ -441,7 +441,7 @@
 					<field 
 							name="title_tag" 
 							type="list" 
-							default="p" 
+							default="h4" 
 							label="TAG_FOR_TITLE" 
 							description="TAG_FOR_TITLE_DESC"
 					>
@@ -526,7 +526,7 @@
 					<field 
 							name="description_tag" 
 							type="list" 
-							default="h1" 
+							default="p" 
 							label="TAG_FOR_DESCRIPTION" 
 							description="TAG_FOR_DESCRIPTION_DESC"
 					>
