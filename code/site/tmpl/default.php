@@ -36,7 +36,7 @@ $defaults = array(
 	// Number of items per slide page
 	'slide_items' => '1',
 	// Margin between slides when using multiple per page
-	'slide_margin' => '0',
+	'slide_margin' => '10',
 	// Autoplay on or off
 	'slide_autoplay' => '1',
 
