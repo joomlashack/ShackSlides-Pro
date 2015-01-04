@@ -382,4 +382,19 @@ abstract class ModShackSlidesHelper
 
 		return $finalAnimation;
 	}
+
+	/**
+	 * Generate random container ID
+	 *
+	 * @param   string  $prefix  Prefix to add to the container id
+	 * @param   int     $length  ID length
+	 *
+	 * @return  string
+	 */
+	public function generateContainerID($prefix = 'jss_', $length = 10)
+	{
+		$randomString = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, $length);
+
+		return $prefix . $randomString;
+	}
 }

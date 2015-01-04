@@ -782,8 +782,9 @@
 				    <field 
 				    		name="container" 
 				    		type="text" 
-				    		default="slider" 
-				    		label="CONTAINER" 
+				    		default="" 
+				    		label="CONTAINER"
+				    		description="CONTAINER_DESC"
 				    />
 
 				    <field 

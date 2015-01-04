@@ -66,8 +66,8 @@ $defaults = array(
 	'navigationarrows_media' => '',
 
 	// ADVANCED OPTIONS
-	// id for the container slider
-	'container' => 'slider',
+	// id for the slider container
+	'container' => '',
 	'main_container_class' => '',
 	'includejquery' => 'off'
 );
@@ -106,6 +106,12 @@ JHtml::stylesheet('mod_jsshackslides/owl.carousel.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/animate.min.css', array(), true);
 JHtml::script('mod_jsshackslides/owl.carousel.min.js', false, true);
 
+// Setting container ID
+if ($settings['container'] == '')
+{
+	$settings['container'] = $helper->generateContainerID();
+}
+
 // Default effect masterspeed = 1ms (CSS3 won't work with 0 to avoid the effect)
 $effectMasterSpeed = '1';
 
@@ -120,11 +126,10 @@ $settings['slide_center'] = ($settings['slide_items'] == 1 ? 'true' : 'false');
 $settings['slide_effect_masterspeed'] = $effectMasterSpeed;
 
 $doc->addStyleDeclaration(
-	'.owl-carousel .owl-item, .owl-carousel .animated{-webkit-animation-duration:' .
+	'#' . $settings['container'] . '.owl-carousel .owl-item, #' . $settings['container'] . '.owl-carousel .animated{-webkit-animation-duration:' .
 		$effectMasterSpeed . 'ms;animation-duration:' .
 		$effectMasterSpeed . 'ms;}'
 );
-
 
 // Loads slider Javascript
 $sliderLoader = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/owl.load.js');
@@ -139,7 +144,7 @@ foreach ($settings as $key => $value)
 $doc->addScriptDeclaration($sliderLoader);
 
 ?>
-<div class="owl-carousel owl-theme">
+<div id="<?php echo $settings['container'] ?>" class="owl-carousel owl-theme">
 <?php
 	foreach ($images as $i => $image)
 		:
