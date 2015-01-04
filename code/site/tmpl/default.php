@@ -23,6 +23,10 @@ $defaults = array(
 	// BASIC CONFIGURATION OPTIONS
 	// Container height
 	'height' => '250',
+	// Height adjustment
+	'height_adjustment' => 'adjust',
+	// Auto height (depends on the height adjustment)
+	'slide_autoheight' => 'true',
 	// Transition delay
 	'slide_delay' => '5000',
 	// Show descriptions
@@ -126,10 +130,40 @@ $settings['slide_center'] = ($settings['slide_items'] == 1 ? 'true' : 'false');
 $settings['slide_effect_masterspeed'] = $effectMasterSpeed;
 
 $doc->addStyleDeclaration(
-	'#' . $settings['container'] . '.owl-carousel .owl-item, #' . $settings['container'] . '.owl-carousel .animated{-webkit-animation-duration:' .
-		$effectMasterSpeed . 'ms;animation-duration:' .
-		$effectMasterSpeed . 'ms;}'
+	'#' . $settings['container'] . '.owl-carousel .owl-item,
+	#' . $settings['container'] . '.owl-carousel .animated {
+			-webkit-animation-duration:' . $effectMasterSpeed . 'ms;
+			animation-duration:' . $effectMasterSpeed . 'ms;
+		}'
 );
+
+// Defined height in case of adjustment (to set a max height for the slider)
+if ($settings['height_adjustment'] == 'adjust')
+{
+	$height = (int) $settings['height'];
+
+	if ($height > 0)
+	{
+		$doc->addStyleDeclaration(
+			'#' . $settings['container'] . '.owl-carousel .owl-item .jss-image {
+				max-height: ' . $height . 'px;
+			}'
+		);
+	}
+}
+elseif ($settings['height_adjustment'] == 'crop')
+{
+	$settings['slide_autoheight'] = 'false';
+	$doc->addStyleDeclaration(
+		'#' . $settings['container'] . '.owl-carousel .owl-item .jss-image {
+			width: 100%;
+			height: ' . $settings['height'] . 'px;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+		}'
+	);
+}
 
 // Loads slider Javascript
 $sliderLoader = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/owl.load.js');
@@ -148,9 +182,17 @@ $doc->addScriptDeclaration($sliderLoader);
 <?php
 	foreach ($images as $i => $image)
 		:
+		$backgroundImage = ($settings['height_adjustment'] == 'crop') ? ' style="background-image: url(\'' . $base . $image . '\'"' : '';
 ?>
-	<div class="jss-image">
+	<div class="jss-image"<?php echo $backgroundImage; ?>>
+		<?php
+			if ($settings['height_adjustment'] == 'adjust')
+				:
+		?>
 		<img src="<?php echo $base . $image ?>" alt="<?php echo $titles[$i] ?>" />
+		<?php
+			endif;
+		?>
 	</div>
 <?php
 	endforeach;

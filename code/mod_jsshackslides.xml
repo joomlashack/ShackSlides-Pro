@@ -167,13 +167,13 @@
 				<field
 						name="height"
 						type="text"
-						default="250"
+						default="0"
 						label="CONTAINERHEIGHT"
 						description="CONTAINERHEIGHT_DESC"
 				/>
 
 				<field 
-						name="heightadjustment"
+						name="height_adjustment"
 						type="list"
 						default="adjust"
 						label="HEIGHTADJUSTMENT"

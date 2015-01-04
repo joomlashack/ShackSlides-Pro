@@ -9,7 +9,7 @@ jQuery(document).ready(function(){
 		autoplayHoverPause: $$slide_onhoverstop,
 		nav: false,
 		dots: false,
-		autoHeight: true,
+		autoHeight: $$slide_autoheight,
 		lazyLoad: false,
 		navText: [ '&lt;', '&gt;' ],
 		smartSpeed: $$slide_effect_masterspeed
