@@ -45,13 +45,46 @@ $defaults = array(
 	'slide_autoplay' => '1',
 
 	// DESCRIPTION OPTIONS
-	'slidedescription_position' => '0',
-	'slidedescription_alignment' => 'left',
-	'effect_title' => 'zmf',
-	'title_color' => '',
-	'title_background_color' => 'enabletitlebg',
-	'title_bgpicker_color' => '',
-	'effect_text' => 'clipleftright',
+	// Title and description position
+	'title_description_position' => 'bottom',
+	// Title and description alignment
+	'title_description_alignment' => 'left',
+	// Title and description vertical padding
+	'title_description_padding_vertical' => '10',
+	// Title and description horizontal padding
+	'title_description_padding_horizontal' => '10',
+	// Show title flag
+	'title_show' => '1',
+	// Title width
+	'title_width' => '300',
+	// Title height
+	'title_height' => '50',
+	// Title background color flag
+	'title_bgcolor_flag' => '1',
+	// Title background color
+	'title_bgcolor' => '#000000',
+	// Title background opacity
+	'title_bgcolor_opacity' => '70',
+	// Title effect
+	'title_effect' => 'none',
+	// Title tag
+	'title_tag' => 'p',
+	// Show description flag
+	'description_show' => '1',
+	// Description width
+	'description_width' => '300',
+	// Description height
+	'description_height' => '100',
+	// Description background color flag
+	'description_bgcolor_flag' => '1',
+	// Description background color
+	'description_bgcolor' => '#000000',
+	// Description background opacity
+	'description_bgcolor_opacity' => '70',
+	// Description effect
+	'description_effect' => 'none',
+	// Description tag
+	'description_tag' => 'p',
 
 	// NAVIGATION OPTIONS
 	'navigation' => 'true',
@@ -108,6 +141,7 @@ else
 
 JHtml::stylesheet('mod_jsshackslides/owl.carousel.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/animate.min.css', array(), true);
+JHtml::stylesheet('mod_jsshackslides/jsshackslides.css', array(), true);
 JHtml::script('mod_jsshackslides/owl.carousel.min.js', false, true);
 
 // Setting container ID
@@ -129,8 +163,8 @@ $settings['slides_animation'] = $helper->convertAnimation($settings['slide_effec
 $settings['slide_center'] = ($settings['slide_items'] == 1 ? 'true' : 'false');
 $settings['slide_effect_masterspeed'] = $effectMasterSpeed;
 
-$doc->addStyleDeclaration(
-	'#' . $settings['container'] . '.owl-carousel .owl-item,
+$doc->addStyleDeclaration('
+	#' . $settings['container'] . '.owl-carousel .owl-item,
 	#' . $settings['container'] . '.owl-carousel .animated {
 			-webkit-animation-duration:' . $effectMasterSpeed . 'ms;
 			animation-duration:' . $effectMasterSpeed . 'ms;
@@ -144,8 +178,8 @@ if ($settings['height_adjustment'] == 'adjust')
 
 	if ($height > 0)
 	{
-		$doc->addStyleDeclaration(
-			'#' . $settings['container'] . '.owl-carousel .owl-item .jss-image {
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .owl-item .jss-image {
 				max-height: ' . $height . 'px;
 			}'
 		);
@@ -154,16 +188,130 @@ if ($settings['height_adjustment'] == 'adjust')
 elseif ($settings['height_adjustment'] == 'crop')
 {
 	$settings['slide_autoheight'] = 'false';
-	$doc->addStyleDeclaration(
-		'#' . $settings['container'] . '.owl-carousel .owl-item .jss-image {
+	$doc->addStyleDeclaration('
+		#' . $settings['container'] . '.owl-carousel .owl-item .jss-image {
 			width: 100%;
 			height: ' . $settings['height'] . 'px;
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: center center;
 		}'
 	);
 }
+
+// Description styles
+if ($settings['description_show'])
+{
+	// Description background
+	if ($settings['description_bgcolor_flag'])
+	{
+		$doc->addStyleDeclaration(
+			'#' . $settings['container'] . '.owl-carousel .owl-item .jss-description:before {
+				background-color: #' . $settings['description_bgcolor'] . ';
+				opacity: ' . ((float) $settings['description_bgcolor_opacity'] / 100) . ';
+			}'
+		);
+	}
+
+	// Description width
+	if ($settings['title_description_position'] == 'left'
+		|| $settings['title_description_position'] == 'right'
+		|| $settings['title_description_position'] == 'left_outside'
+		|| $settings['title_description_position'] == 'right_outside')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .owl-item .jss-description {
+				width: ' . (int) $settings['description_width'] . 'px;
+			}'
+		);
+	}
+
+	// Description height
+	if ($settings['title_description_position'] == 'top' || $settings['title_description_position'] == 'bottom')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .owl-item .jss-description {
+				min-height: ' . (int) $settings['description_height'] . 'px;
+			}'
+		);
+	}
+
+	// Left outside description
+	if ($settings['title_description_position'] == 'left_outside')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .jss-image {
+				padding-left: ' . (int) $settings['description_width'] . 'px;
+			}'
+		);
+	}
+
+	// Right outside title
+	if ($settings['title_description_position'] == 'right_outside')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .jss-image {
+				padding-right: ' . (int) $settings['description_width'] . 'px;
+			}'
+		);
+	}
+}
+
+// Title styles
+if ($settings['title_show'])
+{
+	// Title background
+	if ($settings['title_bgcolor_flag'])
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .owl-item .jss-title:before {
+				background-color: #' . $settings['title_bgcolor'] . ';
+				opacity: ' . ((float) $settings['title_bgcolor_opacity'] / 100) . ';
+			}'
+		);
+	}
+
+	// Title width
+	if ($settings['title_description_position'] == 'left'
+		|| $settings['title_description_position'] == 'right'
+		|| $settings['title_description_position'] == 'left_outside'
+		|| $settings['title_description_position'] == 'right_outside')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .jss-image .jss-title {
+				width: ' . (int) $settings['title_width'] . 'px;
+			}'
+		);
+	}
+
+	// Title height
+	if ($settings['title_description_position'] == 'top' || $settings['title_description_position'] == 'bottom')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .jss-image .jss-title {
+				min-height: ' . (int) $settings['title_height'] . 'px;
+			}'
+		);
+	}
+
+	// Left outside title
+	if ($settings['title_description_position'] == 'left_outside')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .jss-image {
+				padding-left: ' . (int) $settings['title_width'] . 'px;
+			}'
+		);
+	}
+
+	// Right outside title
+	if ($settings['title_description_position'] == 'right_outside')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .jss-image {
+				padding-right: ' . (int) $settings['title_width'] . 'px;
+			}'
+		);
+	}
+}
+
 
 // Loads slider Javascript
 $sliderLoader = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/owl.load.js');
@@ -182,16 +330,41 @@ $doc->addScriptDeclaration($sliderLoader);
 <?php
 	foreach ($images as $i => $image)
 		:
-		$backgroundImage = ($settings['height_adjustment'] == 'crop') ? ' style="background-image: url(\'' . $base . $image . '\'"' : '';
 ?>
-	<div class="jss-image"<?php echo $backgroundImage; ?>>
+	<div class="jss-image-container jss-descpos-<?php echo $settings['title_description_position'] ?>">
 		<?php
-			if ($settings['height_adjustment'] == 'adjust')
-				:
+			if ($settings['title_description_position'] == 'above_outside')
+			{
+				require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
+			}
 		?>
-		<img src="<?php echo $base . $image ?>" alt="<?php echo $titles[$i] ?>" />
+		<div class="jss-image">
+			<?php
+				if ($settings['height_adjustment'] == 'adjust')
+					:
+			?>
+			<img src="<?php echo $base . $image ?>" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
+			<?php
+				elseif ($settings['height_adjustment'] == 'crop')
+					:
+			?>
+			<div class="jss-image-int" style="background-image: url('<?php echo  $base . $image ?>'">
+			</div>
+			<?php
+				endif;
+			?>
+			<?php
+				if ($settings['title_description_position'] != 'above_outside' && $settings['title_description_position'] != 'below_outside')
+				{
+					require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
+				}
+			?>
+		</div>
 		<?php
-			endif;
+			if ($settings['title_description_position'] == 'below_outside')
+			{
+				require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
+			}
 		?>
 	</div>
 <?php
