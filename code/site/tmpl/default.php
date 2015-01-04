@@ -312,6 +312,16 @@ if ($settings['title_show'])
 	}
 }
 
+// Title and Description padding (shared setting)
+if ($settings['description_show'] || $settings['title_show'])
+{
+	$doc->addStyleDeclaration('
+		#' . $settings['container'] . '.owl-carousel .jss-image .jss-title-description .jss-title,
+		#' . $settings['container'] . '.owl-carousel .jss-image .jss-title-description .jss-description {
+			padding: ' . (int) $settings['title_description_padding_vertical'] . 'px ' . (int) $settings['title_description_padding_horizontal'] . 'px;
+		}'
+	);
+}
 
 // Loads slider Javascript
 $sliderLoader = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/owl.load.js');
