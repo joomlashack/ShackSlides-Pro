@@ -88,7 +88,8 @@
 .jss-image .jss-title-description.jss-alignment-left {
 	text-align: left;
 }
-.jss-image .jss-title-description.jss-alignment-left .jss-title {
+.jss-image .jss-title-description.jss-alignment-left .jss-title,
+.jss-image .jss-title-description.jss-alignment-left .jss-description {
 	-webkit-justify-content: flex-start;
 	-moz-justify-content: flex-start;
 	-ms-justify-content: flex-start;
@@ -98,7 +99,8 @@
 .jss-image .jss-title-description.jss-alignment-right {
 	text-align: right;
 }
-.jss-image .jss-title-description.jss-alignment-right .jss-title {
+.jss-image .jss-title-description.jss-alignment-right .jss-title,
+.jss-image .jss-title-description.jss-alignment-right .jss-description {
 	-webkit-justify-content: flex-end;
 	-moz-justify-content: flex-end;
 	-ms-justify-content: flex-end;
@@ -108,7 +110,8 @@
 .jss-image .jss-title-description.jss-alignment-center {
 	text-align: center;
 }
-.jss-image .jss-title-description.jss-alignment-center .jss-title {
+.jss-image .jss-title-description.jss-alignment-center .jss-title,
+.jss-image .jss-title-description.jss-alignment-center .jss-description {
 	-webkit-justify-content: center;
 	-moz-justify-content: center;
 	-ms-justify-content: center;
