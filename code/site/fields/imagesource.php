@@ -15,7 +15,6 @@ jimport('joomla.form.formfield');
 jimport('joomla.form.helper');
 
 JFormHelper::loadFieldClass('list');
-JHtml::script('mod_jsshackslides/shackslides.disable.js', false, true);
 
 /**
  * Item list for listing sources depending on the installed plugins

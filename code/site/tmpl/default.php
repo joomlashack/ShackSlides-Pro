@@ -124,7 +124,6 @@ if (version_compare(JVERSION, '3.0', '<') == 1)
 	if (!JFactory::getApplication()->get('jquery'))
 	{
 		JFactory::getApplication()->set('jquery', true);
-		$doc = JFactory::getDocument();
 
 		if ($params->get('includejquery', $defaults['includejquery']) == 'on')
 		{

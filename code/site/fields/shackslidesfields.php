@@ -15,7 +15,27 @@ jimport('joomla.form.formfield');
 jimport('joomla.form.helper');
 
 JFormHelper::loadFieldClass('spacer');
-JHtml::script('mod_jsshackslides/shackslides.disable.js', false, true);
+
+// Load jQuery
+if (version_compare(JVERSION, '3.0', '<') == 1)
+{
+	// Load local file if Joomla < 3
+	if (!JFactory::getApplication()->get('jquery'))
+	{
+		JFactory::getApplication()->set('jquery', true);
+		$doc = JFactory::getDocument();
+
+		JHtml::script('mod_jsshackslides/jquery-1.11.2.min.js', false, true);
+		JHtml::script('mod_jsshackslides/jquery-noconflict.js', false, true);
+	}
+}
+else
+{
+	// Load jQuery Framework if Joomla >= 3
+	JHTML::_('jquery.framework');
+}
+
+JHtml::script('mod_jsshackslides/shackslides.fields.js', false, true);
 
 /**
  * Field just for loading javascript helper to hide fields on other fields dependencies
@@ -24,9 +44,9 @@ JHtml::script('mod_jsshackslides/shackslides.disable.js', false, true);
  * @subpackage  Parameters
  * @since       3.0
  */
-class JFormFieldDisableFields extends JFormFieldSpacer
+class JFormFieldShackslidesFields extends JFormFieldSpacer
 {
-	public $type = 'DisableFields';
+	public $type = 'ShackslidesFields';
 
 	/**
 	 * Method to get the field label markup for a spacer.

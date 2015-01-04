@@ -36,8 +36,8 @@
 			>
 
 				<field 
-						type="disablefields" 
-						name="disablefields"
+						type="shackslidesfields" 
+						name="shackslidesfields"
 				/>
 				<field 
 						type="spacer" 
@@ -422,7 +422,7 @@
 
 					<field  
 							name="title_bgcolor_opacity" 
-							type="text"
+							type="slider"
 							label="RANGESLIDER_TITLE" 
 							description="RANGESLIDER_TITLE_DESC" 
 							default="70" 
@@ -507,7 +507,7 @@
 
 					<field  
 							name="description_bgcolor_opacity" 
-							type="text"
+							type="slider"
 							label="RANGESLIDER_DESCRIPTION" 
 							description="RANGESLIDER_DESCRIPTION_DESC" 
 							default="70" 
