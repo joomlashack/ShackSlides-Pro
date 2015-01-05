@@ -44,6 +44,10 @@ $defaults = array(
 	// Autoplay on or off
 	'slide_autoplay' => '1',
 
+	// sLIDE SOURCES
+	//Where the link target will point at
+	'anchor_target' => 'self',
+
 	// DESCRIPTION OPTIONS
 	// Title and description position
 	'title_description_position' => 'bottom',
@@ -369,6 +373,16 @@ $doc->addScriptDeclaration($sliderLoader);
 		:
 ?>
 	<div class="jss-image-container jss-descpos-<?php echo $settings['title_description_position'] ?>">
+
+		<?php 
+			if ($links[$i]) 
+			: 
+		?>
+	        <a href="<?php echo $links[$i]; ?>"<?php if ($settings['anchor_target'] == 'blank') echo ' target="_blank" ' ?>>
+		<?php 
+			endif; 
+		?>
+
 		<?php
 			if ($settings['title_description_position'] == 'above_outside')
 			{
@@ -402,6 +416,14 @@ $doc->addScriptDeclaration($sliderLoader);
 			{
 				require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
 			}
+		?>
+		<?php 
+			if ($links[$i]) 
+			: 
+		?>
+			</a>
+		<?php 
+			endif; 
 		?>
 	</div>
 <?php
