@@ -589,7 +589,7 @@
 				/>
 
 					<field 
-							name="showdots"
+							name="navigation_show"
 							type="list"
 							default="2"
 							label="NAVIGATIONDOTS"
@@ -600,27 +600,38 @@
 					</field>
 
 					<field 
-							name="navigationnumbers" 
-							type="checkbox" 
-							label="NAVIGATIONNUMBERS" 
-							description="NAVIGATIONNUMBERS_DESC" 
-							value="1" 
-							default="0" 
-					/>
-
-					<field 
-							name="orientationdots" 
-							type="list" 
-							default="1" 
-							label="ORIENTATIONDOTS" 
-							description="ORIENTATIONDOTS_DESC"
-					>
-						<option value="1">HORIZONTAL_DOTS</option>
-						<option value="2">VERTICAL_DOTS</option>
+							name="navigation_theme"
+							type="list"
+							default="example"
+							label="NAVIGATIONTHEME"
+							description="NAVIGATIONTHEME_DESC">
+						<option value="example">NAVIGATIONTHEME_EXAMPLE</option>
 					</field>
 
 					<field 
-							name="horizontalaligndots" 
+							name="navigation_shownumbers" 
+							type="list" 
+							label="NAVIGATIONNUMBERS" 
+							description="NAVIGATIONNUMBERS_DESC" 
+							default="0" 
+					>
+						<option value="1">JYES</option>
+						<option value="0">JNO</option>
+					</field>
+
+					<field 
+							name="navigation_orientation" 
+							type="list" 
+							default="horizontal" 
+							label="ORIENTATIONDOTS" 
+							description="ORIENTATIONDOTS_DESC"
+					>
+						<option value="horizontal">HORIZONTAL_DOTS</option>
+						<option value="vertical">VERTICAL_DOTS</option>
+					</field>
+
+					<field 
+							name="navigation_align_horizontal" 
 							type="list" 
 							default="center" 
 							label="HORIZONTALALIGNDOTS" 
@@ -632,7 +643,7 @@
 					</field>
 
 					<field 
-							name="verticalaligndots" 
+							name="navigation_align_vertical" 
 							type="list" 
 							default="bottom" 
 							label="VERTICALALIGNDOTS" 
@@ -644,54 +655,55 @@
 					</field>
 
 					<field 
-							name="horizontalpaddingdots" 
+							name="navigation_padding_horizontal" 
 							type="text" 
-							default="0" 
+							default="10" 
 							label="HORIZONTALPADDING_DOTS" 
 							description="HORIZONTALPADDING_DOTS_DESC" 
 					/>
 
 					<field 
-							name="verticalpaddingdots" 
+							name="navigation_padding_vertical" 
 							type="text" 
-							default="0" 
+							default="10" 
 							label="VERTICALPADDING_DOTS" 
 							description="VERTICALPADDING_DOTS_DESC" 
 					/>
 
 					<field 
-							name="rangesliderdots" 
-							type="rangeslider" 
+							name="navigation_opacity" 
+							type="slider" 
 							default="100" 
-							label="RANGESLIDER_DOTS" 
-							description="RANGESLIDER_DOTS_DESC" 
+							label="NAVIGATION_OPACITY" 
+							description="NAVIGATION_OPACITY_DESC" 
 					/>
 
 					<field 
-							name="navigationarrows_customdots" 
-							type="customnavigation" 
-							default="n03" 
-							label="NAVIGATIONARROWS_CUSTOMDOTS" 
-							description="NAVIGATIONARROWS_CUSTOMDOTS_DESC"
-					/>
-
-					<field 
-							name="navigationdots_media" 
+							name="navigation_custom_dot" 
 							type="media" 
 							directory=""
 							preview="true" 
-							label="NAVIGATIONDOTS_MEDIA" 
-							description="NAVIGATIONDOTS_MEDIA_DESC"
+							label="NAVIGATION_CUSTOMDOT" 
+							description="NAVIGATION_CUSTOMDOT_DESC"
 					/>
-					
-				<field 
-						type="spacer" 
-						name="prenextbutton_bar_spacer" 
-						label="PRENEXTBUTTON_SPACER_LABEL" 
-				/>
 
 					<field 
-							name="navigationarrows" 
+							name="navigation_custom_dotactive" 
+							type="media" 
+							directory=""
+							preview="true" 
+							label="NAVIGATION_CUSTOMDOTACTIVE" 
+							description="NAVIGATION_CUSTOMDOTACTIVE_DESC"
+					/>
+					
+					<field 
+							type="spacer" 
+							name="prenextbutton_bar_spacer" 
+							label="PRENEXTBUTTON_SPACER_LABEL" 
+					/>
+
+					<field 
+							name="navigation_buttons_show" 
 							type="list" 
 							default="2" 
 							label="NAVIGATIONARROWS" 
@@ -703,30 +715,30 @@
 					</field>
 
 					<field 
-							name="rangesliderrows" 
-							type="rangeslider" 
+							name="navigation_buttons_opacity" 
+							type="slider" 
 							default="100" 
-							label="RANGESLIDER_ROWS" 
-							description="RANGESLIDER_ROWS_DESC" 
+							label="NAVIGATION_OPACITY" 
+							description="NAVIGATION_OPACITY_DESC" 
 					/>
 
 					<field 
-							name="navigationarrows_customrows" 
-							type="customnavigation" 
-							default="d17" 
-							label="NAVIGATIONARROWS_CUSTOMROWS" 
-							description="NAVIGATIONARROWS_CUSTOMROWS_DESC"
-					/>
-
-					<field 
-							name="navigationarrows_media" 
+							name="navigation_buttons_custom_previous" 
 							type="media" 
 							directory=""
 							preview="true" 
-							label="NAVIGATIONARROWS_MEDIA" 
-							description="NAVIGATIONARROWS_MEDIA_DESC"
+							label="NAVIGATIONBUTTONS_CUSTOMPREVIOUS" 
+							description="NAVIGATIONBUTTONS_CUSTOMPREVIOUS_DESC"
 					/>
 
+					<field 
+							name="navigation_buttons_custom_next" 
+							type="media" 
+							directory=""
+							preview="true" 
+							label="NAVIGATIONBUTTONS_CUSTOMNEXT" 
+							description="NAVIGATIONBUTTONS_CUSTOMPREVIOUS_NEXT"
+					/>
 			</fieldset>
 
 			<fieldset 
