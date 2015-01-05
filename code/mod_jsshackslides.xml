@@ -233,7 +233,7 @@
 
 					<field 
 							name="flexi_category" 
-							type="category" 
+							type="flexicategory" 
 							extension="com_content" 
 							default="1" 
 							label="FLEXICONTENT_CATEGORY" 
