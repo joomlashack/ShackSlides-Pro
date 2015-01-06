@@ -401,6 +401,29 @@ if ($settings['navigation_show'] != '0')
 			text-align: ' . $settings['navigation_align_horizontal'] . ';
 		}'
 	);
+
+	$verticalPosition = '';
+
+	switch ($settings['navigation_align_vertical'])
+	{
+		case 'center':
+			$verticalPosition = 'top: 50%';
+			break;
+		case 'top':
+			$verticalPosition = 'top: 0';
+			break;
+		case 'bottom':
+			$verticalPosition = 'bottom: 0';
+			break;
+	}
+
+	// Navigation alignment
+	$doc->addStyleDeclaration('
+		#' . $settings['container'] . '.owl-carousel .owl-dots {
+			text-align: ' . $settings['navigation_align_horizontal'] . ';
+			' . $verticalPosition . ';
+		}'
+	);
 }
 else
 {
