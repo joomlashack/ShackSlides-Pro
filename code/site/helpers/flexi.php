@@ -95,7 +95,7 @@ class ModShackSlidesFlexiHelper extends ModShackSlidesHelper
 				}
 				else 
 				{
-					$this->images[] = 'modules/mod_jsshackslides/images/noimagefound.png';
+					$this->images[] = NOIMAGEFOUND_IMG;
 				}
 			}
 
@@ -107,7 +107,7 @@ class ModShackSlidesFlexiHelper extends ModShackSlidesHelper
 				}
 				else 
 				{
-					$this->images[] = 'modules/mod_jsshackslides/images/noimagefound.png';
+					$this->images[] = NOIMAGEFOUND_IMG;
 				}
 			}
 

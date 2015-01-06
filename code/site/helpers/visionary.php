@@ -31,24 +31,27 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 		parent::__construct($params);
 
 		$this->collection = $params->get('visionary_collection', 0);
-		$this->ordering = $params->get('ordering', 'ordering');
-		if($this->ordering == 'RAND()')
+		if($this->collection != 'None') 
 		{
-			$this->ordering = $this->generateOrdering(1);
+			$this->ordering = $params->get('ordering', 'ordering');
+			if($this->ordering == 'RAND()')
+			{
+				$this->ordering = $this->generateOrdering(1);
+			}
+			if ($this->ordering == 'created') {
+
+				//fix column name for Visionary
+				$this->ordering = 'created_on';
+
+			}
+
+			$this->ordering_direction = $params->get('ordering_dir', 'ASC');
+			$this->limit = $params->get('limit', '5');
+			$this->featured = $params->get('featured', 'include');
+
+			$this->getContentFromDatabase();
+			$this->parseContentIntoProperties();
 		}
-		if ($this->ordering == 'created') {
-
-			//fix column name for Visionary
-			$this->ordering = 'created_on';
-
-		}
-
-		$this->ordering_direction = $params->get('ordering_dir', 'ASC');
-		$this->limit = $params->get('limit', '5');
-		$this->featured = $params->get('featured', 'include');
-
-		$this->getContentFromDatabase();
-		$this->parseContentIntoProperties();
 
 	}
 

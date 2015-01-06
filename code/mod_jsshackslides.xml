@@ -231,14 +231,14 @@
 							description="K2_CATEGORY_DESC" 
 					/>
 
-					<field 
+					<!-- <field 
 							name="flexi_category" 
 							type="flexicategory" 
 							extension="com_content" 
 							default="1" 
 							label="FLEXICONTENT_CATEGORY" 
 							description="FLEXICONTENT_CATEGORY_DESC" 
-					/>
+					/> -->
 
 					<field 
 							name="visionary_collection" 
