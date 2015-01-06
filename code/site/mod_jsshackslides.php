@@ -144,7 +144,7 @@ $defaults = array(
 	// ADVANCED OPTIONS
 	// id for the slider container
 	'container' => '',
-	'main_container_class' => '',
+	// Inlcude JQuery 
 	'includejquery' => 'off'
 );
 

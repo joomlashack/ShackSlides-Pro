@@ -765,12 +765,12 @@
 				    		description="CONTAINER_DESC"
 				    />
 
-				    <field 
+				    <!-- <field 
 				    		name="main_container_class" 
 				    		type="text" 
 				    		default="" 
 				    		label="MAIN_CONTAINER_CLASS" 
-				    />
+				    /> -->
 
 			    <field 
 					type="spacer" 
