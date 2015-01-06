@@ -131,9 +131,6 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: auto;
-}
-.owl-carousel:hover .owl-dots {
-	opacity: 1;
 	-webkit-transition: opacity 500ms ease;
 	-o-transition: opacity 500ms ease;
 	transition: opacity 500ms ease;
@@ -141,8 +138,9 @@
 .owl-carousel .owl-dots .owl-dot {
 	zoom: 1;
 	font-size: 0;
+	position: relative;
 }
-.owl-carousel .owl-dots .owl-dot span {
+.owl-carousel .owl-dots .owl-dot > div {
 	background: #ffffff;
 	display: block;
 	-webkit-backface-visibility: visible;
@@ -155,6 +153,24 @@
 	-moz-border-radius: 30px;
 	border-radius: 30px;
 }
-.owl-carousel .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+.owl-carousel .owl-dots .owl-dot.active > div,
+.owl-carousel .owl-dots .owl-dot:hover > div {
 	background: #666666;
+}
+.owl-carousel .owl-dots .owl-dot > div > span {
+	display: flex;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	color: #aaaaaa;
+	font-size: initial;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	-o-justify-content: center;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
 }
