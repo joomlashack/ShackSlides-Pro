@@ -58,6 +58,10 @@ class ModShackSlidesFlexiHelper extends ModShackSlidesHelper
                 $featured_items = ' AND id '.(($this->featured == 'exclude') ? 'NOT ' : '').'IN ('.implode(",", $featured_items).')';
             }
 		}
+		if($this->ordering == 'RAND()')
+		{
+			$this->ordering = $this->generateOrdering();
+		}
 		$query = 'SELECT * FROM #__content'.
 		' WHERE catid ='.$this->category_id.$featured_items.
 		' AND state = 1'.

@@ -397,4 +397,34 @@ abstract class ModShackSlidesHelper
 
 		return $prefix . $randomString;
 	}
+
+	/**
+	 * Generate random ordering 
+	 *
+	 * @param   int     $number  Range for getting the random number
+	 *
+	 * @return  string
+	 */
+	public function generateOrdering($number = 4)
+	{	
+		$random = mt_rand(0,$number);
+		$ordering = '';
+		switch ($random) {
+			case 1:
+				$ordering = 'title';
+				break;
+			case 2:
+				$ordering = 'created';
+				break;
+			case 3:
+				$ordering = 'hits';
+				break;
+			default:
+				$ordering = 'ordering';
+				break;
+		}
+
+		return $ordering;
+	}
+
 }
