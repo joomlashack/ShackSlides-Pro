@@ -394,6 +394,10 @@ if ($settings['navigation_show'] != '0')
 	}
 
 	$settings['navigation_show'] = 'true';
+	$verticalPosition = '';
+	$dotsWidth = 10;
+	$dotsHeight = 10;
+	$dotActiveWidth = 10;
 
 	// Navigation horizontal alignment
 	$doc->addStyleDeclaration('
@@ -401,8 +405,6 @@ if ($settings['navigation_show'] != '0')
 			text-align: ' . $settings['navigation_align_horizontal'] . ';
 		}'
 	);
-
-	$verticalPosition = '';
 
 	switch ($settings['navigation_align_vertical'])
 	{
@@ -417,11 +419,17 @@ if ($settings['navigation_show'] != '0')
 			break;
 	}
 
-	// Navigation alignment
+	// Navigation settings
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.owl-carousel .owl-dots {
 			text-align: ' . $settings['navigation_align_horizontal'] . ';
 			' . $verticalPosition . ';
+			height: ' . ((2 * (int) $settings['navigation_padding_vertical']) + $dotsHeight) . 'px;
+			padding: ' . (int) $settings['navigation_padding_vertical'] . 'px;
+		}
+		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot span {
+			height: ' . $dotsHeight . 'px;
+			width: ' . $dotsWidth . 'px;
 		}'
 	);
 }
