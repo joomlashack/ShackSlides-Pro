@@ -149,7 +149,7 @@
 .owl-carousel .owl-dots .owl-dot span {
 	width: 10px;
 	height: 10px;
-	margin: 0 7px;
+	margin: 0 0 0 7px;
 	background: #ffffff;
 	display: block;
 	-webkit-backface-visibility: visible;
@@ -161,6 +161,9 @@
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
 	border-radius: 30px;
+}
+.owl-carousel .owl-dots .owl-dot:first-child span {
+	margin-left: 0;
 }
 .owl-carousel .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
 	background: #666666;

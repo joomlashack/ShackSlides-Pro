@@ -383,6 +383,7 @@ if ($settings['description_show'] || $settings['title_show'])
 // Navigation
 if ($settings['navigation_show'] != '0')
 {
+	// Navigation is shown - always or just on hover (default by css)
 	if ($settings['navigation_show'] == '2')
 	{
 		$doc->addStyleDeclaration('
@@ -393,6 +394,13 @@ if ($settings['navigation_show'] != '0')
 	}
 
 	$settings['navigation_show'] = 'true';
+
+	// Navigation horizontal alignment
+	$doc->addStyleDeclaration('
+		#' . $settings['container'] . '.owl-carousel .owl-dots {
+			text-align: ' . $settings['navigation_align_horizontal'] . ';
+		}'
+	);
 }
 else
 {

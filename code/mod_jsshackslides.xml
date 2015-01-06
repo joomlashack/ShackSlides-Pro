@@ -637,9 +637,9 @@
 							label="HORIZONTALALIGNDOTS" 
 							description="HORIZONTALALIGNDOTS_DESC"
 					>
+						<option value="center">HORIZONTALALIGNDOTS_CENTER</option>
 						<option value="left">HORIZONTALALIGNDOTS_LEFT</option>
 						<option value="right">HORIZONTALALIGNDOTS_RIGHT</option>
-						<option value="center">HORIZONTALALIGNDOTS_CENTER</option>
 					</field>
 
 					<field 
