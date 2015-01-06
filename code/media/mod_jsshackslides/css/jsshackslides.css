@@ -134,6 +134,11 @@
 	-webkit-transition: opacity 500ms ease;
 	-o-transition: opacity 500ms ease;
 	transition: opacity 500ms ease;
+	-webkit-pointer-events: none;
+	-moz-pointer-events: none;
+	-ms-pointer-events: none;
+	-o-pointer-events: none;
+	pointer-events: none;
 }
 .owl-carousel .owl-dots .owl-dot {
 	zoom: 1;
@@ -152,6 +157,11 @@
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
 	border-radius: 30px;
+	-webkit-pointer-events: initial;
+	-moz-pointer-events: initial;
+	-ms-pointer-events: initial;
+	-o-pointer-events: initial;
+	pointer-events: initial;
 }
 .owl-carousel .owl-dots .owl-dot.active > div,
 .owl-carousel .owl-dots .owl-dot:hover > div {
@@ -173,4 +183,9 @@
 	justify-content: center;
 	-ms-align-items: center;
 	align-items: center;
+	-webkit-pointer-events: initial;
+	-moz-pointer-events: initial;
+	-ms-pointer-events: initial;
+	-o-pointer-events: initial;
+	pointer-events: initial;
 }
