@@ -425,7 +425,7 @@ if ($settings['navigation_show'] != '0')
 			text-align: ' . $settings['navigation_align_horizontal'] . ';
 			' . $verticalPosition . ';
 			height: ' . ((2 * (int) $settings['navigation_padding_vertical']) + $dotsHeight) . 'px;
-			padding: ' . (int) $settings['navigation_padding_vertical'] . 'px;
+			padding: ' . (int) $settings['navigation_padding_vertical'] . 'px ' . (int) $settings['navigation_padding_horizontal'] . 'px;
 		}
 		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot span {
 			height: ' . $dotsHeight . 'px;
