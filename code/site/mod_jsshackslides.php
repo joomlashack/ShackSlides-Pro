@@ -426,6 +426,7 @@ if ($settings['navigation_show'] != '0')
 			' . $verticalPosition . ';
 			height: ' . ((2 * (int) $settings['navigation_padding_vertical']) + $dotsHeight) . 'px;
 			padding: ' . (int) $settings['navigation_padding_vertical'] . 'px ' . (int) $settings['navigation_padding_horizontal'] . 'px;
+			opacity: ' . (((int) $settings['navigation_opacity']) / 100) . '
 		}
 		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot span {
 			height: ' . $dotsHeight . 'px;
