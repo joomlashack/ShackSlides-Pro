@@ -380,6 +380,25 @@ if ($settings['description_show'] || $settings['title_show'])
 	);
 }
 
+// Navigation
+if ($settings['navigation_show'] != '0')
+{
+	if ($settings['navigation_show'] == '2')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .owl-dots {
+				opacity: 1;
+			}'
+		);
+	}
+
+	$settings['navigation_show'] = 'true';
+}
+else
+{
+	$settings['navigation_show'] = 'false';
+}
+
 // Loads slider Javascript
 $sliderLoader = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/owl.load.js');
 

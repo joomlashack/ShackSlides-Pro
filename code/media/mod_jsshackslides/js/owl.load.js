@@ -8,7 +8,7 @@ jQuery(document).ready(function(){
 		autoplayTimeout: $$slide_delay,
 		autoplayHoverPause: $$slide_onhoverstop,
 		nav: false,
-		dots: false,
+		dots: $$navigation_show,
 		autoHeight: $$slide_autoheight,
 		lazyLoad: false,
 		navText: [ '&lt;', '&gt;' ],

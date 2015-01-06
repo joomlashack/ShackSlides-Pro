@@ -11,7 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 ?>
-<div id="<?php echo $settings['container'] ?>" class="owl-carousel owl-theme">
+<div id="<?php echo $settings['container'] ?>" class="owl-carousel">
 <?php
 	foreach ($images as $i => $image)
 		:
