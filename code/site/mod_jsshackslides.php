@@ -26,7 +26,7 @@ $base = $helper->getBase();
 if (!$images)
 {
 	// If there are no images set, there is nothing to be shown
-	echo "<img src=".NOIMAGEFOUND_IMG." />";
+	echo "<img src=".$base.NOIMAGEFOUND_IMG." />";
 	return;
 }
 

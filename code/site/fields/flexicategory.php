@@ -23,7 +23,7 @@ class JFormFieldFlexicategory extends JFormFieldCategory
 		if (!file_exists($flexi_path)) 
 			:
 			$doc = JFactory::getDocument();
-			$doc->addStyleSheet(JURI::root() . 'modules/mod_jsshackslides/assets/admin.css');
+			$doc->addStyleSheet(JURI::root() . 'media/mod_jsshackslides/css/admin.css');
 			return '<div class="shackslides-not-installed">' . JText::_('FLEXICONTENT_NOT_INSTALLED') . '</div>';
 		else:
 			return parent::getInput();

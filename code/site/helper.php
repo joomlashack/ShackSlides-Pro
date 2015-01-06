@@ -10,7 +10,7 @@
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
 
-define("NOIMAGEFOUND_IMG" , "modules/mod_jsshackslides/images/noimagefound.png");
+define("NOIMAGEFOUND_IMG" , "media/mod_jsshackslides/images/noimagefound.png");
 /**
  * Main Shackslides Helper class
  *

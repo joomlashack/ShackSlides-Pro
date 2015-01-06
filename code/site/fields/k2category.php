@@ -28,7 +28,7 @@ class JFormFieldK2category extends JFormFieldList
 
 		else :
 			$doc = JFactory::getDocument();
-			$doc->addStyleSheet(JURI::root() . 'modules/mod_jsshackslides/assets/admin.css');
+			$doc->addStyleSheet(JURI::root() . 'media/mod_jsshackslides/css/admin.css');
 			return '<div class="shackslides-not-installed">' . JText::_('K2_NOT_INSTALLED') . '</div>';
 		endif;
 	}
