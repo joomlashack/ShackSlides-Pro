@@ -395,21 +395,15 @@ if ($settings['navigation_show'] != '0')
 
 	$settings['navigation_show'] = 'true';
 	$verticalPosition = '';
+	$horizontalPosition = '';
 	$dotsWidth = 10;
 	$dotsHeight = 10;
 	$dotActiveWidth = 10;
 
-	// Navigation horizontal alignment
-	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.owl-carousel .owl-dots {
-			text-align: ' . $settings['navigation_align_horizontal'] . ';
-		}'
-	);
-
 	switch ($settings['navigation_align_vertical'])
 	{
 		case 'center':
-			$verticalPosition = 'top: 50%';
+			$verticalPosition = 'top: 0; bottom: 0';
 			break;
 		case 'top':
 			$verticalPosition = 'top: 0';
@@ -419,20 +413,75 @@ if ($settings['navigation_show'] != '0')
 			break;
 	}
 
+	switch ($settings['navigation_align_horizontal'])
+	{
+		case 'center':
+			$horizontalPosition = 'left: 0; right: 0';
+			break;
+		case 'left':
+			$horizontalPosition = 'left: 0';
+			break;
+		case 'right':
+			$horizontalPosition = 'right: 0';
+			break;
+	}
+
 	// Navigation settings
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.owl-carousel .owl-dots {
-			text-align: ' . $settings['navigation_align_horizontal'] . ';
-			' . $verticalPosition . ';
-			height: ' . ((2 * (int) $settings['navigation_padding_vertical']) + $dotsHeight) . 'px;
 			padding: ' . (int) $settings['navigation_padding_vertical'] . 'px ' . (int) $settings['navigation_padding_horizontal'] . 'px;
-			opacity: ' . (((int) $settings['navigation_opacity']) / 100) . '
+			opacity: ' . (((int) $settings['navigation_opacity']) / 100) . ';
+			' . $verticalPosition . ';
+			' . $horizontalPosition . ';
+		}
+		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot {
+			display: inline-block;
+			*display: inline;
 		}
 		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot span {
 			height: ' . $dotsHeight . 'px;
 			width: ' . $dotsWidth . 'px;
 		}'
 	);
+
+	switch ($settings['navigation_orientation'])
+	{
+		case 'horizontal':
+			$doc->addStyleDeclaration('
+				#' . $settings['container'] . '.owl-carousel .owl-dots {
+					width: ' . ((($dotsWidth + 5) * sizeof($images)) - 5 + (2 * (int) $settings['navigation_padding_horizontal'])) . 'px;
+					height: ' . ((2 * (int) $settings['navigation_padding_vertical']) + $dotsHeight) . 'px;
+				}
+				#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot {
+					display: inline-block;
+					*display: inline;
+				}
+				#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot span {
+					margin: 0 0 0 5px;
+				}
+				#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot:first-child span {
+					margin-left: 0;
+				}'
+			);
+			break;
+		case 'vertical':
+			$doc->addStyleDeclaration('
+				#' . $settings['container'] . '.owl-carousel .owl-dots {
+					height: ' . ((($dotsHeight + 5) * sizeof($images)) - 5 + (2 * (int) $settings['navigation_padding_vertical'])) . 'px;
+					width: ' . ((2 * (int) $settings['navigation_padding_horizontal']) + $dotsWidth) . 'px;
+				}
+				#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot {
+					display: block;
+				}
+				#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot span {
+					margin: 0 0 5px 0;
+				}
+				#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot:first-child span {
+					margin-top: 0;
+				}'
+			);
+			break;
+	}
 }
 else
 {
