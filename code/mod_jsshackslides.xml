@@ -787,16 +787,6 @@
 						<option value="on">JQUERYON</option>
 						<option value="off">JQUERYOFF</option>
 					</field>
-
-					<field 
-							name="includejqueryui" 
-							type="radio" 
-							default="on" 
-							label="INCLUDE_JQUERYUI" 
-					>
-						<option value="on">JQUERYUION</option>
-						<option value="off">JQUERYUIOFF</option>
-					</field>
 					
 			</fieldset>
 
