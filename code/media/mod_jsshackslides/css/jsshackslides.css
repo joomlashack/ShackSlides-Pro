@@ -167,6 +167,10 @@
 .owl-carousel .owl-dots .owl-dot:hover > div {
 	background: #666666;
 }
+.owl-carousel .owl-dots .owl-dot.active:hover > div {
+	background: #ffffff;
+	color: #aaaaaa;
+}
 .owl-carousel .owl-dots .owl-dot > div > span {
 	display: flex;
 	position: absolute;
@@ -188,4 +192,114 @@
 	-ms-pointer-events: initial;
 	-o-pointer-events: initial;
 	pointer-events: initial;
+}
+
+.owl-carousel .owl-nav {
+	text-align: center;
+	-webkit-tap-highlight-color: transparent;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 50px;
+	margin: auto 0;
+	opacity: 0;
+	-webkit-transition: opacity 500ms ease;
+	-o-transition: opacity 500ms ease;
+	transition: opacity 500ms ease;
+}
+.owl-carousel .owl-nav [class*='owl-'] {
+	color: #aaaaaa;
+	font-size: initial;
+	margin: 5px;
+	padding: 5px;
+	background: #ffffff;
+	display: inline-block;
+	cursor: pointer;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	width: 50px;
+	height: 50px;
+	position: relative;
+}
+.owl-carousel .owl-nav [class*='owl-']:hover {
+	background: #666666;
+	text-decoration: none;
+}
+.owl-carousel .owl-nav .disabled {
+	opacity: 0;
+	cursor: default;
+}
+.owl-carousel .owl-nav [class*='owl-']:before,
+.owl-carousel .owl-nav [class*='owl-']:after {
+	border: medium solid transparent;
+	bottom: 0;
+	content: " ";
+	height: 0;
+	left: 17px;
+	margin: auto;
+	-webkit-pointer-events: none;
+	-moz-pointer-events: none;
+	-ms-pointer-events: none;
+	-o-pointer-events: none;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+}
+
+.owl-carousel .owl-nav .owl-next:after {
+	border-color: rgba(111, 213, 155, 0);
+	border-left-color: #ffffff;
+    border-width: 17px 25px 18px 18px;
+    margin-top: -17px;
+}
+.owl-carousel .owl-nav .owl-next:hover:after {
+	border-left-color: #666666;
+}
+.owl-carousel .owl-nav .owl-next:before {
+	border-color: rgba(245, 0, 0, 0);
+	border-left-color: #666666;
+    border-width: 20px 25px 20px 35px;
+    margin-top: -20px;
+}
+.owl-carousel .owl-nav .owl-next:hover:before {
+	border-left-color: #ffffff;
+}
+.owl-carousel .owl-nav .owl-prev:before,
+.owl-carousel .owl-nav .owl-prev:after {
+	left: auto;
+	right: 17px;
+}
+
+.owl-carousel .owl-nav .owl-prev:after {
+	border-color: rgba(111, 213, 155, 0);
+	border-right-color: #ffffff;
+    border-width: 17px 18px 18px 25px;
+    margin-top: -17px;
+}
+.owl-carousel .owl-nav .owl-prev:hover:after {
+	border-right-color: #666666;
+}
+.owl-carousel .owl-nav .owl-prev:before {
+	border-color: rgba(245, 0, 0, 0);
+	border-right-color: #666666;
+    border-width: 20px 35px 20px 25px;
+    margin-top: -20px;
+}
+.owl-carousel .owl-nav .owl-prev:hover:before {
+	border-right-color: #ffffff;
+}
+.owl-carousel .owl-nav .owl-prev {
+    float: left;
+    margin-left: 10px;
+}
+.owl-carousel .owl-nav .owl-next {
+    float: right;
+    margin-right: 10px;
 }

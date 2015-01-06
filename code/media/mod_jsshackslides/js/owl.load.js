@@ -7,11 +7,11 @@ jQuery(document).ready(function(){
 		autoplay: $$slide_autoplay,
 		autoplayTimeout: $$slide_delay,
 		autoplayHoverPause: $$slide_onhoverstop,
-		nav: false,
+		nav: $$navigation_buttons_show,
 		dots: $$navigation_show,
 		autoHeight: $$slide_autoheight,
 		lazyLoad: false,
-		navText: [ '&lt;', '&gt;' ],
+		navText: [ ' ', ' ' ],
 		smartSpeed: $$slide_effect_masterspeed
 		$$slides_animation
 	};

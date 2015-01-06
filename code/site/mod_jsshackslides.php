@@ -487,6 +487,23 @@ else
 	$settings['navigation_show'] = 'false';
 }
 
+// Navigation
+if ($settings['navigation_buttons_show'] != '0')
+{
+	// Navigation is shown - always or just on hover (default by css)
+	$doc->addStyleDeclaration('
+		#' . $settings['container'] . '.owl-carousel' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') . ' .owl-nav {
+			opacity: ' . (((int) $settings['navigation_buttons_opacity']) / 100) . ';
+		}'
+	);
+
+	$settings['navigation_buttons_show'] = 'true';
+}
+else
+{
+	$settings['navigation_buttons_show'] = 'false';
+}
+
 // Loads slider Javascript
 $sliderLoader = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/owl.load.js');
 
