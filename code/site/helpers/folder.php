@@ -61,15 +61,7 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 
 		if($this->ordering == 'RAND()')
 		{
-			$i = mt_rand(0,1);
-			if($i == 0)
-			{
-				$this->ordering = 'ordering';
-			}
-			else
-			{
-				$this->ordering = 'title';
-			}
+			$this->ordering = $this->generateOrdering(1);
 		}
 
 		switch ($this->ordering) 

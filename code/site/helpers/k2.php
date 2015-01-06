@@ -49,7 +49,10 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
 		if (version_compare($version->RELEASE, "1.6", "ge")) {
 			$aid = max ($user->getAuthorisedViewLevels());
 		}
-
+		if($this->ordering == 'RAND()')
+		{
+			$this->ordering = $this->generateOrdering();
+		}
 		$query = 'SELECT * FROM #__k2_items'.
 		' WHERE catid ='.$this->category_id.
 		(($this->featured !== 'include') ? ' AND featured '.(($this->featured == 'exclude') ? '!=' : '=').' 1' : '').
