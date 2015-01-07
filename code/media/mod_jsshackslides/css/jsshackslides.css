@@ -121,3 +121,97 @@
 	-o-justify-content: center;
 	justify-content: center;
 }
+
+.owl-carousel .owl-dots {
+	opacity: 0;
+	position: absolute;
+	-webkit-tap-highlight-color: transparent;
+	font-size: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: auto;
+	-webkit-transition: opacity 500ms ease;
+	-o-transition: opacity 500ms ease;
+	transition: opacity 500ms ease;
+	-webkit-pointer-events: none;
+	-moz-pointer-events: none;
+	-ms-pointer-events: none;
+	-o-pointer-events: none;
+	pointer-events: none;
+}
+.owl-carousel .owl-dots .owl-dot {
+	zoom: 1;
+	font-size: 0;
+	position: relative;
+}
+.owl-carousel .owl-dots .owl-dot > div {
+	display: block;
+	-webkit-backface-visibility: visible;
+	-webkit-pointer-events: initial;
+	-moz-pointer-events: initial;
+	-ms-pointer-events: initial;
+	-o-pointer-events: initial;
+	pointer-events: initial;
+}
+.owl-carousel .owl-dots .owl-dot > div > span {
+	display: flex;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	font-size: initial;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	-o-justify-content: center;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	-webkit-pointer-events: initial;
+	-moz-pointer-events: initial;
+	-ms-pointer-events: initial;
+	-o-pointer-events: initial;
+	pointer-events: initial;
+	z-index: 30;
+}
+.owl-carousel .owl-nav {
+	text-align: center;
+	-webkit-tap-highlight-color: transparent;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 50px;  /* it must be moved to the php file */
+	margin: auto 0;
+	opacity: 0;
+	-webkit-transition: opacity 500ms ease;
+	-o-transition: opacity 500ms ease;
+	transition: opacity 500ms ease;
+}
+.owl-carousel .owl-nav [class*='owl-'] {
+	font-size: initial;
+	margin: 5px;
+	padding: 5px;
+	display: inline-block;
+	cursor: pointer;
+	width: 50px;  /* it must be moved to the php file */
+	height: 50px;  /* it must be moved to the php file */
+	position: relative;
+}
+.owl-carousel .owl-nav .disabled {
+	opacity: 0;
+	cursor: default;
+}
+.owl-carousel .owl-nav .owl-prev {
+    float: left;
+    margin-left: 10px;
+}
+.owl-carousel .owl-nav .owl-next {
+    float: right;
+    margin-right: 10px;
+}
