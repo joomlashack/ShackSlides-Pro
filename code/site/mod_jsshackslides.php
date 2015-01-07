@@ -180,13 +180,19 @@ else
 JHtml::stylesheet('mod_jsshackslides/owl.carousel.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/animate.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/jsshackslides.css', array(), true);
+
 // Loads theme css 
-$themeCss = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/themes/'.$settings['navigation_theme'].'.css');
-foreach ($settings as $key => $value)
+if ($settings['navigation_theme'] != 'none')
 {
-	$themeCss = str_replace('$$' . $key, '#'.$value, $themeCss);
+	$themeCss = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/themes/'.$settings['navigation_theme'].'.css');
+	foreach ($settings as $key => $value)
+	{
+		$themeCss = str_replace('$$' . $key, '#'.$value, $themeCss);
+	}
+	$doc->addStyleDeclaration($themeCss);
+
 }
-$doc->addStyleDeclaration($themeCss);
+
 JHtml::script('mod_jsshackslides/owl.carousel.min.js', false, true);
 
 // Setting container ID
@@ -403,8 +409,11 @@ if ($settings['navigation_show'] != '0')
 	$horizontalPosition = '';
 	$dotsWidth = 30;
 	$dotsHeight = 30;
-	$dotActiveWidth = 10;
 	$dotsPadding = 5;
+	$buttonsPrevHeight = 40;
+	$buttonsPrevWidth = 40;
+	$buttonsNextHeight = 40;
+	$buttonsNextWidth = 40;
 
 	switch ($settings['navigation_align_vertical'])
 	{
@@ -498,10 +507,21 @@ else
 // Navigation
 if ($settings['navigation_buttons_show'] != '0')
 {
-	// Navigation is shown - always or just on hover (default by css)
+	// Navigation is shown - always or just on hover (default by css).  Height adjustment
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.owl-carousel' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') . ' .owl-nav {
 			opacity: ' . (((int) $settings['navigation_buttons_opacity']) / 100) . ';
+		}
+		#' . $settings['container'] . '.owl-carousel .owl-nav {
+			height: ' . max($buttonsNextHeight, $buttonsPrevHeight) . 'px;
+		}
+		#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev {
+			width: ' . $buttonsPrevWidth . 'px;
+			height: ' . $buttonsPrevHeight . 'px;
+		}
+		#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next {
+			width: ' . $buttonsNextWidth . 'px;
+			height: ' . $buttonsNextHeight . 'px;
 		}'
 	);
 

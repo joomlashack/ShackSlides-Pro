@@ -42,91 +42,23 @@ $$container.owl-carousel .owl-dots .owl-dot > div > span {
 }
 
 $$container.owl-carousel .owl-nav [class*='owl-'] {
-	color: #aaaaaa;
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	border-radius: 30px;
-	background: #FFF;
-	-webkit-box-shadow:
-		0 1px 1px rgba(255,255,255,0.4), 
-		inset 0 1px 1px rgba(0,0,0,0.1),
-		0 0 0 2px rgba(255,255,255,0.5);
-	box-shadow:
-		0 1px 1px rgba(255,255,255,0.4), 
-		inset 0 1px 1px rgba(0,0,0,0.1),
-		0 0 0 2px rgba(255,255,255,0.5);
-	-webkit-transition: box-shadow 0.2s;
-	-o-transition: box-shadow 0.2s;
-	transition: box-shadow 0.2s;
+	border: 8px solid #ddd;
+	border: 8px solid rgba(150,150,150,0.4);
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 $$container.owl-carousel .owl-nav [class*='owl-']:hover {
-	text-decoration: none;
-	background: #666;
-	-webkit-box-shadow:
-		0 1px 1px rgba(255,255,255,0.4),
-		inset 0 1px 1px rgba(0,0,0,0.1),
-		0 0 0 5px rgba(255,255,255,0.5);
-	box-shadow:
-		0 1px 1px rgba(255,255,255,0.4),
-		inset 0 1px 1px rgba(0,0,0,0.1),
-		0 0 0 5px rgba(255,255,255,0.5);
+	border-color: rgba(150,150,150,0.9);
 }
-$$container.owl-carousel .owl-nav [class*='owl-']:before,
-$$container.owl-carousel .owl-nav [class*='owl-']:after {
-	border: medium solid transparent;
-	bottom: 0;
-	content: " ";
-	height: 0;
-	left: 17px;
-	margin: auto;
-	-webkit-pointer-events: none;
-	-moz-pointer-events: none;
-	-ms-pointer-events: none;
-	-o-pointer-events: none;
-	pointer-events: none;
-	position: absolute;
-	right: 0;
-	top: 50%;
-	width: 0;
+$$container.owl-carousel .owl-nav .owl-prev {
+	border-right: none;
+	border-top: none;
 }
-$$container.owl-carousel .owl-nav .owl-next:after {
-	border-color: rgba(111, 213, 155, 0);
-	border-left-color: #ffffff;
-    border-width: 17px 25px 18px 18px;
-    margin-top: -17px;
+$$container.owl-carousel .owl-nav .owl-next {
+	border-left: none;
+	border-bottom: none;
 }
-$$container.owl-carousel .owl-nav .owl-next:hover:after {
-	border-left-color: #666666;
-}
-$$container.owl-carousel .owl-nav .owl-next:before {
-	border-color: rgba(245, 0, 0, 0);
-	border-left-color: #666666;
-    border-width: 20px 25px 20px 35px;
-    margin-top: -20px;
-}
-$$container.owl-carousel .owl-nav .owl-next:hover:before {
-	border-left-color: #ffffff;
-}
-$$container.owl-carousel .owl-nav .owl-prev:before,
-$$container.owl-carousel .owl-nav .owl-prev:after {
-	left: auto;
-	right: 17px;
-}
-$$container.owl-carousel .owl-nav .owl-prev:after {
-	border-color: rgba(111, 213, 155, 0);
-	border-right-color: #ffffff;
-    border-width: 17px 18px 18px 25px;
-    margin-top: -17px;
-}
-$$container.owl-carousel .owl-nav .owl-prev:hover:after {
-	border-right-color: #666666;
-}
-$$container.owl-carousel .owl-nav .owl-prev:before {
-	border-color: rgba(245, 0, 0, 0);
-	border-right-color: #666666;
-    border-width: 20px 35px 20px 25px;
-    margin-top: -20px;
-}
-$$container.owl-carousel .owl-nav .owl-prev:hover:before {
-	border-right-color: #ffffff;
-}
+
+

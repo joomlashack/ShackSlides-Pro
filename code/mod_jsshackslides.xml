@@ -583,6 +583,17 @@
 			>
 
 				<field 
+						name="navigation_theme"
+						type="list"
+						default="default"
+						label="NAVIGATIONTHEME"
+						description="NAVIGATIONTHEME_DESC">
+					<option value="none">NAVIGATIONTHEME_NONE</option>
+					<option value="default">NAVIGATIONTHEME_EXAMPLE</option>
+				</field>
+
+
+				<field 
 						type="spacer" 
 						name="navigation_bar_spacer" 
 						label="NAVIGATIONBAR_SPACER_LABEL" 
@@ -597,15 +608,6 @@
 						<option value="2">ALWAYS_DOTS</option>
 						<option value="0">NO_DOTS</option>
 						<option value="1">ONHOVER_DOTS</option>
-					</field>
-
-					<field 
-							name="navigation_theme"
-							type="list"
-							default="default"
-							label="NAVIGATIONTHEME"
-							description="NAVIGATIONTHEME_DESC">
-						<option value="default">NAVIGATIONTHEME_EXAMPLE</option>
 					</field>
 
 					<field 
