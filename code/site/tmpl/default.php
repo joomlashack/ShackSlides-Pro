@@ -18,7 +18,6 @@ defined('_JEXEC') or die('Restricted access');
 			:
 	?>
 		<div class="jss-image-container jss-descpos-<?php echo $settings['title_description_position'] ?>">
-
 			<?php
 				if ($settings['title_description_position'] == 'above_outside')
 				{

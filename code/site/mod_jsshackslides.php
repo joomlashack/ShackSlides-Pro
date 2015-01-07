@@ -279,11 +279,14 @@ if ($settings['description_show'])
 	}
 
 	// Description height
-	if ($settings['title_description_position'] == 'top' || $settings['title_description_position'] == 'bottom')
+	if ($settings['title_description_position'] == 'top'
+		|| $settings['title_description_position'] == 'bottom'
+		|| $settings['title_description_position'] == 'above_outside'
+		|| $settings['title_description_position'] == 'below_outside')
 	{
 		$doc->addStyleDeclaration('
 			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description {
-				min-height: ' . (int) $settings['description_height'] . 'px;
+				height: ' . (int) $settings['description_height'] . 'px;
 			}'
 		);
 	}
@@ -349,11 +352,14 @@ if ($settings['title_show'])
 	}
 
 	// Title height
-	if ($settings['title_description_position'] == 'top' || $settings['title_description_position'] == 'bottom')
+	if ($settings['title_description_position'] == 'top'
+		|| $settings['title_description_position'] == 'bottom'
+		|| $settings['title_description_position'] == 'above_outside'
+		|| $settings['title_description_position'] == 'below_outside')
 	{
 		$doc->addStyleDeclaration('
 			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title {
-				min-height: ' . (int) $settings['title_height'] . 'px;
+				height: ' . (int) $settings['title_height'] . 'px;
 			}'
 		);
 	}
@@ -390,6 +396,21 @@ if ($settings['description_show'] || $settings['title_show'])
 			padding: ' . (int) $settings['title_description_padding_vertical'] . 'px ' . (int) $settings['title_description_padding_horizontal'] . 'px;
 		}'
 	);
+
+	// Above/Below outside title/description
+	if ($settings['title_description_position'] == 'above_outside'
+		|| $settings['title_description_position'] == 'below_outside')
+	{
+		$paddingTitleDescription
+						= ($settings['title_show'] ? (int) $settings['title_height'] : 0) + ($settings['description_show'] ? (int) $settings['description_height'] : 0);
+		$paddingPositionTitleDescription = ($settings['title_description_position'] == 'above_outside' ? 'top' : 'bottom');
+
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
+				padding-' . $paddingPositionTitleDescription . ': ' . $paddingTitleDescription . 'px;
+			}'
+		);
+	}
 }
 
 // Navigation
@@ -402,44 +423,44 @@ if ($settings['navigation_show'] != '0')
 		}'
 	);
 
-$dotsWidth = 30;
-$dotsHeight = 30;
+	$dotsWidth = 30;
+	$dotsHeight = 30;
 
-if ($settings['navigation_custom_dot'] != '')
-{
-	list($dotsWidth,$dotsHeight) = $helper->applyingCustomImages(
-		$settings['navigation_custom_dot'],
-		'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div',
-		$doc
-	);
-}
-else
-{
-	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
-			width: ' . $dotsWidth . 'px;
-			height: ' . $dotsHeight . 'px;
-		}'
-	);
-}
+	if ($settings['navigation_custom_dot'] != '')
+	{
+		list($dotsWidth, $dotsHeight) = $helper->applyingCustomImages(
+			$settings['navigation_custom_dot'],
+			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div',
+			$doc
+		);
+	}
+	else
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
+				width: ' . $dotsWidth . 'px;
+				height: ' . $dotsHeight . 'px;
+			}'
+		);
+	}
 
-if ($settings['navigation_custom_dothover'] != '')
-{
-	$helper->applyingCustomImages(
-		$settings['navigation_custom_dothover'],
-		'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover',
-		$doc
-	);
-}
+	if ($settings['navigation_custom_dothover'] != '')
+	{
+		$helper->applyingCustomImages(
+			$settings['navigation_custom_dothover'],
+			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover',
+			$doc
+		);
+	}
 
-if ($settings['navigation_custom_dotactive'] != '')
-{
-	$helper->applyingCustomImages(
-		$settings['navigation_custom_dotactive'],
-		'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div',
-		$doc
-	);
-}
+	if ($settings['navigation_custom_dotactive'] != '')
+	{
+		$helper->applyingCustomImages(
+			$settings['navigation_custom_dotactive'],
+			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div',
+			$doc
+		);
+	}
 
 	$settings['navigation_show'] = 'true';
 	$verticalPosition = '';
