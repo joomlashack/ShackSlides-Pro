@@ -130,6 +130,8 @@ $defaults = array(
 	'navigation_opacity' => '100',
 	// Custom nav dot
 	'navigation_custom_dot' => '',
+	// Custom hover nav dot
+	'navigation_custom_dothover' => '',
 	// Custom active nav dot
 	'navigation_custom_dotactive' => '',
 	// Show the navigation buttons always, never, on hover
@@ -138,8 +140,12 @@ $defaults = array(
 	'navigation_buttons_opacity' => '100',
 	// Custom previous button
 	'navigation_buttons_custom_previous' => '',
+	// Custom previous hover button
+	'navigation_buttons_custom_previoushover' => '',
 	// Custom next button
 	'navigation_buttons_custom_next' => '',
+	// Custom next hover button
+	'navigation_buttons_custom_nexthover' => '',
 
 	// ADVANCED OPTIONS
 	// id for the slider container
@@ -404,16 +410,37 @@ if ($settings['navigation_show'] != '0')
 		}'
 	);
 
+$dotsWidth = 30;
+$dotsHeight = 30;
+
+if($settings['navigation_custom_dot'] != '')
+{
+	list($dotsWidth,$dotsHeight) = $helper->applyingCustomImages($settings['navigation_custom_dot'], '#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div', $doc);
+}
+else
+{
+	$doc->addStyleDeclaration('
+		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div {
+			width: ' . $dotsWidth . 'px;
+			height: ' . $dotsHeight . 'px;
+		}'
+	);
+}
+
+if($settings['navigation_custom_dothover'] != '')
+{
+	$helper->applyingCustomImages($settings['navigation_custom_dothover'], '#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div:hover', $doc);
+}
+
+if($settings['navigation_custom_dotactive'] != '')
+{
+	$helper->applyingCustomImages($settings['navigation_custom_dotactive'], '#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot.active > div', $doc);
+}
+
 	$settings['navigation_show'] = 'true';
 	$verticalPosition = '';
 	$horizontalPosition = '';
-	$dotsWidth = 30;
-	$dotsHeight = 30;
 	$dotsPadding = 5;
-	$buttonsPrevHeight = 40;
-	$buttonsPrevWidth = 40;
-	$buttonsNextHeight = 40;
-	$buttonsNextWidth = 40;
 
 	switch ($settings['navigation_align_vertical'])
 	{
@@ -451,10 +478,6 @@ if ($settings['navigation_show'] != '0')
 		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot {
 			display: inline-block;
 			*display: inline;
-		}
-		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div {
-			height: ' . $dotsHeight . 'px;
-			width: ' . $dotsWidth . 'px;
 		}'
 	);
 
@@ -506,7 +529,51 @@ else
 
 // Navigation
 if ($settings['navigation_buttons_show'] != '0')
-{
+{	
+
+	$buttonsPrevHeight = 40;
+	$buttonsPrevWidth = 40;
+	$buttonsNextHeight = 40;
+	$buttonsNextWidth = 40;
+
+	if($settings['navigation_buttons_custom_previous'] != '')
+	{
+		list($buttonsPrevWidth,$buttonsPrevHeight) = $helper->applyingCustomImages($settings['navigation_buttons_custom_previous'], '#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev', $doc);
+	}
+	else
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev {
+				width: ' . $buttonsPrevWidth . 'px;
+				height: ' . $buttonsPrevHeight . 'px;
+			}'
+		);
+	}
+
+	if($settings['navigation_buttons_custom_previoushover'] != '')
+	{
+		$helper->applyingCustomImages($settings['navigation_buttons_custom_previoushover'], '#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev:hover', $doc);
+	}
+
+	if($settings['navigation_buttons_custom_next'] != '')
+	{
+		list($buttonsNextWidth,$buttonsNextHeight) = $helper->applyingCustomImages($settings['navigation_buttons_custom_next'], '#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next', $doc);
+	}
+	else
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next {
+				width: ' . $buttonsNextWidth . 'px;
+				height: ' . $buttonsNextHeight . 'px;
+			}'
+		);
+	}
+
+	if($settings['navigation_buttons_custom_nexthover'] != '')
+	{
+		$helper->applyingCustomImages($settings['navigation_buttons_custom_nexthover'], '#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next:hover', $doc);
+	}
+
 	// Navigation is shown - always or just on hover (default by css).  Height adjustment
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.owl-carousel' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') . ' .owl-nav {
