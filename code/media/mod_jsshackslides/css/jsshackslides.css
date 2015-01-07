@@ -191,6 +191,11 @@
 	-webkit-transition: opacity 500ms ease;
 	-o-transition: opacity 500ms ease;
 	transition: opacity 500ms ease;
+	-webkit-pointer-events: none;
+	-moz-pointer-events: none;
+	-ms-pointer-events: none;
+	-o-pointer-events: none;
+	pointer-events: none;
 }
 .owl-carousel .owl-nav [class*='owl-'] {
 	font-size: 0;
@@ -203,6 +208,11 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	text-indent: -90000px;
+	-webkit-pointer-events: initial;
+	-moz-pointer-events: initial;
+	-ms-pointer-events: initial;
+	-o-pointer-events: initial;
+	pointer-events: initial;
 }
 .owl-carousel .owl-nav .disabled {
 	opacity: 0;
@@ -216,4 +226,3 @@
     float: right;
     right: 5%;
 }
-
