@@ -690,6 +690,15 @@
 					/>
 
 					<field 
+							name="navigation_custom_dothover" 
+							type="media" 
+							directory=""
+							preview="true" 
+							label="NAVIGATION_CUSTOMDOTHOVER" 
+							description="NAVIGATION_CUSTOMDOTHOVER_DESC"
+					/>
+					
+					<field 
 							name="navigation_custom_dotactive" 
 							type="media" 
 							directory=""
@@ -734,12 +743,30 @@
 					/>
 
 					<field 
+							name="navigation_buttons_custom_previoushover" 
+							type="media" 
+							directory=""
+							preview="true" 
+							label="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER" 
+							description="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER_DESC"
+					/>
+
+					<field 
 							name="navigation_buttons_custom_next" 
 							type="media" 
 							directory=""
 							preview="true" 
 							label="NAVIGATIONBUTTONS_CUSTOMNEXT" 
-							description="NAVIGATIONBUTTONS_CUSTOMPREVIOUS_NEXT"
+							description="NAVIGATIONBUTTONS_CUSTOMNEXT_DESC"
+					/>
+
+					<field 
+							name="navigation_buttons_custom_nexthover" 
+							type="media" 
+							directory=""
+							preview="true" 
+							label="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER" 
+							description="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER_DESC"
 					/>
 			</fieldset>
 
