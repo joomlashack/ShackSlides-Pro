@@ -602,10 +602,10 @@
 					<field 
 							name="navigation_theme"
 							type="list"
-							default="example"
+							default="default"
 							label="NAVIGATIONTHEME"
 							description="NAVIGATIONTHEME_DESC">
-						<option value="example">NAVIGATIONTHEME_EXAMPLE</option>
+						<option value="default">NAVIGATIONTHEME_EXAMPLE</option>
 					</field>
 
 					<field 

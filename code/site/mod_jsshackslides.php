@@ -113,7 +113,7 @@ $defaults = array(
 	// Show the navigation always, never, on hover
 	'navigation_show' => '2',
 	// Navigation theme
-	'navigation_theme' => 'example',
+	'navigation_theme' => 'default',
 	// Show slide numbers in navigation
 	'navigation_shownumbers' => '0',
 	// Orientation
@@ -164,7 +164,7 @@ if (version_compare(JVERSION, '3.0', '<') == 1)
 	{
 		JFactory::getApplication()->set('jquery', true);
 
-		if ($params->get('includejquery', $defaults['includejquery']) == 'on')
+		if ($settings['includejquery'] == 'on')
 		{
 			JHtml::script('mod_jsshackslides/jquery-1.11.2.min.js', false, true);
 			JHtml::script('mod_jsshackslides/jquery-noconflict.js', false, true);
@@ -180,6 +180,13 @@ else
 JHtml::stylesheet('mod_jsshackslides/owl.carousel.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/animate.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/jsshackslides.css', array(), true);
+// Loads theme css 
+$themeCss = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/themes/'.$settings['navigation_theme'].'.css');
+foreach ($settings as $key => $value)
+{
+	$themeCss = str_replace('$$' . $key, '#'.$value, $themeCss);
+}
+$doc->addStyleDeclaration($themeCss);
 JHtml::script('mod_jsshackslides/owl.carousel.min.js', false, true);
 
 // Setting container ID
