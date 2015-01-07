@@ -784,6 +784,7 @@
 				    		name="moduleclass_sfx" 
 				    		type="text" 
 				    		label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" 
+				    		description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" 
 				    />
 
 				    <field 
@@ -793,13 +794,6 @@
 				    		label="CONTAINER"
 				    		description="CONTAINER_DESC"
 				    />
-
-				    <!-- <field 
-				    		name="main_container_class" 
-				    		type="text" 
-				    		default="" 
-				    		label="MAIN_CONTAINER_CLASS" 
-				    /> -->
 
 			    <field 
 					type="spacer" 
@@ -812,6 +806,7 @@
 							type="radio" 
 							default="off" 
 							label="INCLUDE_JQUERY" 
+							description="INCLUDE_JQUERY_DESC" 
 					>
 						<option value="on">JQUERYON</option>
 						<option value="off">JQUERYOFF</option>
