@@ -11,78 +11,90 @@
 defined('_JEXEC') or die('Restricted access');
 
 ?>
-<div id="<?php echo $settings['container'] ?>" class="owl-carousel">
-<?php
-	foreach ($images as $i => $image)
-		:
-?>
-	<div class="jss-image-container jss-descpos-<?php echo $settings['title_description_position'] ?>">
+<div id="<?php echo $settings['container'] ?>" class="jss-slider">
+	<div class="owl-carousel">
+	<?php
+		foreach ($images as $i => $image)
+			:
+	?>
+		<div class="jss-image-container jss-descpos-<?php echo $settings['title_description_position'] ?>">
 
-		<?php
-			if ($settings['title_description_position'] == 'above_outside')
-			{
-				require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
-			}
-		?>
-		<div class="jss-image">
 			<?php
-				if ($settings['height_adjustment'] == 'adjust')
-					:
-					if ($links[$i])
+				if ($settings['title_description_position'] == 'above_outside')
+				{
+					require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
+				}
+			?>
+			<div class="jss-image">
+				<?php
+					if ($settings['height_adjustment'] == 'adjust')
 						:
-			?>
-		        <a href="<?php echo $links[$i]; ?>"
-		        	<?php echo $settings['anchor_target'] == 'blank' ? ' target="_blank"' : ''; ?>>
-			<?php 
+						if ($links[$i])
+							:
+				?>
+			        <a href="<?php echo $links[$i]; ?>"
+			        	<?php echo $settings['anchor_target'] == 'blank' ? ' target="_blank"' : ''; ?>>
+				<?php 
+						endif;
+				?>
+					<img src="<?php echo $base . $image ?>" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
+				<?php 
+						if ($links[$i])
+						:
+				?>
+					</a>
+				<?php 
+						endif;
+					elseif ($settings['height_adjustment'] == 'crop')
+						:
+				?>
+				<div
+					class="jss-image-int<?php echo $links[$i] ? ' jss-image-link' : ''; ?>"
+					style="background-image: url('<?php echo  $base . $image ?>'"
+				<?php
+					if ($links[$i] && $settings['anchor_target'] == 'blank')
+						:
+				?>
+					onclick="window.open('<?php echo $links[$i]; ?>', '_blank')"
+				<?php
+					elseif ($links[$i])
+						:
+				?>
+					onclick="document.location='<?php echo $links[$i]; ?>'"
+				<?php
 					endif;
-			?>
-				<img src="<?php echo $base . $image ?>" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
-			<?php 
-					if ($links[$i])
-					:
-			?>
-				</a>
-			<?php 
+				?>
+					>
+				</div>
+				<?php
 					endif;
-				elseif ($settings['height_adjustment'] == 'crop')
-					:
-			?>
-			<div
-				class="jss-image-int<?php echo $links[$i] ? ' jss-image-link' : ''; ?>"
-				style="background-image: url('<?php echo  $base . $image ?>'"
-			<?php
-				if ($links[$i] && $settings['anchor_target'] == 'blank')
-					:
-			?>
-				onclick="window.open('<?php echo $links[$i]; ?>', '_blank')"
-			<?php
-				elseif ($links[$i])
-					:
-			?>
-				onclick="document.location='<?php echo $links[$i]; ?>'"
-			<?php
-				endif;
-			?>
-				>
+				?>
+				<?php
+					if ($settings['title_description_position'] != 'above_outside' && $settings['title_description_position'] != 'below_outside')
+					{
+						require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
+					}
+				?>
 			</div>
 			<?php
-				endif;
-			?>
-			<?php
-				if ($settings['title_description_position'] != 'above_outside' && $settings['title_description_position'] != 'below_outside')
+				if ($settings['title_description_position'] == 'below_outside')
 				{
 					require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
 				}
 			?>
 		</div>
-		<?php
-			if ($settings['title_description_position'] == 'below_outside')
-			{
-				require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
-			}
-		?>
+	<?php
+		endforeach;
+	?>
 	</div>
-<?php
-	endforeach;
-?>
+	<div class="jss-navigation">
+		<div class="jss-navigation-inner">
+			<div class="jss-navigation-inner2">
+				<div class="jss-navigation-dots">
+				</div>
+				<div class="jss-navigation-buttons">
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

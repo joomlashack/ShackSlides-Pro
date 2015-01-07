@@ -1,4 +1,4 @@
-$$container.owl-carousel .owl-dots .owl-dot > div {
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
 	background-color: rgba(150,150,150,0.1);
 	-webkit-box-shadow:
 		0 1px 1px rgba(255,255,255,0.4), 
@@ -13,7 +13,7 @@ $$container.owl-carousel .owl-dots .owl-dot > div {
 	transition: all 0.2s;
 	border-radius: 50%;
 }
-$$container.owl-carousel .owl-dots .owl-dot > div:hover {
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover {
 	-webkit-box-shadow:
 		0 1px 1px rgba(255,255,255,0.4),
 		inset 0 1px 1px rgba(0,0,0,0.1),
@@ -23,7 +23,7 @@ $$container.owl-carousel .owl-dots .owl-dot > div:hover {
 		inset 0 1px 1px rgba(0,0,0,0.1),
 		0 0 0 5px rgba(255,255,255,0.5);
 }
-$$container.owl-carousel .owl-dots .owl-dot.active > div:after {
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div:after {
 	content: "";
 	position: absolute;
 	border-radius: 50%;
@@ -37,26 +37,25 @@ $$container.owl-carousel .owl-dots .owl-dot.active > div:after {
 	background: rgba(204,204,204,0.8);
 	z-index: 25;
 }
-$$container.owl-carousel .owl-dots .owl-dot > div > span {
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
 	color: #666666;
 }
 
-$$container.owl-carousel .owl-nav [class*='owl-'] {
+$$container.jss-slider .jss-navigation .jss-navigation-buttons [class*='owl-'] {
 	border: 8px solid #ddd;
-	border: 8px solid rgba(150,150,150,0.4);
 	-webkit-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
 	-o-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
-$$container.owl-carousel .owl-nav [class*='owl-']:hover {
-	border-color: rgba(150,150,150,0.9);
+$$container.jss-slider .jss-navigation .jss-navigation-buttons [class*='owl-']:hover {
+	border-color: #ddd;
 }
-$$container.owl-carousel .owl-nav .owl-prev {
+$$container.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
 	border-right: none;
 	border-top: none;
 }
-$$container.owl-carousel .owl-nav .owl-next {
+$$container.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
 	border-left: none;
 	border-bottom: none;
 }

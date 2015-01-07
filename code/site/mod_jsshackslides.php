@@ -209,8 +209,8 @@ $settings['slide_center'] = ($settings['slide_items'] == 1 ? 'true' : 'false');
 $settings['slide_effect_masterspeed'] = $effectMasterSpeed;
 
 $doc->addStyleDeclaration('
-	#' . $settings['container'] . '.owl-carousel .owl-item,
-	#' . $settings['container'] . '.owl-carousel .animated {
+	#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item,
+	#' . $settings['container'] . '.jss-slider .owl-carousel .animated {
 			-webkit-animation-duration:' . $effectMasterSpeed . 'ms;
 			animation-duration:' . $effectMasterSpeed . 'ms;
 		}'
@@ -224,7 +224,7 @@ if ($settings['height_adjustment'] == 'adjust')
 	if ($height > 0)
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .owl-item .jss-image {
+			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-image {
 				max-height: ' . $height . 'px;
 			}'
 		);
@@ -234,7 +234,7 @@ elseif ($settings['height_adjustment'] == 'crop')
 {
 	$settings['slide_autoheight'] = 'false';
 	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.owl-carousel .owl-item .jss-image {
+		#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-image {
 			width: 100%;
 			height: ' . $settings['height'] . 'px;
 		}'
@@ -248,7 +248,7 @@ if ($settings['description_show'])
 	if ($settings['description_color_flag'])
 	{
 		$doc->addStyleDeclaration(
-			'#' . $settings['container'] . '.owl-carousel .owl-item .jss-description > * {
+			'#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description > * {
 				color: #' . $settings['description_color'] . ';
 			}'
 		);
@@ -259,7 +259,7 @@ if ($settings['description_show'])
 	{
 		$settings['description_bgcolor'] = implode(',', $helper->hexToRGB($settings['description_bgcolor']));
 		$doc->addStyleDeclaration(
-			'#' . $settings['container'] . '.owl-carousel .owl-item .jss-description {
+			'#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description {
 				background-color: rgba(' . $settings['description_bgcolor'] . ', ' . ($settings['description_bgcolor_opacity'] / 100) . ')
 			}'
 		);
@@ -272,7 +272,7 @@ if ($settings['description_show'])
 		|| $settings['title_description_position'] == 'right_outside')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .owl-item .jss-description {
+			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description {
 				width: ' . (int) $settings['description_width'] . 'px;
 			}'
 		);
@@ -282,7 +282,7 @@ if ($settings['description_show'])
 	if ($settings['title_description_position'] == 'top' || $settings['title_description_position'] == 'bottom')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .owl-item .jss-description {
+			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description {
 				min-height: ' . (int) $settings['description_height'] . 'px;
 			}'
 		);
@@ -292,7 +292,8 @@ if ($settings['description_show'])
 	if ($settings['title_description_position'] == 'left_outside')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .jss-image {
+			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
 				padding-left: ' . (int) $settings['description_width'] . 'px;
 			}'
 		);
@@ -302,7 +303,8 @@ if ($settings['description_show'])
 	if ($settings['title_description_position'] == 'right_outside')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .jss-image {
+			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
 				padding-right: ' . (int) $settings['description_width'] . 'px;
 			}'
 		);
@@ -316,7 +318,7 @@ if ($settings['title_show'])
 	if ($settings['title_color_flag'])
 	{
 		$doc->addStyleDeclaration(
-			'#' . $settings['container'] . '.owl-carousel .owl-item .jss-title > * {
+			'#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-title > * {
 				color: #' . $settings['title_color'] . ';
 			}'
 		);
@@ -327,7 +329,7 @@ if ($settings['title_show'])
 	{
 		$settings['title_bgcolor'] = implode(',', $helper->hexToRGB($settings['title_bgcolor']));
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .owl-item .jss-title {
+			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-title {
 				background-color: rgba(' . $settings['title_bgcolor'] . ', ' . ($settings['title_bgcolor_opacity'] / 100) . ')
 			}'
 		);
@@ -340,7 +342,7 @@ if ($settings['title_show'])
 		|| $settings['title_description_position'] == 'right_outside')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .jss-image .jss-title {
+			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title {
 				width: ' . (int) $settings['title_width'] . 'px;
 			}'
 		);
@@ -350,7 +352,7 @@ if ($settings['title_show'])
 	if ($settings['title_description_position'] == 'top' || $settings['title_description_position'] == 'bottom')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .jss-image .jss-title {
+			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title {
 				min-height: ' . (int) $settings['title_height'] . 'px;
 			}'
 		);
@@ -360,7 +362,8 @@ if ($settings['title_show'])
 	if ($settings['title_description_position'] == 'left_outside')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .jss-image {
+			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
 				padding-left: ' . (int) $settings['title_width'] . 'px;
 			}'
 		);
@@ -370,7 +373,8 @@ if ($settings['title_show'])
 	if ($settings['title_description_position'] == 'right_outside')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .jss-image {
+			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
 				padding-right: ' . (int) $settings['title_width'] . 'px;
 			}'
 		);
@@ -381,8 +385,8 @@ if ($settings['title_show'])
 if ($settings['description_show'] || $settings['title_show'])
 {
 	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.owl-carousel .jss-image .jss-title-description .jss-title,
-		#' . $settings['container'] . '.owl-carousel .jss-image .jss-title-description .jss-description {
+		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title-description .jss-title,
+		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title-description .jss-description {
 			padding: ' . (int) $settings['title_description_padding_vertical'] . 'px ' . (int) $settings['title_description_padding_horizontal'] . 'px;
 		}'
 	);
@@ -393,7 +397,7 @@ if ($settings['navigation_show'] != '0')
 {
 	// Navigation is shown - always or just on hover (default by css)
 	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.owl-carousel' . (($settings['navigation_show'] == '1') ? ':hover' : '') . ' .owl-dots {
+		#' . $settings['container'] . '.jss-slider ' . (($settings['navigation_show'] == '1') ? ':hover' : '') . ' .jss-navigation .jss-navigation-dots {
 			opacity: ' . (((int) $settings['navigation_opacity']) / 100) . ';
 		}'
 	);
@@ -405,14 +409,14 @@ if ($settings['navigation_custom_dot'] != '')
 {
 	list($dotsWidth,$dotsHeight) = $helper->applyingCustomImages(
 		$settings['navigation_custom_dot'],
-		'#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div',
+		'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div',
 		$doc
 	);
 }
 else
 {
 	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div {
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
 			width: ' . $dotsWidth . 'px;
 			height: ' . $dotsHeight . 'px;
 		}'
@@ -423,7 +427,7 @@ if ($settings['navigation_custom_dothover'] != '')
 {
 	$helper->applyingCustomImages(
 		$settings['navigation_custom_dothover'],
-		'#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div:hover',
+		'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover',
 		$doc
 	);
 }
@@ -432,7 +436,7 @@ if ($settings['navigation_custom_dotactive'] != '')
 {
 	$helper->applyingCustomImages(
 		$settings['navigation_custom_dotactive'],
-		'#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot.active > div',
+		'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div',
 		$doc
 	);
 }
@@ -470,12 +474,12 @@ if ($settings['navigation_custom_dotactive'] != '')
 
 	// Navigation settings
 	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.owl-carousel .owl-dots {
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
 			padding: ' . (int) $settings['navigation_padding_vertical'] . 'px ' . (int) $settings['navigation_padding_horizontal'] . 'px;
 			' . $verticalPosition . ';
 			' . $horizontalPosition . ';
 		}
-		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot {
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
 			display: inline-block;
 			*display: inline;
 		}'
@@ -485,11 +489,11 @@ if ($settings['navigation_custom_dotactive'] != '')
 	{
 		case 'horizontal':
 			$doc->addStyleDeclaration('
-				#' . $settings['container'] . '.owl-carousel .owl-dots {
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
 					width: ' . ((($dotsWidth + $dotsPadding * 2) * sizeof($images)) + (2 * (int) $settings['navigation_padding_horizontal'])) . 'px;
 					height: ' . ((2 * (int) $settings['navigation_padding_vertical']) + $dotsHeight) . 'px;
 				}
-				#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot {
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
 					display: inline-block;
 					*display: inline;
 					margin: 0 ' . $dotsPadding . 'px;
@@ -498,17 +502,17 @@ if ($settings['navigation_custom_dotactive'] != '')
 			break;
 		case 'vertical':
 			$doc->addStyleDeclaration('
-				#' . $settings['container'] . '.owl-carousel .owl-dots {
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
 					height: ' . ((($dotsHeight + $dotsPadding) * sizeof($images)) - $dotsPadding + (2 * (int) $settings['navigation_padding_vertical'])) . 'px;
 					width: ' . ((2 * (int) $settings['navigation_padding_horizontal']) + $dotsWidth) . 'px;
 				}
-				#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot {
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
 					display: block;
 				}
-				#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div {
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
 					margin: 0 0 ' . $dotsPadding . 'px 0;
 				}
-				#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot:first-child > div {
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot:first-child > div {
 					margin-top: 0;
 				}'
 			);
@@ -517,7 +521,7 @@ if ($settings['navigation_custom_dotactive'] != '')
 
 	// Slide numbers in navigation
 	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot span {
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot span {
 			opacity: ' . ($settings['navigation_shownumbers'] ? '1' : '0') . '
 		}'
 	);
@@ -539,14 +543,14 @@ if ($settings['navigation_buttons_show'] != '0')
 	{
 		list($buttonsPrevWidth,$buttonsPrevHeight) = $helper->applyingCustomImages(
 			$settings['navigation_buttons_custom_previous'],
-			'#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev',
+			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev',
 			$doc
 		);
 	}
 	else
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev {
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
 				width: ' . $buttonsPrevWidth . 'px;
 				height: ' . $buttonsPrevHeight . 'px;
 			}'
@@ -557,7 +561,7 @@ if ($settings['navigation_buttons_show'] != '0')
 	{
 		$helper->applyingCustomImages(
 			$settings['navigation_buttons_custom_previoushover'],
-			'#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev:hover',
+			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev:hover',
 			$doc
 		);
 	}
@@ -566,14 +570,14 @@ if ($settings['navigation_buttons_show'] != '0')
 	{
 		list($buttonsNextWidth, $buttonsNextHeight) = $helper->applyingCustomImages(
 			$settings['navigation_buttons_custom_next'],
-			'#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next',
+			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next',
 			$doc
 		);
 	}
 	else
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next {
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
 				width: ' . $buttonsNextWidth . 'px;
 				height: ' . $buttonsNextHeight . 'px;
 			}'
@@ -584,24 +588,25 @@ if ($settings['navigation_buttons_show'] != '0')
 	{
 		$helper->applyingCustomImages(
 			$settings['navigation_buttons_custom_nexthover'],
-			'#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next:hover',
+			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next:hover',
 			$doc
 		);
 	}
 
 	// Navigation is shown - always or just on hover (default by css).  Height adjustment
 	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.owl-carousel' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') . ' .owl-nav {
+		#' . $settings['container'] . '.jss-slider .jss-navigation' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') .
+			' .jss-navigation-buttons {
 			opacity: ' . (((int) $settings['navigation_buttons_opacity']) / 100) . ';
 		}
-		#' . $settings['container'] . '.owl-carousel .owl-nav {
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
 			height: ' . max($buttonsNextHeight, $buttonsPrevHeight) . 'px;
 		}
-		#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev {
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
 			width: ' . $buttonsPrevWidth . 'px;
 			height: ' . $buttonsPrevHeight . 'px;
 		}
-		#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next {
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
 			width: ' . $buttonsNextWidth . 'px;
 			height: ' . $buttonsNextHeight . 'px;
 		}'
