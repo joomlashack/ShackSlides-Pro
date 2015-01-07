@@ -19,16 +19,6 @@ defined('_JEXEC') or die('Restricted access');
 	<div class="jss-image-container jss-descpos-<?php echo $settings['title_description_position'] ?>">
 
 		<?php
-			if ($links[$i])
-				:
-		?>
-	        <a href="<?php echo $links[$i]; ?>"
-	        	<?php echo $settings['anchor_target'] == 'blank' ? ' target="_blank"' : ''; ?>>
-		<?php 
-			endif;
-		?>
-
-		<?php
 			if ($settings['title_description_position'] == 'above_outside')
 			{
 				require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
@@ -38,13 +28,42 @@ defined('_JEXEC') or die('Restricted access');
 			<?php
 				if ($settings['height_adjustment'] == 'adjust')
 					:
+					if ($links[$i])
+						:
 			?>
-			<img src="<?php echo $base . $image ?>" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
-			<?php
+		        <a href="<?php echo $links[$i]; ?>"
+		        	<?php echo $settings['anchor_target'] == 'blank' ? ' target="_blank"' : ''; ?>>
+			<?php 
+					endif;
+			?>
+				<img src="<?php echo $base . $image ?>" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
+			<?php 
+					if ($links[$i])
+					:
+			?>
+				</a>
+			<?php 
+					endif;
 				elseif ($settings['height_adjustment'] == 'crop')
 					:
 			?>
-			<div class="jss-image-int" style="background-image: url('<?php echo  $base . $image ?>'">
+			<div
+				class="jss-image-int<?php echo $links[$i] ? ' jss-image-link' : ''; ?>"
+				style="background-image: url('<?php echo  $base . $image ?>'"
+			<?php
+				if ($links[$i] && $settings['anchor_target'] == 'blank')
+					:
+			?>
+				onclick="window.open('<?php echo $links[$i]; ?>', '_blank')"
+			<?php
+				elseif ($links[$i])
+					:
+			?>
+				onclick="document.location='<?php echo $links[$i]; ?>'"
+			<?php
+				endif;
+			?>
+				>
 			</div>
 			<?php
 				endif;
@@ -61,14 +80,6 @@ defined('_JEXEC') or die('Restricted access');
 			{
 				require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
 			}
-		?>
-		<?php 
-			if ($links[$i])
-				:
-		?>
-			</a>
-		<?php 
-			endif;
 		?>
 	</div>
 <?php

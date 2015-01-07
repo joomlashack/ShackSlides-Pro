@@ -26,7 +26,8 @@ $base = $helper->getBase();
 if (!$images)
 {
 	// If there are no images set, there is nothing to be shown
-	echo "<img src=".$base.NOIMAGEFOUND_IMG." />";
+	echo "<img src=" . $base . NOIMAGEFOUND_IMG . " />";
+
 	return;
 }
 
@@ -144,7 +145,7 @@ $defaults = array(
 	// ADVANCED OPTIONS
 	// id for the slider container
 	'container' => '',
-	// Inlcude JQuery 
+	// Include JQuery
 	'includejquery' => 'off'
 );
 
@@ -180,19 +181,6 @@ else
 JHtml::stylesheet('mod_jsshackslides/owl.carousel.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/animate.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/jsshackslides.css', array(), true);
-
-// Loads theme css 
-if ($settings['navigation_theme'] != 'none')
-{
-	$themeCss = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/themes/'.$settings['navigation_theme'].'.css');
-	foreach ($settings as $key => $value)
-	{
-		$themeCss = str_replace('$$' . $key, '#'.$value, $themeCss);
-	}
-	$doc->addStyleDeclaration($themeCss);
-
-}
-
 JHtml::script('mod_jsshackslides/owl.carousel.min.js', false, true);
 
 // Setting container ID
@@ -263,10 +251,10 @@ if ($settings['description_show'])
 	// Description background
 	if ($settings['description_bgcolor_flag'])
 	{
+		$settings['description_bgcolor'] = implode(',', $helper->hexToRGB($settings['description_bgcolor']));
 		$doc->addStyleDeclaration(
-			'#' . $settings['container'] . '.owl-carousel .owl-item .jss-description:before {
-				background-color: #' . $settings['description_bgcolor'] . ';
-				opacity: ' . ((float) $settings['description_bgcolor_opacity'] / 100) . ';
+			'#' . $settings['container'] . '.owl-carousel .owl-item .jss-description {
+				background-color: rgba(' . $settings['description_bgcolor'] . ', ' . ($settings['description_bgcolor_opacity'] / 100) . ')
 			}'
 		);
 	}
@@ -331,10 +319,10 @@ if ($settings['title_show'])
 	// Title background
 	if ($settings['title_bgcolor_flag'])
 	{
+		$settings['title_bgcolor'] = implode(',', $helper->hexToRGB($settings['title_bgcolor']));
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.owl-carousel .owl-item .jss-title:before {
-				background-color: #' . $settings['title_bgcolor'] . ';
-				opacity: ' . ((float) $settings['title_bgcolor_opacity'] / 100) . ';
+			#' . $settings['container'] . '.owl-carousel .owl-item .jss-title {
+				background-color: rgba(' . $settings['title_bgcolor'] . ', ' . ($settings['title_bgcolor_opacity'] / 100) . ')
 			}'
 		);
 	}
@@ -530,6 +518,19 @@ if ($settings['navigation_buttons_show'] != '0')
 else
 {
 	$settings['navigation_buttons_show'] = 'false';
+}
+
+// Loads theme css
+if (($settings['navigation_show'] || $settings['navigation_buttons_show']) && $settings['navigation_theme'] != 'none')
+{
+	$themeCss = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/themes/' . $settings['navigation_theme'] . '.css');
+
+	foreach ($settings as $key => $value)
+	{
+		$themeCss = str_replace('$$' . $key, '#' . $value, $themeCss);
+	}
+
+	$doc->addStyleDeclaration($themeCss);
 }
 
 // Loads slider Javascript

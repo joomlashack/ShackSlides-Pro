@@ -10,7 +10,7 @@
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
 
-define("NOIMAGEFOUND_IMG" , "media/mod_jsshackslides/images/noimagefound.png");
+define("NOIMAGEFOUND_IMG", "media/mod_jsshackslides/images/noimagefound.png");
 
 /**
  * Main Shackslides Helper class
@@ -403,15 +403,17 @@ abstract class ModShackSlidesHelper
 	/**
 	 * Generate random ordering 
 	 *
-	 * @param   int     $number  Range for getting the random number
+	 * @param   int  $number  Range for getting the random number
 	 *
 	 * @return  string
 	 */
 	public function generateOrdering($number = 4)
-	{	
-		$random = mt_rand(0,$number);
+	{
+		$random = mt_rand(0, $number);
 		$ordering = '';
-		switch ($random) {
+
+		switch ($random)
+		{
 			case 1:
 				$ordering = 'title';
 				break;
@@ -429,4 +431,32 @@ abstract class ModShackSlidesHelper
 		return $ordering;
 	}
 
+	/**
+	 * Convert Hex color to RGB array
+	 *
+	 * @param   string  $hex  Hex color string
+	 *
+	 * @return  array
+	 */
+	public function hexToRGB($hex)
+	{
+		$hex = str_replace("#", "", $hex);
+
+		if (strlen($hex) == 3)
+		{
+			$r = hexdec(substr($hex, 0, 1) . substr($hex, 0, 1));
+			$g = hexdec(substr($hex, 1, 1) . substr($hex, 1, 1));
+			$b = hexdec(substr($hex, 2, 1) . substr($hex, 2, 1));
+		}
+		else
+		{
+			$r = hexdec(substr($hex, 0, 2));
+			$g = hexdec(substr($hex, 2, 2));
+			$b = hexdec(substr($hex, 4, 2));
+		}
+
+		$rgb = array($r, $g, $b);
+
+		return $rgb;
+	}
 }

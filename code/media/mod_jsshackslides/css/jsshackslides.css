@@ -11,6 +11,9 @@
 	width: 100%;
 	height: 100%;
 }
+.jss-image-container .jss-image .jss-image-int.jss-image-link {
+	cursor: pointer;
+}
 .jss-image .jss-title-description {
 	position: absolute;
 	display: flex;
@@ -44,16 +47,6 @@
 .jss-title-description .jss-description > * {
 	-ms-align-self: center;
 	align-self: center;
-}
-.jss-title-description .jss-title:before,
-.jss-title-description .jss-description:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
 }
 .jss-title-description h1,
 .jss-title-description h2,
