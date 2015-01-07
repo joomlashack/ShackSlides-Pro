@@ -11,6 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 define("NOIMAGEFOUND_IMG" , "media/mod_jsshackslides/images/noimagefound.png");
+
 /**
  * Main Shackslides Helper class
  *
