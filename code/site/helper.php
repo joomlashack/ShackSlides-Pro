@@ -458,19 +458,21 @@ abstract class ModShackSlidesHelper
 		$rgb = array($r, $g, $b);
 
 		return $rgb;
+	}
 
 	/**
 	 * Set up dot images when uploading an image file
 	 *
-	 * @param   string     $image  Path of the image in media
-	 * @param   string     $css_rule  Css rule that will be applied according to the case
+	 * @param   string  $image     Path of the image in media
+	 * @param   string  $css_rule  Css rule that will be applied according to the case
+	 * @param   string  $doc       Joomla Document
 	 *
 	 * @return  array
 	 */
-	public function applyingCustomImages($image,$css_rule,$doc)
+	public function applyingCustomImages($image, $css_rule, $doc)
 	{
-		$image_dots = JUri::root(true).'/'.$image;
-		list($width, $height) = getimagesize($this->base.'/'.$image); 
+		$image_dots = JUri::root(true) . '/' . $image;
+		list($width, $height) = getimagesize($this->base . '/' . $image);
 		$doc->addStyleDeclaration('
 			' . $css_rule . ' {
 				background: url(' . $image_dots . ') no-repeat;
@@ -478,6 +480,7 @@ abstract class ModShackSlidesHelper
 				height:' . $height . 'px;
 			}'
 		);
-		return array($width,$height);
+
+		return array($width, $height);
 	}
 }

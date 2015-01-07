@@ -401,9 +401,13 @@ if ($settings['navigation_show'] != '0')
 $dotsWidth = 30;
 $dotsHeight = 30;
 
-if($settings['navigation_custom_dot'] != '')
+if ($settings['navigation_custom_dot'] != '')
 {
-	list($dotsWidth,$dotsHeight) = $helper->applyingCustomImages($settings['navigation_custom_dot'], '#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div', $doc);
+	list($dotsWidth,$dotsHeight) = $helper->applyingCustomImages(
+		$settings['navigation_custom_dot'],
+		'#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div',
+		$doc
+	);
 }
 else
 {
@@ -415,14 +419,22 @@ else
 	);
 }
 
-if($settings['navigation_custom_dothover'] != '')
+if ($settings['navigation_custom_dothover'] != '')
 {
-	$helper->applyingCustomImages($settings['navigation_custom_dothover'], '#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div:hover', $doc);
+	$helper->applyingCustomImages(
+		$settings['navigation_custom_dothover'],
+		'#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot > div:hover',
+		$doc
+	);
 }
 
-if($settings['navigation_custom_dotactive'] != '')
+if ($settings['navigation_custom_dotactive'] != '')
 {
-	$helper->applyingCustomImages($settings['navigation_custom_dotactive'], '#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot.active > div', $doc);
+	$helper->applyingCustomImages(
+		$settings['navigation_custom_dotactive'],
+		'#' . $settings['container'] . '.owl-carousel .owl-dots .owl-dot.active > div',
+		$doc
+	);
 }
 
 	$settings['navigation_show'] = 'true';
@@ -517,16 +529,19 @@ else
 
 // Navigation
 if ($settings['navigation_buttons_show'] != '0')
-{	
-
+{
 	$buttonsPrevHeight = 40;
 	$buttonsPrevWidth = 40;
 	$buttonsNextHeight = 40;
 	$buttonsNextWidth = 40;
 
-	if($settings['navigation_buttons_custom_previous'] != '')
+	if ($settings['navigation_buttons_custom_previous'] != '')
 	{
-		list($buttonsPrevWidth,$buttonsPrevHeight) = $helper->applyingCustomImages($settings['navigation_buttons_custom_previous'], '#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev', $doc);
+		list($buttonsPrevWidth,$buttonsPrevHeight) = $helper->applyingCustomImages(
+			$settings['navigation_buttons_custom_previous'],
+			'#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev',
+			$doc
+		);
 	}
 	else
 	{
@@ -538,14 +553,22 @@ if ($settings['navigation_buttons_show'] != '0')
 		);
 	}
 
-	if($settings['navigation_buttons_custom_previoushover'] != '')
+	if ($settings['navigation_buttons_custom_previoushover'] != '')
 	{
-		$helper->applyingCustomImages($settings['navigation_buttons_custom_previoushover'], '#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev:hover', $doc);
+		$helper->applyingCustomImages(
+			$settings['navigation_buttons_custom_previoushover'],
+			'#' . $settings['container'] . '.owl-carousel .owl-nav .owl-prev:hover',
+			$doc
+		);
 	}
 
-	if($settings['navigation_buttons_custom_next'] != '')
+	if ($settings['navigation_buttons_custom_next'] != '')
 	{
-		list($buttonsNextWidth,$buttonsNextHeight) = $helper->applyingCustomImages($settings['navigation_buttons_custom_next'], '#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next', $doc);
+		list($buttonsNextWidth, $buttonsNextHeight) = $helper->applyingCustomImages(
+			$settings['navigation_buttons_custom_next'],
+			'#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next',
+			$doc
+		);
 	}
 	else
 	{
@@ -557,9 +580,13 @@ if ($settings['navigation_buttons_show'] != '0')
 		);
 	}
 
-	if($settings['navigation_buttons_custom_nexthover'] != '')
+	if ($settings['navigation_buttons_custom_nexthover'] != '')
 	{
-		$helper->applyingCustomImages($settings['navigation_buttons_custom_nexthover'], '#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next:hover', $doc);
+		$helper->applyingCustomImages(
+			$settings['navigation_buttons_custom_nexthover'],
+			'#' . $settings['container'] . '.owl-carousel .owl-nav .owl-next:hover',
+			$doc
+		);
 	}
 
 	// Navigation is shown - always or just on hover (default by css).  Height adjustment
