@@ -127,6 +127,8 @@ $defaults = array(
 	'navigation_padding_horizontal' => '10',
 	// Vertical padding
 	'navigation_padding_vertical' => '10',
+	// Dots color
+	'navigation_dots_color' => 'FFFFFF',
 	// Opacity
 	'navigation_opacity' => '100',
 	// Custom nav dot
@@ -137,6 +139,10 @@ $defaults = array(
 	'navigation_custom_dotactive' => '',
 	// Show the navigation buttons always, never, on hover
 	'navigation_buttons_show' => '2',
+	// Buttons color
+	'navigation_buttons_color' => 'FFFFFF',
+	// Buttons hover color
+	'navigation_buttonshover_color' => 'FFFFFF',
 	// Buttons opacity
 	'navigation_buttons_opacity' => '100',
 	// Custom previous button
@@ -420,6 +426,9 @@ if ($settings['navigation_show'] != '0')
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.jss-slider ' . (($settings['navigation_show'] == '1') ? ':hover' : '') . ' .jss-navigation .jss-navigation-dots {
 			opacity: ' . (((int) $settings['navigation_opacity']) / 100) . ';
+		}
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
+			background: #' . $settings['navigation_dots_color'] . ';
 		}'
 	);
 
@@ -619,6 +628,12 @@ if ($settings['navigation_buttons_show'] != '0')
 		#' . $settings['container'] . '.jss-slider .jss-navigation' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') .
 			' .jss-navigation-buttons {
 			opacity: ' . (((int) $settings['navigation_buttons_opacity']) / 100) . ';
+		}
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']{
+			border-color: #' . $settings['navigation_buttons_color'] . ';
+		}
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']:hover{
+			border-color: #' . $settings['navigation_buttonshover_color'] . ';
 		}
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
 			height: ' . max($buttonsNextHeight, $buttonsPrevHeight) . 'px;

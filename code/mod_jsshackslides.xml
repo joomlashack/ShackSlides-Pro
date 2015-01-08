@@ -16,7 +16,6 @@
 		<filename module="mod_jsshackslides">mod_jsshackslides.php</filename>
 		<filename>helper.php</filename>
 		<filename>index.html</filename>
-		<folder>assets</folder>
 		<folder>fields</folder>
 		<folder>helpers</folder>
 		<folder>tmpl</folder>
@@ -590,6 +589,14 @@
 						description="NAVIGATIONTHEME_DESC">
 					<option value="none">NAVIGATIONTHEME_NONE</option>
 					<option value="default">NAVIGATIONTHEME_EXAMPLE</option>
+					<option value="theme1">NAVIGATIONTHEME_THEME1</option>
+					<option value="theme2">NAVIGATIONTHEME_THEME2</option>
+					<option value="theme3">NAVIGATIONTHEME_THEME3</option>
+					<option value="theme4">NAVIGATIONTHEME_THEME4</option>
+					<option value="theme5">NAVIGATIONTHEME_THEME5</option>
+					<option value="theme6">NAVIGATIONTHEME_THEME6</option>
+					<option value="theme7">NAVIGATIONTHEME_THEME7</option>
+					<option value="theme8">NAVIGATIONTHEME_THEME8</option>
 				</field>
 
 
@@ -672,6 +679,14 @@
 							description="VERTICALPADDING_DOTS_DESC" 
 					/>
 
+					<field  
+							name="navigation_dots_color" 
+							type="colorpicker"
+							label="NAVIGATION_PICKER_DOTS_COLOR_LABEL" 
+							description="NAVIGATION_PICKER_DOTS_COLOR_LABEL_DESC" 
+							default="FFFFFF" 
+					/>
+
 					<field 
 							name="navigation_opacity" 
 							type="slider" 
@@ -724,6 +739,22 @@
 						<option value="0">NO_ARROWS</option>
 						<option value="1">ONHOVER_ARROWS</option>
 					</field>
+
+					<field  
+							name="navigation_buttons_color" 
+							type="colorpicker"
+							label="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL" 
+							description="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL_DESC" 
+							default="FFFFFF" 
+					/>
+
+					<field  
+							name="navigation_buttonshover_color" 
+							type="colorpicker"
+							label="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL" 
+							description="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL_DESC" 
+							default="FFFFFF" 
+					/>
 
 					<field 
 							name="navigation_buttons_opacity" 
