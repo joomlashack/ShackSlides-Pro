@@ -134,7 +134,7 @@ $defaults = array(
 	// Dots color
 	'navigation_dots_color' => 'FFFFFF',
 	// Opacity
-	'navigation_opacity' => '100',
+	'navigation_opacity' => '50',
 	// Custom nav dot
 	'navigation_custom_dot' => '',
 	// Custom hover nav dot
@@ -148,7 +148,7 @@ $defaults = array(
 	// Buttons hover color
 	'navigation_buttonshover_color' => 'FFFFFF',
 	// Buttons opacity
-	'navigation_buttons_opacity' => '100',
+	'navigation_buttons_opacity' => '50',
 	// Custom previous button
 	'navigation_buttons_custom_previous' => '',
 	// Custom previous hover button

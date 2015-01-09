@@ -49,21 +49,25 @@ defined('_JEXEC') or die('Restricted access');
 				?>
 				<div
 					class="jss-image-int<?php echo $links[$i] ? ' jss-image-link' : ''; ?>"
-					style="background-image: url('<?php echo  $base . $image ?>'"
+					style="background-image: url('<?php echo  $base . $image ?>'">
 				<?php
-					if ($links[$i] && $settings['anchor_target'] == 'blank')
+						if ($links[$i])
+							:
+				?>
+			        <a href="<?php echo $links[$i]; ?>"
+			        	<?php echo $settings['anchor_target'] == 'blank' ? ' target="_blank"' : ''; ?>>
+				<?php 
+						endif;
+				?>
+					<img src="<?php echo JURI::root() ?>media/mod_jsshackslides/images/blank.gif" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
+				<?php 
+						if ($links[$i])
 						:
 				?>
-					onclick="window.open('<?php echo $links[$i]; ?>', '_blank')"
-				<?php
-					elseif ($links[$i])
-						:
+					</a>
+				<?php 
+						endif;
 				?>
-					onclick="document.location='<?php echo $links[$i]; ?>'"
-				<?php
-					endif;
-				?>
-					>
 				</div>
 				<?php
 					endif;
