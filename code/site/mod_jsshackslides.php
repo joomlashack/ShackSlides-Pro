@@ -397,7 +397,12 @@ if ($settings['title_show'])
 	}
 }
 
-$settings['animation_script'] = '';
+$settings['animation_script'] = '
+	function jssInit_' . $settings['container'] . '(event) {
+	}
+	function jssInitEnd_' . $settings['container'] . '(event) {
+	}
+';
 $settings['animation_events'] = '';
 
 // Title and Description padding (shared setting)
