@@ -1,5 +1,4 @@
 $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
-	border-radius: 50%;
 	-webkit-transition: -webkit-transform 0.2s, opacity 0.3s;
 	-moz-transition: -moz-transform 0.2s, opacity 0.3s;
 	transition: transform 0.2s, opacity 0.3s;
@@ -14,7 +13,6 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover
 $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div:after {
 	content: "";
 	position: absolute;
-	border-radius: 50%;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -29,9 +27,6 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > di
 		0 1px 1px rgba(255,255,255,0.6), 
 		inset 0 1px 1px rgba(0,0,0,0.1),
 		0 0 0 2px rgba(255,255,255,0.7);
-}
-$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
-	color: #fff;
 }
 
 $$container.jss-slider .jss-navigation .jss-navigation-buttons [class*='owl-'] {

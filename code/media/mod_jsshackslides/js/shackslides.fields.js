@@ -4,6 +4,7 @@ function autoplayDisable(){
 	var autoplay_select = document.getElementById('jform_params_slide_autoplay');
 	var effectslide_select = document.getElementById('jform_params_slide_effect');
 	var source_select = document.getElementById('jform_params_source');
+	var navigation_show = document.getElementById('jform_params_navigation_show');
 	/*
 	########################################################################
 	################# Disable when saving changes ##########################
@@ -92,6 +93,17 @@ function autoplayDisable(){
 		 	document.getElementById("jform_params_featured").parentNode.style.display = 'block';
 		 	document.getElementById("jform_params_ordering").options[2].removeAttribute("disabled");
 		 	document.getElementById("jform_params_ordering").options[3].removeAttribute("disabled");
+		 }
+	};
+	navigation_show.onchange = function(){
+		 if(navigation_show.value == "0"){
+		 	document.getElementById("jform_params_navigation_theme_shape").parentNode.style.display = 'none';
+		 	document.getElementById("jform_params_navigation_theme").parentNode.style.display = 'none';
+		 }
+		 else
+		 {
+		 	document.getElementById("jform_params_navigation_theme_shape").parentNode.style.display = 'block';
+		 	document.getElementById("jform_params_navigation_theme").parentNode.style.display = 'block';
 		 }
 	};
 }

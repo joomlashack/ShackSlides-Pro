@@ -10,7 +10,6 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
 	-webkit-transition: all 0.2s;
 	-o-transition: all 0.2s;
 	transition: all 0.2s;
-	border-radius: 50%;
 }
 $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover {
 	-webkit-box-shadow:
@@ -25,7 +24,6 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover
 $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div:after {
 	content: "";
 	position: absolute;
-	border-radius: 50%;
 	width: 75%;
 	height: 75%;
 	top: 0;
@@ -35,9 +33,6 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > di
 	margin: auto;
 	background: rgba(204,204,204,0.8);
 	z-index: 25;
-}
-$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
-	color: #666666;
 }
 
 $$container.jss-slider .jss-navigation .jss-navigation-buttons [class*='owl-'] {

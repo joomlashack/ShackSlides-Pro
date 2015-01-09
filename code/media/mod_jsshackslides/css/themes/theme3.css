@@ -1,0 +1,57 @@
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
+	-webkit-transition: box-shadow 0.3s;
+	-moz-transition: box-shadow 0.3s;
+	transition: box-shadow 0.3s;
+}
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	box-shadow: 0 0 0 3px #fff;
+	-webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.2s, opacity 0.2s;
+	transition: transform 0.2s, opacity 0.2s;
+}
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div:after {
+		-webkit-box-shadow:
+		0 2px 2px rgba(0,0,0,0.6), 
+		inset 0 2px 2px rgba(0,0,0,0.1),
+		0 0 0 2px rgba(0,0,0,0.7);
+	box-shadow:
+		0 2px 2px rgba(0,0,0,0.6), 
+		inset 0 2px 2px rgba(0,0,0,0.1),
+		0 0 0 2px rgba(0,0,0,0.7);
+}
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover {
+	box-shadow: 0 0 0 2px rgba(255,255,255,1);
+}
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover:after {
+	-webkit-transform: scale(0.85);
+	-moz-transform: scale(0.85);
+	-ms-transform: scale(0.85);
+	transform: scale(0.85);
+	opacity: 0.5;
+	width: 80%;
+	height: 80%;
+}
+
+$$container.jss-slider .jss-navigation .jss-navigation-buttons [class*='owl-'] {
+	border-width: 7px;
+	border-style: solid;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+$$container.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
+	border-right: none;
+	border-top: none;
+}
+$$container.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
+	border-left: none;
+	border-bottom: none;
+}

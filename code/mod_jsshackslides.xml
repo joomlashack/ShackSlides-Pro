@@ -694,18 +694,24 @@
 						default="default"
 						label="NAVIGATIONTHEME"
 						description="NAVIGATIONTHEME_DESC">
-					<option value="none">NAVIGATIONTHEME_NONE</option>
-					<option value="default">NAVIGATIONTHEME_EXAMPLE</option>
-					<option value="theme1">NAVIGATIONTHEME_THEME1</option>
-					<option value="theme2">NAVIGATIONTHEME_THEME2</option>
-					<option value="theme3">NAVIGATIONTHEME_THEME3</option>
-					<option value="theme4">NAVIGATIONTHEME_THEME4</option>
-					<option value="theme5">NAVIGATIONTHEME_THEME5</option>
-					<option value="theme6">NAVIGATIONTHEME_THEME6</option>
-					<option value="theme7">NAVIGATIONTHEME_THEME7</option>
-					<option value="theme8">NAVIGATIONTHEME_THEME8</option>
+					<option value="default">NAVIGATIONTHEME_DEFAULT</option>
+					<option value="theme1">NAVIGATIONTHEME_1</option>
+					<option value="theme2">NAVIGATIONTHEME_2</option>
+					<option value="theme3">NAVIGATIONTHEME_3</option>
+					<option value="theme4">NAVIGATIONTHEME_4</option>
+					<option value="theme5">NAVIGATIONTHEME_5</option>
 				</field>
 
+				<field 
+						name="navigation_theme_shape"
+						type="list"
+						default="round"
+						label="NAVIGATIONTHEME_SHAPE"
+						description="NAVIGATIONTHEME_SHAPE_DESC">
+					<option value="none">NAVIGATIONTHEME_SHAPE_NONE</option>
+					<option value="round">NAVIGATIONTHEME_SHAPE_ROUND</option>
+					<option value="square">NAVIGATIONTHEME_SHAPE_SQUARE</option>
+				</field>
 
 				<field 
 						type="spacer" 
@@ -791,6 +797,14 @@
 							type="colorpicker"
 							label="NAVIGATION_PICKER_DOTS_COLOR_LABEL" 
 							description="NAVIGATION_PICKER_DOTS_COLOR_LABEL_DESC" 
+							default="FFFFFF" 
+					/>
+
+					<field  
+							name="navigation_dots_numbers_color" 
+							type="colorpicker"
+							label="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL" 
+							description="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL_DESC" 
 							default="FFFFFF" 
 					/>
 

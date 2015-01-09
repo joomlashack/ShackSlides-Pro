@@ -115,7 +115,9 @@ $defaults = array(
 	// NAVIGATION OPTIONS
 	// Show the navigation always, never, on hover
 	'navigation_show' => '2',
-	// Navigation theme
+	// Navigation theme shape
+	'navigation_theme_shape' => 'round',
+	// Navigation theme effect
 	'navigation_theme' => 'default',
 	// Show slide numbers in navigation
 	'navigation_shownumbers' => '0',
@@ -131,6 +133,8 @@ $defaults = array(
 	'navigation_padding_vertical' => '10',
 	// Dots color
 	'navigation_dots_color' => 'FFFFFF',
+	// Dots numbers color
+	'navigation_dots_numbers_color' => 'FFFFFF',
 	// Opacity
 	'navigation_opacity' => '50',
 	// Custom nav dot
@@ -514,6 +518,9 @@ if ($settings['navigation_show'] != '0')
 		}
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
 			background: #' . $settings['navigation_dots_color'] . ';
+		}
+		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
+			color: #' . $settings['navigation_dots_numbers_color'] . ';
 		}'
 	);
 
@@ -741,9 +748,18 @@ else
 }
 
 // Loads theme css
-if (($settings['navigation_show'] || $settings['navigation_buttons_show']) && $settings['navigation_theme'] != 'none')
-{
-	$themeCss = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/themes/' . $settings['navigation_theme'] . '.css');
+if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
+{	
+	$themeCss = '';
+	if($settings['navigation_theme_shape'] != 'none')
+	{
+		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/themes/' . $settings['navigation_theme_shape'] . '.css') . '\n';
+	}
+
+	if($settings['navigation_theme'] != 'none')
+	{
+		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/themes/' . $settings['navigation_theme'] . '.css');
+	}
 
 	foreach ($settings as $key => $value)
 	{
