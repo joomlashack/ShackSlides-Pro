@@ -87,6 +87,8 @@ $defaults = array(
 	'title_bgcolor_opacity' => '70',
 	// Title effect
 	'title_effect' => 'none',
+	// Title effect master speed
+	'title_effect_masterspeed' => '1000',
 	// Title tag
 	'title_tag' => 'h4',
 	// Show description flag
@@ -107,6 +109,8 @@ $defaults = array(
 	'description_bgcolor_opacity' => '70',
 	// Description effect
 	'description_effect' => 'none',
+	// Description effect master speed
+	'description_effect_masterspeed' => '1000',
 	// Description tag
 	'description_tag' => 'p',
 
@@ -174,7 +178,7 @@ if (version_compare(JVERSION, '3.0', '<') == 1)
 		if ($settings['includejquery'] == 'on')
 		{
 			JHtml::script('mod_jsshackslides/jquery-1.11.2.min.js', false, true);
-			JHtml::script('mod_jsshackslides/jquery-noconflict.js', false, true);
+			$doc->addScriptDeclaration('jQuery.noConflict();');
 		}
 	}
 }
@@ -387,6 +391,9 @@ if ($settings['title_show'])
 	}
 }
 
+$settings['animation_script'] = '';
+$settings['animation_events'] = '';
+
 // Title and Description padding (shared setting)
 if ($settings['description_show'] || $settings['title_show'])
 {
@@ -410,6 +417,51 @@ if ($settings['description_show'] || $settings['title_show'])
 				padding-' . $paddingPositionTitleDescription . ': ' . $paddingTitleDescription . 'px;
 			}'
 		);
+	}
+
+	// Text animation script
+	if ($settings['title_effect'] != 'none' || $settings['description_effect'])
+	{
+		$settings['slide_delay'] = (int) $settings['slide_delay'] + (
+			$settings['title_effect'] != 'none'
+				? (int) $settings['title_effect_masterspeed']
+				: 0
+			) + ($settings['description_effect'] != 'none'
+				? (int) $settings['description_effect_masterspeed'] :
+				0
+			);
+
+		$settings['animation_script'] = '
+			function jssAnimTextExec(c, x, c2, x2) {
+				if (c == undefined) { c = c2; x = x2; }
+			    jQuery(c).addClass(x + " animated")
+			    	.one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+					jQuery(this).removeClass(x + " animated");
+					jQuery(this).css("opacity", "1");
+					if (c2 != undefined) jssAnimTextExec(c2, x2);
+				});
+			}
+			function jssAnimText(i) {
+				jssAnimTextExec(' . (($settings['title_effect'] != 'none') ?
+						'"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-title > *","' . (substr($settings['title_effect'], 0, 10) == 'attention_' ? substr($settings['title_effect'], 10) : $settings['title_effect']) . '"'
+						: 'undefined,undefined') .
+					',' . (($settings['description_effect'] != 'none') ?
+						'"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-description > *","' . (substr($settings['description_effect'], 0, 10) == 'attention_' ? substr($settings['description_effect'], 10) : $settings['description_effect']) . '"'
+						: 'undefined,undefined') . ');
+			}';
+		$settings['animation_events'] = '
+			var ' . $settings['container'] . '_anim = 0;
+			' . $settings['container'] . '.on("translate.owl.carousel", function(event) {
+				' . $settings['container'] . '_anim = 1;
+			});
+			' . $settings['container'] . '.on("translated.owl.carousel", function(event) {
+				if (' . $settings['container'] . '_anim) {
+					' . (substr($settings['title_effect'], 0, 10) != 'attention_' ? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-title > *").css("opacity", "0");' : '') . '
+					' . (substr($settings['description_effect'], 0, 10) != 'attention_' ? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-description > *").css("opacity", "0");' : '') . '
+					jssAnimText(event.item.index);
+				}
+				' . $settings['container'] . '_anim = 0;
+			});';
 	}
 }
 
@@ -664,5 +716,11 @@ foreach ($settings as $key => $value)
 
 // Loads slider (Javascript)
 $doc->addScriptDeclaration($sliderLoader);
+
+// Text animations script
+if ($settings['animation_script'] != '')
+{
+	$doc->addScriptDeclaration($settings['animation_script']);
+}
 
 require JModuleHelper::getLayoutPath('mod_jsshackslides');

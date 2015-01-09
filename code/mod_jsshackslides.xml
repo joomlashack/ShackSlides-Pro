@@ -70,10 +70,10 @@
 				/>
 
 				<field 
-						name="slide_effect" 
-						type="groupedlist" 
-						default="slide" 
-						label="SLIDE_EFFECT" 
+						name="slide_effect"
+						type="groupedlist"
+						default="slide"
+						label="SLIDE_EFFECT"
 						description="SLIDE_EFFECT_DESC">
 					<option value="none">SLIDE_EFFECT_NONE</option>
 					<group label="SLIDE_EFFECT_GROUP_LTR">
@@ -113,7 +113,7 @@
 						<option value="rotate_upright">SLIDE_EFFECT_ROTATE_UPRIGHT</option>
 					</group>
 				</field>
-				
+
 				<field 
 						name="slide_autoplay" 
 						type="list" 
@@ -230,15 +230,6 @@
 							label="K2_CATEGORY" 
 							description="K2_CATEGORY_DESC" 
 					/>
-
-					<!-- <field 
-							name="flexi_category" 
-							type="flexicategory" 
-							extension="com_content" 
-							default="1" 
-							label="FLEXICONTENT_CATEGORY" 
-							description="FLEXICONTENT_CATEGORY_DESC" 
-					/> -->
 
 					<field 
 							name="visionary_collection" 
@@ -447,13 +438,71 @@
 					/>
 
 					<field 
-							name="title_effect" 
-							type="list" 
-							default="none" 
-							label="EFFECT_TITLE" 
-							description="EFFECT_TITLE_DESC"
-					>
-						<option value="none">NO_EFFECT_TEXT</option>
+							name="title_effect"
+							type="groupedlist"
+							default="none"
+							label="EFFECT_TITLE"
+							description="EFFECT_TITLE_DESC">
+						<option value="none">TEXT_EFFECT_NONE</option>
+						<group label="TEXT_EFFECT_GROUP_ATTENTION">
+							<option value="attention_bounce">TEXT_EFFECT_BOUNCE</option>
+							<option value="attention_flash">TEXT_EFFECT_FLASH</option>
+							<option value="attention_pulse">TEXT_EFFECT_PULSE</option>
+							<option value="attention_rubberband">TEXT_EFFECT_RUBBERBAND</option>
+							<option value="attention_shake">TEXT_EFFECT_SHAKE</option>
+							<option value="attention_swing">TEXT_EFFECT_SWING</option>
+							<option value="attention_tada">TEXT_EFFECT_TADA</option>
+							<option value="attention_wobble">TEXT_EFFECT_WOBBLE</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_BOUNCING_ENTRANCES">
+							<option value="bounceIn">TEXT_EFFECT_BOUNCEIN</option>
+							<option value="bounceInDown">TEXT_EFFECT_BOUNCEINDOWN</option>
+							<option value="bounceInLeft">TEXT_EFFECT_BOUNCEINLEFT</option>
+							<option value="bounceInRight">TEXT_EFFECT_BOUNCEINRIGHT</option>
+							<option value="bounceInUp">TEXT_EFFECT_BOUNCEINUP</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_FADING_ENTRANCES">
+							<option value="fadeIn">TEXT_EFFECT_FADEIN</option>
+							<option value="fadeInDown">TEXT_EFFECT_FADEINDOWN</option>
+							<option value="fadeInDownBig">TEXT_EFFECT_FADEINDOWNBIG</option>
+							<option value="fadeInLeft">TEXT_EFFECT_FADEINLEFT</option>
+							<option value="fadeInLeftBig">TEXT_EFFECT_FADEINLEFTBIG</option>
+							<option value="fadeInRight">TEXT_EFFECT_FADEINRIGHT</option>
+							<option value="fadeInRightBig">TEXT_EFFECT_FADEINRIGHTBIG</option>
+							<option value="fadeInUp">TEXT_EFFECT_FADEINUP</option>
+							<option value="fadeInUpBig">TEXT_EFFECT_FADEINUPBIG</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_FLIPPERS">
+							<option value="flip">TEXT_EFFECT_FLIP</option>
+							<option value="flipInX">TEXT_EFFECT_FLIPINX</option>
+							<option value="flipInXFaded">TEXT_EFFECT_FLIPINXFADED</option>
+							<option value="flipInY">TEXT_EFFECT_FLIPINY</option>
+							<option value="flipInYFaded">TEXT_EFFECT_FLIPINYFADED</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_ROTATING_ENTRANCES">
+							<option value="rotateIn">TEXT_EFFECT_ROTATEIN</option>
+							<option value="rotateInDownLeft">TEXT_EFFECT_ROTATEINDOWNLEFT</option>
+							<option value="rotateInDownRight">TEXT_EFFECT_ROTATEINDOWNRIGHT</option>
+							<option value="rotateInUpLeft">TEXT_EFFECT_ROTATEINUPLEFT</option>
+							<option value="rotateInUpRight">TEXT_EFFECT_ROTATEINUPRIGHT</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_ZOOMING_ENTRANCES">
+							<option value="zoomIn">TEXT_EFFECT_ZOOMIN</option>
+							<option value="zoomInDown">TEXT_EFFECT_ZOOMINDOWN</option>
+							<option value="zoomInLeft">TEXT_EFFECT_ZOOMINLEFT</option>
+							<option value="zoomInRight">TEXT_EFFECT_ZOOMINRIGHT</option>
+							<option value="zoomInUp">TEXT_EFFECT_ZOOMINUP</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_SLIDING_ENTRANCES">
+							<option value="slideInDown">TEXT_EFFECT_SLIDEINDOWN</option>
+							<option value="slideInLeft">TEXT_EFFECT_SLIDEINLEFT</option>
+							<option value="slideInRight">TEXT_EFFECT_SLIDEINRIGHT</option>
+							<option value="slideInUp">TEXT_EFFECT_SLIDEINUP</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_LIGHTSPEED">
+							<option value="rollIn">TEXT_EFFECT_ROLLIN</option>
+							<option value="lightSpeedIn">TEXT_EFFECT_LIGHTSPEEDIN</option>
+						</group>
 					</field>
 
 					<field 
@@ -550,13 +599,71 @@
 					/>
 
 					<field 
-							name="description_effect" 
-							type="list" 
-							default="clipleftright" 
-							label="EFFECT_TEXT" 
-							description="EFFECT_TEXT_DESC"
-					>
-						<option value="none">NO_EFFECT_TEXT</option>
+							name="description_effect"
+							type="groupedlist"
+							default="none"
+							label="EFFECT_TITLE"
+							description="EFFECT_TITLE_DESC">
+						<option value="none">TEXT_EFFECT_NONE</option>
+						<group label="TEXT_EFFECT_GROUP_ATTENTION">
+							<option value="attention_bounce">TEXT_EFFECT_BOUNCE</option>
+							<option value="attention_flash">TEXT_EFFECT_FLASH</option>
+							<option value="attention_pulse">TEXT_EFFECT_PULSE</option>
+							<option value="attention_rubberband">TEXT_EFFECT_RUBBERBAND</option>
+							<option value="attention_shake">TEXT_EFFECT_SHAKE</option>
+							<option value="attention_swing">TEXT_EFFECT_SWING</option>
+							<option value="attention_tada">TEXT_EFFECT_TADA</option>
+							<option value="attention_wobble">TEXT_EFFECT_WOBBLE</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_BOUNCING_ENTRANCES">
+							<option value="bounceIn">TEXT_EFFECT_BOUNCEIN</option>
+							<option value="bounceInDown">TEXT_EFFECT_BOUNCEINDOWN</option>
+							<option value="bounceInLeft">TEXT_EFFECT_BOUNCEINLEFT</option>
+							<option value="bounceInRight">TEXT_EFFECT_BOUNCEINRIGHT</option>
+							<option value="bounceInUp">TEXT_EFFECT_BOUNCEINUP</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_FADING_ENTRANCES">
+							<option value="fadeIn">TEXT_EFFECT_FADEIN</option>
+							<option value="fadeInDown">TEXT_EFFECT_FADEINDOWN</option>
+							<option value="fadeInDownBig">TEXT_EFFECT_FADEINDOWNBIG</option>
+							<option value="fadeInLeft">TEXT_EFFECT_FADEINLEFT</option>
+							<option value="fadeInLeftBig">TEXT_EFFECT_FADEINLEFTBIG</option>
+							<option value="fadeInRight">TEXT_EFFECT_FADEINRIGHT</option>
+							<option value="fadeInRightBig">TEXT_EFFECT_FADEINRIGHTBIG</option>
+							<option value="fadeInUp">TEXT_EFFECT_FADEINUP</option>
+							<option value="fadeInUpBig">TEXT_EFFECT_FADEINUPBIG</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_FLIPPERS">
+							<option value="flip">TEXT_EFFECT_FLIP</option>
+							<option value="flipInX">TEXT_EFFECT_FLIPINX</option>
+							<option value="flipInXFaded">TEXT_EFFECT_FLIPINXFADED</option>
+							<option value="flipInY">TEXT_EFFECT_FLIPINY</option>
+							<option value="flipInYFaded">TEXT_EFFECT_FLIPINYFADED</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_ROTATING_ENTRANCES">
+							<option value="rotateIn">TEXT_EFFECT_ROTATEIN</option>
+							<option value="rotateInDownLeft">TEXT_EFFECT_ROTATEINDOWNLEFT</option>
+							<option value="rotateInDownRight">TEXT_EFFECT_ROTATEINDOWNRIGHT</option>
+							<option value="rotateInUpLeft">TEXT_EFFECT_ROTATEINUPLEFT</option>
+							<option value="rotateInUpRight">TEXT_EFFECT_ROTATEINUPRIGHT</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_ZOOMING_ENTRANCES">
+							<option value="zoomIn">TEXT_EFFECT_ZOOMIN</option>
+							<option value="zoomInDown">TEXT_EFFECT_ZOOMINDOWN</option>
+							<option value="zoomInLeft">TEXT_EFFECT_ZOOMINLEFT</option>
+							<option value="zoomInRight">TEXT_EFFECT_ZOOMINRIGHT</option>
+							<option value="zoomInUp">TEXT_EFFECT_ZOOMINUP</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_SLIDING_ENTRANCES">
+							<option value="slideInDown">TEXT_EFFECT_SLIDEINDOWN</option>
+							<option value="slideInLeft">TEXT_EFFECT_SLIDEINLEFT</option>
+							<option value="slideInRight">TEXT_EFFECT_SLIDEINRIGHT</option>
+							<option value="slideInUp">TEXT_EFFECT_SLIDEINUP</option>
+						</group>
+						<group label="TEXT_EFFECT_GROUP_LIGHTSPEED">
+							<option value="rollIn">TEXT_EFFECT_ROLLIN</option>
+							<option value="lightSpeedIn">TEXT_EFFECT_LIGHTSPEEDIN</option>
+						</group>
 					</field>
 
 					<field 

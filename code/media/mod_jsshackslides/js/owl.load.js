@@ -17,5 +17,6 @@ jQuery(document).ready(function(){
 		smartSpeed: $$slide_effect_masterspeed
 		$$slides_animation
 	};
-	var $$container = jQuery("#$$container.jss-slider .owl-carousel").owlCarousel(options);
+	$$container = jQuery("#$$container.jss-slider .owl-carousel").owlCarousel(options);
+	$$animation_events
 });
