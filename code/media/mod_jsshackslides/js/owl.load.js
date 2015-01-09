@@ -14,8 +14,11 @@ jQuery(document).ready(function(){
 		autoHeight: $$slide_autoheight,
 		lazyLoad: false,
 		navText: [ ' ', ' ' ],
-		smartSpeed: $$slide_effect_masterspeed
+		smartSpeed: $$slide_effect_masterspeed,
+		onInitialize: jssInit_$$container,
+		onInitialized: jssInitEnd_$$container,
 		$$slides_animation
 	};
-	var $$container = jQuery("#$$container.jss-slider .owl-carousel").owlCarousel(options);
+	$$container = jQuery("#$$container.jss-slider .owl-carousel").owlCarousel(options);
+	$$animation_events
 });
