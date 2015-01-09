@@ -16,7 +16,7 @@ jQuery(document).ready(function(){
 		navText: [ ' ', ' ' ],
 		smartSpeed: $$slide_effect_masterspeed,
 		onInitialize: jssInit_$$container,
-		onInitialized: jssInitEnd_$$container,
+		onInitialized: jssInitEnd_$$container
 		$$slides_animation
 	};
 	$$container = jQuery("#$$container.jss-slider .owl-carousel").owlCarousel(options);
