@@ -45,6 +45,8 @@ $defaults = array(
 	'description' => 'yes',
 	// Transition speed
 	'slide_effect_masterspeed' => '300',
+	// Transition speed for text effects
+	'slide_text_effect_masterspeed' => '500',
 	// Effect for slides
 	'slide_effect' => 'slide',
 	// Stop on mouse hover
@@ -87,8 +89,6 @@ $defaults = array(
 	'title_bgcolor_opacity' => '70',
 	// Title effect
 	'title_effect' => 'none',
-	// Title effect master speed
-	'title_effect_masterspeed' => '1000',
 	// Title tag
 	'title_tag' => 'h4',
 	// Show description flag
@@ -109,8 +109,6 @@ $defaults = array(
 	'description_bgcolor_opacity' => '70',
 	// Description effect
 	'description_effect' => 'none',
-	// Description effect master speed
-	'description_effect_masterspeed' => '1000',
 	// Description tag
 	'description_tag' => 'p',
 
@@ -212,17 +210,26 @@ $effectMasterSpeed = '1';
 if ($settings['slide_effect'] != 'none')
 {
 	$effectMasterSpeed = $settings['slide_effect_masterspeed'];
+
+	// If there is a slide effect, assigns the same speed value for the text effects.  Otherwise it uses default value for text
+	$settings['slide_text_effect_masterspeed'] = $settings['slide_effect_masterspeed'];
 }
 
 $settings['slides_animation'] = $helper->convertAnimation($settings['slide_effect']);
 $settings['slide_center'] = ($settings['slide_items'] == 1 ? 'true' : 'false');
 $settings['slide_effect_masterspeed'] = $effectMasterSpeed;
+$settings['slide_delay'] += $settings['slide_effect_masterspeed'];
 
 $doc->addStyleDeclaration('
 	#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item,
-	#' . $settings['container'] . '.jss-slider .owl-carousel .animated {
+	#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item.animated {
 			-webkit-animation-duration:' . $effectMasterSpeed . 'ms;
 			animation-duration:' . $effectMasterSpeed . 'ms;
+		}
+	#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-title > .animated,
+	#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description > .animated {
+			-webkit-animation-duration:' . $settings['slide_text_effect_masterspeed'] . 'ms;
+			animation-duration:' . $settings['slide_text_effect_masterspeed'] . 'ms;
 		}'
 );
 
@@ -435,10 +442,10 @@ if ($settings['description_show'] || $settings['title_show'])
 	{
 		$settings['slide_delay'] = (int) $settings['slide_delay'] + (
 			$settings['title_effect'] != 'none'
-				? (int) $settings['title_effect_masterspeed']
+				? (int) $settings['slide_text_effect_masterspeed']
 				: 0
 			) + ($settings['description_effect'] != 'none'
-				? (int) $settings['description_effect_masterspeed'] :
+				? (int) $settings['slide_text_effect_masterspeed'] :
 				0
 			);
 
