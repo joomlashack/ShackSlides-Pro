@@ -419,8 +419,8 @@ if ($settings['description_show'] || $settings['title_show'])
 		);
 	}
 
-	// Text animation script
-	if ($settings['title_effect'] != 'none' || $settings['description_effect'])
+	// Text animation script - only if one slide per page is showing
+	if ($settings['slide_items'] == 1 && ($settings['title_effect'] != 'none' || $settings['description_effect']))
 	{
 		$settings['slide_delay'] = (int) $settings['slide_delay'] + (
 			$settings['title_effect'] != 'none'
@@ -432,8 +432,19 @@ if ($settings['description_show'] || $settings['title_show'])
 			);
 
 		$settings['animation_script'] = '
+			function jssInit_' . $settings['container'] . '(event) {
+				' . ($settings['title_effect'] != 'none' && substr($settings['title_effect'], 0, 10) != 'attention_'
+						? 'jQuery("#' . $settings['container'] . ' .jss-title > *").css("opacity", "0");'
+						: '') . '
+				' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0, 10) != 'attention_'
+						? 'jQuery("#' . $settings['container'] . ' .jss-description > *").css("opacity", "0");'
+						: '') . '
+			}
+			function jssInitEnd_' . $settings['container'] . '(event) {
+				jssAnimText(event.item.index);
+			}
 			function jssAnimTextExec(c, x, c2, x2) {
-				if (c == undefined) { c = c2; x = x2; }
+				if (c == undefined) { c = c2; x = x2; c2 = undefined; x2 = undefined; }
 			    jQuery(c).addClass(x + " animated")
 			    	.one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
 					jQuery(this).removeClass(x + " animated");
@@ -443,10 +454,16 @@ if ($settings['description_show'] || $settings['title_show'])
 			}
 			function jssAnimText(i) {
 				jssAnimTextExec(' . (($settings['title_effect'] != 'none') ?
-						'"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-title > *","' . (substr($settings['title_effect'], 0, 10) == 'attention_' ? substr($settings['title_effect'], 10) : $settings['title_effect']) . '"'
+						'"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-title > *","' . (substr($settings['title_effect'], 0, 10) == 'attention_'
+								? substr($settings['title_effect'], 10)
+								: $settings['title_effect']) . '"'
 						: 'undefined,undefined') .
 					',' . (($settings['description_effect'] != 'none') ?
-						'"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-description > *","' . (substr($settings['description_effect'], 0, 10) == 'attention_' ? substr($settings['description_effect'], 10) : $settings['description_effect']) . '"'
+						'"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-description > *","' .
+							(substr($settings['description_effect'], 0, 10) == 'attention_'
+									? substr($settings['description_effect'], 10)
+									: $settings['description_effect']
+								) . '"'
 						: 'undefined,undefined') . ');
 			}';
 		$settings['animation_events'] = '
@@ -456,8 +473,12 @@ if ($settings['description_show'] || $settings['title_show'])
 			});
 			' . $settings['container'] . '.on("translated.owl.carousel", function(event) {
 				if (' . $settings['container'] . '_anim) {
-					' . (substr($settings['title_effect'], 0, 10) != 'attention_' ? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-title > *").css("opacity", "0");' : '') . '
-					' . (substr($settings['description_effect'], 0, 10) != 'attention_' ? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-description > *").css("opacity", "0");' : '') . '
+					' . ($settings['title_effect'] != 'none' && substr($settings['title_effect'], 0, 10) != 'attention_'
+							? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-title > *").css("opacity", "0");'
+							: '') . '
+					' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0, 10) != 'attention_'
+							? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-description > *").css("opacity", "0");'
+							: '') . '
 					jssAnimText(event.item.index);
 				}
 				' . $settings['container'] . '_anim = 0;
@@ -714,13 +735,13 @@ foreach ($settings as $key => $value)
 	$sliderLoader = str_replace('$$' . $key, $value, $sliderLoader);
 }
 
-// Loads slider (Javascript)
-$doc->addScriptDeclaration($sliderLoader);
-
-// Text animations script
+// Text animations script.  It must load first because of the init script for text effects
 if ($settings['animation_script'] != '')
 {
 	$doc->addScriptDeclaration($settings['animation_script']);
 }
+
+// Loads slider (Javascript)
+$doc->addScriptDeclaration($sliderLoader);
 
 require JModuleHelper::getLayoutPath('mod_jsshackslides');

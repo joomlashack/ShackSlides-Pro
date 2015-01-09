@@ -448,7 +448,7 @@
 							<option value="attention_bounce">TEXT_EFFECT_BOUNCE</option>
 							<option value="attention_flash">TEXT_EFFECT_FLASH</option>
 							<option value="attention_pulse">TEXT_EFFECT_PULSE</option>
-							<option value="attention_rubberband">TEXT_EFFECT_RUBBERBAND</option>
+							<option value="attention_rubberBand">TEXT_EFFECT_RUBBERBAND</option>
 							<option value="attention_shake">TEXT_EFFECT_SHAKE</option>
 							<option value="attention_swing">TEXT_EFFECT_SWING</option>
 							<option value="attention_tada">TEXT_EFFECT_TADA</option>
@@ -609,7 +609,7 @@
 							<option value="attention_bounce">TEXT_EFFECT_BOUNCE</option>
 							<option value="attention_flash">TEXT_EFFECT_FLASH</option>
 							<option value="attention_pulse">TEXT_EFFECT_PULSE</option>
-							<option value="attention_rubberband">TEXT_EFFECT_RUBBERBAND</option>
+							<option value="attention_rubberBand">TEXT_EFFECT_RUBBERBAND</option>
 							<option value="attention_shake">TEXT_EFFECT_SHAKE</option>
 							<option value="attention_swing">TEXT_EFFECT_SWING</option>
 							<option value="attention_tada">TEXT_EFFECT_TADA</option>
