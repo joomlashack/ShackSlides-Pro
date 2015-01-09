@@ -472,7 +472,7 @@ abstract class ModShackSlidesHelper
 	public function applyingCustomImages($image, $css_rule, $doc)
 	{
 		$image_dots = JUri::root(true) . '/' . $image;
-		list($width, $height) = getimagesize($this->base . '/' . $image);
+		list($width, $height) = getimagesize(JUri::root() . '/' . $image);
 		$doc->addStyleDeclaration('
 			' . $css_rule . ' {
 				background: url(' . $image_dots . ') no-repeat;
