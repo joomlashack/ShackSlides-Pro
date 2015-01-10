@@ -689,31 +689,6 @@
 			>
 
 				<field 
-						name="navigation_theme"
-						type="list"
-						default="default"
-						label="NAVIGATIONTHEME"
-						description="NAVIGATIONTHEME_DESC">
-					<option value="default">NAVIGATIONTHEME_DEFAULT</option>
-					<option value="theme1">NAVIGATIONTHEME_1</option>
-					<option value="theme2">NAVIGATIONTHEME_2</option>
-					<option value="theme3">NAVIGATIONTHEME_3</option>
-					<option value="theme4">NAVIGATIONTHEME_4</option>
-					<option value="theme5">NAVIGATIONTHEME_5</option>
-				</field>
-
-				<field 
-						name="navigation_theme_shape"
-						type="list"
-						default="round"
-						label="NAVIGATIONTHEME_SHAPE"
-						description="NAVIGATIONTHEME_SHAPE_DESC">
-					<option value="none">NAVIGATIONTHEME_SHAPE_NONE</option>
-					<option value="round">NAVIGATIONTHEME_SHAPE_ROUND</option>
-					<option value="square">NAVIGATIONTHEME_SHAPE_SQUARE</option>
-				</field>
-
-				<field 
 						type="spacer" 
 						name="navigation_bar_spacer" 
 						label="NAVIGATIONBAR_SPACER_LABEL" 
@@ -792,6 +767,33 @@
 							description="VERTICALPADDING_DOTS_DESC" 
 					/>
 
+					<field 
+							name="navigation_effect_theme"
+							type="list"
+							default="theme0"
+							label="NAVIGATION_EFFECT_THEME"
+							description="NAVIGATION_EFFECT_THEME_DESC">
+						<option value="none">NAVIGATION_EFFECT_THEME_NONE</option>
+						<option value="default">NAVIGATION_EFFECT_THEME_DEFAULT</option>
+						<option value="theme0">NAVIGATION_EFFECT_THEME_0</option>
+						<option value="theme1">NAVIGATION_EFFECT_THEME_1</option>
+						<option value="theme2">NAVIGATION_EFFECT_THEME_2</option>
+						<option value="theme3">NAVIGATION_EFFECT_THEME_3</option>
+						<option value="theme4">NAVIGATION_EFFECT_THEME_4</option>
+						<option value="theme5">NAVIGATION_EFFECT_THEME_5</option>
+					</field>
+
+					<field 
+							name="navigation_theme_shape"
+							type="list"
+							default="round"
+							label="NAVIGATIONTHEME_SHAPE"
+							description="NAVIGATIONTHEME_SHAPE_DESC">
+						<option value="none">NAVIGATIONTHEME_SHAPE_NONE</option>
+						<option value="round">NAVIGATIONTHEME_SHAPE_ROUND</option>
+						<option value="square">NAVIGATIONTHEME_SHAPE_SQUARE</option>
+					</field>
+
 					<field  
 							name="navigation_dots_color" 
 							type="colorpicker"
@@ -859,6 +861,18 @@
 						<option value="2">ALWAYS_ARROWS</option>
 						<option value="0">NO_ARROWS</option>
 						<option value="1">ONHOVER_ARROWS</option>
+					</field>
+
+					<field 
+							name="buttons_theme"
+							type="list"
+							default="theme1"
+							label="NAVIGATION_BUTTONS_THEME"
+							description="NAVIGATION_BUTTONS_THEME_DESC">
+						<option value="none">NAVIGATION_BUTTONS_THEME_NONE</option>
+						<option value="theme1">NAVIGATION_BUTTONS_THEME_1</option>
+						<option value="theme2">NAVIGATION_BUTTONS_THEME_2</option>
+						<option value="theme3">NAVIGATION_BUTTONS_THEME_3</option>
 					</field>
 
 					<field  

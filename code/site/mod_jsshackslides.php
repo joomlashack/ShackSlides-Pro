@@ -118,7 +118,7 @@ $defaults = array(
 	// Navigation theme shape
 	'navigation_theme_shape' => 'round',
 	// Navigation theme effect
-	'navigation_theme' => 'default',
+	'navigation_effect_theme' => 'theme0',
 	// Show slide numbers in navigation
 	'navigation_shownumbers' => '0',
 	// Orientation
@@ -131,6 +131,8 @@ $defaults = array(
 	'navigation_padding_horizontal' => '10',
 	// Vertical padding
 	'navigation_padding_vertical' => '10',
+	// Buttons theme
+	'buttons_theme' => 'theme1',
 	// Dots color
 	'navigation_dots_color' => 'FFFFFF',
 	// Dots numbers color
@@ -516,9 +518,6 @@ if ($settings['navigation_show'] != '0')
 		#' . $settings['container'] . '.jss-slider ' . (($settings['navigation_show'] == '1') ? ':hover' : '') . ' .jss-navigation .jss-navigation-dots {
 			opacity: ' . (((int) $settings['navigation_opacity']) / 100) . ';
 		}
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
-			background: #' . $settings['navigation_dots_color'] . ';
-		}
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
 			color: #' . $settings['navigation_dots_numbers_color'] . ';
 		}'
@@ -751,14 +750,24 @@ else
 if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 {	
 	$themeCss = '';
+
 	if($settings['navigation_theme_shape'] != 'none')
 	{
-		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/themes/' . $settings['navigation_theme_shape'] . '.css') . '\n';
+		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css');
 	}
 
-	if($settings['navigation_theme'] != 'none')
+	if($settings['buttons_theme'] != 'none')
 	{
-		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/themes/' . $settings['navigation_theme'] . '.css');
+		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.css');
+	}
+
+	if($settings['navigation_effect_theme'] != 'none')
+	{
+		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . $settings['navigation_effect_theme'] . '.css');
+		$themeCss .= '
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
+					background: #' . $settings['navigation_dots_color'] . ';
+					}';
 	}
 
 	foreach ($settings as $key => $value)

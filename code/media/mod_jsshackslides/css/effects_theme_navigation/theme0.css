@@ -34,20 +34,3 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > di
 	background: rgba(204,204,204,0.8);
 	z-index: 25;
 }
-
-$$container.jss-slider .jss-navigation .jss-navigation-buttons [class*='owl-'] {
-	border-width: 8px;
-	border-style: solid;
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
-}
-$$container.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
-	border-right: none;
-	border-top: none;
-}
-$$container.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
-	border-left: none;
-	border-bottom: none;
-}

@@ -1,0 +1,13 @@
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div:after {
+	content: "";
+	position: absolute;
+	width: 75%;
+	height: 75%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background: rgba(204,204,204,0.8);
+	z-index: 25;
+}

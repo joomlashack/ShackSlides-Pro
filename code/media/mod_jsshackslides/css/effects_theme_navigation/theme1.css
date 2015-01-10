@@ -28,20 +28,3 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > di
 		inset 0 1px 1px rgba(0,0,0,0.1),
 		0 0 0 2px rgba(255,255,255,0.7);
 }
-
-$$container.jss-slider .jss-navigation .jss-navigation-buttons [class*='owl-'] {
-	border-width: 4px;
-	border-style: solid;
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
-}
-$$container.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
-	border-right: none;
-	border-top: none;
-}
-$$container.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
-	border-left: none;
-	border-bottom: none;
-}
