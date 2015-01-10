@@ -407,7 +407,7 @@
 							type="colorpicker"
 							label="TITLE_PICKER_COLOR_LABEL" 
 							description="TITLE_PICKER_COLOR_LABEL_DESC" 
-							default="#FFFFFF" 
+							default="FFFFFF" 
 					/>
 
 					<field 

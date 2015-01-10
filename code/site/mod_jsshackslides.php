@@ -80,7 +80,7 @@ $defaults = array(
 	// Title color flag
 	'title_bgcolor_flag' => '1',
 	// Title color
-	'title_color' => '#FFFFFF',
+	'title_color' => 'FFFFFF',
 	// Title background color flag
 	'title_color_flag' => '1',
 	// Title background color
@@ -283,7 +283,7 @@ if ($settings['description_show'])
 		$settings['description_bgcolor'] = implode(',', $helper->hexToRGB($settings['description_bgcolor']));
 		$doc->addStyleDeclaration(
 			'#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description {
-				background-color: rgba(' . $settings['description_bgcolor'] . ', ' . ($settings['description_bgcolor_opacity'] / 100) . ')
+				background-color: rgba(' . $settings['description_bgcolor'] . ', ' . ($settings['description_bgcolor_opacity'] / 100) . ');
 			}'
 		);
 	}
@@ -356,7 +356,7 @@ if ($settings['title_show'])
 		$settings['title_bgcolor'] = implode(',', $helper->hexToRGB($settings['title_bgcolor']));
 		$doc->addStyleDeclaration('
 			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-title {
-				background-color: rgba(' . $settings['title_bgcolor'] . ', ' . ($settings['title_bgcolor_opacity'] / 100) . ')
+				background-color: rgba(' . $settings['title_bgcolor'] . ', ' . ($settings['title_bgcolor_opacity'] / 100) . ');
 			}'
 		);
 	}
