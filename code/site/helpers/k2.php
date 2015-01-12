@@ -24,7 +24,7 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
         parent::__construct($params);
 		$this->category_id = $params->get('k2_category', 0);
 		$this->ordering = $params->get('ordering', 'ordering');
-		$this->ordering_direction = $params->get('ordering_direction', 'ASC');
+		$this->ordering_direction = $params->get('ordering_dir', 'ASC');
 		$this->limit = $params->get('limit', '5');
 		$this->featured = $params->get('featured', 'include');
 
@@ -49,7 +49,10 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
 		if (version_compare($version->RELEASE, "1.6", "ge")) {
 			$aid = max ($user->getAuthorisedViewLevels());
 		}
-
+		if($this->ordering == 'RAND()')
+		{
+			$this->ordering = $this->generateOrdering();
+		}
 		$query = 'SELECT * FROM #__k2_items'.
 		' WHERE catid ='.$this->category_id.
 		(($this->featured !== 'include') ? ' AND featured '.(($this->featured == 'exclude') ? '!=' : '=').' 1' : '').
@@ -67,9 +70,18 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
 	private function parseContentIntoProperties()
 	{
 		foreach ($this->content as $item)
-		{
-			$this->images[] = $this->getFirstImageFromContent($item->introtext);
-			$this->titles[] = $this->getTitleFromContent($item->introtext);
+		{	
+			if(JFile::exists(JPATH_SITE.DS.'media'.DS.'k2'.DS.'items'.DS.'src'.DS.md5("Image".$item->id).'.jpg'))
+			{
+				$this->images[] = 'media/k2/items/src/'.md5("Image".$item->id).'.jpg';
+			}
+			else 
+			{
+				$this->images[] = $this->getFirstImageFromContent($item->introtext);
+			}
+
+			$this->titles[] = $this->getTitleFromContent($item->title);
+			$this->contents[] = $this->getTitleFromContent($item->introtext);;
 			$this->links[] = $this->buildLink($item->id);
 		}
 	}

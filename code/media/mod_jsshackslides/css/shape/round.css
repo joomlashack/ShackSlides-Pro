@@ -1,0 +1,3 @@
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div , $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:after , $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active {
+	border-radius: 80%;
+}

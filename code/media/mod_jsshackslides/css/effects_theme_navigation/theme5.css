@@ -1,0 +1,38 @@
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
+	box-shadow: 0 0 0 3px #fff;
+}
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	box-shadow: 0 0 0 4px #fff;
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+		-moz-transition: -moz-transform 0.4s, opacity 0.4s;
+		transition: transform 0.4s, opacity 0.4s;
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	transform: scale(1.2);
+	opacity: 0;
+}
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div:after{
+	width: 75%;
+	height: 75%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background: rgba(204,204,204,0.8);
+}
+$$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover:after {
+	-webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+	-ms-transform: scale(0.7);
+	transform: scale(0.7);
+	opacity: 1;
+}

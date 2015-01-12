@@ -18,7 +18,7 @@ class JFormFieldColorpicker extends JFormField
 	protected function getInput()
 	{
 		$doc = JFactory::getDocument();
-		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'modules/mod_jsshackslides/fields/jscolor/jscolor.js');
+		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'media/mod_jsshackslides/js/jscolor/jscolor.js');
 
 		$size = ( $this->element['size'] ? 'size="'.$this->element['size'].'"' : '' );
         $value = htmlspecialchars_decode($this->value, ENT_QUOTES);
