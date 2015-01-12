@@ -766,7 +766,7 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . $settings['navigation_effect_theme'] . '.css');
 		$themeCss .= '
 				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
-					background: #' . $settings['navigation_dots_color'] . ';
+					background-color: #' . $settings['navigation_dots_color'] . ';
 					}';
 	}
 
