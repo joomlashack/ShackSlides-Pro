@@ -131,12 +131,10 @@ $defaults = array(
 	'navigation_padding_horizontal' => '10',
 	// Vertical padding
 	'navigation_padding_vertical' => '10',
-	// Buttons theme
-	'buttons_theme' => 'theme1',
 	// Dots color
 	'navigation_dots_color' => 'FFFFFF',
 	// Dots numbers color
-	'navigation_dots_numbers_color' => 'FFFFFF',
+	'navigation_dots_numbers_color' => '777',
 	// Opacity
 	'navigation_opacity' => '50',
 	// Custom nav dot
@@ -147,12 +145,14 @@ $defaults = array(
 	'navigation_custom_dotactive' => '',
 	// Show the navigation buttons always, never, on hover
 	'navigation_buttons_show' => '2',
+	// Buttons theme
+	'buttons_theme' => 'theme2',
 	// Buttons color
-	'navigation_buttons_color' => 'FFFFFF',
+	'navigation_buttons_color' => '666666',
 	// Buttons hover color
 	'navigation_buttonshover_color' => 'FFFFFF',
 	// Buttons opacity
-	'navigation_buttons_opacity' => '50',
+	'navigation_buttons_opacity' => '70',
 	// Custom previous button
 	'navigation_buttons_custom_previous' => '',
 	// Custom previous hover button
@@ -551,6 +551,11 @@ if ($settings['navigation_show'] != '0')
 			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover',
 			$doc
 		);
+		$helper->applyingCustomImages(
+			$settings['navigation_custom_dothover'],
+			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div:hover',
+			$doc
+		);
 	}
 
 	if ($settings['navigation_custom_dotactive'] != '')
@@ -754,6 +759,10 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 	if($settings['navigation_theme_shape'] != 'none')
 	{
 		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css');
+		$themeCss .= '
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
+					background-color: #' . $settings['navigation_dots_color'] . ';
+					}';
 	}
 
 	if($settings['buttons_theme'] != 'none')
@@ -764,10 +773,6 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 	if($settings['navigation_effect_theme'] != 'none')
 	{
 		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . $settings['navigation_effect_theme'] . '.css');
-		$themeCss .= '
-				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
-					background-color: #' . $settings['navigation_dots_color'] . ';
-					}';
 	}
 
 	foreach ($settings as $key => $value)

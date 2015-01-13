@@ -807,7 +807,7 @@
 							type="colorpicker"
 							label="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL" 
 							description="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL_DESC" 
-							default="FFFFFF" 
+							default="777" 
 					/>
 
 					<field 
@@ -866,7 +866,7 @@
 					<field 
 							name="buttons_theme"
 							type="list"
-							default="theme1"
+							default="theme2"
 							label="NAVIGATION_BUTTONS_THEME"
 							description="NAVIGATION_BUTTONS_THEME_DESC">
 						<option value="none">NAVIGATION_BUTTONS_THEME_NONE</option>
@@ -880,7 +880,7 @@
 							type="colorpicker"
 							label="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL" 
 							description="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL_DESC" 
-							default="FFFFFF" 
+							default="666" 
 					/>
 
 					<field  
@@ -888,13 +888,13 @@
 							type="colorpicker"
 							label="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL" 
 							description="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL_DESC" 
-							default="FFFFFF" 
+							default="FFF" 
 					/>
 
 					<field 
 							name="navigation_buttons_opacity" 
 							type="slider" 
-							default="50" 
+							default="80" 
 							label="NAVIGATION_OPACITY" 
 							description="NAVIGATION_OPACITY_DESC" 
 					/>
