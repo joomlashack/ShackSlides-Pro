@@ -5,7 +5,7 @@ function autoplayDisable(){
 	var effectslide_select = document.getElementById('jform_params_slide_effect');
 	var source_select = document.getElementById('jform_params_source');
 	var navigation_show = document.getElementById('jform_params_navigation_show');
-	var effect_theme_navigation = document.getElementById('jform_params_navigation_effect_theme');
+	var shape_theme_navigation = document.getElementById('jform_params_navigation_theme_shape');
 	/*
 	########################################################################
 	################# Disable when saving changes ##########################
@@ -39,12 +39,12 @@ function autoplayDisable(){
 
 	if(navigation_show.value == "0"){
 		document.getElementById("jform_params_navigation_theme_shape").parentNode.style.display = 'none';
-		document.getElementById("jform_params_navigation_effect_theme").parentNode.style.display = 'none';
+		document.getElementById("jform_params_navigation_shape_theme").parentNode.style.display = 'none';
 		document.getElementById("jform[params][navigation_dots_color]").parentNode.style.display = 'none';
 		document.getElementById("jform[params][navigation_dots_numbers_color]").parentNode.style.display = 'none';
 	}
 
-	if(effect_theme_navigation.value == "none"){
+	if(shape_theme_navigation.value == "none"){
 		document.getElementById("jform[params][navigation_dots_color]").parentNode.style.display = 'none';
 	}
 	/*
@@ -117,14 +117,14 @@ function autoplayDisable(){
 		 {
 		 	document.getElementById("jform_params_navigation_theme_shape").parentNode.style.display = 'block';
 		 	document.getElementById("jform_params_navigation_effect_theme").parentNode.style.display = 'block';
-		 	if(effect_theme_navigation.value != "none"){
+		 	if(shape_theme_navigation.value != "none"){
 		 		document.getElementById("jform[params][navigation_dots_color]").parentNode.style.display = 'block';
 		 	}
 		 	document.getElementById("jform[params][navigation_dots_numbers_color]").parentNode.style.display = 'block';
 		 }
 	};
-	effect_theme_navigation.onchange = function(){
-		 if(effect_theme_navigation.value == "none"){
+	shape_theme_navigation.onchange = function(){
+		 if(shape_theme_navigation.value == "none"){
 		 	document.getElementById("jform[params][navigation_dots_color]").parentNode.style.display = 'none';
 		 } else {
 		 	document.getElementById("jform[params][navigation_dots_color]").parentNode.style.display = 'block';
