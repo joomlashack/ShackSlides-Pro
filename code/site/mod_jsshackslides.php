@@ -470,10 +470,10 @@ if ($settings['description_show'] || $settings['title_show'])
 			function jssAnimTextExec(c, x, c2, x2) {
 				if (c == undefined) { c = c2; x = x2; c2 = undefined; x2 = undefined; }
 			    jQuery(c).addClass(x + " animated")
-			    	.one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
-					jQuery(this).removeClass(x + " animated");
-					jQuery(this).css("opacity", "1");
-					if (c2 != undefined) jssAnimTextExec(c2, x2);
+					.one(jQuery.support.animation.end, function(e) {
+						jQuery(this).removeClass(x + " animated");
+						jQuery(this).css("opacity", "1");
+						if (c2 != undefined) jssAnimTextExec(c2, x2);
 				});
 			}
 			function jssAnimText(i) {
@@ -753,10 +753,10 @@ else
 
 // Loads theme css
 if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
-{	
+{
 	$themeCss = '';
 
-	if($settings['navigation_theme_shape'] != 'none')
+	if ($settings['navigation_theme_shape'] != 'none')
 	{
 		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css');
 		$themeCss .= '
@@ -765,14 +765,16 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 					}';
 	}
 
-	if($settings['buttons_theme'] != 'none')
+	if ($settings['buttons_theme'] != 'none')
 	{
 		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.css');
 	}
 
-	if($settings['navigation_effect_theme'] != 'none')
+	if ($settings['navigation_effect_theme'] != 'none')
 	{
-		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . $settings['navigation_effect_theme'] . '.css');
+		$themeCss .= file_get_contents(
+			JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . $settings['navigation_effect_theme'] . '.css'
+		);
 	}
 
 	foreach ($settings as $key => $value)
