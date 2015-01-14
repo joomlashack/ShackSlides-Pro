@@ -423,7 +423,9 @@ if ($settings['description_show'] || $settings['title_show'])
 {
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title-description .jss-title,
-		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title-description .jss-description {
+		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title-description .jss-description,
+		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image-container .jss-title-description .jss-title,
+		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image-container .jss-title-description .jss-description{
 			padding: ' . (int) $settings['title_description_padding_vertical'] . 'px ' . (int) $settings['title_description_padding_horizontal'] . 'px;
 		}'
 	);
