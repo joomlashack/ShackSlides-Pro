@@ -134,7 +134,7 @@ $defaults = array(
 	// Dots color
 	'navigation_dots_color' => 'FFFFFF',
 	// Active dots color
-	'navigation_activedots_color' => 'FFFFFF',
+	'navigation_activedots_color' => '000000',
 	// Dots numbers color
 	'navigation_dots_numbers_color' => '777',
 	// Opacity
