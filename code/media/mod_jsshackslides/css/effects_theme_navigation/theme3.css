@@ -2,7 +2,7 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
 	-webkit-transition: box-shadow 0.3s;
 	-moz-transition: box-shadow 0.3s;
 	transition: box-shadow 0.3s;
-	box-shadow: 0 0 3px 3px #fff;
+	box-shadow: 0 0 8px 1px #fff;
 }
 $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:after {
 	content: "";
@@ -27,7 +27,7 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > di
 		0 0 0 2px $$navigation_activedots_color;
 }
 $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover {
-	box-shadow: 0 0 0 2px rgba(255,255,255,1);
+	box-shadow: 0 0 3px 1px rgba(255,255,255,1);
 }
 $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div:hover:after {
 	-webkit-transform: scale(0.85);

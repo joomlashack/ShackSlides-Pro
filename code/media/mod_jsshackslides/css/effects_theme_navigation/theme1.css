@@ -22,9 +22,9 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > di
 		-webkit-box-shadow:
 		0 1px 1px $$navigation_activedots_color, 
 		inset 0 1px 1px rgba(0,0,0,0.1),
-		0 0 0 2px $$navigation_activedots_color;
+		0 0 0 4px $$navigation_activedots_color;
 	box-shadow:
 		0 1px 1px $$navigation_activedots_color, 
 		inset 0 1px 1px rgba(0,0,0,0.1),
-		0 0 0 2px $$navigation_activedots_color;
+		0 0 0 4px $$navigation_activedots_color;
 }
