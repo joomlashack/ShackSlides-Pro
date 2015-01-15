@@ -133,6 +133,8 @@ $defaults = array(
 	'navigation_padding_vertical' => '10',
 	// Dots color
 	'navigation_dots_color' => 'FFFFFF',
+	// Active dots color
+	'navigation_activedots_color' => 'FFFFFF',
 	// Dots numbers color
 	'navigation_dots_numbers_color' => '777',
 	// Opacity

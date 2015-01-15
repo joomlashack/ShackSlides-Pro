@@ -31,6 +31,6 @@ $$container.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > di
 	left: 0;
 	right: 0;
 	margin: auto;
-	background: rgba(204,204,204,0.8);
+	background: $$navigation_activedots_color;
 	z-index: 25;
 }

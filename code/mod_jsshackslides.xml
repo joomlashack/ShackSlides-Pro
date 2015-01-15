@@ -27,6 +27,10 @@
 		<folder>images</folder>
 		<filename>index.html</filename>
 	</media>
+	<languages folder="site">
+			<language tag="en-GB">language/en-GB/en-GB.mod_jsshackslides.ini</language>
+			<language tag="es-ES">language/en-ES/en-ES.mod_jsshackslides.ini</language>
+	</languages>
 	<config>
 		<fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
 
@@ -808,6 +812,14 @@
 							label="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL" 
 							description="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL_DESC" 
 							default="777" 
+					/>
+
+					<field  
+							name="navigation_activedots_color" 
+							type="colorpicker"
+							label="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL" 
+							description="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL_DESC" 
+							default="FFFFFF" 
 					/>
 
 					<field 
