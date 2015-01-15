@@ -115,41 +115,42 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 		{
 			// Setting image
 			$item_images = json_decode($item->images);
-			$image = null;
-
-			if ($this->joomla_image_source_type == 'intro')
+			if ($item_images) 
 			{
-				if ($item_images->image_intro != '')
+				if ($this->joomla_image_source_type == 'intro')
 				{
-					$this->images[] = $item_images->image_intro;
+					if ($item_images->image_intro != '')
+					{
+						$this->images[] = $item_images->image_intro;
+					}
+					else
+					{
+						$this->images[] = NOIMAGEFOUND_IMG;
+					}
 				}
-				else
-				{
-					$this->images[] = NOIMAGEFOUND_IMG;
-				}
-			}
 
-			elseif ($this->joomla_image_source_type == 'full')
-			{
-				if ($item_images->image_fulltext != '')
+				elseif ($this->joomla_image_source_type == 'full')
 				{
-					$this->images[] = $item_images->image_fulltext;
+					if ($item_images->image_fulltext != '')
+					{
+						$this->images[] = $item_images->image_fulltext;
+					}
+					else
+					{
+						$this->images[] = NOIMAGEFOUND_IMG;
+					}
 				}
-				else
+
+				elseif($this->joomla_image_source_type == 'firstimage')
 				{
-					$this->images[] = NOIMAGEFOUND_IMG;
+					$this->images[] = $this->getFirstImageFromContent($item->introtext);
 				}
-			}
+				// End setting image
 
-			elseif($this->joomla_image_source_type == 'firstimage')
-			{
-				$this->images[] = $this->getFirstImageFromContent($item->introtext);
+				$this->titles[] = $this->getTitleFromContent($item->title);
+				$this->contents[] = $this->getTitleFromContent($item->introtext);
+				$this->links[] = $this->buildLink($item->id);
 			}
-			// End setting image
-
-			$this->titles[] = $this->getTitleFromContent($item->title);
-			$this->contents[] = $this->getTitleFromContent($item->introtext);
-			$this->links[] = $this->buildLink($item->id);
 		}
 	}
 
