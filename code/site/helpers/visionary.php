@@ -73,7 +73,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 
 			$this->images []= $this->createImageUrl($item->image);
 			$this->titles []= $item->title;
-			$this->contents []= $item->content;
+			$this->contents []= $item->description;
 			$this->links []= $item->url;
 
 		}
