@@ -5,6 +5,7 @@ $$container.jss-slider .jss-navigation .jss-navigation-buttons [class*='owl-'] {
 	-ms-transform: rotate(45deg);
 	-o-transform: rotate(45deg);
 	transform: rotate(45deg);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)";
 }
 $$container.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
 	border-right: none;

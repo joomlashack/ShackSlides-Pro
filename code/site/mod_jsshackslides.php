@@ -282,9 +282,11 @@ if ($settings['description_show'])
 	// Description background
 	if ($settings['description_bgcolor_flag'])
 	{
+		$color_hex = $settings['description_bgcolor'];
 		$settings['description_bgcolor'] = implode(',', $helper->hexToRGB($settings['description_bgcolor']));
 		$doc->addStyleDeclaration(
 			'#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description {
+				background-color: #' . $color_hex . ';
 				background-color: rgba(' . $settings['description_bgcolor'] . ', ' . ($settings['description_bgcolor_opacity'] / 100) . ');
 			}'
 		);
@@ -355,9 +357,11 @@ if ($settings['title_show'])
 	// Title background
 	if ($settings['title_bgcolor_flag'])
 	{
+		$color_hex = $settings['title_bgcolor'];
 		$settings['title_bgcolor'] = implode(',', $helper->hexToRGB($settings['title_bgcolor']));
 		$doc->addStyleDeclaration('
 			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-title {
+				background-color: #' . $color_hex . ';
 				background-color: rgba(' . $settings['title_bgcolor'] . ', ' . ($settings['title_bgcolor_opacity'] / 100) . ');
 			}'
 		);
