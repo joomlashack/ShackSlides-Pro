@@ -36,11 +36,6 @@
 }
 .jss-slider .owl-carousel .jss-title-description .jss-title,
 .jss-slider .owl-carousel .jss-title-description .jss-description {
-	-webkit-flex-grow: 1;
-	-moz-flex-grow: 1;
-	-ms-flex-grow: 1;
-	-o-flex-grow: 1;
-	flex-grow: 1;
 	position: relative;
 	display: -webkit-box;
 	display: -moz-box;

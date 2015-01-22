@@ -212,6 +212,35 @@ if ($settings['container'] == '')
 	$settings['container'] = $helper->generateContainerID();
 }
 
+if (($browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() < 11) ||  
+	 $browser->getBrowser() == Browser::BROWSER_SAFARI) 
+{	
+	$description_Title_Patch = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/description_title_patch.js');
+
+	// Replaces all slider variables to patch
+	foreach ($settings as $key => $value)
+	{
+		$description_Title_Patch = str_replace('$$' . $key, $value, $description_Title_Patch);
+	}
+
+	// Loads patch (Javascript)
+	$doc->addScriptDeclaration($description_Title_Patch);
+} 
+
+else 
+{
+	$doc->addStyleDeclaration('
+		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-title,
+		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-description {
+				-webkit-flex-grow: 1;
+				-moz-flex-grow: 1;
+				-ms-flex-grow: 1;
+				-o-flex-grow: 1;
+				flex-grow: 1;
+			}'
+	);
+}
+
 // Default effect masterspeed = 1ms (CSS3 won't work with 0 to avoid the effect)
 $effectMasterSpeed = '1';
 
@@ -787,7 +816,7 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 
 	if ($settings['buttons_theme'] != 'none')
 	{	
-		if ( $browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() == 8 ) {
+		if ($browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() == 8) {
 			$doc->addStyleDeclaration('
 				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
 					-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod=\'auto expand\', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)";
