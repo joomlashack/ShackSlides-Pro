@@ -13,6 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 require_once dirname(__FILE__) . '/helpers/' . $params->get('source', 'folder') . '.php';
 
 $doc = JFactory::getDocument();
+$browser = new Browser();
 
 $helperClass = 'ModShackSlides' . ucfirst($params->get('source', 'folder')) . 'Helper';
 $helper = new $helperClass($params);
@@ -785,7 +786,14 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 	}
 
 	if ($settings['buttons_theme'] != 'none')
-	{
+	{	
+		if ( $browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() == 8 ) {
+			$doc->addStyleDeclaration('
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
+					-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod=\'auto expand\', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)";
+				}'
+			);
+		}
 		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.css');
 	}
 
