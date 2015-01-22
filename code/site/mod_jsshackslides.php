@@ -521,10 +521,21 @@ if ($settings['description_show'] || $settings['title_show'])
 // Navigation
 if ($settings['navigation_show'] != '0')
 {
+	if ($settings['navigation_show'] == '1')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
+				opacity: 0;
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+			}'
+		);
+	}
+
 	// Navigation is shown - always or just on hover (default by css)
 	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider ' . (($settings['navigation_show'] == '1') ? ':hover' : '') . ' .jss-navigation .jss-navigation-dots {
+		#' . $settings['container'] . '.jss-slider' . (($settings['navigation_show'] == '1') ? ':hover' : '') . ' .jss-navigation .jss-navigation-dots {
 			opacity: ' . (((int) $settings['navigation_opacity']) / 100) . ';
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' . ((int) $settings['navigation_opacity']) . ')";
 		}
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
 			color: #' . $settings['navigation_dots_numbers_color'] . ';
