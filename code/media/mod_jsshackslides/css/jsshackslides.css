@@ -179,7 +179,6 @@
 	-moz-pointer-events: none;
 	-ms-pointer-events: none;
 	-o-pointer-events: none;
-	pointer-events: none;
 }
 .jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
 	zoom: 1;
@@ -241,7 +240,6 @@
 	-moz-pointer-events: none;
 	-ms-pointer-events: none;
 	-o-pointer-events: none;
-	pointer-events: none;
 }
 .jss-slider .jss-navigation .jss-navigation-buttons [class*='owl-'] {
 	font-size: 0;
