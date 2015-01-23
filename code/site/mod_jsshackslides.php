@@ -11,6 +11,10 @@
 defined('_JEXEC') or die('Restricted access');
 
 require_once dirname(__FILE__) . '/helpers/' . $params->get('source', 'folder') . '.php';
+if (!class_exists('Browser')) 
+{
+	require_once dirname(__FILE__) . '/includes/browser.php';
+}
 
 $doc = JFactory::getDocument();
 $browser = new Browser();
