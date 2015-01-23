@@ -17,6 +17,7 @@
 }
 .jss-slider .owl-carousel .jss-image-container .jss-image .jss-image-int.jss-image-link {
 	cursor: pointer;
+	cursor:hand;
 }
 .jss-slider .owl-carousel .jss-image .jss-title-description {
 	position: absolute;
@@ -213,7 +214,7 @@
 	-ms-flex-pack: center;
 	-webkit-justify-content: center;
 	justify-content: center;
-	font-size: initial;
+	font-size: small;
 	-webkit-pointer-events: initial;
 	-moz-pointer-events: initial;
 	-ms-pointer-events: initial;
@@ -248,6 +249,7 @@
 	padding: 0;
 	display: inline-block;
 	cursor: pointer;
+	cursor:hand;
 	position: relative;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
