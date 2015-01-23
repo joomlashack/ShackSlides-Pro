@@ -49,7 +49,7 @@ defined('_JEXEC') or die('Restricted access');
 				?>
 				<div
 					class="jss-image-int<?php echo $links[$i] ? ' jss-image-link' : ''; ?>"
-					style="background-image: url('<?php echo  $base . $image ?>'">
+					style="background: url('<?php echo  $base . $image ?>');background-image: url('<?php echo  $base . $image ?>')">
 				<?php
 						if ($links[$i])
 							:
