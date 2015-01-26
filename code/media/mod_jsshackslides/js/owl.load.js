@@ -1,3 +1,4 @@
+var $$container = null;
 jQuery(document).ready(function(){
 	var options = {
 		items: $$slide_items,
