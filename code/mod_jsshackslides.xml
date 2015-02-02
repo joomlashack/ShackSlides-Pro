@@ -303,6 +303,7 @@
 							type="list" 
 							default="ASC" 
 							label="ORDERING_DIRECTION" 
+							description="ORDERING_DIRECTION_DESC"
 					>
 						<option value="ASC">ASCENDING</option>
 						<option value="DESC">DESCENDING</option>
