@@ -785,7 +785,7 @@ if ($settings['navigation_buttons_show'] != '0')
 			border-color: #' . $settings['navigation_buttonshover_color'] . ';
 		}
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
-			height: ' . max($buttonsNextHeight, $buttonsPrevHeight) . 'px;
+			height: 0px;
 		}
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
 			width: ' . $buttonsPrevWidth . 'px;
