@@ -12,14 +12,9 @@ defined('_JEXEC') or die('Restricted access');
 
 require_once dirname(__FILE__) . '/helpers/' . $params->get('source', 'folder') . '.php';
 
-if (!class_exists('Browser'))
-{
-	require_once dirname(__FILE__) . '/includes/browser.php';
-}
-
 $doc = JFactory::getDocument();
 
-$browser = new Browser;
+$browser = JBrowser::getInstance();
 
 $helperClass = 'ModShackSlides' . ucfirst($params->get('source', 'folder')) . 'Helper';
 $helper = new $helperClass($params);
@@ -216,19 +211,22 @@ if ($settings['container'] == '')
 	$settings['container'] = $helper->generateContainerID();
 }
 
-if (($browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() < 11)
-	|| $browser->getBrowser() == Browser::BROWSER_SAFARI)
+$browserName = $browser->getBrowser();
+$browserVersion = $browser->getMajor();
+
+if (($browserName == 'msie' && $browserVersion < 11)
+	|| $browserName == 'safari')
 {
-	$description_Title_Patch = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/description_title_patch.js');
+	$descriptionTitlePatch = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/description_title_patch.js');
 
 	// Replaces all slider variables to patch
 	foreach ($settings as $key => $value)
 	{
-		$description_Title_Patch = str_replace('$$' . $key, $value, $description_Title_Patch);
+		$descriptionTitlePatch = str_replace('$$' . $key, $value, $descriptionTitlePatch);
 	}
 
 	// Loads patch (Javascript)
-	$doc->addScriptDeclaration($description_Title_Patch);
+	$doc->addScriptDeclaration($descriptionTitlePatch);
 }
 else
 {
@@ -824,16 +822,38 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 
 	if ($settings['navigation_theme_shape'] != 'none')
 	{
-		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css');
 		$themeCss .= '
 				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
 					background-color: #' . $settings['navigation_dots_color'] . ';
 					}';
+
+		if (file_exists(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css'))
+		{
+			$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css');
+		}
+
+		if (file_exists(
+			JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.' . $browserName . $browserVersion . '.css'
+			))
+		{
+			$themeCss .= file_get_contents(
+				JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.' . $browserName . $browserVersion . '.css'
+			);
+		}
 	}
 
 	if ($settings['buttons_theme'] != 'none')
 	{
 		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.css');
+
+		if (file_exists(
+			JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.' . $browserName . $browserVersion . '.css'
+			))
+		{
+			$themeCss .= file_get_contents(
+				JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.' . $browserName . $browserVersion . '.css'
+			);
+		}
 	}
 
 	if ($settings['navigation_effect_theme'] != 'none')
@@ -841,6 +861,15 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 		$themeCss .= file_get_contents(
 			JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . $settings['navigation_effect_theme'] . '.css'
 		);
+
+		if (file_exists(
+			JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . '.' . $browserName . $browserVersion . '.css'
+			))
+		{
+			$themeCss .= file_get_contents(
+				JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . '.' . $browserName . $browserVersion . '.css'
+			);
+		}
 	}
 
 	foreach ($settings as $key => $value)
