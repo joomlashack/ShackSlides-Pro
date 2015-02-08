@@ -593,6 +593,9 @@ if ($settings['navigation_show'] != '0')
 			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
 				width: ' . $dotsWidth . 'px;
 				height: ' . $dotsHeight . 'px;
+			}
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
+				line-height: ' . $dotsHeight . 'px;
 			}'
 		);
 	}
