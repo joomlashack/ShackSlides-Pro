@@ -11,13 +11,15 @@
 defined('_JEXEC') or die('Restricted access');
 
 require_once dirname(__FILE__) . '/helpers/' . $params->get('source', 'folder') . '.php';
-if (!class_exists('Browser')) 
+
+if (!class_exists('Browser'))
 {
 	require_once dirname(__FILE__) . '/includes/browser.php';
 }
 
 $doc = JFactory::getDocument();
-$browser = new Browser();
+
+$browser = new Browser;
 
 $helperClass = 'ModShackSlides' . ucfirst($params->get('source', 'folder')) . 'Helper';
 $helper = new $helperClass($params);
@@ -31,8 +33,6 @@ $base = $helper->getBase();
 if (!$images)
 {
 	// If there are no images set, there is nothing to be shown
-	echo "<img src=" . $base . NOIMAGEFOUND_IMG . " />";
-
 	return;
 }
 
@@ -216,9 +216,9 @@ if ($settings['container'] == '')
 	$settings['container'] = $helper->generateContainerID();
 }
 
-if (($browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() < 11) ||  
-	 $browser->getBrowser() == Browser::BROWSER_SAFARI) 
-{	
+if (($browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() < 11)
+	|| $browser->getBrowser() == Browser::BROWSER_SAFARI)
+{
 	$description_Title_Patch = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/description_title_patch.js');
 
 	// Replaces all slider variables to patch
@@ -229,9 +229,8 @@ if (($browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() < 1
 
 	// Loads patch (Javascript)
 	$doc->addScriptDeclaration($description_Title_Patch);
-} 
-
-else 
+}
+else
 {
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-title,
@@ -519,6 +518,9 @@ if ($settings['description_show'] || $settings['title_show'])
 				});
 			}
 			function jssAnimText(i) {
+				if (!jQuery.support.animation || !jQuery.support.transition) {
+					return;
+				}
 				jssAnimTextExec(' . (($settings['title_effect'] != 'none') ?
 						'"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-title > *","' . (substr($settings['title_effect'], 0, 10) == 'attention_'
 								? substr($settings['title_effect'], 10)
@@ -772,11 +774,22 @@ if ($settings['navigation_buttons_show'] != '0')
 		);
 	}
 
+	if ($settings['navigation_buttons_show'] == '1')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
+				opacity: 0;
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+			}'
+		);
+	}
+
 	// Navigation is shown - always or just on hover (default by css).  Height adjustment
 	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider .jss-navigation' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') .
-			' .jss-navigation-buttons {
+		#' . $settings['container'] . '.jss-slider' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') .
+			' .jss-navigation .jss-navigation-buttons {
 			opacity: ' . (((int) $settings['navigation_buttons_opacity']) / 100) . ';
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' . ((int) $settings['navigation_buttons_opacity']) . ')";
 		}
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']{
 			border-color: #' . $settings['navigation_buttons_color'] . ';
@@ -819,14 +832,16 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 	}
 
 	if ($settings['buttons_theme'] != 'none')
-	{	
-		if ($browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() == 8) {
+	{
+		if ($browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() == 8)
+		{
 			$doc->addStyleDeclaration('
 				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
 					-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod=\'auto expand\', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)";
 				}'
 			);
 		}
+
 		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.css');
 	}
 
