@@ -231,15 +231,10 @@
 	right: 0;
 	width: 100%;
 	margin: auto 0;
-	opacity: 0;
 	z-index: 25;
 	-webkit-transition: opacity 500ms ease;
 	-o-transition: opacity 500ms ease;
 	transition: opacity 500ms ease;
-	-webkit-pointer-events: none;
-	-moz-pointer-events: none;
-	-ms-pointer-events: none;
-	-o-pointer-events: none;
 }
 .jss-slider .jss-navigation .jss-navigation-buttons [class*='owl-'] {
 	font-size: 0;
@@ -253,11 +248,6 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	text-indent: -90000px;
-	-webkit-pointer-events: initial;
-	-moz-pointer-events: initial;
-	-ms-pointer-events: initial;
-	-o-pointer-events: initial;
-	pointer-events: initial;
 }
 .jss-slider .jss-navigation .jss-navigation-buttons .disabled {
 	opacity: 0;

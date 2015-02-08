@@ -777,7 +777,7 @@ if ($settings['navigation_buttons_show'] != '0')
 	if ($settings['navigation_buttons_show'] == '1')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
 				opacity: 0;
 				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 			}'
@@ -787,7 +787,7 @@ if ($settings['navigation_buttons_show'] != '0')
 	// Navigation is shown - always or just on hover (default by css).  Height adjustment
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.jss-slider' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') .
-			' .jss-navigation .jss-navigation-buttons {
+			' .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
 			opacity: ' . (((int) $settings['navigation_buttons_opacity']) / 100) . ';
 			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' . ((int) $settings['navigation_buttons_opacity']) . ')";
 		}
@@ -833,15 +833,6 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 
 	if ($settings['buttons_theme'] != 'none')
 	{
-		if ($browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() == 8)
-		{
-			$doc->addStyleDeclaration('
-				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
-					-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod=\'auto expand\', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)";
-				}'
-			);
-		}
-
 		$themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.css');
 	}
 
