@@ -779,7 +779,7 @@ if ($settings['navigation_buttons_show'] != '0')
 		$doc->addStyleDeclaration('
 			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
 				opacity: 0;
-				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+				visibility: hidden;
 			}'
 		);
 	}
@@ -789,7 +789,7 @@ if ($settings['navigation_buttons_show'] != '0')
 		#' . $settings['container'] . '.jss-slider' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') .
 			' .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
 			opacity: ' . (((int) $settings['navigation_buttons_opacity']) / 100) . ';
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' . ((int) $settings['navigation_buttons_opacity']) . ')";
+			visibility: visible;
 		}
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']{
 			border-color: #' . $settings['navigation_buttons_color'] . ';
