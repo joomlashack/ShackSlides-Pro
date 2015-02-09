@@ -179,6 +179,9 @@ foreach ($defaults as $key => $default)
 	$settings[$key] = $params->get($key, $default);
 }
 
+// Resize events - set to null initially
+$settings['resize_events'] = '';
+
 // Load jQuery
 if (version_compare(JVERSION, '3.0', '<') == 1)
 {
@@ -213,34 +216,6 @@ if ($settings['container'] == '')
 
 $browserName = $browser->getBrowser();
 $browserVersion = $browser->getMajor();
-
-if (($browserName == 'msie' && $browserVersion < 11)
-	|| $browserName == 'safari')
-{
-	$descriptionTitlePatch = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/description_title_patch.js');
-
-	// Replaces all slider variables to patch
-	foreach ($settings as $key => $value)
-	{
-		$descriptionTitlePatch = str_replace('$$' . $key, $value, $descriptionTitlePatch);
-	}
-
-	// Loads patch (Javascript)
-	$doc->addScriptDeclaration($descriptionTitlePatch);
-}
-else
-{
-	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-title,
-		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-description {
-				-webkit-flex-grow: 1;
-				-moz-flex-grow: 1;
-				-ms-flex-grow: 1;
-				-o-flex-grow: 1;
-				flex-grow: 1;
-			}'
-	);
-}
 
 // Default effect masterspeed = 1ms (CSS3 won't work with 0 to avoid the effect)
 $effectMasterSpeed = '1';
@@ -453,6 +428,7 @@ $settings['animation_script'] = '
 	function jssInitEnd_' . $settings['container'] . '(event) {
 	}
 ';
+
 $settings['animation_events'] = '';
 
 // Title and Description padding (shared setting)
@@ -530,22 +506,22 @@ if ($settings['description_show'] || $settings['title_show'])
 						: '') . '
 			}
 			function jssInitEnd_' . $settings['container'] . '(event) {
-				jssAnimText(event.item.index);
+				jssAnimText_' . $settings['container'] . '(event.item.index);
 			}
-			function jssAnimTextExec(c, x, c2, x2) {
+			function jssAnimTextExec_' . $settings['container'] . '(c, x, c2, x2) {
 				if (c == undefined) { c = c2; x = x2; c2 = undefined; x2 = undefined; }
 			    jQuery(c).addClass(x + " animated")
 					.one(jQuery.support.animation.end, function(e) {
 						jQuery(this).removeClass(x + " animated");
 						jQuery(this).css("opacity", "1");
-						if (c2 != undefined) jssAnimTextExec(c2, x2);
+						if (c2 != undefined) jssAnimTextExec_' . $settings['container'] . '(c2, x2);
 				});
 			}
-			function jssAnimText(i) {
+			function jssAnimText_' . $settings['container'] . '(i) {
 				if (!jQuery.support.animation || !jQuery.support.transition) {
 					return;
 				}
-				jssAnimTextExec(' . (($settings['title_effect'] != 'none') ?
+				jssAnimTextExec_' . $settings['container'] . '(' . (($settings['title_effect'] != 'none') ?
 						'"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-title > *","' . (substr($settings['title_effect'], 0, 10) == 'attention_'
 								? substr($settings['title_effect'], 10)
 								: $settings['title_effect']) . '"'
@@ -571,10 +547,52 @@ if ($settings['description_show'] || $settings['title_show'])
 					' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0, 10) != 'attention_'
 							? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-description > *").css("opacity", "0");'
 							: '') . '
-					jssAnimText(event.item.index);
+					jssAnimText_' . $settings['container'] . '(event.item.index);
 				}
 				' . $settings['container'] . '_anim = 0;
 			});';
+	}
+
+	if (($settings['title_description_position'] == 'left'
+		|| $settings['title_description_position'] == 'right'
+		|| $settings['title_description_position'] == 'left_outside'
+		|| $settings['title_description_position'] == 'right_outside')
+		&& (($browserName == 'msie' && $browserVersion < 11) || $browserName == 'safari'))
+	{
+		$settings['resize_events'] .= '
+			function ' . $settings['container'] . 'SetHeight(){
+				console.log(jQuery("#' . $settings['container'] . '.jss-slider").height());
+				var half_height = jQuery("#' . $settings['container'] . '.jss-slider").height() / 2;
+				var title = jQuery("#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-title");
+				var description = jQuery("#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-description");
+
+				title.css("height" , half_height);
+				description.css("height" , half_height);
+			}
+			jQuery(window).ready(function() {
+				' . $settings['container'] . 'SetHeight();
+			});
+			jQuery(window).load(function() {
+				' . $settings['container'] . 'SetHeight();
+			});
+			' . $settings['container'] . '.on("resized.owl.carousel", function(event) {
+				setTimeout(function () {
+					' . $settings['container'] . 'SetHeight();
+				}, 500);
+			})';
+	}
+	else
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-title,
+			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-description {
+					-webkit-flex-grow: 1;
+					-moz-flex-grow: 1;
+					-ms-flex-grow: 1;
+					-o-flex-grow: 1;
+					flex-grow: 1;
+				}'
+		);
 	}
 }
 

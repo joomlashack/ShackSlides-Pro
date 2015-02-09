@@ -22,6 +22,7 @@ jQuery(document).ready(function(){
 	};
 	$$container = jQuery("#$$container.jss-slider .owl-carousel").owlCarousel(options);
 	$$animation_events
+	$$resize_events
 });
 
 jQuery(window).load(function() {

@@ -35,6 +35,9 @@
 	-ms-align-items: stretch;
 	align-items: stretch;
 }
+.jss-slider .owl-carousel .jss-image .jss-title-description img {
+	width: auto;
+}
 .jss-slider .owl-carousel .jss-title-description .jss-title,
 .jss-slider .owl-carousel .jss-title-description .jss-description {
 	position: relative;
