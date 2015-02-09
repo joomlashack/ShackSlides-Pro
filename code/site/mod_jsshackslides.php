@@ -240,8 +240,8 @@ $doc->addStyleDeclaration('
 			-webkit-animation-duration:' . $effectMasterSpeed . 'ms;
 			animation-duration:' . $effectMasterSpeed . 'ms;
 		}
-	#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-title > .animated,
-	#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description > .animated {
+	#' . $settings['container'] . '.jss-slider .jss-title > .animated,
+	#' . $settings['container'] . '.jss-slider .jss-description > .animated {
 			-webkit-animation-duration:' . $settings['slide_text_effect_masterspeed'] . 'ms;
 			animation-duration:' . $settings['slide_text_effect_masterspeed'] . 'ms;
 		}'
@@ -279,7 +279,7 @@ if ($settings['description_show'])
 	if ($settings['description_color_flag'])
 	{
 		$doc->addStyleDeclaration(
-			'#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-description > * {
+			'#' . $settings['container'] . '.jss-slider .jss-description > * {
 				color: #' . $settings['description_color'] . ';
 			}'
 		);
@@ -291,7 +291,7 @@ if ($settings['description_show'])
 		$color_hex = $settings['description_bgcolor'];
 		$settings['description_bgcolor'] = implode(',', $helper->hexToRGB($settings['description_bgcolor']));
 		$doc->addStyleDeclaration(
-			'#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-description {
+			'#' . $settings['container'] . '.jss-slider .jss-description {
 				background-color: #' . $color_hex . ';
 				background-color: rgba(' . $settings['description_bgcolor'] . ', ' . ($settings['description_bgcolor_opacity'] / 100) . ');
 			}'
@@ -305,7 +305,7 @@ if ($settings['description_show'])
 		|| $settings['title_description_position'] == 'right_outside')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description {
+			#' . $settings['container'] . '.jss-slider .jss-description {
 				width: ' . (int) $settings['description_width'] . 'px;
 			}'
 		);
@@ -318,7 +318,7 @@ if ($settings['description_show'])
 		|| $settings['title_description_position'] == 'below_outside')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description {
+			#' . $settings['container'] . '.jss-slider .jss-description {
 				height: ' . (int) $settings['description_height'] . 'px;
 			}'
 		);
@@ -354,7 +354,7 @@ if ($settings['title_show'])
 	if ($settings['title_color_flag'])
 	{
 		$doc->addStyleDeclaration(
-			'#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-title > * {
+			'#' . $settings['container'] . '.jss-slider .jss-title > * {
 				color: #' . $settings['title_color'] . ';
 			}'
 		);
@@ -366,7 +366,7 @@ if ($settings['title_show'])
 		$color_hex = $settings['title_bgcolor'];
 		$settings['title_bgcolor'] = implode(',', $helper->hexToRGB($settings['title_bgcolor']));
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-title {
+			#' . $settings['container'] . '.jss-slider .jss-title {
 				background-color: #' . $color_hex . ';
 				background-color: rgba(' . $settings['title_bgcolor'] . ', ' . ($settings['title_bgcolor_opacity'] / 100) . ');
 			}'
@@ -380,7 +380,7 @@ if ($settings['title_show'])
 		|| $settings['title_description_position'] == 'right_outside')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title {
+			#' . $settings['container'] . '.jss-slider .jss-title {
 				width: ' . (int) $settings['title_width'] . 'px;
 			}'
 		);
@@ -393,7 +393,7 @@ if ($settings['title_show'])
 		|| $settings['title_description_position'] == 'below_outside')
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title {
+			#' . $settings['container'] . '.jss-slider .jss-title {
 				height: ' . (int) $settings['title_height'] . 'px;
 			}'
 		);
@@ -460,10 +460,8 @@ if ($settings['description_show'] || $settings['title_show'])
 	}
 
 	$doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title-description .jss-title,
-		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title-description .jss-description,
-		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image-container .jss-title-description .jss-title,
-		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image-container .jss-title-description .jss-description{
+		#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title,
+		#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description {
 			padding: ' . (int) $settings['title_description_padding_vertical'] . 'px ' . (int) $settings['title_description_padding_horizontal'] . 'px;
 			margin: ' . $descriptionMargin . ';
 		}'
@@ -563,8 +561,8 @@ if ($settings['description_show'] || $settings['title_show'])
 			function ' . $settings['container'] . 'SetHeight(){
 				console.log(jQuery("#' . $settings['container'] . '.jss-slider").height());
 				var half_height = jQuery("#' . $settings['container'] . '.jss-slider").height() / 2;
-				var title = jQuery("#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-title");
-				var description = jQuery("#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-description");
+				var title = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title");
+				var description = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description");
 
 				title.css("height" , half_height);
 				description.css("height" , half_height);
@@ -584,8 +582,8 @@ if ($settings['description_show'] || $settings['title_show'])
 	else
 	{
 		$doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-title,
-			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-title-description .jss-description {
+			#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title,
+			#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description {
 					-webkit-flex-grow: 1;
 					-moz-flex-grow: 1;
 					-ms-flex-grow: 1;
