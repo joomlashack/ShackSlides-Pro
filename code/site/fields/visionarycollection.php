@@ -17,24 +17,26 @@ class JFormFieldVisionaryCollection extends JFormFieldList
 {
 	public $type = 'VisionaryCollection';
 
-	protected function getInput() {
+	protected function getInput() 
+	{
 		$visionary_component_path = JPATH_SITE.'/administrator/components/com_jsvisionary/jsvisionary.php';
 
-		if (file_exists($visionary_component_path)) {
-
+		if (file_exists($visionary_component_path)) 
+		{
 			return parent::getInput();
-
 		}
 
-		else {
+		else 
+		{
 			$doc = JFactory::getDocument();
-			$doc->addStyleSheet(JURI::root() . 'modules/mod_jsshackslides/assets/admin.css');
+			$doc->addStyleSheet(JURI::root() . 'media/mod_jsshackslides/css/admin.css');
 			return '<div class="shackslides-not-installed">' . JText::_('VISIONARY_NOT_INSTALLED') . '</div>';
 		}
 
 	}
 
-	protected function getOptions() {
+	protected function getOptions() 
+	{
 
 		// Initialize variables
 		$options = array();
@@ -55,13 +57,17 @@ class JFormFieldVisionaryCollection extends JFormFieldList
 		}
 
 
-		if (!empty($items)) {
-
-			foreach($items as $item) {
-
+		if (!empty($items)) 
+		{
+			foreach($items as $item) 
+			{
 				$options []= JHtml::_('select.option', $item->id, $item->collection);
 			}
 
+		} 
+		else 
+		{
+			$options []= JHtml::_('select.option', "None" , JText::_('VISIONARY_NO_COLLECTIONS'));
 		}
 
 		return $options;

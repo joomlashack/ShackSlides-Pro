@@ -31,39 +31,37 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 		parent::__construct($params);
 
 		$this->collection = $params->get('visionary_collection', 0);
-		$this->ordering = $params->get('ordering', 'ordering');
-		if ($this->ordering == 'created') {
+		if($this->collection != 'None') 
+		{
+			$this->ordering = $params->get('ordering', 'ordering');
+			if($this->ordering == 'RAND()')
+			{
+				$this->ordering = $this->generateOrdering(1);
+			}
+			if ($this->ordering == 'created') {
 
-			//fix column name for Visionary
-			$this->ordering = 'created_on';
+				//fix column name for Visionary
+				$this->ordering = 'created_on';
 
+			}
+
+			$this->ordering_direction = $params->get('ordering_dir', 'ASC');
+			$this->limit = $params->get('limit', '5');
+			$this->featured = $params->get('featured', 'include');
+
+			$this->getContentFromDatabase();
+			$this->parseContentIntoProperties();
 		}
-
-		$this->ordering_direction = $params->get('ordering_direction', 'ASC');
-		$this->limit = $params->get('limit', '5');
-		$this->featured = $params->get('featured', 'include');
-
-		$this->getContentFromDatabase();
-		$this->parseContentIntoProperties();
 
 	}
 
 	private function getContentFromDatabase() {
 
-
 		$db = JFactory::getDbo();
 		$user = JFactory::getUser();
-
 		$query = 'SELECT * FROM `#__jsvisionary_slides` WHERE enabled = 1 AND collection_id =' . $this->collection;
-
-		if ($this->ordering != 'hits') { //ignoring hits, because Visionary does not measure hits
-
-			$query .= ' ORDER BY ' . $this->ordering . ' ' . $this->ordering_direction;
-
-		}
-
+		$query .= ' ORDER BY ' . $this->ordering . ' ' . $this->ordering_direction;
 		$query .= ' LIMIT ' . $this->limit;
-
 		$db->setQuery($query);
 		$this->content = $db->loadObjectList();
 
@@ -75,7 +73,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper {
 
 			$this->images []= $this->createImageUrl($item->image);
 			$this->titles []= $item->title;
-			$this->contents []= $item->content;
+			$this->contents []= $item->description;
 			$this->links []= $item->url;
 
 		}

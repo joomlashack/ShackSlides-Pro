@@ -18,53 +18,79 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 	private $limit;
 	private $xml = false;
 
-	public function  __construct($params) {
+	public function  __construct($params) 
+	{
         parent::__construct($params);
 		$this->folder = $params->get('folder_folder', 'modules'.'/'.'mod_jsshackslides'.'/'.'tmpl'.'/'.'demos');
 		$this->directory =  JPATH_ROOT.'/'.$this->folder;
 		$this->limit = $this->limit = $params->get('limit', '5');
+		$this->ordering = $params->get('ordering', 'ordering');
+		$this->ordering_direction = $params->get('ordering_dir', 'ASC');
 
-		if (is_file($this->directory.'/'.'images.xml')) $this->xml = simplexml_load_file($this->directory.'/'.'images.xml');
-
-		if ($this->xml)
-		{
-			$this->loadImagesFromXML();
-		}
-		else
-		{
-			$this->loadImagesFromDirectory();
-		}
+		$this->loadImagesFromDirectory();
 
 		$this->setBase(JURI::base().str_replace('\\', '/', $this->folder).'/');
-	}
-
-	private function loadImagesFromXML()
-	{
-		$i = 0;
-		foreach ($this->xml->xpath('//slide') as $slide)
-		{
-			if ($i < $this->limit) {
-				$this->images[] = $slide->image;
-				$this->links[] = (isset($slide->link)) ? $slide->link : false;
-				$this->titles[] = (isset($slide->title)) ? $slide->title : false;
-			}
-			$i++;
-		}
 	}
 
 	private function loadImagesFromDirectory()
 	{
 		jimport('joomla.filesystem.folder');
 
-		$images = JFolder::files($this->directory, '\.png$|\.gif$|\.jpg$|\.bmp$|\.jpeg$');
+		$images = JFolder::files($this->directory, '\.png$|\.gif$|\.jpg$|\.bmp$|\.jpeg$\.PNG$|\.GIF$|\.JPG$|\.BMP$|\.JPEG$');
 
-        sort($images);
+		$images = $this->orderFilesOrderingDirection($images);
 
-		while (count($images) > $this->limit)
+		$i = 0;
+		$images_temp = array();
+		while ($i < $this->limit)
 		{
-			array_pop($images);
+			$images_temp[] = array_shift($images);
+			$i += 1;
 		}
 
-		$this->images = $images;
+		$this->images = $images_temp;
 	}
+
+	private function orderFilesOrderingDirection($images)
+	{	
+		$images_temp = array();
+		foreach ($images as $key => $value) 
+		{
+			$images_temp[] = strtolower($value); 
+		}
+
+		if($this->ordering == 'RAND()')
+		{
+			$this->ordering = $this->generateOrdering(1);
+		}
+
+		switch ($this->ordering) 
+		{
+			case 'ordering':
+
+				if($this->ordering_direction == "ASC")
+				{
+					ksort($images_temp);
+				}
+				else
+				{
+					krsort($images_temp);
+				}
+				break;
+			case 'title':
+
+				if($this->ordering_direction == "ASC")
+				{
+					asort($images_temp);
+				}
+				else
+				{
+					arsort($images_temp);
+				}
+				break;
+		}
+
+		return $images_temp;
+	}
+
 }
