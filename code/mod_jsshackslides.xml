@@ -674,7 +674,7 @@
 					<field 
 							name="description_tag" 
 							type="list" 
-							default="p" 
+							default="div" 
 							label="TAG_FOR_DESCRIPTION" 
 							description="TAG_FOR_DESCRIPTION_DESC"
 					>

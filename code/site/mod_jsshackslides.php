@@ -110,7 +110,7 @@ $defaults = array(
 	// Description effect
 	'description_effect' => 'none',
 	// Description tag
-	'description_tag' => 'p',
+	'description_tag' => 'div',
 
 	// NAVIGATION OPTIONS
 	// Show the navigation always, never, on hover
@@ -304,7 +304,7 @@ if ($settings['description_show'])
 	if ($settings['description_color_flag'])
 	{
 		$doc->addStyleDeclaration(
-			'#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description > * {
+			'#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-description > * {
 				color: #' . $settings['description_color'] . ';
 			}'
 		);
@@ -316,7 +316,7 @@ if ($settings['description_show'])
 		$color_hex = $settings['description_bgcolor'];
 		$settings['description_bgcolor'] = implode(',', $helper->hexToRGB($settings['description_bgcolor']));
 		$doc->addStyleDeclaration(
-			'#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-description {
+			'#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-description {
 				background-color: #' . $color_hex . ';
 				background-color: rgba(' . $settings['description_bgcolor'] . ', ' . ($settings['description_bgcolor_opacity'] / 100) . ');
 			}'
@@ -458,12 +458,38 @@ $settings['animation_events'] = '';
 // Title and Description padding (shared setting)
 if ($settings['description_show'] || $settings['title_show'])
 {
+	$descriptionMargin = 'auto';
+
+	switch ($settings['title_description_position'])
+	{
+		case 'top':
+		case 'above_outside':
+			$descriptionMargin = '0 0 auto 0';
+			break;
+
+		case 'right':
+		case 'right_outside';
+			$descriptionMargin = '0 0 0 auto';
+			break;
+
+		case 'bottom':
+		case 'below_outside':
+			$descriptionMargin = 'auto 0 0 0';
+			break;
+
+		case 'left':
+		case 'left_outside';
+			$descriptionMargin = '0 auto 0 0';
+			break;
+	}
+
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title-description .jss-title,
 		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image .jss-title-description .jss-description,
 		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image-container .jss-title-description .jss-title,
 		#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image-container .jss-title-description .jss-description{
 			padding: ' . (int) $settings['title_description_padding_vertical'] . 'px ' . (int) $settings['title_description_padding_horizontal'] . 'px;
+			margin: ' . $descriptionMargin . ';
 		}'
 	);
 
