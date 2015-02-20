@@ -559,7 +559,6 @@ if ($settings['description_show'] || $settings['title_show'])
 	{
 		$settings['resize_events'] .= '
 			function ' . $settings['container'] . 'SetHeight(){
-				console.log(jQuery("#' . $settings['container'] . '.jss-slider").height());
 				var half_height = jQuery("#' . $settings['container'] . '.jss-slider").height() / 2;
 				var title = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title");
 				var description = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description");
@@ -567,17 +566,13 @@ if ($settings['description_show'] || $settings['title_show'])
 				title.css("height" , half_height);
 				description.css("height" , half_height);
 			}
-			jQuery(window).ready(function() {
 				' . $settings['container'] . 'SetHeight();
-			});
-			jQuery(window).load(function() {
-				' . $settings['container'] . 'SetHeight();
-			});
+
 			' . $settings['container'] . '.on("resized.owl.carousel", function(event) {
 				setTimeout(function () {
 					' . $settings['container'] . 'SetHeight();
 				}, 500);
-			})';
+			});';
 	}
 	else
 	{
