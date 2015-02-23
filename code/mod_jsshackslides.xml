@@ -969,7 +969,7 @@
 
 				    <field 
 				    		name="container" 
-				    		type="text" 
+				    		type="textfilter" 
 				    		default="" 
 				    		label="CONTAINER"
 				    		description="CONTAINER_DESC"

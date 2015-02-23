@@ -75,5 +75,4 @@ class JFormFieldVisionaryCollection extends JFormFieldList
 
 	}
 
-
 }
