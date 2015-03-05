@@ -559,12 +559,16 @@ if ($settings['description_show'] || $settings['title_show'])
 	{
 		$settings['resize_events'] .= '
 			function ' . $settings['container'] . 'SetHeight(){
-				var half_height = jQuery("#' . $settings['container'] . '.jss-slider").height() / 2;
+				var height = jQuery("#' . $settings['container'] . '.jss-slider").height();
 				var title = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title");
 				var description = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description");
+				
+				if(title.length && description.length) {
+					height = jQuery("#' . $settings['container'] . '.jss-slider").height() / 2;
+				}
 
-				title.css("height" , half_height);
-				description.css("height" , half_height);
+				title.css("height" , height);
+				description.css("height" , height);
 			}
 				' . $settings['container'] . 'SetHeight();
 

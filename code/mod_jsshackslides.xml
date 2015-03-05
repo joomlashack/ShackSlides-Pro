@@ -7,7 +7,7 @@
 	<authorUrl>https://www.joomlashack.com</authorUrl>
 	<copyright>Joomlashack</copyright>
 	<license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<description>
 		<![CDATA[<div style='text-align: left !important'><h3>Shackslides by Joomlashack</h3></div>
 		]]>
@@ -35,45 +35,45 @@
 	<config>
 		<fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
 
-			<fieldset 
+			<fieldset
 						name="basic"
 			>
 
-				<field 
-						type="shackslidesfields" 
+				<field
+						type="shackslidesfields"
 						name="shackslidesfields"
 				/>
-				<field 
-						type="spacer" 
-						name="basic_options_spacer" 
-						label="BASIC_OPTIONS_SPACER_LABEL" 
+				<field
+						type="spacer"
+						name="basic_options_spacer"
+						label="BASIC_OPTIONS_SPACER_LABEL"
 				/>
 
-				<field 
-						name="limit" 
-						type="text" 
-						default="5" 
-						label="LIMIT" 
-						description="LIMIT_DESC" 
+				<field
+						name="limit"
+						type="text"
+						default="5"
+						label="LIMIT"
+						description="LIMIT_DESC"
 				/>
 
-				<field 
-						name="slide_items" 
-						type="text" 
-						default="1" 
-						label="SLIDESPAGE" 
-						description="SLIDESPAGE_DESC" 
+				<field
+						name="slide_items"
+						type="text"
+						default="1"
+						label="SLIDESPAGE"
+						description="SLIDESPAGE_DESC"
 				/>
 
-				<field 
-						name="slide_margin" 
-						type="text" 
-						default="10" 
-						label="SLIDESMARGIN" 
-						description="SLIDESMARGIN_DESC" 
+				<field
+						name="slide_margin"
+						type="text"
+						default="10"
+						label="SLIDESMARGIN"
+						description="SLIDESMARGIN_DESC"
 				/>
 
-				<field 
+				<field
 						name="slide_effect"
 						type="groupedlist"
 						default="slide"
@@ -118,33 +118,33 @@
 					</group>
 				</field>
 
-				<field 
-						name="slide_autoplay" 
-						type="list" 
-						default="true" 
-						label="SHACKSLIDES_BASIC_AUTOPLAY" 
+				<field
+						name="slide_autoplay"
+						type="list"
+						default="true"
+						label="SHACKSLIDES_BASIC_AUTOPLAY"
 						description="SHACKSLIDES_BASIC_AUTOPLAY_DESC">
 					<option value="true">JYES</option>
 					<option value="false">JNO</option>
 				</field>
 
-				<field 
-						name="slide_delay" 
-						type="text" 
-						default="5000" 
-						label="SLIDE_DELAY" 
-						description="SLIDE_DELAY_DESC" 
+				<field
+						name="slide_delay"
+						type="text"
+						default="5000"
+						label="SLIDE_DELAY"
+						description="SLIDE_DELAY_DESC"
 				/>
 
-				<field 
-						name="slide_effect_masterspeed" 
-						type="text" 
-						default="300" 
-						label="EFFECT_MASTERSPEED" 
-						description="EFFECT_MASTERSPEED_DESC" 
+				<field
+						name="slide_effect_masterspeed"
+						type="text"
+						default="300"
+						label="EFFECT_MASTERSPEED"
+						description="EFFECT_MASTERSPEED_DESC"
 				/>
 
-				<field 
+				<field
 						name="slide_onhoverstop"
 						type="list"
 						default="1"
@@ -155,10 +155,10 @@
 					<option value="0">JNO</option>
 				</field>
 
-				<field 
-						type="spacer" 
-						name="basic_options_dimensions_spacer" 
-						label="SLIDER_OPTIONS_SPACER_LABEL" 
+				<field
+						type="spacer"
+						name="basic_options_dimensions_spacer"
+						label="SLIDER_OPTIONS_SPACER_LABEL"
 				/>
 
 				<field
@@ -176,7 +176,7 @@
 						description="CONTAINERHEIGHT_DESC"
 				/>
 
-				<field 
+				<field
 						name="height_adjustment"
 						type="list"
 						default="adjust"
@@ -187,85 +187,100 @@
 					<option value="crop">HEIGHTADJUSTMENT_CROP</option>
 				</field>
 
+				<!-- <field
+						type="spacer"
+						name="basic_options_templatedesign_spacer"
+						label="SLIDER_OPTIONS_TEMPLATEDESIGN_SPACER"
+				/>
+
+				<field
+						name="template_design"
+						type="checkbox"
+						label="TEMPLATEDESING"
+						description="TEMPLATEDESING_DESC"
+						value="1"
+						default="0"
+				/> -->
+
 			</fieldset>
 
 
-			<fieldset 
-						name="source" 
+			<fieldset
+						name="source"
 						label="IMAGES_SOURCE_OPTIONS_LABEL"
 			>
-					
-				<field 
-						name="source" 
-						type="imagesource" 
-						default="folder" 
-						label="SHACKSLIDE_SOURCE" 
+
+				<field
+						name="source"
+						type="imagesource"
+						default="folder"
+						label="SHACKSLIDE_SOURCE"
 						description="SHACKSLIDE_SOURCE_DESC"
 				/>
 
-				<field 
-						type="spacer" 
-						name="slidessources_sourceconfiguration_spacer" 
-						label="SLIDESSOURCES_SOURCESCONFIGURATION_LABEL" 
+				<field
+						type="spacer"
+						name="slidessources_sourceconfiguration_spacer"
+						label="SLIDESSOURCES_SOURCESCONFIGURATION_LABEL"
 				/>
 
-					<field 
-							name="folder_folder" 
-							type="directory" 
-							default="images" 
-							directory="images" 
-							label="FOLDER" 
-							description="FOLDER_DESC" 
+					<field
+							name="folder_folder"
+							type="directory"
+							default="images"
+							directory="images"
+							label="FOLDER"
+							description="FOLDER_DESC"
 					/>
 
-					<field 
-							name="joomla_category" 
-							type="category" 
-							extension="com_content" 
-							default="1" 
-							label="CATEGORY" 
-							description="CATEGORY_DESC" 
+					<field
+							name="joomla_category"
+							type="category"
+							extension="com_content"
+							default="1"
+							label="CATEGORY"
+							description="CATEGORY_DESC"
 					/>
 
-					<field 
-							name="k2_category" 
-							type="k2category" 
-							default="0" 
-							label="K2_CATEGORY" 
-							description="K2_CATEGORY_DESC" 
+					<field
+							name="k2_category"
+							type="k2category"
+							default="0"
+							label="K2_CATEGORY"
+							description="K2_CATEGORY_DESC"
 					/>
 
-					<field 
-							name="visionary_collection" 
-							type="visionarycollection" 
-							default="" 
-							label="VISIONARYCOLLECTION" 
-							description="VISIONARYCOLLECTION_DESC" 
+					<field
+							name="visionary_collection"
+							type="visionarycollection"
+							default=""
+							label="VISIONARYCOLLECTION"
+							description="VISIONARYCOLLECTION_DESC"
 					/>
 
-				<field 
-						type="spacer" 
-						name="slidessources_sourceoptions_spacer" 
-						label="SLIDESSOURCES_SOURCEOPTIONS_LABEL" 
+				<field
+						type="spacer"
+						name="slidessources_sourceoptions_spacer"
+						label="SLIDESSOURCES_SOURCEOPTIONS_LABEL"
 				/>
 
-					<field 
-							name="joomla_image_source_type" 
-							type="list" 
-							default="intro" 
-							label="JOOMLA_IMAGE_SOURCE_TYPE" 
-							description="JOOMLA_IMAGE_SOURCE_TYPE_DESC" 
+					<field
+							name="joomla_image_source_type"
+							type="list"
+							default="intro"
+							label="JOOMLA_IMAGE_SOURCE_TYPE"
+							description="JOOMLA_IMAGE_SOURCE_TYPE_DESC"
 					>
 						<option value="intro">JOOMLA_IMAGE_SOURCE_INTROIMG</option>
 						<option value="full">JOOMLA_IMAGE_SOURCE_FULLARTI</option>
 						<option value="firstimage">JOOMLA_IMAGE_SOURCE_FIRSTIMAGEARTICLE</option>
 					</field>
 
-					<field 
-							name="featured" 
-							type="list" 
-							default="exclude" 
-							label="FEATURED" 
+					<field
+							name="featured"
+							type="list"
+							default="exclude"
+							label="FEATURED"
 							description="FEATURED_DESC"
 					>
 						<option value="exclude">FEATURED_EXCLUDE</option>
@@ -273,22 +288,22 @@
 						<option value="only">FEATURED_ONLYFF</option>
 					</field>
 
-					<field 
-							name="anchor_target" 
-							type="list" 
-							default="self" 
-							label="ANCHOR_TARGET" 
+					<field
+							name="anchor_target"
+							type="list"
+							default="self"
+							label="ANCHOR_TARGET"
 							description="ANCHOR_TARGET_DESC"
 					>
 						<option value="self">SELF</option>
 						<option value="blank">BLANK</option>
 					</field>
 
-					<field 
-							name="ordering" 
-							type="list" 
-							default="ordering" 
-							label="ORDERING" 
+					<field
+							name="ordering"
+							type="list"
+							default="ordering"
+							label="ORDERING"
 							description="ORDERING_DESC"
 					>
 						<option value="ordering">ORDER</option>
@@ -298,11 +313,11 @@
 						<option value="RAND()">RANDOM</option>
 					</field>
 
-					<field 
-							name="ordering_dir" 
-							type="list" 
-							default="ASC" 
-							label="ORDERING_DIRECTION" 
+					<field
+							name="ordering_dir"
+							type="list"
+							default="ASC"
+							label="ORDERING_DIRECTION"
 							description="ORDERING_DIRECTION_DESC"
 					>
 						<option value="ASC">ASCENDING</option>
@@ -310,21 +325,21 @@
 					</field>
 			</fieldset>
 
-			<fieldset 
-						name="descriptions" 
+			<fieldset
+						name="descriptions"
 						label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL"
 			>
 
-				<field 
-						type="spacer" 
-						name="templatesin_options_spacer" 
-						label="TEMPLATESIN_OPTIONS_SPACER_LABEL" 
+				<field
+						type="spacer"
+						name="templatesin_options_spacer"
+						label="TEMPLATESIN_OPTIONS_SPACER_LABEL"
 				/>
 
-					<field 
-							name="title_description_position" 
-							type="list" 
-							default="bottom" 
+					<field
+							name="title_description_position"
+							type="list"
+							default="bottom"
 							label="SLIDEDESC_POSITION"
 							description="SLIDEDESC_POSITION_DESC"
 					>
@@ -338,10 +353,10 @@
 						<option value="left_outside">SLIDEDESC_POSITION_LEFTOUTSIDE</option>
 					</field>
 
-					<field 
-							name="title_description_alignment" 
-							type="list" 
-							default="left" 
+					<field
+							name="title_description_alignment"
+							type="list"
+							default="left"
 							label="SLIDEDESC_ALIGNMENT"
 							description="SLIDEDESC_ALIGNMENT_DESC"
 					>
@@ -350,99 +365,99 @@
 						<option value="center">SLIDEDESC_ALIGNMENT_CENTER</option>
 					</field>
 
-					<field 
-							name="title_description_padding_vertical" 
-							type="text" 
-							default="10" 
-							label="SLIDEDESC_VERTICALPAD" 
-							description="SLIDEDESC_VERTICALPAD_DESC" 
+					<field
+							name="title_description_padding_vertical"
+							type="text"
+							default="10"
+							label="SLIDEDESC_VERTICALPAD"
+							description="SLIDEDESC_VERTICALPAD_DESC"
 					/>
 
-					<field 
-							name="title_description_padding_horizontal" 
-							type="text" 
-							default="10" 
-							label="SLIDEDESC_HORIZONTALPAD" 
-							description="SLIDEDESC_HORIZONTALPAD_DESC" 
+					<field
+							name="title_description_padding_horizontal"
+							type="text"
+							default="10"
+							label="SLIDEDESC_HORIZONTALPAD"
+							description="SLIDEDESC_HORIZONTALPAD_DESC"
 					/>
-					
-				<field 
-						type="spacer" 
-						name="slidesdescription_titleoptions_spacer" 
-						label="SLIDESDESCRIPTION_TITLEOPTIONS_LABEL" 
+
+				<field
+						type="spacer"
+						name="slidesdescription_titleoptions_spacer"
+						label="SLIDESDESCRIPTION_TITLEOPTIONS_LABEL"
 				/>
 
-					<field 
-							name="title_show" 
-							type="list" 
-							label="SHOW_TITLE" 
-							description="SHOW_TITLE_DESC" 
+					<field
+							name="title_show"
+							type="list"
+							label="SHOW_TITLE"
+							description="SHOW_TITLE_DESC"
 							default="1">
 						<option value="1">JYES</option>
 						<option value="0">JNO</option>
 					</field>
 
-					<field 
-							name="title_width" 
-							type="text" 
-							default="300" 
-							label="SLIDETITLE_WIDTH" 
-							description="SLIDETITLE_WIDTH_DESC" 
+					<field
+							name="title_width"
+							type="text"
+							default="300"
+							label="SLIDETITLE_WIDTH"
+							description="SLIDETITLE_WIDTH_DESC"
 					/>
 
-					<field 
-							name="title_height" 
-							type="text" 
-							default="50" 
-							label="SLIDETITLE_HEIGHT" 
-							description="SLIDETITLE_HEIGHT_DESC" 
+					<field
+							name="title_height"
+							type="text"
+							default="50"
+							label="SLIDETITLE_HEIGHT"
+							description="SLIDETITLE_HEIGHT_DESC"
 					/>
 
-					<field 
-							name="title_color_flag" 
-							type="list" 
-							label="TITLE_COLOR_LABEL" 
+					<field
+							name="title_color_flag"
+							type="list"
+							label="TITLE_COLOR_LABEL"
 							description="TITLE_COLOR_LABEL_DESC"
 							default="1">
 						<option value="1">JYES</option>
 						<option value="0">JNO</option>
 					</field>
 
-					<field  
-							name="title_color" 
+					<field
+							name="title_color"
 							type="colorpicker"
-							label="TITLE_PICKER_COLOR_LABEL" 
-							description="TITLE_PICKER_COLOR_LABEL_DESC" 
-							default="FFFFFF" 
+							label="TITLE_PICKER_COLOR_LABEL"
+							description="TITLE_PICKER_COLOR_LABEL_DESC"
+							default="FFFFFF"
 					/>
 
-					<field 
-							name="title_bgcolor_flag" 
-							type="list" 
-							label="TITLE_BG_COLOR_LABEL" 
+					<field
+							name="title_bgcolor_flag"
+							type="list"
+							label="TITLE_BG_COLOR_LABEL"
 							description="TITLE_BG_COLOR_LABEL_DESC"
 							default="1">
 						<option value="1">JYES</option>
 						<option value="0">JNO</option>
 					</field>
 
-					<field  
-							name="title_bgcolor" 
+					<field
+							name="title_bgcolor"
 							type="colorpicker"
-							label="TITLE_BGPICKER_COLOR_LABEL" 
-							description="TITLE_BGPICKER_COLOR_LABEL_DESC" 
-							default="#000000" 
+							label="TITLE_BGPICKER_COLOR_LABEL"
+							description="TITLE_BGPICKER_COLOR_LABEL_DESC"
+							default="#000000"
 					/>
 
-					<field  
-							name="title_bgcolor_opacity" 
+					<field
+							name="title_bgcolor_opacity"
 							type="slider"
-							label="RANGESLIDER_TITLE" 
-							description="RANGESLIDER_TITLE_DESC" 
-							default="70" 
+							label="RANGESLIDER_TITLE"
+							description="RANGESLIDER_TITLE_DESC"
+							default="70"
 					/>
 
-					<field 
+					<field
 							name="title_effect"
 							type="groupedlist"
 							default="none"
@@ -510,11 +525,11 @@
 						</group>
 					</field>
 
-					<field 
-							name="title_tag" 
-							type="list" 
-							default="h4" 
-							label="TAG_FOR_TITLE" 
+					<field
+							name="title_tag"
+							type="list"
+							default="h4"
+							label="TAG_FOR_TITLE"
 							description="TAG_FOR_TITLE_DESC"
 					>
 						<option value="p">p</option>
@@ -527,83 +542,83 @@
 						<option value="div">div</option>
 					</field>
 
-				<field 
-						type="spacer" 
-						name="text_animation_options_spacer" 
-						label="SLIDESDESCRIPTION_DESCRIPTIONOPTIONS_LABEL" 
+				<field
+						type="spacer"
+						name="text_animation_options_spacer"
+						label="SLIDESDESCRIPTION_DESCRIPTIONOPTIONS_LABEL"
 				/>
 
-					<field 
-							name="description_show" 
-							type="list" 
-							label="SHOW_DESCRIPTION" 
-							description="SHOW_DESCRIPTION_DESC" 
+					<field
+							name="description_show"
+							type="list"
+							label="SHOW_DESCRIPTION"
+							description="SHOW_DESCRIPTION_DESC"
 							default="1">
 						<option value="1">JYES</option>
 						<option value="0">JNO</option>
 					</field>
 
-					<field 
-							name="description_width" 
-							type="text" 
-							default="300" 
-							label="SLIDEDESCRIPTION_WIDTH" 
-							description="SLIDEDESCRIPTION_WIDTH_DESC" 
+					<field
+							name="description_width"
+							type="text"
+							default="300"
+							label="SLIDEDESCRIPTION_WIDTH"
+							description="SLIDEDESCRIPTION_WIDTH_DESC"
 					/>
 
-					<field 
-							name="description_height" 
-							type="text" 
-							default="100" 
-							label="SLIDEDESCRIPTION_HEIGHT" 
-							description="SLIDEDESCRIPTION_HEIGHT_DESC" 
+					<field
+							name="description_height"
+							type="text"
+							default="100"
+							label="SLIDEDESCRIPTION_HEIGHT"
+							description="SLIDEDESCRIPTION_HEIGHT_DESC"
 					/>
 
-					<field 
-							name="description_color_flag" 
-							type="list" 
-							label="DESCRIPTION_COLOR_LABEL" 
+					<field
+							name="description_color_flag"
+							type="list"
+							label="DESCRIPTION_COLOR_LABEL"
 							description="DESCRIPTION_COLOR_LABEL_DESC"
 							default="1">
 						<option value="1">JYES</option>
 						<option value="0">JNO</option>
 					</field>
 
-					<field  
-							name="description_color" 
+					<field
+							name="description_color"
 							type="colorpicker"
-							label="DESCRIPTION_PICKER_COLOR_LABEL" 
-							description="DESCRIPTION_PICKER_COLOR_LABEL_DESC" 
-							default="#FFFFFF" 
+							label="DESCRIPTION_PICKER_COLOR_LABEL"
+							description="DESCRIPTION_PICKER_COLOR_LABEL_DESC"
+							default="#FFFFFF"
 					/>
 
-					<field 
-							name="description_bgcolor_flag" 
-							type="list" 
-							label="DESCRIPTION_BG_COLOR_LABEL" 
+					<field
+							name="description_bgcolor_flag"
+							type="list"
+							label="DESCRIPTION_BG_COLOR_LABEL"
 							description="DESCRIPTION_BG_COLOR_LABEL_DESC"
 							default="1">
 						<option value="1">JYES</option>
 						<option value="0">JNO</option>
 					</field>
 
-					<field  
-							name="description_bgcolor" 
+					<field
+							name="description_bgcolor"
 							type="colorpicker"
-							label="DESCRIPTION_BGPICKER_COLOR_LABEL" 
-							description="DESCRIPTION_BGPICKER_COLOR_LABEL_DESC" 
-							default="#000000" 
+							label="DESCRIPTION_BGPICKER_COLOR_LABEL"
+							description="DESCRIPTION_BGPICKER_COLOR_LABEL_DESC"
+							default="#000000"
 					/>
 
-					<field  
-							name="description_bgcolor_opacity" 
+					<field
+							name="description_bgcolor_opacity"
 							type="slider"
-							label="RANGESLIDER_DESCRIPTION" 
-							description="RANGESLIDER_DESCRIPTION_DESC" 
-							default="70" 
+							label="RANGESLIDER_DESCRIPTION"
+							description="RANGESLIDER_DESCRIPTION_DESC"
+							default="70"
 					/>
 
-					<field 
+					<field
 							name="description_effect"
 							type="groupedlist"
 							default="none"
@@ -671,11 +686,11 @@
 						</group>
 					</field>
 
-					<field 
-							name="description_tag" 
-							type="list" 
-							default="div" 
-							label="TAG_FOR_DESCRIPTION" 
+					<field
+							name="description_tag"
+							type="list"
+							default="div"
+							label="TAG_FOR_DESCRIPTION"
 							description="TAG_FOR_DESCRIPTION_DESC"
 					>
 						<option value="h1">h1</option>
@@ -689,18 +704,18 @@
 					</field>
 			</fieldset>
 
-			<fieldset 
-						name="navigationoptions" 
+			<fieldset
+						name="navigationoptions"
 						label="NAVIGATION_OPTIONS_LABEL"
 			>
 
-				<field 
-						type="spacer" 
-						name="navigation_bar_spacer" 
-						label="NAVIGATIONBAR_SPACER_LABEL" 
+				<field
+						type="spacer"
+						name="navigation_bar_spacer"
+						label="NAVIGATIONBAR_SPACER_LABEL"
 				/>
 
-					<field 
+					<field
 							name="navigation_show"
 							type="list"
 							default="2"
@@ -711,33 +726,33 @@
 						<option value="1">ONHOVER_DOTS</option>
 					</field>
 
-					<field 
-							name="navigation_shownumbers" 
-							type="list" 
-							label="NAVIGATIONNUMBERS" 
-							description="NAVIGATIONNUMBERS_DESC" 
-							default="0" 
+					<field
+							name="navigation_shownumbers"
+							type="list"
+							label="NAVIGATIONNUMBERS"
+							description="NAVIGATIONNUMBERS_DESC"
+							default="0"
 					>
 						<option value="1">JYES</option>
 						<option value="0">JNO</option>
 					</field>
 
-					<field 
-							name="navigation_orientation" 
-							type="list" 
-							default="horizontal" 
-							label="ORIENTATIONDOTS" 
+					<field
+							name="navigation_orientation"
+							type="list"
+							default="horizontal"
+							label="ORIENTATIONDOTS"
 							description="ORIENTATIONDOTS_DESC"
 					>
 						<option value="horizontal">HORIZONTAL_DOTS</option>
 						<option value="vertical">VERTICAL_DOTS</option>
 					</field>
 
-					<field 
-							name="navigation_align_horizontal" 
-							type="list" 
-							default="center" 
-							label="HORIZONTALALIGNDOTS" 
+					<field
+							name="navigation_align_horizontal"
+							type="list"
+							default="center"
+							label="HORIZONTALALIGNDOTS"
 							description="HORIZONTALALIGNDOTS_DESC"
 					>
 						<option value="center">HORIZONTALALIGNDOTS_CENTER</option>
@@ -745,11 +760,11 @@
 						<option value="right">HORIZONTALALIGNDOTS_RIGHT</option>
 					</field>
 
-					<field 
-							name="navigation_align_vertical" 
-							type="list" 
-							default="bottom" 
-							label="VERTICALALIGNDOTS" 
+					<field
+							name="navigation_align_vertical"
+							type="list"
+							default="bottom"
+							label="VERTICALALIGNDOTS"
 							description="VERTICALALIGNDOTS_DESC"
 					>
 						<option value="top">VERTICALALIGNDOTS_TOP</option>
@@ -757,23 +772,23 @@
 						<option value="center">VERTICALALIGNDOTS_CENTER</option>
 					</field>
 
-					<field 
-							name="navigation_padding_horizontal" 
-							type="text" 
-							default="10" 
-							label="HORIZONTALPADDING_DOTS" 
-							description="HORIZONTALPADDING_DOTS_DESC" 
+					<field
+							name="navigation_padding_horizontal"
+							type="text"
+							default="10"
+							label="HORIZONTALPADDING_DOTS"
+							description="HORIZONTALPADDING_DOTS_DESC"
 					/>
 
-					<field 
-							name="navigation_padding_vertical" 
-							type="text" 
-							default="10" 
-							label="VERTICALPADDING_DOTS" 
-							description="VERTICALPADDING_DOTS_DESC" 
+					<field
+							name="navigation_padding_vertical"
+							type="text"
+							default="10"
+							label="VERTICALPADDING_DOTS"
+							description="VERTICALPADDING_DOTS_DESC"
 					/>
 
-					<field 
+					<field
 							name="navigation_effect_theme"
 							type="list"
 							default="theme0"
@@ -789,7 +804,7 @@
 						<option value="theme5">NAVIGATION_EFFECT_THEME_5</option>
 					</field>
 
-					<field 
+					<field
 							name="navigation_theme_shape"
 							type="list"
 							default="round"
@@ -800,76 +815,76 @@
 						<option value="square">NAVIGATIONTHEME_SHAPE_SQUARE</option>
 					</field>
 
-					<field  
-							name="navigation_dots_color" 
+					<field
+							name="navigation_dots_color"
 							type="colorpicker"
-							label="NAVIGATION_PICKER_DOTS_COLOR_LABEL" 
-							description="NAVIGATION_PICKER_DOTS_COLOR_LABEL_DESC" 
-							default="FFFFFF" 
+							label="NAVIGATION_PICKER_DOTS_COLOR_LABEL"
+							description="NAVIGATION_PICKER_DOTS_COLOR_LABEL_DESC"
+							default="FFFFFF"
 					/>
 
-					<field  
-							name="navigation_dots_numbers_color" 
+					<field
+							name="navigation_dots_numbers_color"
 							type="colorpicker"
-							label="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL" 
-							description="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL_DESC" 
-							default="777" 
+							label="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL"
+							description="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL_DESC"
+							default="777"
 					/>
 
-					<field  
-							name="navigation_activedots_color" 
+					<field
+							name="navigation_activedots_color"
 							type="colorpicker"
-							label="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL" 
-							description="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL_DESC" 
-							default="000000" 
+							label="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL"
+							description="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL_DESC"
+							default="000000"
 					/>
 
-					<field 
-							name="navigation_opacity" 
-							type="slider" 
-							default="50" 
-							label="NAVIGATION_OPACITY" 
-							description="NAVIGATION_OPACITY_DESC" 
+					<field
+							name="navigation_opacity"
+							type="slider"
+							default="50"
+							label="NAVIGATION_OPACITY"
+							description="NAVIGATION_OPACITY_DESC"
 					/>
 
-					<field 
-							name="navigation_custom_dot" 
-							type="media" 
+					<field
+							name="navigation_custom_dot"
+							type="media"
 							directory=""
-							preview="true" 
-							label="NAVIGATION_CUSTOMDOT" 
+							preview="true"
+							label="NAVIGATION_CUSTOMDOT"
 							description="NAVIGATION_CUSTOMDOT_DESC"
 					/>
 
-					<field 
-							name="navigation_custom_dothover" 
-							type="media" 
+					<field
+							name="navigation_custom_dothover"
+							type="media"
 							directory=""
-							preview="true" 
-							label="NAVIGATION_CUSTOMDOTHOVER" 
+							preview="true"
+							label="NAVIGATION_CUSTOMDOTHOVER"
 							description="NAVIGATION_CUSTOMDOTHOVER_DESC"
 					/>
-					
-					<field 
-							name="navigation_custom_dotactive" 
-							type="media" 
+
+					<field
+							name="navigation_custom_dotactive"
+							type="media"
 							directory=""
-							preview="true" 
-							label="NAVIGATION_CUSTOMDOTACTIVE" 
+							preview="true"
+							label="NAVIGATION_CUSTOMDOTACTIVE"
 							description="NAVIGATION_CUSTOMDOTACTIVE_DESC"
 					/>
-					
-					<field 
-							type="spacer" 
-							name="prenextbutton_bar_spacer" 
-							label="PRENEXTBUTTON_SPACER_LABEL" 
+
+					<field
+							type="spacer"
+							name="prenextbutton_bar_spacer"
+							label="PRENEXTBUTTON_SPACER_LABEL"
 					/>
 
-					<field 
-							name="navigation_buttons_show" 
-							type="list" 
-							default="2" 
-							label="NAVIGATIONARROWS" 
+					<field
+							name="navigation_buttons_show"
+							type="list"
+							default="2"
+							label="NAVIGATIONARROWS"
 							description="NAVIGATIONARROWS_DESC"
 					>
 						<option value="2">ALWAYS_ARROWS</option>
@@ -877,7 +892,7 @@
 						<option value="1">ONHOVER_ARROWS</option>
 					</field>
 
-					<field 
+					<field
 							name="buttons_theme"
 							type="list"
 							default="theme2"
@@ -889,109 +904,109 @@
 						<option value="theme3">NAVIGATION_BUTTONS_THEME_3</option>
 					</field>
 
-					<field  
-							name="navigation_buttons_color" 
+					<field
+							name="navigation_buttons_color"
 							type="colorpicker"
-							label="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL" 
-							description="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL_DESC" 
-							default="666" 
+							label="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL"
+							description="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL_DESC"
+							default="666"
 					/>
 
-					<field  
-							name="navigation_buttonshover_color" 
+					<field
+							name="navigation_buttonshover_color"
 							type="colorpicker"
-							label="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL" 
-							description="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL_DESC" 
-							default="FFF" 
+							label="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL"
+							description="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL_DESC"
+							default="FFF"
 					/>
 
-					<field 
-							name="navigation_buttons_opacity" 
-							type="slider" 
-							default="80" 
-							label="NAVIGATION_OPACITY" 
-							description="NAVIGATION_OPACITY_DESC" 
+					<field
+							name="navigation_buttons_opacity"
+							type="slider"
+							default="80"
+							label="NAVIGATION_OPACITY"
+							description="NAVIGATION_OPACITY_DESC"
 					/>
 
-					<field 
-							name="navigation_buttons_custom_previous" 
-							type="media" 
+					<field
+							name="navigation_buttons_custom_previous"
+							type="media"
 							directory=""
-							preview="true" 
-							label="NAVIGATIONBUTTONS_CUSTOMPREVIOUS" 
+							preview="true"
+							label="NAVIGATIONBUTTONS_CUSTOMPREVIOUS"
 							description="NAVIGATIONBUTTONS_CUSTOMPREVIOUS_DESC"
 					/>
 
-					<field 
-							name="navigation_buttons_custom_previoushover" 
-							type="media" 
+					<field
+							name="navigation_buttons_custom_previoushover"
+							type="media"
 							directory=""
-							preview="true" 
-							label="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER" 
+							preview="true"
+							label="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER"
 							description="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER_DESC"
 					/>
 
-					<field 
-							name="navigation_buttons_custom_next" 
-							type="media" 
+					<field
+							name="navigation_buttons_custom_next"
+							type="media"
 							directory=""
-							preview="true" 
-							label="NAVIGATIONBUTTONS_CUSTOMNEXT" 
+							preview="true"
+							label="NAVIGATIONBUTTONS_CUSTOMNEXT"
 							description="NAVIGATIONBUTTONS_CUSTOMNEXT_DESC"
 					/>
 
-					<field 
-							name="navigation_buttons_custom_nexthover" 
-							type="media" 
+					<field
+							name="navigation_buttons_custom_nexthover"
+							type="media"
 							directory=""
-							preview="true" 
-							label="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER" 
+							preview="true"
+							label="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER"
 							description="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER_DESC"
 					/>
 			</fieldset>
 
-			<fieldset 
-						name="advanced" 
+			<fieldset
+						name="advanced"
 						label="ADVANCED_BOTH"
 			>
-				<field 
-						type="spacer" 
-						name="module_advanced_spacer" 
-						label="MODULEADVANCED_SPACER_LABEL" 
+				<field
+						type="spacer"
+						name="module_advanced_spacer"
+						label="MODULEADVANCED_SPACER_LABEL"
 				/>
 
-				    <field 
-				    		name="moduleclass_sfx" 
-				    		type="text" 
-				    		label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" 
-				    		description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" 
+				    <field
+				    		name="moduleclass_sfx"
+				    		type="text"
+				    		label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+				    		description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
 				    />
 
-				    <field 
-				    		name="container" 
-				    		type="textfilter" 
-				    		default="" 
+				    <field
+				    		name="container"
+				    		type="textfilter"
+				    		default=""
 				    		label="CONTAINER"
 				    		description="CONTAINER_DESC"
 				    />
 
-			    <field 
-					type="spacer" 
-					name="javascript_advanced_spacer" 
-					label="JAVASCRIPTADVANCED_SPACER_LABEL" 
+			    <field
+					type="spacer"
+					name="javascript_advanced_spacer"
+					label="JAVASCRIPTADVANCED_SPACER_LABEL"
 				/>
 
-					<field 
-							name="includejquery" 
-							type="radio" 
-							default="off" 
-							label="INCLUDE_JQUERY" 
-							description="INCLUDE_JQUERY_DESC" 
+					<field
+							name="includejquery"
+							type="radio"
+							default="off"
+							label="INCLUDE_JQUERY"
+							description="INCLUDE_JQUERY_DESC"
 					>
 						<option value="on">JQUERYON</option>
 						<option value="off">JQUERYOFF</option>
 					</field>
-					
+
 			</fieldset>
 
 		</fields>
