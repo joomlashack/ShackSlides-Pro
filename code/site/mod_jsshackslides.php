@@ -57,6 +57,8 @@ $defaults = array(
 	'slide_margin' => '10',
 	// Autoplay on or off
 	'slide_autoplay' => '1',
+	// Template design on or off
+	'template_design' => '0',
 
 	// SLIDE SOURCES
 	// Where the link target will point at
@@ -168,7 +170,12 @@ $defaults = array(
 	// id for the slider container
 	'container' => '',
 	// Include JQuery
-	'includejquery' => 'off'
+	'includejquery' => 'off',
+
+	// TEMPLATE CUSTOM OPTIONS
+	'buttons_left_right_position' => '',
+	'navigation_buttons_custom_width' => '',
+	'navigation_buttons_custom_height' => ''
 );
 
 $settings = Array();
@@ -207,6 +214,25 @@ JHtml::stylesheet('mod_jsshackslides/owl.carousel.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/animate.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/jsshackslides.css', array(), true);
 JHtml::script('mod_jsshackslides/owl.carousel.min.js', false, true);
+
+$json = false;
+if ($settings['template_design'])
+{
+    $db = JFactory::getDBO();
+    $sql = " SELECT ts.template " .
+    " FROM #__menu as m " .
+    " INNER JOIN #__template_styles as ts" .
+    " ON ts.id = m.template_style_id " .
+    " WHERE m.home = 1" .
+    " AND m.published = 1";
+    $db->setQuery($sql);
+    $tplName = $db->loadResult();
+    if (file_exists(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json'))
+    {
+        $str = file_get_contents(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json');
+        $json = json_decode($str, true);
+    }
+}
 
 // Setting container ID
 if ($settings['container'] == '')
@@ -270,6 +296,14 @@ elseif ($settings['height_adjustment'] == 'crop')
 			height: ' . $settings['height'] . 'px;
 		}'
 	);
+}
+
+if(is_array($json))
+{
+	foreach ($json as $key=>$value)
+	{
+		$settings[$key] = $json[$key];
+	}
 }
 
 // Description styles
@@ -562,7 +596,7 @@ if ($settings['description_show'] || $settings['title_show'])
 				var height = jQuery("#' . $settings['container'] . '.jss-slider").height();
 				var title = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title");
 				var description = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description");
-				
+
 				if(title.length && description.length) {
 					height = jQuery("#' . $settings['container'] . '.jss-slider").height() / 2;
 				}
@@ -757,6 +791,7 @@ else
 // Navigation
 if ($settings['navigation_buttons_show'] != '0')
 {
+
 	$buttonsPrevHeight = 40;
 	$buttonsPrevWidth = 40;
 	$buttonsNextHeight = 40;
@@ -769,6 +804,11 @@ if ($settings['navigation_buttons_show'] != '0')
 			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev',
 			$doc
 		);
+		if($settings['navigation_buttons_custom_width'] != '' && $settings['navigation_buttons_custom_height'] != '')
+		{
+			$buttonsPrevHeight = $settings['navigation_buttons_custom_height'];
+			$buttonsPrevWidth = $settings['navigation_buttons_custom_width'];
+		}
 	}
 	else
 	{
@@ -796,6 +836,11 @@ if ($settings['navigation_buttons_show'] != '0')
 			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next',
 			$doc
 		);
+		if($settings['navigation_buttons_custom_width'] != '' && $settings['navigation_buttons_custom_height'] != '')
+		{
+			$buttonsNextHeight = $settings['navigation_buttons_custom_height'];
+			$buttonsNextWidth = $settings['navigation_buttons_custom_width'];
+		}
 	}
 	else
 	{
@@ -822,6 +867,18 @@ if ($settings['navigation_buttons_show'] != '0')
 			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
 				opacity: 0;
 				visibility: hidden;
+			}'
+		);
+	}
+
+	if ($settings['buttons_left_right_position'] != '')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
+				left: ' . $settings['buttons_left_right_position'] . '%;
+			}
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
+				right: ' . $settings['buttons_left_right_position'] . '%;
 			}'
 		);
 	}
