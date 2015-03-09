@@ -1,4 +1,5 @@
 var $$container = null;
+
 jQuery(document).ready(function(){
 	var options = {
 		items: $$slide_items,
@@ -27,4 +28,7 @@ jQuery(document).ready(function(){
 
 jQuery(window).load(function() {
 	$$container.data('owl.carousel').refresh();
+	 setTimeout(function () {
+        $$resize_events
+    }, 1000);
 });

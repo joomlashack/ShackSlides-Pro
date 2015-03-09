@@ -132,18 +132,25 @@ function autoplayDisable(){
 	};
 }
 
-function addLoadEvent(func) { 
-	  var oldonload = window.onload; 
-	  if (typeof window.onload != 'function') { 
-	    window.onload = func; 
-	  } else { 
-	    window.onload = function() { 
-	      if (oldonload) { 
-	        oldonload(); 
-	      } 
-	      func(); 
-	    } 
-	  } 
-} 
+function filterText(value,id){
+	var regex = /^[a-zA-Z0-9_]*$/;
+	if (!regex.test(value)) {
+        document.getElementById(id).value = document.getElementById(id).value.substring(0, document.getElementById(id).value.length - 1);
+    }
+}
 
-addLoadEvent(autoplayDisable); 
+function addLoadEvent(func) {
+	  var oldonload = window.onload;
+	  if (typeof window.onload != 'function') {
+	    window.onload = func;
+	  } else {
+	    window.onload = function() {
+	      if (oldonload) {
+	        oldonload();
+	      }
+	      func();
+	    }
+	  }
+}
+
+addLoadEvent(autoplayDisable);
