@@ -171,7 +171,8 @@ $defaults = array(
 	'container' => '',
 	// Include JQuery
 	'includejquery' => 'off',
-
+	// RTL SUPPORT
+	'language_rtl_enable' => 'false',
 	// TEMPLATE CUSTOM OPTIONS
 	'buttons_left_right_position' => '',
 	'navigation_buttons_custom_width' => '',
@@ -979,6 +980,18 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 	}
 
 	$doc->addStyleDeclaration($themeCss);
+}
+
+$lang = JFactory::getLanguage();
+$rtl_ltr = $lang->get('rtl');
+
+if ($rtl_ltr == 0)
+{
+    $settings['language_rtl_enable'] = 'false';
+}
+else
+{
+    $settings['language_rtl_enable'] = 'true';
 }
 
 // Loads slider Javascript
