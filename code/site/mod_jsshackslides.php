@@ -232,6 +232,10 @@ if ($settings['template_design'])
     {
         $str = file_get_contents(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json');
         $json = json_decode($str, true);
+		foreach ($json as $key=>$value)
+		{
+			$settings[$key] = $json[$key];
+		}
     }
 }
 
@@ -297,14 +301,6 @@ elseif ($settings['height_adjustment'] == 'crop')
 			height: ' . $settings['height'] . 'px;
 		}'
 	);
-}
-
-if(is_array($json))
-{
-	foreach ($json as $key=>$value)
-	{
-		$settings[$key] = $json[$key];
-	}
 }
 
 // Description styles
