@@ -18,7 +18,7 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 	private $limit;
 	private $xml = false;
 
-	public function  __construct($params) 
+	public function  __construct($params)
 	{
         parent::__construct($params);
 		$this->folder = $params->get('folder_folder', 'modules'.'/'.'mod_jsshackslides'.'/'.'tmpl'.'/'.'demos');
@@ -52,11 +52,11 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 	}
 
 	private function orderFilesOrderingDirection($images)
-	{	
+	{
 		$images_temp = array();
-		foreach ($images as $key => $value) 
+		foreach ($images as $key => $value)
 		{
-			$images_temp[] = strtolower($value); 
+			$images_temp[] = $value;
 		}
 
 		if($this->ordering == 'RAND()')
@@ -64,7 +64,7 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 			$this->ordering = $this->generateOrdering(1);
 		}
 
-		switch ($this->ordering) 
+		switch ($this->ordering)
 		{
 			case 'ordering':
 

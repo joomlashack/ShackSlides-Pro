@@ -176,7 +176,11 @@ $defaults = array(
 	// TEMPLATE CUSTOM OPTIONS
 	'buttons_left_right_position' => '',
 	'navigation_buttons_custom_width' => '',
-	'navigation_buttons_custom_height' => ''
+	'navigation_buttons_custom_height' => '',
+	'navigation_padding_dots' => '',
+	'navigation_custom_align' => false,
+	'navigation_dots_width' => '',
+	'navigation_dots_height' => ''
 );
 
 $settings = Array();
@@ -648,8 +652,8 @@ if ($settings['navigation_show'] != '0')
 		}'
 	);
 
-	$dotsWidth = 30;
-	$dotsHeight = 30;
+	$dotsWidth = ($settings['navigation_dots_width'] != '')?$settings['navigation_dots_width']:30;
+	$dotsHeight = ($settings['navigation_dots_height'] != '')?$settings['navigation_dots_height']:30;
 
 	if ($settings['navigation_custom_dot'] != '')
 	{
@@ -698,7 +702,7 @@ if ($settings['navigation_show'] != '0')
 	$settings['navigation_show'] = 'true';
 	$verticalPosition = '';
 	$horizontalPosition = '';
-	$dotsPadding = 5;
+	$dotsPadding = ($settings['navigation_padding_dots']!='')?$settings['navigation_padding_dots']:5;
 
 	switch ($settings['navigation_align_vertical'])
 	{
@@ -726,12 +730,13 @@ if ($settings['navigation_show'] != '0')
 			break;
 	}
 
+	$navigationAlignment = ($settings['navigation_custom_align'] == false)?$verticalPosition . ';' . $horizontalPosition . ';' : '';
+
 	// Navigation settings
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
 			padding: ' . (int) $settings['navigation_padding_vertical'] . 'px ' . (int) $settings['navigation_padding_horizontal'] . 'px;
-			' . $verticalPosition . ';
-			' . $horizontalPosition . ';
+			' . $navigationAlignment . '
 		}
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
 			display: inline-block;
