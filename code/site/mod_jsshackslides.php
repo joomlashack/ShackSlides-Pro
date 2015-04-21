@@ -10,6 +10,8 @@
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
 
+jimport('joomla.environment.browser');
+
 require_once dirname(__FILE__) . '/helpers/' . $params->get('source', 'folder') . '.php';
 
 $doc = JFactory::getDocument();
@@ -221,26 +223,29 @@ JHtml::stylesheet('mod_jsshackslides/jsshackslides.css', array(), true);
 JHtml::script('mod_jsshackslides/owl.carousel.min.js', false, true);
 
 $json = false;
+
 if ($settings['template_design'])
 {
-    $db = JFactory::getDBO();
-    $sql = " SELECT ts.template " .
-    " FROM #__menu as m " .
-    " INNER JOIN #__template_styles as ts" .
-    " ON ts.id = m.template_style_id " .
-    " WHERE m.home = 1" .
-    " AND m.published = 1";
-    $db->setQuery($sql);
-    $tplName = $db->loadResult();
-    if (file_exists(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json'))
-    {
-        $str = file_get_contents(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json');
-        $json = json_decode($str, true);
-		foreach ($json as $key=>$value)
+	$db = JFactory::getDBO();
+	$sql = " SELECT ts.template " .
+	" FROM #__menu as m " .
+	" INNER JOIN #__template_styles as ts" .
+	" ON ts.id = m.template_style_id " .
+	" WHERE m.home = 1" .
+	" AND m.published = 1";
+	$db->setQuery($sql);
+	$tplName = $db->loadResult();
+
+	if (file_exists(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json'))
+	{
+		$str = file_get_contents(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json');
+		$json = json_decode($str, true);
+
+		foreach ($json as $key => $value)
 		{
 			$settings[$key] = $json[$key];
 		}
-    }
+	}
 }
 
 // Setting container ID
@@ -702,7 +707,7 @@ if ($settings['navigation_show'] != '0')
 	$settings['navigation_show'] = 'true';
 	$verticalPosition = '';
 	$horizontalPosition = '';
-	$dotsPadding = ($settings['navigation_padding_dots']!='')?$settings['navigation_padding_dots']:5;
+	$dotsPadding = ($settings['navigation_padding_dots'] != '') ? $settings['navigation_padding_dots'] : 5;
 
 	switch ($settings['navigation_align_vertical'])
 	{
@@ -793,7 +798,6 @@ else
 // Navigation
 if ($settings['navigation_buttons_show'] != '0')
 {
-
 	$buttonsPrevHeight = 40;
 	$buttonsPrevWidth = 40;
 	$buttonsNextHeight = 40;
@@ -806,7 +810,8 @@ if ($settings['navigation_buttons_show'] != '0')
 			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev',
 			$doc
 		);
-		if($settings['navigation_buttons_custom_width'] != '' && $settings['navigation_buttons_custom_height'] != '')
+
+		if ($settings['navigation_buttons_custom_width'] != '' && $settings['navigation_buttons_custom_height'] != '')
 		{
 			$buttonsPrevHeight = $settings['navigation_buttons_custom_height'];
 			$buttonsPrevWidth = $settings['navigation_buttons_custom_width'];
@@ -838,7 +843,8 @@ if ($settings['navigation_buttons_show'] != '0')
 			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next',
 			$doc
 		);
-		if($settings['navigation_buttons_custom_width'] != '' && $settings['navigation_buttons_custom_height'] != '')
+
+		if ($settings['navigation_buttons_custom_width'] != '' && $settings['navigation_buttons_custom_height'] != '')
 		{
 			$buttonsNextHeight = $settings['navigation_buttons_custom_height'];
 			$buttonsNextWidth = $settings['navigation_buttons_custom_width'];
@@ -988,11 +994,11 @@ $rtl_ltr = $lang->get('rtl');
 
 if ($rtl_ltr == 0)
 {
-    $settings['language_rtl_enable'] = 'false';
+	$settings['language_rtl_enable'] = 'false';
 }
 else
 {
-    $settings['language_rtl_enable'] = 'true';
+	$settings['language_rtl_enable'] = 'true';
 }
 
 // Loads slider Javascript
