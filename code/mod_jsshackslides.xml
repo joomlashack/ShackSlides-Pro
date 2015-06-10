@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="module" method="upgrade">
 	<name>JS Shackslides</name>
-	<creationDate>April 2015</creationDate>
+	<creationDate>June 2015</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>https://www.joomlashack.com</authorUrl>
