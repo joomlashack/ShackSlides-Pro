@@ -13,6 +13,8 @@ defined('_JEXEC') or die('Restricted access');
 require_once JPATH_ROOT . '/modules/mod_jsshackslides/helper.php';
 
 jimport('joomla.html.parameter');
+JLoader::import('helpers.route', JPATH_SITE . '/components/com_content');
+
 
 /**
  * Joomla Helper class
@@ -115,7 +117,8 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 		{
 			// Setting image
 			$item_images = json_decode($item->images);
-			if ($item_images) 
+
+			if ($item_images)
 			{
 				if ($this->joomla_image_source_type == 'intro')
 				{
@@ -149,35 +152,9 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 
 				$this->titles[] = $this->getTitleFromContent($item->title);
 				$this->contents[] = $this->getTitleFromContent($item->introtext);
-				$this->links[] = $this->buildLink($item->id);
+				$item->slug = $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
+				$this->links[] = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language), false);
 			}
 		}
-	}
-
-	/**
-	 * Builds the Joomla article link using Joomla router
-	 *
-	 * @param   int  $id  Article ID
-	 *
-	 * @return  string
-	 */
-	private function buildLink($id)
-	{
-		$fields = array(	'option' => 'com_content',
-							'view' => 'article',
-							'id' => $id);
-
-		$index = $this->compareQuery($fields);
-
-		if ($index != false)
-		{
-			$link = $this->menu[$index]->link . '&Itemid=' . $this->menu[$index]->id;
-		}
-		else
-		{
-			$link = 'index.php?option=com_content&view=article&id=' . $id;
-		}
-
-		return JRoute::_($link);
 	}
 }

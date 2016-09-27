@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="module" method="upgrade">
 	<name>JS Shackslides</name>
-	<creationDate>February 2015</creationDate>
+	<creationDate>September 2016</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>https://www.joomlashack.com</authorUrl>
 	<copyright>Joomlashack</copyright>
 	<license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
-	<version>3.0.1</version>
+	<version>3.0.2</version>
 	<description>
 		<![CDATA[<div style='text-align: left !important'><h3>Shackslides by Joomlashack</h3></div>
 		]]>
@@ -187,7 +187,7 @@
 					<option value="crop">HEIGHTADJUSTMENT_CROP</option>
 				</field>
 
-				<!-- <field
+				<field
 						type="spacer"
 						name="basic_options_templatedesign_spacer"
 						label="SLIDER_OPTIONS_TEMPLATEDESIGN_SPACER"
@@ -200,7 +200,7 @@
 						description="TEMPLATEDESING_DESC"
 						value="1"
 						default="0"
-				/> -->
+				/>
 
 			</fieldset>
 

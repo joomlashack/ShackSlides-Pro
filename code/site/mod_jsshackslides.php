@@ -10,6 +10,8 @@
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
 
+jimport('joomla.environment.browser');
+
 require_once dirname(__FILE__) . '/helpers/' . $params->get('source', 'folder') . '.php';
 
 $doc = JFactory::getDocument();
@@ -57,6 +59,8 @@ $defaults = array(
 	'slide_margin' => '10',
 	// Autoplay on or off
 	'slide_autoplay' => '1',
+	// Template design on or off
+	'template_design' => '0',
 
 	// SLIDE SOURCES
 	// Where the link target will point at
@@ -168,7 +172,17 @@ $defaults = array(
 	// id for the slider container
 	'container' => '',
 	// Include JQuery
-	'includejquery' => 'off'
+	'includejquery' => 'off',
+	// RTL SUPPORT
+	'language_rtl_enable' => 'false',
+	// TEMPLATE CUSTOM OPTIONS
+	'buttons_left_right_position' => '',
+	'navigation_buttons_custom_width' => '',
+	'navigation_buttons_custom_height' => '',
+	'navigation_padding_dots' => '',
+	'navigation_custom_align' => false,
+	'navigation_dots_width' => '',
+	'navigation_dots_height' => ''
 );
 
 $settings = Array();
@@ -207,6 +221,32 @@ JHtml::stylesheet('mod_jsshackslides/owl.carousel.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/animate.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/jsshackslides.css', array(), true);
 JHtml::script('mod_jsshackslides/owl.carousel.min.js', false, true);
+
+$json = false;
+
+if ($settings['template_design'])
+{
+	$db = JFactory::getDBO();
+	$sql = " SELECT ts.template " .
+	" FROM #__menu as m " .
+	" INNER JOIN #__template_styles as ts" .
+	" ON ts.id = m.template_style_id " .
+	" WHERE m.home = 1" .
+	" AND m.published = 1";
+	$db->setQuery($sql);
+	$tplName = $db->loadResult();
+
+	if (file_exists(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json'))
+	{
+		$str = file_get_contents(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json');
+		$json = json_decode($str, true);
+
+		foreach ($json as $key => $value)
+		{
+			$settings[$key] = $json[$key];
+		}
+	}
+}
 
 // Setting container ID
 if ($settings['container'] == '')
@@ -562,7 +602,7 @@ if ($settings['description_show'] || $settings['title_show'])
 				var height = jQuery("#' . $settings['container'] . '.jss-slider").height();
 				var title = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title");
 				var description = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description");
-				
+
 				if(title.length && description.length) {
 					height = jQuery("#' . $settings['container'] . '.jss-slider").height() / 2;
 				}
@@ -617,8 +657,8 @@ if ($settings['navigation_show'] != '0')
 		}'
 	);
 
-	$dotsWidth = 30;
-	$dotsHeight = 30;
+	$dotsWidth = ($settings['navigation_dots_width'] != '')?$settings['navigation_dots_width']:30;
+	$dotsHeight = ($settings['navigation_dots_height'] != '')?$settings['navigation_dots_height']:30;
 
 	if ($settings['navigation_custom_dot'] != '')
 	{
@@ -667,7 +707,7 @@ if ($settings['navigation_show'] != '0')
 	$settings['navigation_show'] = 'true';
 	$verticalPosition = '';
 	$horizontalPosition = '';
-	$dotsPadding = 5;
+	$dotsPadding = ($settings['navigation_padding_dots'] != '') ? $settings['navigation_padding_dots'] : 5;
 
 	switch ($settings['navigation_align_vertical'])
 	{
@@ -695,12 +735,13 @@ if ($settings['navigation_show'] != '0')
 			break;
 	}
 
+	$navigationAlignment = ($settings['navigation_custom_align'] == false)?$verticalPosition . ';' . $horizontalPosition . ';' : '';
+
 	// Navigation settings
 	$doc->addStyleDeclaration('
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
 			padding: ' . (int) $settings['navigation_padding_vertical'] . 'px ' . (int) $settings['navigation_padding_horizontal'] . 'px;
-			' . $verticalPosition . ';
-			' . $horizontalPosition . ';
+			' . $navigationAlignment . '
 		}
 		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
 			display: inline-block;
@@ -769,6 +810,12 @@ if ($settings['navigation_buttons_show'] != '0')
 			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev',
 			$doc
 		);
+
+		if ($settings['navigation_buttons_custom_width'] != '' && $settings['navigation_buttons_custom_height'] != '')
+		{
+			$buttonsPrevHeight = $settings['navigation_buttons_custom_height'];
+			$buttonsPrevWidth = $settings['navigation_buttons_custom_width'];
+		}
 	}
 	else
 	{
@@ -796,6 +843,12 @@ if ($settings['navigation_buttons_show'] != '0')
 			'#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next',
 			$doc
 		);
+
+		if ($settings['navigation_buttons_custom_width'] != '' && $settings['navigation_buttons_custom_height'] != '')
+		{
+			$buttonsNextHeight = $settings['navigation_buttons_custom_height'];
+			$buttonsNextWidth = $settings['navigation_buttons_custom_width'];
+		}
 	}
 	else
 	{
@@ -822,6 +875,18 @@ if ($settings['navigation_buttons_show'] != '0')
 			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
 				opacity: 0;
 				visibility: hidden;
+			}'
+		);
+	}
+
+	if ($settings['buttons_left_right_position'] != '')
+	{
+		$doc->addStyleDeclaration('
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
+				left: ' . $settings['buttons_left_right_position'] . '%;
+			}
+			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
+				right: ' . $settings['buttons_left_right_position'] . '%;
 			}'
 		);
 	}
@@ -922,6 +987,18 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show'])
 	}
 
 	$doc->addStyleDeclaration($themeCss);
+}
+
+$lang = JFactory::getLanguage();
+$rtl_ltr = $lang->get('rtl');
+
+if ($rtl_ltr == 0)
+{
+	$settings['language_rtl_enable'] = 'false';
+}
+else
+{
+	$settings['language_rtl_enable'] = 'true';
 }
 
 // Loads slider Javascript

@@ -9,6 +9,7 @@ jQuery(document).ready(function(){
 		autoplay: $$slide_autoplay,
 		autoplayTimeout: $$slide_delay,
 		autoplayHoverPause: $$slide_onhoverstop,
+		rtl: $$language_rtl_enable,
 		nav: $$navigation_buttons_show,
 		navContainer: '#$$container.jss-slider .jss-navigation .jss-navigation-buttons',
 		dots: $$navigation_show,
