@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="module" method="upgrade">
-    <name>JS Shackslides</name>
-    <creationDate>September 2016</creationDate>
+    <name>MOD_JSSHACKSLIDES</name>
     <author>Joomlashack</author>
-    <authorEmail>support@joomlashack.com</authorEmail>
-    <authorUrl>https://www.joomlashack.com</authorUrl>
+    <creationDate>December 22 2016</creationDate>
     <copyright>Joomlashack</copyright>
     <license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
-    <version>3.0.2</version>
-    <description>
-        <![CDATA[<div style='text-align: left !important'><h3>Shackslides by Joomlashack</h3></div>
-        ]]>
-    </description>
+    <authorEmail>support@joomlashack.com</authorEmail>
+    <authorUrl>https://www.joomlashack.com</authorUrl>
+    <version>3.1.0</version>
+    <variant>FREE</variant>
+    <description>MOD_JSSHACKSLIDES_DESCRIPTION</description>
+
     <files>
         <filename module="mod_jsshackslides">mod_jsshackslides.php</filename>
         <filename>helper.php</filename>
@@ -22,16 +21,19 @@
         <folder>tmpl</folder>
         <folder>language</folder>
     </files>
-    <media folder="media/mod_jsshackslides" destination="mod_jsshackslides">
+
+    <media folder="media" destination="mod_jsshackslides">
         <folder>css</folder>
         <folder>js</folder>
         <folder>images</folder>
         <filename>index.html</filename>
     </media>
+
     <languages folder="site">
         <language tag="en-GB">language/en-GB/en-GB.mod_jsshackslides.ini</language>
         <language tag="es-ES">language/es-ES/es-ES.mod_jsshackslides.ini</language>
     </languages>
+
     <config>
         <fields name="params" addfieldpath="/modules/mod_jsshackslides/fields">
 
@@ -963,4 +965,28 @@
             </fieldset>
         </fields>
     </config>
+
+    <updateservers>
+        <server type="extension" priority="1" name="JSShackSlides Free"><![CDATA[https://deploy.ostraining.com/client/update/free/stable/mod_jsshackslides]]></server>
+    </updateservers>
+
+    <alledia>
+        <element publish="true">jsshackslides</element>
+        <namespace>JSShackSlides</namespace>
+        <license>free</license>
+        <targetplatform>3.*</targetplatform>
+        <relatedExtensions>
+            <extension
+                type="library"
+                element="allediaframework">AllediaFramework</extension>
+
+            <extension
+                type="plugin"
+                group="system"
+                element="ossystem"
+                publish="true"
+                ordering="first">OSSystem</extension>
+        </relatedExtensions>
+        <include>AllediaFreeDefaultFiles</include>
+    </alledia>
 </extension>
