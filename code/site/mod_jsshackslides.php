@@ -263,16 +263,16 @@ $settings['slide_effect_masterspeed'] = $effectMasterSpeed;
 $settings['slide_delay'] += $settings['slide_effect_masterspeed'];
 
 $doc->addStyleDeclaration('
-	#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item,
-	#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item.animated {
-			-webkit-animation-duration:' . $effectMasterSpeed . 'ms;
-			animation-duration:' . $effectMasterSpeed . 'ms;
-		}
-	#' . $settings['container'] . '.jss-slider .jss-title > .animated,
-	#' . $settings['container'] . '.jss-slider .jss-description > .animated {
-			-webkit-animation-duration:' . $settings['slide_text_effect_masterspeed'] . 'ms;
-			animation-duration:' . $settings['slide_text_effect_masterspeed'] . 'ms;
-		}'
+    #' . $settings['container'] . '.jss-slider .owl-carousel .owl-item,
+    #' . $settings['container'] . '.jss-slider .owl-carousel .owl-item.animated {
+            -webkit-animation-duration:' . $effectMasterSpeed . 'ms;
+            animation-duration:' . $effectMasterSpeed . 'ms;
+        }
+    #' . $settings['container'] . '.jss-slider .jss-title > .animated,
+    #' . $settings['container'] . '.jss-slider .jss-description > .animated {
+            -webkit-animation-duration:' . $settings['slide_text_effect_masterspeed'] . 'ms;
+            animation-duration:' . $settings['slide_text_effect_masterspeed'] . 'ms;
+        }'
 );
 
 // Defined height in case of adjustment (to set a max height for the slider)
@@ -281,18 +281,18 @@ if ($settings['height_adjustment'] == 'adjust') {
 
     if ($height > 0) {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-image {
-				max-height: ' . $height . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-image {
+                max-height: ' . $height . 'px;
+            }'
         );
     }
 } elseif ($settings['height_adjustment'] == 'crop') {
     $settings['slide_autoheight'] = 'false';
     $doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-image {
-			width: 100%;
-			height: ' . $settings['height'] . 'px;
-		}'
+        #' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-image {
+            width: 100%;
+            height: ' . $settings['height'] . 'px;
+        }'
     );
 }
 
@@ -302,8 +302,8 @@ if ($settings['description_show']) {
     if ($settings['description_color_flag']) {
         $doc->addStyleDeclaration(
             '#' . $settings['container'] . '.jss-slider .jss-description > * {
-				color: #' . $settings['description_color'] . ';
-			}'
+                color: #' . $settings['description_color'] . ';
+            }'
         );
     }
 
@@ -313,9 +313,9 @@ if ($settings['description_show']) {
         $settings['description_bgcolor'] = implode(',', $helper->hexToRGB($settings['description_bgcolor']));
         $doc->addStyleDeclaration(
             '#' . $settings['container'] . '.jss-slider .jss-description {
-				background-color: #' . $color_hex . ';
-				background-color: rgba(' . $settings['description_bgcolor'] . ', ' . ($settings['description_bgcolor_opacity'] / 100) . ');
-			}'
+                background-color: #' . $color_hex . ';
+                background-color: rgba(' . $settings['description_bgcolor'] . ', ' . ($settings['description_bgcolor_opacity'] / 100) . ');
+            }'
         );
     }
 
@@ -325,9 +325,9 @@ if ($settings['description_show']) {
         || $settings['title_description_position'] == 'left_outside'
         || $settings['title_description_position'] == 'right_outside') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-description {
-				width: ' . (int) $settings['description_width'] . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-description {
+                width: ' . (int) $settings['description_width'] . 'px;
+            }'
         );
     }
 
@@ -337,29 +337,29 @@ if ($settings['description_show']) {
         || $settings['title_description_position'] == 'above_outside'
         || $settings['title_description_position'] == 'below_outside') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-description {
-				height: ' . (int) $settings['description_height'] . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-description {
+                height: ' . (int) $settings['description_height'] . 'px;
+            }'
         );
     }
 
     // Left outside description
     if ($settings['title_description_position'] == 'left_outside') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
-				padding-left: ' . (int) $settings['description_width'] . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
+                padding-left: ' . (int) $settings['description_width'] . 'px;
+            }'
         );
     }
 
     // Right outside title
     if ($settings['title_description_position'] == 'right_outside') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
-				padding-right: ' . (int) $settings['description_width'] . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
+                padding-right: ' . (int) $settings['description_width'] . 'px;
+            }'
         );
     }
 }
@@ -370,8 +370,8 @@ if ($settings['title_show']) {
     if ($settings['title_color_flag']) {
         $doc->addStyleDeclaration(
             '#' . $settings['container'] . '.jss-slider .jss-title > * {
-				color: #' . $settings['title_color'] . ';
-			}'
+                color: #' . $settings['title_color'] . ';
+            }'
         );
     }
 
@@ -380,10 +380,10 @@ if ($settings['title_show']) {
         $color_hex                 = $settings['title_bgcolor'];
         $settings['title_bgcolor'] = implode(',', $helper->hexToRGB($settings['title_bgcolor']));
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-title {
-				background-color: #' . $color_hex . ';
-				background-color: rgba(' . $settings['title_bgcolor'] . ', ' . ($settings['title_bgcolor_opacity'] / 100) . ');
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-title {
+                background-color: #' . $color_hex . ';
+                background-color: rgba(' . $settings['title_bgcolor'] . ', ' . ($settings['title_bgcolor_opacity'] / 100) . ');
+            }'
         );
     }
 
@@ -393,9 +393,9 @@ if ($settings['title_show']) {
         || $settings['title_description_position'] == 'left_outside'
         || $settings['title_description_position'] == 'right_outside') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-title {
-				width: ' . (int) $settings['title_width'] . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-title {
+                width: ' . (int) $settings['title_width'] . 'px;
+            }'
         );
     }
 
@@ -405,38 +405,38 @@ if ($settings['title_show']) {
         || $settings['title_description_position'] == 'above_outside'
         || $settings['title_description_position'] == 'below_outside') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-title {
-				height: ' . (int) $settings['title_height'] . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-title {
+                height: ' . (int) $settings['title_height'] . 'px;
+            }'
         );
     }
 
     // Left outside title
     if ($settings['title_description_position'] == 'left_outside') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
-				padding-left: ' . (int) $settings['title_width'] . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
+                padding-left: ' . (int) $settings['title_width'] . 'px;
+            }'
         );
     }
 
     // Right outside title
     if ($settings['title_description_position'] == 'right_outside') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
-				padding-right: ' . (int) $settings['title_width'] . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
+                padding-right: ' . (int) $settings['title_width'] . 'px;
+            }'
         );
     }
 }
 
 $settings['animation_script'] = '
-	function jssInit_' . $settings['container'] . '(event) {
-	}
-	function jssInitEnd_' . $settings['container'] . '(event) {
-	}
+    function jssInit_' . $settings['container'] . '(event) {
+    }
+    function jssInitEnd_' . $settings['container'] . '(event) {
+    }
 ';
 
 $settings['animation_events'] = '';
@@ -468,11 +468,11 @@ if ($settings['description_show'] || $settings['title_show']) {
     }
 
     $doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title,
-		#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description {
-			padding: ' . (int) $settings['title_description_padding_vertical'] . 'px ' . (int) $settings['title_description_padding_horizontal'] . 'px;
-			margin: ' . $descriptionMargin . ';
-		}'
+        #' . $settings['container'] . '.jss-slider .jss-title-description .jss-title,
+        #' . $settings['container'] . '.jss-slider .jss-title-description .jss-description {
+            padding: ' . (int) $settings['title_description_padding_vertical'] . 'px ' . (int) $settings['title_description_padding_horizontal'] . 'px;
+            margin: ' . $descriptionMargin . ';
+        }'
     );
 
     // Above/Below outside title/description
@@ -483,9 +483,9 @@ if ($settings['description_show'] || $settings['title_show']) {
         $paddingPositionTitleDescription = ($settings['title_description_position'] == 'above_outside' ? 'top' : 'bottom');
 
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
-				padding-' . $paddingPositionTitleDescription . ': ' . $paddingTitleDescription . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
+                padding-' . $paddingPositionTitleDescription . ': ' . $paddingTitleDescription . 'px;
+            }'
         );
     }
 
@@ -501,31 +501,31 @@ if ($settings['description_show'] || $settings['title_show']) {
             );
 
         $settings['animation_script'] = '
-			function jssInit_' . $settings['container'] . '(event) {
-				' . ($settings['title_effect'] != 'none' && substr($settings['title_effect'], 0, 10) != 'attention_'
+            function jssInit_' . $settings['container'] . '(event) {
+                ' . ($settings['title_effect'] != 'none' && substr($settings['title_effect'], 0, 10) != 'attention_'
                         ? 'jQuery("#' . $settings['container'] . ' .jss-title > *").css("opacity", "0");'
                         : '') . '
-				' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0, 10) != 'attention_'
+                ' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0, 10) != 'attention_'
                         ? 'jQuery("#' . $settings['container'] . ' .jss-description > *").css("opacity", "0");'
                         : '') . '
-			}
-			function jssInitEnd_' . $settings['container'] . '(event) {
-				jssAnimText_' . $settings['container'] . '(event.item.index);
-			}
-			function jssAnimTextExec_' . $settings['container'] . '(c, x, c2, x2) {
-				if (c == undefined) { c = c2; x = x2; c2 = undefined; x2 = undefined; }
-			    jQuery(c).addClass(x + " animated")
-					.one(jQuery.support.animation.end, function(e) {
-						jQuery(this).removeClass(x + " animated");
-						jQuery(this).css("opacity", "1");
-						if (c2 != undefined) jssAnimTextExec_' . $settings['container'] . '(c2, x2);
-				});
-			}
-			function jssAnimText_' . $settings['container'] . '(i) {
-				if (!jQuery.support.animation || !jQuery.support.transition) {
-					return;
-				}
-				jssAnimTextExec_' . $settings['container'] . '(' . (($settings['title_effect'] != 'none') ?
+            }
+            function jssInitEnd_' . $settings['container'] . '(event) {
+                jssAnimText_' . $settings['container'] . '(event.item.index);
+            }
+            function jssAnimTextExec_' . $settings['container'] . '(c, x, c2, x2) {
+                if (c == undefined) { c = c2; x = x2; c2 = undefined; x2 = undefined; }
+                jQuery(c).addClass(x + " animated")
+                    .one(jQuery.support.animation.end, function(e) {
+                        jQuery(this).removeClass(x + " animated");
+                        jQuery(this).css("opacity", "1");
+                        if (c2 != undefined) jssAnimTextExec_' . $settings['container'] . '(c2, x2);
+                });
+            }
+            function jssAnimText_' . $settings['container'] . '(i) {
+                if (!jQuery.support.animation || !jQuery.support.transition) {
+                    return;
+                }
+                jssAnimTextExec_' . $settings['container'] . '(' . (($settings['title_effect'] != 'none') ?
                         '"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-title > *","' . (substr($settings['title_effect'], 0, 10) == 'attention_'
                                 ? substr($settings['title_effect'], 10)
                                 : $settings['title_effect']) . '"'
@@ -537,24 +537,24 @@ if ($settings['description_show'] || $settings['title_show']) {
                                     : $settings['description_effect']
                                 ) . '"'
                         : 'undefined,undefined') . ');
-			}';
+            }';
         $settings['animation_events'] = '
-			var ' . $settings['container'] . '_anim = 0;
-			' . $settings['container'] . '.on("translate.owl.carousel", function(event) {
-				' . $settings['container'] . '_anim = 1;
-			});
-			' . $settings['container'] . '.on("translated.owl.carousel", function(event) {
-				if (' . $settings['container'] . '_anim) {
-					' . ($settings['title_effect'] != 'none' && substr($settings['title_effect'], 0, 10) != 'attention_'
+            var ' . $settings['container'] . '_anim = 0;
+            ' . $settings['container'] . '.on("translate.owl.carousel", function(event) {
+                ' . $settings['container'] . '_anim = 1;
+            });
+            ' . $settings['container'] . '.on("translated.owl.carousel", function(event) {
+                if (' . $settings['container'] . '_anim) {
+                    ' . ($settings['title_effect'] != 'none' && substr($settings['title_effect'], 0, 10) != 'attention_'
                             ? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-title > *").css("opacity", "0");'
                             : '') . '
-					' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0, 10) != 'attention_'
+                    ' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0, 10) != 'attention_'
                             ? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-description > *").css("opacity", "0");'
                             : '') . '
-					jssAnimText_' . $settings['container'] . '(event.item.index);
-				}
-				' . $settings['container'] . '_anim = 0;
-			});';
+                    jssAnimText_' . $settings['container'] . '(event.item.index);
+                }
+                ' . $settings['container'] . '_anim = 0;
+            });';
     }
 
     if (($settings['title_description_position'] == 'left'
@@ -563,35 +563,35 @@ if ($settings['description_show'] || $settings['title_show']) {
         || $settings['title_description_position'] == 'right_outside')
         && (($browserName == 'msie' && $browserVersion < 11) || $browserName == 'safari')) {
         $settings['resize_events'] .= '
-			function ' . $settings['container'] . 'SetHeight(){
-				var height = jQuery("#' . $settings['container'] . '.jss-slider").height();
-				var title = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title");
-				var description = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description");
+            function ' . $settings['container'] . 'SetHeight(){
+                var height = jQuery("#' . $settings['container'] . '.jss-slider").height();
+                var title = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title");
+                var description = jQuery("#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description");
 
-				if(title.length && description.length) {
-					height = jQuery("#' . $settings['container'] . '.jss-slider").height() / 2;
-				}
+                if(title.length && description.length) {
+                    height = jQuery("#' . $settings['container'] . '.jss-slider").height() / 2;
+                }
 
-				title.css("height" , height);
-				description.css("height" , height);
-			}
-				' . $settings['container'] . 'SetHeight();
+                title.css("height" , height);
+                description.css("height" , height);
+            }
+                ' . $settings['container'] . 'SetHeight();
 
-			' . $settings['container'] . '.on("resized.owl.carousel", function(event) {
-				setTimeout(function () {
-					' . $settings['container'] . 'SetHeight();
-				}, 500);
-			});';
+            ' . $settings['container'] . '.on("resized.owl.carousel", function(event) {
+                setTimeout(function () {
+                    ' . $settings['container'] . 'SetHeight();
+                }, 500);
+            });';
     } else {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-title-description .jss-title,
-			#' . $settings['container'] . '.jss-slider .jss-title-description .jss-description {
-					-webkit-flex-grow: 1;
-					-moz-flex-grow: 1;
-					-ms-flex-grow: 1;
-					-o-flex-grow: 1;
-					flex-grow: 1;
-				}'
+            #' . $settings['container'] . '.jss-slider .jss-title-description .jss-title,
+            #' . $settings['container'] . '.jss-slider .jss-title-description .jss-description {
+                    -webkit-flex-grow: 1;
+                    -moz-flex-grow: 1;
+                    -ms-flex-grow: 1;
+                    -o-flex-grow: 1;
+                    flex-grow: 1;
+                }'
         );
     }
 }
@@ -600,22 +600,22 @@ if ($settings['description_show'] || $settings['title_show']) {
 if ($settings['navigation_show'] != '0') {
     if ($settings['navigation_show'] == '1') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
-				opacity: 0;
-				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
+                opacity: 0;
+                -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            }'
         );
     }
 
     // Navigation is shown - always or just on hover (default by css)
     $doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider' . (($settings['navigation_show'] == '1') ? ':hover' : '') . ' .jss-navigation .jss-navigation-dots {
-			opacity: ' . (((int) $settings['navigation_opacity']) / 100) . ';
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' . ((int) $settings['navigation_opacity']) . ')";
-		}
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
-			color: #' . $settings['navigation_dots_numbers_color'] . ';
-		}'
+        #' . $settings['container'] . '.jss-slider' . (($settings['navigation_show'] == '1') ? ':hover' : '') . ' .jss-navigation .jss-navigation-dots {
+            opacity: ' . (((int) $settings['navigation_opacity']) / 100) . ';
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' . ((int) $settings['navigation_opacity']) . ')";
+        }
+        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
+            color: #' . $settings['navigation_dots_numbers_color'] . ';
+        }'
     );
 
     $dotsWidth  = ($settings['navigation_dots_width'] != '')?$settings['navigation_dots_width']:30;
@@ -629,13 +629,13 @@ if ($settings['navigation_show'] != '0') {
         );
     } else {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
-				width: ' . $dotsWidth . 'px;
-				height: ' . $dotsHeight . 'px;
-			}
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
-				line-height: ' . $dotsHeight . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
+                width: ' . $dotsWidth . 'px;
+                height: ' . $dotsHeight . 'px;
+            }
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
+                line-height: ' . $dotsHeight . 'px;
+            }'
         );
     }
 
@@ -693,54 +693,54 @@ if ($settings['navigation_show'] != '0') {
 
     // Navigation settings
     $doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
-			padding: ' . (int) $settings['navigation_padding_vertical'] . 'px ' . (int) $settings['navigation_padding_horizontal'] . 'px;
-			' . $navigationAlignment . '
-		}
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
-			display: inline-block;
-			*display: inline;
-		}'
+        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
+            padding: ' . (int) $settings['navigation_padding_vertical'] . 'px ' . (int) $settings['navigation_padding_horizontal'] . 'px;
+            ' . $navigationAlignment . '
+        }
+        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
+            display: inline-block;
+            *display: inline;
+        }'
     );
 
     switch ($settings['navigation_orientation']) {
         case 'horizontal':
             $doc->addStyleDeclaration('
-				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
-					width: ' . ((($dotsWidth + $dotsPadding * 2) * sizeof($images)) + (2 * (int) $settings['navigation_padding_horizontal'])) . 'px;
-					height: ' . ((2 * (int) $settings['navigation_padding_vertical']) + $dotsHeight) . 'px;
-				}
-				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
-					display: inline-block;
-					*display: inline;
-					margin: 0 ' . $dotsPadding . 'px;
-				}'
+                #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
+                    width: ' . ((($dotsWidth + $dotsPadding * 2) * sizeof($images)) + (2 * (int) $settings['navigation_padding_horizontal'])) . 'px;
+                    height: ' . ((2 * (int) $settings['navigation_padding_vertical']) + $dotsHeight) . 'px;
+                }
+                #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
+                    display: inline-block;
+                    *display: inline;
+                    margin: 0 ' . $dotsPadding . 'px;
+                }'
             );
             break;
         case 'vertical':
             $doc->addStyleDeclaration('
-				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
-					height: ' . ((($dotsHeight + $dotsPadding) * sizeof($images)) - $dotsPadding + (2 * (int) $settings['navigation_padding_vertical'])) . 'px;
-					width: ' . ((2 * (int) $settings['navigation_padding_horizontal']) + $dotsWidth) . 'px;
-				}
-				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
-					display: block;
-				}
-				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
-					margin: 0 0 ' . $dotsPadding . 'px 0;
-				}
-				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot:first-child > div {
-					margin-top: 0;
-				}'
+                #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
+                    height: ' . ((($dotsHeight + $dotsPadding) * sizeof($images)) - $dotsPadding + (2 * (int) $settings['navigation_padding_vertical'])) . 'px;
+                    width: ' . ((2 * (int) $settings['navigation_padding_horizontal']) + $dotsWidth) . 'px;
+                }
+                #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
+                    display: block;
+                }
+                #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
+                    margin: 0 0 ' . $dotsPadding . 'px 0;
+                }
+                #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot:first-child > div {
+                    margin-top: 0;
+                }'
             );
             break;
     }
 
     // Slide numbers in navigation
     $doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot span {
-			opacity: ' . ($settings['navigation_shownumbers'] ? '1' : '0') . '
-		}'
+        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot span {
+            opacity: ' . ($settings['navigation_shownumbers'] ? '1' : '0') . '
+        }'
     );
 } else {
     $settings['navigation_show'] = 'false';
@@ -766,10 +766,10 @@ if ($settings['navigation_buttons_show'] != '0') {
         }
     } else {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
-				width: ' . $buttonsPrevWidth . 'px;
-				height: ' . $buttonsPrevHeight . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
+                width: ' . $buttonsPrevWidth . 'px;
+                height: ' . $buttonsPrevHeight . 'px;
+            }'
         );
     }
 
@@ -794,10 +794,10 @@ if ($settings['navigation_buttons_show'] != '0') {
         }
     } else {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
-				width: ' . $buttonsNextWidth . 'px;
-				height: ' . $buttonsNextHeight . 'px;
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
+                width: ' . $buttonsNextWidth . 'px;
+                height: ' . $buttonsNextHeight . 'px;
+            }'
         );
     }
 
@@ -811,48 +811,48 @@ if ($settings['navigation_buttons_show'] != '0') {
 
     if ($settings['navigation_buttons_show'] == '1') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
-				opacity: 0;
-				visibility: hidden;
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
+                opacity: 0;
+                visibility: hidden;
+            }'
         );
     }
 
     if ($settings['buttons_left_right_position'] != '') {
         $doc->addStyleDeclaration('
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
-				left: ' . $settings['buttons_left_right_position'] . '%;
-			}
-			#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
-				right: ' . $settings['buttons_left_right_position'] . '%;
-			}'
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
+                left: ' . $settings['buttons_left_right_position'] . '%;
+            }
+            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
+                right: ' . $settings['buttons_left_right_position'] . '%;
+            }'
         );
     }
 
     // Navigation is shown - always or just on hover (default by css).  Height adjustment
     $doc->addStyleDeclaration('
-		#' . $settings['container'] . '.jss-slider' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') .
+        #' . $settings['container'] . '.jss-slider' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') .
             ' .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
-			opacity: ' . (((int) $settings['navigation_buttons_opacity']) / 100) . ';
-			visibility: visible;
-		}
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']{
-			border-color: #' . $settings['navigation_buttons_color'] . ';
-		}
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']:hover{
-			border-color: #' . $settings['navigation_buttonshover_color'] . ';
-		}
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
-			height: 0px;
-		}
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
-			width: ' . $buttonsPrevWidth . 'px;
-			height: ' . $buttonsPrevHeight . 'px;
-		}
-		#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
-			width: ' . $buttonsNextWidth . 'px;
-			height: ' . $buttonsNextHeight . 'px;
-		}'
+            opacity: ' . (((int) $settings['navigation_buttons_opacity']) / 100) . ';
+            visibility: visible;
+        }
+        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']{
+            border-color: #' . $settings['navigation_buttons_color'] . ';
+        }
+        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']:hover{
+            border-color: #' . $settings['navigation_buttonshover_color'] . ';
+        }
+        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
+            height: 0px;
+        }
+        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
+            width: ' . $buttonsPrevWidth . 'px;
+            height: ' . $buttonsPrevHeight . 'px;
+        }
+        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
+            width: ' . $buttonsNextWidth . 'px;
+            height: ' . $buttonsNextHeight . 'px;
+        }'
     );
 
     $settings['navigation_buttons_show'] = 'true';
@@ -866,9 +866,9 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show']) {
 
     if ($settings['navigation_theme_shape'] != 'none') {
         $themeCss .= '
-				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
-					background-color: #' . $settings['navigation_dots_color'] . ';
-					}';
+                #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
+                    background-color: #' . $settings['navigation_dots_color'] . ';
+                    }';
 
         if (file_exists(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css')) {
             $themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css');

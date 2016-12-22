@@ -22,14 +22,15 @@ class JFormFieldDirectory extends JFormFieldList
 
     protected function getOptions()
     {
-        
+
         // path to images directory
-        $path          = JPATH_ROOT . '/' . $this->element['directory'];
-        $filter        = $this->element['filter'];
-        $exclude       = $this->element['exclude'];
-        $folders       = JFolder::folders($path, $filter, true, true);
+        $path    = JPATH_ROOT . '/' . $this->element['directory'];
+        $filter  = $this->element['filter'];
+        $exclude = $this->element['exclude'];
+        $folders = JFolder::folders($path, $filter, true, true);
 
         $options = array();
+
         foreach ($folders as $folder) {
             //remove the JPATH_ROOT from the string
             $folder = str_replace(JPATH_ROOT, '', $folder);

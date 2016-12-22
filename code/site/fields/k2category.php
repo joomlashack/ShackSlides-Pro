@@ -55,7 +55,7 @@ class JFormFieldK2category extends JFormFieldList
 
         if (!empty($items)) {
             foreach ($items as $item) {
-                $options []= JHtml::_('select.option', $item->id, $item->name);
+                $options[] = JHtml::_('select.option', $item->id, $item->name);
             }
         }
 

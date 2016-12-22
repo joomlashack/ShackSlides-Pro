@@ -401,7 +401,7 @@ abstract class ModShackSlidesHelper
     }
 
     /**
-     * Generate random ordering 
+     * Generate random ordering
      *
      * @param   int  $number  Range for getting the random number
      *
@@ -470,11 +470,11 @@ abstract class ModShackSlidesHelper
         $image_dots           = JUri::root(true) . '/' . $image;
         list($width, $height) = getimagesize(JUri::root() . '/' . $image);
         $doc->addStyleDeclaration('
-			' . $css_rule . ' {
-				background: url(' . $image_dots . ') no-repeat;
-				width:' . $width . 'px;
-				height:' . $height . 'px;
-			}'
+            ' . $css_rule . ' {
+                background: url(' . $image_dots . ') no-repeat;
+                width:' . $width . 'px;
+                height:' . $height . 'px;
+            }'
         );
 
         return array($width, $height);

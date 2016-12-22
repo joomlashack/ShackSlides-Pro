@@ -53,10 +53,10 @@ class JFormFieldVisionaryCollection extends JFormFieldList
 
         if (!empty($items)) {
             foreach ($items as $item) {
-                $options []= JHtml::_('select.option', $item->id, $item->collection);
+                $options[] = JHtml::_('select.option', $item->id, $item->collection);
             }
         } else {
-            $options []= JHtml::_('select.option', "None", JText::_('VISIONARY_NO_COLLECTIONS'));
+            $options[] = JHtml::_('select.option', "None", JText::_('VISIONARY_NO_COLLECTIONS'));
         }
 
         return $options;
