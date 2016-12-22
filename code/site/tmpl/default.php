@@ -13,95 +13,92 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 
 <?php
-	if ($settings["template_design"] == "1")
-		:
+    if ($settings["template_design"] == "1")
+        :
 ?>
 <div id="<?php echo $settings['container'] ?>" class="jss-slider jss-slider-template-design">
 <?php
-	else
-		:
+    else
+        :
 ?>
 <div id="<?php echo $settings['container'] ?>" class="jss-slider">
 <?php
-	endif;
+    endif;
 ?>
 	<div class="owl-carousel">
 	<?php
-		foreach ($images as $i => $image)
-			:
-	?>
+        foreach ($images as $i => $image)
+            :
+    ?>
 		<div class="jss-image-container jss-descpos-<?php echo $settings['title_description_position'] ?>">
 			<?php
-				if ($settings['title_description_position'] == 'above_outside')
-				{
-					require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
-				}
-			?>
+                if ($settings['title_description_position'] == 'above_outside') {
+                    require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
+                }
+            ?>
 			<div class="jss-image">
 				<?php
-					if ($settings['height_adjustment'] == 'adjust')
-						:
-						if ($links[$i])
-							:
-				?>
+                    if ($settings['height_adjustment'] == 'adjust')
+                        :
+                        if ($links[$i])
+                            :
+                ?>
 			        <a href="<?php echo $links[$i]; ?>"
 			        	<?php echo $settings['anchor_target'] == 'blank' ? ' target="_blank"' : ''; ?>>
 				<?php 
-						endif;
-				?>
+                        endif;
+                ?>
 					<img src="<?php echo $base . $image ?>" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
 				<?php 
-						if ($links[$i])
-						:
-				?>
+                        if ($links[$i])
+                        :
+                ?>
 					</a>
 				<?php 
-						endif;
-					elseif ($settings['height_adjustment'] == 'crop')
-						:
-				?>
+                        endif;
+                    elseif ($settings['height_adjustment'] == 'crop')
+                        :
+                ?>
 				<div
 					class="jss-image-int<?php echo $links[$i] ? ' jss-image-link' : ''; ?>"
 					style="background: url('<?php echo  $base . $image ?>');background-image: url('<?php echo  $base . $image ?>')">
 				<?php
-						if ($links[$i])
-							:
-				?>
+                        if ($links[$i])
+                            :
+                ?>
 			        <a href="<?php echo $links[$i]; ?>"
 			        	<?php echo $settings['anchor_target'] == 'blank' ? ' target="_blank"' : ''; ?>>
 				<?php 
-						endif;
-				?>
+                        endif;
+                ?>
 					<img src="<?php echo JURI::root() ?>media/mod_jsshackslides/images/blank.gif" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
 				<?php 
-						if ($links[$i])
-						:
-				?>
+                        if ($links[$i])
+                        :
+                ?>
 					</a>
 				<?php 
-						endif;
-				?>
+                        endif;
+                ?>
 				</div>
 				<?php
-					endif;
-				?>
+                    endif;
+                ?>
 				<?php
-					if ($settings['title_description_position'] != 'above_outside' && $settings['title_description_position'] != 'below_outside')
-					{
-						require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
-					}
-				?>
+                    if ($settings['title_description_position'] != 'above_outside' && $settings['title_description_position'] != 'below_outside') {
+                        require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
+                    }
+                ?>
 			</div>
 			<?php
-				if ($settings['title_description_position'] == 'below_outside')
-				{
-					require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
-				}
-			?>
+                if ($settings['title_description_position'] == 'below_outside') {
+                    require JModuleHelper::getLayoutPath('mod_jsshackslides', 'description');
+                }
+            ?>
 		</div>
 	<?php
-		endforeach;
-	?>
+        endforeach;
+    ?>
 	</div>
 	<div class="jss-navigation">
 		<div class="jss-navigation-inner">

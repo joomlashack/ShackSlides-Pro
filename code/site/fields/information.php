@@ -25,28 +25,28 @@ JFormHelper::loadFieldClass('spacer');
  */
 class JFormFieldInformation extends JFormFieldSpacer
 {
-	public $type = 'Information';
+    public $type = 'Information';
 
-	/**
-	 * Method to get the field label markup for a spacer.
-	 * Use the label text or name from the XML element as the spacer or
-	 * Use a hr="true" to automatically generate plain hr markup
-	 *
-	 * @return  string  The field label markup.
-	 */
-	protected function getLabel()
-	{
-		return '';
-	}
+    /**
+     * Method to get the field label markup for a spacer.
+     * Use the label text or name from the XML element as the spacer or
+     * Use a hr="true" to automatically generate plain hr markup
+     *
+     * @return  string  The field label markup.
+     */
+    protected function getLabel()
+    {
+        return '';
+    }
 
-	/**
-	 * Method to get the field input markup for a spacer.
-	 * The spacer does not have accept input.
-	 *
-	 * @return  string  The field input markup.
-	 */
-	protected function getInput()
-	{
-		return '<br /><br />' . JText::_($this->description);
-	}
+    /**
+     * Method to get the field input markup for a spacer.
+     * The spacer does not have accept input.
+     *
+     * @return  string  The field input markup.
+     */
+    protected function getInput()
+    {
+        return '<br /><br />' . JText::_($this->description);
+    }
 }

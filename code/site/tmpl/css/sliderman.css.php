@@ -5,45 +5,45 @@ defined('_JEXEC') or die('Direct access to files is not permitted');
 $theme = $params->get('theme', 'gray');
 
 $colors = array(
-	'gray' => array('base' => '353535', 'border' => '333333', 'shadow' => '666', 'a' => '999', 'active' => 'fff'),
-	'blue' => array('base' => '7A8498', 'border' => '7A8498', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
-	'white' => array('base' => 'ffffff', 'border' => 'ccc', 'shadow' => 'bbb', 'a' => '000', 'active' => '999'),
-	'red' => array('base' => 'A74040', 'border' => '5F2F2F', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
-	'green' => array('base' => '81ac7b', 'border' => '3b4f38', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
-	'orange' => array('base' => 'd9a74d', 'border' => '925813', 'shadow' => '666', 'a' => '666', 'active' => 'fff'),
-	'brown' => array('base' => '816e56', 'border' => '3c3428', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
-	'black' => array('base' => '252525', 'border' => '101010', 'shadow' => '333', 'a' => 'ccc', 'active' => 'fff'),
-	'purple' => array('base' => '86339a', 'border' => '551581', 'shadow' => '333', 'a' => 'ccc', 'active' => 'fff')
+    'gray' => array('base' => '353535', 'border' => '333333', 'shadow' => '666', 'a' => '999', 'active' => 'fff'),
+    'blue' => array('base' => '7A8498', 'border' => '7A8498', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
+    'white' => array('base' => 'ffffff', 'border' => 'ccc', 'shadow' => 'bbb', 'a' => '000', 'active' => '999'),
+    'red' => array('base' => 'A74040', 'border' => '5F2F2F', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
+    'green' => array('base' => '81ac7b', 'border' => '3b4f38', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
+    'orange' => array('base' => 'd9a74d', 'border' => '925813', 'shadow' => '666', 'a' => '666', 'active' => 'fff'),
+    'brown' => array('base' => '816e56', 'border' => '3c3428', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
+    'black' => array('base' => '252525', 'border' => '101010', 'shadow' => '333', 'a' => 'ccc', 'active' => 'fff'),
+    'purple' => array('base' => '86339a', 'border' => '551581', 'shadow' => '333', 'a' => 'ccc', 'active' => 'fff')
 );
 
 ?>
 .shackSlider<?php echo $params->get('container', $defaults['container']) ?> {
 
 	<?php
-		if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no'
-			|| ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes'
-			&& (($params->get('description_position', $defaults['description_position']) == 'above_image' ||
-				$params->get('description_position', $defaults['description_position']) == 'below_image'))))
-				:
-		?>
+        if ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'no'
+            || ($params->get('enable_bootstrap_styles', $defaults['enable_bootstrap_styles']) == 'yes'
+            && (($params->get('description_position', $defaults['description_position']) == 'above_image' ||
+                $params->get('description_position', $defaults['description_position']) == 'below_image'))))
+                :
+        ?>
 
 		width: <?php echo $params->get('width', $defaults['width']) ?>px;
 		width: 100% !important;
-		<?php if ($params->get('description',$defaults['description']) == "yes" &&
-			  $params->get('description_position',$defaults['description_position']) == "left_image") : ?>
-		padding-left: <?php echo $params->get('description_width',$defaults['description_width']) ?>px;
+		<?php if ($params->get('description', $defaults['description']) == "yes" &&
+              $params->get('description_position', $defaults['description_position']) == "left_image") : ?>
+		padding-left: <?php echo $params->get('description_width', $defaults['description_width']) ?>px;
 		<?php endif; ?>
-		<?php if ($params->get('description',$defaults['description']) == "yes" &&
-			  $params->get('description_position',$defaults['description_position']) == "right_image") : ?>
-		padding-right: <?php echo $params->get('description_width',$defaults['description_width']) ?>px;
+		<?php if ($params->get('description', $defaults['description']) == "yes" &&
+              $params->get('description_position', $defaults['description_position']) == "right_image") : ?>
+		padding-right: <?php echo $params->get('description_width', $defaults['description_width']) ?>px;
 		<?php endif; ?>
-		<?php if ($params->get('description',$defaults['description']) == "yes" &&
-			  $params->get('description_position',$defaults['description_position']) == "above_image") : ?>
-		padding-top: <?php echo $params->get('description_height',$defaults['description_height']) ?>px;
+		<?php if ($params->get('description', $defaults['description']) == "yes" &&
+              $params->get('description_position', $defaults['description_position']) == "above_image") : ?>
+		padding-top: <?php echo $params->get('description_height', $defaults['description_height']) ?>px;
 		<?php endif; ?>
-		<?php if ($params->get('description',$defaults['description']) == "yes" &&
-			  $params->get('description_position',$defaults['description_position']) == "below_image") : ?>
-		padding-bottom: <?php echo $params->get('description_height',$defaults['description_height']) ?>px;
+		<?php if ($params->get('description', $defaults['description']) == "yes" &&
+              $params->get('description_position', $defaults['description_position']) == "below_image") : ?>
+		padding-bottom: <?php echo $params->get('description_height', $defaults['description_height']) ?>px;
 		<?php endif; ?>
 
 	<?php endif; ?>
@@ -140,7 +140,7 @@ a.sliderNext{
 	position: absolute;
 	text-align: center;
 	text-decoration: none;
-	top: <?php echo ($params->get('height', $defaults['height']) / 2) - 12; ?>px;
+	top: <?php echo($params->get('height', $defaults['height']) / 2) - 12; ?>px;
 	width: 30px;
 	
 }

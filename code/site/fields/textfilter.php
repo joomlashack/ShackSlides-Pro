@@ -14,10 +14,10 @@ JFormHelper::loadFieldClass('text');
 
 class JFormFieldTextFilter extends JFormFieldText
 {
-	public $type = 'TextFilter';
+    public $type = 'TextFilter';
 
-	protected function getInput()
-	{
+    protected function getInput()
+    {
         return '<input type="text" name="' . $this->name . '" id="' . $this->id . '" value="' . $this->value . '" oninput="filterText(this.value, this.id)" />';
-	}
+    }
 }

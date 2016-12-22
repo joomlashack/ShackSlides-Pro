@@ -11,12 +11,12 @@
 defined('_JEXEC') or die('Restricted access');
 
 if ($settings['title_show'] || $settings['description_show'])
-		:
+        :
 ?>
 	<div class="jss-title-description jss-alignment-<?php echo $settings['title_description_alignment'] ?>">
 <?php
-	if ($settings['title_show'])
-		:
+    if ($settings['title_show'])
+        :
 ?>
 		<div class="jss-title">
 			<<?php echo $settings['title_tag'] ?>>
@@ -24,11 +24,11 @@ if ($settings['title_show'] || $settings['description_show'])
 			</<?php echo $settings['title_tag'] ?>>
 		</div>
 <?php
-	endif;
+    endif;
 ?>
 <?php
-	if ($settings['description_show'])
-		:
+    if ($settings['description_show'])
+        :
 ?>
 		<div class="jss-description">
 			<<?php echo $settings['description_tag'] ?>>
@@ -36,7 +36,7 @@ if ($settings['title_show'] || $settings['description_show'])
 			</<?php echo $settings['description_tag'] ?>>
 		</div>
 <?php
-	endif;
+    endif;
 ?>
 	</div>
 <?php

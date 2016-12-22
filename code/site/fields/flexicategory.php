@@ -15,19 +15,17 @@ JFormHelper::loadFieldClass('category');
 
 class JFormFieldFlexicategory extends JFormFieldCategory
 {
-	public $type = 'Flexicategory';
+    public $type = 'Flexicategory';
 
-	protected function getInput()
-	{
-		$flexi_path = JPATH_SITE.'/components/com_flexicontent/classes/flexicontent.categories.php';
-		if (!file_exists($flexi_path)) 
-			:
-			$doc = JFactory::getDocument();
-			$doc->addStyleSheet(JURI::root() . 'media/mod_jsshackslides/css/admin.css');
-			return '<div class="shackslides-not-installed">' . JText::_('FLEXICONTENT_NOT_INSTALLED') . '</div>';
-		else:
-			return parent::getInput();
-		endif;
-	}
-
+    protected function getInput()
+    {
+        $flexi_path = JPATH_SITE . '/components/com_flexicontent/classes/flexicontent.categories.php';
+        if (!file_exists($flexi_path))
+            :
+            $doc = JFactory::getDocument();
+        $doc->addStyleSheet(JURI::root() . 'media/mod_jsshackslides/css/admin.css');
+        return '<div class="shackslides-not-installed">' . JText::_('FLEXICONTENT_NOT_INSTALLED') . '</div>'; else:
+            return parent::getInput();
+        endif;
+    }
 }

@@ -13,18 +13,18 @@ jimport('joomla.form.formfield');
 
 class JFormFieldColorpicker extends JFormField
 {
-	protected $type = 'Colorpicker';
+    protected $type = 'Colorpicker';
 
-	protected function getInput()
-	{
-		$doc = JFactory::getDocument();
-		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'media/mod_jsshackslides/js/jscolor/jscolor.js');
+    protected function getInput()
+    {
+        $doc = JFactory::getDocument();
+        $doc->addScript(str_replace('/administrator/', '/', JURI::base()) . 'media/mod_jsshackslides/js/jscolor/jscolor.js');
 
-		$size = ( $this->element['size'] ? 'size="'.$this->element['size'].'"' : '' );
+        $size  = ($this->element['size'] ? 'size="' . $this->element['size'] . '"' : '');
         $value = htmlspecialchars_decode($this->value, ENT_QUOTES);
 
-		$html = '<input type="text" name="'.$this->name.'" id="'.$this->name.'" value="'.$value.'" class="color" '.$size.' /> ';
+        $html = '<input type="text" name="' . $this->name . '" id="' . $this->name . '" value="' . $value . '" class="color" ' . $size . ' /> ';
 
-		return $html;
-	}
+        return $html;
+    }
 }
