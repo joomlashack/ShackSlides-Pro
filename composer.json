@@ -5,11 +5,11 @@
     "license"          : "GPL-2+",
     "type"             : "joomla.module",
     "extra"            : {
-        "element"        : "plg_content_jsshackslides",
+        "element"        : "mod_jsshackslides",
         "element-short"  : "jsshackslides",
         "name"           : "JSShackSlides",
         "client"         : "site",
-        "package-license": "free",
+        "package-license": "pro",
         "target-platform": "3.*"
     },
     "authors"          : [

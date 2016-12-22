@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="2.5" type="module" method="upgrade">
+<extension version="3.5" type="module" method="upgrade">
     <name>MOD_JSSHACKSLIDES</name>
     <author>Joomlashack</author>
     <creationDate>December 22 2016</creationDate>
@@ -7,8 +7,8 @@
     <license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
     <authorEmail>support@joomlashack.com</authorEmail>
     <authorUrl>https://www.joomlashack.com</authorUrl>
-    <version>3.1.0</version>
-    <variant>FREE</variant>
+    <version>3.1.0a1</version>
+    <variant>PRO</variant>
     <description>MOD_JSSHACKSLIDES_DESCRIPTION</description>
 
     <files>
@@ -967,13 +967,13 @@
     </config>
 
     <updateservers>
-        <server type="extension" priority="1" name="JSShackSlides Free"><![CDATA[https://deploy.ostraining.com/client/update/free/stable/mod_jsshackslides]]></server>
+        <server type="extension" priority="1" name="JSShackSlides Pro"><![CDATA[https://deploy.ostraining.com/client/update/pro/stable/mod_jsshackslides]]></server>
     </updateservers>
 
     <alledia>
         <element publish="true">jsshackslides</element>
         <namespace>JSShackSlides</namespace>
-        <license>free</license>
+        <license>pro</license>
         <targetplatform>3.*</targetplatform>
         <relatedExtensions>
             <extension
@@ -986,6 +986,13 @@
                 element="ossystem"
                 publish="true"
                 ordering="first">OSSystem</extension>
+
+            <extension
+                type="plugin"
+                group="system"
+                element="osmylicensesmanager"
+                publish="true"
+                ordering="last">OSMyLicensesManager</extension>
         </relatedExtensions>
         <include>AllediaFreeDefaultFiles</include>
     </alledia>
