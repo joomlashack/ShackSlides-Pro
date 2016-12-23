@@ -22,6 +22,7 @@
         <folder>language</folder>
         <folder>views</folder>
         <folder>form</folder>
+        <folder>library</folder>
     </files>
 
     <scriptfile>script.install.php</scriptfile>
@@ -999,6 +1000,20 @@
                 element="osmylicensesmanager"
                 publish="true"
                 ordering="last">OSMyLicensesManager</extension>
+
+            <extension
+                type="component"
+                element="jsvisionary">com_jsvisionary</extension>
+
+            <extension
+                type="module"
+                element="jsvisionary">mod_jsvisionary</extension>
+
+            <extension
+                type="plugin"
+                group="system"
+                element="jsvisionary"
+                publish="true">plg_jsvisionary</extension>
         </relatedExtensions>
         <include>AllediaFreeDefaultFiles</include>
         <obsolete>
