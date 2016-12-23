@@ -1003,16 +1003,16 @@
 
             <extension
                 type="component"
-                element="jsvisionary">com_jsvisionary</extension>
+                element="com_jsvisionary">com_jsvisionary</extension>
 
             <extension
                 type="module"
-                element="jsvisionary">mod_jsvisionary</extension>
+                element="mod_jsvisionary">mod_jsvisionary</extension>
 
             <extension
                 type="plugin"
                 group="system"
-                element="jsvisionary"
+                element="plg_jsvisionary"
                 publish="true">plg_jsvisionary</extension>
         </relatedExtensions>
         <include>AllediaFreeDefaultFiles</include>
