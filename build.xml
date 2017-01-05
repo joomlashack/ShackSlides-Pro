@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="template" default="autobuild" basedir="autobuild">
-    <import file="build.xml"/>
+<project name="Alledia Extension Builder" default="">
+    <if>
+        <available file="./build.properties" type="file" />
+        <then>
+            <property file="./build.properties" />
+        </then>
+        <else>
+            <fail message="Missed build.properties file on the project root folder. Duplicate the build.properties.dist file and customize with your settings" />
+        </else>
+    </if>
 
-	<target name="autobuild-own">
-		<if>
-			<equals arg1="${external.animatecss}" arg2="1" />
-			<then>
-				<exec command="grunt shackslides" dir="../external/animatecss" logoutput="true" />
-			</then>
-		</if>
+    <fail unless="builder.path" message="Missed builder.path property" />
 
-		<if>
-			<equals arg1="${external.owlcarousel2}" arg2="1" />
-			<then>
-				<exec command="grunt shackslides" dir="../external/owlcarousel2" logoutput="true" />
-			</then>
-		</if>
-	</target>
+    <import file="${builder.path}/src/build.xml"/>
 </project>

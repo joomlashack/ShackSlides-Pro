@@ -1,9 +1,0 @@
-[submodule "autobuild"]
-	path = autobuild
-	url = git@bitbucket.org:joomlashack/autobuild.git
-[submodule "external/owlcarousel2"]
-	path = external/owlcarousel2
-url=git@github.com:joomlashack/OwlCarousel2.git
-[submodule "external/animatecss"]
-	path = external/animatecss
-	url = git@github.com:joomlashack/animate.css.git

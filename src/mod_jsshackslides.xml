@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.5" type="module" method="upgrade">
+    <name>MOD_JSSHACKSLIDES</name>
+    <author>Joomlashack</author>
+    <creationDate>January 05 2017</creationDate>
+    <copyright>Joomlashack</copyright>
+    <license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
+    <authorEmail>support@joomlashack.com</authorEmail>
+    <authorUrl>https://www.joomlashack.com</authorUrl>
+    <version>3.1.0</version>
+    <variant>PRO</variant>
+    <description>MOD_JSSHACKSLIDES_DESCRIPTION</description>
+
+    <files>
+        <filename module="mod_jsshackslides">mod_jsshackslides.php</filename>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <filename>script.install.php</filename>
+        <folder>helpers</folder>
+        <folder>includes</folder>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+        <folder>views</folder>
+        <folder>form</folder>
+        <folder>library</folder>
+    </files>
+
+    <scriptfile>script.install.php</scriptfile>
+
+    <media folder="media" destination="mod_jsshackslides">
+        <folder>css</folder>
+        <folder>js</folder>
+        <folder>images</folder>
+        <filename>index.html</filename>
+    </media>
+
+    <config>
+        <fields name="params" addfieldpath="/modules/mod_jsshackslides/form/fields">
+
+            <fieldset
+                name="basic">
+
+                <field
+                    type="shackslidesfields"
+                    name="shackslidesfields" />
+                <field
+                    type="spacer"
+                    name="basic_options_spacer"
+                    label="BASIC_OPTIONS_SPACER_LABEL" />
+
+                <field
+                    name="limit"
+                    type="text"
+                    default="5"
+                    label="LIMIT"
+                    description="LIMIT_DESC" />
+
+                <field
+                    name="slide_items"
+                    type="text"
+                    default="1"
+                    label="SLIDESPAGE"
+                    description="SLIDESPAGE_DESC" />
+
+                <field
+                    name="slide_margin"
+                    type="text"
+                    default="10"
+                    label="SLIDESMARGIN"
+                    description="SLIDESMARGIN_DESC" />
+
+                <field
+                    name="slide_effect"
+                    type="groupedlist"
+                    default="slide"
+                    label="SLIDE_EFFECT"
+                    description="SLIDE_EFFECT_DESC">
+
+                    <option value="none">SLIDE_EFFECT_NONE</option>
+                    <group label="SLIDE_EFFECT_GROUP_LTR">
+                        <option value="slide">SLIDE_EFFECT_SLIDE</option>
+                        <option value="bounced_slide">SLIDE_EFFECT_BOUNCED_SLIDE</option>
+                        <option value="faded_slide">SLIDE_EFFECT_FADED_SLIDE</option>
+                    </group>
+                    <group label="SLIDE_EFFECT_GROUP_RTL">
+                        <option value="slide_rtl">SLIDE_EFFECT_SLIDE_RTL</option>
+                        <option value="bounced_slide_rtl">SLIDE_EFFECT_BOUNCED_SLIDE_RTL</option>
+                        <option value="faded_slide_rtl">SLIDE_EFFECT_FADED_SLIDE_RTL</option>
+                    </group>
+                    <group label="SLIDE_EFFECT_GROUP_TTB">
+                        <option value="slide_ttb">SLIDE_EFFECT_SLIDE_TTB</option>
+                        <option value="bounced_slide_ttb">SLIDE_EFFECT_BOUNCED_SLIDE_TTB</option>
+                        <option value="faded_slide_ttb">SLIDE_EFFECT_FADED_SLIDE_TTB</option>
+                    </group>
+                    <group label="SLIDE_EFFECT_GROUP_BTT">
+                        <option value="slide_btt">SLIDE_EFFECT_SLIDE_BTT</option>
+                        <option value="bounced_slide_btt">SLIDE_EFFECT_BOUNCED_SLIDE_BTT</option>
+                        <option value="faded_slide_btt">SLIDE_EFFECT_FADED_SLIDE_BTT</option>
+                    </group>
+                    <group label="SLIDE_EFFECT_GROUP_PLACE">
+                        <option value="fade">SLIDE_EFFECT_FADE</option>
+                        <option value="bounce">SLIDE_EFFECT_BOUNCE</option>
+                        <option value="roll">SLIDE_EFFECT_ROLL</option>
+                        <option value="zoom">SLIDE_EFFECT_ZOOM</option>
+                        <option value="switch">SLIDE_EFFECT_SWITCH</option>
+                        <option value="flip_horizontal">SLIDE_EFFECT_FLIP_HORIZONTAL</option>
+                        <option value="flip_vertical">SLIDE_EFFECT_FLIP_VERTICAL</option>
+                    </group>
+                    <group label="SLIDE_EFFECT_GROUP_ROTATE">
+                        <option value="rotate">SLIDE_EFFECT_ROTATE</option>
+                        <option value="rotate_downleft">SLIDE_EFFECT_ROTATE_DOWNLEFT</option>
+                        <option value="rotate_downright">SLIDE_EFFECT_ROTATE_DOWNRIGHT</option>
+                        <option value="rotate_upleft">SLIDE_EFFECT_ROTATE_UPLEFT</option>
+                        <option value="rotate_upright">SLIDE_EFFECT_ROTATE_UPRIGHT</option>
+                    </group>
+                </field>
+
+                <field
+                    name="slide_autoplay"
+                    type="list"
+                    default="true"
+                    label="SHACKSLIDES_BASIC_AUTOPLAY"
+                    description="SHACKSLIDES_BASIC_AUTOPLAY_DESC">
+
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
+                <field
+                    name="slide_delay"
+                    type="text"
+                    default="5000"
+                    label="SLIDE_DELAY"
+                    description="SLIDE_DELAY_DESC" />
+
+                <field
+                    name="slide_effect_masterspeed"
+                    type="text"
+                    default="300"
+                    label="EFFECT_MASTERSPEED"
+                    description="EFFECT_MASTERSPEED_DESC" />
+
+                <field
+                    name="slide_onhoverstop"
+                    type="list"
+                    default="1"
+                    label="ONHOVER_STOP"
+                    description="ONHOVER_STOP_DESC" >
+
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                    type="spacer"
+                    name="basic_options_dimensions_spacer"
+                    label="SLIDER_OPTIONS_SPACER_LABEL" />
+
+                <field
+                    name="width"
+                    type="information"
+                    label="CONTAINERWIDTH"
+                    description="CONTAINERWIDTH_DESC" />
+
+                <field
+                    name="height"
+                    type="text"
+                    default="0"
+                    label="CONTAINERHEIGHT"
+                    description="CONTAINERHEIGHT_DESC" />
+
+                <field
+                    name="height_adjustment"
+                    type="list"
+                    default="adjust"
+                    label="HEIGHTADJUSTMENT"
+                    description="HEIGHTADJUSTMENT_DESC" >
+
+                    <option value="adjust">HEIGHTADJUSTMENT_ADJUST</option>
+                    <option value="crop">HEIGHTADJUSTMENT_CROP</option>
+                </field>
+
+                <field
+                    type="spacer"
+                    name="basic_options_templatedesign_spacer"
+                    label="SLIDER_OPTIONS_TEMPLATEDESIGN_SPACER" />
+
+                <field
+                    name="template_design"
+                    type="checkbox"
+                    label="TEMPLATEDESING"
+                    description="TEMPLATEDESING_DESC"
+                    value="1"
+                    default="0" />
+
+                <field
+                    type="customfooter"
+                    name="customfooter"
+                    media="mod_jsshackslides"
+                    showgoproad="0"
+                    jedurl="https://extensions.joomla.org/extensions/extension/photos-a-images/slideshow/shackslides" />
+
+            </fieldset>
+
+
+            <fieldset
+                name="source"
+                label="IMAGES_SOURCE_OPTIONS_LABEL" >
+
+                <field
+                    name="source"
+                    type="imagesource"
+                    default="folder"
+                    label="SHACKSLIDE_SOURCE"
+                    description="SHACKSLIDE_SOURCE_DESC" />
+
+                <field
+                    type="spacer"
+                    name="slidessources_sourceconfiguration_spacer"
+                    label="SLIDESSOURCES_SOURCESCONFIGURATION_LABEL" />
+
+                <field
+                    name="folder_folder"
+                    type="directory"
+                    default="images"
+                    directory="images"
+                    label="FOLDER"
+                    description="FOLDER_DESC" />
+
+                <field
+                    name="joomla_category"
+                    type="category"
+                    extension="com_content"
+                    default="1"
+                    label="CATEGORY"
+                    description="CATEGORY_DESC" />
+
+                <field
+                    name="k2_category"
+                    type="k2category"
+                    default="0"
+                    label="K2_CATEGORY"
+                    description="K2_CATEGORY_DESC" />
+
+                <field
+                    name="visionary_collection"
+                    type="visionarycollection"
+                    default=""
+                    label="VISIONARYCOLLECTION"
+                    description="VISIONARYCOLLECTION_DESC" />
+
+                <field
+                    type="spacer"
+                    name="slidessources_sourceoptions_spacer"
+                    label="SLIDESSOURCES_SOURCEOPTIONS_LABEL" />
+
+                <field
+                    name="joomla_image_source_type"
+                    type="list"
+                    default="intro"
+                    label="JOOMLA_IMAGE_SOURCE_TYPE"
+                    description="JOOMLA_IMAGE_SOURCE_TYPE_DESC" >
+
+                    <option value="intro">JOOMLA_IMAGE_SOURCE_INTROIMG</option>
+                    <option value="full">JOOMLA_IMAGE_SOURCE_FULLARTI</option>
+                    <option value="firstimage">JOOMLA_IMAGE_SOURCE_FIRSTIMAGEARTICLE</option>
+                </field>
+
+                <field
+                    name="featured"
+                    type="list"
+                    default="exclude"
+                    label="FEATURED"
+                    description="FEATURED_DESC" >
+
+                    <option value="exclude">FEATURED_EXCLUDE</option>
+                    <option value="include">FEATURED_INCLUDE</option>
+                    <option value="only">FEATURED_ONLYFF</option>
+                </field>
+
+                <field
+                    name="anchor_target"
+                    type="list"
+                    default="self"
+                    label="ANCHOR_TARGET"
+                    description="ANCHOR_TARGET_DESC" >
+
+                    <option value="self">SELF</option>
+                    <option value="blank">BLANK</option>
+                </field>
+
+                <field
+                    name="ordering"
+                    type="list"
+                    default="ordering"
+                    label="ORDERING"
+                    description="ORDERING_DESC" >
+
+                    <option value="ordering">ORDER</option>
+                    <option value="title">TITLE</option>
+                    <option value="created">DATE</option>
+                    <option value="hits">HITS</option>
+                    <option value="RAND()">RANDOM</option>
+                </field>
+
+                <field
+                    name="ordering_dir"
+                    type="list"
+                    default="ASC"
+                    label="ORDERING_DIRECTION"
+                    description="ORDERING_DIRECTION_DESC" >
+
+                    <option value="ASC">ASCENDING</option>
+                    <option value="DESC">DESCENDING</option>
+                </field>
+            </fieldset>
+
+            <fieldset
+                name="descriptions"
+                label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL">
+
+                <field
+                    type="spacer"
+                    name="templatesin_options_spacer"
+                    label="TEMPLATESIN_OPTIONS_SPACER_LABEL" />
+
+                <field
+                    name="title_description_position"
+                    type="list"
+                    default="bottom"
+                    label="SLIDEDESC_POSITION"
+                    description="SLIDEDESC_POSITION_DESC" >
+
+                    <option value="top">SLIDEDESC_POSITION_TOP</option>
+                    <option value="bottom">SLIDEDESC_POSITION_BOTTOM</option>
+                    <option value="right">SLIDEDESC_POSITION_RIGHT</option>
+                    <option value="left">SLIDEDESC_POSITION_LEFT</option>
+                    <option value="above_outside">SLIDEDESC_POSITION_ABOVEOUTSIDE</option>
+                    <option value="below_outside">SLIDEDESC_POSITION_BELOWOUTSIDE</option>
+                    <option value="right_outside">SLIDEDESC_POSITION_RIGHTOUTSIDE</option>
+                    <option value="left_outside">SLIDEDESC_POSITION_LEFTOUTSIDE</option>
+                </field>
+
+                <field
+                    name="title_description_alignment"
+                    type="list"
+                    default="left"
+                    label="SLIDEDESC_ALIGNMENT"
+                    description="SLIDEDESC_ALIGNMENT_DESC" >
+
+                    <option value="left">SLIDEDESC_ALIGNMENT_LEFT</option>
+                    <option value="right">SLIDEDESC_ALIGNMENT_RIGHT</option>
+                    <option value="center">SLIDEDESC_ALIGNMENT_CENTER</option>
+                </field>
+
+                <field
+                    name="title_description_padding_vertical"
+                    type="text"
+                    default="10"
+                    label="SLIDEDESC_VERTICALPAD"
+                    description="SLIDEDESC_VERTICALPAD_DESC" />
+
+                <field
+                    name="title_description_padding_horizontal"
+                    type="text"
+                    default="10"
+                    label="SLIDEDESC_HORIZONTALPAD"
+                    description="SLIDEDESC_HORIZONTALPAD_DESC" />
+
+                <field
+                    type="spacer"
+                    name="slidesdescription_titleoptions_spacer"
+                    label="SLIDESDESCRIPTION_TITLEOPTIONS_LABEL" />
+
+                <field
+                    name="title_show"
+                    type="list"
+                    label="SHOW_TITLE"
+                    description="SHOW_TITLE_DESC"
+                    default="1">
+
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                    name="title_width"
+                    type="text"
+                    default="300"
+                    label="SLIDETITLE_WIDTH"
+                    description="SLIDETITLE_WIDTH_DESC" />
+
+                <field
+                    name="title_height"
+                    type="text"
+                    default="50"
+                    label="SLIDETITLE_HEIGHT"
+                    description="SLIDETITLE_HEIGHT_DESC" />
+
+                <field
+                    name="title_color_flag"
+                    type="list"
+                    label="TITLE_COLOR_LABEL"
+                    description="TITLE_COLOR_LABEL_DESC"
+                    default="1">
+
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                    name="title_color"
+                    type="colorpicker"
+                    label="TITLE_PICKER_COLOR_LABEL"
+                    description="TITLE_PICKER_COLOR_LABEL_DESC"
+                    default="FFFFFF" />
+
+                <field
+                    name="title_bgcolor_flag"
+                    type="list"
+                    label="TITLE_BG_COLOR_LABEL"
+                    description="TITLE_BG_COLOR_LABEL_DESC"
+                    default="1">
+
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                    name="title_bgcolor"
+                    type="colorpicker"
+                    label="TITLE_BGPICKER_COLOR_LABEL"
+                    description="TITLE_BGPICKER_COLOR_LABEL_DESC"
+                    default="#000000" />
+
+                <field
+                    name="title_bgcolor_opacity"
+                    type="slider"
+                    label="RANGESLIDER_TITLE"
+                    description="RANGESLIDER_TITLE_DESC"
+                    default="70" />
+
+                <field
+                    name="title_effect"
+                    type="groupedlist"
+                    default="none"
+                    label="EFFECT_TITLE"
+                    description="EFFECT_TITLE_DESC">
+
+                    <option value="none">TEXT_EFFECT_NONE</option>
+                    <group label="TEXT_EFFECT_GROUP_ATTENTION">
+                        <option value="attention_bounce">TEXT_EFFECT_BOUNCE</option>
+                        <option value="attention_flash">TEXT_EFFECT_FLASH</option>
+                        <option value="attention_pulse">TEXT_EFFECT_PULSE</option>
+                        <option value="attention_rubberBand">TEXT_EFFECT_RUBBERBAND</option>
+                        <option value="attention_shake">TEXT_EFFECT_SHAKE</option>
+                        <option value="attention_swing">TEXT_EFFECT_SWING</option>
+                        <option value="attention_tada">TEXT_EFFECT_TADA</option>
+                        <option value="attention_wobble">TEXT_EFFECT_WOBBLE</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_BOUNCING_ENTRANCES">
+                        <option value="bounceIn">TEXT_EFFECT_BOUNCEIN</option>
+                        <option value="bounceInDown">TEXT_EFFECT_BOUNCEINDOWN</option>
+                        <option value="bounceInLeft">TEXT_EFFECT_BOUNCEINLEFT</option>
+                        <option value="bounceInRight">TEXT_EFFECT_BOUNCEINRIGHT</option>
+                        <option value="bounceInUp">TEXT_EFFECT_BOUNCEINUP</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_FADING_ENTRANCES">
+                        <option value="fadeIn">TEXT_EFFECT_FADEIN</option>
+                        <option value="fadeInDown">TEXT_EFFECT_FADEINDOWN</option>
+                        <option value="fadeInDownBig">TEXT_EFFECT_FADEINDOWNBIG</option>
+                        <option value="fadeInLeft">TEXT_EFFECT_FADEINLEFT</option>
+                        <option value="fadeInLeftBig">TEXT_EFFECT_FADEINLEFTBIG</option>
+                        <option value="fadeInRight">TEXT_EFFECT_FADEINRIGHT</option>
+                        <option value="fadeInRightBig">TEXT_EFFECT_FADEINRIGHTBIG</option>
+                        <option value="fadeInUp">TEXT_EFFECT_FADEINUP</option>
+                        <option value="fadeInUpBig">TEXT_EFFECT_FADEINUPBIG</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_FLIPPERS">
+                        <option value="flip">TEXT_EFFECT_FLIP</option>
+                        <option value="flipInX">TEXT_EFFECT_FLIPINX</option>
+                        <option value="flipInXFaded">TEXT_EFFECT_FLIPINXFADED</option>
+                        <option value="flipInY">TEXT_EFFECT_FLIPINY</option>
+                        <option value="flipInYFaded">TEXT_EFFECT_FLIPINYFADED</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_ROTATING_ENTRANCES">
+                        <option value="rotateIn">TEXT_EFFECT_ROTATEIN</option>
+                        <option value="rotateInDownLeft">TEXT_EFFECT_ROTATEINDOWNLEFT</option>
+                        <option value="rotateInDownRight">TEXT_EFFECT_ROTATEINDOWNRIGHT</option>
+                        <option value="rotateInUpLeft">TEXT_EFFECT_ROTATEINUPLEFT</option>
+                        <option value="rotateInUpRight">TEXT_EFFECT_ROTATEINUPRIGHT</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_ZOOMING_ENTRANCES">
+                        <option value="zoomIn">TEXT_EFFECT_ZOOMIN</option>
+                        <option value="zoomInDown">TEXT_EFFECT_ZOOMINDOWN</option>
+                        <option value="zoomInLeft">TEXT_EFFECT_ZOOMINLEFT</option>
+                        <option value="zoomInRight">TEXT_EFFECT_ZOOMINRIGHT</option>
+                        <option value="zoomInUp">TEXT_EFFECT_ZOOMINUP</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_SLIDING_ENTRANCES">
+                        <option value="slideInDown">TEXT_EFFECT_SLIDEINDOWN</option>
+                        <option value="slideInLeft">TEXT_EFFECT_SLIDEINLEFT</option>
+                        <option value="slideInRight">TEXT_EFFECT_SLIDEINRIGHT</option>
+                        <option value="slideInUp">TEXT_EFFECT_SLIDEINUP</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_LIGHTSPEED">
+                        <option value="rollIn">TEXT_EFFECT_ROLLIN</option>
+                        <option value="lightSpeedIn">TEXT_EFFECT_LIGHTSPEEDIN</option>
+                    </group>
+                </field>
+
+                <field
+                    name="title_tag"
+                    type="list"
+                    default="h4"
+                    label="TAG_FOR_TITLE"
+                    description="TAG_FOR_TITLE_DESC" >
+
+                    <option value="p">p</option>
+                    <option value="h1">h1</option>
+                    <option value="h2">h2</option>
+                    <option value="h3">h3</option>
+                    <option value="h4">h4</option>
+                    <option value="h5">h5</option>
+                    <option value="h6">h6</option>
+                    <option value="div">div</option>
+                </field>
+
+                <field
+                    type="spacer"
+                    name="text_animation_options_spacer"
+                    label="SLIDESDESCRIPTION_DESCRIPTIONOPTIONS_LABEL" />
+
+                <field
+                    name="description_show"
+                    type="list"
+                    label="SHOW_DESCRIPTION"
+                    description="SHOW_DESCRIPTION_DESC"
+                    default="1">
+
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                    name="description_width"
+                    type="text"
+                    default="300"
+                    label="SLIDEDESCRIPTION_WIDTH"
+                    description="SLIDEDESCRIPTION_WIDTH_DESC" />
+
+                <field
+                    name="description_height"
+                    type="text"
+                    default="100"
+                    label="SLIDEDESCRIPTION_HEIGHT"
+                    description="SLIDEDESCRIPTION_HEIGHT_DESC" />
+
+                <field
+                    name="description_color_flag"
+                    type="list"
+                    label="DESCRIPTION_COLOR_LABEL"
+                    description="DESCRIPTION_COLOR_LABEL_DESC"
+                    default="1">
+
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                    name="description_color"
+                    type="colorpicker"
+                    label="DESCRIPTION_PICKER_COLOR_LABEL"
+                    description="DESCRIPTION_PICKER_COLOR_LABEL_DESC"
+                    default="#FFFFFF" />
+
+                <field
+                    name="description_bgcolor_flag"
+                    type="list"
+                    label="DESCRIPTION_BG_COLOR_LABEL"
+                    description="DESCRIPTION_BG_COLOR_LABEL_DESC"
+                    default="1">
+
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                    name="description_bgcolor"
+                    type="colorpicker"
+                    label="DESCRIPTION_BGPICKER_COLOR_LABEL"
+                    description="DESCRIPTION_BGPICKER_COLOR_LABEL_DESC"
+                    default="#000000" />
+
+                <field
+                    name="description_bgcolor_opacity"
+                    type="slider"
+                    label="RANGESLIDER_DESCRIPTION"
+                    description="RANGESLIDER_DESCRIPTION_DESC"
+                    default="70" />
+
+                <field
+                    name="description_effect"
+                    type="groupedlist"
+                    default="none"
+                    label="EFFECT_TITLE"
+                    description="EFFECT_TITLE_DESC">
+
+                    <option value="none">TEXT_EFFECT_NONE</option>
+                    <group label="TEXT_EFFECT_GROUP_ATTENTION">
+                        <option value="attention_bounce">TEXT_EFFECT_BOUNCE</option>
+                        <option value="attention_flash">TEXT_EFFECT_FLASH</option>
+                        <option value="attention_pulse">TEXT_EFFECT_PULSE</option>
+                        <option value="attention_rubberBand">TEXT_EFFECT_RUBBERBAND</option>
+                        <option value="attention_shake">TEXT_EFFECT_SHAKE</option>
+                        <option value="attention_swing">TEXT_EFFECT_SWING</option>
+                        <option value="attention_tada">TEXT_EFFECT_TADA</option>
+                        <option value="attention_wobble">TEXT_EFFECT_WOBBLE</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_BOUNCING_ENTRANCES">
+                        <option value="bounceIn">TEXT_EFFECT_BOUNCEIN</option>
+                        <option value="bounceInDown">TEXT_EFFECT_BOUNCEINDOWN</option>
+                        <option value="bounceInLeft">TEXT_EFFECT_BOUNCEINLEFT</option>
+                        <option value="bounceInRight">TEXT_EFFECT_BOUNCEINRIGHT</option>
+                        <option value="bounceInUp">TEXT_EFFECT_BOUNCEINUP</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_FADING_ENTRANCES">
+                        <option value="fadeIn">TEXT_EFFECT_FADEIN</option>
+                        <option value="fadeInDown">TEXT_EFFECT_FADEINDOWN</option>
+                        <option value="fadeInDownBig">TEXT_EFFECT_FADEINDOWNBIG</option>
+                        <option value="fadeInLeft">TEXT_EFFECT_FADEINLEFT</option>
+                        <option value="fadeInLeftBig">TEXT_EFFECT_FADEINLEFTBIG</option>
+                        <option value="fadeInRight">TEXT_EFFECT_FADEINRIGHT</option>
+                        <option value="fadeInRightBig">TEXT_EFFECT_FADEINRIGHTBIG</option>
+                        <option value="fadeInUp">TEXT_EFFECT_FADEINUP</option>
+                        <option value="fadeInUpBig">TEXT_EFFECT_FADEINUPBIG</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_FLIPPERS">
+                        <option value="flip">TEXT_EFFECT_FLIP</option>
+                        <option value="flipInX">TEXT_EFFECT_FLIPINX</option>
+                        <option value="flipInXFaded">TEXT_EFFECT_FLIPINXFADED</option>
+                        <option value="flipInY">TEXT_EFFECT_FLIPINY</option>
+                        <option value="flipInYFaded">TEXT_EFFECT_FLIPINYFADED</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_ROTATING_ENTRANCES">
+                        <option value="rotateIn">TEXT_EFFECT_ROTATEIN</option>
+                        <option value="rotateInDownLeft">TEXT_EFFECT_ROTATEINDOWNLEFT</option>
+                        <option value="rotateInDownRight">TEXT_EFFECT_ROTATEINDOWNRIGHT</option>
+                        <option value="rotateInUpLeft">TEXT_EFFECT_ROTATEINUPLEFT</option>
+                        <option value="rotateInUpRight">TEXT_EFFECT_ROTATEINUPRIGHT</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_ZOOMING_ENTRANCES">
+                        <option value="zoomIn">TEXT_EFFECT_ZOOMIN</option>
+                        <option value="zoomInDown">TEXT_EFFECT_ZOOMINDOWN</option>
+                        <option value="zoomInLeft">TEXT_EFFECT_ZOOMINLEFT</option>
+                        <option value="zoomInRight">TEXT_EFFECT_ZOOMINRIGHT</option>
+                        <option value="zoomInUp">TEXT_EFFECT_ZOOMINUP</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_SLIDING_ENTRANCES">
+                        <option value="slideInDown">TEXT_EFFECT_SLIDEINDOWN</option>
+                        <option value="slideInLeft">TEXT_EFFECT_SLIDEINLEFT</option>
+                        <option value="slideInRight">TEXT_EFFECT_SLIDEINRIGHT</option>
+                        <option value="slideInUp">TEXT_EFFECT_SLIDEINUP</option>
+                    </group>
+                    <group label="TEXT_EFFECT_GROUP_LIGHTSPEED">
+                        <option value="rollIn">TEXT_EFFECT_ROLLIN</option>
+                        <option value="lightSpeedIn">TEXT_EFFECT_LIGHTSPEEDIN</option>
+                    </group>
+                </field>
+
+                <field
+                    name="description_tag"
+                    type="list"
+                    default="div"
+                    label="TAG_FOR_DESCRIPTION"
+                    description="TAG_FOR_DESCRIPTION_DESC" >
+
+                    <option value="h1">h1</option>
+                    <option value="h2">h2</option>
+                    <option value="h3">h3</option>
+                    <option value="h4">h4</option>
+                    <option value="h5">h5</option>
+                    <option value="h6">h6</option>
+                    <option value="p">p</option>
+                    <option value="div">div</option>
+                </field>
+            </fieldset>
+
+            <fieldset
+                name="navigationoptions"
+                label="NAVIGATION_OPTIONS_LABEL" >
+
+                <field
+                    type="spacer"
+                    name="navigation_bar_spacer"
+                    label="NAVIGATIONBAR_SPACER_LABEL" />
+
+                <field
+                    name="navigation_show"
+                    type="list"
+                    default="2"
+                    label="NAVIGATIONDOTS"
+                    description="NAVIGATIONDOTS_DESC">
+
+                    <option value="2">ALWAYS_DOTS</option>
+                    <option value="0">NO_DOTS</option>
+                    <option value="1">ONHOVER_DOTS</option>
+                </field>
+
+                <field
+                    name="navigation_shownumbers"
+                    type="list"
+                    label="NAVIGATIONNUMBERS"
+                    description="NAVIGATIONNUMBERS_DESC"
+                    default="0" >
+
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                    name="navigation_orientation"
+                    type="list"
+                    default="horizontal"
+                    label="ORIENTATIONDOTS"
+                    description="ORIENTATIONDOTS_DESC" >
+
+                    <option value="horizontal">HORIZONTAL_DOTS</option>
+                    <option value="vertical">VERTICAL_DOTS</option>
+                </field>
+
+                <field
+                    name="navigation_align_horizontal"
+                    type="list"
+                    default="center"
+                    label="HORIZONTALALIGNDOTS"
+                    description="HORIZONTALALIGNDOTS_DESC" >
+
+                    <option value="center">HORIZONTALALIGNDOTS_CENTER</option>
+                    <option value="left">HORIZONTALALIGNDOTS_LEFT</option>
+                    <option value="right">HORIZONTALALIGNDOTS_RIGHT</option>
+                </field>
+
+                <field
+                    name="navigation_align_vertical"
+                    type="list"
+                    default="bottom"
+                    label="VERTICALALIGNDOTS"
+                    description="VERTICALALIGNDOTS_DESC" >
+
+                    <option value="top">VERTICALALIGNDOTS_TOP</option>
+                    <option value="bottom">VERTICALALIGNDOTS_BOTTOM</option>
+                    <option value="center">VERTICALALIGNDOTS_CENTER</option>
+                </field>
+
+                <field
+                    name="navigation_padding_horizontal"
+                    type="text"
+                    default="10"
+                    label="HORIZONTALPADDING_DOTS"
+                    description="HORIZONTALPADDING_DOTS_DESC" />
+
+                <field
+                    name="navigation_padding_vertical"
+                    type="text"
+                    default="10"
+                    label="VERTICALPADDING_DOTS"
+                    description="VERTICALPADDING_DOTS_DESC" />
+
+                <field
+                    name="navigation_effect_theme"
+                    type="list"
+                    default="theme0"
+                    label="NAVIGATION_EFFECT_THEME"
+                    description="NAVIGATION_EFFECT_THEME_DESC">
+
+                    <option value="none">NAVIGATION_EFFECT_THEME_NONE</option>
+                    <option value="default">NAVIGATION_EFFECT_THEME_DEFAULT</option>
+                    <option value="theme0">NAVIGATION_EFFECT_THEME_0</option>
+                    <option value="theme1">NAVIGATION_EFFECT_THEME_1</option>
+                    <option value="theme2">NAVIGATION_EFFECT_THEME_2</option>
+                    <option value="theme3">NAVIGATION_EFFECT_THEME_3</option>
+                    <option value="theme4">NAVIGATION_EFFECT_THEME_4</option>
+                    <option value="theme5">NAVIGATION_EFFECT_THEME_5</option>
+                </field>
+
+                <field
+                    name="navigation_theme_shape"
+                    type="list"
+                    default="round"
+                    label="NAVIGATIONTHEME_SHAPE"
+                    description="NAVIGATIONTHEME_SHAPE_DESC">
+
+                    <option value="none">NAVIGATIONTHEME_SHAPE_NONE</option>
+                    <option value="round">NAVIGATIONTHEME_SHAPE_ROUND</option>
+                    <option value="square">NAVIGATIONTHEME_SHAPE_SQUARE</option>
+                </field>
+
+                <field
+                    name="navigation_dots_color"
+                    type="colorpicker"
+                    label="NAVIGATION_PICKER_DOTS_COLOR_LABEL"
+                    description="NAVIGATION_PICKER_DOTS_COLOR_LABEL_DESC"
+                    default="FFFFFF" />
+
+                <field
+                    name="navigation_dots_numbers_color"
+                    type="colorpicker"
+                    label="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL"
+                    description="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL_DESC"
+                    default="777" />
+
+                <field
+                    name="navigation_activedots_color"
+                    type="colorpicker"
+                    label="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL"
+                    description="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL_DESC"
+                    default="000000" />
+
+                <field
+                    name="navigation_opacity"
+                    type="slider"
+                    default="50"
+                    label="NAVIGATION_OPACITY"
+                    description="NAVIGATION_OPACITY_DESC" />
+
+                <field
+                    name="navigation_custom_dot"
+                    type="media"
+                    directory=""
+                    preview="true"
+                    label="NAVIGATION_CUSTOMDOT"
+                    description="NAVIGATION_CUSTOMDOT_DESC" />
+
+                <field
+                    name="navigation_custom_dothover"
+                    type="media"
+                    directory=""
+                    preview="true"
+                    label="NAVIGATION_CUSTOMDOTHOVER"
+                    description="NAVIGATION_CUSTOMDOTHOVER_DESC" />
+
+                <field
+                    name="navigation_custom_dotactive"
+                    type="media"
+                    directory=""
+                    preview="true"
+                    label="NAVIGATION_CUSTOMDOTACTIVE"
+                    description="NAVIGATION_CUSTOMDOTACTIVE_DESC" />
+
+                <field
+                    type="spacer"
+                    name="prenextbutton_bar_spacer"
+                    label="PRENEXTBUTTON_SPACER_LABEL" />
+
+                <field
+                    name="navigation_buttons_show"
+                    type="list"
+                    default="2"
+                    label="NAVIGATIONARROWS"
+                    description="NAVIGATIONARROWS_DESC" >
+
+                    <option value="2">ALWAYS_ARROWS</option>
+                    <option value="0">NO_ARROWS</option>
+                    <option value="1">ONHOVER_ARROWS</option>
+                </field>
+
+                <field
+                    name="buttons_theme"
+                    type="list"
+                    default="theme2"
+                    label="NAVIGATION_BUTTONS_THEME"
+                    description="NAVIGATION_BUTTONS_THEME_DESC">
+
+                    <option value="none">NAVIGATION_BUTTONS_THEME_NONE</option>
+                    <option value="theme1">NAVIGATION_BUTTONS_THEME_1</option>
+                    <option value="theme2">NAVIGATION_BUTTONS_THEME_2</option>
+                    <option value="theme3">NAVIGATION_BUTTONS_THEME_3</option>
+                </field>
+
+                <field
+                    name="navigation_buttons_color"
+                    type="colorpicker"
+                    label="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL"
+                    description="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL_DESC"
+                    default="666" />
+
+                <field
+                    name="navigation_buttonshover_color"
+                    type="colorpicker"
+                    label="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL"
+                    description="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL_DESC"
+                    default="FFF" />
+
+                <field
+                    name="navigation_buttons_opacity"
+                    type="slider"
+                    default="80"
+                    label="NAVIGATION_OPACITY"
+                    description="NAVIGATION_OPACITY_DESC" />
+
+                <field
+                    name="navigation_buttons_custom_previous"
+                    type="media"
+                    directory=""
+                    preview="true"
+                    label="NAVIGATIONBUTTONS_CUSTOMPREVIOUS"
+                    description="NAVIGATIONBUTTONS_CUSTOMPREVIOUS_DESC" />
+
+                <field
+                    name="navigation_buttons_custom_previoushover"
+                    type="media"
+                    directory=""
+                    preview="true"
+                    label="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER"
+                    description="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER_DESC" />
+
+                <field
+                    name="navigation_buttons_custom_next"
+                    type="media"
+                    directory=""
+                    preview="true"
+                    label="NAVIGATIONBUTTONS_CUSTOMNEXT"
+                    description="NAVIGATIONBUTTONS_CUSTOMNEXT_DESC" />
+
+                <field
+                    name="navigation_buttons_custom_nexthover"
+                    type="media"
+                    directory=""
+                    preview="true"
+                    label="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER"
+                    description="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER_DESC" />
+            </fieldset>
+
+            <fieldset
+                name="advanced"
+                label="ADVANCED_BOTH" >
+
+                <field
+                    type="spacer"
+                    name="module_advanced_spacer"
+                    label="MODULEADVANCED_SPACER_LABEL" />
+
+                <field
+                    name="moduleclass_sfx"
+                    type="text"
+                    label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                    description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+                <field
+                    name="container"
+                    type="textfilter"
+                    default=""
+                    label="CONTAINER"
+                    description="CONTAINER_DESC" />
+
+                <field
+                    type="spacer"
+                    name="javascript_advanced_spacer"
+                    label="JAVASCRIPTADVANCED_SPACER_LABEL" />
+
+                <field
+                    name="includejquery"
+                    type="radio"
+                    default="off"
+                    label="INCLUDE_JQUERY"
+                    description="INCLUDE_JQUERY_DESC" >
+
+                    <option value="on">JQUERYON</option>
+                    <option value="off">JQUERYOFF</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+
+    <updateservers>
+        <server type="extension" priority="1" name="JSShackSlides Pro"><![CDATA[https://deploy.ostraining.com/client/update/pro/stable/mod_jsshackslides]]></server>
+    </updateservers>
+
+    <alledia>
+        <element publish="true">jsshackslides</element>
+        <namespace>JSShackSlides</namespace>
+        <license>pro</license>
+        <targetplatform>3.*</targetplatform>
+        <relatedExtensions>
+            <extension
+                type="library"
+                element="allediaframework">AllediaFramework</extension>
+
+            <extension
+                type="plugin"
+                group="system"
+                element="ossystem"
+                publish="true"
+                ordering="first">OSSystem</extension>
+
+            <extension
+                type="plugin"
+                group="system"
+                element="osmylicensesmanager"
+                publish="true"
+                ordering="last">OSMyLicensesManager</extension>
+
+            <extension
+                type="component"
+                element="com_jsvisionary">com_jsvisionary</extension>
+
+            <extension
+                type="module"
+                element="mod_jsvisionary">mod_jsvisionary</extension>
+
+            <extension
+                type="plugin"
+                group="system"
+                element="plg_jsvisionary"
+                publish="true">plg_jsvisionary</extension>
+        </relatedExtensions>
+        <include>AllediaFreeDefaultFiles</include>
+        <obsolete>
+            <file>language/en-GB/en-GB.mod_jsshackslides.ini</file>
+            <file>language/es-ES/es-ES.mod_jsshackslides.ini</file>
+        </obsolete>
+    </alledia>
+</extension>

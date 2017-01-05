@@ -1,0 +1,24 @@
+{
+    "name"             : "joomlashack/jsshackslides",
+    "description"      : "JSShackSlides",
+    "minimum-stability": "stable",
+    "license"          : "GPL-2+",
+    "type"             : "joomla.module",
+    "extra"            : {
+        "element"        : "mod_jsshackslides",
+        "element-short"  : "jsshackslides",
+        "name"           : "JSShackSlides",
+        "client"         : "site",
+        "package-license": "pro",
+        "target-platform": "3.*"
+    },
+    "authors"          : [
+        {
+            "name" : "Joomlashack",
+            "email": "help@joomlashack.com"
+        }
+    ],
+    "require"          : {
+        "php"       : ">= 5.3"
+    }
+}
