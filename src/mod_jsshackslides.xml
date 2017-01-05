@@ -1003,17 +1003,20 @@
 
             <extension
                 type="component"
-                element="com_jsvisionary">com_jsvisionary</extension>
+                element="com_jsvisionary"
+                uninstall="true">com_jsvisionary</extension>
 
             <extension
                 type="module"
-                element="mod_jsvisionary">mod_jsvisionary</extension>
+                element="mod_jsvisionary"
+                uninstall="true">mod_jsvisionary</extension>
 
             <extension
                 type="plugin"
                 group="system"
                 element="plg_jsvisionary"
-                publish="true">plg_jsvisionary</extension>
+                publish="true"
+                uninstall="true">plg_jsvisionary</extension>
         </relatedExtensions>
         <include>AllediaFreeDefaultFiles</include>
         <obsolete>
