@@ -974,7 +974,7 @@
     </config>
 
     <updateservers>
-        <server type="extension" priority="1" name="JSShackSlides Pro"><![CDATA[https://deploy.ostraining.com/client/update/pro/stable/mod_jsshackslides]]></server>
+        <server type="extension" priority="1" name="ShackSlides Pro"><![CDATA[https://deploy.ostraining.com/client/update/pro/stable/mod_jsshackslides]]></server>
     </updateservers>
 
     <alledia>
