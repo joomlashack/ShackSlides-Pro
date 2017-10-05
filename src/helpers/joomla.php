@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     Shackslides
+ * @package     ShackSlides
  * @subpackage  Helper
  *
  * @copyright   Copyright (C) 2010 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
@@ -19,7 +19,7 @@ JLoader::import('helpers.route', JPATH_SITE . '/components/com_content');
 /**
  * Joomla Helper class
  *
- * @package     Shackslides
+ * @package     ShackSlides
  * @subpackage  Joomla Helper Class
  * @since       2.0
  */

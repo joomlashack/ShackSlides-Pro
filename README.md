@@ -1,9 +1,9 @@
 [![Joomlashack](https://www.joomlashack.com/images/logo_circle_small.png)](https://www.joomlashack.com)
 
-JS Shackslides
+ShackSlides
 =============
 
-You can create beautiful slideshows with the Shackslides module for Joomla.
+You can create beautiful slideshows with the ShackSlides module for Joomla.
 
 ## Requirements
 

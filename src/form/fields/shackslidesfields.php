@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     Shackslides
+ * @package     ShackSlides
  * @subpackage  Fields
  *
  * @copyright   Copyright (C) 2010 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
@@ -40,9 +40,9 @@ JHtml::script('mod_jsshackslides/shackslides.fields.js', false, true);
  * @subpackage  Parameters
  * @since       3.0
  */
-class JFormFieldShackslidesFields extends JFormFieldSpacer
+class JFormFieldShackSlidesFields extends JFormFieldSpacer
 {
-    public $type = 'ShackslidesFields';
+    public $type = 'ShackSlidesFields';
 
     /**
      * Method to get the field label markup for a spacer.

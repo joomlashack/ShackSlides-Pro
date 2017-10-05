@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     Shackslides
+ * @package     ShackSlides
  * @subpackage  Helper
  *
  * @copyright   Copyright (C) 2010 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
@@ -13,9 +13,9 @@ defined('_JEXEC') or die('Restricted access');
 define("NOIMAGEFOUND_IMG", "media/mod_jsshackslides/images/noimagefound.png");
 
 /**
- * Main Shackslides Helper class
+ * Main ShackSlides Helper class
  *
- * @package     Shackslides
+ * @package     ShackSlides
  * @subpackage  Main Helper Class
  * @since       2.0
  */
