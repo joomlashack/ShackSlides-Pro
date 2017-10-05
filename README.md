@@ -1,9 +1,9 @@
 [![Joomlashack](https://www.joomlashack.com/images/logo_circle_small.png)](https://www.joomlashack.com)
 
-Mod JS Shackslides
+JS Shackslides
 =============
 
-Part of the JSVisionary
+You can create beautiful slideshows with the Shackslides module for Joomla.
 
 ## Requirements
 
