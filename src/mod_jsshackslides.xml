@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.5" type="module" method="upgrade">
+<extension version="3.5" type="module" client="site" method="upgrade">
     <name>MOD_JSSHACKSLIDES</name>
     <author>Joomlashack</author>
     <creationDate>January 06 2017</creationDate>
