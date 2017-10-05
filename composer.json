@@ -1,13 +1,13 @@
 {
-    "name"             : "joomlashack/jsshackslides",
-    "description"      : "JSShackSlides",
+    "name"             : "joomlashack/shackslides",
+    "description"      : "ShackSlides",
     "minimum-stability": "stable",
     "license"          : "GPL-2+",
     "type"             : "joomla.module",
     "extra"            : {
         "element"        : "mod_jsshackslides",
         "element-short"  : "jsshackslides",
-        "name"           : "JSShackSlides",
+        "name"           : "ShackSlides",
         "client"         : "site",
         "package-license": "pro",
         "target-platform": "3.*"
