@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.5" type="module" client="site" method="upgrade">
+<extension version="3.7" type="module" client="site" method="upgrade">
     <name>MOD_JSSHACKSLIDES</name>
     <author>Joomlashack</author>
     <creationDate>October 06 2017</creationDate>
@@ -978,7 +978,9 @@
         <namespace>JSShackSlides</namespace>
         <name>ShackSlides</name>
         <license>pro</license>
-        <targetplatform>3.*</targetplatform>
+        <targetplatform>3.7</targetplatform>
+        <phpminimum>5.6</phpminimum>
+
         <relatedExtensions>
             <extension
                 type="library"
@@ -1020,11 +1022,6 @@
         <obsolete>
             <file>language/en-GB/en-GB.mod_jsshackslides.ini</file>
             <file>language/es-ES/es-ES.mod_jsshackslides.ini</file>
-
-            <extension
-                type="module"
-                element="mod_jsvisionary">mod_jsvisionary</extension>
-
         </obsolete>
     </alledia>
 </extension>
