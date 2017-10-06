@@ -976,6 +976,7 @@
     <alledia>
         <element publish="true">mod_jsshackslides</element>
         <namespace>JSShackSlides</namespace>
+        <name>ShackSlides</name>
         <license>pro</license>
         <targetplatform>3.*</targetplatform>
         <relatedExtensions>
