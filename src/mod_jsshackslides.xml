@@ -1009,6 +1009,12 @@
                 element="jsvisionary"
                 publish="true"
                 uninstall="true">plg_jsvisionary</extension>
+
+            <extension
+                type="module"
+                element="jsvisionary"
+                publish="false"
+                uninstall="true">mod_jsvisionary</extension>
         </relatedExtensions>
         <include>AllediaFreeDefaultFiles</include>
         <obsolete>
