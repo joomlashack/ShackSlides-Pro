@@ -1000,7 +1000,7 @@
 
             <extension
                 type="component"
-                element="com_jsvisionary"
+                element="jsvisionary"
                 uninstall="true">com_jsvisionary</extension>
 
             <extension
