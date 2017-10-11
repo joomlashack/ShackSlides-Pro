@@ -6,6 +6,4 @@ project.AllediaFreeDefaultFiles.path=/path/to/AllediaFreeDefaultFiles
 project.OSSystem.path=/path/to/OSSystem
 project.OSMyLicensesManager.path=/path/to/OSMyLicensesManager
 project.com_jsvisionary.path=/path/to/com_jsvisionary
-project.mod_jsvisionary.path=/path/to/mod_jsvisionary
-project.plg_jsvisionary.path=/path/to/plg_jsvisionary
 project.hasFreeVersion=0
