@@ -170,8 +170,6 @@ $defaults = array(
     // ADVANCED OPTIONS
     // id for the slider container
     'container' => '',
-    // Include JQuery
-    'includejquery' => 'off',
     // RTL SUPPORT
     'language_rtl_enable' => 'false',
     // TEMPLATE CUSTOM OPTIONS
@@ -195,20 +193,7 @@ foreach ($defaults as $key => $default) {
 $settings['resize_events'] = '';
 
 // Load jQuery
-if (version_compare(JVERSION, '3.0', '<') == 1) {
-    // Load local file if Joomla < 3
-    if (!JFactory::getApplication()->get('jquery')) {
-        JFactory::getApplication()->set('jquery', true);
-
-        if ($settings['includejquery'] == 'on') {
-            JHtml::script('mod_jsshackslides/jquery-1.11.2.min.js', false, true);
-            $doc->addScriptDeclaration('jQuery.noConflict();');
-        }
-    }
-} else {
-    // Load jQuery Framework if Joomla >= 3
-    JHTML::_('jquery.framework');
-}
+JHTML::_('jquery.framework');
 
 JHtml::stylesheet('mod_jsshackslides/owl.carousel.min.css', array(), true);
 JHtml::stylesheet('mod_jsshackslides/animate.min.css', array(), true);

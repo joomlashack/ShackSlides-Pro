@@ -950,21 +950,6 @@
                     label="CONTAINER"
                     description="CONTAINER_DESC"/>
 
-                <field
-                    type="spacer"
-                    name="javascript_advanced_spacer"
-                    label="JAVASCRIPTADVANCED_SPACER_LABEL"/>
-
-                <field
-                    name="includejquery"
-                    type="radio"
-                    default="off"
-                    label="INCLUDE_JQUERY"
-                    description="INCLUDE_JQUERY_DESC">
-
-                    <option value="on">JQUERYON</option>
-                    <option value="off">JQUERYOFF</option>
-                </field>
             </fieldset>
         </fields>
     </config>
