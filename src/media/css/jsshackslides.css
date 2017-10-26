@@ -10,7 +10,7 @@
 }
 .jss-slider .owl-carousel .jss-image .jss-image-int {
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover !important;
 	background-position: center center;
 	width: 100%;
 	height: 100%;
