@@ -47,6 +47,6 @@ class JFormFieldInformation extends JFormFieldSpacer
      */
     protected function getInput()
     {
-        return '<br /><br />' . JText::_($this->description);
+        return JText::_($this->description);
     }
 }
