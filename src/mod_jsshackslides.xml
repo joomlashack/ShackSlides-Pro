@@ -189,45 +189,42 @@
                        label="SHACKSLIDE_SOURCE"
                        description="SHACKSLIDE_SOURCE_DESC"/>
 
-                <field type="spacer"
-                       name="slidessources_sourceconfiguration_spacer"
-                       label="SLIDESSOURCES_SOURCESCONFIGURATION_LABEL"/>
-
                 <field name="folder_folder"
                        type="directory"
                        default="images"
                        directory="images"
                        label="FOLDER"
-                       description="FOLDER_DESC"/>
+                       description="FOLDER_DESC"
+                       showon="source:folder"/>
 
                 <field name="joomla_category"
                        type="category"
                        extension="com_content"
                        default="1"
                        label="CATEGORY"
-                       description="CATEGORY_DESC"/>
+                       description="CATEGORY_DESC"
+                       showon="source:joomla"/>
 
                 <field name="k2_category"
                        type="k2category"
                        default="0"
                        label="K2_CATEGORY"
-                       description="K2_CATEGORY_DESC"/>
+                       description="K2_CATEGORY_DESC"
+                       showon="source:k2"/>
 
                 <field name="visionary_collection"
                        type="visionarycollection"
                        default=""
                        label="VISIONARYCOLLECTION"
-                       description="VISIONARYCOLLECTION_DESC"/>
-
-                <field type="spacer"
-                       name="slidessources_sourceoptions_spacer"
-                       label="SLIDESSOURCES_SOURCEOPTIONS_LABEL"/>
+                       description="VISIONARYCOLLECTION_DESC"
+                       showon="source:visionary"/>
 
                 <field name="joomla_image_source_type"
                        type="list"
                        default="intro"
                        label="JOOMLA_IMAGE_SOURCE_TYPE"
-                       description="JOOMLA_IMAGE_SOURCE_TYPE_DESC">
+                       description="JOOMLA_IMAGE_SOURCE_TYPE_DESC"
+                       showon="source:joomla">
 
                     <option value="intro">JOOMLA_IMAGE_SOURCE_INTROIMG</option>
                     <option value="full">JOOMLA_IMAGE_SOURCE_FULLARTI</option>
@@ -238,8 +235,8 @@
                        type="list"
                        default="exclude"
                        label="FEATURED"
-                       description="FEATURED_DESC">
-
+                       description="FEATURED_DESC"
+                       showon="source:joomla">
                     <option value="exclude">FEATURED_EXCLUDE</option>
                     <option value="include">FEATURED_INCLUDE</option>
                     <option value="only">FEATURED_ONLYFF</option>
