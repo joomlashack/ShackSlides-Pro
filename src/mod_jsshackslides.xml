@@ -361,7 +361,7 @@
                 </field>
 
                 <field name="title_color"
-                       type="colorpicker"
+                       type="color"
                        label="TITLE_PICKER_COLOR_LABEL"
                        description="TITLE_PICKER_COLOR_LABEL_DESC"
                        default="FFFFFF"/>
@@ -377,7 +377,7 @@
                 </field>
 
                 <field name="title_bgcolor"
-                       type="colorpicker"
+                       type="color"
                        label="TITLE_BGPICKER_COLOR_LABEL"
                        description="TITLE_BGPICKER_COLOR_LABEL_DESC"
                        default="#000000"/>
@@ -509,7 +509,7 @@
                 </field>
 
                 <field name="description_color"
-                       type="colorpicker"
+                       type="color"
                        label="DESCRIPTION_PICKER_COLOR_LABEL"
                        description="DESCRIPTION_PICKER_COLOR_LABEL_DESC"
                        default="#FFFFFF"/>
@@ -525,7 +525,7 @@
                 </field>
 
                 <field name="description_bgcolor"
-                       type="colorpicker"
+                       type="color"
                        label="DESCRIPTION_BGPICKER_COLOR_LABEL"
                        description="DESCRIPTION_BGPICKER_COLOR_LABEL_DESC"
                        default="#000000"/>
@@ -720,19 +720,19 @@
                 </field>
 
                 <field name="navigation_dots_color"
-                       type="colorpicker"
+                       type="color"
                        label="NAVIGATION_PICKER_DOTS_COLOR_LABEL"
                        description="NAVIGATION_PICKER_DOTS_COLOR_LABEL_DESC"
                        default="FFFFFF"/>
 
                 <field name="navigation_dots_numbers_color"
-                       type="colorpicker"
+                       type="color"
                        label="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL"
                        description="NAVIGATION_PICKER_DOTS_NUMBER_COLOR_LABEL_DESC"
                        default="777"/>
 
                 <field name="navigation_activedots_color"
-                       type="colorpicker"
+                       type="color"
                        label="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL"
                        description="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL_DESC"
                        default="000000"/>
@@ -792,13 +792,13 @@
                 </field>
 
                 <field name="navigation_buttons_color"
-                       type="colorpicker"
+                       type="color"
                        label="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL"
                        description="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL_DESC"
                        default="666"/>
 
                 <field name="navigation_buttonshover_color"
-                       type="colorpicker"
+                       type="color"
                        label="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL"
                        description="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL_DESC"
                        default="FFF"/>
@@ -899,10 +899,13 @@
         <include>AllediaFreeDefaultFiles</include>
 
         <obsolete>
+            <folder>media/mod_jsshackslides/js/jscolor</folder>
+
             <file>administrator/language/en-GB/en-GB.com_jsvisionary.ini</file>
             <file>administrator/language/en-GB/en-GB.com_jsvisionary.sys.ini</file>
             <file>language/en-GB/en-GB.mod_jsshackslides.ini</file>
             <file>language/es-ES/es-ES.mod_jsshackslides.ini</file>
+            <file>modules/mod_jsshackslides/form/fields/colorpicker.php</file>
         </obsolete>
     </alledia>
 </extension>
