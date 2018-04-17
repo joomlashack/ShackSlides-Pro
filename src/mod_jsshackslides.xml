@@ -903,7 +903,9 @@
             <file>language/es-ES/es-ES.mod_jsshackslides.ini</file>
             <file>media/mod_jsshackslides/js/shackslides.fields.js</file>
             <file>modules/mod_jsshackslides/form/fields/colorpicker.php</file>
+            <file>modules/mod_jsshackslides/form/fields/flexicategory.php</file>
             <file>modules/mod_jsshackslides/form/fields/shackslidesfields.php</file>
+            <file>modules/mod_jsshackslides/helpers/flexi.php</file>
         </obsolete>
     </alledia>
 </extension>
