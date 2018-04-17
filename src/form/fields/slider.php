@@ -8,31 +8,12 @@
  */
 
 // Restrict Access to within Joomla
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die();
 
-$doc = JFactory::getDocument();
-
-/**
- * Slider field
- *
- * @package     ShackSlides
- * @subpackage  Fields
- * @since       3.0
- */
-class JFormFieldSlider extends JFormField
+class ShackFormFieldSlider extends JFormField
 {
-    /**
-     * The form field type.
-     *
-     * @var    string
-     */
     protected $type = 'Slider';
 
-    /**
-     * Method to get the field input markup.
-     *
-     * @return  string  The field input markup.
-     */
     protected function getInput()
     {
         // Initialize some field attributes.
@@ -42,11 +23,15 @@ class JFormFieldSlider extends JFormField
         // Initialize JavaScript field attributes.
         $onchange = $this->onchange ? ' onchange="' . $this->onchange . '"' : '';
 
-        return '<input type="range" min="0" max="100" step="1" name="' . $this->name . '" id="' . $this->id . '" value="'
-            . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"' . $class . $disabled . $onchange
+        return '<input type="range" min="0" max="100" step="1"'
+            . ' name="' . $this->name . '" id="' . $this->id . '" value="'
+            . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"'
+            . $class . $disabled . $onchange
             . 'oninput="document.getElementById(\'rangeshow-' . $this->id . '\').value = this.value"'
             . ' />'
-            . '<input size="5" type="text" id="rangeshow-' . $this->id . '" name="rangeshow-' . $this->name . '" readonly="readonly" value="'
-            . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '" />';
+            . '<input size="5" type="text"'
+            . ' id="rangeshow-' . $this->id . '" name="rangeshow-' . $this->name . '" readonly="readonly"'
+            . ' value="' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '"'
+            . ' />';
     }
 }

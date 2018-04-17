@@ -142,7 +142,7 @@
                        label="SLIDER_OPTIONS_SPACER_LABEL"/>
 
                 <field name="width"
-                       type="information"
+                       type="shack.information"
                        label="CONTAINERWIDTH"
                        description="CONTAINERWIDTH_DESC"/>
 
@@ -184,13 +184,13 @@
             <fieldset name="source"
                       label="IMAGES_SOURCE_OPTIONS_LABEL">
                 <field name="source"
-                       type="imagesource"
+                       type="shack.imagesource"
                        default="folder"
                        label="SHACKSLIDE_SOURCE"
                        description="SHACKSLIDE_SOURCE_DESC"/>
 
                 <field name="folder_folder"
-                       type="directory"
+                       type="shack.directory"
                        default="images"
                        directory="images"
                        label="FOLDER"
@@ -206,14 +206,14 @@
                        showon="source:joomla"/>
 
                 <field name="k2_category"
-                       type="k2category"
+                       type="shack.k2category"
                        default="0"
                        label="K2_CATEGORY"
                        description="K2_CATEGORY_DESC"
                        showon="source:k2"/>
 
                 <field name="visionary_collection"
-                       type="visionarycollection"
+                       type="shack.collection"
                        default=""
                        label="VISIONARYCOLLECTION"
                        description="VISIONARYCOLLECTION_DESC"
@@ -380,7 +380,7 @@
                        default="#000000"/>
 
                 <field name="title_bgcolor_opacity"
-                       type="slider"
+                       type="shack.slider"
                        label="RANGESLIDER_TITLE"
                        description="RANGESLIDER_TITLE_DESC"
                        default="70"/>
@@ -528,7 +528,7 @@
                        default="#000000"/>
 
                 <field name="description_bgcolor_opacity"
-                       type="slider"
+                       type="shack.slider"
                        label="RANGESLIDER_DESCRIPTION"
                        description="RANGESLIDER_DESCRIPTION_DESC"
                        default="70"/>
@@ -738,7 +738,7 @@
                        default="000000"/>
 
                 <field name="navigation_opacity"
-                       type="slider"
+                       type="shack.slider"
                        default="50"
                        label="NAVIGATION_OPACITY"
                        description="NAVIGATION_OPACITY_DESC"/>
@@ -804,7 +804,7 @@
                        default="FFF"/>
 
                 <field name="navigation_buttons_opacity"
-                       type="slider"
+                       type="shack.slider"
                        default="80"
                        label="NAVIGATION_OPACITY"
                        description="NAVIGATION_OPACITY_DESC"/>
@@ -850,7 +850,7 @@
                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
 
                 <field name="container"
-                       type="textfilter"
+                       type="shack.textfilter"
                        default=""
                        label="CONTAINER"
                        description="CONTAINER_DESC"/>
@@ -903,8 +903,10 @@
             <file>language/es-ES/es-ES.mod_jsshackslides.ini</file>
             <file>media/mod_jsshackslides/js/shackslides.fields.js</file>
             <file>modules/mod_jsshackslides/form/fields/colorpicker.php</file>
+            <file>modules/mod_jsshackslides/form/fields/customnavigation.php</file>
             <file>modules/mod_jsshackslides/form/fields/flexicategory.php</file>
             <file>modules/mod_jsshackslides/form/fields/shackslidesfields.php</file>
+            <file>modules/mod_jsshackslides/form/fields/visionarycollection.php</file>
             <file>modules/mod_jsshackslides/helpers/flexi.php</file>
         </obsolete>
     </alledia>
