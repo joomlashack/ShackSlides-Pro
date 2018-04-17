@@ -117,13 +117,13 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
                     if ($item_images->image_intro != '') {
                         $this->images[] = $item_images->image_intro;
                     } else {
-                        $this->images[] = NOIMAGEFOUND_IMG;
+                        $this->images[] = $this->noimage;
                     }
                 } elseif ($this->joomla_image_source_type == 'full') {
                     if ($item_images->image_fulltext != '') {
                         $this->images[] = $item_images->image_fulltext;
                     } else {
-                        $this->images[] = NOIMAGEFOUND_IMG;
+                        $this->images[] = $this->noimage;
                     }
                 } elseif ($this->joomla_image_source_type == 'firstimage') {
                     $this->images[] = $this->getFirstImageFromContent($item->introtext);

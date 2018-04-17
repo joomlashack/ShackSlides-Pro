@@ -1,61 +1,91 @@
 <?php
 
 /**
- * @version   1.x
- * @package   ShackSlides
+ * @version       1.x
+ * @package       ShackSlides
  * @copyright (C) 2010 Joomlashack / Meritage Assets Corp
- * @license   GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ * @license       GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
 
-defined('_JEXEC') or die('Direct access to files is not permitted');
+use Joomla\Registry\Registry;
 
-require_once(JPATH_ROOT . '/' . 'modules' . '/' . 'mod_jsshackslides' . '/' . 'helper.php');
+defined('_JEXEC') or die();
+
+require_once JPATH_ROOT . '/modules/mod_jsshackslides/helper.php';
 
 class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 {
-    private $directory;
-    private $folder;
-    private $limit;
-    private $xml = false;
+    /**
+     * @var string
+     */
+    protected $directory = null;
 
+    /**
+     * @var string
+     */
+    protected $folder;
+
+    /**
+     * @var int
+     */
+    protected $limit;
+
+    /**
+     * @var string
+     */
+    protected $ordering = null;
+
+    /**
+     * @var string
+     */
+    protected $orderDirection = null;
+
+    /**
+     * ModShackSlidesFolderHelper constructor.
+     *
+     * @param Registry $params
+     *
+     * @return void
+     * @throws Exception
+     */
     public function __construct($params)
     {
         parent::__construct($params);
-        $this->folder             = $params->get('folder_folder', 'modules' . '/' . 'mod_jsshackslides' . '/' . 'tmpl' . '/' . 'demos');
-        $this->directory          =  JPATH_ROOT . '/' . $this->folder;
-        $this->limit              = $this->limit              = $params->get('limit', '5');
-        $this->ordering           = $params->get('ordering', 'ordering');
-        $this->ordering_direction = $params->get('ordering_dir', 'ASC');
+
+        $this->folder         = $params->get('folder_folder', 'modules/mod_jsshackslides/tmpl/demos');
+        $this->directory      = JPATH_ROOT . '/' . $this->folder;
+        $this->limit          = (int)$this->limit = $params->get('limit', 5);
+        $this->ordering       = $params->get('ordering', 'ordering');
+        $this->orderDirection = $params->get('ordering_dir', 'ASC');
 
         $this->loadImagesFromDirectory();
 
-        $this->setBase(JURI::base() . str_replace('\\', '/', $this->folder) . '/');
+        $this->base = rtrim($this->base, '/') . '/' . trim($this->folder, '/') . '/';
     }
 
+    /**
+     * @return void
+     */
     private function loadImagesFromDirectory()
     {
-        jimport('joomla.filesystem.folder');
-
-        $images = JFolder::files($this->directory, '\.png$|\.gif$|\.jpg$|\.bmp$|\.jpeg$\.PNG$|\.GIF$|\.JPG$|\.BMP$|\.JPEG$');
+        $images = JFolder::files(
+            $this->directory,
+            '\.png$|\.gif$|\.jpg$|\.bmp$|\.jpeg$\.PNG$|\.GIF$|\.JPG$|\.BMP$|\.JPEG$'
+        );
 
         $images = $this->orderFilesOrderingDirection($images);
 
-        $i           = 0;
-        $images_temp = array();
-        while ($i < $this->limit) {
-            $images_temp[] = array_shift($images);
-            $i += 1;
-        }
-
-        $this->images = $images_temp;
+        $this->images = array_slice($images, 0, $this->limit);
     }
 
+    /**
+     * @param array $images
+     *
+     * @return array
+     */
     private function orderFilesOrderingDirection($images)
     {
-        $images_temp = array();
-        foreach ($images as $key => $value) {
-            $images_temp[] = $value;
-        }
+        $images_temp = array_values($images);
 
         if ($this->ordering == 'RAND()') {
             $this->ordering = $this->generateOrdering(1);
@@ -63,17 +93,18 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 
         switch ($this->ordering) {
             case 'ordering':
-
-                if ($this->ordering_direction == "ASC") {
+                if ($this->orderDirection == "ASC") {
                     ksort($images_temp);
+
                 } else {
                     krsort($images_temp);
                 }
                 break;
-            case 'title':
 
-                if ($this->ordering_direction == "ASC") {
+            case 'title':
+                if ($this->orderDirection == "ASC") {
                     asort($images_temp);
+
                 } else {
                     arsort($images_temp);
                 }

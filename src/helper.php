@@ -8,9 +8,9 @@
  */
 
 // Restrict Access to within Joomla
-defined('_JEXEC') or die('Restricted access');
+use Joomla\CMS\Menu\MenuItem;
 
-define("NOIMAGEFOUND_IMG", "media/mod_jsshackslides/images/noimagefound.png");
+defined('_JEXEC') or die('Restricted access');
 
 /**
  * Main ShackSlides Helper class
@@ -21,27 +21,58 @@ define("NOIMAGEFOUND_IMG", "media/mod_jsshackslides/images/noimagefound.png");
  */
 abstract class ModShackSlidesHelper
 {
-    protected $images;
+    /**
+     * @var string
+     */
+    protected $noimage = null;
 
-    protected $titles;
+    /**
+     * @var array
+     */
+    protected $images = null;
 
+    /**
+     * @var array
+     */
+    protected $titles = null;
+
+    /**
+     * @var array
+     */
     protected $links;
 
+    /**
+     * @var string
+     */
     protected $base;
 
-    protected $menu;
+    /**
+     * @var MenuItem[]
+     */
+    protected $menu = null;
 
-    protected $contents;
+    /**
+     * @var array
+     */
+    protected $contents = null;
 
     /**
      * Helper construct
      *
-     * @param   string  $params  Initialization parameters
+     * @param string $params Initialization parameters
+     *
+     * @return void
+     * @throws Exception
      */
     public function __construct($params)
     {
-        $this->menu = JMenu::getInstance('site')->getMenu();
-        $this->setBase(JURI::base());
+        $this->menu    = JMenu::getInstance('site')->getMenu();
+        $this->base    = JURI::base();
+        $this->noimage = JHtml::_(
+            'image',
+            'mod_jsshackslides/noimagefound.png',
+            array('relative' => true, 'pathOnly' => true)
+        );
     }
 
     /**
@@ -65,7 +96,12 @@ abstract class ModShackSlidesHelper
     {
         if (is_array($images)) {
             $this->images = $images;
+
         } else {
+            if (empty($this->images)) {
+                $this->images = array();
+            }
+
             $this->images[] = $images;
         }
     }
@@ -91,7 +127,12 @@ abstract class ModShackSlidesHelper
     {
         if (is_array($links)) {
             $this->links = $links;
+
         } else {
+            if (empty($this->links)) {
+                $this->links = array();
+            }
+
             $this->links[] = $links;
         }
     }
@@ -109,7 +150,7 @@ abstract class ModShackSlidesHelper
     /**
      * Sets the site base
      *
-     * @param   string  $base  Site base
+     * @param   string $base Site base
      *
      * @return  void
      */
@@ -139,7 +180,12 @@ abstract class ModShackSlidesHelper
     {
         if (is_array($titles)) {
             $this->titles = $titles;
+
         } else {
+            if (empty($this->titles)) {
+                $this->titles = array();
+            }
+
             $this->titles[] = $titles;
         }
     }
@@ -165,7 +211,12 @@ abstract class ModShackSlidesHelper
     {
         if (is_array($contents)) {
             $this->contents = $contents;
+
         } else {
+            if (empty($this->contents)) {
+                $this->contents = array();
+            }
+
             $this->contents[] = $contents;
         }
     }
@@ -173,7 +224,7 @@ abstract class ModShackSlidesHelper
     /**
      * Gets the first image found in a certain string
      *
-     * @param   string  $content  Content to parse
+     * @param   string $content Content to parse
      *
      * @return  string
      */
@@ -185,15 +236,15 @@ abstract class ModShackSlidesHelper
             $image = $matches[1];
 
             return $image;
-        } else {
-            return NOIMAGEFOUND_IMG;
         }
+
+        return $this->noimage;
     }
 
     /**
      * Gets the title (using a tag parse) from a certain string
      *
-     * @param   string  $content  Content to parse
+     * @param   string $content Content to parse
      *
      * @return  string
      */
@@ -208,31 +259,43 @@ abstract class ModShackSlidesHelper
         return $title;
     }
 
+    /**
+     * Custom recursive version of native array_diff_assoc()
+     *
+     * @param array $array1
+     * @param array $array2
+     *
+     * @return int
+     */
     public function array_diff_assoc_recursive($array1, $array2)
     {
         foreach ($array1 as $key => $value) {
             if (is_array($value)) {
                 if (!isset($array2[$key])) {
                     $difference[$key] = $value;
+
                 } elseif (!is_array($array2[$key])) {
                     $difference[$key] = $value;
+
                 } else {
                     $new_diff = array_diff_assoc_recursive($value, $array2[$key]);
                     if ($new_diff != false) {
                         $difference[$key] = $new_diff;
                     }
                 }
+
             } elseif (!isset($array2[$key]) || $array2[$key] != $value) {
                 $difference[$key] = $value;
             }
         }
+
         return !isset($difference) ? 0 : $difference;
     }
 
     /**
      * Compare a query string using and separating its fields
      *
-     * @param   array  $fields  Fields
+     * @param   array $fields Fields
      *
      * @return  boolean
      */
@@ -254,14 +317,12 @@ abstract class ModShackSlidesHelper
     /**
      * Convert animation output
      *
-     * @param   string  $animation  Animation input to convert in options for Owl Carousel
+     * @param   string $animation Animation input to convert in options for Owl Carousel
      *
      * @return  boolean
      */
     public function convertAnimation($animation)
     {
-        $animationIn    = '';
-        $animationOut   = '';
         $finalAnimation = '';
 
         switch ($animation) {
@@ -270,6 +331,7 @@ abstract class ModShackSlidesHelper
                 $animationIn  = 'bounceInRight';
                 $animationOut = 'bounceOutLeft';
                 break;
+
             case 'faded_slide':
                 $animationIn  = 'fadeInRight';
                 $animationOut = 'fadeOutLeft';
@@ -280,10 +342,12 @@ abstract class ModShackSlidesHelper
                 $animationIn  = 'slideInLeft';
                 $animationOut = 'slideOutRight';
                 break;
+
             case 'bounced_slide_rtl':
                 $animationIn  = 'bounceInLeft';
                 $animationOut = 'bounceOutRight';
                 break;
+
             case 'faded_slide_rtl':
                 $animationIn  = 'fadeInLeft';
                 $animationOut = 'fadeOutRight';
@@ -294,10 +358,12 @@ abstract class ModShackSlidesHelper
                 $animationIn  = 'slideInDown';
                 $animationOut = 'slideOutDown';
                 break;
+
             case 'bounced_slide_ttb':
                 $animationIn  = 'bounceInDown';
                 $animationOut = 'bounceOutDown';
                 break;
+
             case 'faded_slide_ttb':
                 $animationIn  = 'fadeInDown';
                 $animationOut = 'fadeOutDown';
@@ -308,10 +374,12 @@ abstract class ModShackSlidesHelper
                 $animationIn  = 'slideInUp';
                 $animationOut = 'slideOutUp';
                 break;
+
             case 'bounced_slide_btt':
                 $animationIn  = 'bounceInUp';
                 $animationOut = 'bounceOutUp';
                 break;
+
             case 'faded_slide_btt':
                 $animationIn  = 'fadeInUp';
                 $animationOut = 'fadeOutUp';
@@ -322,26 +390,32 @@ abstract class ModShackSlidesHelper
                 $animationIn  = 'fadeIn';
                 $animationOut = 'fadeOut';
                 break;
+
             case 'bounce':
                 $animationIn  = 'zoomIn';
                 $animationOut = 'bounceOut';
                 break;
+
             case 'roll':
                 $animationIn  = 'rollIn';
                 $animationOut = 'rollOut';
                 break;
+
             case 'zoom':
                 $animationIn  = 'zoomIn';
                 $animationOut = 'zoomOut';
                 break;
+
             case 'switch':
                 $animationIn  = 'slideInUp';
                 $animationOut = 'fadeOutDown';
                 break;
+
             case 'flip_horizontal':
                 $animationIn  = 'flipInYFaded';
                 $animationOut = 'flipOutY';
                 break;
+
             case 'flip_vertical':
                 $animationIn  = 'flipInXFaded';
                 $animationOut = 'flipOutX';
@@ -352,18 +426,22 @@ abstract class ModShackSlidesHelper
                 $animationIn  = 'rotateIn';
                 $animationOut = 'rotateOut';
                 break;
+
             case 'rotate_downleft':
                 $animationIn  = 'rotateInDownLeft';
                 $animationOut = 'rotateOutDownLeft';
                 break;
+
             case 'rotate_downright':
                 $animationIn  = 'rotateInDownRight';
                 $animationOut = 'rotateOutDownRight';
                 break;
+
             case 'rotate_upleft':
                 $animationIn  = 'rotateInUpLeft';
                 $animationOut = 'rotateOutUpLeft';
                 break;
+
             case 'rotate_upright':
                 $animationIn  = 'rotateInUpRight';
                 $animationOut = 'rotateOutUpRight';
@@ -374,11 +452,11 @@ abstract class ModShackSlidesHelper
                 $animationIn = $animationOut = '';
         }
 
-        if ($animationIn != '') {
+        if ($animationIn) {
             $finalAnimation .= ', animateIn: \'' . $animationIn . '\'';
         }
 
-        if ($animationOut != '') {
+        if ($animationOut) {
             $finalAnimation .= ', animateOut: \'' . $animationOut . '\'';
         }
 
@@ -388,8 +466,8 @@ abstract class ModShackSlidesHelper
     /**
      * Generate random container ID
      *
-     * @param   string  $prefix  Prefix to add to the container id
-     * @param   int     $length  ID length
+     * @param   string $prefix Prefix to add to the container id
+     * @param   int    $length ID length
      *
      * @return  string
      */
@@ -403,14 +481,13 @@ abstract class ModShackSlidesHelper
     /**
      * Generate random ordering
      *
-     * @param   int  $number  Range for getting the random number
+     * @param   int $number Range for getting the random number
      *
      * @return  string
      */
     public function generateOrdering($number = 4)
     {
-        $random   = mt_rand(0, $number);
-        $ordering = '';
+        $random = mt_rand(0, $number);
 
         switch ($random) {
             case 1:
@@ -433,7 +510,7 @@ abstract class ModShackSlidesHelper
     /**
      * Convert Hex color to RGB array
      *
-     * @param   string  $hex  Hex color string
+     * @param   string $hex Hex color string
      *
      * @return  array
      */
@@ -445,6 +522,7 @@ abstract class ModShackSlidesHelper
             $r = hexdec(substr($hex, 0, 1) . substr($hex, 0, 1));
             $g = hexdec(substr($hex, 1, 1) . substr($hex, 1, 1));
             $b = hexdec(substr($hex, 2, 1) . substr($hex, 2, 1));
+
         } else {
             $r = hexdec(substr($hex, 0, 2));
             $g = hexdec(substr($hex, 2, 2));
@@ -459,18 +537,19 @@ abstract class ModShackSlidesHelper
     /**
      * Set up dot images when uploading an image file
      *
-     * @param   string  $image     Path of the image in media
-     * @param   string  $css_rule  Css rule that will be applied according to the case
-     * @param   string  $doc       Joomla Document
+     * @param   string    $image    Path of the image in media
+     * @param   string    $css_rule Css rule that will be applied according to the case
+     * @param   JDocument $doc      Joomla Document
      *
      * @return  array
      */
     public function applyingCustomImages($image, $css_rule, $doc)
     {
-        $image_dots           = JUri::root(true) . '/' . $image;
+        $image_dots = JUri::root(true) . '/' . $image;
         list($width, $height) = getimagesize(JUri::root() . '/' . $image);
-        $doc->addStyleDeclaration('
-            ' . $css_rule . ' {
+
+        $doc->addStyleDeclaration(
+            $css_rule . ' {
                 background: url(' . $image_dots . ') no-repeat;
                 width:' . $width . 'px;
                 height:' . $height . 'px;
