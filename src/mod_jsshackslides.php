@@ -510,12 +510,12 @@ if ($settings['description_show'] || $settings['title_show']) {
                 if (!jQuery.support.animation || !jQuery.support.transition) {
                     return;
                 }
-                jssAnimTextExec_' . $settings['container'] . '(' . (($settings['title_effect'] != 'none') ?
+                jssAnimTextExec_' . $settings['container'] . '(' . (($settings['title_show'] == '1' && $settings['title_effect'] != 'none') ?
                         '"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-title > *","' . (substr($settings['title_effect'], 0, 10) == 'attention_'
                                 ? substr($settings['title_effect'], 10)
                                 : $settings['title_effect']) . '"'
                         : 'undefined,undefined') .
-                    ',' . (($settings['description_effect'] != 'none') ?
+                    ',' . (($settings['description_show'] == '1' && $settings['description_effect'] != 'none') ?
                         '"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-description > *","' .
                             (substr($settings['description_effect'], 0, 10) == 'attention_'
                                     ? substr($settings['description_effect'], 10)
