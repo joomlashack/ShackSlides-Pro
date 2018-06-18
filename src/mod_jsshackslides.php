@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     ShackSlides
+ * @package     Shack Slides
  * @subpackage  Module
  *
  * @copyright   Copyright (C) 2010 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
