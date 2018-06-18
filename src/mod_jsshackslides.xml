@@ -866,7 +866,7 @@
     <alledia>
         <element publish="true">mod_jsshackslides</element>
         <namespace>JSShackSlides</namespace>
-        <name>ShackSlides</name>
+        <name>Shack Slides</name>
         <license>pro</license>
         <targetplatform>3.7</targetplatform>
         <phpminimum>5.6</phpminimum>
