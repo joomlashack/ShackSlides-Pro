@@ -860,13 +860,13 @@
     </config>
 
     <updateservers>
-        <server type="extension" priority="1" name="ShackSlides Pro"><![CDATA[https://deploy.ostraining.com/client/update/pro/stable/mod_jsshackslides]]></server>
+        <server type="extension" priority="1" name="Shack Slides Pro"><![CDATA[https://deploy.ostraining.com/client/update/pro/stable/mod_jsshackslides]]></server>
     </updateservers>
 
     <alledia>
         <element publish="true">mod_jsshackslides</element>
         <namespace>JSShackSlides</namespace>
-        <name>ShackSlides</name>
+        <name>Shack Slides</name>
         <license>pro</license>
         <targetplatform>3.7</targetplatform>
         <phpminimum>5.6</phpminimum>

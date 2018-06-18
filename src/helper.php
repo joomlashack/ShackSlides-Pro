@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     ShackSlides
+ * @package     Shack Slides
  * @subpackage  Helper
  *
  * @copyright   Copyright (C) 2010 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
@@ -13,9 +13,9 @@ use Joomla\CMS\Menu\MenuItem;
 defined('_JEXEC') or die('Restricted access');
 
 /**
- * Main ShackSlides Helper class
+ * Main Shack Slides Helper class
  *
- * @package     ShackSlides
+ * @package     Shack Slides
  * @subpackage  Main Helper Class
  * @since       2.0
  */

@@ -2,7 +2,7 @@
 
 /**
  * @version   1.x
- * @package   ShackSlides
+ * @package   Shack Slides
  * @copyright (C) 2010 Joomlashack / Meritage Assets Corp
  * @license   GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
