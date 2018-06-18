@@ -2,12 +2,12 @@
 <extension version="3.7" type="module" client="site" method="upgrade">
     <name>MOD_JSSHACKSLIDES</name>
     <author>Joomlashack</author>
-    <creationDate>June 15 2018</creationDate>
+    <creationDate>June 18 2018</creationDate>
     <copyright>Joomlashack</copyright>
     <license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
     <authorEmail>support@joomlashack.com</authorEmail>
     <authorUrl>https://www.joomlashack.com</authorUrl>
-    <version>3.1.7b2</version>
+    <version>3.1.7</version>
     <variant>PRO</variant>
     <description>MOD_JSSHACKSLIDES_DESCRIPTION</description>
 
@@ -180,7 +180,6 @@
                        showgoproad="0"
                        jedurl="https://extensions.joomla.org/extensions/extension/photos-a-images/slideshow/shackslides"/>
             </fieldset>
-
 
             <fieldset name="source"
                       label="IMAGES_SOURCE_OPTIONS_LABEL">
