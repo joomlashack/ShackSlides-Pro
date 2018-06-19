@@ -11,6 +11,9 @@ use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
 
+jimport('joomla.filesystem.folder');
+jimport('joomla.filesystem.file');
+
 require_once JPATH_ROOT . '/modules/mod_jsshackslides/helper.php';
 
 class ModShackSlidesFolderHelper extends ModShackSlidesHelper

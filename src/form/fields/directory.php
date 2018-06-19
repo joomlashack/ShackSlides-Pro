@@ -7,9 +7,12 @@
  * @license       GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
 
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die();
 
-JFormHelper::loadFieldClass('list');
+jimport('joomla.filesystem.folder');
+jimport('joomla.filesystem.file');
+
+JFormHelper::loadFieldType('list');
 
 class ShackFormFieldDirectory extends JFormFieldList
 {
