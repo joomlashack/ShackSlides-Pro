@@ -34,7 +34,7 @@ class ShackFormFieldCollection extends JFormFieldList
         $query = $db->getQuery(true)
             ->select(
                 array(
-                    'jsvisionary_collection_id AS ' . $db->quoteName('id'),
+                    'jsvisionary_collection_id AS ' . $db->quoteName('value'),
                     'title AS ' . $db->quoteName('text')
                 )
             )
