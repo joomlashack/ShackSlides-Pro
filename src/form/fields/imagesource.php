@@ -38,6 +38,6 @@ class ShackFormFieldImageSource extends JFormFieldList
             $options[] = JHtml::_('select.option', "visionary", JText::_('SHACKSLIDE_SLIDESOURCE_VISIONARY'));
         }
 
-        return $options;
+        return array_merge(parent::getOptions(), $options);
     }
 }
