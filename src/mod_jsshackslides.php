@@ -195,10 +195,10 @@ $settings['resize_events'] = '';
 // Load jQuery
 JHTML::_('jquery.framework');
 
-JHtml::stylesheet('mod_jsshackslides/owl.carousel.min.css', array(), true);
-JHtml::stylesheet('mod_jsshackslides/animate.min.css', array(), true);
-JHtml::stylesheet('mod_jsshackslides/jsshackslides.css', array(), true);
-JHtml::script('mod_jsshackslides/owl.carousel.min.js', false, true);
+JHtml::_('stylesheet', 'mod_jsshackslides/owl.carousel.min.css', array('relative' => true));
+JHtml::_('stylesheet', 'mod_jsshackslides/animate.min.css', array('relative' => true));
+JHtml::_('stylesheet', 'mod_jsshackslides/jsshackslides.css', array('relative' => true));
+JHtml::_('script', 'mod_jsshackslides/owl.carousel.min.js', array('relative' => true));
 
 $json = false;
 

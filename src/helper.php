@@ -68,11 +68,7 @@ abstract class ModShackSlidesHelper
     {
         $this->menu    = JMenu::getInstance('site')->getMenu();
         $this->base    = JURI::base();
-        $this->noimage = JHtml::_(
-            'image',
-            'mod_jsshackslides/noimagefound.png',
-            array('relative' => true, 'pathOnly' => true)
-        );
+        $this->noimage = JHtml::_('image', 'mod_jsshackslides/noimagefound.png', null, true, 1);
     }
 
     /**
