@@ -287,7 +287,7 @@ if ($settings['description_show']) {
     if ($settings['description_color_flag']) {
         $doc->addStyleDeclaration(
             '#' . $settings['container'] . '.jss-slider .jss-description > * {
-                color: #' . $settings['description_color'] . ';
+                color: ' . $settings['description_color'] . ';
             }'
         );
     }
@@ -298,7 +298,7 @@ if ($settings['description_show']) {
         $settings['description_bgcolor'] = implode(',', $helper->hexToRGB($settings['description_bgcolor']));
         $doc->addStyleDeclaration(
             '#' . $settings['container'] . '.jss-slider .jss-description {
-                background-color: #' . $color_hex . ';
+                background-color: ' . $color_hex . ';
                 background-color: rgba(' . $settings['description_bgcolor'] . ', ' . ($settings['description_bgcolor_opacity'] / 100) . ');
             }'
         );
@@ -355,7 +355,7 @@ if ($settings['title_show']) {
     if ($settings['title_color_flag']) {
         $doc->addStyleDeclaration(
             '#' . $settings['container'] . '.jss-slider .jss-title > * {
-                color: #' . $settings['title_color'] . ';
+                color: ' . $settings['title_color'] . ';
             }'
         );
     }
@@ -366,7 +366,7 @@ if ($settings['title_show']) {
         $settings['title_bgcolor'] = implode(',', $helper->hexToRGB($settings['title_bgcolor']));
         $doc->addStyleDeclaration('
             #' . $settings['container'] . '.jss-slider .jss-title {
-                background-color: #' . $color_hex . ';
+                background-color: ' . $color_hex . ';
                 background-color: rgba(' . $settings['title_bgcolor'] . ', ' . ($settings['title_bgcolor_opacity'] / 100) . ');
             }'
         );
@@ -599,7 +599,7 @@ if ($settings['navigation_show'] != '0') {
             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' . ((int) $settings['navigation_opacity']) . ')";
         }
         #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
-            color: #' . $settings['navigation_dots_numbers_color'] . ';
+            color: ' . $settings['navigation_dots_numbers_color'] . ';
         }'
     );
 
@@ -822,10 +822,10 @@ if ($settings['navigation_buttons_show'] != '0') {
             visibility: visible;
         }
         #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']{
-            border-color: #' . $settings['navigation_buttons_color'] . ';
+            border-color: ' . $settings['navigation_buttons_color'] . ';
         }
         #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']:hover{
-            border-color: #' . $settings['navigation_buttonshover_color'] . ';
+            border-color: ' . $settings['navigation_buttonshover_color'] . ';
         }
         #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
             height: 0px;
@@ -852,7 +852,7 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show']) {
     if ($settings['navigation_theme_shape'] != 'none') {
         $themeCss .= '
                 #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
-                    background-color: #' . $settings['navigation_dots_color'] . ';
+                    background-color: ' . $settings['navigation_dots_color'] . ';
                     }';
 
         if (file_exists(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css')) {
