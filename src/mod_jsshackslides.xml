@@ -178,7 +178,7 @@
                        name="customfooter"
                        media="mod_jsshackslides"
                        showgoproad="0"
-                       jedurl="https://extensions.joomla.org/extensions/extension/photos-a-images/slideshow/shackslides"/>
+                       jedurl="https://extensions.joomla.org/extension/shackslides/"/>
             </fieldset>
 
             <fieldset name="source"
