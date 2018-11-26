@@ -76,6 +76,8 @@ $defaults = array(
     'title_description_padding_horizontal' => '10',
     // Show title flag
     'title_show' => '1',
+    // Show title in mobile flag
+    'title_show_mobile' => '1',
     // Title width
     'title_width' => '300',
     // Title height
@@ -96,6 +98,8 @@ $defaults = array(
     'title_tag' => 'h4',
     // Show description flag
     'description_show' => '1',
+    // Show description in mobile flag
+    'description_show_mobile' => '1',
     // Description width
     'description_width' => '300',
     // Description height
@@ -415,6 +419,17 @@ if ($settings['title_show']) {
             }'
         );
     }
+
+    // Hide title in mobile styles
+    if ($settings['title_show_mobile'] == 0) {
+		$doc->addStyleDeclaration(
+			'@media (max-width: 767px) {
+				#' . $settings['container'] . '.jss-slider .jss-title {
+                    display: none;
+                }
+            }'
+		);
+    }
 }
 
 $settings['animation_script'] = '
@@ -578,6 +593,17 @@ if ($settings['description_show'] || $settings['title_show']) {
                     flex-grow: 1;
                 }'
         );
+    }
+
+    // Hide description in mobile styles
+    if ($settings['description_show_mobile'] == 0) {
+		$doc->addStyleDeclaration(
+			'@media (max-width: 767px) {
+				#' . $settings['container'] . '.jss-slider .jss-description {
+                    display: none;
+                }
+            }'
+		);
     }
 }
 
