@@ -340,7 +340,7 @@
                        type="radio"
                        default="1"
                        label="SHOW_TITLE_MOBILE"
-                       description="SHOW_TITLE_DESC"
+                       description="SHOW_TITLE_MOBILE_DESC"
                        class="btn-group btn-group-yesno"
                        showon="title_show:1">
                     <option value="1">JYES</option>
@@ -500,7 +500,7 @@
                        type="radio"
                        default="1"
                        label="SHOW_DESCRIPTION_MOBILE"
-                       description="SHOW_DESCRIPTION_DESC"
+                       description="SHOW_DESCRIPTION_MOBILE_DESC"
                        class="btn-group btn-group-yesno"
                        showon="description_show:1">
                     <option value="1">JYES</option>
