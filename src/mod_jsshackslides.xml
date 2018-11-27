@@ -659,6 +659,17 @@
                     <option value="1">ONHOVER_DOTS</option>
                 </field>
 
+                <field name="navigation_show_mobile"
+                       type="radio"
+                       default="1"
+                       label="NAVIGATIONDOTS_MOBILE"
+                       description="NAVIGATIONDOTS_MOBILE_DESC"
+                       class="btn-group btn-group-yesno"
+                       showon="navigation_show:1[OR]navigation_show:2">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
                 <field name="navigation_shownumbers"
                        type="list"
                        label="NAVIGATIONNUMBERS"
@@ -801,6 +812,17 @@
                     <option value="2">ALWAYS_ARROWS</option>
                     <option value="0">NO_ARROWS</option>
                     <option value="1">ONHOVER_ARROWS</option>
+                </field>
+
+                <field name="navigation_buttons_show_mobile"
+                       type="radio"
+                       default="1"
+                       label="NAVIGATIONARROWS_MOBILE"
+                       description="NAVIGATIONARROWS_MOBILE_DESC"
+                       class="btn-group btn-group-yesno"
+                       showon="navigation_buttons_show:1[OR]navigation_buttons_show:2">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
                 </field>
 
                 <field name="buttons_theme"

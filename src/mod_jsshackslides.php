@@ -122,6 +122,8 @@ $defaults = array(
     // NAVIGATION OPTIONS
     // Show the navigation always, never, on hover
     'navigation_show' => '2',
+    // Show navigation in mobile flag
+    'navigation_show_mobile' => '1',
     // Navigation theme shape
     'navigation_theme_shape' => 'round',
     // Navigation theme effect
@@ -154,6 +156,8 @@ $defaults = array(
     'navigation_custom_dotactive' => '',
     // Show the navigation buttons always, never, on hover
     'navigation_buttons_show' => '2',
+    // Show the buttons in mobile flag
+    'navigation_buttons_show_mobile' => '1',
     // Buttons theme
     'buttons_theme' => 'theme2',
     // Buttons color
@@ -753,6 +757,17 @@ if ($settings['navigation_show'] != '0') {
             opacity: ' . ($settings['navigation_shownumbers'] ? '1' : '0') . '
         }'
     );
+
+	// Hide navigation in mobile styles
+	if ($settings['navigation_show_mobile'] == 0) {
+		$doc->addStyleDeclaration(
+			'@media (max-width: 767px) {
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
+                    display: none;
+                }
+            }'
+		);
+	}
 } else {
     $settings['navigation_show'] = 'false';
 }
@@ -865,6 +880,17 @@ if ($settings['navigation_buttons_show'] != '0') {
             height: ' . $buttonsNextHeight . 'px;
         }'
     );
+
+	// Hide buttons in mobile styles
+	if ($settings['navigation_buttons_show_mobile'] == 0) {
+		$doc->addStyleDeclaration(
+			'@media (max-width: 767px) {
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
+                    display: none;
+                }
+            }'
+		);
+	}
 
     $settings['navigation_buttons_show'] = 'true';
 } else {
