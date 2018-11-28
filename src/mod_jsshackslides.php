@@ -76,6 +76,8 @@ $defaults = array(
     'title_description_padding_horizontal' => '10',
     // Show title flag
     'title_show' => '1',
+    // Show title in mobile flag
+    'title_show_mobile' => '1',
     // Title width
     'title_width' => '300',
     // Title height
@@ -96,6 +98,8 @@ $defaults = array(
     'title_tag' => 'h4',
     // Show description flag
     'description_show' => '1',
+    // Show description in mobile flag
+    'description_show_mobile' => '1',
     // Description width
     'description_width' => '300',
     // Description height
@@ -118,6 +122,8 @@ $defaults = array(
     // NAVIGATION OPTIONS
     // Show the navigation always, never, on hover
     'navigation_show' => '2',
+    // Show navigation in mobile flag
+    'navigation_show_mobile' => '1',
     // Navigation theme shape
     'navigation_theme_shape' => 'round',
     // Navigation theme effect
@@ -150,6 +156,8 @@ $defaults = array(
     'navigation_custom_dotactive' => '',
     // Show the navigation buttons always, never, on hover
     'navigation_buttons_show' => '2',
+    // Show the buttons in mobile flag
+    'navigation_buttons_show_mobile' => '1',
     // Buttons theme
     'buttons_theme' => 'theme2',
     // Buttons color
@@ -415,6 +423,17 @@ if ($settings['title_show']) {
             }'
         );
     }
+
+    // Hide title in mobile styles
+    if ($settings['title_show_mobile'] == 0) {
+		$doc->addStyleDeclaration(
+			'@media (max-width: 767px) {
+				#' . $settings['container'] . '.jss-slider .jss-title {
+                    display: none;
+                }
+            }'
+		);
+    }
 }
 
 $settings['animation_script'] = '
@@ -579,6 +598,17 @@ if ($settings['description_show'] || $settings['title_show']) {
                 }'
         );
     }
+
+    // Hide description in mobile styles
+    if ($settings['description_show_mobile'] == 0) {
+		$doc->addStyleDeclaration(
+			'@media (max-width: 767px) {
+				#' . $settings['container'] . '.jss-slider .jss-description {
+                    display: none;
+                }
+            }'
+		);
+    }
 }
 
 // Navigation
@@ -727,6 +757,17 @@ if ($settings['navigation_show'] != '0') {
             opacity: ' . ($settings['navigation_shownumbers'] ? '1' : '0') . '
         }'
     );
+
+	// Hide navigation in mobile styles
+	if ($settings['navigation_show_mobile'] == 0) {
+		$doc->addStyleDeclaration(
+			'@media (max-width: 767px) {
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
+                    display: none;
+                }
+            }'
+		);
+	}
 } else {
     $settings['navigation_show'] = 'false';
 }
@@ -839,6 +880,17 @@ if ($settings['navigation_buttons_show'] != '0') {
             height: ' . $buttonsNextHeight . 'px;
         }'
     );
+
+	// Hide buttons in mobile styles
+	if ($settings['navigation_buttons_show_mobile'] == 0) {
+		$doc->addStyleDeclaration(
+			'@media (max-width: 767px) {
+				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
+                    display: none;
+                }
+            }'
+		);
+	}
 
     $settings['navigation_buttons_show'] = 'true';
 } else {
