@@ -949,8 +949,11 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show']) {
     foreach ($settings as $key => $value) {
         $themeCss = str_replace('$$' . $key, '#' . $value, $themeCss);
     }
-    
-    // Remove double hashtag! e.g. ##000000 -> #000000
+
+    /* Remove double hashtag! e.g. ##000000 -> #000000
+     * This cleanup is required due this CSS rendering system was built when colors didn't included a hashtag (#).
+     * Now that native color parameters uses a hashtag
+     * some colors would include double (##) after doing the str_replace() above */
     $themeCss = str_replace('##', '#', $themeCss);
 
     $doc->addStyleDeclaration($themeCss);
