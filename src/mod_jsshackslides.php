@@ -949,6 +949,9 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show']) {
     foreach ($settings as $key => $value) {
         $themeCss = str_replace('$$' . $key, '#' . $value, $themeCss);
     }
+    
+    // Remove double hashtag! e.g. ##000000 -> #000000
+    $themeCss = str_replace('##', '#', $themeCss);
 
     $doc->addStyleDeclaration($themeCss);
 }
