@@ -633,13 +633,6 @@ if ($settings['navigation_show'] != '0') {
         }'
     );
 
-    // Active color for navigation
-    $doc->addStyleDeclaration('
-        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div:after {
-            background: ' . $settings['navigation_activedots_color'] . ';
-        }'
-    );
-
     $dotsWidth  = ($settings['navigation_dots_width'] != '')?$settings['navigation_dots_width']:30;
     $dotsHeight = ($settings['navigation_dots_height'] != '')?$settings['navigation_dots_height']:30;
 
