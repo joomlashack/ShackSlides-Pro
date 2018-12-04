@@ -432,7 +432,7 @@ if ($settings['title_show']) {
                     display: none;
                 }
             }'
-		);
+        );
     }
 }
 
@@ -607,7 +607,7 @@ if ($settings['description_show'] || $settings['title_show']) {
                     display: none;
                 }
             }'
-		);
+        );
     }
 }
 
@@ -766,7 +766,7 @@ if ($settings['navigation_show'] != '0') {
                     display: none;
                 }
             }'
-		);
+        );
 	}
 } else {
     $settings['navigation_show'] = 'false';
@@ -889,7 +889,7 @@ if ($settings['navigation_buttons_show'] != '0') {
                     display: none;
                 }
             }'
-		);
+        );
 	}
 
     $settings['navigation_buttons_show'] = 'true';
