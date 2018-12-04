@@ -633,13 +633,6 @@ if ($settings['navigation_show'] != '0') {
         }'
     );
 
-    // Active color for navigation
-    $doc->addStyleDeclaration('
-        #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot.active > div:after {
-            background: ' . $settings['navigation_activedots_color'] . ';
-        }'
-    );
-
     $dotsWidth  = ($settings['navigation_dots_width'] != '')?$settings['navigation_dots_width']:30;
     $dotsHeight = ($settings['navigation_dots_height'] != '')?$settings['navigation_dots_height']:30;
 
@@ -956,6 +949,12 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show']) {
     foreach ($settings as $key => $value) {
         $themeCss = str_replace('$$' . $key, '#' . $value, $themeCss);
     }
+
+    /* Remove double hashtag! e.g. ##000000 -> #000000
+     * This cleanup is required due this CSS rendering system was built when colors didn't included a hashtag (#).
+     * Now that native color parameters uses a hashtag
+     * some colors would include double (##) after doing the str_replace() above */
+    $themeCss = str_replace('##', '#', $themeCss);
 
     $doc->addStyleDeclaration($themeCss);
 }
