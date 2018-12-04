@@ -881,16 +881,16 @@ if ($settings['navigation_buttons_show'] != '0') {
         }'
     );
 
-// Hide buttons in mobile styles
-if ($settings['navigation_buttons_show_mobile'] == 0) {
-    $doc->addStyleDeclaration(
-        '@media (max-width: 767px) {
-            #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
-                display: none;
-            }
-        }'
-    );
-}
+    // Hide buttons in mobile styles
+    if ($settings['navigation_buttons_show_mobile'] == 0) {
+        $doc->addStyleDeclaration(
+            '@media (max-width: 767px) {
+                #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons {
+                    display: none;
+                }
+            }'
+        );
+    }
 
     $settings['navigation_buttons_show'] = 'true';
 } else {
