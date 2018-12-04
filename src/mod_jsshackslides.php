@@ -426,9 +426,9 @@ if ($settings['title_show']) {
 
     // Hide title in mobile styles
     if ($settings['title_show_mobile'] == 0) {
-		$doc->addStyleDeclaration(
-			'@media (max-width: 767px) {
-				#' . $settings['container'] . '.jss-slider .jss-title {
+        $doc->addStyleDeclaration(
+            '@media (max-width: 767px) {
+                #' . $settings['container'] . '.jss-slider .jss-title {
                     display: none;
                 }
             }'
@@ -601,9 +601,9 @@ if ($settings['description_show'] || $settings['title_show']) {
 
     // Hide description in mobile styles
     if ($settings['description_show_mobile'] == 0) {
-		$doc->addStyleDeclaration(
-			'@media (max-width: 767px) {
-				#' . $settings['container'] . '.jss-slider .jss-description {
+        $doc->addStyleDeclaration(
+            '@media (max-width: 767px) {
+                #' . $settings['container'] . '.jss-slider .jss-description {
                     display: none;
                 }
             }'
@@ -758,16 +758,16 @@ if ($settings['navigation_show'] != '0') {
         }'
     );
 
-	// Hide navigation in mobile styles
-	if ($settings['navigation_show_mobile'] == 0) {
-		$doc->addStyleDeclaration(
-			'@media (max-width: 767px) {
-				#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
+    // Hide navigation in mobile styles
+    if ($settings['navigation_show_mobile'] == 0) {
+        $doc->addStyleDeclaration(
+            '@media (max-width: 767px) {
+                #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
                     display: none;
                 }
             }'
         );
-	}
+    }
 } else {
     $settings['navigation_show'] = 'false';
 }
