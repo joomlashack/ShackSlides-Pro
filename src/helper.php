@@ -7,10 +7,10 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// Restrict Access to within Joomla
 use Joomla\CMS\Menu\MenuItem;
+use Joomla\Registry\Registry;
 
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die();
 
 /**
  * Main Shack Slides Helper class
@@ -57,19 +57,47 @@ abstract class ModShackSlidesHelper
     protected $contents = null;
 
     /**
+     * @var Registry
+     */
+    protected $params = null;
+
+    /**
      * Helper construct
      *
-     * @param string $params Initialization parameters
+     * @param Registry $params Initialization parameters
      *
      * @return void
      * @throws Exception
      */
-    public function __construct($params)
+    public function __construct(Registry $params)
     {
         $this->menu    = JMenu::getInstance('site')->getMenu();
         $this->base    = JURI::base();
         $this->noimage = JHtml::_('image', 'mod_jsshackslides/noimagefound.png', null, true, 1);
+        $this->params  = $params;
     }
+
+    /**
+     * @param Registry $params
+     *
+     * @return ModShackSlidesHelper
+     */
+    public static function getInstance(Registry $params)
+    {
+        $sourceHelper = $params->get('source', 'folder');
+        $filePath     = sprintf(__DIR__ . '/helpers/%s.php', $sourceHelper);
+        if ($sourceHelper && is_file($filePath)) {
+            require_once $filePath;
+            $className = sprintf('ModShackSlides%sHelper', ucfirst($sourceHelper));
+            if (class_exists($className)) {
+                $helper = new $className($params);
+                return $helper;
+            }
+        }
+
+        return null;
+    }
+
 
     /**
      * Gets the saved images

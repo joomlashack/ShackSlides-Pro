@@ -7,14 +7,12 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// Restrict Access to within Joomla
-defined('_JEXEC') or die('Restricted access');
+use Joomla\Registry\Registry;
 
-require_once JPATH_ROOT . '/modules/mod_jsshackslides/helper.php';
+defined('_JEXEC') or die();
 
 jimport('joomla.html.parameter');
 JLoader::import('helpers.route', JPATH_SITE . '/components/com_content');
-
 
 /**
  * Joomla Helper class
@@ -37,14 +35,10 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 
     private $featured;
 
-    /**
-     * Helper construct
-     *
-     * @param   string  $params  Joomla-related Initialization parameters
-     */
-    public function __construct($params)
+    public function __construct(Registry $params)
     {
         parent::__construct($params);
+
         $this->category_id              = $params->get('joomla_category', 0);
         $this->ordering                 = $params->get('ordering', 'ordering');
         $this->ordering_direction       = $params->get('ordering_dir', 'ASC');
@@ -64,40 +58,45 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
      */
     private function getContentFromDatabase()
     {
-        $database              = JFactory::getDBO();
-        $user                  = JFactory::getUser();
-        $featured_items        = '';
-        $contentConfig         = JComponentHelper::getParams('com_content');
-        $access                = !$contentConfig->get('shownoauth');
-        $aid                   = $user->get('aid', 0);
-        $now                   = date('Y-m-d H:i:s');
-        $nullDate              = $database->getNullDate();
-
-        if ($this->featured !== 'include') {
-            $featured_query = "SELECT content_id FROM #__content_frontpage";
-            $database->setQuery($featured_query);
-            $featured_items = $database->loadResultArray();
-
-            if (!is_array($featured_items) || !count($featured_items)) {
-                $featured_items = '';
-            } else {
-                $featured_items = ' AND id ' . (($this->featured == 'exclude') ? 'NOT ' : '') . 'IN (' . implode(",", $featured_items) . ')';
-            }
-        }
+        $database = JFactory::getDbo();
+        $now      = $database->quote(date('Y-m-d H:i:s'));
+        $nullDate = $database->quote($database->getNullDate());
 
         if ($this->ordering == 'RAND()') {
             $this->ordering = $this->generateOrdering();
         }
 
-        $query = 'SELECT * FROM #__content' .
-            ' WHERE catid =' . $this->category_id . $featured_items .
-            ' AND state = 1' .
-            ' AND (publish_up = ' . $database->Quote($nullDate) . ' OR publish_up <= ' . $database->Quote($now) . ')' .
-            ' AND (publish_down = ' . $database->Quote($nullDate) . ' OR publish_down >= ' . $database->Quote($now) . ')' .
-            ' ORDER BY ' . $this->ordering . ' ' . $this->ordering_direction .
-            ' LIMIT ' . $this->limit;
+        $query = $database->getQuery(true)
+            ->select('*')
+            ->from('#__content')
+            ->where(
+                array(
+                    'catid =' . $this->category_id,
+                    'state = 1',
+                    sprintf('(publish_up = %s OR publish_up <= %s)', $nullDate, $now),
+                    sprintf('(publish_down = %s OR publish_down >= %s)', $nullDate, $now)
+                )
+            )
+            ->order($this->ordering . ' ' . $this->ordering_direction);
 
-        $database->setQuery($query);
+        if ($this->featured !== 'include') {
+            $database->setQuery(
+                $database->getQuery(true)
+                    ->select('content_id')
+                    ->from('#__content_frontpage')
+            );
+            if ($featuredItems = $database->loadColumn()) {
+                $query->where(
+                    sprintf(
+                        'id %s IN (%s)',
+                        ($this->featured == 'exclude') ? 'NOT ' : '',
+                        implode(',', $featuredItems)
+                    )
+                );
+            }
+        }
+
+        $database->setQuery($query, 0, $this->limit);
         $this->content = $database->loadObjectList();
     }
 
@@ -133,7 +132,8 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
                 $this->titles[]   = $this->getTitleFromContent($item->title);
                 $this->contents[] = $this->getTitleFromContent($item->introtext);
                 $item->slug       = $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
-                $this->links[]    = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language), false);
+                $this->links[]    = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid,
+                    $item->language), false);
             }
         }
     }

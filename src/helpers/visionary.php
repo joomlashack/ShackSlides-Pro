@@ -1,35 +1,31 @@
-
 <?php
 
 /**
- * @version   1.x
- * @package   Shack Slides
+ * @version       1.x
+ * @package       Shack Slides
  * @copyright (C) 2010 Joomlashack / Meritage Assets Corp
- * @license   GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ * @license       GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
 
-defined('_JEXEC') or die('Direct access to files is not permitted');
+defined('_JEXEC') or die();
 
 if (!defined('JPATH_ADMIN_JSVISIONARY')) {
-    define('JPATH_ADMIN_JSVISIONARY', JPATH_ADMINISTRATOR . '/' . 'components' . '/' . 'com_jsvisionary');
+    define('JPATH_ADMIN_JSVISIONARY', JPATH_ADMINISTRATOR . '/components/com_jsvisionary');
 }
 if (!defined('JPATH_SITE_JSVISIONARY')) {
-    define('JPATH_SITE_JSVISIONARY', JPATH_SITE . '/' . 'components' . '/' . 'com_jsvisionary');
+    define('JPATH_SITE_JSVISIONARY', JPATH_SITE . '/components/com_jsvisionary');
 }
 
-require_once(JPATH_ROOT . '/' . 'modules' . '/' . 'mod_jsshackslides' . '/' . 'helper.php');
 jimport('joomla.application.component.helper');
 
 class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper
 {
-
-
-    private $collection;
-    private $content;
-    private $ordering;
-    private $ordering_direction;
-    private $limit;
-    private $featured;
+    protected $collection;
+    protected $content;
+    protected $ordering;
+    protected $ordering_direction;
+    protected $limit;
+    protected $featured;
 
     public function __construct($params)
     {
@@ -56,7 +52,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper
         }
     }
 
-    private function getContentFromDatabase()
+    protected function getContentFromDatabase()
     {
         $db    = JFactory::getDbo();
         $user  = JFactory::getUser();
@@ -67,7 +63,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper
         $this->content = $db->loadObjectList();
     }
 
-    private function parseContentIntoProperties()
+    protected function parseContentIntoProperties()
     {
         foreach ($this->content as $item) {
             $this->images []  = $this->createImageUrl($item->image);
@@ -80,7 +76,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper
     }
 
 
-    private function createImageUrl($path)
+    protected function createImageUrl($path)
     {
 
 
@@ -123,22 +119,22 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper
     }
 
 
-
-    private function getMarkers()
+    protected function getMarkers()
     {
         $configMedias = JComponentHelper::getParams('com_media');
         $config       = JComponentHelper::getParams('com_jsvisionary');
 
         $markers = array(
             'DIR_JSSSSLIDE_IMAGE' => $config->get("upload_dir_jsssslide_image", JPATH_SITE) . '/',
-            'DIR__TRASH' => $config->get("trash_dir", JPATH_ADMIN_JSVISIONARY . '/' . "images" . '/' . "trash") . '/',
+            'DIR__TRASH'          => $config->get("trash_dir",
+                    JPATH_ADMIN_JSVISIONARY . '/' . "images" . '/' . "trash") . '/',
 
             'COM_ADMIN' => JPATH_ADMIN_JSVISIONARY,
-            'ADMIN' => JPATH_ADMINISTRATOR,
-            'COM_SITE' => JPATH_SITE_JSVISIONARY,
-            'IMAGES' => JPATH_SITE . '/' . $config->get('image_path', 'images')  . '/',
-            'MEDIAS' => JPATH_SITE . '/' . $configMedias->get('file_path', 'images') . '/',
-            'ROOT' => JPATH_SITE
+            'ADMIN'     => JPATH_ADMINISTRATOR,
+            'COM_SITE'  => JPATH_SITE_JSVISIONARY,
+            'IMAGES'    => JPATH_SITE . '/' . $config->get('image_path', 'images') . '/',
+            'MEDIAS'    => JPATH_SITE . '/' . $configMedias->get('file_path', 'images') . '/',
+            'ROOT'      => JPATH_SITE
         );
 
 

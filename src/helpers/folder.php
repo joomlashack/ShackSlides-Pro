@@ -14,8 +14,6 @@ defined('_JEXEC') or die();
 jimport('joomla.filesystem.folder');
 jimport('joomla.filesystem.file');
 
-require_once JPATH_ROOT . '/modules/mod_jsshackslides/helper.php';
-
 class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 {
     /**
@@ -51,7 +49,7 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
      * @return void
      * @throws Exception
      */
-    public function __construct($params)
+    public function __construct(Registry $params)
     {
         parent::__construct($params);
 

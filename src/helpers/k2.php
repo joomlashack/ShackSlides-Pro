@@ -1,26 +1,26 @@
 <?php
 
 /**
- * @version   1.x
- * @package   Shack Slides
+ * @version       1.x
+ * @package       Shack Slides
  * @copyright (C) 2010 Joomlashack / Meritage Assets Corp
- * @license   GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ * @license       GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
 
-defined('_JEXEC') or die('Direct access to files is not permitted');
+use Joomla\Registry\Registry;
 
-require_once(JPATH_ROOT . '/' . 'modules' . '/' . 'mod_jsshackslides' . '/' . 'helper.php');
+defined('_JEXEC') or die();
 
 class ModShackSlidesK2Helper extends ModShackSlidesHelper
 {
-    private $content;
-    private $category_id;
-    private $ordering;
-    private $ordering_direction;
-    private $limit;
-    private $featured;
+    protected $content;
+    protected $category_id;
+    protected $ordering;
+    protected $ordering_direction;
+    protected $limit;
+    protected $featured;
 
-    public function __construct($params)
+    public function __construct(Registry $params)
     {
         parent::__construct($params);
         $this->category_id        = $params->get('k2_category', 0);
@@ -34,65 +34,75 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
         $this->parseContentIntoProperties();
     }
 
-    private function getContentFromDatabase()
+    protected function getContentFromDatabase()
     {
-        $database              = JFactory::getDBO();
-        $user                  = JFactory::getUser();
-        $featured_items        = '';
-        $contentConfig         = JComponentHelper::getParams('com_content');
-        $aid                   = $user->get('aid', 0);
-        $now                   = date('Y-m-d H:i:s');
-        $nullDate              = $database->getNullDate();
+        $database = JFactory::getDBO();
+        $user     = JFactory::getUser();
+        $now      = $database->quote(date('Y-m-d H:i:s'));
+        $nullDate = $database->quote($database->getNullDate());
+        $aid      = $user->getAuthorisedViewLevels();
 
-        // check for new ACL on Joomla! from 1.6 and above
-        jimport('joomla.version');
-        $version = new JVersion();
-        if (version_compare($version->RELEASE, "1.6", "ge")) {
-            $aid = max($user->getAuthorisedViewLevels());
-        }
         if ($this->ordering == 'RAND()') {
             $this->ordering = $this->generateOrdering();
         }
-        $query = 'SELECT * FROM #__k2_items' .
-        ' WHERE catid =' . $this->category_id .
-        (($this->featured !== 'include') ? ' AND featured ' . (($this->featured == 'exclude') ? '!=' : '=') . ' 1' : '') .
-        ' AND published = 1' .
-        ' AND access <= ' . $aid .
-        ' AND trash = 0' .
-        ' AND (publish_up = ' . $database->Quote($nullDate) . ' OR publish_up <= ' . $database->Quote($now) . ')' .
-        ' AND (publish_down = ' . $database->Quote($nullDate) . ' OR publish_down >= ' . $database->Quote($now) . ')' .
-        ' ORDER BY ' . $this->ordering . ' ' . $this->ordering_direction .
-        ' LIMIT ' . $this->limit;
-        $database->setQuery($query);
+
+        $query = $database->getQuery(true)
+            ->select('*')
+            ->from('#__k2_items')
+            ->where(
+                array(
+                    'catid =' . $this->category_id,
+                    sprintf('access IN (%s)', join(',', $aid)),
+                    'published = 1',
+                    'trash = 0',
+                    sprintf('(publish_up = %s OR publish_up <= %s)', $nullDate, $now),
+                    sprintf('(publish_down = %s OR publish_down >= %s)', $nullDate, $now)
+                )
+            )
+            ->order($this->ordering . ' ' . $this->ordering_direction);
+
+        if ($this->featured !== 'include') {
+            $query->where(
+                ($this->featured == 'exclude')
+                    ? 'featured != 1'
+                    : 'featured = 1'
+            );
+        }
+
+        $database->setQuery($query, 0, $this->limit);
         $this->content = $database->loadObjectList();
     }
 
-    private function parseContentIntoProperties()
+    protected function parseContentIntoProperties()
     {
         foreach ($this->content as $item) {
-            if (JFile::exists(JPATH_SITE . DS . 'media' . DS . 'k2' . DS . 'items' . DS . 'src' . DS . md5("Image" . $item->id) . '.jpg')) {
-                $this->images[] = 'media/k2/items/src/' . md5("Image" . $item->id) . '.jpg';
+            $itemImage = sprintf('media/k2/items/src/%s.jpg', md5("Image" . $item->id));
+            if (is_file(JPATH_SITE . '/' . $itemImage)) {
+                $this->images[] = $itemImage;
+
             } else {
                 $this->images[] = $this->getFirstImageFromContent($item->introtext);
             }
 
             $this->titles[]   = $this->getTitleFromContent($item->title);
             $this->contents[] = $this->getTitleFromContent($item->introtext);
-            ;
-            $this->links[] = $this->buildLink($item->id);
+            $this->links[]    = $this->buildLink($item->id);
         }
     }
 
-    private function buildLink($id)
+    protected function buildLink($id)
     {
-        $fields = array(    'option' => 'com_k2',
-                            'view' => 'item',
-                            'layout' => 'item',
-                            'id' => $id);
-        $index = $this->compareQuery($fields);
+        $fields = array(
+            'option' => 'com_k2',
+            'view'   => 'item',
+            'layout' => 'item',
+            'id'     => $id
+        );
+        $index  = $this->compareQuery($fields);
 
         if ($index != false) {
             $link = $this->menu[$index]->link . '&Itemid=' . $this->menu[$index]->id;
+
         } else {
             $link = 'index.php?option=com_k2&view=item&layout=item&id=' . $id;
         }

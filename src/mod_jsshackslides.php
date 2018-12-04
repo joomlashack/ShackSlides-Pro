@@ -7,19 +7,20 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// Restrict Access to within Joomla
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die();
 
-jimport('joomla.environment.browser');
+require_once __DIR__ . '/helper.php';
 
-require_once dirname(__FILE__) . '/helpers/' . $params->get('source', 'folder') . '.php';
+$helper = ModShackSlidesHelper::getInstance($params);
+if (!$helper) {
+    //not a good thing
+    return;
+}
 
 $doc = JFactory::getDocument();
 
+jimport('joomla.environment.browser');
 $browser = JBrowser::getInstance();
-
-$helperClass = 'ModShackSlides' . ucfirst($params->get('source', 'folder')) . 'Helper';
-$helper      = new $helperClass($params);
 
 $images   = $helper->getImages();
 $links    = $helper->getLinks();
@@ -35,159 +36,159 @@ if (!$images) {
 $defaults = array(
     // BASIC CONFIGURATION OPTIONS
     // Container height
-    'height' => '250',
+    'height'                                  => '250',
     // Height adjustment
-    'height_adjustment' => 'adjust',
+    'height_adjustment'                       => 'adjust',
     // Auto height (depends on the height adjustment)
-    'slide_autoheight' => 'true',
+    'slide_autoheight'                        => 'true',
     // Transition delay
-    'slide_delay' => '5000',
+    'slide_delay'                             => '5000',
     // Show descriptions
-    'description' => 'yes',
+    'description'                             => 'yes',
     // Transition speed
-    'slide_effect_masterspeed' => '300',
+    'slide_effect_masterspeed'                => '300',
     // Transition speed for text effects
-    'slide_text_effect_masterspeed' => '500',
+    'slide_text_effect_masterspeed'           => '500',
     // Effect for slides
-    'slide_effect' => 'slide',
+    'slide_effect'                            => 'slide',
     // Stop on mouse hover
-    'slide_onhoverstop' => '1',
+    'slide_onhoverstop'                       => '1',
     // Number of items per slide page
-    'slide_items' => '1',
+    'slide_items'                             => '1',
     // Margin between slides when using multiple per page
-    'slide_margin' => '10',
+    'slide_margin'                            => '10',
     // Autoplay on or off
-    'slide_autoplay' => '1',
+    'slide_autoplay'                          => '1',
     // Template design on or off
-    'template_design' => '0',
+    'template_design'                         => '0',
 
     // SLIDE SOURCES
     // Where the link target will point at
-    'anchor_target' => 'self',
+    'anchor_target'                           => 'self',
 
     // DESCRIPTION OPTIONS
     // Title and description position
-    'title_description_position' => 'bottom',
+    'title_description_position'              => 'bottom',
     // Title and description alignment
-    'title_description_alignment' => 'left',
+    'title_description_alignment'             => 'left',
     // Title and description vertical padding
-    'title_description_padding_vertical' => '10',
+    'title_description_padding_vertical'      => '10',
     // Title and description horizontal padding
-    'title_description_padding_horizontal' => '10',
+    'title_description_padding_horizontal'    => '10',
     // Show title flag
-    'title_show' => '1',
+    'title_show'                              => '1',
     // Show title in mobile flag
-    'title_show_mobile' => '1',
+    'title_show_mobile'                       => '1',
     // Title width
-    'title_width' => '300',
+    'title_width'                             => '300',
     // Title height
-    'title_height' => '50',
+    'title_height'                            => '50',
     // Title color flag
-    'title_bgcolor_flag' => '1',
+    'title_bgcolor_flag'                      => '1',
     // Title color
-    'title_color' => 'FFFFFF',
+    'title_color'                             => 'FFFFFF',
     // Title background color flag
-    'title_color_flag' => '1',
+    'title_color_flag'                        => '1',
     // Title background color
-    'title_bgcolor' => '#000000',
+    'title_bgcolor'                           => '#000000',
     // Title background opacity
-    'title_bgcolor_opacity' => '70',
+    'title_bgcolor_opacity'                   => '70',
     // Title effect
-    'title_effect' => 'none',
+    'title_effect'                            => 'none',
     // Title tag
-    'title_tag' => 'h4',
+    'title_tag'                               => 'h4',
     // Show description flag
-    'description_show' => '1',
+    'description_show'                        => '1',
     // Show description in mobile flag
-    'description_show_mobile' => '1',
+    'description_show_mobile'                 => '1',
     // Description width
-    'description_width' => '300',
+    'description_width'                       => '300',
     // Description height
-    'description_height' => '100',
+    'description_height'                      => '100',
     // Description color flag
-    'description_color_flag' => '1',
+    'description_color_flag'                  => '1',
     // Description color
-    'description_color' => '#FFFFFF',
+    'description_color'                       => '#FFFFFF',
     // Description background color flag
-    'description_bgcolor_flag' => '1',
+    'description_bgcolor_flag'                => '1',
     // Description background color
-    'description_bgcolor' => '#000000',
+    'description_bgcolor'                     => '#000000',
     // Description background opacity
-    'description_bgcolor_opacity' => '70',
+    'description_bgcolor_opacity'             => '70',
     // Description effect
-    'description_effect' => 'none',
+    'description_effect'                      => 'none',
     // Description tag
-    'description_tag' => 'div',
+    'description_tag'                         => 'div',
 
     // NAVIGATION OPTIONS
     // Show the navigation always, never, on hover
-    'navigation_show' => '2',
+    'navigation_show'                         => '2',
     // Show navigation in mobile flag
-    'navigation_show_mobile' => '1',
+    'navigation_show_mobile'                  => '1',
     // Navigation theme shape
-    'navigation_theme_shape' => 'round',
+    'navigation_theme_shape'                  => 'round',
     // Navigation theme effect
-    'navigation_effect_theme' => 'theme0',
+    'navigation_effect_theme'                 => 'theme0',
     // Show slide numbers in navigation
-    'navigation_shownumbers' => '0',
+    'navigation_shownumbers'                  => '0',
     // Orientation
-    'navigation_orientation' => 'horizontal',
+    'navigation_orientation'                  => 'horizontal',
     // Horizontal alignment
-    'navigation_align_horizontal' => 'center',
+    'navigation_align_horizontal'             => 'center',
     // Vertical alignment
-    'navigation_align_vertical' => 'bottom',
+    'navigation_align_vertical'               => 'bottom',
     // Horizontal padding
-    'navigation_padding_horizontal' => '10',
+    'navigation_padding_horizontal'           => '10',
     // Vertical padding
-    'navigation_padding_vertical' => '10',
+    'navigation_padding_vertical'             => '10',
     // Dots color
-    'navigation_dots_color' => 'FFFFFF',
+    'navigation_dots_color'                   => 'FFFFFF',
     // Active dots color
-    'navigation_activedots_color' => '000000',
+    'navigation_activedots_color'             => '000000',
     // Dots numbers color
-    'navigation_dots_numbers_color' => '777',
+    'navigation_dots_numbers_color'           => '777',
     // Opacity
-    'navigation_opacity' => '50',
+    'navigation_opacity'                      => '50',
     // Custom nav dot
-    'navigation_custom_dot' => '',
+    'navigation_custom_dot'                   => '',
     // Custom hover nav dot
-    'navigation_custom_dothover' => '',
+    'navigation_custom_dothover'              => '',
     // Custom active nav dot
-    'navigation_custom_dotactive' => '',
+    'navigation_custom_dotactive'             => '',
     // Show the navigation buttons always, never, on hover
-    'navigation_buttons_show' => '2',
+    'navigation_buttons_show'                 => '2',
     // Show the buttons in mobile flag
-    'navigation_buttons_show_mobile' => '1',
+    'navigation_buttons_show_mobile'          => '1',
     // Buttons theme
-    'buttons_theme' => 'theme2',
+    'buttons_theme'                           => 'theme2',
     // Buttons color
-    'navigation_buttons_color' => '666666',
+    'navigation_buttons_color'                => '666666',
     // Buttons hover color
-    'navigation_buttonshover_color' => 'FFFFFF',
+    'navigation_buttonshover_color'           => 'FFFFFF',
     // Buttons opacity
-    'navigation_buttons_opacity' => '70',
+    'navigation_buttons_opacity'              => '70',
     // Custom previous button
-    'navigation_buttons_custom_previous' => '',
+    'navigation_buttons_custom_previous'      => '',
     // Custom previous hover button
     'navigation_buttons_custom_previoushover' => '',
     // Custom next button
-    'navigation_buttons_custom_next' => '',
+    'navigation_buttons_custom_next'          => '',
     // Custom next hover button
-    'navigation_buttons_custom_nexthover' => '',
+    'navigation_buttons_custom_nexthover'     => '',
 
     // ADVANCED OPTIONS
     // id for the slider container
-    'container' => '',
+    'container'                               => '',
     // RTL SUPPORT
-    'language_rtl_enable' => 'false',
+    'language_rtl_enable'                     => 'false',
     // TEMPLATE CUSTOM OPTIONS
-    'buttons_left_right_position' => '',
-    'navigation_buttons_custom_width' => '',
-    'navigation_buttons_custom_height' => '',
-    'navigation_padding_dots' => '',
-    'navigation_custom_align' => false,
-    'navigation_dots_width' => '',
-    'navigation_dots_height' => ''
+    'buttons_left_right_position'             => '',
+    'navigation_buttons_custom_width'         => '',
+    'navigation_buttons_custom_height'        => '',
+    'navigation_padding_dots'                 => '',
+    'navigation_custom_align'                 => false,
+    'navigation_dots_width'                   => '',
+    'navigation_dots_height'                  => ''
 );
 
 $settings = array();
@@ -213,11 +214,11 @@ $json = false;
 if ($settings['template_design']) {
     $db  = JFactory::getDBO();
     $sql = " SELECT ts.template " .
-    " FROM #__menu as m " .
-    " INNER JOIN #__template_styles as ts" .
-    " ON ts.id = m.template_style_id " .
-    " WHERE m.home = 1" .
-    " AND m.published = 1";
+        " FROM #__menu as m " .
+        " INNER JOIN #__template_styles as ts" .
+        " ON ts.id = m.template_style_id " .
+        " WHERE m.home = 1" .
+        " AND m.published = 1";
     $db->setQuery($sql);
     $tplName = $db->loadResult();
 
@@ -246,14 +247,15 @@ $effectMasterSpeed = '1';
 if ($settings['slide_effect'] != 'none') {
     $effectMasterSpeed = $settings['slide_effect_masterspeed'];
 
-    // If there is a slide effect, assigns the same speed value for the text effects.  Otherwise it uses default value for text
+    // If there is a slide effect, assigns the same speed value for the text effects.
+    // Otherwise it uses default value for text
     $settings['slide_text_effect_masterspeed'] = $settings['slide_effect_masterspeed'];
 }
 
 $settings['slides_animation']         = $helper->convertAnimation($settings['slide_effect']);
 $settings['slide_center']             = ($settings['slide_items'] == 1 ? 'true' : 'false');
 $settings['slide_effect_masterspeed'] = $effectMasterSpeed;
-$settings['slide_delay'] += $settings['slide_effect_masterspeed'];
+$settings['slide_delay']              += $settings['slide_effect_masterspeed'];
 
 $doc->addStyleDeclaration('
     #' . $settings['container'] . '.jss-slider .owl-carousel .owl-item,
@@ -270,7 +272,7 @@ $doc->addStyleDeclaration('
 
 // Defined height in case of adjustment (to set a max height for the slider)
 if ($settings['height_adjustment'] == 'adjust') {
-    $height = (int) $settings['height'];
+    $height = (int)$settings['height'];
 
     if ($height > 0) {
         $doc->addStyleDeclaration('
@@ -317,9 +319,10 @@ if ($settings['description_show']) {
         || $settings['title_description_position'] == 'right'
         || $settings['title_description_position'] == 'left_outside'
         || $settings['title_description_position'] == 'right_outside') {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-description {
-                width: ' . (int) $settings['description_width'] . 'px;
+                width: ' . (int)$settings['description_width'] . 'px;
             }'
         );
     }
@@ -329,29 +332,32 @@ if ($settings['description_show']) {
         || $settings['title_description_position'] == 'bottom'
         || $settings['title_description_position'] == 'above_outside'
         || $settings['title_description_position'] == 'below_outside') {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-description {
-                height: ' . (int) $settings['description_height'] . 'px;
+                height: ' . (int)$settings['description_height'] . 'px;
             }'
         );
     }
 
     // Left outside description
     if ($settings['title_description_position'] == 'left_outside') {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
-                padding-left: ' . (int) $settings['description_width'] . 'px;
+                padding-left: ' . (int)$settings['description_width'] . 'px;
             }'
         );
     }
 
     // Right outside title
     if ($settings['title_description_position'] == 'right_outside') {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
-                padding-right: ' . (int) $settings['description_width'] . 'px;
+                padding-right: ' . (int)$settings['description_width'] . 'px;
             }'
         );
     }
@@ -372,7 +378,8 @@ if ($settings['title_show']) {
     if ($settings['title_bgcolor_flag']) {
         $color_hex                 = $settings['title_bgcolor'];
         $settings['title_bgcolor'] = implode(',', $helper->hexToRGB($settings['title_bgcolor']));
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-title {
                 background-color: ' . $color_hex . ';
                 background-color: rgba(' . $settings['title_bgcolor'] . ', ' . ($settings['title_bgcolor_opacity'] / 100) . ');
@@ -384,10 +391,12 @@ if ($settings['title_show']) {
     if ($settings['title_description_position'] == 'left'
         || $settings['title_description_position'] == 'right'
         || $settings['title_description_position'] == 'left_outside'
-        || $settings['title_description_position'] == 'right_outside') {
-        $doc->addStyleDeclaration('
+        || $settings['title_description_position'] == 'right_outside'
+    ) {
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-title {
-                width: ' . (int) $settings['title_width'] . 'px;
+                width: ' . (int)$settings['title_width'] . 'px;
             }'
         );
     }
@@ -396,30 +405,34 @@ if ($settings['title_show']) {
     if ($settings['title_description_position'] == 'top'
         || $settings['title_description_position'] == 'bottom'
         || $settings['title_description_position'] == 'above_outside'
-        || $settings['title_description_position'] == 'below_outside') {
-        $doc->addStyleDeclaration('
+        || $settings['title_description_position'] == 'below_outside'
+    ) {
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-title {
-                height: ' . (int) $settings['title_height'] . 'px;
+                height: ' . (int)$settings['title_height'] . 'px;
             }'
         );
     }
 
     // Left outside title
     if ($settings['title_description_position'] == 'left_outside') {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
-                padding-left: ' . (int) $settings['title_width'] . 'px;
+                padding-left: ' . (int)$settings['title_width'] . 'px;
             }'
         );
     }
 
     // Right outside title
     if ($settings['title_description_position'] == 'right_outside') {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .owl-carousel .jss-image,
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
-                padding-right: ' . (int) $settings['title_width'] . 'px;
+                padding-right: ' . (int)$settings['title_width'] . 'px;
             }'
         );
     }
@@ -456,7 +469,7 @@ if ($settings['description_show'] || $settings['title_show']) {
             break;
 
         case 'right':
-        case 'right_outside';
+        case 'right_outside':
             $descriptionMargin = '0 0 0 auto';
             break;
 
@@ -466,15 +479,16 @@ if ($settings['description_show'] || $settings['title_show']) {
             break;
 
         case 'left':
-        case 'left_outside';
+        case 'left_outside':
             $descriptionMargin = '0 auto 0 0';
             break;
     }
 
-    $doc->addStyleDeclaration('
+    $doc->addStyleDeclaration(
+        '
         #' . $settings['container'] . '.jss-slider .jss-title-description .jss-title,
         #' . $settings['container'] . '.jss-slider .jss-title-description .jss-description {
-            padding: ' . (int) $settings['title_description_padding_vertical'] . 'px ' . (int) $settings['title_description_padding_horizontal'] . 'px;
+            padding: ' . (int)$settings['title_description_padding_vertical'] . 'px ' . (int)$settings['title_description_padding_horizontal'] . 'px;
             margin: ' . $descriptionMargin . ';
         }'
     );
@@ -482,11 +496,15 @@ if ($settings['description_show'] || $settings['title_show']) {
     // Above/Below outside title/description
     if ($settings['title_description_position'] == 'above_outside'
         || $settings['title_description_position'] == 'below_outside') {
-        $paddingTitleDescription
-                                         = ($settings['title_show'] ? (int) $settings['title_height'] : 0) + ($settings['description_show'] ? (int) $settings['description_height'] : 0);
-        $paddingPositionTitleDescription = ($settings['title_description_position'] == 'above_outside' ? 'top' : 'bottom');
+        $paddingTitleDescription         = ($settings['title_show'] ? (int)$settings['title_height'] : 0)
+            + ($settings['description_show'] ? (int)$settings['description_height'] : 0);
+        $paddingPositionTitleDescription = ($settings['title_description_position'] == 'above_outside'
+            ? 'top'
+            : 'bottom'
+        );
 
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-inner {
                 padding-' . $paddingPositionTitleDescription . ': ' . $paddingTitleDescription . 'px;
             }'
@@ -495,23 +513,19 @@ if ($settings['description_show'] || $settings['title_show']) {
 
     // Text animation script - only if one slide per page is showing
     if ($settings['slide_items'] == 1 && ($settings['title_effect'] != 'none' || $settings['description_effect'])) {
-        $settings['slide_delay'] = (int) $settings['slide_delay'] + (
-            $settings['title_effect'] != 'none'
-                ? (int) $settings['slide_text_effect_masterspeed']
-                : 0
-            ) + ($settings['description_effect'] != 'none'
-                ? (int) $settings['slide_text_effect_masterspeed'] :
-                0
-            );
+        $settings['slide_delay'] = (int)$settings['slide_delay']
+            + ($settings['title_effect'] != 'none' ? (int)$settings['slide_text_effect_masterspeed'] : 0)
+            + ($settings['description_effect'] != 'none' ? (int)$settings['slide_text_effect_masterspeed'] : 0);
 
         $settings['animation_script'] = '
             function jssInit_' . $settings['container'] . '(event) {
                 ' . ($settings['title_effect'] != 'none' && substr($settings['title_effect'], 0, 10) != 'attention_'
-                        ? 'jQuery("#' . $settings['container'] . ' .jss-title > *").css("opacity", "0");'
-                        : '') . '
-                ' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0, 10) != 'attention_'
-                        ? 'jQuery("#' . $settings['container'] . ' .jss-description > *").css("opacity", "0");'
-                        : '') . '
+                ? 'jQuery("#' . $settings['container'] . ' .jss-title > *").css("opacity", "0");'
+                : '') . '
+                ' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0,
+                10) != 'attention_'
+                ? 'jQuery("#' . $settings['container'] . ' .jss-description > *").css("opacity", "0");'
+                : '') . '
             }
             function jssInitEnd_' . $settings['container'] . '(event) {
                 jssAnimText_' . $settings['container'] . '(event.item.index);
@@ -530,17 +544,18 @@ if ($settings['description_show'] || $settings['title_show']) {
                     return;
                 }
                 jssAnimTextExec_' . $settings['container'] . '(' . (($settings['title_show'] == '1' && $settings['title_effect'] != 'none') ?
-                        '"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-title > *","' . (substr($settings['title_effect'], 0, 10) == 'attention_'
-                                ? substr($settings['title_effect'], 10)
-                                : $settings['title_effect']) . '"'
-                        : 'undefined,undefined') .
-                    ',' . (($settings['description_show'] == '1' && $settings['description_effect'] != 'none') ?
-                        '"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-description > *","' .
-                            (substr($settings['description_effect'], 0, 10) == 'attention_'
-                                    ? substr($settings['description_effect'], 10)
-                                    : $settings['description_effect']
-                                ) . '"'
-                        : 'undefined,undefined') . ');
+                '"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-title > *","' . (substr($settings['title_effect'],
+                    0, 10) == 'attention_'
+                    ? substr($settings['title_effect'], 10)
+                    : $settings['title_effect']) . '"'
+                : 'undefined,undefined') .
+            ',' . (($settings['description_show'] == '1' && $settings['description_effect'] != 'none') ?
+                '"#' . $settings['container'] . ' .owl-item:eq(" + i + ") .jss-description > *","' .
+                (substr($settings['description_effect'], 0, 10) == 'attention_'
+                    ? substr($settings['description_effect'], 10)
+                    : $settings['description_effect']
+                ) . '"'
+                : 'undefined,undefined') . ');
             }';
         $settings['animation_events'] = '
             var ' . $settings['container'] . '_anim = 0;
@@ -550,11 +565,12 @@ if ($settings['description_show'] || $settings['title_show']) {
             ' . $settings['container'] . '.on("translated.owl.carousel", function(event) {
                 if (' . $settings['container'] . '_anim) {
                     ' . ($settings['title_effect'] != 'none' && substr($settings['title_effect'], 0, 10) != 'attention_'
-                            ? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-title > *").css("opacity", "0");'
-                            : '') . '
-                    ' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0, 10) != 'attention_'
-                            ? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-description > *").css("opacity", "0");'
-                            : '') . '
+                ? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-title > *").css("opacity", "0");'
+                : '') . '
+                    ' . ($settings['description_effect'] != 'none' && substr($settings['description_effect'], 0,
+                10) != 'attention_'
+                ? 'jQuery("#' . $settings['container'] . ' .owl-item:not(:eq(" + event.item.index + ")) .jss-description > *").css("opacity", "0");'
+                : '') . '
                     jssAnimText_' . $settings['container'] . '(event.item.index);
                 }
                 ' . $settings['container'] . '_anim = 0;
@@ -562,10 +578,11 @@ if ($settings['description_show'] || $settings['title_show']) {
     }
 
     if (($settings['title_description_position'] == 'left'
-        || $settings['title_description_position'] == 'right'
-        || $settings['title_description_position'] == 'left_outside'
-        || $settings['title_description_position'] == 'right_outside')
-        && (($browserName == 'msie' && $browserVersion < 11) || $browserName == 'safari')) {
+            || $settings['title_description_position'] == 'right'
+            || $settings['title_description_position'] == 'left_outside'
+            || $settings['title_description_position'] == 'right_outside')
+        && (($browserName == 'msie' && $browserVersion < 11) || $browserName == 'safari')
+    ) {
         $settings['resize_events'] .= '
             function ' . $settings['container'] . 'SetHeight(){
                 var height = jQuery("#' . $settings['container'] . '.jss-slider").height();
@@ -587,7 +604,8 @@ if ($settings['description_show'] || $settings['title_show']) {
                 }, 500);
             });';
     } else {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-title-description .jss-title,
             #' . $settings['container'] . '.jss-slider .jss-title-description .jss-description {
                     -webkit-flex-grow: 1;
@@ -614,7 +632,8 @@ if ($settings['description_show'] || $settings['title_show']) {
 // Navigation
 if ($settings['navigation_show'] != '0') {
     if ($settings['navigation_show'] == '1') {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
                 opacity: 0;
                 -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -623,18 +642,19 @@ if ($settings['navigation_show'] != '0') {
     }
 
     // Navigation is shown - always or just on hover (default by css)
-    $doc->addStyleDeclaration('
+    $doc->addStyleDeclaration(
+        '
         #' . $settings['container'] . '.jss-slider' . (($settings['navigation_show'] == '1') ? ':hover' : '') . ' .jss-navigation .jss-navigation-dots {
-            opacity: ' . (((int) $settings['navigation_opacity']) / 100) . ';
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' . ((int) $settings['navigation_opacity']) . ')";
+            opacity: ' . (((int)$settings['navigation_opacity']) / 100) . ';
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' . ((int)$settings['navigation_opacity']) . ')";
         }
         #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div > span {
             color: ' . $settings['navigation_dots_numbers_color'] . ';
         }'
     );
 
-    $dotsWidth  = ($settings['navigation_dots_width'] != '')?$settings['navigation_dots_width']:30;
-    $dotsHeight = ($settings['navigation_dots_height'] != '')?$settings['navigation_dots_height']:30;
+    $dotsWidth  = ($settings['navigation_dots_width'] != '') ? $settings['navigation_dots_width'] : 30;
+    $dotsHeight = ($settings['navigation_dots_height'] != '') ? $settings['navigation_dots_height'] : 30;
 
     if ($settings['navigation_custom_dot'] != '') {
         list($dotsWidth, $dotsHeight) = $helper->applyingCustomImages(
@@ -642,8 +662,10 @@ if ($settings['navigation_show'] != '0') {
             '#' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div',
             $doc
         );
+
     } else {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot > div {
                 width: ' . $dotsWidth . 'px;
                 height: ' . $dotsHeight . 'px;
@@ -676,9 +698,12 @@ if ($settings['navigation_show'] != '0') {
     }
 
     $settings['navigation_show'] = 'true';
-    $verticalPosition            = '';
-    $horizontalPosition          = '';
-    $dotsPadding                 = ($settings['navigation_padding_dots'] != '') ? $settings['navigation_padding_dots'] : 5;
+
+    $verticalPosition   = '';
+    $horizontalPosition = '';
+    $dotsPadding        = ($settings['navigation_padding_dots'] != '')
+        ? $settings['navigation_padding_dots']
+        : 5;
 
     switch ($settings['navigation_align_vertical']) {
         case 'center':
@@ -704,12 +729,15 @@ if ($settings['navigation_show'] != '0') {
             break;
     }
 
-    $navigationAlignment = ($settings['navigation_custom_align'] == false)?$verticalPosition . ';' . $horizontalPosition . ';' : '';
+    $navigationAlignment = ($settings['navigation_custom_align'] == false)
+        ? $verticalPosition . ';' . $horizontalPosition . ';'
+        : '';
 
     // Navigation settings
-    $doc->addStyleDeclaration('
+    $doc->addStyleDeclaration(
+        '
         #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
-            padding: ' . (int) $settings['navigation_padding_vertical'] . 'px ' . (int) $settings['navigation_padding_horizontal'] . 'px;
+            padding: ' . (int)$settings['navigation_padding_vertical'] . 'px ' . (int)$settings['navigation_padding_horizontal'] . 'px;
             ' . $navigationAlignment . '
         }
         #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
@@ -720,10 +748,11 @@ if ($settings['navigation_show'] != '0') {
 
     switch ($settings['navigation_orientation']) {
         case 'horizontal':
-            $doc->addStyleDeclaration('
+            $doc->addStyleDeclaration(
+                '
                 #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
-                    width: ' . ((($dotsWidth + $dotsPadding * 2) * sizeof($images)) + (2 * (int) $settings['navigation_padding_horizontal'])) . 'px;
-                    height: ' . ((2 * (int) $settings['navigation_padding_vertical']) + $dotsHeight) . 'px;
+                    width: ' . ((($dotsWidth + $dotsPadding * 2) * sizeof($images)) + (2 * (int)$settings['navigation_padding_horizontal'])) . 'px;
+                    height: ' . ((2 * (int)$settings['navigation_padding_vertical']) + $dotsHeight) . 'px;
                 }
                 #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
                     display: inline-block;
@@ -733,10 +762,11 @@ if ($settings['navigation_show'] != '0') {
             );
             break;
         case 'vertical':
-            $doc->addStyleDeclaration('
+            $doc->addStyleDeclaration(
+                '
                 #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots {
-                    height: ' . ((($dotsHeight + $dotsPadding) * sizeof($images)) - $dotsPadding + (2 * (int) $settings['navigation_padding_vertical'])) . 'px;
-                    width: ' . ((2 * (int) $settings['navigation_padding_horizontal']) + $dotsWidth) . 'px;
+                    height: ' . ((($dotsHeight + $dotsPadding) * sizeof($images)) - $dotsPadding + (2 * (int)$settings['navigation_padding_vertical'])) . 'px;
+                    width: ' . ((2 * (int)$settings['navigation_padding_horizontal']) + $dotsWidth) . 'px;
                 }
                 #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot {
                     display: block;
@@ -752,7 +782,8 @@ if ($settings['navigation_show'] != '0') {
     }
 
     // Slide numbers in navigation
-    $doc->addStyleDeclaration('
+    $doc->addStyleDeclaration(
+        '
         #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-dots .owl-dot span {
             opacity: ' . ($settings['navigation_shownumbers'] ? '1' : '0') . '
         }'
@@ -790,8 +821,10 @@ if ($settings['navigation_buttons_show'] != '0') {
             $buttonsPrevHeight = $settings['navigation_buttons_custom_height'];
             $buttonsPrevWidth  = $settings['navigation_buttons_custom_width'];
         }
+
     } else {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
                 width: ' . $buttonsPrevWidth . 'px;
                 height: ' . $buttonsPrevHeight . 'px;
@@ -819,7 +852,8 @@ if ($settings['navigation_buttons_show'] != '0') {
             $buttonsNextWidth  = $settings['navigation_buttons_custom_width'];
         }
     } else {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-next {
                 width: ' . $buttonsNextWidth . 'px;
                 height: ' . $buttonsNextHeight . 'px;
@@ -836,7 +870,8 @@ if ($settings['navigation_buttons_show'] != '0') {
     }
 
     if ($settings['navigation_buttons_show'] == '1') {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
                 opacity: 0;
                 visibility: hidden;
@@ -845,7 +880,8 @@ if ($settings['navigation_buttons_show'] != '0') {
     }
 
     if ($settings['buttons_left_right_position'] != '') {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons .owl-prev {
                 left: ' . $settings['buttons_left_right_position'] . '%;
             }
@@ -856,10 +892,11 @@ if ($settings['navigation_buttons_show'] != '0') {
     }
 
     // Navigation is shown - always or just on hover (default by css).  Height adjustment
-    $doc->addStyleDeclaration('
+    $doc->addStyleDeclaration(
+        '
         #' . $settings['container'] . '.jss-slider' . (($settings['navigation_buttons_show'] == '1') ? ':hover' : '') .
-            ' .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
-            opacity: ' . (((int) $settings['navigation_buttons_opacity']) / 100) . ';
+        ' .jss-navigation .jss-navigation-buttons [class*=\'owl-\'] {
+            opacity: ' . (((int)$settings['navigation_buttons_opacity']) / 100) . ';
             visibility: visible;
         }
         #' . $settings['container'] . '.jss-slider .jss-navigation .jss-navigation-buttons [class*=\'owl-\']{
@@ -893,6 +930,7 @@ if ($settings['navigation_buttons_show'] != '0') {
     }
 
     $settings['navigation_buttons_show'] = 'true';
+
 } else {
     $settings['navigation_buttons_show'] = 'false';
 }
@@ -907,41 +945,41 @@ if ($settings['navigation_show'] || $settings['navigation_buttons_show']) {
                     background-color: ' . $settings['navigation_dots_color'] . ';
                     }';
 
-        if (file_exists(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css')) {
-            $themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css');
+        if (file_exists(JPATH_SITE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css')) {
+            $themeCss .= file_get_contents(JPATH_SITE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.css');
         }
 
         if (file_exists(
-            JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.' . $browserName . $browserVersion . '.css'
-            )) {
+            JPATH_SITE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.' . $browserName . $browserVersion . '.css'
+        )) {
             $themeCss .= file_get_contents(
-                JPATH_BASE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.' . $browserName . $browserVersion . '.css'
+                JPATH_SITE . '/media/mod_jsshackslides/css/shape/' . $settings['navigation_theme_shape'] . '.' . $browserName . $browserVersion . '.css'
             );
         }
     }
 
     if ($settings['buttons_theme'] != 'none') {
-        $themeCss .= file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.css');
+        $themeCss .= file_get_contents(JPATH_SITE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.css');
 
         if (file_exists(
-            JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.' . $browserName . $browserVersion . '.css'
-            )) {
+            JPATH_SITE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.' . $browserName . $browserVersion . '.css'
+        )) {
             $themeCss .= file_get_contents(
-                JPATH_BASE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.' . $browserName . $browserVersion . '.css'
+                JPATH_SITE . '/media/mod_jsshackslides/css/theme_buttons/' . $settings['buttons_theme'] . '.' . $browserName . $browserVersion . '.css'
             );
         }
     }
 
     if ($settings['navigation_effect_theme'] != 'none') {
         $themeCss .= file_get_contents(
-            JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . $settings['navigation_effect_theme'] . '.css'
+            JPATH_SITE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . $settings['navigation_effect_theme'] . '.css'
         );
 
         if (file_exists(
-            JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . '.' . $browserName . $browserVersion . '.css'
-            )) {
+            JPATH_SITE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . '.' . $browserName . $browserVersion . '.css'
+        )) {
             $themeCss .= file_get_contents(
-                JPATH_BASE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . '.' . $browserName . $browserVersion . '.css'
+                JPATH_SITE . '/media/mod_jsshackslides/css/effects_theme_navigation/' . '.' . $browserName . $browserVersion . '.css'
             );
         }
     }
@@ -969,7 +1007,7 @@ if ($rtl_ltr == 0) {
 }
 
 // Loads slider Javascript
-$sliderLoader = file_get_contents(JPATH_BASE . '/media/mod_jsshackslides/js/owl.load.js');
+$sliderLoader = file_get_contents(JPATH_SITE . '/media/mod_jsshackslides/js/owl.load.js');
 
 // Replaces all slider variables in loader
 foreach ($settings as $key => $value) {
