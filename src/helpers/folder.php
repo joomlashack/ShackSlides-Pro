@@ -77,6 +77,12 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
         $images = $this->orderFilesOrderingDirection($images);
 
         $this->images = array_slice($images, 0, $this->limit);
+
+        $this->titles = array();
+        foreach ($this->images as $image) {
+            $info           = pathinfo($image);
+            $this->titles[] = $info['filename'];
+        }
     }
 
     /**
