@@ -21,7 +21,6 @@
  * along with ShackSlides.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Restrict Access to within Joomla
 defined('_JEXEC') or die();
 
 class ShackFormFieldSlider extends JFormField

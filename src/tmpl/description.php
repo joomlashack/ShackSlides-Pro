@@ -21,8 +21,7 @@
  * along with ShackSlides.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Restrict Access to within Joomla
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die();
 
 if ($settings['title_show'] || $settings['description_show']) : ?>
     <div class="jss-title-description jss-alignment-<?php echo $settings['title_description_alignment'] ?>">

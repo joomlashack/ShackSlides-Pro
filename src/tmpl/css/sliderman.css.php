@@ -1,6 +1,6 @@
 <?php
 
-defined('_JEXEC') or die('Direct access to files is not permitted');
+defined('_JEXEC') or die();
 
 $theme = $params->get('theme', 'gray');
 
