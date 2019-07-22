@@ -277,7 +277,7 @@
             </fieldset>
 
             <fieldset name="descriptions"
-                      label="SLIDES_DESCRIPTIONS_OPTIONS_LABEL">
+                      label="SLIDES_DISPLAY_OPTIONS">
                 <field type="spacer"
                        name="templatesin_options_spacer"
                        label="TEMPLATESIN_OPTIONS_SPACER_LABEL"/>
