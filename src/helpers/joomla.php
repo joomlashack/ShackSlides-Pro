@@ -53,16 +53,21 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
      */
     protected $featured;
 
+    /**
+     * @var string
+     */
+    protected $sourceType = null;
+
     public function __construct(Registry $params)
     {
         parent::__construct($params);
 
-        $this->categoryId               = (int)$params->get('joomla_category', 0);
-        $this->ordering                 = $params->get('ordering', 'ordering');
-        $this->orderingDirection        = $params->get('ordering_dir', 'ASC');
-        $this->limit                    = (int)$params->get('limit', 5);
-        $this->featured                 = $params->get('featured', 'include');
-        $this->joomla_image_source_type = $params->get('joomla_image_source_type', 'intro');
+        $this->categoryId        = (int)$params->get('joomla_category', 0);
+        $this->ordering          = $params->get('ordering', 'ordering');
+        $this->orderingDirection = $params->get('ordering_dir', 'ASC');
+        $this->limit             = (int)$params->get('limit', 5);
+        $this->featured          = $params->get('featured', 'include');
+        $this->sourceType        = $params->get('joomla_image_source_type', 'intro');
 
         $this->getContentFromDatabase();
 
@@ -123,38 +128,41 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
      *
      * @return  void
      */
-    private function parseContentIntoProperties()
+    protected function parseContentIntoProperties()
     {
-
         foreach ($this->content as $item) {
-            // Setting image
-            $itemImages = json_decode($item->images);
+            if ($itemImages = json_decode($item->images, true)) {
+                $itemImages = new Registry(array_filter($itemImages));
+            }
 
             if ($itemImages) {
-                if ($this->joomla_image_source_type == 'intro') {
-                    if ($itemImages->image_intro != '') {
-                        $this->images[] = $itemImages->image_intro;
-                    } else {
-                        $this->images[] = $this->noimage;
-                    }
-                } elseif ($this->joomla_image_source_type == 'full') {
-                    if ($itemImages->image_fulltext != '') {
-                        $this->images[] = $itemImages->image_fulltext;
-                    } else {
-                        $this->images[] = $this->noimage;
-                    }
-                } elseif ($this->joomla_image_source_type == 'firstimage') {
-                    $this->images[] = $this->getFirstImageFromContent($item->introtext);
-                }
-                // End setting image
+                switch ($this->sourceType) {
+                    case 'intro':
+                        $image = $itemImages->get('image_intro');
+                        break;
 
-                $this->titles[]   = $this->getTitleFromContent($item->title);
-                $this->contents[] = $this->getTitleFromContent($item->introtext);
-                $item->slug       = $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
-                $this->links[]    = JRoute::_(
-                    ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language),
-                    false
-                );
+                    case 'full':
+                        $image = $itemImages->get('image_fulltext');
+                        break;
+
+                    case 'firstimage':
+                        $image = $this->getFirstImageFromContent($item->introtext);
+                        break;
+
+                    default:
+                        $image = null;
+                }
+
+                if (!empty($image)) {
+                    $this->images[]   = $image;
+                    $this->titles[]   = $this->getTitleFromContent($item->title);
+                    $this->contents[] = $this->getTitleFromContent($item->introtext);
+                    $item->slug       = $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
+                    $this->links[]    = JRoute::_(
+                        ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language),
+                        false
+                    );
+                }
             }
         }
     }
