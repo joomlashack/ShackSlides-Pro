@@ -340,20 +340,22 @@
                        type="text"
                        default="300"
                        label="SLIDETITLE_WIDTH"
-                       description="SLIDETITLE_WIDTH_DESC"/>
+                       description="SLIDETITLE_WIDTH_DESC"
+                       showon="title_show:1"/>
 
                 <field name="title_height"
                        type="text"
                        default="50"
                        label="SLIDETITLE_HEIGHT"
-                       description="SLIDETITLE_HEIGHT_DESC"/>
+                       description="SLIDETITLE_HEIGHT_DESC"
+                       showon="title_show:1"/>
 
                 <field name="title_color_flag"
                        type="list"
                        label="TITLE_COLOR_LABEL"
                        description="TITLE_COLOR_LABEL_DESC"
-                       default="1">
-
+                       default="1"
+                       showon="title_show:1">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -362,14 +364,15 @@
                        type="color"
                        label="TITLE_PICKER_COLOR_LABEL"
                        description="TITLE_PICKER_COLOR_LABEL_DESC"
-                       default="FFFFFF"/>
+                       default="FFFFFF"
+                       showon="title_show:1"/>
 
                 <field name="title_bgcolor_flag"
                        type="list"
                        label="TITLE_BG_COLOR_LABEL"
                        description="TITLE_BG_COLOR_LABEL_DESC"
-                       default="1">
-
+                       default="1"
+                       showon="title_show:1">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -378,20 +381,22 @@
                        type="color"
                        label="TITLE_BGPICKER_COLOR_LABEL"
                        description="TITLE_BGPICKER_COLOR_LABEL_DESC"
-                       default="#000000"/>
+                       default="#000000"
+                       showon="title_show:1"/>
 
                 <field name="title_bgcolor_opacity"
                        type="shack.slider"
                        label="RANGESLIDER_TITLE"
                        description="RANGESLIDER_TITLE_DESC"
-                       default="70"/>
+                       default="70"
+                       showon="title_show:1"/>
 
                 <field name="title_effect"
                        type="groupedlist"
                        default="none"
                        label="EFFECT_TITLE"
-                       description="EFFECT_TITLE_DESC">
-
+                       description="EFFECT_TITLE_DESC"
+                       showon="title_show:1">
                     <option value="none">TEXT_EFFECT_NONE</option>
                     <group label="TEXT_EFFECT_GROUP_ATTENTION">
                         <option value="attention_bounce">TEXT_EFFECT_BOUNCE</option>
@@ -458,8 +463,8 @@
                        type="list"
                        default="h4"
                        label="TAG_FOR_TITLE"
-                       description="TAG_FOR_TITLE_DESC">
-
+                       description="TAG_FOR_TITLE_DESC"
+                       showon="title_show:1">
                     <option value="p">p</option>
                     <option value="h1">h1</option>
                     <option value="h2">h2</option>
@@ -500,20 +505,22 @@
                        type="text"
                        default="300"
                        label="SLIDEDESCRIPTION_WIDTH"
-                       description="SLIDEDESCRIPTION_WIDTH_DESC"/>
+                       description="SLIDEDESCRIPTION_WIDTH_DESC"
+                       showon="description_show:1"/>
 
                 <field name="description_height"
                        type="text"
                        default="100"
                        label="SLIDEDESCRIPTION_HEIGHT"
-                       description="SLIDEDESCRIPTION_HEIGHT_DESC"/>
+                       description="SLIDEDESCRIPTION_HEIGHT_DESC"
+                       showon="description_show:1"/>
 
                 <field name="description_color_flag"
                        type="list"
                        label="DESCRIPTION_COLOR_LABEL"
                        description="DESCRIPTION_COLOR_LABEL_DESC"
-                       default="1">
-
+                       default="1"
+                       showon="description_show:1">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -522,14 +529,15 @@
                        type="color"
                        label="DESCRIPTION_PICKER_COLOR_LABEL"
                        description="DESCRIPTION_PICKER_COLOR_LABEL_DESC"
-                       default="#FFFFFF"/>
+                       default="#FFFFFF"
+                       showon="description_show:1"/>
 
                 <field name="description_bgcolor_flag"
                        type="list"
                        label="DESCRIPTION_BG_COLOR_LABEL"
                        description="DESCRIPTION_BG_COLOR_LABEL_DESC"
-                       default="1">
-
+                       default="1"
+                       showon="description_show:1">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -538,20 +546,22 @@
                        type="color"
                        label="DESCRIPTION_BGPICKER_COLOR_LABEL"
                        description="DESCRIPTION_BGPICKER_COLOR_LABEL_DESC"
-                       default="#000000"/>
+                       default="#000000"
+                       showon="description_show:1"/>
 
                 <field name="description_bgcolor_opacity"
                        type="shack.slider"
                        label="RANGESLIDER_DESCRIPTION"
                        description="RANGESLIDER_DESCRIPTION_DESC"
-                       default="70"/>
+                       default="70"
+                       showon="description_show:1"/>
 
                 <field name="description_effect"
                        type="groupedlist"
                        default="none"
                        label="EFFECT_TITLE"
-                       description="EFFECT_TITLE_DESC">
-
+                       description="EFFECT_TITLE_DESC"
+                       showon="description_show:1">
                     <option value="none">TEXT_EFFECT_NONE</option>
                     <group label="TEXT_EFFECT_GROUP_ATTENTION">
                         <option value="attention_bounce">TEXT_EFFECT_BOUNCE</option>
@@ -618,8 +628,8 @@
                        type="list"
                        default="div"
                        label="TAG_FOR_DESCRIPTION"
-                       description="TAG_FOR_DESCRIPTION_DESC">
-
+                       description="TAG_FOR_DESCRIPTION_DESC"
+                       showon="description_show:1">
                     <option value="h1">h1</option>
                     <option value="h2">h2</option>
                     <option value="h3">h3</option>
@@ -654,7 +664,7 @@
                        label="NAVIGATIONDOTS_MOBILE"
                        description="NAVIGATIONDOTS_MOBILE_DESC"
                        class="btn-group btn-group-yesno"
-                       showon="navigation_show:1[OR]navigation_show:2">
+                       showon="navigation_show!:0">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -663,8 +673,8 @@
                        type="list"
                        label="NAVIGATIONNUMBERS"
                        description="NAVIGATIONNUMBERS_DESC"
-                       default="0">
-
+                       default="0"
+                       showon="navigation_show!:0">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -673,8 +683,8 @@
                        type="list"
                        default="horizontal"
                        label="ORIENTATIONDOTS"
-                       description="ORIENTATIONDOTS_DESC">
-
+                       description="ORIENTATIONDOTS_DESC"
+                       showon="navigation_show!:0">
                     <option value="horizontal">HORIZONTAL_DOTS</option>
                     <option value="vertical">VERTICAL_DOTS</option>
                 </field>
@@ -683,8 +693,8 @@
                        type="list"
                        default="center"
                        label="HORIZONTALALIGNDOTS"
-                       description="HORIZONTALALIGNDOTS_DESC">
-
+                       description="HORIZONTALALIGNDOTS_DESC"
+                       showon="navigation_show!:0">
                     <option value="center">HORIZONTALALIGNDOTS_CENTER</option>
                     <option value="left">HORIZONTALALIGNDOTS_LEFT</option>
                     <option value="right">HORIZONTALALIGNDOTS_RIGHT</option>
@@ -694,8 +704,8 @@
                        type="list"
                        default="bottom"
                        label="VERTICALALIGNDOTS"
-                       description="VERTICALALIGNDOTS_DESC">
-
+                       description="VERTICALALIGNDOTS_DESC"
+                       showon="navigation_show!:0">
                     <option value="top">VERTICALALIGNDOTS_TOP</option>
                     <option value="bottom">VERTICALALIGNDOTS_BOTTOM</option>
                     <option value="center">VERTICALALIGNDOTS_CENTER</option>
@@ -705,13 +715,15 @@
                        type="text"
                        default="10"
                        label="HORIZONTALPADDING_DOTS"
-                       description="HORIZONTALPADDING_DOTS_DESC"/>
+                       description="HORIZONTALPADDING_DOTS_DESC"
+                       showon="navigation_show!:0"/>
 
                 <field name="navigation_padding_vertical"
                        type="text"
                        default="10"
                        label="VERTICALPADDING_DOTS"
-                       description="VERTICALPADDING_DOTS_DESC"/>
+                       description="VERTICALPADDING_DOTS_DESC"
+                       showon="navigation_show!:0"/>
 
                 <field name="navigation_effect_theme"
                        type="list"
@@ -719,7 +731,6 @@
                        label="NAVIGATION_EFFECT_THEME"
                        description="NAVIGATION_EFFECT_THEME_DESC"
                        showon="navigation_show!:0">
-
                     <option value="none">NAVIGATION_EFFECT_THEME_NONE</option>
                     <option value="default">NAVIGATION_EFFECT_THEME_DEFAULT</option>
                     <option value="theme0">NAVIGATION_EFFECT_THEME_0</option>
@@ -759,45 +770,51 @@
                        type="color"
                        label="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL"
                        description="NAVIGATION_PICKER_ACTIVEDOTS_COLOR_LABEL_DESC"
-                       default="000000"/>
+                       default="000000"
+                       showon="navigation_show!:0"/>
 
                 <field name="navigation_opacity"
                        type="shack.slider"
                        default="50"
                        label="NAVIGATION_OPACITY"
-                       description="NAVIGATION_OPACITY_DESC"/>
+                       description="NAVIGATION_OPACITY_DESC"
+                       showon="navigation_show!:0"/>
 
                 <field name="navigation_custom_dot"
                        type="media"
                        directory=""
                        preview="true"
                        label="NAVIGATION_CUSTOMDOT"
-                       description="NAVIGATION_CUSTOMDOT_DESC"/>
+                       description="NAVIGATION_CUSTOMDOT_DESC"
+                       showon="navigation_show!:0"/>
 
                 <field name="navigation_custom_dothover"
                        type="media"
                        directory=""
                        preview="true"
                        label="NAVIGATION_CUSTOMDOTHOVER"
-                       description="NAVIGATION_CUSTOMDOTHOVER_DESC"/>
+                       description="NAVIGATION_CUSTOMDOTHOVER_DESC"
+                       showon="navigation_show!:0"/>
 
                 <field name="navigation_custom_dotactive"
                        type="media"
                        directory=""
                        preview="true"
                        label="NAVIGATION_CUSTOMDOTACTIVE"
-                       description="NAVIGATION_CUSTOMDOTACTIVE_DESC"/>
+                       description="NAVIGATION_CUSTOMDOTACTIVE_DESC"
+                       showon="navigation_show!:0"/>
 
                 <field type="spacer"
                        name="prenextbutton_bar_spacer"
-                       label="PRENEXTBUTTON_SPACER_LABEL"/>
+                       label="PRENEXTBUTTON_SPACER_LABEL"
+                       showon="navigation_show!:0"/>
 
                 <field name="navigation_buttons_show"
                        type="list"
                        default="2"
                        label="NAVIGATIONARROWS"
-                       description="NAVIGATIONARROWS_DESC">
-
+                       description="NAVIGATIONARROWS_DESC"
+                       showon="navigation_show!:0">
                     <option value="2">ALWAYS_ARROWS</option>
                     <option value="0">NO_ARROWS</option>
                     <option value="1">ONHOVER_ARROWS</option>
@@ -809,7 +826,7 @@
                        label="NAVIGATIONARROWS_MOBILE"
                        description="NAVIGATIONARROWS_MOBILE_DESC"
                        class="btn-group btn-group-yesno"
-                       showon="navigation_buttons_show:1[OR]navigation_buttons_show:2">
+                       showon="navigation_show!:0[AND]navigation_buttons_show!:0">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -818,8 +835,8 @@
                        type="list"
                        default="theme2"
                        label="NAVIGATION_BUTTONS_THEME"
-                       description="NAVIGATION_BUTTONS_THEME_DESC">
-
+                       description="NAVIGATION_BUTTONS_THEME_DESC"
+                       showon="navigation_show!:0[AND]navigation_buttons_show!:0">
                     <option value="none">NAVIGATION_BUTTONS_THEME_NONE</option>
                     <option value="theme1">NAVIGATION_BUTTONS_THEME_1</option>
                     <option value="theme2">NAVIGATION_BUTTONS_THEME_2</option>
@@ -830,47 +847,54 @@
                        type="color"
                        label="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL"
                        description="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL_DESC"
-                       default="666"/>
+                       default="666"
+                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttonshover_color"
                        type="color"
                        label="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL"
                        description="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL_DESC"
-                       default="FFF"/>
+                       default="FFF"
+                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttons_opacity"
                        type="shack.slider"
                        default="80"
                        label="NAVIGATION_OPACITY"
-                       description="NAVIGATION_OPACITY_DESC"/>
+                       description="NAVIGATION_OPACITY_DESC"
+                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttons_custom_previous"
                        type="media"
                        directory=""
                        preview="true"
                        label="NAVIGATIONBUTTONS_CUSTOMPREVIOUS"
-                       description="NAVIGATIONBUTTONS_CUSTOMPREVIOUS_DESC"/>
+                       description="NAVIGATIONBUTTONS_CUSTOMPREVIOUS_DESC"
+                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttons_custom_previoushover"
                        type="media"
                        directory=""
                        preview="true"
                        label="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER"
-                       description="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER_DESC"/>
+                       description="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER_DESC"
+                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttons_custom_next"
                        type="media"
                        directory=""
                        preview="true"
                        label="NAVIGATIONBUTTONS_CUSTOMNEXT"
-                       description="NAVIGATIONBUTTONS_CUSTOMNEXT_DESC"/>
+                       description="NAVIGATIONBUTTONS_CUSTOMNEXT_DESC"
+                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttons_custom_nexthover"
                        type="media"
                        directory=""
                        preview="true"
                        label="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER"
-                       description="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER_DESC"/>
+                       description="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER_DESC"
+                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
             </fieldset>
 
             <fieldset name="advanced"
