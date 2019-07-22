@@ -138,29 +138,6 @@ JHtml::_('stylesheet', 'mod_jsshackslides/animate.min.css', array('relative' => 
 JHtml::_('stylesheet', 'mod_jsshackslides/jsshackslides.css', array('relative' => true));
 JHtml::_('script', 'mod_jsshackslides/owl.carousel.min.js', array('relative' => true));
 
-$json = false;
-
-if ($settings['template_design']) {
-    $db  = JFactory::getDBO();
-    $sql = " SELECT ts.template " .
-        " FROM #__menu as m " .
-        " INNER JOIN #__template_styles as ts" .
-        " ON ts.id = m.template_style_id " .
-        " WHERE m.home = 1" .
-        " AND m.published = 1";
-    $db->setQuery($sql);
-    $tplName = $db->loadResult();
-
-    if (file_exists(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json')) {
-        $str  = file_get_contents(JPATH_BASE . '/templates/' . $tplName . '/shackslides.json');
-        $json = json_decode($str, true);
-
-        foreach ($json as $key => $value) {
-            $settings[$key] = $json[$key];
-        }
-    }
-}
-
 // Setting container ID
 if ($settings['container'] == '') {
     $settings['container'] = $helper->generateContainerID();

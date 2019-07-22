@@ -11,13 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 ?>
-
-<?php if ($settings["template_design"] == "1") : ?>
-    <div id="<?php echo $settings['container'] ?>" class="jss-slider jss-slider-template-design">
-<?php else : ?>
-    <div id="<?php echo $settings['container'] ?>" class="jss-slider">
-<?php endif; ?>
-
+<div id="<?php echo $settings['container'] ?>" class="jss-slider">
     <div class="owl-carousel">
         <?php foreach ($images as $i => $image) : ?>
             <div class="jss-image-container jss-descpos-<?php echo $settings['title_description_position'] ?>">

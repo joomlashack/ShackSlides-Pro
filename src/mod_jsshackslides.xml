@@ -163,17 +163,6 @@
                     <option value="crop">HEIGHTADJUSTMENT_CROP</option>
                 </field>
 
-                <field type="spacer"
-                       name="basic_options_templatedesign_spacer"
-                       label="SLIDER_OPTIONS_TEMPLATEDESIGN_SPACER"/>
-
-                <field name="template_design"
-                       type="checkbox"
-                       label="TEMPLATEDESING"
-                       description="TEMPLATEDESING_DESC"
-                       value="1"
-                       default="0"/>
-
                 <field type="customfooter"
                        name="customfooter"
                        media="mod_jsshackslides"
