@@ -1,4 +1,25 @@
 <?php
+/**
+ * @package   ShackSlides
+ * @contact   www.joomlashack.com, help@joomlashack.com
+ * @copyright 2010-2019 Joomlashack.com. All rights reserved
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ *
+ * This file is part of ShackSlides.
+ *
+ * ShackSlides is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * ShackSlides is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ShackSlides.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 defined('_JEXEC') or die();
 
@@ -7,7 +28,7 @@ $theme = $params->get('theme', 'gray');
 $colors = array(
     'gray'   => array('base' => '353535', 'border' => '333333', 'shadow' => '666', 'a' => '999', 'active' => 'fff'),
     'blue'   => array('base' => '7A8498', 'border' => '7A8498', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
-    'white'  => array('base' => 'ffffff', 'border' => 'ccc', 'shadow' => 'bbb', 'a' => '000', 'active' => '999'),
+    'white'  => array('base' => 'ffffff', 'border' => 'ccc',    'shadow' => 'bbb', 'a' => '000', 'active' => '999'),
     'red'    => array('base' => 'A74040', 'border' => '5F2F2F', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
     'green'  => array('base' => '81ac7b', 'border' => '3b4f38', 'shadow' => '666', 'a' => '333', 'active' => 'fff'),
     'orange' => array('base' => 'd9a74d', 'border' => '925813', 'shadow' => '666', 'a' => '666', 'active' => 'fff'),
@@ -253,8 +274,5 @@ a.sliderNext{
     display: inline !important;
     font-size: 35px;
 }
-
-
-
-
-<?php endif; ?>
+<?php
+endif;
