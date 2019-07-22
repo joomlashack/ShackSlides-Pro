@@ -34,161 +34,90 @@ if (!$images) {
 }
 
 $defaults = array(
-    // BASIC CONFIGURATION OPTIONS
-    // Container height
-    'height'                                  => '250',
-    // Height adjustment
-    'height_adjustment'                       => 'adjust',
-    // Auto height (depends on the height adjustment)
-    'slide_autoheight'                        => 'true',
-    // Transition delay
-    'slide_delay'                             => '5000',
-    // Show descriptions
-    'description'                             => 'yes',
-    // Transition speed
-    'slide_effect_masterspeed'                => '300',
-    // Transition speed for text effects
-    'slide_text_effect_masterspeed'           => '500',
-    // Effect for slides
-    'slide_effect'                            => 'slide',
-    // Stop on mouse hover
-    'slide_onhoverstop'                       => '1',
-    // Number of items per slide page
-    'slide_items'                             => '1',
-    // Margin between slides when using multiple per page
-    'slide_margin'                            => '10',
-    // Autoplay on or off
-    'slide_autoplay'                          => '1',
-    // Template design on or off
-    'template_design'                         => '0',
+    /*** Basic Options ***/
+    'height'                                  => '250',    // Container height
+    'height_adjustment'                       => 'adjust', // Height adjustment
+    'slide_autoheight'                        => 'true',   // Auto height (depends on the height adjustment)
+    'slide_delay'                             => '5000',   // Transition delay
+    'description'                             => 'yes',    // Show descriptions
+    'slide_effect_masterspeed'                => '300',    // Transition speed
+    'slide_text_effect_masterspeed'           => '500',    // Transition speed for text effects
+    'slide_effect'                            => 'slide',  // Effect for slides
+    'slide_onhoverstop'                       => '1',      // Stop on mouse hover
+    'slide_items'                             => '1',      // Number of items per slide page
+    'slide_margin'                            => '10',     // Margin between slides when using multiple per page
+    'slide_autoplay'                          => '1',      // Autoplay on or off
 
-    // SLIDE SOURCES
-    // Where the link target will point at
-    'anchor_target'                           => 'self',
+    /*** SLIDE SOURCES ***/
+    'anchor_target'                           => 'self', // Where the link target will point at
 
-    // DESCRIPTION OPTIONS
-    // Title and description position
-    'title_description_position'              => 'bottom',
-    // Title and description alignment
-    'title_description_alignment'             => 'left',
-    // Title and description vertical padding
-    'title_description_padding_vertical'      => '10',
-    // Title and description horizontal padding
-    'title_description_padding_horizontal'    => '10',
-    // Show title flag
-    'title_show'                              => '1',
-    // Show title in mobile flag
-    'title_show_mobile'                       => '1',
-    // Title width
-    'title_width'                             => '300',
-    // Title height
-    'title_height'                            => '50',
-    // Title color flag
-    'title_bgcolor_flag'                      => '1',
-    // Title color
-    'title_color'                             => 'FFFFFF',
-    // Title background color flag
-    'title_color_flag'                        => '1',
-    // Title background color
-    'title_bgcolor'                           => '#000000',
-    // Title background opacity
-    'title_bgcolor_opacity'                   => '70',
-    // Title effect
-    'title_effect'                            => 'none',
-    // Title tag
-    'title_tag'                               => 'h4',
-    // Show description flag
-    'description_show'                        => '1',
-    // Show description in mobile flag
-    'description_show_mobile'                 => '1',
-    // Description width
-    'description_width'                       => '300',
-    // Description height
-    'description_height'                      => '100',
-    // Description color flag
-    'description_color_flag'                  => '1',
-    // Description color
-    'description_color'                       => '#FFFFFF',
-    // Description background color flag
-    'description_bgcolor_flag'                => '1',
-    // Description background color
-    'description_bgcolor'                     => '#000000',
-    // Description background opacity
-    'description_bgcolor_opacity'             => '70',
-    // Description effect
-    'description_effect'                      => 'none',
-    // Description tag
-    'description_tag'                         => 'div',
+    /*** Display OPTIONS ***/
+    'title_description_position'              => 'bottom',  // Title and description position
+    'title_description_alignment'             => 'left',    // Title and description alignment
+    'title_description_padding_vertical'      => '10',      // Title and description vertical padding
+    'title_description_padding_horizontal'    => '10',      // Title and description horizontal padding
+    'title_show'                              => '1',       // Show title flag
+    'title_show_mobile'                       => '1',       // Show title in mobile flag
+    'title_width'                             => '300',     // Title width
+    'title_height'                            => '50',      // Title height
+    'title_bgcolor_flag'                      => '1',       // Title color flag
+    'title_color'                             => 'FFFFFF',  // Title color
+    'title_color_flag'                        => '1',       // Title background color flag
+    'title_bgcolor'                           => '#000000', // Title background color
+    'title_bgcolor_opacity'                   => '70',      // Title background opacity
+    'title_effect'                            => 'none',    // Title effect
+    'title_tag'                               => 'h4',      // Title tag
+    'description_show'                        => '1',       // Show description flag
+    'description_show_mobile'                 => '1',       // Show description in mobile flag
+    'description_width'                       => '300',     // Description width
+    'description_height'                      => '100',     // Description height
+    'description_color_flag'                  => '1',       // Description color flag
+    'description_color'                       => '#FFFFFF', // Description color
+    'description_bgcolor_flag'                => '1',       // Description background color flag
+    'description_bgcolor'                     => '#000000', // Description background color
+    'description_bgcolor_opacity'             => '70',      // Description background opacity
+    'description_effect'                      => 'none',    // Description effect
+    'description_tag'                         => 'div',     // Description tag
 
-    // NAVIGATION OPTIONS
-    // Show the navigation always, never, on hover
-    'navigation_show'                         => '2',
-    // Show navigation in mobile flag
-    'navigation_show_mobile'                  => '1',
-    // Navigation theme shape
-    'navigation_theme_shape'                  => 'round',
-    // Navigation theme effect
-    'navigation_effect_theme'                 => 'theme0',
-    // Show slide numbers in navigation
-    'navigation_shownumbers'                  => '0',
-    // Orientation
-    'navigation_orientation'                  => 'horizontal',
-    // Horizontal alignment
-    'navigation_align_horizontal'             => 'center',
-    // Vertical alignment
-    'navigation_align_vertical'               => 'bottom',
-    // Horizontal padding
-    'navigation_padding_horizontal'           => '10',
-    // Vertical padding
-    'navigation_padding_vertical'             => '10',
-    // Dots color
-    'navigation_dots_color'                   => 'FFFFFF',
-    // Active dots color
-    'navigation_activedots_color'             => '000000',
-    // Dots numbers color
-    'navigation_dots_numbers_color'           => '777',
-    // Opacity
-    'navigation_opacity'                      => '50',
-    // Custom nav dot
-    'navigation_custom_dot'                   => '',
-    // Custom hover nav dot
-    'navigation_custom_dothover'              => '',
-    // Custom active nav dot
-    'navigation_custom_dotactive'             => '',
-    // Show the navigation buttons always, never, on hover
-    'navigation_buttons_show'                 => '2',
-    // Show the buttons in mobile flag
-    'navigation_buttons_show_mobile'          => '1',
-    // Buttons theme
-    'buttons_theme'                           => 'theme2',
-    // Buttons color
-    'navigation_buttons_color'                => '666666',
-    // Buttons hover color
-    'navigation_buttonshover_color'           => 'FFFFFF',
-    // Buttons opacity
-    'navigation_buttons_opacity'              => '70',
-    // Custom previous button
-    'navigation_buttons_custom_previous'      => '',
-    // Custom previous hover button
-    'navigation_buttons_custom_previoushover' => '',
-    // Custom next button
-    'navigation_buttons_custom_next'          => '',
-    // Custom next hover button
-    'navigation_buttons_custom_nexthover'     => '',
-
-    // ADVANCED OPTIONS
-    // id for the slider container
-    'container'                               => '',
-    // RTL SUPPORT
-    'language_rtl_enable'                     => 'false',
-    // TEMPLATE CUSTOM OPTIONS
-    'buttons_left_right_position'             => '',
+    /*** NAVIGATION OPTIONS ***/
+    'navigation_show'                         => '2',          // Show the navigation always, never, on hover
+    'navigation_show_mobile'                  => '1',          // Show navigation in mobile flag
+    'navigation_theme_shape'                  => 'round',      // Navigation theme shape
+    'navigation_effect_theme'                 => 'theme0',     // Navigation theme effect
+    'navigation_shownumbers'                  => '0',          // Show slide numbers in navigation
+    'navigation_orientation'                  => 'horizontal', // Orientation
+    'navigation_align_horizontal'             => 'center',     // Horizontal alignment
+    'navigation_align_vertical'               => 'bottom',     // Vertical alignment
+    'navigation_padding_horizontal'           => '10',         // Horizontal padding
+    'navigation_padding_vertical'             => '10',         // Vertical padding
+    'navigation_dots_color'                   => 'FFFFFF',     // Dots color
+    'navigation_activedots_color'             => '000000',     // Active dots color
+    'navigation_dots_numbers_color'           => '777',        // Dots numbers color
+    'navigation_opacity'                      => '50',         // Opacity
+    'navigation_custom_dot'                   => '',           // Custom nav dot
+    'navigation_custom_dothover'              => '',           // Custom hover nav dot
+    'navigation_custom_dotactive'             => '',           // Custom active nav dot
+    'navigation_buttons_show'                 => '2',          // Show the navigation buttons always, never, on hover
+    'navigation_buttons_show_mobile'          => '1',          // Show the buttons in mobile flag
+    'buttons_theme'                           => 'theme2',     // Buttons theme
+    'navigation_buttons_color'                => '666666',     // Buttons color
+    'navigation_buttonshover_color'           => 'FFFFFF',     // Buttons hover color
+    'navigation_buttons_opacity'              => '70',         // Buttons opacity
+    'navigation_buttons_custom_previous'      => '',           // Custom previous button
+    'navigation_buttons_custom_previoushover' => '',           // Custom previous hover button
+    'navigation_buttons_custom_next'          => '',           // Custom next button
+    'navigation_buttons_custom_nexthover'     => '',           // Custom next hover button
     'navigation_buttons_custom_width'         => '',
     'navigation_buttons_custom_height'        => '',
     'navigation_padding_dots'                 => '',
     'navigation_custom_align'                 => false,
     'navigation_dots_width'                   => '',
-    'navigation_dots_height'                  => ''
+    'navigation_dots_height'                  => '',
+
+    /*** ADVANCED OPTIONS ***/
+    'container'                               => '',      // id for the slider container
+    'language_rtl_enable'                     => 'false', // RTL SUPPORT
+    'buttons_left_right_position'             => ''       // TEMPLATE CUSTOM OPTIONS
 );
 
 $settings = array();
@@ -275,7 +204,8 @@ if ($settings['height_adjustment'] == 'adjust') {
     $height = (int)$settings['height'];
 
     if ($height > 0) {
-        $doc->addStyleDeclaration('
+        $doc->addStyleDeclaration(
+            '
             #' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-image {
                 max-height: ' . $height . 'px;
             }'
@@ -283,7 +213,8 @@ if ($settings['height_adjustment'] == 'adjust') {
     }
 } elseif ($settings['height_adjustment'] == 'crop') {
     $settings['slide_autoheight'] = 'false';
-    $doc->addStyleDeclaration('
+    $doc->addStyleDeclaration(
+        '
         #' . $settings['container'] . '.jss-slider .owl-carousel .owl-item .jss-image {
             width: 100%;
             height: ' . $settings['height'] . 'px;
@@ -450,10 +381,8 @@ if ($settings['title_show']) {
 }
 
 $settings['animation_script'] = '
-    function jssInit_' . $settings['container'] . '(event) {
-    }
-    function jssInitEnd_' . $settings['container'] . '(event) {
-    }
+    function jssInit_' . $settings['container'] . '(event) {}
+    function jssInitEnd_' . $settings['container'] . '(event) {}
 ';
 
 $settings['animation_events'] = '';
