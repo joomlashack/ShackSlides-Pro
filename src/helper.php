@@ -110,27 +110,6 @@ abstract class ModShackSlidesHelper
     }
 
     /**
-     * Sets the images to present
-     *
-     * @param   array/string  $images  Array of images or single image
-     *
-     * @return  void
-     */
-    protected function setImages($images)
-    {
-        if (is_array($images)) {
-            $this->images = $images;
-
-        } else {
-            if (empty($this->images)) {
-                $this->images = array();
-            }
-
-            $this->images[] = $images;
-        }
-    }
-
-    /**
      * Gets the arrays of links
      *
      * @return  array
@@ -138,27 +117,6 @@ abstract class ModShackSlidesHelper
     public function getLinks()
     {
         return $this->links;
-    }
-
-    /**
-     * Sets the links
-     *
-     * @param   array/string  $links  Array of links or single link
-     *
-     * @return  void
-     */
-    public function setLinks($links)
-    {
-        if (is_array($links)) {
-            $this->links = $links;
-
-        } else {
-            if (empty($this->links)) {
-                $this->links = array();
-            }
-
-            $this->links[] = $links;
-        }
     }
 
     /**
@@ -172,18 +130,6 @@ abstract class ModShackSlidesHelper
     }
 
     /**
-     * Sets the site base
-     *
-     * @param   string $base Site base
-     *
-     * @return  void
-     */
-    protected function setBase($base)
-    {
-        $this->base = $base;
-    }
-
-    /**
      * Gets the images titles
      *
      * @return  array
@@ -194,27 +140,6 @@ abstract class ModShackSlidesHelper
     }
 
     /**
-     * Sets the titles
-     *
-     * @param   array/string  $titles  Array of titles or single title
-     *
-     * @return  void
-     */
-    public function setTitles($titles)
-    {
-        if (is_array($titles)) {
-            $this->titles = $titles;
-
-        } else {
-            if (empty($this->titles)) {
-                $this->titles = array();
-            }
-
-            $this->titles[] = $titles;
-        }
-    }
-
-    /**
      * Gets the images contents
      *
      * @return  array
@@ -222,27 +147,6 @@ abstract class ModShackSlidesHelper
     public function getContents()
     {
         return $this->contents;
-    }
-
-    /**
-     * Sets the contents
-     *
-     * @param   array/string  $contents  Array of contents or single content
-     *
-     * @return  void
-     */
-    public function setContents($contents)
-    {
-        if (is_array($contents)) {
-            $this->contents = $contents;
-
-        } else {
-            if (empty($this->contents)) {
-                $this->contents = array();
-            }
-
-            $this->contents[] = $contents;
-        }
     }
 
     /**
