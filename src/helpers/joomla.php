@@ -23,26 +23,44 @@ JLoader::import('helpers.route', JPATH_SITE . '/components/com_content');
  */
 class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
 {
-    private $content;
+    /**
+     * @var object[]
+     */
+    protected $content = null;
 
-    private $category_id;
+    /**
+     * @var int
+     */
+    protected $categoryId = null;
 
-    private $ordering;
+    /**
+     * @var string
+     */
+    protected $ordering = null;
 
-    private $ordering_direction;
+    /**
+     * @var string
+     */
+    protected $orderingDirection;
 
-    private $limit;
+    /**
+     * @var int
+     */
+    protected $limit;
 
-    private $featured;
+    /**
+     * @var string
+     */
+    protected $featured;
 
     public function __construct(Registry $params)
     {
         parent::__construct($params);
 
-        $this->category_id              = $params->get('joomla_category', 0);
+        $this->categoryId               = (int)$params->get('joomla_category', 0);
         $this->ordering                 = $params->get('ordering', 'ordering');
-        $this->ordering_direction       = $params->get('ordering_dir', 'ASC');
-        $this->limit                    = $params->get('limit', '5');
+        $this->orderingDirection        = $params->get('ordering_dir', 'ASC');
+        $this->limit                    = (int)$params->get('limit', 5);
         $this->featured                 = $params->get('featured', 'include');
         $this->joomla_image_source_type = $params->get('joomla_image_source_type', 'intro');
 
@@ -71,13 +89,13 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
             ->from('#__content')
             ->where(
                 array(
-                    'catid =' . $this->category_id,
+                    'catid =' . $this->categoryId,
                     'state = 1',
                     sprintf('(publish_up = %s OR publish_up <= %s)', $nullDate, $now),
                     sprintf('(publish_down = %s OR publish_down >= %s)', $nullDate, $now)
                 )
             )
-            ->order($this->ordering . ' ' . $this->ordering_direction);
+            ->order($this->ordering . ' ' . $this->orderingDirection);
 
         if ($this->featured !== 'include') {
             $database->setQuery(
@@ -107,20 +125,21 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
      */
     private function parseContentIntoProperties()
     {
+
         foreach ($this->content as $item) {
             // Setting image
-            $item_images = json_decode($item->images);
+            $itemImages = json_decode($item->images);
 
-            if ($item_images) {
+            if ($itemImages) {
                 if ($this->joomla_image_source_type == 'intro') {
-                    if ($item_images->image_intro != '') {
-                        $this->images[] = $item_images->image_intro;
+                    if ($itemImages->image_intro != '') {
+                        $this->images[] = $itemImages->image_intro;
                     } else {
                         $this->images[] = $this->noimage;
                     }
                 } elseif ($this->joomla_image_source_type == 'full') {
-                    if ($item_images->image_fulltext != '') {
-                        $this->images[] = $item_images->image_fulltext;
+                    if ($itemImages->image_fulltext != '') {
+                        $this->images[] = $itemImages->image_fulltext;
                     } else {
                         $this->images[] = $this->noimage;
                     }
@@ -132,8 +151,10 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
                 $this->titles[]   = $this->getTitleFromContent($item->title);
                 $this->contents[] = $this->getTitleFromContent($item->introtext);
                 $item->slug       = $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
-                $this->links[]    = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid,
-                    $item->language), false);
+                $this->links[]    = JRoute::_(
+                    ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language),
+                    false
+                );
             }
         }
     }
