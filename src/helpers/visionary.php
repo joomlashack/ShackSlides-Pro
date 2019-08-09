@@ -79,10 +79,6 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper
         $this->collection = (int)$params->get('visionary_collection', 0);
         $this->ordering   = $params->get('ordering', 'ordering');
         switch (strtolower($this->ordering)) {
-            case 'rand':
-                $this->ordering = $this->generateOrdering(1);
-                break;
-
             case 'created':
                 $this->ordering = 'created_on';
                 break;

@@ -57,10 +57,6 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
         $nullDate = $database->quote($database->getNullDate());
         $aid      = $user->getAuthorisedViewLevels();
 
-        if ($this->ordering == 'RAND()') {
-            $this->ordering = $this->generateOrdering();
-        }
-
         $query = $database->getQuery(true)
             ->select('*')
             ->from('#__k2_items')

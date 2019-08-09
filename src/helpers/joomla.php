@@ -99,10 +99,6 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
         $now      = $database->quote(date('Y-m-d H:i:s'));
         $nullDate = $database->quote($database->getNullDate());
 
-        if ($this->ordering == 'RAND()') {
-            $this->ordering = $this->generateOrdering();
-        }
-
         $query = $database->getQuery(true)
             ->select('*')
             ->from('#__content')

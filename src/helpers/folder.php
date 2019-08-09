@@ -109,9 +109,6 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
     {
         $images_temp = array_values($images);
 
-        if ($this->ordering == 'RAND()') {
-            $this->ordering = $this->generateOrdering(1);
-        }
 
         switch ($this->ordering) {
             case 'ordering':
