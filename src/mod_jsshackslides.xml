@@ -64,7 +64,6 @@
                        label="SLIDE_EFFECT"
                        description="SLIDE_EFFECT_DESC"
                        showon="slide_items:1">
-
                     <option value="none">SLIDE_EFFECT_NONE</option>
                     <group label="SLIDE_EFFECT_GROUP_LTR">
                         <option value="slide">SLIDE_EFFECT_SLIDE</option>
@@ -109,7 +108,6 @@
                        default="true"
                        label="SHACKSLIDES_BASIC_AUTOPLAY"
                        description="SHACKSLIDES_BASIC_AUTOPLAY_DESC">
-
                     <option value="true">JYES</option>
                     <option value="false">JNO</option>
                 </field>
@@ -133,7 +131,6 @@
                        default="1"
                        label="ONHOVER_STOP"
                        description="ONHOVER_STOP_DESC">
-
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -158,7 +155,6 @@
                        default="adjust"
                        label="HEIGHTADJUSTMENT"
                        description="HEIGHTADJUSTMENT_DESC">
-
                     <option value="adjust">HEIGHTADJUSTMENT_ADJUST</option>
                     <option value="crop">HEIGHTADJUSTMENT_CROP</option>
                 </field>
@@ -214,7 +210,6 @@
                        label="JOOMLA_IMAGE_SOURCE_TYPE"
                        description="JOOMLA_IMAGE_SOURCE_TYPE_DESC"
                        showon="source:joomla">
-
                     <option value="intro">JOOMLA_IMAGE_SOURCE_INTROIMG</option>
                     <option value="full">JOOMLA_IMAGE_SOURCE_FULLARTI</option>
                     <option value="firstimage">JOOMLA_IMAGE_SOURCE_FIRSTIMAGEARTICLE</option>
@@ -236,7 +231,6 @@
                        default="self"
                        label="ANCHOR_TARGET"
                        description="ANCHOR_TARGET_DESC">
-
                     <option value="self">SELF</option>
                     <option value="blank">BLANK</option>
                 </field>
@@ -246,7 +240,6 @@
                        default="ordering"
                        label="ORDERING"
                        description="ORDERING_DESC">
-
                     <option value="ordering">ORDER</option>
                     <option value="title">TITLE</option>
                     <option value="created">DATE</option>
@@ -259,7 +252,6 @@
                        default="ASC"
                        label="ORDERING_DIRECTION"
                        description="ORDERING_DIRECTION_DESC">
-
                     <option value="ASC">ASCENDING</option>
                     <option value="DESC">DESCENDING</option>
                 </field>
@@ -276,7 +268,6 @@
                        default="bottom"
                        label="SLIDEDESC_POSITION"
                        description="SLIDEDESC_POSITION_DESC">
-
                     <option value="top">SLIDEDESC_POSITION_TOP</option>
                     <option value="bottom">SLIDEDESC_POSITION_BOTTOM</option>
                     <option value="right">SLIDEDESC_POSITION_RIGHT</option>
@@ -292,7 +283,6 @@
                        default="left"
                        label="SLIDEDESC_ALIGNMENT"
                        description="SLIDEDESC_ALIGNMENT_DESC">
-
                     <option value="left">SLIDEDESC_ALIGNMENT_LEFT</option>
                     <option value="right">SLIDEDESC_ALIGNMENT_RIGHT</option>
                     <option value="center">SLIDEDESC_ALIGNMENT_CENTER</option>
@@ -320,7 +310,6 @@
                        class="btn-group btn-group-yesno"
                        description="SHOW_TITLE_DESC"
                        default="1">
-
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -652,7 +641,6 @@
                        default="2"
                        label="NAVIGATIONDOTS"
                        description="NAVIGATIONDOTS_DESC">
-
                     <option value="2">ALWAYS_DOTS</option>
                     <option value="0">NO_DOTS</option>
                     <option value="1">ONHOVER_DOTS</option>
