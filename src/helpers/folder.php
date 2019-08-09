@@ -82,14 +82,19 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
     /**
      * @return void
      */
-    private function loadImagesFromDirectory()
+    protected function loadImagesFromDirectory()
     {
-        $images = JFolder::files(
-            $this->directory,
-            '\.png$|\.gif$|\.jpg$|\.bmp$|\.jpeg$\.PNG$|\.GIF$|\.JPG$|\.BMP$|\.JPEG$'
-        );
+        $fileInfo  = finfo_open(FILEINFO_MIME_TYPE);
+        $dir       = new DirectoryIterator($this->directory);
 
-        $images = $this->orderFilesOrderingDirection($images);
+        foreach ($dir as $file) {
+            $mimeType = finfo_file($fileInfo, $file->getRealPath());
+            if (stripos($mimeType, 'image/') === 0) {
+                $images[] = $file->getBasename();
+            }
+        }
+
+        $images = $this->sortImages($images);
 
         $this->images = array_slice($images, 0, $this->limit);
 
@@ -101,35 +106,61 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
     }
 
     /**
-     * @param array $images
+     * @param string[] $images
      *
-     * @return array
+     * @return string[]
      */
-    private function orderFilesOrderingDirection($images)
+    protected function sortImages($images)
     {
-        $images_temp = array_values($images);
-
-
         switch ($this->ordering) {
+            case 'hits':
             case 'ordering':
-                if ($this->orderDirection == "ASC") {
-                    ksort($images_temp);
+                /*
+                 * We're interpreting 'ordering' as whatever order the
+                 * file system provided them in. Since 'hits' makes no
+                 * sense for folders, we'll treat it as the same as 'ordering'
+                 */
 
-                } else {
-                    krsort($images_temp);
+                if ($this->orderDirection == 'DESC') {
+                    $images = array_reverse($images);
                 }
+                break;
+
+            case 'created':
+                /*
+                 * Technically, on *nix systems there is no creation time
+                 * but filectime() gives us the inode change time, which is
+                 * about as good as it gets. Windows systems will provide
+                 * the creation time.
+                 */
+                $directory      = $this->directory;
+                $directionValue = $this->orderDirection == 'ASC' ? 1 : -1;
+
+                usort(
+                    $images,
+                    function ($a, $b) use ($directory, $directionValue) {
+                        $created_a = filectime($directory . '/' . $a);
+                        $created_b = filectime($directory . '/' . $b);
+                        return $created_a > $created_b
+                            ? $directionValue
+                            : ($created_a == $created_b ? 0 : 0 - $directionValue);
+                    }
+                );
                 break;
 
             case 'title':
-                if ($this->orderDirection == "ASC") {
-                    asort($images_temp);
-
-                } else {
-                    arsort($images_temp);
+                natsort($images);
+                if ($this->orderDirection == 'DESC') {
+                    $images = array_reverse($images);
                 }
                 break;
+
+            case 'RAND()':
+                shuffle($images);
+                break;
+
         }
 
-        return $images_temp;
+        return array_values($images);
     }
 }
