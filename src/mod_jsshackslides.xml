@@ -251,7 +251,8 @@
                        type="list"
                        default="ASC"
                        label="ORDERING_DIRECTION"
-                       description="ORDERING_DIRECTION_DESC">
+                       description="ORDERING_DIRECTION_DESC"
+                       showon="ordering!:RAND()">
                     <option value="ASC">ASCENDING</option>
                     <option value="DESC">DESCENDING</option>
                 </field>
