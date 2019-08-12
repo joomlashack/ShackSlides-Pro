@@ -21,7 +21,59 @@
  * along with ShackSlides.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Joomla\CMS\Application\SiteApplication;
+use Joomla\CMS\Document\HtmlDocument;
+use Joomla\CMS\Environment\Browser;
+use Joomla\CMS\Language\Language;
+use Joomla\Registry\Registry;
+
 defined('_JEXEC') or die();
+
+/**
+ * @var stdClass             $module
+ * @var array                $attribs
+ * @var array                $chrome
+ * @var SiteApplication      $app
+ * @var string               $scope
+ * @var Registry             $params
+ * @var string               $template
+ * @var string               $path
+ * @var Language             $lang
+ * @var string               $coreLanguageDirectory
+ * @var string               $extensionLanguageDirectory
+ * @var array                $langPaths
+ * @var string               $content
+ * @var ModShackSlidesHelper $helper
+ * @var array                $images
+ * @var HtmlDocument         $doc
+ * @var Browser              $browser
+ * @var array                $links
+ * @var array                $titles
+ * @var array                $contents
+ * @var string               $base
+ * @var array                $settings
+ * @var string               $browserName
+ * @var string               $browserVersion
+ * @var string               $effectMasterSpeed
+ * @var integer              $height
+ * @var string               $color_hex
+ * @var string               $descriptionMargin
+ * @var integer              $dotsWidth
+ * @var integer              $dotsHeight
+ * @var string               $verticalPosition
+ * @var string               $horizontalPosition
+ * @var integer              $dotsPadding
+ * @var string               $navigationAlignment
+ * @var integer              $buttonsPrevHeight
+ * @var integer              $buttonsPrevWidth
+ * @var integer              $buttonsNextHeight
+ * @var integer              $buttonsNextWidth
+ * @var string               $themeCss
+ * @var string               $value
+ * @var string               $key
+ * @var string               $rtl_ltr
+ * @var string               $sliderLoader
+ */
 
 ?>
 <div id="<?php echo $settings['container'] ?>" class="jss-slider">
