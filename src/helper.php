@@ -35,6 +35,96 @@ defined('_JEXEC') or die();
  */
 abstract class ModShackSlidesHelper
 {
+    protected $defaultSettings = array(
+        /*** Basic Options ***/
+        'height'                                  => '250',    // Container height
+        'height_adjustment'                       => 'adjust', // Height adjustment
+        'slide_autoheight'                        => 'true',   // Auto height (depends on the height adjustment)
+        'slide_delay'                             => '5000',   // Transition delay
+        'description'                             => 'yes',    // Show descriptions
+        'slide_effect_masterspeed'                => '300',    // Transition speed
+        'slide_text_effect_masterspeed'           => '500',    // Transition speed for text effects
+        'slide_effect'                            => 'slide',  // Effect for slides
+        'slide_onhoverstop'                       => '1',      // Stop on mouse hover
+        'slide_items'                             => '1',      // Number of items per slide page
+        'slide_margin'                            => '10',     // Margin between slides when using multiple per page
+        'slide_autoplay'                          => '1',      // Autoplay on or off
+
+        /*** SLIDE SOURCES ***/
+        'anchor_target'                           => 'self', // Where the link target will point at
+
+        /*** Display OPTIONS ***/
+        'title_description_position'              => 'bottom',  // Title and description position
+        'title_description_alignment'             => 'left',    // Title and description alignment
+        'title_description_padding_vertical'      => '10',      // Title and description vertical padding
+        'title_description_padding_horizontal'    => '10',      // Title and description horizontal padding
+        'title_show'                              => '1',       // Show title flag
+        'title_show_mobile'                       => '1',       // Show title in mobile flag
+        'title_width'                             => '300',     // Title width
+        'title_height'                            => '50',      // Title height
+        'title_bgcolor_flag'                      => '1',       // Title color flag
+        'title_color'                             => 'FFFFFF',  // Title color
+        'title_color_flag'                        => '1',       // Title background color flag
+        'title_bgcolor'                           => '#000000', // Title background color
+        'title_bgcolor_opacity'                   => '70',      // Title background opacity
+        'title_effect'                            => 'none',    // Title effect
+        'title_tag'                               => 'h4',      // Title tag
+        'description_show'                        => '1',       // Show description flag
+        'description_show_mobile'                 => '1',       // Show description in mobile flag
+        'description_width'                       => '300',     // Description width
+        'description_height'                      => '100',     // Description height
+        'description_color_flag'                  => '1',       // Description color flag
+        'description_color'                       => '#FFFFFF', // Description color
+        'description_bgcolor_flag'                => '1',       // Description background color flag
+        'description_bgcolor'                     => '#000000', // Description background color
+        'description_bgcolor_opacity'             => '70',      // Description background opacity
+        'description_effect'                      => 'none',    // Description effect
+        'description_tag'                         => 'div',     // Description tag
+
+        /*** NAVIGATION OPTIONS ***/
+        'navigation_show'                         => '2',          // Show the navigation always, never, on hover
+        'navigation_show_mobile'                  => '1',          // Show navigation in mobile flag
+        'navigation_theme_shape'                  => 'round',      // Navigation theme shape
+        'navigation_effect_theme'                 => 'theme0',     // Navigation theme effect
+        'navigation_shownumbers'                  => '0',          // Show slide numbers in navigation
+        'navigation_orientation'                  => 'horizontal', // Orientation
+        'navigation_align_horizontal'             => 'center',     // Horizontal alignment
+        'navigation_align_vertical'               => 'bottom',     // Vertical alignment
+        'navigation_padding_horizontal'           => '10',         // Horizontal padding
+        'navigation_padding_vertical'             => '10',         // Vertical padding
+        'navigation_dots_color'                   => 'FFFFFF',     // Dots color
+        'navigation_activedots_color'             => '000000',     // Active dots color
+        'navigation_dots_numbers_color'           => '777',        // Dots numbers color
+        'navigation_opacity'                      => '50',         // Opacity
+        'navigation_custom_dot'                   => '',           // Custom nav dot
+        'navigation_custom_dothover'              => '',           // Custom hover nav dot
+        'navigation_custom_dotactive'             => '',           // Custom active nav dot
+        'navigation_buttons_show'                 => '2',          // Show navigation buttons always, never, on hover
+        'navigation_buttons_show_mobile'          => '1',          // Show the buttons in mobile flag
+        'buttons_theme'                           => 'theme2',     // Buttons theme
+        'navigation_buttons_color'                => '666666',     // Buttons color
+        'navigation_buttonshover_color'           => 'FFFFFF',     // Buttons hover color
+        'navigation_buttons_opacity'              => '70',         // Buttons opacity
+        'navigation_buttons_custom_previous'      => '',           // Custom previous button
+        'navigation_buttons_custom_previoushover' => '',           // Custom previous hover button
+        'navigation_buttons_custom_next'          => '',           // Custom next button
+        'navigation_buttons_custom_nexthover'     => '',           // Custom next hover button
+        'navigation_buttons_custom_width'         => '',
+        'navigation_buttons_custom_height'        => '',
+        'navigation_padding_dots'                 => '',
+        'navigation_custom_align'                 => false,
+        'navigation_dots_width'                   => '',
+        'navigation_dots_height'                  => '',
+
+        /*** ADVANCED OPTIONS ***/
+        'container'                               => '',      // id for the slider container
+        'language_rtl_enable'                     => 'false', // RTL SUPPORT
+        'buttons_left_right_position'             => '',      // TEMPLATE CUSTOM OPTIONS
+
+        /*** ADDITIONAL ***/
+        'resize_events'                           => ''       // Initial setting
+    );
+
     /**
      * @var string
      */
@@ -112,6 +202,44 @@ abstract class ModShackSlidesHelper
         return null;
     }
 
+    /**
+     * @return array
+     */
+    public function getSettings()
+    {
+        $settings = array();
+
+        try {
+            // Sets all keys from settings in $settings array
+            foreach ($this->defaultSettings as $key => $default) {
+                $settings[$key] = $this->params->get($key, $default);
+            }
+
+            // Setting container ID
+            if ($settings['container'] == '') {
+                $settings['container'] = $this->generateContainerID();
+            }
+
+            if ($templateDesign = $this->params->get('template_design')) {
+                if ($templateDesign == 1) {
+                    $template       = JFactory::getApplication()->getTemplate();
+                    $templateDesign = JPATH_THEMES . '/' . $template . '/shackslides.json';
+
+                }
+                if (is_file($templateDesign)) {
+                    $templateSettings = json_decode(file_get_contents($templateDesign), true);
+                    foreach ($templateSettings as $key => $value) {
+                        $settings[$key] = $value;
+                    }
+                }
+            }
+
+        } catch (Exception $error) {
+            // ignore
+        }
+
+        return $settings;
+    }
 
     /**
      * Gets the saved images
@@ -166,7 +294,7 @@ abstract class ModShackSlidesHelper
     /**
      * Gets the first image found in a certain string
      *
-     * @param   string $content Content to parse
+     * @param string $content Content to parse
      *
      * @return  string
      */
@@ -186,7 +314,7 @@ abstract class ModShackSlidesHelper
     /**
      * Gets the title (using a tag parse) from a certain string
      *
-     * @param   string $content Content to parse
+     * @param string $content Content to parse
      *
      * @return  string
      */
@@ -237,7 +365,7 @@ abstract class ModShackSlidesHelper
     /**
      * Compare a query string using and separating its fields
      *
-     * @param   array $fields Fields
+     * @param array $fields Fields
      *
      * @return  boolean
      */
@@ -259,7 +387,7 @@ abstract class ModShackSlidesHelper
     /**
      * Convert animation output
      *
-     * @param   string $animation Animation input to convert in options for Owl Carousel
+     * @param string $animation Animation input to convert in options for Owl Carousel
      *
      * @return  boolean
      */
@@ -408,8 +536,8 @@ abstract class ModShackSlidesHelper
     /**
      * Generate random container ID
      *
-     * @param   string $prefix Prefix to add to the container id
-     * @param   int    $length ID length
+     * @param string $prefix Prefix to add to the container id
+     * @param int    $length ID length
      *
      * @return  string
      */
@@ -423,7 +551,7 @@ abstract class ModShackSlidesHelper
     /**
      * Convert Hex color to RGB array
      *
-     * @param   string $hex Hex color string
+     * @param string $hex Hex color string
      *
      * @return  array
      */
@@ -450,9 +578,9 @@ abstract class ModShackSlidesHelper
     /**
      * Set up dot images when uploading an image file
      *
-     * @param   string    $image    Path of the image in media
-     * @param   string    $css_rule Css rule that will be applied according to the case
-     * @param   JDocument $doc      Joomla Document
+     * @param string    $image    Path of the image in media
+     * @param string    $css_rule Css rule that will be applied according to the case
+     * @param JDocument $doc      Joomla Document
      *
      * @return  array
      */
