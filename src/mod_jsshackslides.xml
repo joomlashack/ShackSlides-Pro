@@ -261,47 +261,6 @@
             <fieldset name="options"
                       label="SLIDES_DISPLAY_OPTIONS">
                 <field type="spacer"
-                       name="templatesin_options_spacer"
-                       label="TEMPLATESIN_OPTIONS_SPACER_LABEL"/>
-
-                <field name="title_description_position"
-                       type="list"
-                       default="bottom"
-                       label="SLIDEDESC_POSITION"
-                       description="SLIDEDESC_POSITION_DESC">
-                    <option value="top">SLIDEDESC_POSITION_TOP</option>
-                    <option value="bottom">SLIDEDESC_POSITION_BOTTOM</option>
-                    <option value="right">SLIDEDESC_POSITION_RIGHT</option>
-                    <option value="left">SLIDEDESC_POSITION_LEFT</option>
-                    <option value="above_outside">SLIDEDESC_POSITION_ABOVEOUTSIDE</option>
-                    <option value="below_outside">SLIDEDESC_POSITION_BELOWOUTSIDE</option>
-                    <option value="right_outside">SLIDEDESC_POSITION_RIGHTOUTSIDE</option>
-                    <option value="left_outside">SLIDEDESC_POSITION_LEFTOUTSIDE</option>
-                </field>
-
-                <field name="title_description_alignment"
-                       type="list"
-                       default="left"
-                       label="SLIDEDESC_ALIGNMENT"
-                       description="SLIDEDESC_ALIGNMENT_DESC">
-                    <option value="left">SLIDEDESC_ALIGNMENT_LEFT</option>
-                    <option value="right">SLIDEDESC_ALIGNMENT_RIGHT</option>
-                    <option value="center">SLIDEDESC_ALIGNMENT_CENTER</option>
-                </field>
-
-                <field name="title_description_padding_vertical"
-                       type="text"
-                       default="10"
-                       label="SLIDEDESC_VERTICALPAD"
-                       description="SLIDEDESC_VERTICALPAD_DESC"/>
-
-                <field name="title_description_padding_horizontal"
-                       type="text"
-                       default="10"
-                       label="SLIDEDESC_HORIZONTALPAD"
-                       description="SLIDEDESC_HORIZONTALPAD_DESC"/>
-
-                <field type="spacer"
                        name="slidesdescription_titleoptions_spacer"
                        label="SLIDESDESCRIPTION_TITLEOPTIONS_LABEL"/>
 
@@ -475,7 +434,6 @@
                        description="SHOW_DESCRIPTION_DESC"
                        class="btn-group btn-group-yesno"
                        default="1">
-
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -629,6 +587,52 @@
                     <option value="p">p</option>
                     <option value="div">div</option>
                 </field>
+
+                <field type="spacer"
+                       name="templatesin_options_spacer"
+                       label="TEMPLATESIN_OPTIONS_SPACER_LABEL"
+                       showon="title_show:1[OR]description_show:1"/>
+
+                <field name="title_description_position"
+                       type="list"
+                       default="bottom"
+                       label="SLIDEDESC_POSITION"
+                       description="SLIDEDESC_POSITION_DESC"
+                       showon="title_show:1[OR]description_show:1">
+                    <option value="top">SLIDEDESC_POSITION_TOP</option>
+                    <option value="bottom">SLIDEDESC_POSITION_BOTTOM</option>
+                    <option value="right">SLIDEDESC_POSITION_RIGHT</option>
+                    <option value="left">SLIDEDESC_POSITION_LEFT</option>
+                    <option value="above_outside">SLIDEDESC_POSITION_ABOVEOUTSIDE</option>
+                    <option value="below_outside">SLIDEDESC_POSITION_BELOWOUTSIDE</option>
+                    <option value="right_outside">SLIDEDESC_POSITION_RIGHTOUTSIDE</option>
+                    <option value="left_outside">SLIDEDESC_POSITION_LEFTOUTSIDE</option>
+                </field>
+
+                <field name="title_description_alignment"
+                       type="list"
+                       default="left"
+                       label="SLIDEDESC_ALIGNMENT"
+                       description="SLIDEDESC_ALIGNMENT_DESC"
+                       showon="title_show:1[OR]description_show:1">
+                    <option value="left">SLIDEDESC_ALIGNMENT_LEFT</option>
+                    <option value="right">SLIDEDESC_ALIGNMENT_RIGHT</option>
+                    <option value="center">SLIDEDESC_ALIGNMENT_CENTER</option>
+                </field>
+
+                <field name="title_description_padding_vertical"
+                       type="text"
+                       default="10"
+                       label="SLIDEDESC_VERTICALPAD"
+                       description="SLIDEDESC_VERTICALPAD_DESC"
+                       showon="title_show:1[OR]description_show:1"/>
+
+                <field name="title_description_padding_horizontal"
+                       type="text"
+                       default="10"
+                       label="SLIDEDESC_HORIZONTALPAD"
+                       description="SLIDEDESC_HORIZONTALPAD_DESC"
+                       showon="title_show:1[OR]description_show:1"/>
             </fieldset>
 
             <fieldset name="navigationoptions"
