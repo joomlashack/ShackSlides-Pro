@@ -75,8 +75,17 @@ defined('_JEXEC') or die();
  * @var string               $sliderLoader
  */
 
+$containerAttributes = array(
+    'id'    => $settings['container'],
+    'class' => 'jss-slider'
+);
+if ($settings['template_design']) {
+    $containerAttributes['class'] .= ' jss-slider-template-design';
+}
+
+echo sprintf('<div %s>', \Joomla\Utilities\ArrayHelper::toString($containerAttributes));
+
 ?>
-<div id="<?php echo $settings['container'] ?>" class="jss-slider">
     <div class="owl-carousel">
         <?php foreach ($images as $i => $image) : ?>
             <div class="jss-image-container jss-descpos-<?php echo $settings['title_description_position'] ?>">
@@ -132,4 +141,5 @@ defined('_JEXEC') or die();
             </div>
         </div>
     </div>
-</div>
+<?php
+echo '</div>';

@@ -122,7 +122,8 @@ abstract class ModShackSlidesHelper
         'buttons_left_right_position'             => '',      // TEMPLATE CUSTOM OPTIONS
 
         /*** ADDITIONAL ***/
-        'resize_events'                           => ''       // Initial setting
+        'resize_events'                           => '',      // Initial setting
+        'template_design'                         => false    // Used in rare cases
     );
 
     /**
@@ -231,6 +232,7 @@ abstract class ModShackSlidesHelper
                     foreach ($templateSettings as $key => $value) {
                         $settings[$key] = $value;
                     }
+                    $settings['template_design'] = true;
                 }
             }
 
