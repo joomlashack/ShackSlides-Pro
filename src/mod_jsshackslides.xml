@@ -35,6 +35,11 @@
     <config addfieldpath="/modules/mod_jsshackslides/form/fields">
         <fields name="params">
             <fieldset name="basic">
+                <field name="template_design"
+                       label="MOD_SHACKSLIDES_TEMPLATE_DESIGN_LABEL"
+                       description="MOD_SHACKSLIDES_TEMPLATE_DESIGN_DESC"
+                       type="shack.templatedesign"/>
+
                 <field type="spacer"
                        name="basic_options_spacer"
                        label="BASIC_OPTIONS_SPACER_LABEL"/>
