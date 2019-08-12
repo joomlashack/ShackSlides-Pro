@@ -317,7 +317,7 @@
                        label="TITLE_PICKER_COLOR_LABEL"
                        description="TITLE_PICKER_COLOR_LABEL_DESC"
                        default="FFFFFF"
-                       showon="title_show:1"/>
+                       showon="title_show:1[AND]title_color_flag:1"/>
 
                 <field name="title_bgcolor_flag"
                        type="radio"
@@ -335,14 +335,14 @@
                        label="TITLE_BGPICKER_COLOR_LABEL"
                        description="TITLE_BGPICKER_COLOR_LABEL_DESC"
                        default="#000000"
-                       showon="title_show:1"/>
+                       showon="title_show:1[AND]title_bgcolor_flag:1"/>
 
                 <field name="title_bgcolor_opacity"
                        type="shack.slider"
                        label="RANGESLIDER_TITLE"
                        description="RANGESLIDER_TITLE_DESC"
                        default="70"
-                       showon="title_show:1"/>
+                       showon="title_show:1[AND]title_bgcolor_flag:1"/>
 
                 <field name="title_effect"
                        type="groupedlist"
@@ -483,7 +483,7 @@
                        label="DESCRIPTION_PICKER_COLOR_LABEL"
                        description="DESCRIPTION_PICKER_COLOR_LABEL_DESC"
                        default="#FFFFFF"
-                       showon="description_show:1"/>
+                       showon="description_show:1[AND]description_color_flag:1"/>
 
                 <field name="description_bgcolor_flag"
                        type="radio"
@@ -501,14 +501,14 @@
                        label="DESCRIPTION_BGPICKER_COLOR_LABEL"
                        description="DESCRIPTION_BGPICKER_COLOR_LABEL_DESC"
                        default="#000000"
-                       showon="description_show:1"/>
+                       showon="description_show:1[AND]description_bgcolor_flag:1"/>
 
                 <field name="description_bgcolor_opacity"
                        type="shack.slider"
                        label="RANGESLIDER_DESCRIPTION"
                        description="RANGESLIDER_DESCRIPTION_DESC"
                        default="70"
-                       showon="description_show:1"/>
+                       showon="description_show:1[AND]description_bgcolor_flag:1"/>
 
                 <field name="description_effect"
                        type="groupedlist"
