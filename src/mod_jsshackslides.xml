@@ -104,10 +104,11 @@
                 </field>
 
                 <field name="slide_autoplay"
-                       type="list"
+                       type="radio"
                        default="true"
                        label="SHACKSLIDES_BASIC_AUTOPLAY"
-                       description="SHACKSLIDES_BASIC_AUTOPLAY_DESC">
+                       description="SHACKSLIDES_BASIC_AUTOPLAY_DESC"
+                       class="btn-group btn-group-yesno">
                     <option value="true">JYES</option>
                     <option value="false">JNO</option>
                 </field>
@@ -127,10 +128,11 @@
                        showon="slide_items:1[AND]slide_effect!:none"/>
 
                 <field name="slide_onhoverstop"
-                       type="list"
+                       type="radio"
                        default="1"
                        label="ONHOVER_STOP"
-                       description="ONHOVER_STOP_DESC">
+                       description="ONHOVER_STOP_DESC"
+                       class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -300,9 +302,10 @@
                        showon="title_show:1"/>
 
                 <field name="title_color_flag"
-                       type="list"
+                       type="radio"
                        label="TITLE_COLOR_LABEL"
                        description="TITLE_COLOR_LABEL_DESC"
+                       class="btn-group btn-group-yesno"
                        default="1"
                        showon="title_show:1">
                     <option value="1">JYES</option>
@@ -317,9 +320,10 @@
                        showon="title_show:1"/>
 
                 <field name="title_bgcolor_flag"
-                       type="list"
+                       type="radio"
                        label="TITLE_BG_COLOR_LABEL"
                        description="TITLE_BG_COLOR_LABEL_DESC"
+                       class="btn-group btn-group-yesno"
                        default="1"
                        showon="title_show:1">
                     <option value="1">JYES</option>
@@ -464,9 +468,10 @@
                        showon="description_show:1"/>
 
                 <field name="description_color_flag"
-                       type="list"
+                       type="radio"
                        label="DESCRIPTION_COLOR_LABEL"
                        description="DESCRIPTION_COLOR_LABEL_DESC"
+                       class="btn-group btn-group-yesno"
                        default="1"
                        showon="description_show:1">
                     <option value="1">JYES</option>
@@ -481,9 +486,10 @@
                        showon="description_show:1"/>
 
                 <field name="description_bgcolor_flag"
-                       type="list"
+                       type="radio"
                        label="DESCRIPTION_BG_COLOR_LABEL"
                        description="DESCRIPTION_BG_COLOR_LABEL_DESC"
+                       class="btn-group btn-group-yesno"
                        default="1"
                        showon="description_show:1">
                     <option value="1">JYES</option>
@@ -663,9 +669,10 @@
                 </field>
 
                 <field name="navigation_shownumbers"
-                       type="list"
+                       type="radio"
                        label="NAVIGATIONNUMBERS"
                        description="NAVIGATIONNUMBERS_DESC"
+                       class="btn-group btn-group-yesno"
                        default="0"
                        showon="navigation_show!:0">
                     <option value="1">JYES</option>
