@@ -84,11 +84,10 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
      */
     protected function loadImagesFromDirectory()
     {
-        $fileInfo  = finfo_open(FILEINFO_MIME_TYPE);
-        $dir       = new DirectoryIterator($this->directory);
+        $dir = new DirectoryIterator($this->directory);
 
         foreach ($dir as $file) {
-            $mimeType = finfo_file($fileInfo, $file->getRealPath());
+            $mimeType = mime_content_type($file->getRealPath());
             if (stripos($mimeType, 'image/') === 0) {
                 $images[] = $file->getBasename();
             }
