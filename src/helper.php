@@ -216,11 +216,6 @@ abstract class ModShackSlidesHelper
                 $settings[$key] = $this->params->get($key, $default);
             }
 
-            // Setting container ID
-            if ($settings['container'] == '') {
-                $settings['container'] = $this->generateContainerID();
-            }
-
             if ($templateDesign = $this->params->get('template_design')) {
                 if ($templateDesign == 1) {
                     $template       = JFactory::getApplication()->getTemplate();
@@ -234,6 +229,10 @@ abstract class ModShackSlidesHelper
                     }
                     $settings['template_design'] = true;
                 }
+            }
+
+            if ($settings['container'] == '') {
+                $settings['container'] = $this->generateContainerID();
             }
 
         } catch (Exception $error) {
