@@ -84,12 +84,10 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
      */
     protected function loadImagesFromDirectory()
     {
-        $fileInfo  = finfo_open(FILEINFO_MIME_TYPE);
-        $dir       = new DirectoryIterator($this->directory);
+        $dir = new DirectoryIterator($this->directory);
 
         foreach ($dir as $file) {
-            $mimeType = finfo_file($fileInfo, $file->getRealPath());
-            if (stripos($mimeType, 'image/') === 0) {
+            if ($this->isImageFile($file->getRealPath())) {
                 $images[] = $file->getBasename();
             }
         }
@@ -103,6 +101,30 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
             $info           = pathinfo($image);
             $this->titles[] = $info['filename'];
         }
+    }
+
+    /**
+     * @param string $filePath
+     *
+     * @return bool
+     */
+    protected function isImageFile($filePath)
+    {
+        if (is_file($filePath)) {
+            if (is_callable('mime_content_type')) {
+                return stripos(mime_content_type($filePath), 'image/') === 0;
+            }
+
+            $pathInfo = pathinfo($filePath);
+            if (!empty($pathInfo['extension'])) {
+                return in_array(
+                    strtolower($pathInfo['extension']),
+                    array('png', 'gif', 'jpg', 'bmp', 'jpeg')
+                );
+            }
+        }
+
+        return false;
     }
 
     /**
