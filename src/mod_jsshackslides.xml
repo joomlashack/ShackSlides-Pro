@@ -38,7 +38,8 @@
                 <field name="template_design"
                        label="MOD_SHACKSLIDES_TEMPLATE_DESIGN_LABEL"
                        description="MOD_SHACKSLIDES_TEMPLATE_DESIGN_DESC"
-                       type="shack.templatedesign"/>
+                       type="shack.templatedesign"
+                       default="0"/>
 
                 <field type="spacer"
                        name="basic_options_spacer"
