@@ -2,12 +2,12 @@
 <extension version="3.7" type="module" client="site" method="upgrade">
     <name>MOD_JSSHACKSLIDES</name>
     <author>Joomlashack</author>
-    <creationDate>August 14 2019</creationDate>
+    <creationDate>October 15 2019</creationDate>
     <copyright>Copyright 2010-2019 Joomlashack.com</copyright>
     <license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
     <authorEmail>help@joomlashack.com</authorEmail>
     <authorUrl>https://www.joomlashack.com</authorUrl>
-    <version>3.1.15</version>
+    <version>3.1.16b1</version>
     <variant>PRO</variant>
     <description>MOD_JSSHACKSLIDES_DESCRIPTION</description>
 
