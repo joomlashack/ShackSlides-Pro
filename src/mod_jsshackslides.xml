@@ -812,15 +812,13 @@
 
                 <field type="spacer"
                        name="prenextbutton_bar_spacer"
-                       label="PRENEXTBUTTON_SPACER_LABEL"
-                       showon="navigation_show!:0"/>
+                       label="PRENEXTBUTTON_SPACER_LABEL"/>
 
                 <field name="navigation_buttons_show"
                        type="list"
                        default="2"
                        label="NAVIGATIONARROWS"
-                       description="NAVIGATIONARROWS_DESC"
-                       showon="navigation_show!:0">
+                       description="NAVIGATIONARROWS_DESC">
                     <option value="2">ALWAYS_ARROWS</option>
                     <option value="0">NO_ARROWS</option>
                     <option value="1">ONHOVER_ARROWS</option>
@@ -832,7 +830,7 @@
                        label="NAVIGATIONARROWS_MOBILE"
                        description="NAVIGATIONARROWS_MOBILE_DESC"
                        class="btn-group btn-group-yesno"
-                       showon="navigation_show!:0[AND]navigation_buttons_show!:0">
+                       showon="navigation_buttons_show!:0">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -842,7 +840,7 @@
                        default="theme2"
                        label="NAVIGATION_BUTTONS_THEME"
                        description="NAVIGATION_BUTTONS_THEME_DESC"
-                       showon="navigation_show!:0[AND]navigation_buttons_show!:0">
+                       showon="navigation_buttons_show!:0">
                     <option value="none">NAVIGATION_BUTTONS_THEME_NONE</option>
                     <option value="theme1">NAVIGATION_BUTTONS_THEME_1</option>
                     <option value="theme2">NAVIGATION_BUTTONS_THEME_2</option>
@@ -854,21 +852,21 @@
                        label="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL"
                        description="NAVIGATION_PICKER_BUTTONS_COLOR_LABEL_DESC"
                        default="666"
-                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
+                       showon="navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttonshover_color"
                        type="color"
                        label="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL"
                        description="NAVIGATION_PICKER_BUTTONSHOVER_COLOR_LABEL_DESC"
                        default="FFF"
-                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
+                       showon="navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttons_opacity"
                        type="shack.slider"
                        default="80"
                        label="NAVIGATION_OPACITY"
                        description="NAVIGATION_OPACITY_DESC"
-                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
+                       showon="navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttons_custom_previous"
                        type="media"
@@ -876,7 +874,7 @@
                        preview="true"
                        label="NAVIGATIONBUTTONS_CUSTOMPREVIOUS"
                        description="NAVIGATIONBUTTONS_CUSTOMPREVIOUS_DESC"
-                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
+                       showon="navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttons_custom_previoushover"
                        type="media"
@@ -884,7 +882,7 @@
                        preview="true"
                        label="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER"
                        description="NAVIGATIONBUTTONS_CUSTOMPREVIOUSHOVER_DESC"
-                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
+                       showon="navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttons_custom_next"
                        type="media"
@@ -892,7 +890,7 @@
                        preview="true"
                        label="NAVIGATIONBUTTONS_CUSTOMNEXT"
                        description="NAVIGATIONBUTTONS_CUSTOMNEXT_DESC"
-                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
+                       showon="navigation_buttons_show!:0"/>
 
                 <field name="navigation_buttons_custom_nexthover"
                        type="media"
@@ -900,7 +898,7 @@
                        preview="true"
                        label="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER"
                        description="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER_DESC"
-                       showon="navigation_show!:0[AND]navigation_buttons_show!:0"/>
+                       showon="navigation_buttons_show!:0"/>
             </fieldset>
 
             <fieldset name="advanced"
