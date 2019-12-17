@@ -906,12 +906,12 @@
 
                 <field name="mouse_drag"
                        type="radio"
-                       default="false"
+                       default="1"
                        label="MOD_SHACKSLIDES_MOUSE_DRAG"
                        description="MOD_SHACKSLIDES_MOUSE_DRAG_DESC"
                        class="btn-group btn-group-yesno">
-                    <option value="true">JYES</option>
-                    <option value="false">JNO</option>
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
                 </field>
 
             </fieldset>
