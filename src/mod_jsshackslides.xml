@@ -899,6 +899,21 @@
                        label="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER"
                        description="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER_DESC"
                        showon="navigation_buttons_show!:0"/>
+
+                <field type="spacer"
+                       name="prenextbutton_bar_spacer"
+                       label="MOD_MOUSE_DRAG_SPACER_LABEL"/>
+
+                <field name="mouse_drag"
+                       type="radio"
+                       default="false"
+                       label="MOD_SHACKSLIDES_MOUSE_DRAG"
+                       description="MOD_SHACKSLIDES_MOUSE_DRAG_DESC"
+                       class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
             </fieldset>
 
             <fieldset name="advanced"

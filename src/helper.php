@@ -47,6 +47,7 @@ abstract class ModShackSlidesHelper
         'slide_effect'                            => 'slide',  // Effect for slides
         'slide_onhoverstop'                       => '1',      // Stop on mouse hover
         'slide_items'                             => '1',      // Number of items per slide page
+        'mouse_drag'                              => 'false',  // Allow to navigate slides through mouse drag
         'slide_margin'                            => '10',     // Margin between slides when using multiple per page
         'slide_autoplay'                          => '1',      // Autoplay on or off
 

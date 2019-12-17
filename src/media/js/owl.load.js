@@ -3,6 +3,7 @@ var $$container = null;
 jQuery(document).ready(function(){
     var options = {
         items: $$slide_items,
+        mouseDrag: $$mouse_drag,
         margin: $$slide_margin,
         loop: true,
         center: $$slide_center,
