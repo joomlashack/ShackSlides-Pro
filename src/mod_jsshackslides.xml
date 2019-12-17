@@ -902,7 +902,7 @@
 
                 <field type="spacer"
                        name="mousedrag_bar_spacer"
-                       label="MOD_MOUSE_DRAG_SPACER_LABEL"/>
+                       label="MOD_MOUSE_NAVIGATION_SPACER_LABEL"/>
 
                 <field name="mouse_drag"
                        type="radio"
