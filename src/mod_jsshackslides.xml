@@ -2,12 +2,12 @@
 <extension version="3.7" type="module" client="site" method="upgrade">
     <name>MOD_JSSHACKSLIDES</name>
     <author>Joomlashack</author>
-    <creationDate>October 23 2019</creationDate>
+    <creationDate>December 17 2019</creationDate>
     <copyright>Copyright 2010-2019 Joomlashack.com</copyright>
     <license>GNU/GPL v3 http://www.gnu.org/copyleft/gpl.html</license>
     <authorEmail>help@joomlashack.com</authorEmail>
     <authorUrl>https://www.joomlashack.com</authorUrl>
-    <version>3.1.16</version>
+    <version>3.2.0b1</version>
     <variant>PRO</variant>
     <description>MOD_JSSHACKSLIDES_DESCRIPTION</description>
 
@@ -899,6 +899,21 @@
                        label="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER"
                        description="NAVIGATIONBUTTONS_CUSTOMNEXTHOVER_DESC"
                        showon="navigation_buttons_show!:0"/>
+
+                <field type="spacer"
+                       name="mousedrag_bar_spacer"
+                       label="MOD_MOUSE_NAVIGATION_SPACER_LABEL"/>
+
+                <field name="mouse_drag"
+                       type="radio"
+                       default="1"
+                       label="MOD_SHACKSLIDES_MOUSE_DRAG"
+                       description="MOD_SHACKSLIDES_MOUSE_DRAG_DESC"
+                       class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
             </fieldset>
 
             <fieldset name="advanced"
