@@ -234,11 +234,22 @@
                     <option value="only">FEATURED_ONLYFF</option>
                 </field>
 
+                <field name="include_links"
+                       type="radio"
+                       default="true"
+                       label="MOD_SHACKSLIDES_INCLUDE_LINKS"
+                       description="MOD_SHACKSLIDES_INCLUDE_LINKS_DESC"
+                       class="btn-group btn-group-yesno">
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+
                 <field name="anchor_target"
                        type="list"
                        default="self"
                        label="ANCHOR_TARGET"
-                       description="ANCHOR_TARGET_DESC">
+                       description="ANCHOR_TARGET_DESC"
+                       showon="include_links:true">
                     <option value="self">SELF</option>
                     <option value="blank">BLANK</option>
                 </field>
