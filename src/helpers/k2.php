@@ -28,12 +28,35 @@ defined('_JEXEC') or die();
 
 class ModShackSlidesK2Helper extends ModShackSlidesHelper
 {
-    protected $content;
-    protected $category_id;
-    protected $ordering;
-    protected $ordering_direction;
-    protected $limit;
-    protected $featured;
+    /**
+     * @var object[]
+     */
+    protected $content = null;
+
+    /**
+     * @var int
+     */
+    protected $category_id = null;
+
+    /**
+     * @var string
+     */
+    protected $ordering = null;
+
+    /**
+     * @var string
+     */
+    protected $ordering_direction = null;
+
+    /**
+     * @var int
+     */
+    protected $limit = null;
+
+    /**
+     * @var string
+     */
+    protected $featured = null;
 
     public function __construct(Registry $params)
     {
@@ -45,10 +68,12 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
         $this->featured           = $params->get('featured', 'include');
 
         $this->getContentFromDatabase();
-
         $this->parseContentIntoProperties();
     }
 
+    /**
+     * @return void
+     */
     protected function getContentFromDatabase()
     {
         $database = JFactory::getDBO();
@@ -84,6 +109,9 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
         $this->content = $database->loadObjectList();
     }
 
+    /**
+     * @return void
+     */
     protected function parseContentIntoProperties()
     {
         foreach ($this->content as $item) {
@@ -101,6 +129,11 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
         }
     }
 
+    /**
+     * @param int $id
+     *
+     * @return string
+     */
     protected function buildLink($id)
     {
         $fields = array(
