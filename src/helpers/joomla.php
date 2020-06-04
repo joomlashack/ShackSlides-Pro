@@ -168,10 +168,8 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
                     $this->titles[]   = $this->getTitleFromContent($item->title);
                     $this->contents[] = $this->getTitleFromContent($item->introtext);
                     $item->slug       = $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
-                    $this->links[]    = JRoute::_(
-                        ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language),
-                        false
-                    );
+
+                    $this->addLink(ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language));
                 }
             }
         }

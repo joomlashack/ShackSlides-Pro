@@ -97,7 +97,8 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
 
             $this->titles[]   = $this->getTitleFromContent($item->title);
             $this->contents[] = $this->getTitleFromContent($item->introtext);
-            $this->links[]    = $this->buildLink($item->id);
+
+            $this->addLink($this->buildLink($item->id));
         }
     }
 
@@ -118,6 +119,6 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
             $link = 'index.php?option=com_k2&view=item&layout=item&id=' . $id;
         }
 
-        return JRoute::_($link);
+        return $link;
     }
 }

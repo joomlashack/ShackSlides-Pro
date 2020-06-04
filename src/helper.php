@@ -22,6 +22,7 @@
  */
 
 use Joomla\CMS\Menu\MenuItem;
+use Joomla\CMS\Router\Route;
 use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
@@ -143,9 +144,14 @@ abstract class ModShackSlidesHelper
     protected $titles = null;
 
     /**
-     * @var array
+     * @var string[]
      */
-    protected $links;
+    protected $links = [];
+
+    /**
+     * @var bool
+     */
+    protected $includeLinks = null;
 
     /**
      * @var string
@@ -177,10 +183,22 @@ abstract class ModShackSlidesHelper
      */
     public function __construct(Registry $params)
     {
-        $this->menu    = JMenu::getInstance('site')->getMenu();
-        $this->base    = JURI::base();
-        $this->noimage = ltrim(JHtml::_('image', 'mod_jsshackslides/noimagefound.png', null, null, true, 1), '/');
-        $this->params  = $params;
+        $this->menu         = JMenu::getInstance('site')->getMenu();
+        $this->base         = JURI::base();
+        $this->noimage      = ltrim(
+            JHtml::_(
+                'image',
+                'mod_jsshackslides/noimagefound.png',
+                null,
+                null,
+                true,
+                1
+            ),
+            '/'
+        );
+        $this->includeLinks = $params->get('include_links', 1);
+
+        $this->params = $params;
     }
 
     /**
@@ -256,7 +274,7 @@ abstract class ModShackSlidesHelper
     /**
      * Gets the arrays of links
      *
-     * @return  array
+     * @return  string[]
      */
     public function getLinks()
     {
@@ -600,5 +618,15 @@ abstract class ModShackSlidesHelper
         );
 
         return array($width, $height);
+    }
+
+    /**
+     * @param string $link
+     *
+     * @return void
+     */
+    protected function addLink($link)
+    {
+        $this->links[] = $this->includeLinks ? Route::_($link, false) : null;
     }
 }

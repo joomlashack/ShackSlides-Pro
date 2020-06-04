@@ -95,28 +95,28 @@ echo sprintf('<div %s>', \Joomla\Utilities\ArrayHelper::toString($containerAttri
 
                 <div class="jss-image">
                     <?php if ($settings['height_adjustment'] == 'adjust') : ?>
-                        <?php if ($links[$i] && $settings['include_links'] == 'true') : ?>
+                        <?php if ($links[$i]) : ?>
                             <a href="<?php echo $links[$i]; ?>"
                                 <?php echo $settings['anchor_target'] == 'blank' ? ' target="_blank"' : ''; ?>>
                         <?php endif; ?>
 
                         <img src="<?php echo $base . $image ?>" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
 
-                        <?php if ($links[$i]  && $settings['include_links'] == 'true') : ?>
+                        <?php if ($links[$i]) : ?>
                             </a>
                         <?php endif; ?>
                     <?php elseif ($settings['height_adjustment'] == 'crop') : ?>
                     <div
                         class="jss-image-int<?php echo $links[$i] ? ' jss-image-link' : ''; ?>"
                         style="background: url('<?php echo  $base . $image ?>');background-image: url('<?php echo  $base . $image ?>')">
-                    <?php if ($links[$i] && $settings['include_links'] == 'true') : ?>
+                    <?php if ($links[$i]) : ?>
                         <a href="<?php echo $links[$i]; ?>"
                             <?php echo $settings['anchor_target'] == 'blank' ? ' target="_blank"' : ''; ?>>
                     <?php endif; ?>
 
                     <img src="<?php echo JURI::root() ?>media/mod_jsshackslides/images/blank.gif" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
 
-                    <?php if ($links[$i] && $settings['include_links'] == 'true') : ?>
+                    <?php if ($links[$i]) : ?>
                         </a>
                     <?php endif; ?>
                     </div>
