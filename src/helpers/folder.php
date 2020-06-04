@@ -26,9 +26,6 @@ use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
 
-jimport('joomla.filesystem.folder');
-jimport('joomla.filesystem.file');
-
 class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 {
     /**
@@ -86,6 +83,7 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
     {
         $dir = new DirectoryIterator($this->directory);
 
+        $images = [];
         foreach ($dir as $file) {
             if ($this->isImageFile($file->getRealPath())) {
                 $images[] = $file->getBasename();
