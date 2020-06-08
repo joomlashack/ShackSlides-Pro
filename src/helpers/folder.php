@@ -36,12 +36,12 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
     /**
      * @var string
      */
-    protected $folder;
+    protected $folder = null;
 
     /**
      * @var int
      */
-    protected $limit;
+    protected $limit = null;
 
     /**
      * @var string

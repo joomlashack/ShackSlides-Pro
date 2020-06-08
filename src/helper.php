@@ -133,34 +133,34 @@ abstract class ModShackSlidesHelper
     protected $noimage = null;
 
     /**
-     * @var array
+     * @var string[]
      */
-    protected $images = null;
+    protected $images = [];
 
     /**
-     * @var array
+     * @var string[]
      */
-    protected $titles = null;
+    protected $titles = [];
 
     /**
-     * @var array
+     * @var string[]
      */
-    protected $links;
+    protected $links = [];
 
     /**
      * @var string
      */
-    protected $base;
+    protected $base = null;
 
     /**
      * @var MenuItem[]
      */
-    protected $menu = null;
+    protected $menu = [];
 
     /**
-     * @var array
+     * @var object[]
      */
-    protected $contents = null;
+    protected $contents = [];
 
     /**
      * @var Registry

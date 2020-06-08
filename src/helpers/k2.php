@@ -22,6 +22,7 @@
  * along with ShackSlides.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+use Joomla\CMS\Factory;
 use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
@@ -61,6 +62,7 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
     public function __construct(Registry $params)
     {
         parent::__construct($params);
+
         $this->category_id        = $params->get('k2_category', 0);
         $this->ordering           = $params->get('ordering', 'ordering');
         $this->ordering_direction = $params->get('ordering_dir', 'ASC');
@@ -76,25 +78,23 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
      */
     protected function getContentFromDatabase()
     {
-        $database = JFactory::getDBO();
-        $user     = JFactory::getUser();
-        $now      = $database->quote(date('Y-m-d H:i:s'));
-        $nullDate = $database->quote($database->getNullDate());
+        $db       = Factory::getDbo();
+        $user     = Factory::getUser();
+        $now      = $db->quote(date('Y-m-d H:i:s'));
+        $nullDate = $db->quote($db->getNullDate());
         $aid      = $user->getAuthorisedViewLevels();
 
-        $query = $database->getQuery(true)
+        $query = $db->getQuery(true)
             ->select('*')
             ->from('#__k2_items')
-            ->where(
-                array(
-                    'catid =' . $this->category_id,
-                    sprintf('access IN (%s)', join(',', $aid)),
-                    'published = 1',
-                    'trash = 0',
-                    sprintf('(publish_up = %s OR publish_up <= %s)', $nullDate, $now),
-                    sprintf('(publish_down = %s OR publish_down >= %s)', $nullDate, $now)
-                )
-            )
+            ->where([
+                'catid =' . $this->category_id,
+                sprintf('access IN (%s)', join(',', $aid)),
+                'published = 1',
+                'trash = 0',
+                sprintf('(publish_up = %s OR publish_up <= %s)', $nullDate, $now),
+                sprintf('(publish_down = %s OR publish_down >= %s)', $nullDate, $now)
+            ])
             ->order($this->ordering . ' ' . $this->ordering_direction);
 
         if ($this->featured !== 'include') {
@@ -105,8 +105,8 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
             );
         }
 
-        $database->setQuery($query, 0, $this->limit);
-        $this->content = $database->loadObjectList();
+        $db->setQuery($query, 0, $this->limit);
+        $this->content = $db->loadObjectList();
     }
 
     /**

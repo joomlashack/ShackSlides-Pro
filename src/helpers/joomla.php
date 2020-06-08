@@ -21,12 +21,12 @@
  * along with ShackSlides.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+use Joomla\CMS\Factory;
 use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
 
-jimport('joomla.html.parameter');
-JLoader::import('helpers.route', JPATH_SITE . '/components/com_content');
+JLoader::register('ContentHelperRoute', JPATH_SITE . '/components/com_content/helpers/route.php');
 
 /**
  * Joomla Helper class
@@ -95,11 +95,11 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
      */
     private function getContentFromDatabase()
     {
-        $database = JFactory::getDbo();
-        $now      = $database->quote(date('Y-m-d H:i:s'));
-        $nullDate = $database->quote($database->getNullDate());
+        $db       = Factory::getDbo();
+        $now      = $db->quote(date('Y-m-d H:i:s'));
+        $nullDate = $db->quote($db->getNullDate());
 
-        $query = $database->getQuery(true)
+        $query = $db->getQuery(true)
             ->select('*')
             ->from('#__content')
             ->where(
@@ -113,12 +113,12 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
             ->order($this->ordering . ' ' . $this->orderingDirection);
 
         if ($this->featured !== 'include') {
-            $database->setQuery(
-                $database->getQuery(true)
+            $db->setQuery(
+                $db->getQuery(true)
                     ->select('content_id')
                     ->from('#__content_frontpage')
             );
-            if ($featuredItems = $database->loadColumn()) {
+            if ($featuredItems = $db->loadColumn()) {
                 $query->where(
                     sprintf(
                         'id %s IN (%s)',
@@ -129,8 +129,8 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
             }
         }
 
-        $database->setQuery($query, 0, $this->limit);
-        $this->content = $database->loadObjectList();
+        $db->setQuery($query, 0, $this->limit);
+        $this->content = $db->loadObjectList();
     }
 
     /**
