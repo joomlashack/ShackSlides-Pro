@@ -3,7 +3,7 @@
  * @package   ShackSlides
  * @contact   www.joomlashack.com, help@joomlashack.com
  * @copyright 2010-2020 Joomlashack.com. All rights reserved
- * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ * @license   https://www.gnu.org/licenses/gpl.html GNU/GPL
  *
  * This file is part of ShackSlides.
  *
@@ -18,9 +18,12 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with ShackSlides.  If not, see <http://www.gnu.org/licenses/>.
+ * along with ShackSlides.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Filesystem\Path;
+use Joomla\CMS\Uri\Uri;
 use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
@@ -101,12 +104,10 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper
         $query = $db->getQuery(true)
             ->select('*')
             ->from('#__jsvisionary_slides')
-            ->where(
-                array(
-                    'enabled = 1',
-                    'collection_id =' . $this->collection
-                )
-            )
+            ->where([
+                'enabled = 1',
+                'collection_id =' . $this->collection
+            ])
             ->order($this->ordering . ' ' . $this->orderingDirection);
 
         $this->content = $db->setQuery($query, 0, $this->limit)->loadObjectList();
@@ -127,10 +128,14 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper
         $this->base = '';
     }
 
-
+    /**
+     * @param string $path
+     *
+     * @return string
+     */
     protected function createImageUrl($path)
     {
-        $path = JPath::clean($path);
+        $path = Path::clean($path);
 
         $markers = $this->getMarkers();
 
@@ -155,7 +160,7 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper
         $path = preg_replace('/\[.+\]/', '', $path);  // Clean tags if remains
 
         //convert absolute server path to URL
-        $url = JUri::root() . str_replace(JPATH_BASE . '/', '', $path);
+        $url = Uri::root() . str_replace(JPATH_BASE . '/', '', $path);
 
         return $url;
     }
@@ -165,8 +170,8 @@ class ModShackSlidesVisionaryHelper extends ModShackSlidesHelper
      */
     protected function getMarkers()
     {
-        $configMedias = JComponentHelper::getParams('com_media');
-        $config       = JComponentHelper::getParams('com_jsvisionary');
+        $configMedias = ComponentHelper::getParams('com_media');
+        $config       = ComponentHelper::getParams('com_jsvisionary');
 
         $markers = array(
             'DIR_JSSSSLIDE_IMAGE' => $config->get('upload_dir_jsssslide_image', JPATH_SITE) . '/',

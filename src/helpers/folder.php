@@ -4,7 +4,7 @@
  * @package   ShackSlides
  * @contact   www.joomlashack.com, help@joomlashack.com
  * @copyright 2010-2020 Joomlashack.com. All rights reserved
- * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ * @license   https://www.gnu.org/licenses/gpl.html GNU/GPL
  *
  * This file is part of ShackSlides.
  *
@@ -19,15 +19,12 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with ShackSlides.  If not, see <http://www.gnu.org/licenses/>.
+ * along with ShackSlides.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
-
-jimport('joomla.filesystem.folder');
-jimport('joomla.filesystem.file');
 
 class ModShackSlidesFolderHelper extends ModShackSlidesHelper
 {
@@ -39,12 +36,12 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
     /**
      * @var string
      */
-    protected $folder;
+    protected $folder = null;
 
     /**
      * @var int
      */
-    protected $limit;
+    protected $limit = null;
 
     /**
      * @var string
@@ -86,6 +83,7 @@ class ModShackSlidesFolderHelper extends ModShackSlidesHelper
     {
         $dir = new DirectoryIterator($this->directory);
 
+        $images = [];
         foreach ($dir as $file) {
             if ($this->isImageFile($file->getRealPath())) {
                 $images[] = $file->getBasename();

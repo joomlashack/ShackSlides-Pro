@@ -4,7 +4,7 @@
  * @package   ShackSlides
  * @contact   www.joomlashack.com, help@joomlashack.com
  * @copyright 2010-2020 Joomlashack.com. All rights reserved
- * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ * @license   https://www.gnu.org/licenses/gpl.html GNU/GPL
  *
  * This file is part of ShackSlides.
  *
@@ -19,25 +19,50 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with ShackSlides.  If not, see <http://www.gnu.org/licenses/>.
+ * along with ShackSlides.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+use Joomla\CMS\Factory;
 use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
 
 class ModShackSlidesK2Helper extends ModShackSlidesHelper
 {
-    protected $content;
-    protected $category_id;
-    protected $ordering;
-    protected $ordering_direction;
-    protected $limit;
-    protected $featured;
+    /**
+     * @var object[]
+     */
+    protected $content = null;
+
+    /**
+     * @var int
+     */
+    protected $category_id = null;
+
+    /**
+     * @var string
+     */
+    protected $ordering = null;
+
+    /**
+     * @var string
+     */
+    protected $ordering_direction = null;
+
+    /**
+     * @var int
+     */
+    protected $limit = null;
+
+    /**
+     * @var string
+     */
+    protected $featured = null;
 
     public function __construct(Registry $params)
     {
         parent::__construct($params);
+
         $this->category_id        = $params->get('k2_category', 0);
         $this->ordering           = $params->get('ordering', 'ordering');
         $this->ordering_direction = $params->get('ordering_dir', 'ASC');
@@ -45,31 +70,31 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
         $this->featured           = $params->get('featured', 'include');
 
         $this->getContentFromDatabase();
-
         $this->parseContentIntoProperties();
     }
 
+    /**
+     * @return void
+     */
     protected function getContentFromDatabase()
     {
-        $database = JFactory::getDBO();
-        $user     = JFactory::getUser();
-        $now      = $database->quote(date('Y-m-d H:i:s'));
-        $nullDate = $database->quote($database->getNullDate());
+        $db       = Factory::getDbo();
+        $user     = Factory::getUser();
+        $now      = $db->quote(date('Y-m-d H:i:s'));
+        $nullDate = $db->quote($db->getNullDate());
         $aid      = $user->getAuthorisedViewLevels();
 
-        $query = $database->getQuery(true)
+        $query = $db->getQuery(true)
             ->select('*')
             ->from('#__k2_items')
-            ->where(
-                array(
-                    'catid =' . $this->category_id,
-                    sprintf('access IN (%s)', join(',', $aid)),
-                    'published = 1',
-                    'trash = 0',
-                    sprintf('(publish_up = %s OR publish_up <= %s)', $nullDate, $now),
-                    sprintf('(publish_down = %s OR publish_down >= %s)', $nullDate, $now)
-                )
-            )
+            ->where([
+                'catid =' . $this->category_id,
+                sprintf('access IN (%s)', join(',', $aid)),
+                'published = 1',
+                'trash = 0',
+                sprintf('(publish_up = %s OR publish_up <= %s)', $nullDate, $now),
+                sprintf('(publish_down = %s OR publish_down >= %s)', $nullDate, $now)
+            ])
             ->order($this->ordering . ' ' . $this->ordering_direction);
 
         if ($this->featured !== 'include') {
@@ -80,10 +105,13 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
             );
         }
 
-        $database->setQuery($query, 0, $this->limit);
-        $this->content = $database->loadObjectList();
+        $db->setQuery($query, 0, $this->limit);
+        $this->content = $db->loadObjectList();
     }
 
+    /**
+     * @return void
+     */
     protected function parseContentIntoProperties()
     {
         foreach ($this->content as $item) {
@@ -102,6 +130,11 @@ class ModShackSlidesK2Helper extends ModShackSlidesHelper
         }
     }
 
+    /**
+     * @param int $id
+     *
+     * @return string
+     */
     protected function buildLink($id)
     {
         $fields = array(
