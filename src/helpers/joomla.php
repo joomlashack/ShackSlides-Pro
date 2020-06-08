@@ -21,12 +21,12 @@
  * along with ShackSlides.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use Joomla\CMS\Factory;
 use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
 
-JLoader::register('ContentHelperRoute', JPATH_SITE . '/components/com_content/helpers/route.php');
+jimport('joomla.html.parameter');
+JLoader::import('helpers.route', JPATH_SITE . '/components/com_content');
 
 /**
  * Joomla Helper class
@@ -95,7 +95,7 @@ class ModShackSlidesJoomlaHelper extends ModShackSlidesHelper
      */
     private function getContentFromDatabase()
     {
-        $database = Factory::getDbo();
+        $database = JFactory::getDbo();
         $now      = $database->quote(date('Y-m-d H:i:s'));
         $nullDate = $database->quote($database->getNullDate());
 
