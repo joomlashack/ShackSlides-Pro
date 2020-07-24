@@ -2,12 +2,12 @@
 <extension version="3.7" type="module" client="site" method="upgrade">
     <name>MOD_JSSHACKSLIDES</name>
     <author>Joomlashack</author>
-    <creationDate>June 08 2020</creationDate>
+    <creationDate>July 24 2020</creationDate>
     <copyright>Copyright 2010-2020 Joomlashack.com</copyright>
     <license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
     <authorEmail>help@joomlashack.com</authorEmail>
     <authorUrl>https://www.joomlashack.com</authorUrl>
-    <version>3.1.20</version>
+    <version>3.1.21b1</version>
     <variant>PRO</variant>
     <description>MOD_JSSHACKSLIDES_DESCRIPTION</description>
 
@@ -250,7 +250,7 @@
                        default="self"
                        label="ANCHOR_TARGET"
                        description="ANCHOR_TARGET_DESC"
-                       showon="include_links:true">
+                       showon="include_links:1">
                     <option value="self">SELF</option>
                     <option value="blank">BLANK</option>
                 </field>
