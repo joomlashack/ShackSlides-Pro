@@ -240,7 +240,7 @@
                        label="MOD_SHACKSLIDES_INCLUDE_LINKS"
                        description="MOD_SHACKSLIDES_INCLUDE_LINKS_DESC"
                        class="btn-group btn-group-yesno"
-                       showon="source:joomla,k2">
+                       showon="source:joomla,k2,visionary">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
