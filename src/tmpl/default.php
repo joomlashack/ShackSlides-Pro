@@ -95,14 +95,14 @@ echo sprintf('<div %s>', \Joomla\Utilities\ArrayHelper::toString($containerAttri
 
                 <div class="jss-image">
                     <?php if ($settings['height_adjustment'] == 'adjust') : ?>
-                        <?php if ($links[$i]) : ?>
+                        <?php if (!empty($links[$i])) : ?>
                             <a href="<?php echo $links[$i]; ?>"
                                 <?php echo $settings['anchor_target'] == 'blank' ? ' target="_blank"' : ''; ?>>
                         <?php endif; ?>
 
                         <img src="<?php echo $base . $image ?>" alt="<?php echo empty($titles[$i]) ? $image : $titles[$i]; ?>" />
 
-                        <?php if ($links[$i]) : ?>
+                        <?php if (!empty($links[$i])) : ?>
                             </a>
                         <?php endif; ?>
                     <?php elseif ($settings['height_adjustment'] == 'crop') : ?>

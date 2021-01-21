@@ -23,23 +23,23 @@
 
 defined('_JEXEC') or die();
 
-if ($settings['title_show'] || $settings['description_show']) : ?>
+
+if (
+    ($settings['title_show'] && !empty($titles[$i]))
+    || ($settings['description_show'] && !empty($contents[$i]))
+) :
+    ?>
     <div class="jss-title-description jss-alignment-<?php echo $settings['title_description_alignment'] ?>">
-<?php if ($settings['title_show']) : ?>
-    <div class="jss-title">
-        <<?php echo $settings['title_tag'] ?>>
-            <?php echo $titles[$i] ?>
-        </<?php echo $settings['title_tag'] ?>>
-    </div>
-<?php endif; ?>
+        <?php if ($settings['title_show'] && !empty($title[$i])) : ?>
+            <div class="jss-title">0
+                <?php echo sprintf('<%1$s>%2$s</%1$s>', $settings['title_tag'], $titles[$i]); ?>
+            </div>
+        <?php endif; ?>
 
-<?php if ($settings['description_show']) : ?>
-    <div class="jss-description">
-        <<?php echo $settings['description_tag'] ?>>
-            <?php echo $contents[$i] ?>
-        </<?php echo $settings['description_tag'] ?>>
-    </div>
-
-<?php endif; ?>
+        <?php if ($settings['description_show'] && !empty($contents[$i])) : ?>
+            <div class="jss-description">
+                <?php echo sprintf('<%1$s>%2$s</%1$s>', $settings['description_tag'], $contents[$i]); ?>
+            </div>
+        <?php endif; ?>
     </div>
 <?php endif;
