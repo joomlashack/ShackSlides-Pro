@@ -88,7 +88,7 @@ if (
     ?>
     <div class="jss-title-description jss-alignment-<?php echo $settings['title_description_alignment'] ?>">
         <?php if ($settings['title_show'] && !empty($titles[$i])) : ?>
-            <div class="jss-title">0
+            <div class="jss-title">
                 <?php echo sprintf('<%1$s>%2$s</%1$s>', $settings['title_tag'], $titles[$i]); ?>
             </div>
         <?php endif; ?>
