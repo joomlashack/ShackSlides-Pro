@@ -3,14 +3,6 @@
 Shack Slides
 =============
 
-You can create beautiful slideshows with the Shack Slides module for Joomla.
+** You can create beautiful slideshows with the Shack Slides module for Joomla.
 
-## Requirements
-
-Joomla 3.x
-
-Last release compatible with J2.5: v3.3.0
-
-## License
-
-[GNU General Public License v3](http://www.gnu.org/copyleft/gpl.html)
+** This extension is free to use on Joomla 3. We will not be updating it for Joomla 4.
